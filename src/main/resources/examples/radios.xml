@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<estab-data version="4">
+    <!--Radios:-->
+    <radio id="27">
+        <name>FuG.b</name>
+        <description>Infantry man-pack set.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="13.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>2</max-range>
+        <gain>20.0</gain>
+    </radio>
+    <radio id="29">
+        <name>FuG.a2</name>
+        <description>Inf bns to Regt.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="17.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>7</max-range>
+        <gain>1.0</gain>
+    </radio>
+    <radio id="31">
+        <name>FuG.b1</name>
+        <description>Widely used by all arms except inf.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="20.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>16</max-range>
+        <gain>0.349854</gain>
+    </radio>
+    <radio id="340">
+        <name>FuG5/SE10u</name>
+        <description>Common vehicle intercom set.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>4</max-range>
+        <gain>10.0</gain>
+    </radio>
+    <radio id="342">
+        <name>FuG12/SE80</name>
+        <description>Used by Recon bns.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>50</max-range>
+        <gain>80.0</gain>
+    </radio>
+    <radio id="344">
+        <name>FuG7/SE20u</name>
+        <description>Air-ground link.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>uhf</freq-type>
+        <max-range>50</max-range>
+        <gain>20.0</gain>
+    </radio>
+    <radio id="346">
+        <name>FuG8/SE30</name>
+        <description>Main Divisional command set.</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>40</max-range>
+        <gain>30.0</gain>
+    </radio>
+    <radio id="348">
+        <name>FuG11/SE100</name>
+        <description>Higher command link (eg Corps).</description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>2</crew>
+        <reliability>0.85498</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>200</max-range>
+        <gain>100.0</gain>
+    </radio>
+    <radio id="350">
+        <name>68</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.804932</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>4</max-range>
+        <gain>0.5</gain>
+    </radio>
+    <radio id="352">
+        <name>22</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.804932</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>10</max-range>
+        <gain>1.0</gain>
+    </radio>
+    <radio id="354">
+        <name>19</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.804932</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>20</max-range>
+        <gain>12.0</gain>
+    </radio>
+    <radio id="356">
+        <name>11</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.804932</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>8</max-range>
+        <gain>1.5</gain>
+    </radio>
+    <radio id="358">
+        <name>x</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>0</crew>
+        <reliability>1.004883</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>5000</max-range>
+        <gain>0.0</gain>
+    </radio>
+    <radio id="360">
+        <name>xx</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>0</crew>
+        <reliability>1.004883</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>5000</max-range>
+        <gain>0.0</gain>
+    </radio>
+    <radio id="362">
+        <name>---------------------</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>0</crew>
+        <reliability>1.004883</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>5000</max-range>
+        <gain>0.0</gain>
+    </radio>
+    <radio id="364">
+        <name>SCR-300</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.904785</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>2</max-range>
+        <gain>0.5</gain>
+    </radio>
+    <radio id="366">
+        <name>SCR-522</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.904785</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>hf</freq-type>
+        <max-range>4</max-range>
+        <gain>6.0</gain>
+    </radio>
+    <radio id="368">
+        <name>SCR-508</name>
+        <description>
+        </description>
+        <picture/>
+        <picture-filename>
+        </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.904785</reliability>
+        <armaments/>
+        <net-type>land</net-type>
+        <freq-type>vhf</freq-type>
+        <max-range>24</max-range>
+        <gain>30.0</gain>
+    </radio>
+
+</estab-data>

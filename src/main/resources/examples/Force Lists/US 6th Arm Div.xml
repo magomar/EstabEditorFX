@@ -1,0 +1,1898 @@
+<?xml version="1.0"?>
+<ForceList>
+    <side ObjectId="16" Name="Allies">
+        <unit name="6 Armored Division HQ" id="-1" objectVersion="66" HumanControlled="0" Designation="6"
+              History="Nicknamed &quot;Supersixth&quot;, the Division was formed in Ft.Knox, KY, in 1942. After training in California the 6th was shipped to England for further training. It landed on Utah Beach on July 18, 1944. On August 1, it was placed under command of the just activated Third Army. It fought in Brittany in August and September, before moving East. From late September until late December the Division was in action in Lorraine and on the Saar. It was taken out of the line and into the Metz area between December 21 and December 26. It then started its march north, almost at full strength. The Division assembled on December 29 and 30 under command of III Corps, ready to attack the Germans in the Bastogne area.
+
+" CommsRating="100" ExperiencePts="0" UnitAFVCount="1" UnitNonAFVCount="39" UnitGunCount="0" UnitSmallArmCount="253"
+              UnitBridgeCount="0" UnitBasicsQty="1967" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="66"
+              UnitPersQty="249" PersLevel="100" CohesionLevel="92" FatigueLevel="9" MoraleLevel="70"
+              ExperienceLevel="51" TrainingLevel="85" FitnessLevel="70" AggroLevel="54" StubbornnessLevel="65"
+              UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="79"
+              UnitFuelLevel="75" UnitBasicsLevel="79" UnitFuelQty="5598" UnitAmmoCount="20981">
+            <equipmentlist>
+                <equipment Name="3/4 t truck" Id="669" Qty="24"/>
+                <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="11"/>
+                <equipment Name="2-1/2 t truck" Id="2079" Qty="3"/>
+                <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="1"/>
+                <equipment Name="M20 AUC - .50 cal MG" Id="2122" Qty="1"/>
+                <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="5"/>
+                <equipment Name=".30 cal M1 Carbine" Id="555" Qty="157"/>
+                <equipment Name=".30 cal M1 Rifle" Id="553" Qty="26"/>
+                <equipment Name=".45 cal M3 SMG" Id="557" Qty="64"/>
+            </equipmentlist>
+            <ammoList>
+                <ammo Name=".50 cal" ObjectID="280" Qty="3160"/>
+                <ammo Name="Bazooka AP" ObjectID="289" Qty="39"/>
+                <ammo Name="Bazooka HE" ObjectID="292" Qty="7"/>
+                <ammo Name=".30 cal" ObjectID="271" Qty="8674"/>
+                <ammo Name=".45 cal" ObjectID="274" Qty="9101"/>
+            </ammoList>
+            <commander ObjectID="1854" ObjectVersion="0" Name="Robert W. Grow" Aggro="58" Determination="38"
+                       Efficiency="42" Force="6 Armored Division HQ" Judgement="69" Leadership="90"
+                       PersBio="Grow was born in 1895. In 1940-41, then a lieutenant-colonel, he served as G-3 at the staff of 2nd Armored Division, commanded by General Patton, in Fort Benning, GA. In 1941 he became commander of the 34th Armored Regiment, and later commander of CCB, 8th Armored Division and CCA, 19th Armored Division. He became commander of the 6th Armored Division in 1943. His leadership of the division was described as &quot;splendid&quot; by the men who served under him."
+                       RankIndex="7" Title="CO"/>
+            <estab EstabName="BFTBEstab.coe" ObjectId="2106" Name="WF - US - Arm Div HQ"/>
+            <unit name="6 Arm Div Base" id="-1" objectVersion="96" HumanControlled="0" Designation="6" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="36" UnitNonAFVCount="132" UnitGunCount="0"
+                  UnitSmallArmCount="686" UnitBridgeCount="0" UnitBasicsQty="7110" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="69" UnitPersQty="600" PersLevel="100" CohesionLevel="90"
+                  FatigueLevel="6" MoraleLevel="70" ExperienceLevel="54" TrainingLevel="76" FitnessLevel="66"
+                  AggroLevel="50" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="61" UnitAmmoLevel="84" UnitFuelLevel="75" UnitBasicsLevel="79" UnitFuelQty="32220"
+                  UnitAmmoCount="154997">
+                <equipmentlist>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="10"/>
+                    <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="6"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="16"/>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="40"/>
+                    <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="20"/>
+                    <equipment Name="M8 - 37mm gun - .50 cal MG" Id="671" Qty="5"/>
+                    <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="22"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="4"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="5"/>
+                    <equipment Name="2-1/2 t tanker truck" Id="2766" Qty="40"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="339"/>
+                    <equipment Name=".30 cal M1 Rifle" Id="553" Qty="40"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="222"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="51"/>
+                    <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="8"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="53496"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="72416"/>
+                    <ammo Name="37mm AP" ObjectID="283" Qty="141"/>
+                    <ammo Name="37mm HE" ObjectID="286" Qty="141"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="28369"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="362"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="72"/>
+                </ammoList>
+                <commander ObjectID="1859" ObjectVersion="0" Name="" Aggro="58" Determination="36" Efficiency="38"
+                           Force="6 Arm Div Base" Judgement="75" Leadership="55" PersBio="" RankIndex="5" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2119" Name="WF - US - Arm Div Base"/>
+            </unit>
+            <unit name="CCA 6 Arm Div HQ" id="-1" objectVersion="99" HumanControlled="0" Designation="CCA.6" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="18" UnitGunCount="0"
+                  UnitSmallArmCount="135" UnitBridgeCount="0" UnitBasicsQty="1058" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="75" UnitPersQty="139" PersLevel="100" CohesionLevel="93"
+                  FatigueLevel="2" MoraleLevel="70" ExperienceLevel="51" TrainingLevel="77" FitnessLevel="69"
+                  AggroLevel="49" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="72" UnitFuelLevel="73" UnitBasicsLevel="76" UnitFuelQty="9814"
+                  UnitAmmoCount="45878">
+                <equipmentlist>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="2"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="15"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="5"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="6"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M5A1 Stuart" Id="1779" Qty="3"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="12"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="91"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="32"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="28255"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="12889"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="96"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="96"/>
+                    <ammo Name="37mm AP" ObjectID="283" Qty="158"/>
+                    <ammo Name="37mm HE" ObjectID="286" Qty="158"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="85"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="17"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="4124"/>
+                </ammoList>
+                <commander ObjectID="1864" ObjectVersion="0" Name="John L Hines, Jr" Aggro="59" Determination="44"
+                           Efficiency="36" Force="CCA 6 Arm Div HQ" Judgement="70" Leadership="56" PersBio=""
+                           RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2121" Name="WF - US - CCA HQ"/>
+                <unit name="CCA 6 Arm Div Base" id="-1" objectVersion="68" HumanControlled="0" Designation="CCA.6"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="54"
+                      UnitGunCount="0" UnitSmallArmCount="273" UnitBridgeCount="0" UnitBasicsQty="2737"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="94" FatigueLevel="3" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="79"
+                      FitnessLevel="74" AggroLevel="51" StubbornnessLevel="69" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="73" UnitFuelLevel="77"
+                      UnitBasicsLevel="73" UnitFuelQty="12215" UnitAmmoCount="44639">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="7"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="7"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="15"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="10"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="7"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name="2-1/2 t tanker truck" Id="2766" Qty="15"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="13"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="160"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="40"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="50"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="18979"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="18979"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="94"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="18"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="6569"/>
+                    </ammoList>
+                    <commander ObjectID="1869" ObjectVersion="0" Name="" Aggro="61" Determination="37" Efficiency="44"
+                               Force="CCA 6 Arm Div Base" Judgement="70" Leadership="57" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2120" Name="WF - US - CC Base"/>
+                </unit>
+                <unit name="TF Kennedy HQ" id="-1" objectVersion="62" HumanControlled="0" Designation="KENN" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="5" UnitGunCount="0"
+                      UnitSmallArmCount="54" UnitBridgeCount="0" UnitBasicsQty="630" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="73" UnitPersQty="58" PersLevel="100" CohesionLevel="98"
+                      FatigueLevel="8" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="85" FitnessLevel="68"
+                      AggroLevel="51" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="80" UnitFuelLevel="77" UnitBasicsLevel="73"
+                      UnitFuelQty="3067" UnitAmmoCount="26269">
+                    <equipmentlist>
+                        <equipment Name="M4 Sherman - 75mm" Id="677" Qty="2"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="5"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="34"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="75mm Tank AP" ObjectID="322" Qty="71"/>
+                        <ammo Name="75mm Tank HE" ObjectID="325" Qty="71"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="8012"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="15961"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2154"/>
+                    </ammoList>
+                    <commander ObjectID="1874" ObjectVersion="0" Name="Chester E. Kennedy" Aggro="61" Determination="36"
+                               Efficiency="36" Force="TF Kennedy HQ" Judgement="66" Leadership="60" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2095" Name="WF - US - Tank Bn HQ"/>
+                    <unit name="A Coy 69 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="A.69"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="693"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="95" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="46"
+                          TrainingLevel="82" FitnessLevel="67" AggroLevel="54" StubbornnessLevel="66" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="77"
+                          UnitFuelLevel="72" UnitBasicsLevel="77" UnitFuelQty="14914" UnitAmmoCount="84716">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="487"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="487"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="55687"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="27843"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="81"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="81"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="15"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="35"/>
+                        </ammoList>
+                        <commander ObjectID="1879" ObjectVersion="0" Name="" Aggro="58" Determination="37"
+                                   Efficiency="39" Force="A Coy 69 Tank Bn" Judgement="66" Leadership="61" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="B Coy 69 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="B.69"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="718"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="98" FatigueLevel="8" MoraleLevel="70" ExperienceLevel="54"
+                          TrainingLevel="85" FitnessLevel="66" AggroLevel="53" StubbornnessLevel="74" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="80"
+                          UnitFuelLevel="76" UnitBasicsLevel="80" UnitFuelQty="15693" UnitAmmoCount="87336">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="502"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="502"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="57410"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="28705"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="83"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="83"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="15"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="36"/>
+                        </ammoList>
+                        <commander ObjectID="1884" ObjectVersion="0" Name="" Aggro="62" Determination="37"
+                                   Efficiency="37" Force="B Coy 69 Tank Bn" Judgement="68" Leadership="62" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="D Coy 69 Tank Bn" id="-1" objectVersion="42" HumanControlled="0" Designation="D,69"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="527"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="68"
+                          PersLevel="100" CohesionLevel="92" FatigueLevel="6" MoraleLevel="70" ExperienceLevel="46"
+                          TrainingLevel="80" FitnessLevel="72" AggroLevel="50" StubbornnessLevel="73" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="75"
+                          UnitFuelLevel="74" UnitBasicsLevel="78" UnitFuelQty="14482" UnitAmmoCount="52610">
+                        <equipmentlist>
+                            <equipment Name="M5A1 Stuart" Id="1779" Qty="17"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="938"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="938"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="50734"/>
+                        </ammoList>
+                        <commander ObjectID="1894" ObjectVersion="0" Name="" Aggro="57" Determination="43"
+                                   Efficiency="44" Force="D Coy 69 Tank Bn" Judgement="65" Leadership="56" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2088" Name="WF - US - M5A1 Stuart Coy"/>
+                    </unit>
+                    <unit name="C Coy 44 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="C.44"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1630"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="70" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="99" FatigueLevel="5" MoraleLevel="70" ExperienceLevel="54"
+                          TrainingLevel="82" FitnessLevel="73" AggroLevel="51" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="77"
+                          UnitFuelLevel="73" UnitBasicsLevel="74" UnitFuelQty="6123" UnitAmmoCount="50036">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="16945"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="29670"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="130"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="26"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="77"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2911"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="277"/>
+                        </ammoList>
+                        <commander ObjectID="1914" ObjectVersion="0" Name="" Aggro="64" Determination="37"
+                                   Efficiency="38" Force="C Coy 44 Arm Inf Bn" Judgement="71" Leadership="61" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                </unit>
+                <unit name="TF Brown HQ" id="-1" objectVersion="64" HumanControlled="0" Designation="BRWN" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="3" UnitNonAFVCount="9" UnitGunCount="0"
+                      UnitSmallArmCount="52" UnitBridgeCount="0" UnitBasicsQty="386" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="72" UnitPersQty="49" PersLevel="100" CohesionLevel="90"
+                      FatigueLevel="6" MoraleLevel="70" ExperienceLevel="49" TrainingLevel="81" FitnessLevel="72"
+                      AggroLevel="49" StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="76" UnitFuelLevel="72" UnitBasicsLevel="79"
+                      UnitFuelQty="1506" UnitAmmoCount="8208">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="9"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="22"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="4602"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="1523"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="22"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="4"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2057"/>
+                    </ammoList>
+                    <commander ObjectID="1899" ObjectVersion="0" Name="Charles E. Brown" Aggro="58" Determination="38"
+                               Efficiency="37" Force="TF Brown HQ" Judgement="69" Leadership="59" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2115" Name="WF - US - Arm Inf Bn HQ"/>
+                    <unit name="A Coy 44 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="A.44"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1586"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="90" FatigueLevel="9" MoraleLevel="70" ExperienceLevel="52"
+                          TrainingLevel="83" FitnessLevel="66" AggroLevel="46" StubbornnessLevel="66" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="77"
+                          UnitFuelLevel="74" UnitBasicsLevel="72" UnitFuelQty="6170" UnitAmmoCount="50354">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="17053"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="29858"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="131"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="26"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="77"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2930"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="279"/>
+                        </ammoList>
+                        <commander ObjectID="1904" ObjectVersion="0" Name="" Aggro="58" Determination="38"
+                                   Efficiency="41" Force="A Coy 44 Arm Inf Bn" Judgement="66" Leadership="57" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="B Coy 44 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="B.44"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1596"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="95" FatigueLevel="3" MoraleLevel="70" ExperienceLevel="49"
+                          TrainingLevel="79" FitnessLevel="68" AggroLevel="54" StubbornnessLevel="71" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="74"
+                          UnitFuelLevel="74" UnitBasicsLevel="73" UnitFuelQty="6182" UnitAmmoCount="48133">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="16301"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="28542"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="125"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="25"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="74"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2800"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="266"/>
+                        </ammoList>
+                        <commander ObjectID="1909" ObjectVersion="0" Name="" Aggro="55" Determination="36"
+                                   Efficiency="42" Force="B Coy 44 Arm Inf Bn" Judgement="73" Leadership="64" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="AG Pl 44 Arm Inf Bn" id="-1" objectVersion="80" HumanControlled="0" Designation="44"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="26" UnitBridgeCount="0" UnitBasicsQty="182"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="24"
+                          PersLevel="100" CohesionLevel="94" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="50"
+                          TrainingLevel="78" FitnessLevel="72" AggroLevel="53" StubbornnessLevel="69" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="72"
+                          UnitFuelLevel="77" UnitBasicsLevel="76" UnitFuelQty="3298" UnitAmmoCount="8878">
+                        <equipmentlist>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="1"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name="M8 - 75mm HMC" Id="2101" Qty="3"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="2"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="15"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="5"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="2276"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="5800"/>
+                            <ammo Name="75mm How AP" ObjectID="232" Qty="34"/>
+                            <ammo Name="75mm How HE" ObjectID="229" Qty="100"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="14"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="2"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="652"/>
+                        </ammoList>
+                        <commander ObjectID="1919" ObjectVersion="0" Name="" Aggro="65" Determination="44"
+                                   Efficiency="39" Force="AG Pl 44 Arm Inf Bn" Judgement="66" Leadership="56" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2440" Name="WF - US - M8 75mm AG Plt / Arm Inf Btl"/>
+                    </unit>
+                    <unit name="Mortar Pl 44 Arm Inf Bn" id="-1" objectVersion="45" HumanControlled="0" Designation="44"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="1" UnitNonAFVCount="3"
+                          UnitGunCount="3" UnitSmallArmCount="21" UnitBridgeCount="0" UnitBasicsQty="196"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="25"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="0" MoraleLevel="70" ExperienceLevel="53"
+                          TrainingLevel="77" FitnessLevel="73" AggroLevel="50" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="72"
+                          UnitFuelLevel="79" UnitBasicsLevel="78" UnitFuelQty="1295" UnitAmmoCount="6891">
+                        <equipmentlist>
+                            <equipment Name="M21 HT - 81mm mortar" Id="2107" Qty="3"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="17"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="81mm HE" ObjectID="304" Qty="216"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="5767"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="908"/>
+                        </ammoList>
+                        <commander ObjectID="1924" ObjectVersion="0" Name="" Aggro="63" Determination="43"
+                                   Efficiency="41" Force="Mortar Pl 44 Arm Inf Bn" Judgement="68" Leadership="57"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2096" Name="WF - US - 81mm Mor Plt / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="C Coy 69 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="C.69"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="714"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="69" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="50"
+                          TrainingLevel="78" FitnessLevel="72" AggroLevel="54" StubbornnessLevel="71" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="73"
+                          UnitFuelLevel="75" UnitBasicsLevel="79" UnitFuelQty="15546" UnitAmmoCount="79476">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="457"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="457"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="52242"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="26121"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="76"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="76"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="14"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="33"/>
+                        </ammoList>
+                        <commander ObjectID="1889" ObjectVersion="0" Name="" Aggro="63" Determination="42"
+                                   Efficiency="42" Force="C Coy 69 Tank Bn" Judgement="69" Leadership="62" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                </unit>
+                <unit name="A Coy 603 TD Bn" id="-1" objectVersion="95" HumanControlled="0" Designation="A.603"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="40" UnitBridgeCount="0" UnitBasicsQty="758"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="108" PersLevel="100"
+                      CohesionLevel="98" FatigueLevel="4" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="83"
+                      FitnessLevel="71" AggroLevel="49" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="78" UnitFuelLevel="73"
+                      UnitBasicsLevel="70" UnitFuelQty="8923" UnitAmmoCount="40579">
+                    <equipmentlist>
+                        <equipment Name="M8 - 37mm gun - .50 cal MG" Id="671" Qty="8"/>
+                        <equipment Name="M18 TD - 76mm GMC" Id="2128" Qty="12"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="18"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="2"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="8"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="7687"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="31376"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="251"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="251"/>
+                        <ammo Name="76mm AP" ObjectID="2419" Qty="329"/>
+                        <ammo Name="76mm HE" ObjectID="2420" Qty="329"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="282"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="62"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="12"/>
+                    </ammoList>
+                    <commander ObjectID="2059" ObjectVersion="0" Name="" Aggro="63" Determination="44" Efficiency="38"
+                               Force="A Coy 603 TD Bn" Judgement="75" Leadership="63" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2129" Name="WF - US - M18 TD Coy"/>
+                </unit>
+                <unit name="B Coy 25 Arm Eng Bn" id="-1" objectVersion="69" HumanControlled="0" Designation="B.25"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="4" UnitNonAFVCount="16"
+                      UnitGunCount="0" UnitSmallArmCount="187" UnitBridgeCount="0" UnitBasicsQty="1214"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="171" PersLevel="100"
+                      CohesionLevel="98" FatigueLevel="7" MoraleLevel="70" ExperienceLevel="46" TrainingLevel="84"
+                      FitnessLevel="71" AggroLevel="50" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="79" UnitFuelLevel="78"
+                      UnitBasicsLevel="71" UnitFuelQty="3687" UnitAmmoCount="25109">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="5"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="7"/>
+                        <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="1"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="2"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="2"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="21"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="128"/>
+                        <equipment Name=".30 cal M1917A1 HMG" Id="2254" Qty="6"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="22"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="7"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="15595"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="6320"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="3128"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="55"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="11"/>
+                    </ammoList>
+                    <commander ObjectID="2079" ObjectVersion="0" Name="" Aggro="60" Determination="43" Efficiency="36"
+                               Force="B Coy 25 Arm Eng Bn" Judgement="72" Leadership="60" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2149" Name="WF - US - Arm Eng Coy / Arm Eng Bn"/>
+                </unit>
+                <unit name="A Tp 86 Cav Recon Sq" id="-1" objectVersion="93" HumanControlled="0" Designation="A.86"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="24"
+                      UnitGunCount="0" UnitSmallArmCount="86" UnitBridgeCount="0" UnitBasicsQty="1078"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="145" PersLevel="100"
+                      CohesionLevel="99" FatigueLevel="4" MoraleLevel="70" ExperienceLevel="47" TrainingLevel="84"
+                      FitnessLevel="74" AggroLevel="53" StubbornnessLevel="68" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="79" UnitFuelLevel="78"
+                      UnitBasicsLevel="74" UnitFuelQty="5881" UnitAmmoCount="40657">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="3"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="10"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="1"/>
+                        <equipment Name="1/4 t truck 'Jeep' - 60mm mor" Id="2075" Qty="9"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="1"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="3"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                        <equipment Name="M8 - 37mm gun - .30 cal MG" Id="2330" Qty="13"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="36"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="18"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="6"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="5"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="33350"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="4737"/>
+                        <ammo Name="60mm HE" ObjectID="298" Qty="852"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="410"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="410"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="852"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="39"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="7"/>
+                    </ammoList>
+                    <commander ObjectID="2094" ObjectVersion="0" Name="" Aggro="65" Determination="36" Efficiency="39"
+                               Force="A Tp 86 Cav Recon Sq" Judgement="71" Leadership="65" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2073" Name="WF - US - Cav Recon Trp"/>
+                </unit>
+                <unit name="C Bty 777 AAA AW Bn" id="-1" objectVersion="54" HumanControlled="0" Designation="C.777"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="16" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="96" UnitBridgeCount="0" UnitBasicsQty="817"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="112" PersLevel="100"
+                      CohesionLevel="99" FatigueLevel="0" MoraleLevel="70" ExperienceLevel="48" TrainingLevel="75"
+                      FitnessLevel="73" AggroLevel="46" StubbornnessLevel="66" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="70" UnitFuelLevel="77"
+                      UnitBasicsLevel="73" UnitFuelQty="5034" UnitAmmoCount="56966">
+                    <equipmentlist>
+                        <equipment Name="M16 MGMC - 50 cal Quad AA" Id="2064" Qty="8"/>
+                        <equipment Name="M15 MGMC - 37mm/50cal AA" Id="2165" Qty="8"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="13"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="68"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="50537"/>
+                        <ammo Name="37mm AA HE" ObjectID="2162" Qty="1123"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="3411"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="1895"/>
+                    </ammoList>
+                    <commander ObjectID="2134" ObjectVersion="0" Name="" Aggro="63" Determination="45" Efficiency="38"
+                               Force="C Bty 777 AAA AW Bn" Judgement="73" Leadership="56" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2167" Name="WF - US - M15/M16 MGMC AA AW Bty"/>
+                </unit>
+            </unit>
+            <unit name="CCB 6 Arm Div HQ" id="-1" objectVersion="99" HumanControlled="0" Designation="CCB.6" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="18" UnitGunCount="0"
+                  UnitSmallArmCount="133" UnitBridgeCount="0" UnitBasicsQty="975" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="74" UnitPersQty="137" PersLevel="100" CohesionLevel="90"
+                  FatigueLevel="1" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="79" FitnessLevel="72"
+                  AggroLevel="50" StubbornnessLevel="66" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="74" UnitFuelLevel="72" UnitBasicsLevel="71" UnitFuelQty="9771"
+                  UnitAmmoCount="47218">
+                <equipmentlist>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="2"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="15"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="5"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="6"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M5A1 Stuart" Id="1779" Qty="3"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="12"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="90"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="31"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="29145"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="13315"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="99"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="99"/>
+                    <ammo Name="37mm AP" ObjectID="283" Qty="164"/>
+                    <ammo Name="37mm HE" ObjectID="286" Qty="164"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="88"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="17"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="4127"/>
+                </ammoList>
+                <commander ObjectID="1929" ObjectVersion="0" Name="George W. Read, Jr" Aggro="58" Determination="44"
+                           Efficiency="42" Force="CCB 6 Arm Div HQ" Judgement="72" Leadership="57" PersBio=""
+                           RankIndex="5" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2186" Name="WF - US - CCB &amp; CCR HQ"/>
+                <unit name="CCB 6 Arm Div Base" id="-1" objectVersion="68" HumanControlled="0" Designation="CCB.6"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="54"
+                      UnitGunCount="0" UnitSmallArmCount="273" UnitBridgeCount="0" UnitBasicsQty="2812"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="71" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="93" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="48" TrainingLevel="79"
+                      FitnessLevel="70" AggroLevel="50" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="74" UnitFuelLevel="77"
+                      UnitBasicsLevel="75" UnitFuelQty="12215" UnitAmmoCount="45492">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="7"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="7"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="15"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="10"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="7"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name="2-1/2 t tanker truck" Id="2766" Qty="15"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="13"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="160"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="40"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="50"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="19341"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="19341"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="96"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="19"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="6695"/>
+                    </ammoList>
+                    <commander ObjectID="1934" ObjectVersion="0" Name="" Aggro="56" Determination="42" Efficiency="36"
+                               Force="CCB 6 Arm Div Base" Judgement="70" Leadership="59" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2120" Name="WF - US - CC Base"/>
+                </unit>
+                <unit name="TF Davall HQ" id="-1" objectVersion="62" HumanControlled="0" Designation="DAVA" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="5" UnitGunCount="0"
+                      UnitSmallArmCount="54" UnitBridgeCount="0" UnitBasicsQty="641" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="67" UnitPersQty="58" PersLevel="100" CohesionLevel="95"
+                      FatigueLevel="9" MoraleLevel="70" ExperienceLevel="54" TrainingLevel="79" FitnessLevel="68"
+                      AggroLevel="53" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="74" UnitFuelLevel="71" UnitBasicsLevel="74"
+                      UnitFuelQty="2832" UnitAmmoCount="24206">
+                    <equipmentlist>
+                        <equipment Name="M4 Sherman - 75mm" Id="677" Qty="2"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="5"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="34"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="75mm Tank AP" ObjectID="322" Qty="66"/>
+                        <ammo Name="75mm Tank HE" ObjectID="325" Qty="66"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="7382"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="14707"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="1985"/>
+                    </ammoList>
+                    <commander ObjectID="1939" ObjectVersion="0" Name="Harold C. Davall" Aggro="58" Determination="43"
+                               Efficiency="45" Force="TF Davall HQ" Judgement="74" Leadership="56" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2095" Name="WF - US - Tank Bn HQ"/>
+                    <unit name="A Coy 68 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="A.68"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="655"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="66" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="91" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="54"
+                          TrainingLevel="78" FitnessLevel="71" AggroLevel="50" StubbornnessLevel="67" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="73"
+                          UnitFuelLevel="75" UnitBasicsLevel="73" UnitFuelQty="15521" UnitAmmoCount="79983">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="460"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="460"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="52576"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="26288"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="76"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="76"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="14"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="33"/>
+                        </ammoList>
+                        <commander ObjectID="1944" ObjectVersion="0" Name="" Aggro="55" Determination="38"
+                                   Efficiency="37" Force="A Coy 68 Tank Bn" Judgement="71" Leadership="59" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="B Coy 68 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="B.68"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="661"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="75" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="92" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="46"
+                          TrainingLevel="81" FitnessLevel="66" AggroLevel="48" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="76"
+                          UnitFuelLevel="76" UnitBasicsLevel="74" UnitFuelQty="15708" UnitAmmoCount="83378">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="479"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="479"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="54808"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="27404"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="79"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="79"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="15"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="35"/>
+                        </ammoList>
+                        <commander ObjectID="1949" ObjectVersion="0" Name="" Aggro="59" Determination="36"
+                                   Efficiency="44" Force="B Coy 68 Tank Bn" Judgement="72" Leadership="60" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="D Coy 68 Tank Bn" id="-1" objectVersion="42" HumanControlled="0" Designation="D.68"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="529"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="68"
+                          PersLevel="100" CohesionLevel="99" FatigueLevel="9" MoraleLevel="70" ExperienceLevel="48"
+                          TrainingLevel="80" FitnessLevel="66" AggroLevel="52" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="75"
+                          UnitFuelLevel="74" UnitBasicsLevel="78" UnitFuelQty="14539" UnitAmmoCount="53041">
+                        <equipmentlist>
+                            <equipment Name="M5A1 Stuart" Id="1779" Qty="17"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="946"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="946"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="51149"/>
+                        </ammoList>
+                        <commander ObjectID="1959" ObjectVersion="0" Name="" Aggro="61" Determination="37"
+                                   Efficiency="36" Force="D Coy 68 Tank Bn" Judgement="66" Leadership="56" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2088" Name="WF - US - M5A1 Stuart Coy"/>
+                    </unit>
+                    <unit name="C Coy 50 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="C.50"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1600"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="94" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="51"
+                          TrainingLevel="78" FitnessLevel="67" AggroLevel="53" StubbornnessLevel="70" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="73"
+                          UnitFuelLevel="78" UnitBasicsLevel="73" UnitFuelQty="6502" UnitAmmoCount="47323">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="16027"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="28062"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="123"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="24"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="72"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2753"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="262"/>
+                        </ammoList>
+                        <commander ObjectID="1979" ObjectVersion="0" Name="" Aggro="56" Determination="43"
+                                   Efficiency="42" Force="C Coy 50 Arm Inf Bn" Judgement="75" Leadership="64" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                </unit>
+                <unit name="TF Wall HQ" id="-1" objectVersion="64" HumanControlled="0" Designation="WALL" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="3" UnitNonAFVCount="9" UnitGunCount="0"
+                      UnitSmallArmCount="52" UnitBridgeCount="0" UnitBasicsQty="372" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="66" UnitPersQty="49" PersLevel="100" CohesionLevel="90"
+                      FatigueLevel="1" MoraleLevel="70" ExperienceLevel="46" TrainingLevel="81" FitnessLevel="73"
+                      AggroLevel="52" StubbornnessLevel="71" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="76" UnitFuelLevel="79" UnitBasicsLevel="76"
+                      UnitFuelQty="1659" UnitAmmoCount="8164">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="9"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="22"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="4577"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="1515"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="22"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="4"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2046"/>
+                    </ammoList>
+                    <commander ObjectID="1964" ObjectVersion="0" Name="Arnold R. Wall" Aggro="65" Determination="37"
+                               Efficiency="44" Force="TF Wall HQ" Judgement="66" Leadership="56" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2115" Name="WF - US - Arm Inf Bn HQ"/>
+                    <unit name="A Coy 50 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="A.50"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1713"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="70" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="96" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="52"
+                          TrainingLevel="83" FitnessLevel="69" AggroLevel="54" StubbornnessLevel="74" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="78"
+                          UnitFuelLevel="73" UnitBasicsLevel="78" UnitFuelQty="6109" UnitAmmoCount="50575">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="17128"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="29990"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="132"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="26"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="77"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2942"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="280"/>
+                        </ammoList>
+                        <commander ObjectID="1969" ObjectVersion="0" Name="" Aggro="55" Determination="44"
+                                   Efficiency="44" Force="A Coy 50 Arm Inf Bn" Judgement="73" Leadership="57" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="B Coy 50 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="B.50"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1562"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="75" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="95" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="46"
+                          TrainingLevel="78" FitnessLevel="68" AggroLevel="47" StubbornnessLevel="66" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="73"
+                          UnitFuelLevel="71" UnitBasicsLevel="71" UnitFuelQty="5925" UnitAmmoCount="47259">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="16005"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="28024"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="123"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="24"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="72"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2750"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="261"/>
+                        </ammoList>
+                        <commander ObjectID="1974" ObjectVersion="0" Name="" Aggro="56" Determination="35"
+                                   Efficiency="38" Force="B Coy 50 Arm Inf Bn" Judgement="66" Leadership="59" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="AG Pl 50 Arm Inf Bn" id="-1" objectVersion="80" HumanControlled="0" Designation="50"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="26" UnitBridgeCount="0" UnitBasicsQty="181"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="70" UnitPersQty="24"
+                          PersLevel="100" CohesionLevel="90" FatigueLevel="3" MoraleLevel="70" ExperienceLevel="48"
+                          TrainingLevel="79" FitnessLevel="68" AggroLevel="46" StubbornnessLevel="71" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="74"
+                          UnitFuelLevel="70" UnitBasicsLevel="76" UnitFuelQty="2996" UnitAmmoCount="9034">
+                        <equipmentlist>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="1"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name="M8 - 75mm HMC" Id="2101" Qty="3"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="2"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="15"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="5"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="2316"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="5902"/>
+                            <ammo Name="75mm How AP" ObjectID="232" Qty="35"/>
+                            <ammo Name="75mm How HE" ObjectID="229" Qty="101"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="14"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="2"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="664"/>
+                        </ammoList>
+                        <commander ObjectID="1984" ObjectVersion="0" Name="" Aggro="59" Determination="45"
+                                   Efficiency="41" Force="AG Pl 50 Arm Inf Bn" Judgement="68" Leadership="56" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2440" Name="WF - US - M8 75mm AG Plt / Arm Inf Btl"/>
+                    </unit>
+                    <unit name="Mortar Pl 50 Arm Inf Bn" id="-1" objectVersion="45" HumanControlled="0" Designation="50"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="1" UnitNonAFVCount="3"
+                          UnitGunCount="3" UnitSmallArmCount="21" UnitBridgeCount="0" UnitBasicsQty="187"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="25"
+                          PersLevel="100" CohesionLevel="90" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="51"
+                          TrainingLevel="83" FitnessLevel="68" AggroLevel="48" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="78"
+                          UnitFuelLevel="75" UnitBasicsLevel="75" UnitFuelQty="1224" UnitAmmoCount="7446">
+                        <equipmentlist>
+                            <equipment Name="M21 HT - 81mm mortar" Id="2107" Qty="3"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="17"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="81mm HE" ObjectID="304" Qty="233"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="6232"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="981"/>
+                        </ammoList>
+                        <commander ObjectID="1989" ObjectVersion="0" Name="" Aggro="57" Determination="40"
+                                   Efficiency="40" Force="Mortar Pl 50 Arm Inf Bn" Judgement="75" Leadership="62"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2096" Name="WF - US - 81mm Mor Plt / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="C Coy 68 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="C.68"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="656"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="72" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="99" FatigueLevel="7" MoraleLevel="70" ExperienceLevel="50"
+                          TrainingLevel="76" FitnessLevel="69" AggroLevel="50" StubbornnessLevel="70" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="71"
+                          UnitFuelLevel="78" UnitBasicsLevel="73" UnitFuelQty="16235" UnitAmmoCount="77816">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="447"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="447"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="51152"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="25576"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="74"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="74"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="14"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="32"/>
+                        </ammoList>
+                        <commander ObjectID="1954" ObjectVersion="0" Name="" Aggro="57" Determination="41"
+                                   Efficiency="38" Force="C Coy 68 Tank Bn" Judgement="72" Leadership="63" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                </unit>
+                <unit name="B Coy 603 TD Bn" id="-1" objectVersion="95" HumanControlled="0" Designation="B.603"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="40" UnitBridgeCount="0" UnitBasicsQty="837"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="108" PersLevel="100"
+                      CohesionLevel="90" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="46" TrainingLevel="80"
+                      FitnessLevel="67" AggroLevel="54" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="75" UnitFuelLevel="73"
+                      UnitBasicsLevel="78" UnitFuelQty="8864" UnitAmmoCount="38838">
+                    <equipmentlist>
+                        <equipment Name="M8 - 37mm gun - .50 cal MG" Id="671" Qty="8"/>
+                        <equipment Name="M18 TD - 76mm GMC" Id="2128" Qty="12"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="18"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="2"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="8"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="7357"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="30029"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="240"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="240"/>
+                        <ammo Name="76mm AP" ObjectID="2419" Qty="315"/>
+                        <ammo Name="76mm HE" ObjectID="2420" Qty="315"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="270"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="60"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="12"/>
+                    </ammoList>
+                    <commander ObjectID="2064" ObjectVersion="0" Name="" Aggro="62" Determination="35" Efficiency="36"
+                               Force="B Coy 603 TD Bn" Judgement="68" Leadership="61" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2129" Name="WF - US - M18 TD Coy"/>
+                </unit>
+                <unit name="A Coy 25 Arm Eng Bn" id="-1" objectVersion="69" HumanControlled="0" Designation="A.25"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="4" UnitNonAFVCount="16"
+                      UnitGunCount="0" UnitSmallArmCount="187" UnitBridgeCount="0" UnitBasicsQty="1231"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="64" UnitPersQty="171" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="7" MoraleLevel="70" ExperienceLevel="49" TrainingLevel="78"
+                      FitnessLevel="74" AggroLevel="47" StubbornnessLevel="69" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="71" UnitFuelLevel="72"
+                      UnitBasicsLevel="72" UnitFuelQty="3404" UnitAmmoCount="22562">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="5"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="7"/>
+                        <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="1"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="2"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="2"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="21"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="128"/>
+                        <equipment Name=".30 cal M1917A1 HMG" Id="2254" Qty="6"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="22"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="7"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="14014"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="5679"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2811"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="49"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="9"/>
+                    </ammoList>
+                    <commander ObjectID="2074" ObjectVersion="0" Name="" Aggro="61" Determination="41" Efficiency="37"
+                               Force="A Coy 25 Arm Eng Bn" Judgement="68" Leadership="64" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2149" Name="WF - US - Arm Eng Coy / Arm Eng Bn"/>
+                </unit>
+                <unit name="B Tp 86 Cav Recon Sq" id="-1" objectVersion="93" HumanControlled="0" Designation="B.86"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="24"
+                      UnitGunCount="0" UnitSmallArmCount="86" UnitBridgeCount="0" UnitBasicsQty="1020"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="145" PersLevel="100"
+                      CohesionLevel="92" FatigueLevel="3" MoraleLevel="70" ExperienceLevel="53" TrainingLevel="81"
+                      FitnessLevel="72" AggroLevel="50" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="76" UnitFuelLevel="75"
+                      UnitBasicsLevel="70" UnitFuelQty="5602" UnitAmmoCount="39098">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="3"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="10"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="1"/>
+                        <equipment Name="1/4 t truck 'Jeep' - 60mm mor" Id="2075" Qty="9"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="1"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="3"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                        <equipment Name="M8 - 37mm gun - .30 cal MG" Id="2330" Qty="13"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="36"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="18"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="6"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="5"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="32071"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="4555"/>
+                        <ammo Name="60mm HE" ObjectID="298" Qty="820"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="394"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="394"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="820"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="37"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="7"/>
+                    </ammoList>
+                    <commander ObjectID="2099" ObjectVersion="0" Name="" Aggro="62" Determination="44" Efficiency="39"
+                               Force="B Tp 86 Cav Recon Sq" Judgement="73" Leadership="64" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2073" Name="WF - US - Cav Recon Trp"/>
+                </unit>
+                <unit name="A Bty 777 AAA AW Bn" id="-1" objectVersion="54" HumanControlled="0" Designation="A.777"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="16" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="96" UnitBridgeCount="0" UnitBasicsQty="846"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="112" PersLevel="100"
+                      CohesionLevel="90" FatigueLevel="4" MoraleLevel="70" ExperienceLevel="53" TrainingLevel="83"
+                      FitnessLevel="70" AggroLevel="51" StubbornnessLevel="66" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="78" UnitFuelLevel="77"
+                      UnitBasicsLevel="76" UnitFuelQty="5015" UnitAmmoCount="62949">
+                    <equipmentlist>
+                        <equipment Name="M16 MGMC - 50 cal Quad AA" Id="2064" Qty="8"/>
+                        <equipment Name="M15 MGMC - 37mm/50cal AA" Id="2165" Qty="8"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="13"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="68"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="55845"/>
+                        <ammo Name="37mm AA HE" ObjectID="2162" Qty="1241"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="3769"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2094"/>
+                    </ammoList>
+                    <commander ObjectID="2124" ObjectVersion="0" Name="" Aggro="55" Determination="40" Efficiency="39"
+                               Force="A Bty 777 AAA AW Bn" Judgement="73" Leadership="59" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2167" Name="WF - US - M15/M16 MGMC AA AW Bty"/>
+                </unit>
+            </unit>
+            <unit name="CCR 6 Arm Div HQ" id="-1" objectVersion="99" HumanControlled="0" Designation="CCR.6" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="18" UnitGunCount="0"
+                  UnitSmallArmCount="133" UnitBridgeCount="0" UnitBasicsQty="945" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="65" UnitPersQty="137" PersLevel="100" CohesionLevel="97"
+                  FatigueLevel="4" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="78" FitnessLevel="66"
+                  AggroLevel="53" StubbornnessLevel="69" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="69" UnitFuelLevel="75" UnitBasicsLevel="69" UnitFuelQty="10152"
+                  UnitAmmoCount="44040">
+                <equipmentlist>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="2"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="15"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="5"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="6"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M5A1 Stuart" Id="1779" Qty="3"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="12"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="90"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="31"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="27183"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="12418"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="93"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="93"/>
+                    <ammo Name="37mm AP" ObjectID="283" Qty="153"/>
+                    <ammo Name="37mm HE" ObjectID="286" Qty="153"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="82"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="16"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="3849"/>
+                </ammoList>
+                <commander ObjectID="1994" ObjectVersion="0" Name="Albert E. Harris" Aggro="56" Determination="39"
+                           Efficiency="40" Force="CCR 6 Arm Div HQ" Judgement="70" Leadership="62" PersBio=""
+                           RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2186" Name="WF - US - CCB &amp; CCR HQ"/>
+                <unit name="CCR 6 Arm Div Base" id="-1" objectVersion="68" HumanControlled="0" Designation="CCR"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="54"
+                      UnitGunCount="0" UnitSmallArmCount="273" UnitBridgeCount="0" UnitBasicsQty="2662"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="63" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="98" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="49" TrainingLevel="75"
+                      FitnessLevel="74" AggroLevel="53" StubbornnessLevel="74" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="70" UnitFuelLevel="77"
+                      UnitBasicsLevel="71" UnitFuelQty="12215" UnitAmmoCount="42803">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="7"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="7"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="15"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="10"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="7"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name="2-1/2 t tanker truck" Id="2766" Qty="15"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="13"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="160"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="40"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="50"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="18198"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="18198"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="90"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="18"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="6299"/>
+                    </ammoList>
+                    <commander ObjectID="1999" ObjectVersion="0" Name="" Aggro="62" Determination="44" Efficiency="45"
+                               Force="CCR 6 Arm Div Base" Judgement="70" Leadership="65" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2120" Name="WF - US - CC Base"/>
+                </unit>
+                <unit name="TF Lagrew HQ" id="-1" objectVersion="62" HumanControlled="0" Designation="LAGR" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="5" UnitGunCount="0"
+                      UnitSmallArmCount="54" UnitBridgeCount="0" UnitBasicsQty="650" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="72" UnitPersQty="58" PersLevel="100" CohesionLevel="91"
+                      FatigueLevel="4" MoraleLevel="70" ExperienceLevel="51" TrainingLevel="84" FitnessLevel="74"
+                      AggroLevel="55" StubbornnessLevel="69" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="79" UnitFuelLevel="73" UnitBasicsLevel="75"
+                      UnitFuelQty="2934" UnitAmmoCount="25901">
+                    <equipmentlist>
+                        <equipment Name="M4 Sherman - 75mm" Id="677" Qty="2"/>
+                        <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="5"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="34"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="75mm Tank AP" ObjectID="322" Qty="70"/>
+                        <ammo Name="75mm Tank HE" ObjectID="325" Qty="70"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="7900"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="15737"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2124"/>
+                    </ammoList>
+                    <commander ObjectID="2004" ObjectVersion="0" Name="Embrey D. Lagrew" Aggro="64" Determination="44"
+                               Efficiency="35" Force="TF Lagrew HQ" Judgement="66" Leadership="64" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2095" Name="WF - US - Tank Bn HQ"/>
+                    <unit name="A Coy 15 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="A.15"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="700"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="75" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="96" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="53"
+                          TrainingLevel="81" FitnessLevel="71" AggroLevel="53" StubbornnessLevel="73" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="76"
+                          UnitFuelLevel="75" UnitBasicsLevel="78" UnitFuelQty="15567" UnitAmmoCount="82790">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="476"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="476"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="54421"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="27210"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="79"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="79"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="15"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="34"/>
+                        </ammoList>
+                        <commander ObjectID="2009" ObjectVersion="0" Name="" Aggro="61" Determination="40"
+                                   Efficiency="45" Force="A Coy 15 Tank Bn" Judgement="67" Leadership="57" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="B Coy 15 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="B.15"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="708"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="53"
+                          TrainingLevel="76" FitnessLevel="66" AggroLevel="48" StubbornnessLevel="70" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="71"
+                          UnitFuelLevel="71" UnitBasicsLevel="79" UnitFuelQty="14686" UnitAmmoCount="78028">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="448"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="448"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="51292"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="25646"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="74"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="74"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="14"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="32"/>
+                        </ammoList>
+                        <commander ObjectID="2014" ObjectVersion="0" Name="" Aggro="58" Determination="38"
+                                   Efficiency="37" Force="B Coy 15 Tank Bn" Judgement="68" Leadership="60" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                    <unit name="D Coy 15 Tank Bn" id="-1" objectVersion="42" HumanControlled="0" Designation="D.15"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="495"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="69" UnitPersQty="68"
+                          PersLevel="100" CohesionLevel="94" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="50"
+                          TrainingLevel="78" FitnessLevel="74" AggroLevel="46" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="73"
+                          UnitFuelLevel="76" UnitBasicsLevel="73" UnitFuelQty="14860" UnitAmmoCount="51147">
+                        <equipmentlist>
+                            <equipment Name="M5A1 Stuart" Id="1779" Qty="17"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="912"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="912"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="49323"/>
+                        </ammoList>
+                        <commander ObjectID="2024" ObjectVersion="0" Name="" Aggro="58" Determination="36"
+                                   Efficiency="39" Force="D Coy 15 Tank Bn" Judgement="70" Leadership="57" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2088" Name="WF - US - M5A1 Stuart Coy"/>
+                    </unit>
+                    <unit name="C Coy 9 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="C.9"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1717"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="91" FatigueLevel="5" MoraleLevel="70" ExperienceLevel="45"
+                          TrainingLevel="83" FitnessLevel="69" AggroLevel="45" StubbornnessLevel="71" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="78"
+                          UnitFuelLevel="76" UnitBasicsLevel="78" UnitFuelQty="6337" UnitAmmoCount="50590">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="17133"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="29999"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="132"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="26"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="77"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2943"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="280"/>
+                        </ammoList>
+                        <commander ObjectID="2044" ObjectVersion="0" Name="" Aggro="59" Determination="39"
+                                   Efficiency="38" Force="C Coy 9 Arm Inf Bn" Judgement="66" Leadership="61" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                </unit>
+                <unit name="TF Britton HQ" id="-1" objectVersion="64" HumanControlled="0" Designation="BRTN" History=""
+                      CommsRating="100" ExperiencePts="0" UnitAFVCount="3" UnitNonAFVCount="9" UnitGunCount="0"
+                      UnitSmallArmCount="52" UnitBridgeCount="0" UnitBasicsQty="369" ActualResupplyRate="100"
+                      UnitSuppression="0" StaffQuality="65" UnitPersQty="49" PersLevel="100" CohesionLevel="99"
+                      FatigueLevel="2" MoraleLevel="70" ExperienceLevel="51" TrainingLevel="84" FitnessLevel="70"
+                      AggroLevel="54" StubbornnessLevel="68" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                      UnitSmallArmLevel="100" UnitAmmoLevel="79" UnitFuelLevel="71" UnitBasicsLevel="75"
+                      UnitFuelQty="1483" UnitAmmoCount="8464">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="9"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="22"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="4745"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="1571"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="23"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="4"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2121"/>
+                    </ammoList>
+                    <commander ObjectID="2029" ObjectVersion="0" Name="Frank K. Britton" Aggro="64" Determination="44"
+                               Efficiency="38" Force="TF Britton HQ" Judgement="67" Leadership="57" PersBio=""
+                               RankIndex="4" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2115" Name="WF - US - Arm Inf Bn HQ"/>
+                    <unit name="A Coy 9 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="A.9"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1705"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="90" FatigueLevel="3" MoraleLevel="70" ExperienceLevel="45"
+                          TrainingLevel="78" FitnessLevel="69" AggroLevel="50" StubbornnessLevel="75" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="73"
+                          UnitFuelLevel="76" UnitBasicsLevel="78" UnitFuelQty="6335" UnitAmmoCount="47338">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="16032"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="28071"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="123"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="24"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="72"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2754"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="262"/>
+                        </ammoList>
+                        <commander ObjectID="2034" ObjectVersion="0" Name="" Aggro="64" Determination="39"
+                                   Efficiency="36" Force="A Coy 9 Arm Inf Bn" Judgement="73" Leadership="57" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="B Coy 9 Arm Inf Bn" id="-1" objectVersion="84" HumanControlled="0" Designation="B.9"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="2"
+                          UnitGunCount="1" UnitSmallArmCount="240" UnitBridgeCount="0" UnitBasicsQty="1544"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="220"
+                          PersLevel="100" CohesionLevel="99" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="54"
+                          TrainingLevel="83" FitnessLevel="71" AggroLevel="49" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="78"
+                          UnitFuelLevel="80" UnitBasicsLevel="70" UnitFuelQty="6651" UnitAmmoCount="50702">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="2"/>
+                            <equipment Name="M3A1 HT - 50/30 cal MGs" Id="675" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="10"/>
+                            <equipment Name=".30 cal M1919A4 MMG" Id="561" Qty="7"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="17"/>
+                            <equipment Name="57mm M1 AT gun" Id="2067" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="66"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="126"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="21"/>
+                            <equipment Name="60mm M2 mortar" Id="523" Qty="3"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="17171"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="30065"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="132"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="26"/>
+                            <ammo Name="57mm AP" ObjectID="2421" Qty="78"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="2950"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="280"/>
+                        </ammoList>
+                        <commander ObjectID="2039" ObjectVersion="0" Name="" Aggro="60" Determination="42"
+                                   Efficiency="40" Force="B Coy 9 Arm Inf Bn" Judgement="69" Leadership="55" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2116" Name="WF - US - Rifle Coy / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="AG Pl 9 Arm Inf Bn" id="-1" objectVersion="80" HumanControlled="0" Designation="9"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="26" UnitBridgeCount="0" UnitBasicsQty="188"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="24"
+                          PersLevel="100" CohesionLevel="99" FatigueLevel="0" MoraleLevel="70" ExperienceLevel="50"
+                          TrainingLevel="80" FitnessLevel="75" AggroLevel="46" StubbornnessLevel="71" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="75"
+                          UnitFuelLevel="73" UnitBasicsLevel="79" UnitFuelQty="3126" UnitAmmoCount="9157">
+                        <equipmentlist>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="1"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name="M8 - 75mm HMC" Id="2101" Qty="3"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="2"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="15"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="5"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="2348"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="5982"/>
+                            <ammo Name="75mm How AP" ObjectID="232" Qty="35"/>
+                            <ammo Name="75mm How HE" ObjectID="229" Qty="103"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="14"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="2"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="673"/>
+                        </ammoList>
+                        <commander ObjectID="2049" ObjectVersion="0" Name="" Aggro="58" Determination="39"
+                                   Efficiency="37" Force="AG Pl 9 Arm Inf Bn" Judgement="66" Leadership="56" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2440" Name="WF - US - M8 75mm AG Plt / Arm Inf Btl"/>
+                    </unit>
+                    <unit name="Mortar Pl 9 Arm Inf Bn" id="-1" objectVersion="45" HumanControlled="0" Designation="9"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="1" UnitNonAFVCount="3"
+                          UnitGunCount="3" UnitSmallArmCount="21" UnitBridgeCount="0" UnitBasicsQty="181"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="71" UnitPersQty="25"
+                          PersLevel="100" CohesionLevel="97" FatigueLevel="5" MoraleLevel="70" ExperienceLevel="52"
+                          TrainingLevel="83" FitnessLevel="67" AggroLevel="49" StubbornnessLevel="67" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="78"
+                          UnitFuelLevel="78" UnitBasicsLevel="73" UnitFuelQty="1275" UnitAmmoCount="7411">
+                        <equipmentlist>
+                            <equipment Name="M21 HT - 81mm mortar" Id="2107" Qty="3"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="17"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="81mm HE" ObjectID="304" Qty="232"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="6203"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="976"/>
+                        </ammoList>
+                        <commander ObjectID="2054" ObjectVersion="0" Name="" Aggro="57" Determination="36"
+                                   Efficiency="37" Force="Mortar Pl 9 Arm Inf Bn" Judgement="72" Leadership="56"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2096" Name="WF - US - 81mm Mor Plt / Arm Inf Bn"/>
+                    </unit>
+                    <unit name="C Coy 15 Tank Bn" id="-1" objectVersion="85" HumanControlled="0" Designation="C.15"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="1"
+                          UnitGunCount="1" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="639"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="74" UnitPersQty="90"
+                          PersLevel="100" CohesionLevel="97" FatigueLevel="8" MoraleLevel="70" ExperienceLevel="52"
+                          TrainingLevel="75" FitnessLevel="73" AggroLevel="46" StubbornnessLevel="66" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="0" UnitAmmoLevel="70"
+                          UnitFuelLevel="74" UnitBasicsLevel="71" UnitFuelQty="15324" UnitAmmoCount="76881">
+                        <equipmentlist>
+                            <equipment Name="M4 Sherman - 75mm" Id="677" Qty="11"/>
+                            <equipment Name="M4 Sherman - 76mm" Id="679" Qty="3"/>
+                            <equipment Name="M4A3E2 'Jumbo' - 75mm" Id="2092" Qty="3"/>
+                            <equipment Name="M4 Sherman - 105mm" Id="2091" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="75mm Tank AP" ObjectID="322" Qty="442"/>
+                            <ammo Name="75mm Tank HE" ObjectID="325" Qty="442"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="50537"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="25268"/>
+                            <ammo Name="76mm AP" ObjectID="2419" Qty="73"/>
+                            <ammo Name="76mm HE" ObjectID="2420" Qty="73"/>
+                            <ammo Name="105mm AP" ObjectID="331" Qty="14"/>
+                            <ammo Name="105mm HE" ObjectID="328" Qty="32"/>
+                        </ammoList>
+                        <commander ObjectID="2019" ObjectVersion="0" Name="" Aggro="63" Determination="39"
+                                   Efficiency="35" Force="C Coy 15 Tank Bn" Judgement="67" Leadership="55" PersBio=""
+                                   RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2087" Name="WF - US - M4 Sherman Coy"/>
+                    </unit>
+                </unit>
+                <unit name="C Coy 603 TD Bn" id="-1" objectVersion="95" HumanControlled="0" Designation="C.603"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="20" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="40" UnitBridgeCount="0" UnitBasicsQty="792"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="72" UnitPersQty="108" PersLevel="100"
+                      CohesionLevel="95" FatigueLevel="5" MoraleLevel="70" ExperienceLevel="46" TrainingLevel="78"
+                      FitnessLevel="68" AggroLevel="53" StubbornnessLevel="74" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="73" UnitFuelLevel="75"
+                      UnitBasicsLevel="73" UnitFuelQty="9117" UnitAmmoCount="37648">
+                    <equipmentlist>
+                        <equipment Name="M8 - 37mm gun - .50 cal MG" Id="671" Qty="8"/>
+                        <equipment Name="M18 TD - 76mm GMC" Id="2128" Qty="12"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="18"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="12"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="2"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="8"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="7132"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="29111"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="232"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="232"/>
+                        <ammo Name="76mm AP" ObjectID="2419" Qty="305"/>
+                        <ammo Name="76mm HE" ObjectID="2420" Qty="305"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="262"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="58"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="11"/>
+                    </ammoList>
+                    <commander ObjectID="2069" ObjectVersion="0" Name="" Aggro="60" Determination="36" Efficiency="44"
+                               Force="C Coy 603 TD Bn" Judgement="73" Leadership="65" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2129" Name="WF - US - M18 TD Coy"/>
+                </unit>
+                <unit name="C Coy 25 Arm Eng Bn" id="-1" objectVersion="69" HumanControlled="0" Designation="C.25"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="4" UnitNonAFVCount="16"
+                      UnitGunCount="0" UnitSmallArmCount="187" UnitBridgeCount="0" UnitBasicsQty="1196"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="73" UnitPersQty="171" PersLevel="100"
+                      CohesionLevel="98" FatigueLevel="1" MoraleLevel="70" ExperienceLevel="54" TrainingLevel="76"
+                      FitnessLevel="74" AggroLevel="53" StubbornnessLevel="71" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="70" UnitFuelLevel="75"
+                      UnitBasicsLevel="70" UnitFuelQty="3546" UnitAmmoCount="22244">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="5"/>
+                        <equipment Name="2-1/2 t truck" Id="2079" Qty="7"/>
+                        <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="1"/>
+                        <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="2"/>
+                        <equipment Name="3/4 t truck" Id="669" Qty="1"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="2"/>
+                        <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="2"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="21"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="128"/>
+                        <equipment Name=".30 cal M1917A1 HMG" Id="2254" Qty="6"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="22"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="7"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="13817"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="5599"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2771"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="48"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="9"/>
+                    </ammoList>
+                    <commander ObjectID="2084" ObjectVersion="0" Name="" Aggro="56" Determination="41" Efficiency="41"
+                               Force="C Coy 25 Arm Eng Bn" Judgement="68" Leadership="62" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2149" Name="WF - US - Arm Eng Coy / Arm Eng Bn"/>
+                </unit>
+                <unit name="86 Cav Recon Sq HQ" id="-1" objectVersion="70" HumanControlled="0" Designation="86"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="6" UnitNonAFVCount="6"
+                      UnitGunCount="0" UnitSmallArmCount="35" UnitBridgeCount="0" UnitBasicsQty="367"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="66" UnitPersQty="50" PersLevel="100"
+                      CohesionLevel="99" FatigueLevel="2" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="79"
+                      FitnessLevel="73" AggroLevel="46" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="74" UnitFuelLevel="73"
+                      UnitBasicsLevel="73" UnitFuelQty="1899" UnitAmmoCount="12706">
+                    <equipmentlist>
+                        <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="6"/>
+                        <equipment Name="M8 - 37mm gun - .50 cal MG" Id="671" Qty="3"/>
+                        <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="3"/>
+                        <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="3"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="32"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="8070"/>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="4434"/>
+                        <ammo Name="37mm AP" ObjectID="283" Qty="88"/>
+                        <ammo Name="37mm HE" ObjectID="286" Qty="88"/>
+                        <ammo Name="Bazooka AP" ObjectID="289" Qty="22"/>
+                        <ammo Name="Bazooka HE" ObjectID="292" Qty="4"/>
+                    </ammoList>
+                    <commander ObjectID="2089" ObjectVersion="0" Name="" Aggro="64" Determination="37" Efficiency="41"
+                               Force="86 Cav Recon Sq HQ" Judgement="68" Leadership="61" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2099" Name="WF - US - Cav Sqn HQ"/>
+                    <unit name="C Tp 86 Cav Recon Sq" id="-1" objectVersion="93" HumanControlled="0" Designation="C.86"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="24"
+                          UnitGunCount="0" UnitSmallArmCount="86" UnitBridgeCount="0" UnitBasicsQty="1053"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="66" UnitPersQty="145"
+                          PersLevel="100" CohesionLevel="92" FatigueLevel="5" MoraleLevel="70" ExperienceLevel="46"
+                          TrainingLevel="80" FitnessLevel="70" AggroLevel="53" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="75"
+                          UnitFuelLevel="70" UnitBasicsLevel="73" UnitFuelQty="5259" UnitAmmoCount="38835">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="3"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="10"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="1"/>
+                            <equipment Name="1/4 t truck 'Jeep' - 60mm mor" Id="2075" Qty="9"/>
+                            <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="3"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name="M8 - 37mm gun - .30 cal MG" Id="2330" Qty="13"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="36"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="18"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="6"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="5"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="31855"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="4524"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="814"/>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="392"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="392"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="814"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="37"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="7"/>
+                        </ammoList>
+                        <commander ObjectID="2104" ObjectVersion="0" Name="" Aggro="57" Determination="36"
+                                   Efficiency="38" Force="C Tp 86 Cav Recon Sq" Judgement="69" Leadership="59"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2073" Name="WF - US - Cav Recon Trp"/>
+                    </unit>
+                    <unit name="D Tp 86 Cav Recon Sq" id="-1" objectVersion="93" HumanControlled="0" Designation="D.86"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="24"
+                          UnitGunCount="0" UnitSmallArmCount="86" UnitBridgeCount="0" UnitBasicsQty="1071"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68" UnitPersQty="145"
+                          PersLevel="100" CohesionLevel="94" FatigueLevel="10" MoraleLevel="70" ExperienceLevel="49"
+                          TrainingLevel="78" FitnessLevel="68" AggroLevel="51" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="73"
+                          UnitFuelLevel="77" UnitBasicsLevel="74" UnitFuelQty="5788" UnitAmmoCount="37791">
+                        <equipmentlist>
+                            <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="3"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="10"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="1"/>
+                            <equipment Name="1/4 t truck 'Jeep' - 60mm mor" Id="2075" Qty="9"/>
+                            <equipment Name="2-1/2 t truck - .50 cal MG" Id="2081" Qty="1"/>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="3"/>
+                            <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="1"/>
+                            <equipment Name="M8 - 37mm gun - .30 cal MG" Id="2330" Qty="13"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="36"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="18"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="6"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="5"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="30999"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="4403"/>
+                            <ammo Name="60mm HE" ObjectID="298" Qty="792"/>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="381"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="381"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="792"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="36"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="7"/>
+                        </ammoList>
+                        <commander ObjectID="2109" ObjectVersion="0" Name="" Aggro="65" Determination="41"
+                                   Efficiency="39" Force="D Tp 86 Cav Recon Sq" Judgement="74" Leadership="64"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2073" Name="WF - US - Cav Recon Trp"/>
+                    </unit>
+                    <unit name="E Tp (AG) 86 Cav Recon Sq" id="-1" objectVersion="83" HumanControlled="0"
+                          Designation="E.86" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="18"
+                          UnitNonAFVCount="3" UnitGunCount="0" UnitSmallArmCount="16" UnitBridgeCount="0"
+                          UnitBasicsQty="877" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="68"
+                          UnitPersQty="112" PersLevel="100" CohesionLevel="97" FatigueLevel="7" MoraleLevel="70"
+                          ExperienceLevel="54" TrainingLevel="77" FitnessLevel="71" AggroLevel="46"
+                          StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="72" UnitFuelLevel="74" UnitBasicsLevel="78"
+                          UnitFuelQty="10094" UnitAmmoCount="27967">
+                        <equipmentlist>
+                            <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="9"/>
+                            <equipment Name="M8 - 75mm HMC" Id="2101" Qty="8"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .30 cal MG" Id="2077" Qty="1"/>
+                            <equipment Name="1/4 t truck 'Jeep' - .50 cal MG" Id="2074" Qty="1"/>
+                            <equipment Name="M3A1 HT" Id="2114" Qty="1"/>
+                            <equipment Name="2-1/2 t truck" Id="2079" Qty="1"/>
+                            <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="11"/>
+                            <equipment Name=".30 cal M1 Carbine" Id="555" Qty="1"/>
+                            <equipment Name=".30 cal M1 Rifle" Id="553" Qty="1"/>
+                            <equipment Name=".45 cal M3 SMG" Id="557" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="14456"/>
+                            <ammo Name=".50 cal" ObjectID="280" Qty="12933"/>
+                            <ammo Name="75mm How AP" ObjectID="232" Qty="91"/>
+                            <ammo Name="75mm How HE" ObjectID="229" Qty="264"/>
+                            <ammo Name="Bazooka AP" ObjectID="289" Qty="79"/>
+                            <ammo Name="Bazooka HE" ObjectID="292" Qty="15"/>
+                            <ammo Name=".45 cal" ObjectID="274" Qty="129"/>
+                        </ammoList>
+                        <commander ObjectID="2114" ObjectVersion="0" Name="" Aggro="61" Determination="43"
+                                   Efficiency="37" Force="E Tp (AG) 86 Cav Recon Sq" Judgement="71" Leadership="62"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2442"
+                               Name="WF - US - M8 75mm AG Trp / Cav Rec Sqdn (AD)"/>
+                    </unit>
+                    <unit name="F Coy 86 Cav Recon Sq" id="-1" objectVersion="42" HumanControlled="0" Designation="F.86"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="17" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="482"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="72" UnitPersQty="68"
+                          PersLevel="100" CohesionLevel="97" FatigueLevel="8" MoraleLevel="70" ExperienceLevel="52"
+                          TrainingLevel="78" FitnessLevel="70" AggroLevel="46" StubbornnessLevel="67" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="73"
+                          UnitFuelLevel="71" UnitBasicsLevel="71" UnitFuelQty="13985" UnitAmmoCount="51250">
+                        <equipmentlist>
+                            <equipment Name="M5A1 Stuart" Id="1779" Qty="17"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="37mm AP" ObjectID="283" Qty="914"/>
+                            <ammo Name="37mm HE" ObjectID="286" Qty="914"/>
+                            <ammo Name=".30 cal" ObjectID="271" Qty="49422"/>
+                        </ammoList>
+                        <commander ObjectID="2119" ObjectVersion="0" Name="" Aggro="56" Determination="39"
+                                   Efficiency="37" Force="F Coy 86 Cav Recon Sq" Judgement="66" Leadership="60"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2088" Name="WF - US - M5A1 Stuart Coy"/>
+                    </unit>
+                </unit>
+                <unit name="B Bty 777 AAA AW Bn" id="-1" objectVersion="54" HumanControlled="0" Designation="B.777"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="16" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="96" UnitBridgeCount="0" UnitBasicsQty="863"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="112" PersLevel="100"
+                      CohesionLevel="93" FatigueLevel="4" MoraleLevel="70" ExperienceLevel="50" TrainingLevel="83"
+                      FitnessLevel="65" AggroLevel="49" StubbornnessLevel="71" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="78" UnitFuelLevel="77"
+                      UnitBasicsLevel="77" UnitFuelQty="5049" UnitAmmoCount="63583">
+                    <equipmentlist>
+                        <equipment Name="M16 MGMC - 50 cal Quad AA" Id="2064" Qty="8"/>
+                        <equipment Name="M15 MGMC - 37mm/50cal AA" Id="2165" Qty="8"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="13"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="68"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="56408"/>
+                        <ammo Name="37mm AA HE" ObjectID="2162" Qty="1253"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="3807"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="2115"/>
+                    </ammoList>
+                    <commander ObjectID="2129" ObjectVersion="0" Name="" Aggro="64" Determination="37" Efficiency="39"
+                               Force="B Bty 777 AAA AW Bn" Judgement="70" Leadership="56" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2167" Name="WF - US - M15/M16 MGMC AA AW Bty"/>
+                </unit>
+                <unit name="D Bty 777 AAA AW Bn" id="-1" objectVersion="54" HumanControlled="0" Designation="D.777"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="16" UnitNonAFVCount="0"
+                      UnitGunCount="0" UnitSmallArmCount="96" UnitBridgeCount="0" UnitBasicsQty="857"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="67" UnitPersQty="112" PersLevel="100"
+                      CohesionLevel="98" FatigueLevel="8" MoraleLevel="70" ExperienceLevel="52" TrainingLevel="76"
+                      FitnessLevel="74" AggroLevel="53" StubbornnessLevel="75" UnitAFVLevel="100" UnitNonAFVLevel="0"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="71" UnitFuelLevel="74"
+                      UnitBasicsLevel="77" UnitFuelQty="4811" UnitAmmoCount="57558">
+                    <equipmentlist>
+                        <equipment Name="M16 MGMC - 50 cal Quad AA" Id="2064" Qty="8"/>
+                        <equipment Name="M15 MGMC - 37mm/50cal AA" Id="2165" Qty="8"/>
+                        <equipment Name=".30 cal M1 Carbine" Id="555" Qty="13"/>
+                        <equipment Name=".45 cal M3 SMG" Id="557" Qty="15"/>
+                        <equipment Name=".30 cal M1 Rifle" Id="553" Qty="68"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name=".50 cal" ObjectID="280" Qty="51064"/>
+                        <ammo Name="37mm AA HE" ObjectID="2162" Qty="1134"/>
+                        <ammo Name=".30 cal" ObjectID="271" Qty="3446"/>
+                        <ammo Name=".45 cal" ObjectID="274" Qty="1914"/>
+                    </ammoList>
+                    <commander ObjectID="2139" ObjectVersion="0" Name="" Aggro="56" Determination="41" Efficiency="42"
+                               Force="D Bty 777 AAA AW Bn" Judgement="65" Leadership="56" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2167" Name="WF - US - M15/M16 MGMC AA AW Bty"/>
+                </unit>
+            </unit>
+            <unit name="128 Arm FA Bn" id="-1" objectVersion="100" HumanControlled="0" Designation="128" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="33" UnitNonAFVCount="51" UnitGunCount="18"
+                  UnitSmallArmCount="449" UnitBridgeCount="0" UnitBasicsQty="3348" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="69" UnitPersQty="420" PersLevel="100" CohesionLevel="94"
+                  FatigueLevel="8" MoraleLevel="70" ExperienceLevel="54" TrainingLevel="82" FitnessLevel="68"
+                  AggroLevel="50" StubbornnessLevel="66" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="77" UnitFuelLevel="91" UnitBasicsLevel="80" UnitFuelQty="37204"
+                  UnitAmmoCount="121882">
+                <equipmentlist>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="10"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="16"/>
+                    <equipment Name="M7 - 105mm HMC" Id="2094" Qty="18"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="8"/>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="11"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="14"/>
+                    <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="4"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="291"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="114"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="40"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="49852"/>
+                    <ammo Name="105mm AP" ObjectID="331" Qty="277"/>
+                    <ammo Name="105mm HE" ObjectID="328" Qty="1387"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="53969"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="104"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="104"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="15820"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="308"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="61"/>
+                </ammoList>
+                <commander ObjectID="2144" ObjectVersion="0" Name="" Aggro="56" Determination="38" Efficiency="36"
+                           Force="128 Arm FA Bn" Judgement="65" Leadership="59" PersBio="" RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2146" Name="WF - US - 105mm M7 HMC Arm Fd Arty Bn"/>
+            </unit>
+            <unit name="212 Arm FA Bn" id="-1" objectVersion="100" HumanControlled="0" Designation="212" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="33" UnitNonAFVCount="51" UnitGunCount="18"
+                  UnitSmallArmCount="449" UnitBridgeCount="0" UnitBasicsQty="2990" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="68" UnitPersQty="420" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="0" MoraleLevel="70" ExperienceLevel="50" TrainingLevel="82" FitnessLevel="65"
+                  AggroLevel="52" StubbornnessLevel="74" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="77" UnitFuelLevel="90" UnitBasicsLevel="71" UnitFuelQty="36891"
+                  UnitAmmoCount="121072">
+                <equipmentlist>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="10"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="16"/>
+                    <equipment Name="M7 - 105mm HMC" Id="2094" Qty="18"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="8"/>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="11"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="14"/>
+                    <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="4"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="291"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="114"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="40"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="49521"/>
+                    <ammo Name="105mm AP" ObjectID="331" Qty="275"/>
+                    <ammo Name="105mm HE" ObjectID="328" Qty="1378"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="53610"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="103"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="103"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="15715"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="306"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="61"/>
+                </ammoList>
+                <commander ObjectID="2149" ObjectVersion="0" Name="" Aggro="64" Determination="43" Efficiency="38"
+                           Force="212 Arm FA Bn" Judgement="73" Leadership="62" PersBio="" RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2146" Name="WF - US - 105mm M7 HMC Arm Fd Arty Bn"/>
+            </unit>
+            <unit name="231 Arm FA Bn" id="-1" objectVersion="100" HumanControlled="0" Designation="231" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="33" UnitNonAFVCount="51" UnitGunCount="18"
+                  UnitSmallArmCount="449" UnitBridgeCount="0" UnitBasicsQty="3098" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="72" UnitPersQty="420" PersLevel="100" CohesionLevel="94"
+                  FatigueLevel="6" MoraleLevel="70" ExperienceLevel="47" TrainingLevel="79" FitnessLevel="71"
+                  AggroLevel="52" StubbornnessLevel="70" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="74" UnitFuelLevel="99" UnitBasicsLevel="74" UnitFuelQty="40444"
+                  UnitAmmoCount="116440">
+                <equipmentlist>
+                    <equipment Name="1/4 t truck 'Jeep'" Id="635" Qty="10"/>
+                    <equipment Name="M3A1 HT - 30 cal MG" Id="2111" Qty="16"/>
+                    <equipment Name="M7 - 105mm HMC" Id="2094" Qty="18"/>
+                    <equipment Name="3/4 t truck" Id="669" Qty="8"/>
+                    <equipment Name="2-1/2 t truck" Id="2079" Qty="11"/>
+                    <equipment Name="M4 Sherman - 75mm" Id="677" Qty="3"/>
+                    <equipment Name="M3A1 HT - 50 cal MG" Id="2113" Qty="14"/>
+                    <equipment Name="2-1/2 t truck - .30 cal MG" Id="2508" Qty="4"/>
+                    <equipment Name=".30 cal M1 Carbine" Id="555" Qty="291"/>
+                    <equipment Name=".45 cal M3 SMG" Id="557" Qty="114"/>
+                    <equipment Name="2.36in M9A1 ATRL 'Bazooka'" Id="394" Qty="40"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name=".30 cal" ObjectID="271" Qty="47626"/>
+                    <ammo Name="105mm AP" ObjectID="331" Qty="265"/>
+                    <ammo Name="105mm HE" ObjectID="328" Qty="1325"/>
+                    <ammo Name=".50 cal" ObjectID="280" Qty="51560"/>
+                    <ammo Name="75mm Tank AP" ObjectID="322" Qty="99"/>
+                    <ammo Name="75mm Tank HE" ObjectID="325" Qty="99"/>
+                    <ammo Name=".45 cal" ObjectID="274" Qty="15114"/>
+                    <ammo Name="Bazooka AP" ObjectID="289" Qty="294"/>
+                    <ammo Name="Bazooka HE" ObjectID="292" Qty="58"/>
+                </ammoList>
+                <commander ObjectID="2154" ObjectVersion="0" Name="" Aggro="60" Determination="40" Efficiency="35"
+                           Force="231 Arm FA Bn" Judgement="66" Leadership="60" PersBio="" RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="2146" Name="WF - US - 105mm M7 HMC Arm Fd Arty Bn"/>
+            </unit>
+        </unit>
+    </side>
+</ForceList>

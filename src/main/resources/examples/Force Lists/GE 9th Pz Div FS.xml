@@ -1,0 +1,1969 @@
+<?xml version="1.0"?>
+<ForceList>
+    <side ObjectId="9" Name="Axis">
+        <unit name="9 Panzer Div HQ" id="-1" objectVersion="125" HumanControlled="0" Designation="9"
+              History="The 9th Panzer Division was formed in 1940 from the 4th Light Division, which in turn was formed from the Fast Division of the former Austrian Bundesheer.The division took part in the campaign in the West, first in the Netherlands and later in France. It fought in Yugoslavia before being committed on the Eastern front, first in the central and then in the southern section. In April 1944 it was send to France for rest and re-equipment. It fought in France and Belgium, and in October 1944 launched a counterattack in the Netherlands against the US 7th Armored Division. At the start of operation &quot;Wacht am Rhein&quot; the division was held in reserve, and earmarked for an attack in the Venlo sector with the 15th Army. When this attack was cancelled, the division was sent to the 5th Panzer Army."
+              CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="75" UnitGunCount="0"
+              UnitSmallArmCount="174" UnitBridgeCount="0" UnitBasicsQty="1621" ActualResupplyRate="100"
+              UnitSuppression="0" StaffQuality="94" UnitPersQty="223" PersLevel="100" CohesionLevel="100"
+              FatigueLevel="10" MoraleLevel="62" ExperienceLevel="28" TrainingLevel="30" FitnessLevel="75"
+              AggroLevel="74" StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="0"
+              UnitSmallArmLevel="100" UnitAmmoLevel="46" UnitFuelLevel="48" UnitBasicsLevel="48" UnitFuelQty="3586"
+              UnitAmmoCount="7552">
+            <equipmentlist>
+                <equipment Name="LKW 4.5 t - truck" Id="571" Qty="2"/>
+                <equipment Name="Kraftomnibus" Id="2617" Qty="3"/>
+                <equipment Name="Motorcycle" Id="1027" Qty="3"/>
+                <equipment Name="s PKW - car" Id="2616" Qty="5"/>
+                <equipment Name="m PKW - car" Id="2282" Qty="6"/>
+                <equipment Name="LKW 2 t - truck" Id="567" Qty="9"/>
+                <equipment Name="Motorcycle with sidecar" Id="2309" Qty="10"/>
+                <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                <equipment Name="le PKW - car" Id="23" Qty="25"/>
+                <equipment Name="7.92mm leMG 42" Id="533" Qty="5"/>
+                <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                <equipment Name="9mm MP 40" Id="529" Qty="13"/>
+                <equipment Name="7.92mm Kar 98 k" Id="43" Qty="150"/>
+            </equipmentlist>
+            <ammoList>
+                <ammo Name="7.92mm" ObjectID="1" Qty="6466"/>
+                <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                <ammo Name="9mm" ObjectID="4" Qty="1080"/>
+            </ammoList>
+            <commander ObjectID="64" ObjectVersion="0" Name="Harald Freiherr von Elverfeld" Aggro="80"
+                       Determination="85" Efficiency="88" Force="9 Panzer Div HQ" Judgement="84" Leadership="67"
+                       PersBio="Elverfeld served as a staff officer in the staff of the 3rd Light Division, the XIV and LVI Panzerkorps and the 9th and 17th Army. On September 16, 1944 he took over command of the 9th Panzer Division, which he led with distinction, earning the Knight's Cross in December 1944."
+                       RankIndex="6" Title="CO"/>
+            <estab EstabName="BFTBEstab.coe" ObjectId="1633" Name="WF - PzD - Pz Div Tac HQ"/>
+            <unit name="9 Pz Div Base" id="-1" objectVersion="122" HumanControlled="0" Designation="9" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="153" UnitGunCount="0"
+                  UnitSmallArmCount="612" UnitBridgeCount="0" UnitBasicsQty="4917" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="91" UnitPersQty="600" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="4" MoraleLevel="65" ExperienceLevel="22" TrainingLevel="26" FitnessLevel="70"
+                  AggroLevel="72" StubbornnessLevel="74" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="46" UnitFuelLevel="45" UnitBasicsLevel="55" UnitFuelQty="9404"
+                  UnitAmmoCount="29088">
+                <equipmentlist>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="15"/>
+                    <equipment Name="Motorcycle" Id="1027" Qty="20"/>
+                    <equipment Name="m PKW - car" Id="2282" Qty="15"/>
+                    <equipment Name="LKW 6.5 t - truck" Id="573" Qty="18"/>
+                    <equipment Name="LKW 4.5 t - truck" Id="571" Qty="25"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="20"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="20"/>
+                    <equipment Name="LKW 2 t - tanker truck" Id="2765" Qty="20"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="20"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="15"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="27"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="550"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="20"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1251"/>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="27817"/>
+                </ammoList>
+                <commander ObjectID="69" ObjectVersion="0" Name="" Aggro="76" Determination="76" Efficiency="89"
+                           Force="9 Pz Div Base" Judgement="79" Leadership="71" PersBio="" RankIndex="5" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1634" Name="WF - PzD - Pz Div Base"/>
+            </unit>
+            <unit name="33 Panzer Regt HQ" id="-1" objectVersion="115" HumanControlled="0" Designation="33" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="8" UnitNonAFVCount="25" UnitGunCount="0"
+                  UnitSmallArmCount="68" UnitBridgeCount="0" UnitBasicsQty="668" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="85" UnitPersQty="99" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="2" MoraleLevel="62" ExperienceLevel="23" TrainingLevel="27" FitnessLevel="74"
+                  AggroLevel="75" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="52" UnitFuelLevel="52" UnitBasicsLevel="45" UnitFuelQty="6871"
+                  UnitAmmoCount="26404">
+                <equipmentlist>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="5"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="6"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="3"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="5"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="6"/>
+                    <equipment Name="PzKfw IV Ausf J" Id="617" Qty="3"/>
+                    <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="5"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="44"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="11"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="13"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="174"/>
+                    <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="174"/>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="25017"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1039"/>
+                </ammoList>
+                <commander ObjectID="74" ObjectVersion="0" Name="" Aggro="80" Determination="80" Efficiency="92"
+                           Force="33 Panzer Regt HQ" Judgement="84" Leadership="70" PersBio="" RankIndex="5"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1647" Name="WF - PzD - Pz Rgt Tac HQ"/>
+                <unit name="33rd Pz Regt Base" id="-1" objectVersion="124" HumanControlled="0" Designation="33"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="114"
+                      UnitGunCount="0" UnitSmallArmCount="246" UnitBridgeCount="0" UnitBasicsQty="1762"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="8" MoraleLevel="64" ExperienceLevel="27" TrainingLevel="32"
+                      FitnessLevel="70" AggroLevel="70" StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="47" UnitFuelLevel="44"
+                      UnitBasicsLevel="47" UnitFuelQty="7776" UnitAmmoCount="11944">
+                    <equipmentlist>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="16"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="6"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="29"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="8"/>
+                        <equipment Name="LKW 4.5 t - truck" Id="571" Qty="8"/>
+                        <equipment Name="SdKfz 9 - s ZgKw 18t" Id="2324" Qty="10"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="5"/>
+                        <equipment Name="SdKfz 10 - le ZgKw 1t" Id="593" Qty="17"/>
+                        <equipment Name="LKW 2 t - tanker truck" Id="2765" Qty="12"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="200"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="30"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="8"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="8"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="9399"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="2537"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="8"/>
+                    </ammoList>
+                    <commander ObjectID="79" ObjectVersion="0" Name="" Aggro="83" Determination="75" Efficiency="87"
+                               Force="33rd Pz Regt Base" Judgement="81" Leadership="67" PersBio="" RankIndex="5"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1666" Name="WF - PzD - Pz Rgt Base"/>
+                </unit>
+                <unit name="II Bn HQ 33rd Pz Regt" id="-1" objectVersion="120" HumanControlled="0" Designation="II.33"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="13" UnitNonAFVCount="22"
+                      UnitGunCount="0" UnitSmallArmCount="79" UnitBridgeCount="0" UnitBasicsQty="895"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="88" UnitPersQty="119" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="6" MoraleLevel="68" ExperienceLevel="24" TrainingLevel="33"
+                      FitnessLevel="70" AggroLevel="66" StubbornnessLevel="74" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="55" UnitFuelLevel="46"
+                      UnitBasicsLevel="50" UnitFuelQty="4136" UnitAmmoCount="28083">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="7"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="1"/>
+                        <equipment Name="m PKW - car" Id="2282" Qty="2"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="1"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="6"/>
+                        <equipment Name="PzKfw IV Ausf J" Id="617" Qty="8"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                        <equipment Name="SdKfz 251/7 - Engineer" Id="2272" Qty="3"/>
+                        <equipment Name="SdKfz 251/8 - Ambulance" Id="2283" Qty="2"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="3"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="46"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="12"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="21"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="192"/>
+                        <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="192"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="25628"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="2071"/>
+                    </ammoList>
+                    <commander ObjectID="109" ObjectVersion="0" Name="" Aggro="84" Determination="78" Efficiency="94"
+                               Force="II Bn HQ 33rd Pz Regt" Judgement="76" Leadership="72" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2284" Name="WF - PzD - Pz IV Bn Tac HQ"/>
+                    <unit name="5 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="5.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="371"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="95" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="9" MoraleLevel="64" ExperienceLevel="22"
+                          TrainingLevel="30" FitnessLevel="74" AggroLevel="72" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="52"
+                          UnitFuelLevel="40" UnitBasicsLevel="53" UnitFuelQty="4266" UnitAmmoCount="29956">
+                        <equipmentlist>
+                            <equipment Name="PzKfw IV Ausf J" Id="617" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="322"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="322"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="29312"/>
+                        </ammoList>
+                        <commander ObjectID="114" ObjectVersion="0" Name="" Aggro="79" Determination="78"
+                                   Efficiency="88" Force="5 Coy 33 Pz Regt" Judgement="76" Leadership="71" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1651" Name="WF - PzD - Pz IV Coy"/>
+                    </unit>
+                    <unit name="6 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="6.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="342"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="3" MoraleLevel="64" ExperienceLevel="23"
+                          TrainingLevel="29" FitnessLevel="67" AggroLevel="70" StubbornnessLevel="67" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="55"
+                          UnitFuelLevel="36" UnitBasicsLevel="49" UnitFuelQty="3877" UnitAmmoCount="31326">
+                        <equipmentlist>
+                            <equipment Name="PzKfw IV Ausf J" Id="617" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="337"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="337"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="30652"/>
+                        </ammoList>
+                        <commander ObjectID="119" ObjectVersion="0" Name="" Aggro="81" Determination="82"
+                                   Efficiency="93" Force="6 Coy 33 Pz Regt" Judgement="76" Leadership="70" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1651" Name="WF - PzD - Pz IV Coy"/>
+                    </unit>
+                    <unit name="7 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="7.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="322"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="61" ExperienceLevel="25"
+                          TrainingLevel="28" FitnessLevel="75" AggroLevel="69" StubbornnessLevel="70" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="50"
+                          UnitFuelLevel="37" UnitBasicsLevel="46" UnitFuelQty="3979" UnitAmmoCount="28391">
+                        <equipmentlist>
+                            <equipment Name="PzKfw IV Ausf J" Id="617" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="305"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="305"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="27781"/>
+                        </ammoList>
+                        <commander ObjectID="124" ObjectVersion="0" Name="" Aggro="79" Determination="80"
+                                   Efficiency="85" Force="7 Coy 33 Pz Regt" Judgement="79" Leadership="67" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1651" Name="WF - PzD - Pz IV Coy"/>
+                    </unit>
+                    <unit name="8 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="8.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="348"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="89" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="0" MoraleLevel="58" ExperienceLevel="22"
+                          TrainingLevel="32" FitnessLevel="75" AggroLevel="72" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="52"
+                          UnitFuelLevel="37" UnitBasicsLevel="50" UnitFuelQty="3932" UnitAmmoCount="29774">
+                        <equipmentlist>
+                            <equipment Name="PzKfw IV Ausf J" Id="617" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="320"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="320"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="29134"/>
+                        </ammoList>
+                        <commander ObjectID="129" ObjectVersion="0" Name="" Aggro="75" Determination="75"
+                                   Efficiency="93" Force="8 Coy 33 Pz Regt" Judgement="84" Leadership="70" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1651" Name="WF - PzD - Pz IV Coy"/>
+                    </unit>
+                </unit>
+                <unit name="I Bn HQ 33rd Pz Regt" id="-1" objectVersion="120" HumanControlled="0" Designation="I.33"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="13" UnitNonAFVCount="22"
+                      UnitGunCount="0" UnitSmallArmCount="79" UnitBridgeCount="0" UnitBasicsQty="861"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="87" UnitPersQty="119" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="6" MoraleLevel="65" ExperienceLevel="22" TrainingLevel="26"
+                      FitnessLevel="70" AggroLevel="67" StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="53" UnitFuelLevel="45"
+                      UnitBasicsLevel="48" UnitFuelQty="7276" UnitAmmoCount="27075">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="7"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="1"/>
+                        <equipment Name="m PKW - car" Id="2282" Qty="2"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="1"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="6"/>
+                        <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="8"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                        <equipment Name="SdKfz 251/7 - Engineer" Id="2272" Qty="3"/>
+                        <equipment Name="SdKfz 251/8 - Ambulance" Id="2283" Qty="2"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="3"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="46"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="12"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="21"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="169"/>
+                        <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="169"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="24738"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="1999"/>
+                    </ammoList>
+                    <commander ObjectID="84" ObjectVersion="0" Name="" Aggro="75" Determination="83" Efficiency="86"
+                               Force="I Bn HQ 33rd Pz Regt" Judgement="83" Leadership="66" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1649" Name="WF - PzD - Pz V Bn Tac HQ"/>
+                    <unit name="1 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="1.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="315"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="4" MoraleLevel="61" ExperienceLevel="22"
+                          TrainingLevel="32" FitnessLevel="65" AggroLevel="74" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="53"
+                          UnitFuelLevel="39" UnitBasicsLevel="45" UnitFuelQty="8957" UnitAmmoCount="30189">
+                        <equipmentlist>
+                            <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="295"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="295"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="29599"/>
+                        </ammoList>
+                        <commander ObjectID="89" ObjectVersion="0" Name="" Aggro="81" Determination="83" Efficiency="90"
+                                   Force="1 Coy 33 Pz Regt" Judgement="83" Leadership="69" PersBio="" RankIndex="1"
+                                   Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="792" Name="WF - PzD - Pz V Coy"/>
+                    </unit>
+                    <unit name="3 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="3.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="329"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="91" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="61" ExperienceLevel="24"
+                          TrainingLevel="31" FitnessLevel="70" AggroLevel="71" StubbornnessLevel="70" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="48"
+                          UnitFuelLevel="38" UnitBasicsLevel="47" UnitFuelQty="8710" UnitAmmoCount="27276">
+                        <equipmentlist>
+                            <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="267"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="267"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="26742"/>
+                        </ammoList>
+                        <commander ObjectID="99" ObjectVersion="0" Name="" Aggro="77" Determination="76" Efficiency="88"
+                                   Force="3 Coy 33 Pz Regt" Judgement="78" Leadership="73" PersBio="" RankIndex="1"
+                                   Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="792" Name="WF - PzD - Pz V Coy"/>
+                    </unit>
+                    <unit name="1 Coy 10 Pz Gren Regt" id="-1" objectVersion="254" HumanControlled="0"
+                          Designation="1.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="19"
+                          UnitNonAFVCount="10" UnitGunCount="4" UnitSmallArmCount="192" UnitBridgeCount="0"
+                          UnitBasicsQty="911" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="85"
+                          UnitPersQty="190" PersLevel="100" CohesionLevel="100" FatigueLevel="6" MoraleLevel="66"
+                          ExperienceLevel="28" TrainingLevel="26" FitnessLevel="69" AggroLevel="65"
+                          StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="46" UnitBasicsLevel="48"
+                          UnitFuelQty="2398" UnitAmmoCount="26445">
+                        <equipmentlist>
+                            <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                            <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="10"/>
+                            <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="7"/>
+                            <equipment Name="SdKfz 251/2 - 8cm mortar" Id="585" Qty="2"/>
+                            <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="2"/>
+                            <equipment Name="SdKfz 251/9 - 7.5cm IG" Id="587" Qty="2"/>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="94"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="30"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="3"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="2cm AP" ObjectID="7" Qty="409"/>
+                            <ammo Name="2cm HE" ObjectID="10" Qty="1638"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="97"/>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="24"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="24"/>
+                            <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="48"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="20311"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="3863"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                        </ammoList>
+                        <commander ObjectID="144" ObjectVersion="0" Name="" Aggro="80" Determination="83"
+                                   Efficiency="88" Force="1 Coy 10 Pz Gren Regt" Judgement="81" Leadership="74"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1637" Name="WF - PzD - Pz Gren Coy (gp)"/>
+                    </unit>
+                </unit>
+            </unit>
+            <unit name="10 Pz Gren Regt HQ" id="-1" objectVersion="116" HumanControlled="0" Designation="10" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="9" UnitNonAFVCount="43" UnitGunCount="0"
+                  UnitSmallArmCount="140" UnitBridgeCount="0" UnitBasicsQty="1483" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="92" UnitPersQty="187" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="5" MoraleLevel="64" ExperienceLevel="30" TrainingLevel="27" FitnessLevel="68"
+                  AggroLevel="67" StubbornnessLevel="75" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="46" UnitFuelLevel="46" UnitBasicsLevel="53" UnitFuelQty="3028"
+                  UnitAmmoCount="13414">
+                <equipmentlist>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                    <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="1"/>
+                    <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="6"/>
+                    <equipment Name="SdKfz 251/11 - Field Phone" Id="2257" Qty="3"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="14"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="6"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="9"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="1"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="104"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="16"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="14"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="12082"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1326"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                </ammoList>
+                <commander ObjectID="134" ObjectVersion="0" Name="" Aggro="81" Determination="83" Efficiency="93"
+                           Force="10 Pz Gren Regt HQ" Judgement="82" Leadership="66" PersBio="" RankIndex="5"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1635" Name="WF - PzD - Pz Gren Rgt (gp) Tac HQ"/>
+                <unit name="10 Pz Gren Regt Base" id="-1" objectVersion="120" HumanControlled="0" Designation="10"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="85"
+                      UnitGunCount="0" UnitSmallArmCount="275" UnitBridgeCount="0" UnitBasicsQty="1950"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="88" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="9" MoraleLevel="62" ExperienceLevel="30" TrainingLevel="32"
+                      FitnessLevel="73" AggroLevel="70" StubbornnessLevel="71" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="53"
+                      UnitBasicsLevel="52" UnitFuelQty="6920" UnitAmmoCount="11482">
+                    <equipmentlist>
+                        <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="7"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="8"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="9"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="14"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="12"/>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="20"/>
+                        <equipment Name="LKW 2 t - tanker truck" Id="2765" Qty="15"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="5"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="8"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="12"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="250"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="9mm" ObjectID="4" Qty="431"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="11039"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="12"/>
+                    </ammoList>
+                    <commander ObjectID="194" ObjectVersion="0" Name="" Aggro="80" Determination="79" Efficiency="89"
+                               Force="10 Pz Gren Regt Base" Judgement="77" Leadership="71" PersBio="" RankIndex="5"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1667" Name="WF - PzD - Pz Gren Rgt (gp) Base"/>
+                </unit>
+                <unit name="I Bn 10 Pz Gren Regt" id="-1" objectVersion="116" HumanControlled="0" Designation="I.10"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="6" UnitNonAFVCount="6"
+                      UnitGunCount="0" UnitSmallArmCount="44" UnitBridgeCount="0" UnitBasicsQty="328"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93" UnitPersQty="43" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="6" MoraleLevel="62" ExperienceLevel="29" TrainingLevel="32"
+                      FitnessLevel="68" AggroLevel="71" StubbornnessLevel="69" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="54" UnitFuelLevel="52"
+                      UnitBasicsLevel="51" UnitFuelQty="831" UnitAmmoCount="7199">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="SdKfz 251/11 - Field Phone" Id="2257" Qty="2"/>
+                        <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="3"/>
+                        <equipment Name="SdKfz 251/8 - Ambulance" Id="2283" Qty="1"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="24"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="6"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="10"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="6217"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="978"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                    </ammoList>
+                    <commander ObjectID="139" ObjectVersion="0" Name="" Aggro="82" Determination="77" Efficiency="91"
+                               Force="I Bn 10 Pz Gren Regt" Judgement="82" Leadership="75" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1636" Name="WF - PzD - Pz Gren Bn HQ (gp)"/>
+                    <unit name="2 Coy 10 Pz Gren Regt" id="-1" objectVersion="253" HumanControlled="0"
+                          Designation="2.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="19"
+                          UnitNonAFVCount="10" UnitGunCount="4" UnitSmallArmCount="192" UnitBridgeCount="0"
+                          UnitBasicsQty="922" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93"
+                          UnitPersQty="190" PersLevel="100" CohesionLevel="100" FatigueLevel="5" MoraleLevel="63"
+                          ExperienceLevel="24" TrainingLevel="26" FitnessLevel="67" AggroLevel="71"
+                          StubbornnessLevel="74" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="48" UnitBasicsLevel="49"
+                          UnitFuelQty="2516" UnitAmmoCount="25759">
+                        <equipmentlist>
+                            <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                            <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="10"/>
+                            <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="7"/>
+                            <equipment Name="SdKfz 251/2 - 8cm mortar" Id="585" Qty="2"/>
+                            <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="2"/>
+                            <equipment Name="SdKfz 251/9 - 7.5cm IG" Id="587" Qty="2"/>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="94"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="30"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="3"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="2cm AP" ObjectID="7" Qty="399"/>
+                            <ammo Name="2cm HE" ObjectID="10" Qty="1596"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="95"/>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="23"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="23"/>
+                            <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="47"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="19783"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="3762"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                        </ammoList>
+                        <commander ObjectID="149" ObjectVersion="0" Name="" Aggro="82" Determination="85"
+                                   Efficiency="89" Force="2 Coy 10 Pz Gren Regt" Judgement="85" Leadership="72"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1637" Name="WF - PzD - Pz Gren Coy (gp)"/>
+                    </unit>
+                    <unit name="3 Coy 10 Pz Gren Regt" id="-1" objectVersion="254" HumanControlled="0"
+                          Designation="3.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="19"
+                          UnitNonAFVCount="10" UnitGunCount="4" UnitSmallArmCount="192" UnitBridgeCount="0"
+                          UnitBasicsQty="881" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="87"
+                          UnitPersQty="190" PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="67"
+                          ExperienceLevel="30" TrainingLevel="27" FitnessLevel="67" AggroLevel="71"
+                          StubbornnessLevel="70" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="47" UnitFuelLevel="53" UnitBasicsLevel="46"
+                          UnitFuelQty="2811" UnitAmmoCount="25534">
+                        <equipmentlist>
+                            <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                            <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="10"/>
+                            <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="7"/>
+                            <equipment Name="SdKfz 251/2 - 8cm mortar" Id="585" Qty="2"/>
+                            <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="2"/>
+                            <equipment Name="SdKfz 251/9 - 7.5cm IG" Id="587" Qty="2"/>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="94"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="30"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="3"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="2cm AP" ObjectID="7" Qty="395"/>
+                            <ammo Name="2cm HE" ObjectID="10" Qty="1582"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="94"/>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="23"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="23"/>
+                            <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="47"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="19610"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="3729"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                        </ammoList>
+                        <commander ObjectID="154" ObjectVersion="0" Name="" Aggro="81" Determination="75"
+                                   Efficiency="88" Force="3 Coy 10 Pz Gren Regt" Judgement="83" Leadership="67"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1637" Name="WF - PzD - Pz Gren Coy (gp)"/>
+                    </unit>
+                    <unit name="IG Pl I Bn 10 Pz Gren Regt" id="-1" objectVersion="155" HumanControlled="0"
+                          Designation="I.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="2"
+                          UnitNonAFVCount="6" UnitGunCount="6" UnitSmallArmCount="19" UnitBridgeCount="0"
+                          UnitBasicsQty="154" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93"
+                          UnitPersQty="32" PersLevel="100" CohesionLevel="100" FatigueLevel="5" MoraleLevel="60"
+                          ExperienceLevel="30" TrainingLevel="34" FitnessLevel="75" AggroLevel="66"
+                          StubbornnessLevel="71" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="37" UnitBasicsLevel="48"
+                          UnitFuelQty="640" UnitAmmoCount="1817">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="1"/>
+                            <equipment Name="SdKfz 251/9 - 7.5cm IG" Id="587" Qty="6"/>
+                            <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="1"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="4"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="11"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="3"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="1"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="71"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="71"/>
+                            <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="142"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="589"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="941"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="3"/>
+                        </ammoList>
+                        <commander ObjectID="159" ObjectVersion="0" Name="" Aggro="81" Determination="84"
+                                   Efficiency="91" Force="IG Pl I Bn 10 Pz Gren Regt" Judgement="82" Leadership="73"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1640" Name="WF - PzD - 7.5cm SdKfz 251/9 Plt"/>
+                    </unit>
+                    <unit name="Mortar Pl I Bn 10 Pz Gren Regt" id="-1" objectVersion="92" HumanControlled="0"
+                          Designation="I.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="7"
+                          UnitNonAFVCount="3" UnitGunCount="4" UnitSmallArmCount="31" UnitBridgeCount="0"
+                          UnitBasicsQty="240" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90"
+                          UnitPersQty="46" PersLevel="100" CohesionLevel="100" FatigueLevel="3" MoraleLevel="61"
+                          ExperienceLevel="24" TrainingLevel="31" FitnessLevel="74" AggroLevel="68"
+                          StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="51" UnitFuelLevel="40" UnitBasicsLevel="52"
+                          UnitFuelQty="696" UnitAmmoCount="1912">
+                        <equipmentlist>
+                            <equipment Name="LKW 3 t - truck" Id="569" Qty="1"/>
+                            <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="7"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="2"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="18"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="13"/>
+                            <equipment Name="12cm GrW 42" Id="507" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="552"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1197"/>
+                            <ammo Name="12cm HE" ObjectID="97" Qty="163"/>
+                        </ammoList>
+                        <commander ObjectID="164" ObjectVersion="0" Name="" Aggro="82" Determination="78"
+                                   Efficiency="93" Force="Mortar Pl I Bn 10 Pz Gren Regt" Judgement="79" Leadership="74"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="2412" Name="WF - PzD - 12cm GrW 42 Plt (gp)"/>
+                    </unit>
+                    <unit name="2 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="2.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="340"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="88" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="1" MoraleLevel="66" ExperienceLevel="22"
+                          TrainingLevel="25" FitnessLevel="67" AggroLevel="75" StubbornnessLevel="68" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="53"
+                          UnitFuelLevel="43" UnitBasicsLevel="49" UnitFuelQty="9880" UnitAmmoCount="30525">
+                        <equipmentlist>
+                            <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="299"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="299"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="29927"/>
+                        </ammoList>
+                        <commander ObjectID="94" ObjectVersion="0" Name="" Aggro="82" Determination="83" Efficiency="91"
+                                   Force="2 Coy 33 Pz Regt" Judgement="81" Leadership="72" PersBio="" RankIndex="1"
+                                   Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="792" Name="WF - PzD - Pz V Coy"/>
+                    </unit>
+                </unit>
+                <unit name="II Bn HQ 10 Pz Gren Regt" id="-1" objectVersion="107" HumanControlled="0"
+                      Designation="II.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                      UnitNonAFVCount="13" UnitGunCount="0" UnitSmallArmCount="42" UnitBridgeCount="0"
+                      UnitBasicsQty="312" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92"
+                      UnitPersQty="42" PersLevel="100" CohesionLevel="100" FatigueLevel="1" MoraleLevel="65"
+                      ExperienceLevel="27" TrainingLevel="34" FitnessLevel="65" AggroLevel="66" StubbornnessLevel="70"
+                      UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="51"
+                      UnitFuelLevel="51" UnitBasicsLevel="50" UnitFuelQty="504" UnitAmmoCount="1292">
+                    <equipmentlist>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="4"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="5"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="36"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="2"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="1104"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="184"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                    </ammoList>
+                    <commander ObjectID="169" ObjectVersion="0" Name="" Aggro="81" Determination="81" Efficiency="89"
+                               Force="II Bn HQ 10 Pz Gren Regt" Judgement="79" Leadership="73" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1642" Name="WF - PzD - Pz Gren Bn HQ (mot)"/>
+                    <unit name="5 Coy 10 Pz Gren Regt" id="-1" objectVersion="164" HumanControlled="0"
+                          Designation="5.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="937" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="86"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="9" MoraleLevel="66"
+                          ExperienceLevel="27" TrainingLevel="33" FitnessLevel="68" AggroLevel="74"
+                          StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="54" UnitFuelLevel="55" UnitBasicsLevel="48"
+                          UnitFuelQty="1367" UnitAmmoCount="20124">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="17751"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="2233"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="9"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="6"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="107"/>
+                        </ammoList>
+                        <commander ObjectID="174" ObjectVersion="0" Name="" Aggro="82" Determination="83"
+                                   Efficiency="92" Force="5 Coy 10 Pz Gren Regt" Judgement="80" Leadership="73"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="6 Coy 10 Pz Gren Regt" id="-1" objectVersion="169" HumanControlled="0"
+                          Designation="6.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="925" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="88"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="4" MoraleLevel="60"
+                          ExperienceLevel="29" TrainingLevel="34" FitnessLevel="72" AggroLevel="70"
+                          StubbornnessLevel="69" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="45" UnitFuelLevel="54" UnitBasicsLevel="47"
+                          UnitFuelQty="1347" UnitAmmoCount="16858">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="14867"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1870"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="90"/>
+                        </ammoList>
+                        <commander ObjectID="179" ObjectVersion="0" Name="" Aggro="78" Determination="79"
+                                   Efficiency="88" Force="6 Coy 10 Pz Gren Regt" Judgement="79" Leadership="74"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="7 Coy 10 Pz Gren Regt" id="-1" objectVersion="168" HumanControlled="0"
+                          Designation="7.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="1062" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="62"
+                          ExperienceLevel="20" TrainingLevel="33" FitnessLevel="66" AggroLevel="74"
+                          StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="47" UnitFuelLevel="49" UnitBasicsLevel="54"
+                          UnitFuelQty="1216" UnitAmmoCount="17386">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="15333"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1929"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="93"/>
+                        </ammoList>
+                        <commander ObjectID="184" ObjectVersion="0" Name="" Aggro="84" Determination="85"
+                                   Efficiency="88" Force="7 Coy 10 Pz Gren Regt" Judgement="84" Leadership="74"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="Mortar Pl II Bn 10 Pz Gren Regt" id="-1" objectVersion="92" HumanControlled="0"
+                          Designation="II.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="8" UnitGunCount="4" UnitSmallArmCount="46" UnitBridgeCount="0"
+                          UnitBasicsQty="232" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="91"
+                          UnitPersQty="46" PersLevel="100" CohesionLevel="100" FatigueLevel="9" MoraleLevel="61"
+                          ExperienceLevel="23" TrainingLevel="25" FitnessLevel="65" AggroLevel="68"
+                          StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="45" UnitBasicsLevel="51"
+                          UnitFuelQty="783" UnitAmmoCount="5540">
+                        <equipmentlist>
+                            <equipment Name="LKW 3 t - truck" Id="569" Qty="8"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="26"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="13"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="7"/>
+                            <equipment Name="12cm GrW 42" Id="507" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="4227"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1155"/>
+                            <ammo Name="12cm HE" ObjectID="97" Qty="158"/>
+                        </ammoList>
+                        <commander ObjectID="189" ObjectVersion="0" Name="" Aggro="85" Determination="76"
+                                   Efficiency="94" Force="Mortar Pl II Bn 10 Pz Gren Regt" Judgement="78"
+                                   Leadership="74" PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1639" Name="WF - PzD - 12cm GrW 42 Plt (mot)"/>
+                    </unit>
+                    <unit name="4 Coy 33 Pz Regt" id="-1" objectVersion="81" HumanControlled="0" Designation="4.33"
+                          History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14" UnitNonAFVCount="0"
+                          UnitGunCount="0" UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="366"
+                          ActualResupplyRate="100" UnitSuppression="0" StaffQuality="95" UnitPersQty="70"
+                          PersLevel="100" CohesionLevel="100" FatigueLevel="7" MoraleLevel="64" ExperienceLevel="24"
+                          TrainingLevel="29" FitnessLevel="66" AggroLevel="72" StubbornnessLevel="72" UnitAFVLevel="100"
+                          UnitNonAFVLevel="0" UnitGunLevel="0" UnitSmallArmLevel="0" UnitAmmoLevel="48"
+                          UnitFuelLevel="39" UnitBasicsLevel="52" UnitFuelQty="9116" UnitAmmoCount="27428">
+                        <equipmentlist>
+                            <equipment Name="PzKfw V Ausf G - Panther" Id="619" Qty="14"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="268"/>
+                            <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="268"/>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="26892"/>
+                        </ammoList>
+                        <commander ObjectID="104" ObjectVersion="0" Name="" Aggro="85" Determination="82"
+                                   Efficiency="89" Force="4 Coy 33 Pz Regt" Judgement="78" Leadership="69" PersBio=""
+                                   RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="792" Name="WF - PzD - Pz V Coy"/>
+                    </unit>
+                </unit>
+                <unit name="9 (IG) Coy 10 Pz Gren Regt" id="-1" objectVersion="136" HumanControlled="0"
+                      Designation="9.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5"
+                      UnitNonAFVCount="34" UnitGunCount="6" UnitSmallArmCount="125" UnitBridgeCount="0"
+                      UnitBasicsQty="710" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93"
+                      UnitPersQty="142" PersLevel="100" CohesionLevel="100" FatigueLevel="4" MoraleLevel="65"
+                      ExperienceLevel="22" TrainingLevel="28" FitnessLevel="67" AggroLevel="69" StubbornnessLevel="72"
+                      UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100"
+                      UnitAmmoLevel="50" UnitFuelLevel="52" UnitBasicsLevel="50" UnitFuelQty="6271"
+                      UnitAmmoCount="9833">
+                    <equipmentlist>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="5"/>
+                        <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="3"/>
+                        <equipment Name="SdKfz 138/1 Ausf M - Grille" Id="1777" Qty="6"/>
+                        <equipment Name="SdKfz 8 - s ZgKw 12t" Id="2323" Qty="1"/>
+                        <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="1"/>
+                        <equipment Name="SdKfz 251/11 - Field Phone" Id="2257" Qty="1"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="8"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="9"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="92"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="8"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="22"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="3"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="15cm IG HE" ObjectID="1684" Qty="90"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="7760"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="1980"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="3"/>
+                    </ammoList>
+                    <commander ObjectID="199" ObjectVersion="0" Name="" Aggro="83" Determination="77" Efficiency="85"
+                               Force="9 (IG) Coy 10 Pz Gren Regt" Judgement="77" Leadership="71" PersBio=""
+                               RankIndex="2" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1644" Name="WF - PzD - 15cm Grille Coy"/>
+                </unit>
+                <unit name="10 (Pion) Coy 10 Pz Gren Regt" id="-1" objectVersion="199" HumanControlled="0"
+                      Designation="10.10" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="14"
+                      UnitNonAFVCount="41" UnitGunCount="0" UnitSmallArmCount="279" UnitBridgeCount="0"
+                      UnitBasicsQty="1271" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="93"
+                      UnitPersQty="254" PersLevel="100" CohesionLevel="100" FatigueLevel="2" MoraleLevel="64"
+                      ExperienceLevel="27" TrainingLevel="32" FitnessLevel="74" AggroLevel="69" StubbornnessLevel="67"
+                      UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="96"
+                      UnitAmmoLevel="50" UnitFuelLevel="47" UnitBasicsLevel="50" UnitFuelQty="4115"
+                      UnitAmmoCount="28597">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="6"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="11"/>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="17"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="5"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                        <equipment Name="SdKfz 251/16 - Flamethrowers" Id="2237" Qty="6"/>
+                        <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="1"/>
+                        <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="1"/>
+                        <equipment Name="SdKfz 251/7 - Engineer" Id="2272" Qty="6"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="168"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="39"/>
+                        <equipment Name="7.92mm sMG 42" Id="535" Qty="2"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="36"/>
+                        <equipment Name="Flamethrower (inf)" Id="376" Qty="16"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="FT fuel - tank" ObjectID="373" Qty="229"/>
+                        <ammo Name="2cm AP" ObjectID="7" Qty="57"/>
+                        <ammo Name="2cm HE" ObjectID="10" Qty="229"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="24942"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="3100"/>
+                        <ammo Name="FT fuel - inf" ObjectID="1177" Qty="22"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                    </ammoList>
+                    <commander ObjectID="204" ObjectVersion="0" Name="" Aggro="80" Determination="83" Efficiency="92"
+                               Force="10 (Pion) Coy 10 Pz Gren Regt" Judgement="79" Leadership="71" PersBio=""
+                               RankIndex="2" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1645"
+                           Name="WF - PzD - Pz Gren-Pion Coy (gp) / PzGr Rgt (gp)"/>
+                </unit>
+                <unit name="4 Bty 287 Flak Bn" id="-1" objectVersion="188" HumanControlled="0" Designation="4.287"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="46"
+                      UnitGunCount="12" UnitSmallArmCount="185" UnitBridgeCount="0" UnitBasicsQty="892"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="94" UnitPersQty="185" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="2" MoraleLevel="61" ExperienceLevel="29" TrainingLevel="29"
+                      FitnessLevel="71" AggroLevel="71" StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="49"
+                      UnitBasicsLevel="48" UnitFuelQty="3421" UnitAmmoCount="16824">
+                    <equipmentlist>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="9"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="1"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="SdKfz 11 - le ZgKw 3t" Id="595" Qty="12"/>
+                        <equipment Name="SdKfz 7/1 - 2cm Flakvierling" Id="603" Qty="3"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="7"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="10"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="165"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="12"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="4"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                        <equipment Name="3.7cm Flak 43" Id="401" Qty="9"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="2cm AP" ObjectID="7" Qty="291"/>
+                        <ammo Name="2cm HE" ObjectID="10" Qty="4368"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="6746"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="1048"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                        <ammo Name="3.7cm FlaK AP" ObjectID="13" Qty="436"/>
+                        <ammo Name="3.7cm FlaK HE" ObjectID="16" Qty="3931"/>
+                    </ammoList>
+                    <commander ObjectID="354" ObjectVersion="0" Name="" Aggro="78" Determination="85" Efficiency="90"
+                               Force="4 Bty 287 Flak Bn" Judgement="85" Leadership="65" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1657"
+                           Name="WF - PzD - 3,7cm Flak 43 &amp; SdKfz 7/1 Bty"/>
+                </unit>
+            </unit>
+            <unit name="11 Pz Gren Regt HQ" id="-1" objectVersion="113" HumanControlled="0" Designation="11" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="58" UnitGunCount="0"
+                  UnitSmallArmCount="154" UnitBridgeCount="0" UnitBasicsQty="1206" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="93" UnitPersQty="166" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="0" MoraleLevel="66" ExperienceLevel="26" TrainingLevel="31" FitnessLevel="66"
+                  AggroLevel="68" StubbornnessLevel="75" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="50" UnitFuelLevel="50" UnitBasicsLevel="48" UnitFuelQty="2395"
+                  UnitAmmoCount="6835">
+                <equipmentlist>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="6"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="17"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="8"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="16"/>
+                    <equipment Name="m PKW - car" Id="2282" Qty="2"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="9"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="135"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="9"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="4"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="6023"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="806"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                </ammoList>
+                <commander ObjectID="209" ObjectVersion="0" Name="" Aggro="83" Determination="84" Efficiency="89"
+                           Force="11 Pz Gren Regt HQ" Judgement="82" Leadership="72" PersBio="" RankIndex="5"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1638" Name="WF - PzD - Pz Gren Rgt (mot) Tac HQ"/>
+                <unit name="11 Pz Gren Regt Base" id="-1" objectVersion="118" HumanControlled="0" Designation="11"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="76"
+                      UnitGunCount="0" UnitSmallArmCount="234" UnitBridgeCount="0" UnitBasicsQty="2025"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="85" UnitPersQty="250" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="9" MoraleLevel="61" ExperienceLevel="22" TrainingLevel="30"
+                      FitnessLevel="74" AggroLevel="72" StubbornnessLevel="69" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="50" UnitFuelLevel="46"
+                      UnitBasicsLevel="54" UnitFuelQty="4647" UnitAmmoCount="10792">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="14"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="14"/>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="20"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="8"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="4"/>
+                        <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="1"/>
+                        <equipment Name="LKW 2 t - tanker truck" Id="2765" Qty="15"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="208"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="8"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="6"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="12"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="10240"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="540"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="12"/>
+                    </ammoList>
+                    <commander ObjectID="214" ObjectVersion="0" Name="" Aggro="81" Determination="83" Efficiency="85"
+                               Force="11 Pz Gren Regt Base" Judgement="84" Leadership="73" PersBio="" RankIndex="5"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1668" Name="WF - PzD - Pz Gren Rgt (mot) Base"/>
+                </unit>
+                <unit name="I Bn HQ 11 Pz Gren Regt " id="-1" objectVersion="107" HumanControlled="0" Designation="I.11"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="13"
+                      UnitGunCount="0" UnitSmallArmCount="42" UnitBridgeCount="0" UnitBasicsQty="302"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90" UnitPersQty="42" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="4" MoraleLevel="63" ExperienceLevel="22" TrainingLevel="34"
+                      FitnessLevel="73" AggroLevel="67" StubbornnessLevel="74" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="49"
+                      UnitBasicsLevel="48" UnitFuelQty="486" UnitAmmoCount="1237">
+                    <equipmentlist>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="4"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="5"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="36"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="2"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="1057"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="176"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                    </ammoList>
+                    <commander ObjectID="219" ObjectVersion="0" Name="" Aggro="84" Determination="84" Efficiency="90"
+                               Force="I Bn HQ 11 Pz Gren Regt " Judgement="79" Leadership="69" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1642" Name="WF - PzD - Pz Gren Bn HQ (mot)"/>
+                    <unit name="1 Coy 11 Pz Gren Regt" id="-1" objectVersion="167" HumanControlled="0"
+                          Designation="1.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="918" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="91"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="2" MoraleLevel="63"
+                          ExperienceLevel="28" TrainingLevel="27" FitnessLevel="69" AggroLevel="70"
+                          StubbornnessLevel="67" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="50" UnitFuelLevel="51" UnitBasicsLevel="47"
+                          UnitFuelQty="1279" UnitAmmoCount="18680">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="16474"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="2073"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="9"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="6"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="100"/>
+                        </ammoList>
+                        <commander ObjectID="224" ObjectVersion="0" Name="" Aggro="79" Determination="76"
+                                   Efficiency="94" Force="1 Coy 11 Pz Gren Regt" Judgement="78" Leadership="69"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="2 Coy 11 Pz Gren Regt" id="-1" objectVersion="165" HumanControlled="0"
+                          Designation="2.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="945" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="94"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="7" MoraleLevel="65"
+                          ExperienceLevel="20" TrainingLevel="33" FitnessLevel="66" AggroLevel="73"
+                          StubbornnessLevel="65" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="48" UnitBasicsLevel="48"
+                          UnitFuelQty="1196" UnitAmmoCount="17886">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="15775"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1985"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="95"/>
+                        </ammoList>
+                        <commander ObjectID="229" ObjectVersion="0" Name="" Aggro="81" Determination="82"
+                                   Efficiency="86" Force="2 Coy 11 Pz Gren Regt" Judgement="79" Leadership="72"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="3 Coy 11 Pz Gren Regt" id="-1" objectVersion="163" HumanControlled="0"
+                          Designation="3.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="1081" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="94"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="7" MoraleLevel="66"
+                          ExperienceLevel="27" TrainingLevel="32" FitnessLevel="75" AggroLevel="68"
+                          StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="51" UnitFuelLevel="54" UnitBasicsLevel="55"
+                          UnitFuelQty="1352" UnitAmmoCount="18997">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="16755"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="2108"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="9"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="6"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="101"/>
+                        </ammoList>
+                        <commander ObjectID="234" ObjectVersion="0" Name="" Aggro="79" Determination="79"
+                                   Efficiency="95" Force="3 Coy 11 Pz Gren Regt" Judgement="83" Leadership="68"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="Mortar Pl I Bn 11 Pz Gren Regt" id="-1" objectVersion="92" HumanControlled="0"
+                          Designation="I.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="8" UnitGunCount="4" UnitSmallArmCount="46" UnitBridgeCount="0"
+                          UnitBasicsQty="221" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="89"
+                          UnitPersQty="46" PersLevel="100" CohesionLevel="100" FatigueLevel="0" MoraleLevel="61"
+                          ExperienceLevel="25" TrainingLevel="34" FitnessLevel="66" AggroLevel="67"
+                          StubbornnessLevel="69" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="53" UnitFuelLevel="54" UnitBasicsLevel="48"
+                          UnitFuelQty="932" UnitAmmoCount="5896">
+                        <equipmentlist>
+                            <equipment Name="LKW 3 t - truck" Id="569" Qty="8"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="26"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="13"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="7"/>
+                            <equipment Name="12cm GrW 42" Id="507" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="4499"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1229"/>
+                            <ammo Name="12cm HE" ObjectID="97" Qty="168"/>
+                        </ammoList>
+                        <commander ObjectID="239" ObjectVersion="0" Name="" Aggro="77" Determination="85"
+                                   Efficiency="92" Force="Mortar Pl I Bn 11 Pz Gren Regt" Judgement="83" Leadership="74"
+                                   PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1639" Name="WF - PzD - 12cm GrW 42 Plt (mot)"/>
+                    </unit>
+                </unit>
+                <unit name="II Bn HQ 11 Pz Gren Regt " id="-1" objectVersion="108" HumanControlled="0"
+                      Designation="II.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                      UnitNonAFVCount="13" UnitGunCount="0" UnitSmallArmCount="42" UnitBridgeCount="0"
+                      UnitBasicsQty="340" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92"
+                      UnitPersQty="42" PersLevel="100" CohesionLevel="100" FatigueLevel="7" MoraleLevel="59"
+                      ExperienceLevel="27" TrainingLevel="33" FitnessLevel="70" AggroLevel="73" StubbornnessLevel="66"
+                      UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="53"
+                      UnitFuelLevel="50" UnitBasicsLevel="54" UnitFuelQty="495" UnitAmmoCount="1336">
+                    <equipmentlist>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="4"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="5"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="36"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="2"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="1142"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="190"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                    </ammoList>
+                    <commander ObjectID="244" ObjectVersion="0" Name="" Aggro="82" Determination="82" Efficiency="94"
+                               Force="II Bn HQ 11 Pz Gren Regt " Judgement="84" Leadership="69" PersBio="" RankIndex="4"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1642" Name="WF - PzD - Pz Gren Bn HQ (mot)"/>
+                    <unit name="5 Coy 11 Pz Gren Regt" id="-1" objectVersion="165" HumanControlled="0"
+                          Designation="5.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="925" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="87"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="5" MoraleLevel="65"
+                          ExperienceLevel="20" TrainingLevel="26" FitnessLevel="68" AggroLevel="74"
+                          StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="45" UnitFuelLevel="48" UnitBasicsLevel="47"
+                          UnitFuelQty="1193" UnitAmmoCount="16930">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="14931"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1878"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="90"/>
+                        </ammoList>
+                        <commander ObjectID="249" ObjectVersion="0" Name="" Aggro="76" Determination="83"
+                                   Efficiency="92" Force="5 Coy 11 Pz Gren Regt" Judgement="84" Leadership="67"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="6 Coy 11 Pz Gren Regt" id="-1" objectVersion="161" HumanControlled="0"
+                          Designation="6.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="949" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="4" MoraleLevel="67"
+                          ExperienceLevel="25" TrainingLevel="33" FitnessLevel="65" AggroLevel="67"
+                          StubbornnessLevel="65" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="51" UnitFuelLevel="48" UnitBasicsLevel="48"
+                          UnitFuelQty="1201" UnitAmmoCount="18870">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="16642"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="2094"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="9"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="6"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="101"/>
+                        </ammoList>
+                        <commander ObjectID="254" ObjectVersion="0" Name="" Aggro="76" Determination="77"
+                                   Efficiency="95" Force="6 Coy 11 Pz Gren Regt" Judgement="83" Leadership="70"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="7 Coy 11 Pz Gren Regt" id="-1" objectVersion="167" HumanControlled="0"
+                          Designation="7.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="28" UnitGunCount="2" UnitSmallArmCount="181" UnitBridgeCount="0"
+                          UnitBasicsQty="949" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90"
+                          UnitPersQty="197" PersLevel="100" CohesionLevel="100" FatigueLevel="6" MoraleLevel="62"
+                          ExperienceLevel="25" TrainingLevel="28" FitnessLevel="70" AggroLevel="65"
+                          StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="46" UnitFuelLevel="50" UnitBasicsLevel="48"
+                          UnitFuelQty="1263" UnitAmmoCount="17250">
+                        <equipmentlist>
+                            <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                            <equipment Name="le PKW - car" Id="23" Qty="11"/>
+                            <equipment Name="LKW 2 t - truck" Id="567" Qty="13"/>
+                            <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="115"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="23"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                            <equipment Name="7.92mm sMG 42" Id="535" Qty="4"/>
+                            <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                            <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                            <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="15213"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1914"/>
+                            <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                            <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                            <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                            <ammo Name="8cm HE" ObjectID="91" Qty="92"/>
+                        </ammoList>
+                        <commander ObjectID="259" ObjectVersion="0" Name="" Aggro="81" Determination="77"
+                                   Efficiency="89" Force="7 Coy 11 Pz Gren Regt" Judgement="77" Leadership="67"
+                                   PersBio="" RankIndex="2" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1641" Name="WF - PzD - Pz Gren Coy (mot)"/>
+                    </unit>
+                    <unit name="Mortar Pl II Bn 11 Pz Gren Regt" id="-1" objectVersion="92" HumanControlled="0"
+                          Designation="II.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                          UnitNonAFVCount="8" UnitGunCount="4" UnitSmallArmCount="46" UnitBridgeCount="0"
+                          UnitBasicsQty="247" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="87"
+                          UnitPersQty="46" PersLevel="100" CohesionLevel="100" FatigueLevel="10" MoraleLevel="61"
+                          ExperienceLevel="25" TrainingLevel="33" FitnessLevel="72" AggroLevel="71"
+                          StubbornnessLevel="66" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                          UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="47" UnitBasicsLevel="54"
+                          UnitFuelQty="815" UnitAmmoCount="5332">
+                        <equipmentlist>
+                            <equipment Name="LKW 3 t - truck" Id="569" Qty="8"/>
+                            <equipment Name="7.92mm Kar 98 k" Id="43" Qty="26"/>
+                            <equipment Name="9mm MP 40" Id="529" Qty="13"/>
+                            <equipment Name="7.92mm leMG 42" Id="533" Qty="7"/>
+                            <equipment Name="12cm GrW 42" Id="507" Qty="4"/>
+                        </equipmentlist>
+                        <ammoList>
+                            <ammo Name="7.92mm" ObjectID="1" Qty="4068"/>
+                            <ammo Name="9mm" ObjectID="4" Qty="1112"/>
+                            <ammo Name="12cm HE" ObjectID="97" Qty="152"/>
+                        </ammoList>
+                        <commander ObjectID="264" ObjectVersion="0" Name="" Aggro="77" Determination="78"
+                                   Efficiency="89" Force="Mortar Pl II Bn 11 Pz Gren Regt" Judgement="75"
+                                   Leadership="75" PersBio="" RankIndex="1" Title="CO"/>
+                        <estab EstabName="BFTBEstab.coe" ObjectId="1639" Name="WF - PzD - 12cm GrW 42 Plt (mot)"/>
+                    </unit>
+                </unit>
+                <unit name="9 (IG) Coy 11 Pz Gren Regt" id="-1" objectVersion="132" HumanControlled="0"
+                      Designation="9.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                      UnitNonAFVCount="27" UnitGunCount="4" UnitSmallArmCount="96" UnitBridgeCount="0"
+                      UnitBasicsQty="543" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="87"
+                      UnitPersQty="102" PersLevel="100" CohesionLevel="100" FatigueLevel="8" MoraleLevel="63"
+                      ExperienceLevel="25" TrainingLevel="28" FitnessLevel="67" AggroLevel="68" StubbornnessLevel="73"
+                      UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100"
+                      UnitAmmoLevel="54" UnitFuelLevel="50" UnitBasicsLevel="53" UnitFuelQty="1997"
+                      UnitAmmoCount="4428">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="6"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="1"/>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="6"/>
+                        <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="4"/>
+                        <equipment Name="SdKfz 11 - le ZgKw 3t" Id="595" Qty="8"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="81"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="7"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                        <equipment Name="15cm IG 33" Id="2228" Qty="4"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="3682"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="676"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                        <ammo Name="15cm IG HE" ObjectID="1684" Qty="64"/>
+                    </ammoList>
+                    <commander ObjectID="269" ObjectVersion="0" Name="" Aggro="84" Determination="76" Efficiency="90"
+                               Force="9 (IG) Coy 11 Pz Gren Regt" Judgement="77" Leadership="73" PersBio=""
+                               RankIndex="2" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2345" Name="WF - PzD - 15cm IG 33 Coy (mot)"/>
+                </unit>
+                <unit name="10 (Pion) Coy 11 Pz Gren Regt" id="-1" objectVersion="154" HumanControlled="0"
+                      Designation="10.11" History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0"
+                      UnitNonAFVCount="39" UnitGunCount="2" UnitSmallArmCount="223" UnitBridgeCount="0"
+                      UnitBasicsQty="1079" ActualResupplyRate="100" UnitSuppression="0" StaffQuality="85"
+                      UnitPersQty="217" PersLevel="100" CohesionLevel="100" FatigueLevel="6" MoraleLevel="65"
+                      ExperienceLevel="20" TrainingLevel="30" FitnessLevel="74" AggroLevel="74" StubbornnessLevel="70"
+                      UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100" UnitSmallArmLevel="100"
+                      UnitAmmoLevel="48" UnitFuelLevel="50" UnitBasicsLevel="50" UnitFuelQty="2592"
+                      UnitAmmoCount="14473">
+                    <equipmentlist>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="17"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="5"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="3"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="161"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="24"/>
+                        <equipment Name="Flamethrower (inf)" Id="376" Qty="6"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                        <equipment Name="7.92mm sMG 42" Id="535" Qty="2"/>
+                        <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="12"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="12284"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="2068"/>
+                        <ammo Name="FT fuel - inf" ObjectID="1177" Qty="8"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                        <ammo Name="8cm HE" ObjectID="91" Qty="95"/>
+                    </ammoList>
+                    <commander ObjectID="274" ObjectVersion="0" Name="" Aggro="78" Determination="83" Efficiency="87"
+                               Force="10 (Pion) Coy 11 Pz Gren Regt" Judgement="77" Leadership="72" PersBio=""
+                               RankIndex="2" Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1646"
+                           Name="WF - PzD - Pz Gren-Pion Coy (mot) / PzGr Rgt (mot)"/>
+                </unit>
+                <unit name="3 Bty 287 Flak Bn" id="-1" objectVersion="184" HumanControlled="0" Designation="3.287"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="46"
+                      UnitGunCount="12" UnitSmallArmCount="185" UnitBridgeCount="0" UnitBasicsQty="956"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92" UnitPersQty="185" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="9" MoraleLevel="66" ExperienceLevel="25" TrainingLevel="26"
+                      FitnessLevel="70" AggroLevel="67" StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100"
+                      UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="53" UnitFuelLevel="51"
+                      UnitBasicsLevel="52" UnitFuelQty="3527" UnitAmmoCount="18389">
+                    <equipmentlist>
+                        <equipment Name="LKW 3 t - truck" Id="569" Qty="9"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="1"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="SdKfz 11 - le ZgKw 3t" Id="595" Qty="12"/>
+                        <equipment Name="SdKfz 7/1 - 2cm Flakvierling" Id="603" Qty="3"/>
+                        <equipment Name="LKW 2 t - truck" Id="567" Qty="7"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="10"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="165"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="12"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="4"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                        <equipment Name="3.7cm Flak 43" Id="401" Qty="9"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="2cm AP" ObjectID="7" Qty="318"/>
+                        <ammo Name="2cm HE" ObjectID="10" Qty="4774"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="7374"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="1145"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                        <ammo Name="3.7cm FlaK AP" ObjectID="13" Qty="477"/>
+                        <ammo Name="3.7cm FlaK HE" ObjectID="16" Qty="4297"/>
+                    </ammoList>
+                    <commander ObjectID="349" ObjectVersion="0" Name="" Aggro="80" Determination="84" Efficiency="89"
+                               Force="3 Bty 287 Flak Bn" Judgement="83" Leadership="75" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1657"
+                           Name="WF - PzD - 3,7cm Flak 43 &amp; SdKfz 7/1 Bty"/>
+                </unit>
+            </unit>
+            <unit name="1 Bty 102 Pz Art Regt" id="-1" objectVersion="176" HumanControlled="0" Designation="1.102"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="20" UnitGunCount="7"
+                  UnitSmallArmCount="72" UnitBridgeCount="0" UnitBasicsQty="450" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="92" UnitPersQty="98" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="5" MoraleLevel="63" ExperienceLevel="26" TrainingLevel="34" FitnessLevel="72"
+                  AggroLevel="72" StubbornnessLevel="66" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="52" UnitFuelLevel="50" UnitBasicsLevel="46" UnitFuelQty="5172"
+                  UnitAmmoCount="13836">
+                <equipmentlist>
+                    <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="3"/>
+                    <equipment Name="SdKfz 124 - Wespe" Id="1774" Qty="6"/>
+                    <equipment Name="SdKfz 124 - Ammo Carrier" Id="2234" Qty="2"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="9"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="5"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="18"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="46"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="1"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="10.5cm H AP" ObjectID="106" Qty="31"/>
+                    <ammo Name="10.5cm H HE" ObjectID="103" Qty="280"/>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="10795"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1684"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="104"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="936"/>
+                </ammoList>
+                <commander ObjectID="279" ObjectVersion="0" Name="" Aggro="79" Determination="83" Efficiency="88"
+                           Force="1 Bty 102 Pz Art Regt" Judgement="79" Leadership="66" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1682" Name="WF - PzD - 10,5cm Wespe Bty"/>
+            </unit>
+            <unit name="2 Bty 102 Pz Art Regt" id="-1" objectVersion="176" HumanControlled="0" Designation="2.102"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="20" UnitGunCount="7"
+                  UnitSmallArmCount="72" UnitBridgeCount="0" UnitBasicsQty="442" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="90" UnitPersQty="98" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="0" MoraleLevel="63" ExperienceLevel="29" TrainingLevel="32" FitnessLevel="66"
+                  AggroLevel="67" StubbornnessLevel="65" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="45" UnitFuelLevel="52" UnitBasicsLevel="45" UnitFuelQty="5386"
+                  UnitAmmoCount="12025">
+                <equipmentlist>
+                    <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="3"/>
+                    <equipment Name="SdKfz 124 - Wespe" Id="1774" Qty="6"/>
+                    <equipment Name="SdKfz 124 - Ammo Carrier" Id="2234" Qty="2"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="9"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="5"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="18"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="46"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="1"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="10.5cm H AP" ObjectID="106" Qty="27"/>
+                    <ammo Name="10.5cm H HE" ObjectID="103" Qty="244"/>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="9381"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1464"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="90"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="813"/>
+                </ammoList>
+                <commander ObjectID="284" ObjectVersion="0" Name="" Aggro="78" Determination="82" Efficiency="93"
+                           Force="2 Bty 102 Pz Art Regt" Judgement="83" Leadership="69" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1682" Name="WF - PzD - 10,5cm Wespe Bty"/>
+            </unit>
+            <unit name="3 Bty 102 Pz Art Regt" id="-1" objectVersion="176" HumanControlled="0" Designation="3.102"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="5" UnitNonAFVCount="20" UnitGunCount="7"
+                  UnitSmallArmCount="82" UnitBridgeCount="0" UnitBasicsQty="648" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="94" UnitPersQty="119" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="10" MoraleLevel="63" ExperienceLevel="29" TrainingLevel="28" FitnessLevel="66"
+                  AggroLevel="68" StubbornnessLevel="70" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="54" UnitFuelLevel="47" UnitBasicsLevel="55" UnitFuelQty="4853"
+                  UnitAmmoCount="14862">
+                <equipmentlist>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="5"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="9"/>
+                    <equipment Name="SdKfz 165 - Ammo Carrier" Id="2235" Qty="2"/>
+                    <equipment Name="SdKfz 165 - Hummel" Id="1775" Qty="6"/>
+                    <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="3"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="1"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="50"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="24"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="11248"/>
+                    <ammo Name="15cm FH AP" ObjectID="1042" Qty="16"/>
+                    <ammo Name="15cm FH HE" ObjectID="112" Qty="208"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="107"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="964"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="2313"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                </ammoList>
+                <commander ObjectID="289" ObjectVersion="0" Name="" Aggro="78" Determination="82" Efficiency="93"
+                           Force="3 Bty 102 Pz Art Regt" Judgement="77" Leadership="67" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1655" Name="WF - PzD - 15cm Hummel Bty"/>
+            </unit>
+            <unit name="II Bn 102 Pz Art Regt" id="-1" objectVersion="187" HumanControlled="0" Designation="II.102"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="90" UnitGunCount="15"
+                  UnitSmallArmCount="352" UnitBridgeCount="0" UnitBasicsQty="1445" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="85" UnitPersQty="320" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="9" MoraleLevel="64" ExperienceLevel="30" TrainingLevel="34" FitnessLevel="72"
+                  AggroLevel="74" StubbornnessLevel="75" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="99" UnitAmmoLevel="48" UnitFuelLevel="51" UnitBasicsLevel="45" UnitFuelQty="6002"
+                  UnitAmmoCount="20379">
+                <equipmentlist>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="24"/>
+                    <equipment Name="SdKfz 11 - le ZgKw 3t" Id="595" Qty="12"/>
+                    <equipment Name="Motorcycle" Id="1027" Qty="5"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="4"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="24"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="21"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="282"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="48"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="10"/>
+                    <equipment Name="10.5cm le FH 18/40" Id="417" Qty="12"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="12"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="3"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="12800"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="4128"/>
+                    <ammo Name="10.5cm H AP" ObjectID="106" Qty="57"/>
+                    <ammo Name="10.5cm H HE" ObjectID="103" Qty="516"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="12"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="286"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="2580"/>
+                </ammoList>
+                <commander ObjectID="294" ObjectVersion="0" Name="" Aggro="81" Determination="82" Efficiency="86"
+                           Force="II Bn 102 Pz Art Regt" Judgement="79" Leadership="69" PersBio="" RankIndex="4"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1652" Name="WF - PzD - 10.5cm FH 18 Bn"/>
+            </unit>
+            <unit name="III Bn 102 Pz Art Regt" id="-1" objectVersion="220" HumanControlled="0" Designation="III.102"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="77" UnitGunCount="15"
+                  UnitSmallArmCount="350" UnitBridgeCount="0" UnitBasicsQty="1862" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="93" UnitPersQty="373" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="2" MoraleLevel="62" ExperienceLevel="25" TrainingLevel="34" FitnessLevel="66"
+                  AggroLevel="71" StubbornnessLevel="70" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="46" UnitFuelLevel="49" UnitBasicsLevel="50" UnitFuelQty="5879"
+                  UnitAmmoCount="21052">
+                <equipmentlist>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="24"/>
+                    <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="12"/>
+                    <equipment Name="Motorcycle" Id="1027" Qty="5"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="4"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="24"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="8"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="280"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="14"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="12"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="3"/>
+                    <equipment Name="15cm sFH 18" Id="421" Qty="8"/>
+                    <equipment Name="10cm K 18" Id="419" Qty="4"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="14189"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="3648"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="12"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="276"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="2487"/>
+                    <ammo Name="15cm FH AP" ObjectID="1042" Qty="18"/>
+                    <ammo Name="15cm FH HE" ObjectID="112" Qty="239"/>
+                    <ammo Name="10.5cm K AP" ObjectID="1039" Qty="18"/>
+                    <ammo Name="10.5cm K HE" ObjectID="1036" Qty="165"/>
+                </ammoList>
+                <commander ObjectID="299" ObjectVersion="0" Name="" Aggro="76" Determination="79" Efficiency="91"
+                           Force="III Bn 102 Pz Art Regt" Judgement="79" Leadership="67" PersBio="" RankIndex="4"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1653" Name="WF - PzD - 15cm FH 18 Bn"/>
+            </unit>
+            <unit name="9 Pz Recon Bn" id="-1" objectVersion="150" HumanControlled="0" Designation="9" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="12" UnitNonAFVCount="10" UnitGunCount="0"
+                  UnitSmallArmCount="72" UnitBridgeCount="0" UnitBasicsQty="593" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="91" UnitPersQty="78" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="10" MoraleLevel="58" ExperienceLevel="28" TrainingLevel="29" FitnessLevel="72"
+                  AggroLevel="73" StubbornnessLevel="71" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="0"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="48" UnitFuelLevel="49" UnitBasicsLevel="51" UnitFuelQty="1541"
+                  UnitAmmoCount="10246">
+                <equipmentlist>
+                    <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="8"/>
+                    <equipment Name="SdKfz 251/8 - Ambulance" Id="2283" Qty="1"/>
+                    <equipment Name="SdKfz 251/11 - Field Phone" Id="2257" Qty="2"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="4"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="4"/>
+                    <equipment Name="SdKfz 234/1 - 2cm gun" Id="607" Qty="1"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="6"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="16"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="40"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="10"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="8773"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="47"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="47"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="6"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1373"/>
+                </ammoList>
+                <commander ObjectID="304" ObjectVersion="0" Name="" Aggro="78" Determination="83" Efficiency="94"
+                           Force="9 Pz Recon Bn" Judgement="85" Leadership="71" PersBio="" RankIndex="4" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1662" Name="WF - PzD - Pz Aufkl Bn HQ"/>
+                <unit name="1 Coy 9 Pz Recon Bn" id="-1" objectVersion="111" HumanControlled="0" Designation="1.9"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="25" UnitNonAFVCount="4"
+                      UnitGunCount="0" UnitSmallArmCount="31" UnitBridgeCount="0" UnitBasicsQty="446"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92" UnitPersQty="85" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="0" MoraleLevel="60" ExperienceLevel="29" TrainingLevel="27"
+                      FitnessLevel="73" AggroLevel="67" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="0" UnitSmallArmLevel="100" UnitAmmoLevel="50" UnitFuelLevel="42"
+                      UnitBasicsLevel="53" UnitFuelQty="2319" UnitAmmoCount="27080">
+                    <equipmentlist>
+                        <equipment Name="SdKfz 250/9 - 2cm gun" Id="579" Qty="16"/>
+                        <equipment Name="SdKfz 250/5 - Observation" Id="2259" Qty="9"/>
+                        <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="2"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="9"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="15"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="7"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="2cm AP" ObjectID="7" Qty="967"/>
+                        <ammo Name="2cm HE" ObjectID="10" Qty="3871"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="20881"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="1361"/>
+                    </ammoList>
+                    <commander ObjectID="309" ObjectVersion="0" Name="" Aggro="75" Determination="77" Efficiency="90"
+                               Force="1 Coy 9 Pz Recon Bn" Judgement="83" Leadership="74" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2537" Name="WF - PzD - SdKfz 250/9 Coy (1/PzAA)"/>
+                </unit>
+                <unit name="2 Coy 9 Pz Recon Bn" id="-1" objectVersion="228" HumanControlled="0" Designation="2.9"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="28" UnitNonAFVCount="7"
+                      UnitGunCount="2" UnitSmallArmCount="170" UnitBridgeCount="0" UnitBasicsQty="728"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="92" UnitPersQty="155" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="7" MoraleLevel="66" ExperienceLevel="23" TrainingLevel="29"
+                      FitnessLevel="70" AggroLevel="71" StubbornnessLevel="73" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="100" UnitSmallArmLevel="94" UnitAmmoLevel="48" UnitFuelLevel="52"
+                      UnitBasicsLevel="47" UnitFuelQty="3488" UnitAmmoCount="27010">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                        <equipment Name="Motorcycle" Id="1027" Qty="1"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="1"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="SdKfz 250/1 - Personnel" Id="575" Qty="23"/>
+                        <equipment Name="SdKfz 250/3 - Radio" Id="2258" Qty="2"/>
+                        <equipment Name="SdKfz 250/7 - 8cm mortar" Id="2260" Qty="2"/>
+                        <equipment Name="SdKfz 250/7 - Ammo Carrier" Id="2381" Qty="1"/>
+                        <equipment Name="SdKfz 250/8 - 7.5cm IG" Id="577" Qty="2"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="60"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="42"/>
+                        <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="48"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="17"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="8cm HE" ObjectID="91" Qty="96"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="22608"/>
+                        <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="24"/>
+                        <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="24"/>
+                        <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="48"/>
+                        <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                        <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="4180"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="17"/>
+                    </ammoList>
+                    <commander ObjectID="314" ObjectVersion="0" Name="" Aggro="82" Determination="76" Efficiency="91"
+                               Force="2 Coy 9 Pz Recon Bn" Judgement="78" Leadership="67" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="1663" Name="WF - PzD - le Pz Aufkl Coy (gp) (2/PzAA)"/>
+                </unit>
+                <unit name="3 Coy 9 Pz Recon Bn" id="-1" objectVersion="254" HumanControlled="0" Designation="3.9"
+                      History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="19" UnitNonAFVCount="10"
+                      UnitGunCount="4" UnitSmallArmCount="192" UnitBridgeCount="0" UnitBasicsQty="878"
+                      ActualResupplyRate="100" UnitSuppression="0" StaffQuality="90" UnitPersQty="190" PersLevel="100"
+                      CohesionLevel="100" FatigueLevel="8" MoraleLevel="67" ExperienceLevel="22" TrainingLevel="29"
+                      FitnessLevel="67" AggroLevel="74" StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="100"
+                      UnitGunLevel="100" UnitSmallArmLevel="100" UnitAmmoLevel="47" UnitFuelLevel="49"
+                      UnitBasicsLevel="46" UnitFuelQty="2574" UnitAmmoCount="25401">
+                    <equipmentlist>
+                        <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                        <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="10"/>
+                        <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="7"/>
+                        <equipment Name="SdKfz 251/2 - 8cm mortar" Id="585" Qty="2"/>
+                        <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="2"/>
+                        <equipment Name="SdKfz 251/9 - 7.5cm IG" Id="587" Qty="2"/>
+                        <equipment Name="Motorcycle with sidecar" Id="2309" Qty="3"/>
+                        <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="1"/>
+                        <equipment Name="7.92mm Kar 98 k" Id="43" Qty="94"/>
+                        <equipment Name="7.92mm leMG 42" Id="533" Qty="30"/>
+                        <equipment Name="7.92mm sMG 42" Id="535" Qty="3"/>
+                        <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                        <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                        <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                    </equipmentlist>
+                    <ammoList>
+                        <ammo Name="2cm AP" ObjectID="7" Qty="393"/>
+                        <ammo Name="2cm HE" ObjectID="10" Qty="1574"/>
+                        <ammo Name="8cm HE" ObjectID="91" Qty="93"/>
+                        <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="23"/>
+                        <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="23"/>
+                        <ammo Name="7.5cm IG HE" ObjectID="1683" Qty="46"/>
+                        <ammo Name="7.92mm" ObjectID="1" Qty="19508"/>
+                        <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                        <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                        <ammo Name="9mm" ObjectID="4" Qty="3710"/>
+                        <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                    </ammoList>
+                    <commander ObjectID="319" ObjectVersion="0" Name="" Aggro="82" Determination="82" Efficiency="93"
+                               Force="3 Coy 9 Pz Recon Bn" Judgement="78" Leadership="70" PersBio="" RankIndex="2"
+                               Title="CO"/>
+                    <estab EstabName="BFTBEstab.coe" ObjectId="2497" Name="WF - PzD - Pz Aufkl Coy (gp) (3/PzAA)"/>
+                </unit>
+            </unit>
+            <unit name="1 Bty 287 Flak Bn" id="-1" objectVersion="177" HumanControlled="0" Designation="1.287"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="18" UnitGunCount="8"
+                  UnitSmallArmCount="100" UnitBridgeCount="0" UnitBasicsQty="510" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="89" UnitPersQty="104" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="1" MoraleLevel="62" ExperienceLevel="21" TrainingLevel="32" FitnessLevel="73"
+                  AggroLevel="71" StubbornnessLevel="68" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="26" UnitBasicsLevel="49" UnitFuelQty="1203"
+                  UnitAmmoCount="6368">
+                <equipmentlist>
+                    <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="6"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="90"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="4"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="2"/>
+                    <equipment Name="8.8cm Flak 37" Id="405" Qty="6"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="3618"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="352"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="195"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="1760"/>
+                    <ammo Name="8.8cm Flak AP" ObjectID="55" Qty="146"/>
+                    <ammo Name="8.8cm Flak HE" ObjectID="58" Qty="293"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                </ammoList>
+                <commander ObjectID="339" ObjectVersion="0" Name="" Aggro="77" Determination="77" Efficiency="88"
+                           Force="1 Bty 287 Flak Bn" Judgement="80" Leadership="70" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1656" Name="WF - PzD - 8.8cm/2cm Flak Bty"/>
+            </unit>
+            <unit name="1 Coy 50 PzJg Bn" id="-1" objectVersion="81" HumanControlled="0" Designation="50" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="0" UnitGunCount="0"
+                  UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="181" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="94" UnitPersQty="40" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="5" MoraleLevel="64" ExperienceLevel="24" TrainingLevel="28" FitnessLevel="67"
+                  AggroLevel="70" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="0" UnitGunLevel="0"
+                  UnitSmallArmLevel="0" UnitAmmoLevel="53" UnitFuelLevel="43" UnitBasicsLevel="45" UnitFuelQty="3445"
+                  UnitAmmoCount="11094">
+                <equipmentlist>
+                    <equipment Name="Pz IV L/70 (V)" Id="613" Qty="10"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="10668"/>
+                    <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="213"/>
+                    <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="213"/>
+                </ammoList>
+                <commander ObjectID="359" ObjectVersion="0" Name="" Aggro="81" Determination="78" Efficiency="89"
+                           Force="1 Coy 50 PzJg Bn" Judgement="80" Leadership="66" PersBio="" RankIndex="2" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1658" Name="WF - PzD - JgPzIV L/70 Coy"/>
+            </unit>
+            <unit name="2 Coy 50 PzJg Bn" id="-1" objectVersion="81" HumanControlled="0" Designation="50" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="0" UnitGunCount="0"
+                  UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="184" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="90" UnitPersQty="40" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="9" MoraleLevel="68" ExperienceLevel="30" TrainingLevel="30" FitnessLevel="69"
+                  AggroLevel="74" StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="0" UnitGunLevel="0"
+                  UnitSmallArmLevel="0" UnitAmmoLevel="46" UnitFuelLevel="40" UnitBasicsLevel="46" UnitFuelQty="3165"
+                  UnitAmmoCount="9550">
+                <equipmentlist>
+                    <equipment Name="Pz IV L/70 (V)" Id="613" Qty="10"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="9184"/>
+                    <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="183"/>
+                    <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="183"/>
+                </ammoList>
+                <commander ObjectID="364" ObjectVersion="0" Name="" Aggro="76" Determination="82" Efficiency="89"
+                           Force="2 Coy 50 PzJg Bn" Judgement="76" Leadership="68" PersBio="" RankIndex="2" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1658" Name="WF - PzD - JgPzIV L/70 Coy"/>
+            </unit>
+            <unit name="3 Coy 50 PzJg Bn" id="-1" objectVersion="81" HumanControlled="0" Designation="50" History=""
+                  CommsRating="100" ExperiencePts="0" UnitAFVCount="10" UnitNonAFVCount="0" UnitGunCount="0"
+                  UnitSmallArmCount="0" UnitBridgeCount="0" UnitBasicsQty="210" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="92" UnitPersQty="40" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="9" MoraleLevel="64" ExperienceLevel="24" TrainingLevel="25" FitnessLevel="68"
+                  AggroLevel="72" StubbornnessLevel="72" UnitAFVLevel="100" UnitNonAFVLevel="0" UnitGunLevel="0"
+                  UnitSmallArmLevel="0" UnitAmmoLevel="48" UnitFuelLevel="38" UnitBasicsLevel="53" UnitFuelQty="2986"
+                  UnitAmmoCount="10068">
+                <equipmentlist>
+                    <equipment Name="Pz IV L/70 (V)" Id="613" Qty="10"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="9682"/>
+                    <ammo Name="7.5cm KwK AP" ObjectID="163" Qty="193"/>
+                    <ammo Name="7.5cm KwK HE" ObjectID="166" Qty="193"/>
+                </ammoList>
+                <commander ObjectID="369" ObjectVersion="0" Name="" Aggro="81" Determination="83" Efficiency="85"
+                           Force="3 Coy 50 PzJg Bn" Judgement="82" Leadership="67" PersBio="" RankIndex="2" Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1658" Name="WF - PzD - JgPzIV L/70 Coy"/>
+            </unit>
+            <unit name="1 Coy 86 Pz Pion Bn" id="-1" objectVersion="203" HumanControlled="0" Designation="1.86"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="26" UnitNonAFVCount="14" UnitGunCount="8"
+                  UnitSmallArmCount="187" UnitBridgeCount="0" UnitBasicsQty="1070" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="94" UnitPersQty="217" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="4" MoraleLevel="64" ExperienceLevel="21" TrainingLevel="26" FitnessLevel="75"
+                  AggroLevel="72" StubbornnessLevel="67" UnitAFVLevel="100" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="52" UnitFuelLevel="48" UnitBasicsLevel="49" UnitFuelQty="3978"
+                  UnitAmmoCount="31149">
+                <equipmentlist>
+                    <equipment Name="SdKfz 251/1 - Personnel" Id="583" Qty="1"/>
+                    <equipment Name="SdKfz 251/2 - 8cm mortar" Id="585" Qty="2"/>
+                    <equipment Name="SdKfz 251/17 - 2cm AA" Id="591" Qty="3"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="3"/>
+                    <equipment Name="le PKW - car" Id="23" Qty="2"/>
+                    <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="6"/>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="1"/>
+                    <equipment Name="SdKfz 251/3 - Radio" Id="2256" Qty="1"/>
+                    <equipment Name="SdKfz 251/7 - Engineer" Id="2272" Qty="21"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="77"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="44"/>
+                    <equipment Name="Flamethrower (inf)" Id="376" Qty="6"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                    <equipment Name="7.92mm sMG 42" Id="535" Qty="2"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="40"/>
+                    <equipment Name="2.8cm sPzB 41" Id="2558" Qty="6"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="8cm HE" ObjectID="91" Qty="104"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="187"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="750"/>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="25330"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="4126"/>
+                    <ammo Name="FT fuel - inf" ObjectID="1177" Qty="9"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                    <ammo Name="2.8cm sPzB AP" ObjectID="2559" Qty="625"/>
+                </ammoList>
+                <commander ObjectID="374" ObjectVersion="0" Name="" Aggro="78" Determination="82" Efficiency="92"
+                           Force="1 Coy 86 Pz Pion Bn" Judgement="76" Leadership="68" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1659" Name="WF - PzD - Pz Pion Coy (gp) / Pz Pion Bn"/>
+            </unit>
+            <unit name="2 Coy 86 Pz Pion Bn" id="-1" objectVersion="190" HumanControlled="0" Designation="2.86"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="32" UnitGunCount="2"
+                  UnitSmallArmCount="205" UnitBridgeCount="0" UnitBasicsQty="1041" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="93" UnitPersQty="195" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="7" MoraleLevel="63" ExperienceLevel="28" TrainingLevel="32" FitnessLevel="71"
+                  AggroLevel="67" StubbornnessLevel="67" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="52" UnitFuelLevel="53" UnitBasicsLevel="53" UnitFuelQty="2476"
+                  UnitAmmoCount="17683">
+                <equipmentlist>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="2"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                    <equipment Name="m PKW - car" Id="2282" Qty="6"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="5"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                    <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="5"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="137"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                    <equipment Name="7.92mm sMG 42" Id="535" Qty="2"/>
+                    <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                    <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="21"/>
+                    <equipment Name="Flamethrower (inf)" Id="376" Qty="6"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="15589"/>
+                    <ammo Name="PzSchreck AP" ObjectID="1606" Qty="9"/>
+                    <ammo Name="PzSchreck HE" ObjectID="2242" Qty="6"/>
+                    <ammo Name="8cm HE" ObjectID="91" Qty="103"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1949"/>
+                    <ammo Name="FT fuel - inf" ObjectID="1177" Qty="9"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                </ammoList>
+                <commander ObjectID="379" ObjectVersion="0" Name="" Aggro="83" Determination="79" Efficiency="88"
+                           Force="2 Coy 86 Pz Pion Bn" Judgement="83" Leadership="65" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1660" Name="WF - PzD - Pz Pion Coy (mot) / Div Pz Pion Bn"/>
+            </unit>
+            <unit name="3 Coy 86 Pz Pion Bn" id="-1" objectVersion="190" HumanControlled="0" Designation="3.86"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="32" UnitGunCount="2"
+                  UnitSmallArmCount="205" UnitBridgeCount="0" UnitBasicsQty="1031" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="87" UnitPersQty="195" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="6" MoraleLevel="63" ExperienceLevel="26" TrainingLevel="34" FitnessLevel="73"
+                  AggroLevel="73" StubbornnessLevel="72" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="49" UnitFuelLevel="53" UnitBasicsLevel="53" UnitFuelQty="2475"
+                  UnitAmmoCount="16679">
+                <equipmentlist>
+                    <equipment Name="LKW 2 t - truck" Id="567" Qty="2"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                    <equipment Name="m PKW - car" Id="2282" Qty="6"/>
+                    <equipment Name="Motorcycle with sidecar" Id="2309" Qty="5"/>
+                    <equipment Name="SdKfz 2 - Kettenkrad" Id="565" Qty="2"/>
+                    <equipment Name="SdKfz 3 - Maultier 2 t" Id="2312" Qty="5"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="137"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="18"/>
+                    <equipment Name="7.92mm sMG 42" Id="535" Qty="2"/>
+                    <equipment Name="8,8cm RPzB 54 'PzSchreck'" Id="1607" Qty="3"/>
+                    <equipment Name="8cm GrW 34" Id="503" Qty="2"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="21"/>
+                    <equipment Name="Flamethrower (inf)" Id="376" Qty="6"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="18"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="14704"/>
+                    <ammo Name="PzSchreck AP" ObjectID="1606" Qty="8"/>
+                    <ammo Name="PzSchreck HE" ObjectID="2242" Qty="5"/>
+                    <ammo Name="8cm HE" ObjectID="91" Qty="97"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="1839"/>
+                    <ammo Name="FT fuel - inf" ObjectID="1177" Qty="8"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="18"/>
+                </ammoList>
+                <commander ObjectID="384" ObjectVersion="0" Name="" Aggro="77" Determination="79" Efficiency="95"
+                           Force="3 Coy 86 Pz Pion Bn" Judgement="77" Leadership="71" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1660" Name="WF - PzD - Pz Pion Coy (mot) / Div Pz Pion Bn"/>
+            </unit>
+            <unit name="2 Bty 287 Flak Bn" id="-1" objectVersion="178" HumanControlled="0" Designation="2.287"
+                  History="" CommsRating="100" ExperiencePts="0" UnitAFVCount="0" UnitNonAFVCount="18" UnitGunCount="8"
+                  UnitSmallArmCount="100" UnitBridgeCount="0" UnitBasicsQty="491" ActualResupplyRate="100"
+                  UnitSuppression="0" StaffQuality="87" UnitPersQty="104" PersLevel="100" CohesionLevel="100"
+                  FatigueLevel="6" MoraleLevel="62" ExperienceLevel="26" TrainingLevel="26" FitnessLevel="71"
+                  AggroLevel="74" StubbornnessLevel="65" UnitAFVLevel="0" UnitNonAFVLevel="100" UnitGunLevel="100"
+                  UnitSmallArmLevel="100" UnitAmmoLevel="55" UnitFuelLevel="23" UnitBasicsLevel="47" UnitFuelQty="1067"
+                  UnitAmmoCount="7128">
+                <equipmentlist>
+                    <equipment Name="SdKfz 7 - m ZgKw 8t" Id="597" Qty="6"/>
+                    <equipment Name="LKW 3 t - truck" Id="569" Qty="12"/>
+                    <equipment Name="7.92mm Kar 98 k" Id="43" Qty="90"/>
+                    <equipment Name="9mm MP 40" Id="529" Qty="4"/>
+                    <equipment Name="7.92mm leMG 42" Id="533" Qty="2"/>
+                    <equipment Name="2cm Flak 38" Id="25" Qty="2"/>
+                    <equipment Name="8.8cm Flak 37" Id="405" Qty="6"/>
+                    <equipment Name="Panzerfaust" Id="386" Qty="4"/>
+                </equipmentlist>
+                <ammoList>
+                    <ammo Name="7.92mm" ObjectID="1" Qty="4050"/>
+                    <ammo Name="9mm" ObjectID="4" Qty="394"/>
+                    <ammo Name="2cm AP" ObjectID="7" Qty="218"/>
+                    <ammo Name="2cm HE" ObjectID="10" Qty="1970"/>
+                    <ammo Name="8.8cm Flak AP" ObjectID="55" Qty="164"/>
+                    <ammo Name="8.8cm Flak HE" ObjectID="58" Qty="328"/>
+                    <ammo Name="PzFaust warhead" ObjectID="1104" Qty="4"/>
+                </ammoList>
+                <commander ObjectID="344" ObjectVersion="0" Name="" Aggro="83" Determination="79" Efficiency="89"
+                           Force="2 Bty 287 Flak Bn" Judgement="81" Leadership="68" PersBio="" RankIndex="2"
+                           Title="CO"/>
+                <estab EstabName="BFTBEstab.coe" ObjectId="1656" Name="WF - PzD - 8.8cm/2cm Flak Bty"/>
+            </unit>
+        </unit>
+    </side>
+</ForceList>

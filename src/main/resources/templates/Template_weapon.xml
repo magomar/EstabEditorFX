@@ -1,0 +1,33 @@
+<weapon id="???">
+    <name>New Weapon</name>
+    <description></description>
+    <picture/>
+    <picture-filename></picture-filename>
+    <size width="1.0" height="1.0" length="1.0" weight="406.0"/>
+    <crew>6</crew>
+    <reliability>0.904785</reliability>
+    <armaments/>
+    <type>gun</type>
+    <single-shot>no</single-shot>
+    <primary-role>anti-air</primary-role>
+    <calibre>20.0</calibre>
+    <muzzle-velocity>899</muzzle-velocity>
+    <must-deploy-to-fire>yes</must-deploy-to-fire>
+    <performance-list>
+        <performance fire-type="aper">
+            <ammo object-id="-1" name="???" load="1800"/>
+            <min-range>50</min-range>
+            <rof slow="1.0" normal="3.0" rapid="6.0"/>
+            <burst-radius>4</burst-radius>
+            <shell-weight>0.299805</shell-weight>
+            <range-table>
+                <range-item range="100" accuracy="0.984863" armour-penetration="0.0"/>
+                <range-item range="200" accuracy="0.944824" armour-penetration="0.0"/>
+                <range-item range="400" accuracy="0.86499" armour-penetration="0.0"/>
+                <range-item range="600" accuracy="0.764893" armour-penetration="0.0"/>
+                <range-item range="800" accuracy="0.644775" armour-penetration="0.0"/>
+                <range-item range="1000" accuracy="0.514893" armour-penetration="0.0"/>
+            </range-table>
+        </performance>
+    </performance-list>
+</weapon>

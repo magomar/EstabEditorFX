@@ -1,0 +1,30 @@
+<vehicle id="23">
+    <name>New Vehicle</name>
+    <description></description>
+    <picture/>
+    <picture-filename></picture-filename>
+    <size width="1.649902" height="1.599854" length="3.73999" weight="725.0"/>
+    <crew>1</crew>
+    <reliability>1.0</reliability>
+    <armaments/>
+    <type>car</type>
+    <fuel-capacity>40.0</fuel-capacity>
+    <speed>
+        <road normal="56.0" max="80.0"/>
+        <cross-country normal="21.0" max="30.0"/>
+    </speed>
+    <fuel-consumption max="12.0" normal="6.0"/>
+    <ronsonability>0.204834</ronsonability>
+    <max-gradient>0</max-gradient>
+    <max-fording-depth>0</max-fording-depth>
+    <max-trench-width>0</max-trench-width>
+    <towing-capacity>700.0</towing-capacity>
+    <personnel-capacity>3</personnel-capacity>
+    <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+    <payload-capacity>450.0</payload-capacity>
+    <take-cover-mod>0.014893</take-cover-mod>
+    <has-turret>no</has-turret>
+    <has-open-top>yes</has-open-top>
+    <battle-weight>725.0</battle-weight>
+    <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+</vehicle>

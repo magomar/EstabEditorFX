@@ -1,0 +1,9 @@
+<side id="???">
+    <name>New Side</name>
+    <description></description>
+    <large-insignia/>
+    <small-insignia/>
+    <basics-consumption-rate>5.0</basics-consumption-rate>
+    <default-enemy-aper-fp>1</default-enemy-aper-fp>
+    <default-enemy-aarm-fp>1</default-enemy-aarm-fp>
+</side>

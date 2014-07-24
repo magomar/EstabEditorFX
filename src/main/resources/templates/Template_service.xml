@@ -1,0 +1,16 @@
+<service id="???">
+    <name>New Service</name>
+    <description></description>
+    <large-insignia/>
+    <small-insignia/>
+    <rank-list>
+        <rank short-name="Maj" full-name="Major"/>
+    </rank-list>
+    <default-icon-colors>
+        <background-color red="156" green="156" blue="156"/>
+        <background-dark-color red="107" green="107" blue="107"/>
+        <background-light-color red="207" green="207" blue="207"/>
+        <designation-color red="0" green="0" blue="0"/>
+        <symbol-color>black</symbol-color>
+    </default-icon-colors>
+</service>

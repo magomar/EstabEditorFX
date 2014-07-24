@@ -1,0 +1,6 @@
+<ammo id="???">
+    <name>New Ammo</name>
+    <description></description>
+    <min-order-qty>1</min-order-qty>
+    <min-order-weight>1.0</min-order-weight>
+</ammo>
