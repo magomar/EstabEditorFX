@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.logging.Logger;
@@ -36,22 +37,12 @@ public class MainTest {
     public static void main(String[] args) {
         Stopwatch sw = new Stopwatch();
 
-        //ClassLoader not useful here because it gives .../EstabsEditor/build/main/classes
-//        ClassLoader cl1 = ClassLoader.getSystemClassLoader();
-//        ClassLoader cl2 = MainTest.class.getClassLoader();
-//        URL u1 = cl1.getResource(".");
+
+        ClassLoader cl = MainTest.class.getClassLoader();
+//        ClassLoader cl = ClassLoader.getSystemClassLoader();
+        URL u1 = cl.getResource("./examples/BFTBEstab.xml");
 
         Path resPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/");
-//        File directory = new File(u1.toString());
-//        File[] entries = directory.listFiles();
-//        for (File entry : entries) {
-//            if (filter == null || filter.accept(directory, entry.getName())) {
-//                files.add(entry);
-//            }
-//            if (recurse && entry.isDirectory()) {
-//                files.addAll(listFiles(entry, filter, recurse));
-//            }
-//        }
         Path sourcePath = FileSystems.getDefault().getPath(resPath.toString(), "examples/BFTBEstab.xml");
         Path targetPathJSON = FileSystems.getDefault().getPath(resPath.toString(), "examples/Jarama1937Estab.json");
         Path targetPathXML = FileSystems.getDefault().getPath(resPath.toString(), "examples/Jarama1937Estab.xml");
