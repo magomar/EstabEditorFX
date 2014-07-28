@@ -240,12 +240,12 @@
             <xs:element name="crew" type="xs:byte"/>
             <xs:element name="reliability" type="Proportion"/>
             <xs:element name="armaments" type="xs:string"/>
-            <xs:element name="type" type="xs:string"/>
-            <xs:element name="single-shot" type="xs:string"/>
-            <xs:element name="primary-role" type="xs:string"/>
+            <xs:element name="type" type="WeaponType"/>
+            <xs:element name="single-shot" type="YesNo"/>
+            <xs:element name="primary-role" type="PrimaryRole"/>
             <xs:element name="calibre" type="xs:float"/>
             <xs:element name="muzzle-velocity" type="xs:short"/>
-            <xs:element name="must-deploy-to-fire" type="xs:string"/>
+            <xs:element name="must-deploy-to-fire" type="YesNo"/>
             <xs:element name="performance-list" type="PerformanceList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:short"/>
@@ -445,6 +445,7 @@
             <xs:enumeration value="aarm"/>
             <xs:enumeration value="aair"/>
             <xs:enumeration value="bombard"/>
+            <xs:enumeration value="smoke"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -627,6 +628,25 @@
             <xs:enumeration value="Base"/>
             <xs:enumeration value="Bridge Engineer"/>
             <xs:enumeration value="Const Engineer"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="WeaponType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="small-arm"/>
+            <xs:enumeration value="rpg"/>
+            <xs:enumeration value="mortar"/>
+            <xs:enumeration value="gun"/>
+            <xs:enumeration value="rocket-launcher"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PrimaryRole">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="anti-personnel"/>
+            <xs:enumeration value="anti-armor"/>
+            <xs:enumeration value="anti-air"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>
