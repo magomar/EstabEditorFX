@@ -1,18 +1,14 @@
 
 package net.deludobellico.cotools.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for Vehicle complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Vehicle">
  *   &lt;complexContent>
@@ -49,36 +45,34 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Vehicle", propOrder = {
-    "name",
-    "description",
-    "picture",
-    "pictureFilename",
-    "size",
-    "crew",
-    "reliability",
-    "armaments",
-    "type",
-    "fuelCapacity",
-    "speed",
-    "fuelConsumption",
-    "ronsonability",
-    "maxGradient",
-    "maxFordingDepth",
-    "maxTrenchWidth",
-    "towingCapacity",
-    "personnelCapacity",
-    "bulkFuelCapacity",
-    "payloadCapacity",
-    "takeCoverMod",
-    "hasTurret",
-    "hasOpenTop",
-    "battleWeight",
-    "armour"
+        "name",
+        "description",
+        "picture",
+        "pictureFilename",
+        "size",
+        "crew",
+        "reliability",
+        "armaments",
+        "type",
+        "fuelCapacity",
+        "speed",
+        "fuelConsumption",
+        "ronsonability",
+        "maxGradient",
+        "maxFordingDepth",
+        "maxTrenchWidth",
+        "towingCapacity",
+        "personnelCapacity",
+        "bulkFuelCapacity",
+        "payloadCapacity",
+        "takeCoverMod",
+        "hasTurret",
+        "hasOpenTop",
+        "battleWeight",
+        "armour"
 })
 public class Vehicle {
 
@@ -134,11 +128,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -146,11 +138,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -158,11 +148,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -170,11 +158,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -182,11 +168,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the picture property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPicture() {
         return picture;
@@ -194,11 +178,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the picture property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPicture(String value) {
         this.picture = value;
@@ -206,11 +188,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the pictureFilename property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPictureFilename() {
         return pictureFilename;
@@ -218,11 +198,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the pictureFilename property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPictureFilename(String value) {
         this.pictureFilename = value;
@@ -230,11 +208,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link VehicleSize }
-     *     
+     *
+     * @return possible object is
+     * {@link VehicleSize }
      */
     public VehicleSize getSize() {
         return size;
@@ -242,11 +218,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link VehicleSize }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link VehicleSize }
      */
     public void setSize(VehicleSize value) {
         this.size = value;
@@ -254,7 +228,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the crew property.
-     * 
      */
     public byte getCrew() {
         return crew;
@@ -262,7 +235,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the crew property.
-     * 
      */
     public void setCrew(byte value) {
         this.crew = value;
@@ -270,7 +242,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the reliability property.
-     * 
      */
     public float getReliability() {
         return reliability;
@@ -278,7 +249,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the reliability property.
-     * 
      */
     public void setReliability(float value) {
         this.reliability = value;
@@ -286,11 +256,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the armaments property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getArmaments() {
         return armaments;
@@ -298,11 +266,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the armaments property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setArmaments(String value) {
         this.armaments = value;
@@ -310,11 +276,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getType() {
         return type;
@@ -322,11 +286,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setType(String value) {
         this.type = value;
@@ -334,7 +296,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the fuelCapacity property.
-     * 
      */
     public float getFuelCapacity() {
         return fuelCapacity;
@@ -342,7 +303,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the fuelCapacity property.
-     * 
      */
     public void setFuelCapacity(float value) {
         this.fuelCapacity = value;
@@ -350,11 +310,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the speed property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link VehicleSpeeds }
-     *     
+     *
+     * @return possible object is
+     * {@link VehicleSpeeds }
      */
     public VehicleSpeeds getSpeed() {
         return speed;
@@ -362,11 +320,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the speed property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link VehicleSpeeds }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link VehicleSpeeds }
      */
     public void setSpeed(VehicleSpeeds value) {
         this.speed = value;
@@ -374,11 +330,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the fuelConsumption property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @return possible object is
+     * {@link SpeedData }
      */
     public SpeedData getFuelConsumption() {
         return fuelConsumption;
@@ -386,11 +340,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the fuelConsumption property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SpeedData }
      */
     public void setFuelConsumption(SpeedData value) {
         this.fuelConsumption = value;
@@ -398,7 +350,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the ronsonability property.
-     * 
      */
     public float getRonsonability() {
         return ronsonability;
@@ -406,7 +357,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the ronsonability property.
-     * 
      */
     public void setRonsonability(float value) {
         this.ronsonability = value;
@@ -414,7 +364,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the maxGradient property.
-     * 
      */
     public byte getMaxGradient() {
         return maxGradient;
@@ -422,7 +371,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the maxGradient property.
-     * 
      */
     public void setMaxGradient(byte value) {
         this.maxGradient = value;
@@ -430,7 +378,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the maxFordingDepth property.
-     * 
      */
     public byte getMaxFordingDepth() {
         return maxFordingDepth;
@@ -438,7 +385,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the maxFordingDepth property.
-     * 
      */
     public void setMaxFordingDepth(byte value) {
         this.maxFordingDepth = value;
@@ -446,7 +392,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the maxTrenchWidth property.
-     * 
      */
     public byte getMaxTrenchWidth() {
         return maxTrenchWidth;
@@ -454,7 +399,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the maxTrenchWidth property.
-     * 
      */
     public void setMaxTrenchWidth(byte value) {
         this.maxTrenchWidth = value;
@@ -462,7 +406,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the towingCapacity property.
-     * 
      */
     public float getTowingCapacity() {
         return towingCapacity;
@@ -470,7 +413,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the towingCapacity property.
-     * 
      */
     public void setTowingCapacity(float value) {
         this.towingCapacity = value;
@@ -478,7 +420,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the personnelCapacity property.
-     * 
      */
     public byte getPersonnelCapacity() {
         return personnelCapacity;
@@ -486,7 +427,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the personnelCapacity property.
-     * 
      */
     public void setPersonnelCapacity(byte value) {
         this.personnelCapacity = value;
@@ -494,7 +434,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the bulkFuelCapacity property.
-     * 
      */
     public float getBulkFuelCapacity() {
         return bulkFuelCapacity;
@@ -502,7 +441,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the bulkFuelCapacity property.
-     * 
      */
     public void setBulkFuelCapacity(float value) {
         this.bulkFuelCapacity = value;
@@ -510,7 +448,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the payloadCapacity property.
-     * 
      */
     public float getPayloadCapacity() {
         return payloadCapacity;
@@ -518,7 +455,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the payloadCapacity property.
-     * 
      */
     public void setPayloadCapacity(float value) {
         this.payloadCapacity = value;
@@ -526,7 +462,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the takeCoverMod property.
-     * 
      */
     public float getTakeCoverMod() {
         return takeCoverMod;
@@ -534,7 +469,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the takeCoverMod property.
-     * 
      */
     public void setTakeCoverMod(float value) {
         this.takeCoverMod = value;
@@ -542,11 +476,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the hasTurret property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getHasTurret() {
         return hasTurret;
@@ -554,11 +486,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the hasTurret property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setHasTurret(String value) {
         this.hasTurret = value;
@@ -566,11 +496,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the hasOpenTop property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getHasOpenTop() {
         return hasOpenTop;
@@ -578,11 +506,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the hasOpenTop property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setHasOpenTop(String value) {
         this.hasOpenTop = value;
@@ -590,7 +516,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the battleWeight property.
-     * 
      */
     public float getBattleWeight() {
         return battleWeight;
@@ -598,7 +523,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the battleWeight property.
-     * 
      */
     public void setBattleWeight(float value) {
         this.battleWeight = value;
@@ -606,11 +530,9 @@ public class Vehicle {
 
     /**
      * Gets the value of the armour property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Armor }
-     *     
+     *
+     * @return possible object is
+     * {@link Armor }
      */
     public Armor getArmour() {
         return armour;
@@ -618,11 +540,9 @@ public class Vehicle {
 
     /**
      * Sets the value of the armour property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Armor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Armor }
      */
     public void setArmour(Armor value) {
         this.armour = value;
@@ -630,7 +550,6 @@ public class Vehicle {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public short getId() {
         return id;
@@ -638,7 +557,6 @@ public class Vehicle {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(short value) {
         this.id = value;

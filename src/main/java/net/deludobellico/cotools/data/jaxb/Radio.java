@@ -1,19 +1,14 @@
 
 package net.deludobellico.cotools.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for Radio complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Radio">
  *   &lt;complexContent>
@@ -37,23 +32,21 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Radio", propOrder = {
-    "name",
-    "description",
-    "picture",
-    "pictureFilename",
-    "size",
-    "crew",
-    "reliability",
-    "armaments",
-    "netType",
-    "freqType",
-    "maxRange",
-    "gain"
+        "name",
+        "description",
+        "picture",
+        "pictureFilename",
+        "size",
+        "crew",
+        "reliability",
+        "armaments",
+        "netType",
+        "freqType",
+        "maxRange",
+        "gain"
 })
 public class Radio {
 
@@ -85,11 +78,9 @@ public class Radio {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -97,11 +88,9 @@ public class Radio {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -109,11 +98,9 @@ public class Radio {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -121,11 +108,9 @@ public class Radio {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -133,11 +118,9 @@ public class Radio {
 
     /**
      * Gets the value of the picture property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPicture() {
         return picture;
@@ -145,11 +128,9 @@ public class Radio {
 
     /**
      * Sets the value of the picture property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPicture(String value) {
         this.picture = value;
@@ -157,11 +138,9 @@ public class Radio {
 
     /**
      * Gets the value of the pictureFilename property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPictureFilename() {
         return pictureFilename;
@@ -169,11 +148,9 @@ public class Radio {
 
     /**
      * Sets the value of the pictureFilename property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPictureFilename(String value) {
         this.pictureFilename = value;
@@ -181,11 +158,9 @@ public class Radio {
 
     /**
      * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RadioSize }
-     *     
+     *
+     * @return possible object is
+     * {@link RadioSize }
      */
     public RadioSize getSize() {
         return size;
@@ -193,11 +168,9 @@ public class Radio {
 
     /**
      * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RadioSize }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RadioSize }
      */
     public void setSize(RadioSize value) {
         this.size = value;
@@ -205,11 +178,9 @@ public class Radio {
 
     /**
      * Gets the value of the crew property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getCrew() {
         return crew;
@@ -217,11 +188,9 @@ public class Radio {
 
     /**
      * Sets the value of the crew property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCrew(String value) {
         this.crew = value;
@@ -229,7 +198,6 @@ public class Radio {
 
     /**
      * Gets the value of the reliability property.
-     * 
      */
     public float getReliability() {
         return reliability;
@@ -237,7 +205,6 @@ public class Radio {
 
     /**
      * Sets the value of the reliability property.
-     * 
      */
     public void setReliability(float value) {
         this.reliability = value;
@@ -245,11 +212,9 @@ public class Radio {
 
     /**
      * Gets the value of the armaments property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getArmaments() {
         return armaments;
@@ -257,11 +222,9 @@ public class Radio {
 
     /**
      * Sets the value of the armaments property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setArmaments(String value) {
         this.armaments = value;
@@ -269,11 +232,9 @@ public class Radio {
 
     /**
      * Gets the value of the netType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link NetType }
-     *     
+     *
+     * @return possible object is
+     * {@link NetType }
      */
     public NetType getNetType() {
         return netType;
@@ -281,11 +242,9 @@ public class Radio {
 
     /**
      * Sets the value of the netType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link NetType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link NetType }
      */
     public void setNetType(NetType value) {
         this.netType = value;
@@ -293,11 +252,9 @@ public class Radio {
 
     /**
      * Gets the value of the freqType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FreqType }
-     *     
+     *
+     * @return possible object is
+     * {@link FreqType }
      */
     public FreqType getFreqType() {
         return freqType;
@@ -305,11 +262,9 @@ public class Radio {
 
     /**
      * Sets the value of the freqType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FreqType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link FreqType }
      */
     public void setFreqType(FreqType value) {
         this.freqType = value;
@@ -317,7 +272,6 @@ public class Radio {
 
     /**
      * Gets the value of the maxRange property.
-     * 
      */
     public short getMaxRange() {
         return maxRange;
@@ -325,7 +279,6 @@ public class Radio {
 
     /**
      * Sets the value of the maxRange property.
-     * 
      */
     public void setMaxRange(short value) {
         this.maxRange = value;
@@ -333,7 +286,6 @@ public class Radio {
 
     /**
      * Gets the value of the gain property.
-     * 
      */
     public float getGain() {
         return gain;
@@ -341,7 +293,6 @@ public class Radio {
 
     /**
      * Sets the value of the gain property.
-     * 
      */
     public void setGain(float value) {
         this.gain = value;
@@ -349,7 +300,6 @@ public class Radio {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public short getId() {
         return id;
@@ -357,7 +307,6 @@ public class Radio {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(short value) {
         this.id = value;

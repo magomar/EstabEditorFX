@@ -1,20 +1,16 @@
 
 package net.deludobellico.cotools.data.jaxb;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for Service complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Service">
  *   &lt;complexContent>
@@ -33,18 +29,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Service", propOrder = {
-    "name",
-    "description",
-    "largeInsignia",
-    "smallInsignia",
-    "rankList",
-    "defaultIconColors",
-    "force"
+        "name",
+        "description",
+        "largeInsignia",
+        "smallInsignia",
+        "rankList",
+        "defaultIconColors",
+        "force"
 })
 public class Service {
 
@@ -66,11 +60,9 @@ public class Service {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -78,11 +70,9 @@ public class Service {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -90,11 +80,9 @@ public class Service {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -102,11 +90,9 @@ public class Service {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -114,11 +100,9 @@ public class Service {
 
     /**
      * Gets the value of the largeInsignia property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Insignia }
-     *     
+     *
+     * @return possible object is
+     * {@link Insignia }
      */
     public Insignia getLargeInsignia() {
         return largeInsignia;
@@ -126,11 +110,9 @@ public class Service {
 
     /**
      * Sets the value of the largeInsignia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Insignia }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Insignia }
      */
     public void setLargeInsignia(Insignia value) {
         this.largeInsignia = value;
@@ -138,11 +120,9 @@ public class Service {
 
     /**
      * Gets the value of the smallInsignia property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Insignia }
-     *     
+     *
+     * @return possible object is
+     * {@link Insignia }
      */
     public Insignia getSmallInsignia() {
         return smallInsignia;
@@ -150,11 +130,9 @@ public class Service {
 
     /**
      * Sets the value of the smallInsignia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Insignia }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Insignia }
      */
     public void setSmallInsignia(Insignia value) {
         this.smallInsignia = value;
@@ -162,11 +140,9 @@ public class Service {
 
     /**
      * Gets the value of the rankList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RankList }
-     *     
+     *
+     * @return possible object is
+     * {@link RankList }
      */
     public RankList getRankList() {
         return rankList;
@@ -174,11 +150,9 @@ public class Service {
 
     /**
      * Sets the value of the rankList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RankList }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RankList }
      */
     public void setRankList(RankList value) {
         this.rankList = value;
@@ -186,11 +160,9 @@ public class Service {
 
     /**
      * Gets the value of the defaultIconColors property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DefaultIconColors }
-     *     
+     *
+     * @return possible object is
+     * {@link DefaultIconColors }
      */
     public DefaultIconColors getDefaultIconColors() {
         return defaultIconColors;
@@ -198,11 +170,9 @@ public class Service {
 
     /**
      * Sets the value of the defaultIconColors property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DefaultIconColors }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link DefaultIconColors }
      */
     public void setDefaultIconColors(DefaultIconColors value) {
         this.defaultIconColors = value;
@@ -210,25 +180,23 @@ public class Service {
 
     /**
      * Gets the value of the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the force property.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getForce().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
+     * <p/>
+     * <p/>
+     * <p/>
      * Objects of the following type(s) are allowed in the list
      * {@link Force }
-     * 
-     * 
      */
     public List<Force> getForce() {
         if (force == null) {
@@ -239,7 +207,6 @@ public class Service {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public short getId() {
         return id;
@@ -247,7 +214,6 @@ public class Service {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(short value) {
         this.id = value;

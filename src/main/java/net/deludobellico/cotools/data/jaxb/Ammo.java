@@ -1,18 +1,14 @@
 
 package net.deludobellico.cotools.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for Ammo complex type.
- * 
+ * <p/>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p/>
  * <pre>
  * &lt;complexType name="Ammo">
  *   &lt;complexContent>
@@ -28,15 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Ammo", propOrder = {
-    "name",
-    "description",
-    "minOrderQty",
-    "minOrderWeight"
+        "name",
+        "description",
+        "minOrderQty",
+        "minOrderWeight"
 })
 public class Ammo {
 
@@ -53,11 +47,9 @@ public class Ammo {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -65,11 +57,9 @@ public class Ammo {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -77,11 +67,9 @@ public class Ammo {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -89,11 +77,9 @@ public class Ammo {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -101,7 +87,6 @@ public class Ammo {
 
     /**
      * Gets the value of the minOrderQty property.
-     * 
      */
     public short getMinOrderQty() {
         return minOrderQty;
@@ -109,7 +94,6 @@ public class Ammo {
 
     /**
      * Sets the value of the minOrderQty property.
-     * 
      */
     public void setMinOrderQty(short value) {
         this.minOrderQty = value;
@@ -117,7 +101,6 @@ public class Ammo {
 
     /**
      * Gets the value of the minOrderWeight property.
-     * 
      */
     public float getMinOrderWeight() {
         return minOrderWeight;
@@ -125,7 +108,6 @@ public class Ammo {
 
     /**
      * Sets the value of the minOrderWeight property.
-     * 
      */
     public void setMinOrderWeight(float value) {
         this.minOrderWeight = value;
@@ -133,7 +115,6 @@ public class Ammo {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public short getId() {
         return id;
@@ -141,7 +122,6 @@ public class Ammo {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(short value) {
         this.id = value;
