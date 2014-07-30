@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import net.deludobellico.stabeditor.data.jaxb.*;
+import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.util.FileIO;
 
 import java.io.File;
@@ -44,17 +45,10 @@ public class EditorController implements Initializable {
     private Button addEstabButton;
     @FXML
     private Button removeEstabButton;
-
     @FXML
-    private TextField numImagesTextField;
+    private EstabDataController sourceEstabDataController;
     @FXML
-    private TextField numSidesTextField;
-    @FXML
-    private TextField numVehiclesTextField;
-    @FXML
-    private TextField numWeaponsTextField;
-    @FXML
-    private TextField numAmmosTextField;
+    private EstabDataController targetEstabDataController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,10 +70,12 @@ public class EditorController implements Initializable {
                 }
             }
         });
+        sourceEstabDataController.setTitle("Source Estab Data:");
+        targetEstabDataController.setTitle("Target Estab Data: ");
     }
 
     @FXML
-    private void addEstabAction(ActionEvent event) {
+    private void addEstabAction(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
         File initialDirectory = examplesPath.toFile();
@@ -94,7 +90,7 @@ public class EditorController implements Initializable {
     }
 
     @FXML
-    private void removeEstabAction(ActionEvent action) {
+    private void removeEstabAction(ActionEvent actionEvent) {
         int selectedItem = listEstabFilesView.getSelectionModel().getSelectedIndex();
         if (selectedItem != -1) {
             listEstabFilesModel.remove(selectedItem);
@@ -102,19 +98,10 @@ public class EditorController implements Initializable {
     }
 
     @FXML
-    private void loadEstabAction(ActionEvent action) {
+    private void loadEstabAction(ActionEvent actionEvent) {
         int selectedItem = listEstabFilesView.getSelectionModel().getSelectedIndex();
         if (selectedItem == -1) return;
-        EstabData data = (EstabData) FileIO.unmarshallXML(listEstabFilesModel.get(selectedItem), FileIO.UNMARSHALLER);
-        List<Image> images = data.getImage();
-        List<Side> sides = data.getSide();
-        List<Vehicle> vehicles = data.getVehicle();
-        List<Weapon> weapons = data.getWeapon();
-        List<Ammo> ammos = data.getAmmo();
-        numImagesTextField.setText(String.valueOf(images.size()));
-        numSidesTextField.setText(String.valueOf(sides.size()));
-        numVehiclesTextField.setText(String.valueOf(vehicles.size()));
-        numWeaponsTextField.setText(String.valueOf(weapons.size()));
-        numAmmosTextField.setText(String.valueOf(ammos.size()));
+        EstabDataModel dataModel = new EstabDataModel(listEstabFilesModel.get(selectedItem));
     }
+
 }

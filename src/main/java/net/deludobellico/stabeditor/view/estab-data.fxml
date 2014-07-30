@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TitledPane fx:id="estabDataTitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
+    <content>
+        <VBox>
+            <children>
+                <HBox prefHeight="27.0" prefWidth="800.0">
+                    <children>
+                        <Label text="Images:" />
+                        <TextField fx:id="numImagesTextField" editable="false" prefWidth="40.0" />
+                        <Label text="Sides:" />
+                        <TextField fx:id="numSidesTextField" editable="false" prefWidth="40.0" />
+                        <Label text="Vehicles:" />
+                        <TextField fx:id="numVehiclesTextField" editable="false" prefWidth="40.0" />
+                        <Label text="Weapons:" />
+                        <TextField fx:id="numWeaponsTextField" editable="false" prefWidth="40.0" />
+                        <Label text="Ammos:" />
+                        <TextField fx:id="numAmmosTextField" editable="false" prefWidth="40.0" />
+                    </children>
+                </HBox>
+                <GridPane>
+                    <children>
+                        <TextField fx:id="searchVehicleTextField" promptText="Enter text to search" GridPane.columnIndex="1" />
+                        <Button fx:id="searchVehicleButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" />
+                        <Label text="Search Vehicle" />
+                        <Label text="Search Weapon" GridPane.rowIndex="1" />
+                        <Label text="Search Ammo" GridPane.rowIndex="2" />
+                        <TextField fx:id="searchWeaponTextField" promptText="Enter text to search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="searchAmmoTextField" promptText="Enter text to search" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="searchWeaponButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="searchAmmoButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    </children>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
+            </children>
+        </VBox>
+    </content>
+</TitledPane>
