@@ -48,7 +48,7 @@ public class FileIO {
      * Unmarshalls XML element from file into java object
      *
      * @param file         the XML file to be unmarshalled
-     * @param unmarshaller an unmarshalled
+     * @param unmarshaller an unmarshaller
      * @return the object unmarshalled from the {@code file}
      */
     public static Object unmarshallXML(File file, Unmarshaller unmarshaller) {
@@ -77,6 +77,21 @@ public class FileIO {
             try (FileOutputStream fos = new FileOutputStream(file)) {
                 marshaller.marshal(object, fos);
                 return file;
+            } catch (IOException ex) {
+                LOG.log(Level.SEVERE, null, ex);
+            }
+        } catch (JAXBException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static StringWriter marshallXML(Object object, Marshaller marshaller) {
+        try {
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            try (StringWriter sw = new StringWriter()) {
+                marshaller.marshal(object, sw);
+                return sw;
             } catch (IOException ex) {
                 LOG.log(Level.SEVERE, null, ex);
             }

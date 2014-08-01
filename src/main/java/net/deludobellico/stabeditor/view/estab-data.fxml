@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -25,14 +26,14 @@
                 <GridPane>
                     <children>
                         <TextField fx:id="searchVehicleTextField" promptText="Enter text to search" GridPane.columnIndex="1" />
-                        <Button fx:id="searchVehicleButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" />
+                        <Button fx:id="searchVehicleButton" mnemonicParsing="false" onAction="#searchVehicleAction" text="Search" GridPane.columnIndex="2" />
                         <Label text="Search Vehicle" />
                         <Label text="Search Weapon" GridPane.rowIndex="1" />
                         <Label text="Search Ammo" GridPane.rowIndex="2" />
                         <TextField fx:id="searchWeaponTextField" promptText="Enter text to search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="searchAmmoTextField" promptText="Enter text to search" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="searchWeaponButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button fx:id="searchAmmoButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button fx:id="searchWeaponButton" mnemonicParsing="false" onAction="#searchWeaponAction" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="searchAmmoButton" mnemonicParsing="false" onAction="#searchAmmoAction" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                     </children>
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,6 +46,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                 </GridPane>
+            <TextArea fx:id="textArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
             </children>
         </VBox>
     </content>

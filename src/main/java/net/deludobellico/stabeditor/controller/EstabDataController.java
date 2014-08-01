@@ -4,10 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import net.deludobellico.stabeditor.data.jaxb.EstabData;
+import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.model.EstabDataModel;
+import net.deludobellico.stabeditor.util.FileIO;
 
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -55,6 +61,9 @@ public class EstabDataController implements Initializable  {
     @FXML
     private TextField numWeaponsTextField;
 
+    @FXML
+    private TextArea textArea;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchVehicleButton.setDisable(true);
@@ -77,6 +86,28 @@ public class EstabDataController implements Initializable  {
     public void setTitle(String title) {
         estabDataTitledPane.setText(title);
     }
+
+    @FXML
+    private void searchVehicleAction(ActionEvent actionEvent) {
+        Vehicle element = estabDataModel.searchVehicleByName(searchVehicleTextField.getText());
+        if (null == element) return;
+        EstabData rootElement = new EstabData();
+        rootElement.getVehicle().add(element);
+        StringWriter sw = FileIO.marshallXML(rootElement, FileIO.MARSHALLER);
+        String result = sw.toString();
+        textArea.setText(result);
+    }
+
+    @FXML
+    private void searchWeaponAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    private void searchAmmoAction(ActionEvent actionEvent) {
+
+    }
+
 
 }
 
