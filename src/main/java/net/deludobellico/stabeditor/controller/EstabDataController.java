@@ -57,16 +57,21 @@ public class EstabDataController implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        searchVehicleButton.setDisable(true);
+        searchWeaponButton.setDisable(true);
+        searchAmmoButton.setDisable(true);
     }
 
-    private void setEstabData(EstabDataModel estabDataModel) {
+    public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel =  estabDataModel;
         numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
         numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
         numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
         numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
         numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
+        searchVehicleButton.setDisable(false);
+        searchWeaponButton.setDisable(false);
+        searchAmmoButton.setDisable(false);
     }
 
     public void setTitle(String title) {

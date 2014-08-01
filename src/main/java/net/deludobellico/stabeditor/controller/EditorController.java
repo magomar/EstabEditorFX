@@ -49,6 +49,8 @@ public class EditorController implements Initializable {
     private EstabDataController sourceEstabDataController;
     @FXML
     private EstabDataController targetEstabDataController;
+    @FXML
+    private TextField targetEstabTextField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,10 +85,8 @@ public class EditorController implements Initializable {
         File file = fileChooser.showOpenDialog(null);
         if (null != file) {
             listEstabFilesModel.add(file);
-            LOG.warning("New Estab included: " + file);
+            LOG.info("New Estab included: " + file);
         }
-        LOG.info("Estabs included: " + listEstabFilesModel);
-        System.out.println("Estabs included: " + listEstabFilesModel);
     }
 
     @FXML
@@ -101,7 +101,34 @@ public class EditorController implements Initializable {
     private void loadEstabAction(ActionEvent actionEvent) {
         int selectedItem = listEstabFilesView.getSelectionModel().getSelectedIndex();
         if (selectedItem == -1) return;
-        EstabDataModel dataModel = new EstabDataModel(listEstabFilesModel.get(selectedItem));
+        File file = listEstabFilesModel.get(selectedItem);
+        sourceEstabDataController.setTitle("Source Estab: " + file.getName());
+        sourceEstabDataController.setEstabDataModel(new EstabDataModel(file));
     }
 
+    @FXML
+    private void openEstabAction(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
+        File initialDirectory = examplesPath.toFile();
+        fileChooser.setInitialDirectory(initialDirectory);
+        File file = fileChooser.showOpenDialog(null);
+        if (null != file) {
+            targetEstabTextField.setText(file.getName());
+            targetEstabDataController.setEstabDataModel(new EstabDataModel(file));
+        }
+    }
+
+    @FXML
+    private void newEstabAction(ActionEvent actionEvent) {
+//        FileChooser fileChooser = new FileChooser();
+//        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
+//        File initialDirectory = examplesPath.toFile();
+//        fileChooser.setInitialDirectory(initialDirectory);
+//        File file = fileChooser.showSaveDialog(null);
+//        if (null != file) {
+            targetEstabTextField.setText("NewStab.xml");
+            targetEstabDataController.setEstabDataModel(new EstabDataModel());
+//        }
+    }
 }

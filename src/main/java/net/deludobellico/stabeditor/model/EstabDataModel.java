@@ -4,6 +4,7 @@ import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.util.FileIO;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,14 @@ public class EstabDataModel {
         ammos = estabData.getAmmo();
     }
 
+    public EstabDataModel() {
+        images = new ArrayList<>();
+        sides = new ArrayList<>();
+        vehicles = new ArrayList<>();
+        weapons = new ArrayList<>();
+        ammos = new ArrayList<>();
+    }
+
     public List<Image> getImages() {
         return images;
     }
@@ -48,9 +57,9 @@ public class EstabDataModel {
         return ammos;
     }
 
-    public EstabReference searchByName(String name) {
-        return null;
-    }
+//    public EstabReference searchByName(String name) {
+//        return null;
+//    }
 
     public Vehicle searchVehicleByName(String name) {
         for (Vehicle vehicle : vehicles) {
@@ -58,6 +67,7 @@ public class EstabDataModel {
         }
         return null;
     }
+
     public Weapon searchWeaponByName(String name) {
         for (Weapon weapon : weapons) {
             if (weapon.getName().contains(name)) return weapon;
@@ -65,4 +75,10 @@ public class EstabDataModel {
         return null;
     }
 
+    public Ammo searchAmmoByName(String name) {
+        for (Ammo ammo : ammos) {
+            if (ammo.getName().contains(name)) return ammo;
+        }
+        return null;
+    }
 }
