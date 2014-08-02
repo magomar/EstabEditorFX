@@ -1,20 +1,23 @@
 package net.deludobellico.stabeditor.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import net.deludobellico.stabeditor.data.jaxb.EstabData;
+import javafx.scene.control.*;
+import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.util.FileIO;
 
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.JAXBElement;
+import java.io.File;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -24,6 +27,7 @@ import java.util.logging.Logger;
 public class EstabDataController implements Initializable  {
     private static final Logger LOG = Logger.getLogger(EstabDataController.class.getName());
     private EstabDataModel estabDataModel;
+    private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
 
     @FXML
     private Button searchAmmoButton;
@@ -62,13 +66,29 @@ public class EstabDataController implements Initializable  {
     private TextField numWeaponsTextField;
 
     @FXML
-    private TextArea textArea;
+    private ListView searchResultsListView;
+    private ObservableList<JAXBElement> searchResultsListModel = FXCollections.observableArrayList();
+
+    @FXML
+    private TextArea resultsTextArea;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchVehicleButton.setDisable(true);
         searchWeaponButton.setDisable(true);
         searchAmmoButton.setDisable(true);
+        searchResultsListView.setItems(searchResultsListModel);
+        searchResultsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                StringWriter sw = FileIO.marshallXML(newValue, FileIO.MARSHALLER);
+                String result = sw.toString();
+                resultsTextArea.setText(result);
+            }
+        });
+
+
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
@@ -89,14 +109,16 @@ public class EstabDataController implements Initializable  {
 
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
-        Vehicle element = estabDataModel.searchVehicleByName(searchVehicleTextField.getText());
-        if (null == element) return;
-        EstabData rootElement = new EstabData();
-        rootElement.getVehicle().add(element);
-//        StringWriter sw = FileIO.marshallXML(rootElement, FileIO.MARSHALLER);
-        StringWriter sw = FileIO.marshallXML(element, FileIO.MARSHALLER);
-        String result = sw.toString();
-        textArea.setText(result);
+        searchResultsListModel.clear();
+        List<Vehicle> vehicles = estabDataModel.searchVehicleByName(searchVehicleTextField.getText());
+        if (vehicles.isEmpty()) return;
+        for (Vehicle vehicle : vehicles) {
+            searchResultsListModel.addAll(OBJECT_FACTORY.createVehicle(vehicle));
+        }
+
+//        StringWriter sw = FileIO.marshallXML(jaxbElement, FileIO.MARSHALLER);
+//        String result = sw.toString();
+//        resultsTextArea.setText(result);
     }
 
     @FXML

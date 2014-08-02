@@ -1,7 +1,10 @@
 
 package net.deludobellico.stabeditor.data.jaxb;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,6 +24,13 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Image_QNAME = new QName("", "image");
+    private final static QName _Weapon_QNAME = new QName("", "weapon");
+    private final static QName _Side_QNAME = new QName("", "side");
+    private final static QName _Ammo_QNAME = new QName("", "ammo");
+    private final static QName _FormationEffects_QNAME = new QName("", "formation-effects");
+    private final static QName _Vehicle_QNAME = new QName("", "vehicle");
+    private final static QName _Radio_QNAME = new QName("", "radio");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.deludobellico.stabeditor.data.jaxb
@@ -123,6 +133,14 @@ public class ObjectFactory {
      */
     public TargetPercentages createTargetPercentages() {
         return new TargetPercentages();
+    }
+
+    /**
+     * Create an instance of {@link Picture }
+     * 
+     */
+    public Picture createPicture() {
+        return new Picture();
     }
 
     /**
@@ -323,6 +341,69 @@ public class ObjectFactory {
      */
     public WeaponSize createWeaponSize() {
         return new WeaponSize();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Image }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "image")
+    public JAXBElement<Image> createImage(Image value) {
+        return new JAXBElement<Image>(_Image_QNAME, Image.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Weapon }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "weapon")
+    public JAXBElement<Weapon> createWeapon(Weapon value) {
+        return new JAXBElement<Weapon>(_Weapon_QNAME, Weapon.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Side }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "side")
+    public JAXBElement<Side> createSide(Side value) {
+        return new JAXBElement<Side>(_Side_QNAME, Side.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Ammo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "ammo")
+    public JAXBElement<Ammo> createAmmo(Ammo value) {
+        return new JAXBElement<Ammo>(_Ammo_QNAME, Ammo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FormationEffects }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "formation-effects")
+    public JAXBElement<FormationEffects> createFormationEffects(FormationEffects value) {
+        return new JAXBElement<FormationEffects>(_FormationEffects_QNAME, FormationEffects.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Vehicle }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "vehicle")
+    public JAXBElement<Vehicle> createVehicle(Vehicle value) {
+        return new JAXBElement<Vehicle>(_Vehicle_QNAME, Vehicle.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Radio }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "radio")
+    public JAXBElement<Radio> createRadio(Radio value) {
+        return new JAXBElement<Radio>(_Radio_QNAME, Radio.class, null, value);
     }
 
 }

@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.util.FileIO;
 
@@ -39,16 +38,21 @@ public class EditorController implements Initializable {
     };
 
     @FXML
-    private ListView listEstabFilesView;
-    private ObservableList<File> listEstabFilesModel = FXCollections.observableArrayList();
+    private ListView estabsListView;
+    private ObservableList<File> estabsListModel = FXCollections.observableArrayList();
+
     @FXML
     private Button addEstabButton;
+
     @FXML
     private Button removeEstabButton;
+
     @FXML
     private EstabDataController sourceEstabDataController;
+
     @FXML
     private EstabDataController targetEstabDataController;
+
     @FXML
     private TextField targetEstabTextField;
 
@@ -58,14 +62,14 @@ public class EditorController implements Initializable {
         Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
         File initialDirectory = examplesPath.toFile();
         List<File> files = FileIO.listFiles(initialDirectory, XML_FILTER, false);
-        listEstabFilesModel.addAll(files);
-        listEstabFilesView.setItems(listEstabFilesModel);
+        estabsListModel.addAll(files);
+        estabsListView.setItems(estabsListModel);
         addEstabButton.setDisable(false);
         removeEstabButton.setDisable(true);
-        listEstabFilesView.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        estabsListView.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean aBoolean2) {
-                if (listEstabFilesView.isFocused()) {
+                if (estabsListView.isFocused()) {
                     removeEstabButton.setDisable(false);
                 } else {
                     removeEstabButton.setDisable(true);
@@ -84,24 +88,24 @@ public class EditorController implements Initializable {
         fileChooser.setInitialDirectory(initialDirectory);
         File file = fileChooser.showOpenDialog(null);
         if (null != file) {
-            listEstabFilesModel.add(file);
+            estabsListModel.add(file);
             LOG.info("New Estab included: " + file);
         }
     }
 
     @FXML
     private void removeEstabAction(ActionEvent actionEvent) {
-        int selectedItem = listEstabFilesView.getSelectionModel().getSelectedIndex();
+        int selectedItem = estabsListView.getSelectionModel().getSelectedIndex();
         if (selectedItem != -1) {
-            listEstabFilesModel.remove(selectedItem);
+            estabsListModel.remove(selectedItem);
         }
     }
 
     @FXML
     private void loadEstabAction(ActionEvent actionEvent) {
-        int selectedItem = listEstabFilesView.getSelectionModel().getSelectedIndex();
+        int selectedItem = estabsListView.getSelectionModel().getSelectedIndex();
         if (selectedItem == -1) return;
-        File file = listEstabFilesModel.get(selectedItem);
+        File file = estabsListModel.get(selectedItem);
         sourceEstabDataController.setTitle("Source Estab: " + file.getName());
         sourceEstabDataController.setEstabDataModel(new EstabDataModel(file));
     }
@@ -116,6 +120,7 @@ public class EditorController implements Initializable {
         if (null != file) {
             targetEstabTextField.setText(file.getName());
             targetEstabDataController.setEstabDataModel(new EstabDataModel(file));
+            targetEstabDataController.setTitle("Target Estab: " + file.getName());
         }
     }
 
@@ -129,6 +134,7 @@ public class EditorController implements Initializable {
 //        if (null != file) {
             targetEstabTextField.setText("NewStab.xml");
             targetEstabDataController.setEstabDataModel(new EstabDataModel());
+            targetEstabDataController.setTitle("Target Estab: NewStab.xml");
 //        }
     }
 }

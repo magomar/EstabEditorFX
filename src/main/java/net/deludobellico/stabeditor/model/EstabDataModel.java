@@ -61,11 +61,12 @@ public class EstabDataModel {
 //        return null;
 //    }
 
-    public Vehicle searchVehicleByName(String name) {
+    public List<Vehicle> searchVehicleByName(String name) {
+        List<Vehicle> searchResults = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getName().contains(name)) return vehicle;
+            if (vehicle.getName().contains(name)) searchResults.add(vehicle);
         }
-        return null;
+        return searchResults;
     }
 
     public Weapon searchWeaponByName(String name) {

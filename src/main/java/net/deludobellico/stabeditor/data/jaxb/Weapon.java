@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="picture" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="picture" type="{}Picture"/>
  *         &lt;element name="picture-filename" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="size" type="{}WeaponSize"/>
  *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}byte"/>
@@ -68,7 +68,7 @@ public class Weapon {
     @XmlElement(required = true)
     protected String description;
     @XmlElement(required = true)
-    protected String picture;
+    protected Picture picture;
     @XmlElement(name = "picture-filename", required = true)
     protected String pictureFilename;
     @XmlElement(required = true)
@@ -150,10 +150,10 @@ public class Weapon {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Picture }
      *     
      */
-    public String getPicture() {
+    public Picture getPicture() {
         return picture;
     }
 
@@ -162,10 +162,10 @@ public class Weapon {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Picture }
      *     
      */
-    public void setPicture(String value) {
+    public void setPicture(Picture value) {
         this.picture = value;
     }
 

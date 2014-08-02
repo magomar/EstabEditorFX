@@ -9,17 +9,25 @@
     <xs:element name="estab-data">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="image" type="Image" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="side" type="Side" maxOccurs="unbounded" minOccurs="2"/>
-                <xs:element name="vehicle" type="Vehicle" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="weapon" type="Weapon" maxOccurs="unbounded" minOccurs="1"/>
-                <xs:element name="radio" type="Radio" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="ammo" type="Ammo" maxOccurs="unbounded" minOccurs="1"/>
-                <xs:element name="formation-effects" type="FormationEffects" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element ref="image" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="side" maxOccurs="unbounded" minOccurs="2"/>
+                <xs:element ref="vehicle" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="weapon" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element ref="radio" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="ammo" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element ref="formation-effects" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="version" type="xs:byte"/>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="image" type="Image"/>
+    <xs:element name="side" type="Side"/>
+    <xs:element name="vehicle" type="Vehicle"/>
+    <xs:element name="weapon" type="Weapon"/>
+    <xs:element name="radio" type="Radio"/>
+    <xs:element name="ammo" type="Ammo"/>
+    <xs:element name="formation-effects" type="FormationEffects"/>
 
     <!-- Images -->
 
@@ -180,7 +188,7 @@
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
-            <xs:element name="picture" type="xs:string"/>
+            <xs:element name="picture" type="Picture"/>
             <xs:element name="picture-filename" type="xs:string"/>
             <xs:element name="size" type="VehicleSize"/>
             <xs:element name="crew" type="xs:byte"/>
@@ -204,6 +212,10 @@
             <xs:element name="battle-weight" type="xs:float"/>
             <xs:element name="armour" type="Armor"/>
         </xs:sequence>
+        <xs:attribute name="id" type="xs:short" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Picture">
         <xs:attribute name="id" type="xs:short" use="required"/>
     </xs:complexType>
 
@@ -234,7 +246,7 @@
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
-            <xs:element name="picture" type="xs:string"/>
+            <xs:element name="picture" type="Picture"/>
             <xs:element name="picture-filename" type="xs:string"/>
             <xs:element name="size" type="WeaponSize"/>
             <xs:element name="crew" type="xs:byte"/>

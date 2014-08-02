@@ -21,13 +21,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="image" type="{}Image" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="side" type="{}Side" maxOccurs="unbounded" minOccurs="2"/>
- *         &lt;element name="vehicle" type="{}Vehicle" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="weapon" type="{}Weapon" maxOccurs="unbounded"/>
- *         &lt;element name="radio" type="{}Radio" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ammo" type="{}Ammo" maxOccurs="unbounded"/>
- *         &lt;element name="formation-effects" type="{}FormationEffects" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}image" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}side" maxOccurs="unbounded" minOccurs="2"/>
+ *         &lt;element ref="{}vehicle" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}weapon" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}radio" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}ammo" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}formation-effects" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}byte" />
  *     &lt;/restriction>
