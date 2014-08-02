@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="estab-data" type="estab-dataType"/>
+  <xs:complexType name="background-light-colorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="red" use="optional"/>
+        <xs:attribute type="xs:short" name="green" use="optional"/>
+        <xs:attribute type="xs:short" name="blue" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="roadType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="normal" use="optional"/>
+        <xs:attribute type="xs:float" name="max" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="designation-colorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="red" use="optional"/>
+        <xs:attribute type="xs:short" name="green" use="optional"/>
+        <xs:attribute type="xs:short" name="blue" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ammoType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="0"/>
+      <xs:element type="xs:string" name="description" minOccurs="0"/>
+      <xs:element type="xs:short" name="min-order-qty" minOccurs="0"/>
+      <xs:element type="xs:float" name="min-order-weight" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="ammo-object-id" use="optional"/>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+    <xs:attribute type="xs:int" name="qty" use="optional"/>
+    <xs:attribute type="xs:short" name="object-id" use="optional"/>
+    <xs:attribute type="xs:short" name="load" use="optional"/>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="nationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="xs:string" name="nationality"/>
+      <xs:element type="large-insigniaType" name="large-insignia"/>
+      <xs:element type="small-insigniaType" name="small-insignia"/>
+      <xs:element type="serviceType" name="service" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="rankType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="short-name" use="optional"/>
+        <xs:attribute type="xs:string" name="full-name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="formation-effectsType">
+    <xs:sequence>
+      <xs:element type="xs:float" name="moving-cohesion-level"/>
+      <xs:element type="xs:float" name="frontage-per-man"/>
+      <xs:element type="xs:float" name="depth-per-man"/>
+      <xs:element type="firing-percentagesType" name="firing-percentages"/>
+      <xs:element type="target-percentagesType" name="target-percentages"/>
+      <xs:element type="securityType" name="security"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+    <xs:attribute type="xs:string" name="type" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="rofType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="slow" use="optional"/>
+        <xs:attribute type="xs:float" name="normal" use="optional"/>
+        <xs:attribute type="xs:float" name="rapid" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="firing-percentagesType">
+    <xs:sequence>
+      <xs:element type="xs:float" name="front"/>
+      <xs:element type="xs:float" name="left"/>
+      <xs:element type="xs:float" name="right"/>
+      <xs:element type="xs:float" name="rear"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="securityType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="front"/>
+      <xs:element type="xs:string" name="left"/>
+      <xs:element type="xs:string" name="right"/>
+      <xs:element type="xs:string" name="rear"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="background-dark-colorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="red" use="optional"/>
+        <xs:attribute type="xs:byte" name="green" use="optional"/>
+        <xs:attribute type="xs:byte" name="blue" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="range-tableType">
+    <xs:sequence>
+      <xs:element type="range-itemType" name="range-item" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="background-colorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="red" use="optional"/>
+        <xs:attribute type="xs:short" name="green" use="optional"/>
+        <xs:attribute type="xs:short" name="blue" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="sizeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="width" use="optional"/>
+        <xs:attribute type="xs:float" name="height" use="optional"/>
+        <xs:attribute type="xs:float" name="length" use="optional"/>
+        <xs:attribute type="xs:float" name="weight" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="performance-listType" mixed="true">
+    <xs:sequence>
+      <xs:element type="performanceType" name="performance" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="speedType">
+    <xs:sequence>
+      <xs:element type="xs:float" name="max" minOccurs="0"/>
+      <xs:element type="xs:float" name="normal" minOccurs="0"/>
+      <xs:element type="roadType" name="road" minOccurs="0"/>
+      <xs:element type="cross-countryType" name="cross-country" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="forceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="iconType" name="icon"/>
+      <xs:element type="xs:string" name="type"/>
+      <xs:element type="xs:string" name="sub-type"/>
+      <xs:element type="xs:string" name="size"/>
+      <xs:element type="xs:string" name="combat-class"/>
+      <xs:element type="xs:string" name="target-class"/>
+      <xs:element type="xs:short" name="infantry-value"/>
+      <xs:element type="xs:short" name="recon-value"/>
+      <xs:element type="xs:byte" name="engineering-value"/>
+      <xs:element type="xs:string" name="move-type"/>
+      <xs:element type="xs:short" name="pers-qty"/>
+      <xs:element type="xs:byte" name="staff-capacity"/>
+      <xs:element type="xs:float" name="basics-qty"/>
+      <xs:element type="xs:float" name="basics-consumption-rate-modifier"/>
+      <xs:element type="xs:byte" name="commander-rank"/>
+      <xs:element type="xs:float" name="fuel-qty"/>
+      <xs:element type="xs:float" name="fuel-load"/>
+      <xs:element type="speedType" name="speed"/>
+      <xs:element type="deployment-durationType" name="deployment-duration"/>
+      <xs:element type="xs:time" name="ready-to-fire-duration"/>
+      <xs:element type="xs:time" name="ready-to-bombard-duration"/>
+      <xs:element type="equipment-listType" name="equipment-list"/>
+      <xs:element type="ammo-listType" name="ammo-list"/>
+      <xs:element type="xs:string" name="can-bombard"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="iconType">
+    <xs:sequence>
+      <xs:element type="background-colorType" name="background-color"/>
+      <xs:element type="background-dark-colorType" name="background-dark-color"/>
+      <xs:element type="background-light-colorType" name="background-light-color"/>
+      <xs:element type="designation-colorType" name="designation-color"/>
+      <xs:element type="xs:string" name="symbol-color"/>
+      <xs:element type="xs:byte" name="military-symbol"/>
+      <xs:element type="xs:string" name="picture-symbol"/>
+      <xs:element type="xs:string" name="force-size-icon"/>
+      <xs:element type="xs:string" name="is-hq"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="estab-dataType">
+    <xs:sequence>
+      <xs:element type="imageType" name="image" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Images:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="sideType" name="side" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sides:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="vehicleType" name="vehicle" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Vehicles:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="weaponType" name="weapon" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Weapons:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="radioType" name="radio" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Radios:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="ammoType" name="ammo" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ammo:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="formation-effectsType" name="formation-effects" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Formation Effects:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="version"/>
+  </xs:complexType>
+  <xs:complexType name="sideType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="large-insigniaType" name="large-insignia"/>
+      <xs:element type="small-insigniaType" name="small-insignia"/>
+      <xs:element type="xs:float" name="basics-consumption-rate"/>
+      <xs:element type="xs:byte" name="default-enemy-aper-fp"/>
+      <xs:element type="xs:byte" name="default-enemy-aarm-fp"/>
+      <xs:element type="nationType" name="nation" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="performanceType">
+    <xs:sequence>
+      <xs:element type="ammoType" name="ammo"/>
+      <xs:element type="xs:short" name="min-range"/>
+      <xs:element type="rofType" name="rof"/>
+      <xs:element type="xs:byte" name="burst-radius"/>
+      <xs:element type="xs:float" name="shell-weight"/>
+      <xs:element type="range-tableType" name="range-table"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="fire-type" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="range-itemType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="range" use="optional"/>
+        <xs:attribute type="xs:float" name="accuracy" use="optional"/>
+        <xs:attribute type="xs:float" name="armour-penetration" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="radioType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="xs:string" name="picture"/>
+      <xs:element type="xs:string" name="picture-filename"/>
+      <xs:element type="sizeType" name="size"/>
+      <xs:element type="xs:byte" name="crew"/>
+      <xs:element type="xs:float" name="reliability"/>
+      <xs:element type="xs:string" name="armaments"/>
+      <xs:element type="xs:string" name="net-type"/>
+      <xs:element type="xs:string" name="freq-type"/>
+      <xs:element type="xs:short" name="max-range"/>
+      <xs:element type="xs:float" name="gain"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="equipmentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="equipment-object-id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:short" name="qty" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="target-percentagesType">
+    <xs:sequence>
+      <xs:element type="xs:float" name="front"/>
+      <xs:element type="xs:float" name="left"/>
+      <xs:element type="xs:float" name="right"/>
+      <xs:element type="xs:float" name="rear"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deployment-durationType">
+    <xs:sequence>
+      <xs:element type="xs:time" name="deployed"/>
+      <xs:element type="xs:time" name="dug-in"/>
+      <xs:element type="xs:time" name="entrenched"/>
+      <xs:element type="xs:time" name="fortified"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="weaponType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element name="picture">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute type="xs:short" name="id" use="optional"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="xs:string" name="picture-filename"/>
+      <xs:element type="sizeType" name="size"/>
+      <xs:element type="xs:byte" name="crew"/>
+      <xs:element type="xs:float" name="reliability"/>
+      <xs:element type="xs:string" name="armaments"/>
+      <xs:element type="xs:string" name="type"/>
+      <xs:element type="xs:string" name="single-shot"/>
+      <xs:element type="xs:string" name="primary-role"/>
+      <xs:element type="xs:float" name="calibre"/>
+      <xs:element type="xs:short" name="muzzle-velocity"/>
+      <xs:element type="xs:string" name="must-deploy-to-fire"/>
+      <xs:element type="performance-listType" name="performance-list"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="equipment-listType">
+    <xs:sequence>
+      <xs:element type="equipmentType" name="equipment" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rank-listType">
+    <xs:sequence>
+      <xs:element type="rankType" name="rank" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="large-insigniaType" name="large-insignia"/>
+      <xs:element type="small-insigniaType" name="small-insignia"/>
+      <xs:element type="rank-listType" name="rank-list"/>
+      <xs:element type="default-icon-colorsType" name="default-icon-colors"/>
+      <xs:element type="forceType" name="force" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="armourType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="front" use="optional"/>
+        <xs:attribute type="xs:float" name="side" use="optional"/>
+        <xs:attribute type="xs:float" name="rear" use="optional"/>
+        <xs:attribute type="xs:float" name="top" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ammo-listType" mixed="true">
+    <xs:sequence>
+      <xs:element type="ammoType" name="ammo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="large-insigniaType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="imageType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="file-id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pictureType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="armamentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="equipment-object-id" use="optional"/>
+        <xs:attribute type="xs:string" name="equipment-name" use="optional"/>
+        <xs:attribute type="xs:byte" name="qty" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="fuel-consumptionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="max" use="optional"/>
+        <xs:attribute type="xs:float" name="normal" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="vehicleType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element type="pictureType" name="picture"/>
+      <xs:element type="xs:string" name="picture-filename"/>
+      <xs:element type="sizeType" name="size"/>
+      <xs:element type="xs:byte" name="crew"/>
+      <xs:element type="xs:float" name="reliability"/>
+      <xs:element name="armaments">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:element type="armamentType" name="armament" maxOccurs="unbounded" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="xs:string" name="type"/>
+      <xs:element type="xs:float" name="fuel-capacity"/>
+      <xs:element type="speedType" name="speed"/>
+      <xs:element type="fuel-consumptionType" name="fuel-consumption"/>
+      <xs:element type="xs:float" name="ronsonability"/>
+      <xs:element type="xs:byte" name="max-gradient"/>
+      <xs:element type="xs:byte" name="max-fording-depth"/>
+      <xs:element type="xs:byte" name="max-trench-width"/>
+      <xs:element type="xs:float" name="towing-capacity"/>
+      <xs:element type="xs:byte" name="personnel-capacity"/>
+      <xs:element type="xs:float" name="bulk-fuel-capacity"/>
+      <xs:element type="xs:float" name="payload-capacity"/>
+      <xs:element type="xs:float" name="take-cover-mod"/>
+      <xs:element type="xs:string" name="has-turret"/>
+      <xs:element type="xs:string" name="has-open-top"/>
+      <xs:element type="xs:float" name="battle-weight"/>
+      <xs:element type="armourType" name="armour"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="cross-countryType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="normal" use="optional"/>
+        <xs:attribute type="xs:float" name="max" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="default-icon-colorsType">
+    <xs:sequence>
+      <xs:element type="background-colorType" name="background-color"/>
+      <xs:element type="background-dark-colorType" name="background-dark-color"/>
+      <xs:element type="background-light-colorType" name="background-light-color"/>
+      <xs:element type="designation-colorType" name="designation-color"/>
+      <xs:element type="xs:string" name="symbol-color"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="small-insigniaType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="armamentsType">
+    <xs:sequence>
+      <xs:element type="armamentType" name="armament" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

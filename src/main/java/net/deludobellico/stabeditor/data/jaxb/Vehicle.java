@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="size" type="{}VehicleSize"/>
  *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *         &lt;element name="reliability" type="{}Proportion"/>
- *         &lt;element name="armaments" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="armaments" type="{}ArmamentList"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="speed" type="{}VehicleSpeeds"/>
- *         &lt;element name="fuel-consumption" type="{}SpeedData"/>
+ *         &lt;element name="fuel-consumption" type="{}FuelComsumption"/>
  *         &lt;element name="ronsonability" type="{}Proportion"/>
  *         &lt;element name="max-gradient" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *         &lt;element name="max-fording-depth" type="{http://www.w3.org/2001/XMLSchema}byte"/>
@@ -95,7 +95,7 @@ public class Vehicle {
     protected byte crew;
     protected float reliability;
     @XmlElement(required = true)
-    protected String armaments;
+    protected ArmamentList armaments;
     @XmlElement(required = true)
     protected String type;
     @XmlElement(name = "fuel-capacity")
@@ -103,7 +103,7 @@ public class Vehicle {
     @XmlElement(required = true)
     protected VehicleSpeeds speed;
     @XmlElement(name = "fuel-consumption", required = true)
-    protected SpeedData fuelConsumption;
+    protected FuelComsumption fuelConsumption;
     protected float ronsonability;
     @XmlElement(name = "max-gradient")
     protected byte maxGradient;
@@ -289,10 +289,10 @@ public class Vehicle {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ArmamentList }
      *     
      */
-    public String getArmaments() {
+    public ArmamentList getArmaments() {
         return armaments;
     }
 
@@ -301,10 +301,10 @@ public class Vehicle {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ArmamentList }
      *     
      */
-    public void setArmaments(String value) {
+    public void setArmaments(ArmamentList value) {
         this.armaments = value;
     }
 
@@ -377,10 +377,10 @@ public class Vehicle {
      * 
      * @return
      *     possible object is
-     *     {@link SpeedData }
+     *     {@link FuelComsumption }
      *     
      */
-    public SpeedData getFuelConsumption() {
+    public FuelComsumption getFuelConsumption() {
         return fuelConsumption;
     }
 
@@ -389,10 +389,10 @@ public class Vehicle {
      * 
      * @param value
      *     allowed object is
-     *     {@link SpeedData }
+     *     {@link FuelComsumption }
      *     
      */
-    public void setFuelConsumption(SpeedData value) {
+    public void setFuelConsumption(FuelComsumption value) {
         this.fuelConsumption = value;
     }
 

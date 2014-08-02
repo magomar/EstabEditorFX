@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para SpeedData complex type.
+ * <p>Clase Java para FuelComsumption complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="SpeedData">
+ * &lt;complexType name="FuelComsumption">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SpeedData")
-public class SpeedData {
+@XmlType(name = "FuelComsumption")
+public class FuelComsumption {
 
     @XmlAttribute(name = "max")
     protected Float max;

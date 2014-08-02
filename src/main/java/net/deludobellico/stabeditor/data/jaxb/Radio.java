@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="armaments" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="net-type" type="{}NetType"/>
  *         &lt;element name="freq-type" type="{}FreqType"/>
- *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+ *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}short"/>
  *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
@@ -79,7 +79,6 @@ public class Radio {
     @XmlSchemaType(name = "string")
     protected FreqType freqType;
     @XmlElement(name = "max-range")
-    @XmlSchemaType(name = "unsignedByte")
     protected short maxRange;
     protected float gain;
     @XmlAttribute(name = "id", required = true)

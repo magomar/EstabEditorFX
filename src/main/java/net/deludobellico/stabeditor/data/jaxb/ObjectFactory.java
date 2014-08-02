@@ -176,6 +176,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Armament }
+     * 
+     */
+    public Armament createArmament() {
+        return new Armament();
+    }
+
+    /**
      * Create an instance of {@link Nation }
      * 
      */
@@ -248,6 +256,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArmamentList }
+     * 
+     */
+    public ArmamentList createArmamentList() {
+        return new ArmamentList();
+    }
+
+    /**
      * Create an instance of {@link Armor }
      * 
      */
@@ -309,6 +325,14 @@ public class ObjectFactory {
      */
     public RangeItem createRangeItem() {
         return new RangeItem();
+    }
+
+    /**
+     * Create an instance of {@link FuelComsumption }
+     * 
+     */
+    public FuelComsumption createFuelComsumption() {
+        return new FuelComsumption();
     }
 
     /**
