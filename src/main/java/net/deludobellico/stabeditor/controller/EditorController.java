@@ -39,7 +39,7 @@ public class EditorController implements Initializable {
 
     @FXML
     private ListView estabsListView;
-    private ObservableList<File> estabsListModel = FXCollections.observableArrayList();
+    private ObservableList<File> estabFileObservableList = FXCollections.observableArrayList();
 
     @FXML
     private Button addEstabButton;
@@ -62,8 +62,8 @@ public class EditorController implements Initializable {
         Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
         File initialDirectory = examplesPath.toFile();
         List<File> files = FileIO.listFiles(initialDirectory, XML_FILTER, false);
-        estabsListModel.addAll(files);
-        estabsListView.setItems(estabsListModel);
+        estabFileObservableList.addAll(files);
+        estabsListView.setItems(estabFileObservableList);
         addEstabButton.setDisable(false);
         removeEstabButton.setDisable(true);
         estabsListView.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -88,7 +88,7 @@ public class EditorController implements Initializable {
         fileChooser.setInitialDirectory(initialDirectory);
         File file = fileChooser.showOpenDialog(null);
         if (null != file) {
-            estabsListModel.add(file);
+            estabFileObservableList.add(file);
             LOG.info("New Estab included: " + file);
         }
     }
@@ -97,7 +97,7 @@ public class EditorController implements Initializable {
     private void removeEstabAction(ActionEvent actionEvent) {
         int selectedItem = estabsListView.getSelectionModel().getSelectedIndex();
         if (selectedItem != -1) {
-            estabsListModel.remove(selectedItem);
+            estabFileObservableList.remove(selectedItem);
         }
     }
 
@@ -105,7 +105,7 @@ public class EditorController implements Initializable {
     private void loadEstabAction(ActionEvent actionEvent) {
         int selectedItem = estabsListView.getSelectionModel().getSelectedIndex();
         if (selectedItem == -1) return;
-        File file = estabsListModel.get(selectedItem);
+        File file = estabFileObservableList.get(selectedItem);
         sourceEstabDataController.setTitle("Source Estab: " + file.getName());
         sourceEstabDataController.setEstabDataModel(new EstabDataModel(file));
     }

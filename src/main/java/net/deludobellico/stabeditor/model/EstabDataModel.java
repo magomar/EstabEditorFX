@@ -62,9 +62,10 @@ public class EstabDataModel {
 //    }
 
     public List<Vehicle> searchVehicleByName(String name) {
+        String lcName = name.toLowerCase();
         List<Vehicle> searchResults = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getName().contains(name)) searchResults.add(vehicle);
+            if (vehicle.getName().toLowerCase().contains(lcName)) searchResults.add(vehicle);
         }
         return searchResults;
     }

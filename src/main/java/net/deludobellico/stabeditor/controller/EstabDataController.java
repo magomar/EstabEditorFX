@@ -11,10 +11,10 @@ import javafx.scene.control.*;
 import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.model.EstabDataModel;
+import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.util.FileIO;
 
 import javax.xml.bind.JAXBElement;
-import java.io.File;
 import java.io.StringWriter;
 import java.net.URL;
 import java.util.List;
@@ -66,8 +66,10 @@ public class EstabDataController implements Initializable  {
     private TextField numWeaponsTextField;
 
     @FXML
-    private ListView searchResultsListView;
-    private ObservableList<JAXBElement> searchResultsListModel = FXCollections.observableArrayList();
+    private ListView<EstabReference> searchResultsListView;
+    private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
+//    private ObservableList<Weapon> weaponObservableList = FXCollections.observableArrayList();
+//    private ObservableList<Ammo> ammoObservableList = FXCollections.observableArrayList();
 
     @FXML
     private TextArea resultsTextArea;
@@ -78,17 +80,21 @@ public class EstabDataController implements Initializable  {
         searchVehicleButton.setDisable(true);
         searchWeaponButton.setDisable(true);
         searchAmmoButton.setDisable(true);
-        searchResultsListView.setItems(searchResultsListModel);
+        searchResultsListView.setItems(estabReferenceObservableList);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                StringWriter sw = FileIO.marshallXML(newValue, FileIO.MARSHALLER);
+                StringWriter sw = FileIO.marshallXML(((EstabReference) newValue).getJaxbElement(), FileIO.MARSHALLER);
                 String result = sw.toString();
                 resultsTextArea.setText(result);
             }
         });
-
-
+        searchVehicleTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                searchVehicleAction(null);
+            }
+        });
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
@@ -109,16 +115,12 @@ public class EstabDataController implements Initializable  {
 
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
-        searchResultsListModel.clear();
+        estabReferenceObservableList.clear();
         List<Vehicle> vehicles = estabDataModel.searchVehicleByName(searchVehicleTextField.getText());
         if (vehicles.isEmpty()) return;
         for (Vehicle vehicle : vehicles) {
-            searchResultsListModel.addAll(OBJECT_FACTORY.createVehicle(vehicle));
+            estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
         }
-
-//        StringWriter sw = FileIO.marshallXML(jaxbElement, FileIO.MARSHALLER);
-//        String result = sw.toString();
-//        resultsTextArea.setText(result);
     }
 
     @FXML
