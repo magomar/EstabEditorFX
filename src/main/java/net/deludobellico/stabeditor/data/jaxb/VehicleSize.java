@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for VehicleSize complex type.
+ * <p>Clase Java para VehicleSize complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="VehicleSize">
@@ -41,7 +41,7 @@ public class VehicleSize {
     protected Float weight;
 
     /**
-     * Gets the value of the width property.
+     * Obtiene el valor de la propiedad width.
      * 
      * @return
      *     possible object is
@@ -53,7 +53,7 @@ public class VehicleSize {
     }
 
     /**
-     * Sets the value of the width property.
+     * Define el valor de la propiedad width.
      * 
      * @param value
      *     allowed object is
@@ -65,7 +65,7 @@ public class VehicleSize {
     }
 
     /**
-     * Gets the value of the height property.
+     * Obtiene el valor de la propiedad height.
      * 
      * @return
      *     possible object is
@@ -77,7 +77,7 @@ public class VehicleSize {
     }
 
     /**
-     * Sets the value of the height property.
+     * Define el valor de la propiedad height.
      * 
      * @param value
      *     allowed object is
@@ -89,7 +89,7 @@ public class VehicleSize {
     }
 
     /**
-     * Gets the value of the length property.
+     * Obtiene el valor de la propiedad length.
      * 
      * @return
      *     possible object is
@@ -101,7 +101,7 @@ public class VehicleSize {
     }
 
     /**
-     * Sets the value of the length property.
+     * Define el valor de la propiedad length.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +113,7 @@ public class VehicleSize {
     }
 
     /**
-     * Gets the value of the weight property.
+     * Obtiene el valor de la propiedad weight.
      * 
      * @return
      *     possible object is
@@ -125,7 +125,7 @@ public class VehicleSize {
     }
 
     /**
-     * Sets the value of the weight property.
+     * Define el valor de la propiedad weight.
      * 
      * @param value
      *     allowed object is

@@ -1,16 +1,20 @@
 
 package net.deludobellico.stabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * <p/>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p/>
+ * <p>Clase Java para FormationEffects complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="FormationEffects">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,17 +31,18 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "movingCohesionLevel",
-        "frontagePerMan",
-        "depthPerMan",
-        "firingPercentages",
-        "targetPercentages",
-        "security"
+@XmlType(name = "FormationEffects", propOrder = {
+    "movingCohesionLevel",
+    "frontagePerMan",
+    "depthPerMan",
+    "firingPercentages",
+    "targetPercentages",
+    "security"
 })
-@XmlRootElement(name = "formation-effects")
 public class FormationEffects {
 
     @XmlElement(name = "moving-cohesion-level")
@@ -58,136 +63,160 @@ public class FormationEffects {
     protected FormationType type;
 
     /**
-     * Gets the value of the movingCohesionLevel property.
+     * Obtiene el valor de la propiedad movingCohesionLevel.
+     * 
      */
     public float getMovingCohesionLevel() {
         return movingCohesionLevel;
     }
 
     /**
-     * Sets the value of the movingCohesionLevel property.
+     * Define el valor de la propiedad movingCohesionLevel.
+     * 
      */
     public void setMovingCohesionLevel(float value) {
         this.movingCohesionLevel = value;
     }
 
     /**
-     * Gets the value of the frontagePerMan property.
+     * Obtiene el valor de la propiedad frontagePerMan.
+     * 
      */
     public float getFrontagePerMan() {
         return frontagePerMan;
     }
 
     /**
-     * Sets the value of the frontagePerMan property.
+     * Define el valor de la propiedad frontagePerMan.
+     * 
      */
     public void setFrontagePerMan(float value) {
         this.frontagePerMan = value;
     }
 
     /**
-     * Gets the value of the depthPerMan property.
+     * Obtiene el valor de la propiedad depthPerMan.
+     * 
      */
     public float getDepthPerMan() {
         return depthPerMan;
     }
 
     /**
-     * Sets the value of the depthPerMan property.
+     * Define el valor de la propiedad depthPerMan.
+     * 
      */
     public void setDepthPerMan(float value) {
         this.depthPerMan = value;
     }
 
     /**
-     * Gets the value of the firingPercentages property.
-     *
-     * @return possible object is
-     * {@link FiringPercentages }
+     * Obtiene el valor de la propiedad firingPercentages.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FiringPercentages }
+     *     
      */
     public FiringPercentages getFiringPercentages() {
         return firingPercentages;
     }
 
     /**
-     * Sets the value of the firingPercentages property.
-     *
-     * @param value allowed object is
-     *              {@link FiringPercentages }
+     * Define el valor de la propiedad firingPercentages.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FiringPercentages }
+     *     
      */
     public void setFiringPercentages(FiringPercentages value) {
         this.firingPercentages = value;
     }
 
     /**
-     * Gets the value of the targetPercentages property.
-     *
-     * @return possible object is
-     * {@link TargetPercentages }
+     * Obtiene el valor de la propiedad targetPercentages.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TargetPercentages }
+     *     
      */
     public TargetPercentages getTargetPercentages() {
         return targetPercentages;
     }
 
     /**
-     * Sets the value of the targetPercentages property.
-     *
-     * @param value allowed object is
-     *              {@link TargetPercentages }
+     * Define el valor de la propiedad targetPercentages.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TargetPercentages }
+     *     
      */
     public void setTargetPercentages(TargetPercentages value) {
         this.targetPercentages = value;
     }
 
     /**
-     * Gets the value of the security property.
-     *
-     * @return possible object is
-     * {@link FormationSecurity }
+     * Obtiene el valor de la propiedad security.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FormationSecurity }
+     *     
      */
     public FormationSecurity getSecurity() {
         return security;
     }
 
     /**
-     * Sets the value of the security property.
-     *
-     * @param value allowed object is
-     *              {@link FormationSecurity }
+     * Define el valor de la propiedad security.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FormationSecurity }
+     *     
      */
     public void setSecurity(FormationSecurity value) {
         this.security = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public short getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(short value) {
         this.id = value;
     }
 
     /**
-     * Gets the value of the type property.
-     *
-     * @return possible object is
-     * {@link FormationType }
+     * Obtiene el valor de la propiedad type.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FormationType }
+     *     
      */
     public FormationType getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     *
-     * @param value allowed object is
-     *              {@link FormationType }
+     * Define el valor de la propiedad type.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FormationType }
+     *     
      */
     public void setType(FormationType value) {
         this.type = value;

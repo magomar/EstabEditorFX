@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the net.deludobellico.stabeditor.data.jaxb package.
+ * generated in the net.deludobellico.stabeditor.data.jaxb package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -27,38 +27,6 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link FormationEffects }
-     * 
-     */
-    public FormationEffects createFormationEffects() {
-        return new FormationEffects();
-    }
-
-    /**
-     * Create an instance of {@link FiringPercentages }
-     * 
-     */
-    public FiringPercentages createFiringPercentages() {
-        return new FiringPercentages();
-    }
-
-    /**
-     * Create an instance of {@link TargetPercentages }
-     * 
-     */
-    public TargetPercentages createTargetPercentages() {
-        return new TargetPercentages();
-    }
-
-    /**
-     * Create an instance of {@link FormationSecurity }
-     * 
-     */
-    public FormationSecurity createFormationSecurity() {
-        return new FormationSecurity();
     }
 
     /**
@@ -118,59 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Service }
+     * Create an instance of {@link FormationEffects }
      * 
      */
-    public Service createService() {
-        return new Service();
-    }
-
-    /**
-     * Create an instance of {@link RankList }
-     * 
-     */
-    public RankList createRankList() {
-        return new RankList();
-    }
-
-    /**
-     * Create an instance of {@link Rank }
-     * 
-     */
-    public Rank createRank() {
-        return new Rank();
-    }
-
-    /**
-     * Create an instance of {@link VehicleSpeeds }
-     * 
-     */
-    public VehicleSpeeds createVehicleSpeeds() {
-        return new VehicleSpeeds();
-    }
-
-    /**
-     * Create an instance of {@link RangeItem }
-     * 
-     */
-    public RangeItem createRangeItem() {
-        return new RangeItem();
-    }
-
-    /**
-     * Create an instance of {@link Nation }
-     * 
-     */
-    public Nation createNation() {
-        return new Nation();
-    }
-
-    /**
-     * Create an instance of {@link RangeTable }
-     * 
-     */
-    public RangeTable createRangeTable() {
-        return new RangeTable();
+    public FormationEffects createFormationEffects() {
+        return new FormationEffects();
     }
 
     /**
@@ -182,19 +102,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FormationSecurity }
+     * 
+     */
+    public FormationSecurity createFormationSecurity() {
+        return new FormationSecurity();
+    }
+
+    /**
+     * Create an instance of {@link RankList }
+     * 
+     */
+    public RankList createRankList() {
+        return new RankList();
+    }
+
+    /**
+     * Create an instance of {@link TargetPercentages }
+     * 
+     */
+    public TargetPercentages createTargetPercentages() {
+        return new TargetPercentages();
+    }
+
+    /**
      * Create an instance of {@link ROF }
      * 
      */
     public ROF createROF() {
         return new ROF();
-    }
-
-    /**
-     * Create an instance of {@link Equipment }
-     * 
-     */
-    public Equipment createEquipment() {
-        return new Equipment();
     }
 
     /**
@@ -206,27 +142,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RGBColor }
+     * Create an instance of {@link Icon }
      * 
      */
-    public RGBColor createRGBColor() {
-        return new RGBColor();
-    }
-
-    /**
-     * Create an instance of {@link DefaultIconColors }
-     * 
-     */
-    public DefaultIconColors createDefaultIconColors() {
-        return new DefaultIconColors();
-    }
-
-    /**
-     * Create an instance of {@link Insignia }
-     * 
-     */
-    public Insignia createInsignia() {
-        return new Insignia();
+    public Icon createIcon() {
+        return new Icon();
     }
 
     /**
@@ -238,51 +158,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SpeedData }
+     * Create an instance of {@link Nation }
      * 
      */
-    public SpeedData createSpeedData() {
-        return new SpeedData();
-    }
-
-    /**
-     * Create an instance of {@link DeploymentDuration }
-     * 
-     */
-    public DeploymentDuration createDeploymentDuration() {
-        return new DeploymentDuration();
-    }
-
-    /**
-     * Create an instance of {@link RadioSize }
-     * 
-     */
-    public RadioSize createRadioSize() {
-        return new RadioSize();
-    }
-
-    /**
-     * Create an instance of {@link PerformanceList }
-     * 
-     */
-    public PerformanceList createPerformanceList() {
-        return new PerformanceList();
-    }
-
-    /**
-     * Create an instance of {@link EquipmentList }
-     * 
-     */
-    public EquipmentList createEquipmentList() {
-        return new EquipmentList();
-    }
-
-    /**
-     * Create an instance of {@link AmmoList }
-     * 
-     */
-    public AmmoList createAmmoList() {
-        return new AmmoList();
+    public Nation createNation() {
+        return new Nation();
     }
 
     /**
@@ -294,11 +174,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Insignia }
+     * 
+     */
+    public Insignia createInsignia() {
+        return new Insignia();
+    }
+
+    /**
      * Create an instance of {@link Force }
      * 
      */
     public Force createForce() {
         return new Force();
+    }
+
+    /**
+     * Create an instance of {@link RGBColor }
+     * 
+     */
+    public RGBColor createRGBColor() {
+        return new RGBColor();
+    }
+
+    /**
+     * Create an instance of {@link RangeTable }
+     * 
+     */
+    public RangeTable createRangeTable() {
+        return new RangeTable();
+    }
+
+    /**
+     * Create an instance of {@link VehicleSpeeds }
+     * 
+     */
+    public VehicleSpeeds createVehicleSpeeds() {
+        return new VehicleSpeeds();
+    }
+
+    /**
+     * Create an instance of {@link FiringPercentages }
+     * 
+     */
+    public FiringPercentages createFiringPercentages() {
+        return new FiringPercentages();
+    }
+
+    /**
+     * Create an instance of {@link DeploymentDuration }
+     * 
+     */
+    public DeploymentDuration createDeploymentDuration() {
+        return new DeploymentDuration();
     }
 
     /**
@@ -310,19 +238,91 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AmmoList }
+     * 
+     */
+    public AmmoList createAmmoList() {
+        return new AmmoList();
+    }
+
+    /**
+     * Create an instance of {@link PerformanceList }
+     * 
+     */
+    public PerformanceList createPerformanceList() {
+        return new PerformanceList();
+    }
+
+    /**
+     * Create an instance of {@link RadioSize }
+     * 
+     */
+    public RadioSize createRadioSize() {
+        return new RadioSize();
+    }
+
+    /**
+     * Create an instance of {@link Service }
+     * 
+     */
+    public Service createService() {
+        return new Service();
+    }
+
+    /**
+     * Create an instance of {@link Rank }
+     * 
+     */
+    public Rank createRank() {
+        return new Rank();
+    }
+
+    /**
+     * Create an instance of {@link EquipmentList }
+     * 
+     */
+    public EquipmentList createEquipmentList() {
+        return new EquipmentList();
+    }
+
+    /**
+     * Create an instance of {@link RangeItem }
+     * 
+     */
+    public RangeItem createRangeItem() {
+        return new RangeItem();
+    }
+
+    /**
+     * Create an instance of {@link Equipment }
+     * 
+     */
+    public Equipment createEquipment() {
+        return new Equipment();
+    }
+
+    /**
+     * Create an instance of {@link SpeedData }
+     * 
+     */
+    public SpeedData createSpeedData() {
+        return new SpeedData();
+    }
+
+    /**
+     * Create an instance of {@link DefaultIconColors }
+     * 
+     */
+    public DefaultIconColors createDefaultIconColors() {
+        return new DefaultIconColors();
+    }
+
+    /**
      * Create an instance of {@link WeaponSize }
      * 
      */
     public WeaponSize createWeaponSize() {
         return new WeaponSize();
-    }
-
-    /**
-     * Create an instance of {@link Icon }
-     * 
-     */
-    public Icon createIcon() {
-        return new Icon();
     }
 
 }

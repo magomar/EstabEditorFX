@@ -1,16 +1,20 @@
 
 package net.deludobellico.stabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Side complex type.
- * <p/>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p/>
+ * <p>Clase Java para Side complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Side">
  *   &lt;complexContent>
@@ -30,17 +34,19 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Side", propOrder = {
-        "name",
-        "description",
-        "largeInsignia",
-        "smallInsignia",
-        "basicsConsumptionRate",
-        "defaultEnemyAperFp",
-        "defaultEnemyAarmFp",
-        "nation"
+    "name",
+    "description",
+    "largeInsignia",
+    "smallInsignia",
+    "basicsConsumptionRate",
+    "defaultEnemyAperFp",
+    "defaultEnemyAarmFp",
+    "nation"
 })
 public class Side {
 
@@ -63,122 +69,144 @@ public class Side {
     protected byte id;
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the description property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad description.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Sets the value of the description property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad description.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the largeInsignia property.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Obtiene el valor de la propiedad largeInsignia.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getLargeInsignia() {
         return largeInsignia;
     }
 
     /**
-     * Sets the value of the largeInsignia property.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Define el valor de la propiedad largeInsignia.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setLargeInsignia(Insignia value) {
         this.largeInsignia = value;
     }
 
     /**
-     * Gets the value of the smallInsignia property.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Obtiene el valor de la propiedad smallInsignia.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getSmallInsignia() {
         return smallInsignia;
     }
 
     /**
-     * Sets the value of the smallInsignia property.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Define el valor de la propiedad smallInsignia.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setSmallInsignia(Insignia value) {
         this.smallInsignia = value;
     }
 
     /**
-     * Gets the value of the basicsConsumptionRate property.
+     * Obtiene el valor de la propiedad basicsConsumptionRate.
+     * 
      */
     public float getBasicsConsumptionRate() {
         return basicsConsumptionRate;
     }
 
     /**
-     * Sets the value of the basicsConsumptionRate property.
+     * Define el valor de la propiedad basicsConsumptionRate.
+     * 
      */
     public void setBasicsConsumptionRate(float value) {
         this.basicsConsumptionRate = value;
     }
 
     /**
-     * Gets the value of the defaultEnemyAperFp property.
+     * Obtiene el valor de la propiedad defaultEnemyAperFp.
+     * 
      */
     public byte getDefaultEnemyAperFp() {
         return defaultEnemyAperFp;
     }
 
     /**
-     * Sets the value of the defaultEnemyAperFp property.
+     * Define el valor de la propiedad defaultEnemyAperFp.
+     * 
      */
     public void setDefaultEnemyAperFp(byte value) {
         this.defaultEnemyAperFp = value;
     }
 
     /**
-     * Gets the value of the defaultEnemyAarmFp property.
+     * Obtiene el valor de la propiedad defaultEnemyAarmFp.
+     * 
      */
     public byte getDefaultEnemyAarmFp() {
         return defaultEnemyAarmFp;
     }
 
     /**
-     * Sets the value of the defaultEnemyAarmFp property.
+     * Define el valor de la propiedad defaultEnemyAarmFp.
+     * 
      */
     public void setDefaultEnemyAarmFp(byte value) {
         this.defaultEnemyAarmFp = value;
@@ -186,23 +214,25 @@ public class Side {
 
     /**
      * Gets the value of the nation property.
-     * <p/>
-     * <p/>
+     * 
+     * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the nation property.
-     * <p/>
-     * <p/>
+     * 
+     * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getNation().add(newItem);
      * </pre>
-     * <p/>
-     * <p/>
-     * <p/>
+     * 
+     * 
+     * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Nation }
+     * 
+     * 
      */
     public List<Nation> getNation() {
         if (nation == null) {
@@ -212,14 +242,16 @@ public class Side {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public byte getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(byte value) {
         this.id = value;

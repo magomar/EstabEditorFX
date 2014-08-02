@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FiringPercentages complex type.
+ * <p>Clase Java para FiringPercentages complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FiringPercentages">
@@ -43,7 +43,7 @@ public class FiringPercentages {
     protected float rear;
 
     /**
-     * Gets the value of the front property.
+     * Obtiene el valor de la propiedad front.
      * 
      */
     public float getFront() {
@@ -51,7 +51,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Sets the value of the front property.
+     * Define el valor de la propiedad front.
      * 
      */
     public void setFront(float value) {
@@ -59,7 +59,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Gets the value of the left property.
+     * Obtiene el valor de la propiedad left.
      * 
      */
     public float getLeft() {
@@ -67,7 +67,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Sets the value of the left property.
+     * Define el valor de la propiedad left.
      * 
      */
     public void setLeft(float value) {
@@ -75,7 +75,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Gets the value of the right property.
+     * Obtiene el valor de la propiedad right.
      * 
      */
     public float getRight() {
@@ -83,7 +83,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Sets the value of the right property.
+     * Define el valor de la propiedad right.
      * 
      */
     public void setRight(float value) {
@@ -91,7 +91,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Gets the value of the rear property.
+     * Obtiene el valor de la propiedad rear.
      * 
      */
     public float getRear() {
@@ -99,7 +99,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Sets the value of the rear property.
+     * Define el valor de la propiedad rear.
      * 
      */
     public void setRear(float value) {

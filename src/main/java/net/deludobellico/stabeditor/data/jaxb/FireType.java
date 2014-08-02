@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FireType.
+ * <p>Clase Java para FireType.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
  * &lt;simpleType name="FireType">
@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="aarm"/>
  *     &lt;enumeration value="aair"/>
  *     &lt;enumeration value="bombard"/>
+ *     &lt;enumeration value="smoke"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -34,7 +35,9 @@ public enum FireType {
     @XmlEnumValue("aair")
     AAIR("aair"),
     @XmlEnumValue("bombard")
-    BOMBARD("bombard");
+    BOMBARD("bombard"),
+    @XmlEnumValue("smoke")
+    SMOKE("smoke");
     private final String value;
 
     FireType(String v) {

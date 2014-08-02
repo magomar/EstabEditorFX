@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Image complex type.
+ * <p>Clase Java para Image complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Image">
@@ -35,7 +35,7 @@ public class Image {
     protected String fileId;
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public short getId() {
@@ -43,7 +43,7 @@ public class Image {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(short value) {
@@ -51,7 +51,7 @@ public class Image {
     }
 
     /**
-     * Gets the value of the fileId property.
+     * Obtiene el valor de la propiedad fileId.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class Image {
     }
 
     /**
-     * Sets the value of the fileId property.
+     * Define el valor de la propiedad fileId.
      * 
      * @param value
      *     allowed object is

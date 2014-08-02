@@ -93,7 +93,8 @@ public class EstabDataController implements Initializable  {
         if (null == element) return;
         EstabData rootElement = new EstabData();
         rootElement.getVehicle().add(element);
-        StringWriter sw = FileIO.marshallXML(rootElement, FileIO.MARSHALLER);
+//        StringWriter sw = FileIO.marshallXML(rootElement, FileIO.MARSHALLER);
+        StringWriter sw = FileIO.marshallXML(element, FileIO.MARSHALLER);
         String result = sw.toString();
         textArea.setText(result);
     }

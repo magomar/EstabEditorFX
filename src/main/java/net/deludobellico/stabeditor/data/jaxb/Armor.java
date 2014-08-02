@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Armor complex type.
+ * <p>Clase Java para Armor complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Armor">
@@ -41,7 +41,7 @@ public class Armor {
     protected Float top;
 
     /**
-     * Gets the value of the front property.
+     * Obtiene el valor de la propiedad front.
      * 
      * @return
      *     possible object is
@@ -53,7 +53,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the front property.
+     * Define el valor de la propiedad front.
      * 
      * @param value
      *     allowed object is
@@ -65,7 +65,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the side property.
+     * Obtiene el valor de la propiedad side.
      * 
      * @return
      *     possible object is
@@ -77,7 +77,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the side property.
+     * Define el valor de la propiedad side.
      * 
      * @param value
      *     allowed object is
@@ -89,7 +89,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the rear property.
+     * Obtiene el valor de la propiedad rear.
      * 
      * @return
      *     possible object is
@@ -101,7 +101,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the rear property.
+     * Define el valor de la propiedad rear.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +113,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the top property.
+     * Obtiene el valor de la propiedad top.
      * 
      * @return
      *     possible object is
@@ -125,7 +125,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the top property.
+     * Define el valor de la propiedad top.
      * 
      * @param value
      *     allowed object is

@@ -1,16 +1,20 @@
 
 package net.deludobellico.stabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Service complex type.
- * <p/>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p/>
+ * <p>Clase Java para Service complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Service">
  *   &lt;complexContent>
@@ -29,16 +33,18 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Service", propOrder = {
-        "name",
-        "description",
-        "largeInsignia",
-        "smallInsignia",
-        "rankList",
-        "defaultIconColors",
-        "force"
+    "name",
+    "description",
+    "largeInsignia",
+    "smallInsignia",
+    "rankList",
+    "defaultIconColors",
+    "force"
 })
 public class Service {
 
@@ -59,120 +65,144 @@ public class Service {
     protected short id;
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the description property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad description.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Sets the value of the description property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad description.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the largeInsignia property.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Obtiene el valor de la propiedad largeInsignia.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getLargeInsignia() {
         return largeInsignia;
     }
 
     /**
-     * Sets the value of the largeInsignia property.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Define el valor de la propiedad largeInsignia.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setLargeInsignia(Insignia value) {
         this.largeInsignia = value;
     }
 
     /**
-     * Gets the value of the smallInsignia property.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Obtiene el valor de la propiedad smallInsignia.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getSmallInsignia() {
         return smallInsignia;
     }
 
     /**
-     * Sets the value of the smallInsignia property.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Define el valor de la propiedad smallInsignia.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setSmallInsignia(Insignia value) {
         this.smallInsignia = value;
     }
 
     /**
-     * Gets the value of the rankList property.
-     *
-     * @return possible object is
-     * {@link RankList }
+     * Obtiene el valor de la propiedad rankList.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RankList }
+     *     
      */
     public RankList getRankList() {
         return rankList;
     }
 
     /**
-     * Sets the value of the rankList property.
-     *
-     * @param value allowed object is
-     *              {@link RankList }
+     * Define el valor de la propiedad rankList.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RankList }
+     *     
      */
     public void setRankList(RankList value) {
         this.rankList = value;
     }
 
     /**
-     * Gets the value of the defaultIconColors property.
-     *
-     * @return possible object is
-     * {@link DefaultIconColors }
+     * Obtiene el valor de la propiedad defaultIconColors.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DefaultIconColors }
+     *     
      */
     public DefaultIconColors getDefaultIconColors() {
         return defaultIconColors;
     }
 
     /**
-     * Sets the value of the defaultIconColors property.
-     *
-     * @param value allowed object is
-     *              {@link DefaultIconColors }
+     * Define el valor de la propiedad defaultIconColors.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DefaultIconColors }
+     *     
      */
     public void setDefaultIconColors(DefaultIconColors value) {
         this.defaultIconColors = value;
@@ -180,23 +210,25 @@ public class Service {
 
     /**
      * Gets the value of the force property.
-     * <p/>
-     * <p/>
+     * 
+     * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the force property.
-     * <p/>
-     * <p/>
+     * 
+     * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getForce().add(newItem);
      * </pre>
-     * <p/>
-     * <p/>
-     * <p/>
+     * 
+     * 
+     * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Force }
+     * 
+     * 
      */
     public List<Force> getForce() {
         if (force == null) {
@@ -206,14 +238,16 @@ public class Service {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public short getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(short value) {
         this.id = value;

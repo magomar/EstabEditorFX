@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SpeedData complex type.
+ * <p>Clase Java para SpeedData complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="SpeedData">
@@ -37,7 +37,7 @@ public class SpeedData {
     protected float normal;
 
     /**
-     * Gets the value of the max property.
+     * Obtiene el valor de la propiedad max.
      * 
      */
     public float getMax() {
@@ -45,7 +45,7 @@ public class SpeedData {
     }
 
     /**
-     * Sets the value of the max property.
+     * Define el valor de la propiedad max.
      * 
      */
     public void setMax(float value) {
@@ -53,7 +53,7 @@ public class SpeedData {
     }
 
     /**
-     * Gets the value of the normal property.
+     * Obtiene el valor de la propiedad normal.
      * 
      */
     public float getNormal() {
@@ -61,7 +61,7 @@ public class SpeedData {
     }
 
     /**
-     * Sets the value of the normal property.
+     * Define el valor de la propiedad normal.
      * 
      */
     public void setNormal(float value) {

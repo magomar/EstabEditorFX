@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RangeItem complex type.
+ * <p>Clase Java para RangeItem complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RangeItem">
@@ -38,7 +38,7 @@ public class RangeItem {
     protected float armourPenetration;
 
     /**
-     * Gets the value of the range property.
+     * Obtiene el valor de la propiedad range.
      * 
      */
     public short getRange() {
@@ -46,7 +46,7 @@ public class RangeItem {
     }
 
     /**
-     * Sets the value of the range property.
+     * Define el valor de la propiedad range.
      * 
      */
     public void setRange(short value) {
@@ -54,7 +54,7 @@ public class RangeItem {
     }
 
     /**
-     * Gets the value of the accuracy property.
+     * Obtiene el valor de la propiedad accuracy.
      * 
      */
     public float getAccuracy() {
@@ -62,7 +62,7 @@ public class RangeItem {
     }
 
     /**
-     * Sets the value of the accuracy property.
+     * Define el valor de la propiedad accuracy.
      * 
      */
     public void setAccuracy(float value) {
@@ -70,7 +70,7 @@ public class RangeItem {
     }
 
     /**
-     * Gets the value of the armourPenetration property.
+     * Obtiene el valor de la propiedad armourPenetration.
      * 
      */
     public float getArmourPenetration() {
@@ -78,7 +78,7 @@ public class RangeItem {
     }
 
     /**
-     * Sets the value of the armourPenetration property.
+     * Define el valor de la propiedad armourPenetration.
      * 
      */
     public void setArmourPenetration(float value) {
