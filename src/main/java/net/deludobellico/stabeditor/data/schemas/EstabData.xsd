@@ -194,7 +194,7 @@
             <xs:element name="crew" type="xs:byte"/>
             <xs:element name="reliability" type="Proportion"/>
             <xs:element name="armaments" type="ArmamentList"/>
-            <xs:element name="type" type="xs:string"/>
+            <xs:element name="type" type="VehicleType"/>
             <xs:element name="fuel-capacity" type="xs:float"/>
             <xs:element name="speed" type="VehicleSpeeds"/>
             <xs:element name="fuel-consumption" type="FuelComsumption"/>
@@ -653,6 +653,21 @@
             <xs:enumeration value="Base"/>
             <xs:enumeration value="Bridge Engineer"/>
             <xs:enumeration value="Const Engineer"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VehicleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tank"/>
+            <xs:enumeration value="tank-destroyer"/>
+            <xs:enumeration value="assault-gun"/>
+            <xs:enumeration value="self-propelled-artillery"/>
+            <xs:enumeration value="armoured-car"/>
+            <xs:enumeration value="other-afv"/>
+            <xs:enumeration value="truck"/>
+            <xs:enumeration value="car"/>
+            <xs:enumeration value="motor-cycle"/>
+            <xs:enumeration value="construction-vehicle"/>
         </xs:restriction>
     </xs:simpleType>
 

@@ -57,10 +57,6 @@ public class EstabDataModel {
         return ammos;
     }
 
-//    public EstabReference searchByName(String name) {
-//        return null;
-//    }
-
     public List<Vehicle> searchVehicleByName(String name) {
         String lcName = name.toLowerCase();
         List<Vehicle> searchResults = new ArrayList<>();
@@ -70,17 +66,46 @@ public class EstabDataModel {
         return searchResults;
     }
 
-    public Weapon searchWeaponByName(String name) {
-        for (Weapon weapon : weapons) {
-            if (weapon.getName().contains(name)) return weapon;
+    public Vehicle searchVehicleById(int id) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getId() == id) {
+                return vehicle;
+            }
         }
         return null;
     }
 
-    public Ammo searchAmmoByName(String name) {
-        for (Ammo ammo : ammos) {
-            if (ammo.getName().contains(name)) return ammo;
+    public List<Weapon> searchWeaponByName(String name) {
+        String lcName = name.toLowerCase();
+        List<Weapon> searchResults = new ArrayList<>();
+        for (Weapon weapon : weapons) {
+            if (weapon.getName().toLowerCase().contains(lcName)) searchResults.add(weapon);
+        }
+        return searchResults;
+    }
+    public Weapon searchWeaponById(int id) {
+        for (Weapon weapon : weapons) {
+            if (weapon.getId() == id) {
+                return weapon;
+            }
         }
         return null;
     }
+    public List<Ammo> searchAmmoByName(String name) {
+        String lcName = name.toLowerCase();
+        List<Ammo> searchResults = new ArrayList<>();
+        for (Ammo ammo : ammos) {
+            if (ammo.getName().toLowerCase().contains(lcName)) searchResults.add(ammo);
+        }
+        return searchResults;
+    }
+    public Ammo searchAmmoById(int id) {
+        for (Ammo ammo : ammos) {
+            if (ammo.getId() == id) {
+                return ammo;
+            }
+        }
+        return null;
+    }
+
 }

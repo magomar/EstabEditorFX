@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *         &lt;element name="reliability" type="{}Proportion"/>
  *         &lt;element name="armaments" type="{}ArmamentList"/>
- *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="type" type="{}VehicleType"/>
  *         &lt;element name="fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="speed" type="{}VehicleSpeeds"/>
  *         &lt;element name="fuel-consumption" type="{}FuelComsumption"/>
@@ -97,7 +98,8 @@ public class Vehicle {
     @XmlElement(required = true)
     protected ArmamentList armaments;
     @XmlElement(required = true)
-    protected String type;
+    @XmlSchemaType(name = "string")
+    protected VehicleType type;
     @XmlElement(name = "fuel-capacity")
     protected float fuelCapacity;
     @XmlElement(required = true)
@@ -313,10 +315,10 @@ public class Vehicle {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link VehicleType }
      *     
      */
-    public String getType() {
+    public VehicleType getType() {
         return type;
     }
 
@@ -325,10 +327,10 @@ public class Vehicle {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link VehicleType }
      *     
      */
-    public void setType(String value) {
+    public void setType(VehicleType value) {
         this.type = value;
     }
 

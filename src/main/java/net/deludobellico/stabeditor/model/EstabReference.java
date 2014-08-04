@@ -32,12 +32,16 @@ public class EstabReference<T> {
         return jaxbElement;
     }
 
+    public T getElement() {
+        return jaxbElement.getValue();
+    }
+
     public Class<T> getElementClass() {
         return elementClass;
     }
 
     @Override
     public String toString() {
-        return name;
+        return id + " : " +name;
     }
 }
