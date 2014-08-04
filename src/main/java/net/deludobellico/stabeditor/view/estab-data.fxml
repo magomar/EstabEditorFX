@@ -56,11 +56,11 @@
                </children>
             </VBox>
             <StackPane fx:id="editorStackPane" prefHeight="400.0" prefWidth="400.0">
-               <children>
+               <!--<children>-->
                   <!--<fx:include source="vehicle-editor.fxml" />-->
                   <!--<fx:include source="ammo-editor.fxml" />-->
                   <!--<fx:include source="weapon-editor.fxml" />-->
-               </children>
+               <!--</children>-->
             </StackPane>
          </children>
       </HBox>

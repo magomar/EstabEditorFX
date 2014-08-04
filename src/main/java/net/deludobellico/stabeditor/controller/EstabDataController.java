@@ -76,14 +76,14 @@ public class EstabDataController implements Initializable {
     @FXML
     private TextField numWeaponsTextField;
 
-    @FXML
-    private VehicleEditorController vehicleEditorController;
-
-    @FXML
-    private WeaponEditorController weaponEditorController;
-
-    @FXML
-    private AmmoEditorController ammoEditorController;
+//    @FXML
+//    private VehicleEditorController vehicleEditorController;
+//
+//    @FXML
+//    private WeaponEditorController weaponEditorController;
+//
+//    @FXML
+//    private AmmoEditorController ammoEditorController;
 
     @FXML
     private ListView<EstabReference> searchResultsListView;
@@ -192,7 +192,7 @@ public class EstabDataController implements Initializable {
         } else if (estabClass.equals(Ammo.class)) {
             editorView = AMMO_VIEW;
         }
-        if (currentView != editorView)
+        if (!currentView.equals(editorView))
             try {
                 editorStackPane.getChildren().setAll((Node) FXMLLoader.load(EstabDataController.class.getResource(editorView)));
 //                switch (editorView) {

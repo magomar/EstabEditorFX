@@ -65,6 +65,5 @@
          </children>
       </HBox>
         <fx:include fx:id="targetEstabData" source="estab-data.fxml" />
-        <!--<fx:include fx:id="vehicleEditor" source="vehicle-editor.fxml" />-->
     </children>
 </VBox>

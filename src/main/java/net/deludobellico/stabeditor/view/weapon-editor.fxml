@@ -1,70 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
-    <children>
-        <HBox prefHeight="25.0" prefWidth="800.0">
-            <children>
-                <Label text="Name:"/>
-                <TextField/>
-            </children>
-        </HBox>
-        <Label text="Description"/>
-        <AnchorPane prefHeight="575.0" prefWidth="800.0">
-            <children>
-                <HBox prefHeight="87.0" prefWidth="800.0">
-                    <children>
-                        <TextArea prefHeight="64.0" prefWidth="490.0"
-                                  text=""
-                                  wrapText="true"/>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <CheckBox mnemonicParsing="false" selected="true" text="No image"/>
-                                <Button mnemonicParsing="false" text="Open"/>
-                                <TextField prefHeight="25.0" prefWidth="133.0"/>
-                            </children>
-                        </VBox>
-                        <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/no-image.png"/>
-                            </image>
-                        </ImageView>
-                    </children>
-                </HBox>
-                <GridPane layoutX="6.0" layoutY="100.0">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    </rowConstraints>
-                    <children>
-                        <Label text="Width"/>
-                        <TextField fx:id="widthTextField" editable="true" GridPane.columnIndex="1"/>
-                        <Label text="m" GridPane.columnIndex="2"/>
-                        <Label text="Height" GridPane.rowIndex="1"/>
-                        <TextField fx:id="heightTextField" editable="true" GridPane.columnIndex="1"
-                                   GridPane.rowIndex="1"/>
-                        <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                        <Label text="Length" GridPane.rowIndex="2"/>
-                        <TextField fx:id="lengthTextField" editable="true" GridPane.columnIndex="1"
-                                   GridPane.rowIndex="2"/>
-                        <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                        <Label text="Weight" GridPane.rowIndex="3"/>
-                        <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1"
-                                   GridPane.rowIndex="3"/>
-                        <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-                    </children>
-                </GridPane>
-            </children>
-        </AnchorPane>
-    </children>
-</VBox>
+
+
+<StackPane fx:id="weaponEditorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
+   <children>
+      <VBox>
+          <children>
+              <HBox prefHeight="25.0" prefWidth="800.0">
+                  <children>
+                      <Label text="Name:" />
+                      <TextField />
+                  </children>
+              </HBox>
+              <Label text="Description" />
+              <AnchorPane prefHeight="575.0" prefWidth="800.0">
+                  <children>
+                      <HBox prefHeight="87.0" prefWidth="800.0">
+                          <children>
+                              <TextArea prefHeight="64.0" prefWidth="490.0" text="" wrapText="true" />
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                  <children>
+                                      <CheckBox mnemonicParsing="false" selected="true" text="No image" />
+                                      <Button mnemonicParsing="false" text="Open" />
+                                      <TextField prefHeight="25.0" prefWidth="133.0" />
+                                  </children>
+                              </VBox>
+                              <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@/images/no-image.png" />
+                                  </image>
+                              </ImageView>
+                          </children>
+                      </HBox>
+                      <GridPane layoutX="6.0" layoutY="100.0">
+                          <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <children>
+                              <Label text="Width" />
+                              <TextField fx:id="widthTextField" editable="true" GridPane.columnIndex="1" />
+                              <Label text="m" GridPane.columnIndex="2" />
+                              <Label text="Height" GridPane.rowIndex="1" />
+                              <TextField fx:id="heightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label text="Length" GridPane.rowIndex="2" />
+                              <TextField fx:id="lengthTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label text="Weight" GridPane.rowIndex="3" />
+                              <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                          </children>
+                      </GridPane>
+                  </children>
+              </AnchorPane>
+          </children>
+      </VBox>
+   </children>
+</StackPane>
