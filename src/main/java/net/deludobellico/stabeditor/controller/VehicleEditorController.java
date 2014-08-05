@@ -5,11 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,7 +18,10 @@ import java.util.ResourceBundle;
  */
 public class VehicleEditorController extends AbstractEditorController<Vehicle> implements Initializable {
     @FXML
-    private TextField name;
+    private TextField nameTextField;
+
+    @FXML
+    private TextArea descriptionTextArea;
 
     @FXML
     private TextField widthTextField;
@@ -33,7 +36,7 @@ public class VehicleEditorController extends AbstractEditorController<Vehicle> i
     private ComboBox<VehicleType> vehicleTypeComboBox;
 
     @FXML
-    private TextField weight;
+    private TextField weightText;
 
     @FXML
     private TextField battleWeightTextField;
@@ -50,12 +53,12 @@ public class VehicleEditorController extends AbstractEditorController<Vehicle> i
     @Override
     public void setEstabReference(Vehicle vehicle) {
         this.vehicle = vehicle;
-        name.setText(vehicle.getName());
-//        description.setText(vehicle.getDescription());
+        nameTextField.setText(vehicle.getName());
+        descriptionTextArea.setText(vehicle.getDescription());
         widthTextField.setText(String.valueOf(vehicle.getSize().getWidth()));
         heightTextField.setText(String.valueOf(vehicle.getSize().getHeight()));
         lengthTextField.setText(String.valueOf(vehicle.getSize().getLength()));
-        weight.setText(String.valueOf(vehicle.getSize().getWeight()));
+        weightText.setText(String.valueOf(vehicle.getSize().getWeight()));
         battleWeightTextField.setText(String.valueOf(vehicle.getBattleWeight()));
 
     }

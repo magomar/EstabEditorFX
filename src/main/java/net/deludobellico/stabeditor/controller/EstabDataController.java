@@ -121,6 +121,12 @@ public class EstabDataController implements Initializable {
                 searchAmmoAction(null);
             }
         });
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VEHICLE_VIEW));
+        try {
+            editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
