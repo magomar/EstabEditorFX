@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-
 <StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.VehicleEditorController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
@@ -15,7 +14,7 @@
               <HBox prefHeight="25.0" prefWidth="600.0">
                   <children>
                       <Label text="Name" />
-                      <TextField />
+                      <TextField fx:id="name" />
                   </children>
               </HBox>
               <HBox prefHeight="25.0" prefWidth="600.0">
@@ -67,7 +66,7 @@
                               <TextField fx:id="lengthTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <Label text="Weight" GridPane.rowIndex="3" />
-                              <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="weight" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Battle Weight" GridPane.rowIndex="4" />
                               <TextField fx:id="battleWeightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />

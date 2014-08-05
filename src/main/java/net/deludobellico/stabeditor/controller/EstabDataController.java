@@ -194,15 +194,23 @@ public class EstabDataController implements Initializable {
         }
         if (!currentView.equals(editorView))
             try {
-                editorStackPane.getChildren().setAll((Node) FXMLLoader.load(EstabDataController.class.getResource(editorView)));
-//                switch (editorView) {
-//                    case VEHICLE_VIEW: vehicleEditorController.setEstabReference((Vehicle) estabReference.getElement());
-//                        break;
-//                    case WEAPON_VIEW: weaponEditorController.setEstabReference((Weapon) estabReference.getElement());
-//                        break;
-//                    case AMMO_VIEW: ammoEditorController.setEstabReference((Ammo) estabReference.getElement());
-//                        break;
-//                }
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(editorView));
+                editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
+                AbstractEditorController controller;
+                switch (editorView) {
+                    case VEHICLE_VIEW:
+                        controller = fxmlLoader.<VehicleEditorController>getController();
+                        controller.setEstabReference(estabReference.getElement());
+                        break;
+                    case WEAPON_VIEW:
+                        controller = fxmlLoader.<WeaponEditorController>getController();
+                        controller.setEstabReference(estabReference.getElement());
+                        break;
+                    case AMMO_VIEW:
+                        controller = fxmlLoader.<AmmoEditorController>getController();
+                        controller.setEstabReference(estabReference.getElement());
+                        break;
+                }
             } catch (IOException e) {
                 //e.printStackTrace();
             }
