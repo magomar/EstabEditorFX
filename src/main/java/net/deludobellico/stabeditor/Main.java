@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./view/editor.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("./view/estab-editor.fxml"));
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

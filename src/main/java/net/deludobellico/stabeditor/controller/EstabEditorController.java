@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class EditorController implements Initializable {
-    private static final Logger LOG = Logger.getLogger(EditorController.class.getName());
+public class EstabEditorController implements Initializable {
+    private static final Logger LOG = Logger.getLogger(EstabEditorController.class.getName());
     private static final String ESTAB_DATA_FOLDER = "examples";
     private static final FilenameFilter XML_FILTER = new FilenameFilter() {
         public boolean accept(File dir, String name) {
