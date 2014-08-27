@@ -7,5 +7,5 @@ import net.deludobellico.stabeditor.data.jaxb.Vehicle;
  */
 public interface AssetEditorController<T> {
     void setEstabReference(T asset);
-    void setReadOnly(boolean isReadOnly);
+    void setEditable(boolean isEditable);
 }

@@ -24,7 +24,9 @@ import net.deludobellico.stabeditor.util.Util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -33,12 +35,10 @@ import java.util.logging.Logger;
  */
 public class EstabDataController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabDataController.class.getName());
-    private EstabDataModel estabDataModel;
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
     private static final String VEHICLE_VIEW = "../view/vehicle-editor.fxml";
     private static final String WEAPON_VIEW = "../view/weapon-editor.fxml";
     private static final String AMMO_VIEW = "../view/ammo-editor.fxml";
-    private String currentView = "";
 
     @FXML
     private Button searchAmmoButton;
@@ -76,21 +76,20 @@ public class EstabDataController implements Initializable {
     @FXML
     private TextField numWeaponsTextField;
 
-//    @FXML
-//    private VehicleEditorController vehicleEditorController;
-//
-//    @FXML
-//    private WeaponEditorController weaponEditorController;
-//
-//    @FXML
-//    private AmmoEditorController ammoEditorController;
-
     @FXML
     private ListView<EstabReference> searchResultsListView;
     private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
 
     @FXML
     private StackPane editorStackPane;
+
+    private EstabDataModel estabDataModel;
+    private Class componentClass = null;
+    private AssetEditorController componentController = null;
+    private Map<Class, String> componentEditorViews = new HashMap<>(3);
+    private Map<Class, Node> componentEditorNodes = new HashMap<>(3);
+    private Map<Class, AssetEditorController> componentEditorControllers = new HashMap<>(3);
+    private boolean isEditable = false;
 
 
     @Override
@@ -100,7 +99,11 @@ public class EstabDataController implements Initializable {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 if (null != newValue)
-                    loadEditor((EstabReference) newValue);
+                    try {
+                        loadEditor((EstabReference) newValue);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
             }
         });
         searchVehicleTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -121,12 +124,18 @@ public class EstabDataController implements Initializable {
                 searchAmmoAction(null);
             }
         });
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VEHICLE_VIEW));
-        try {
-            editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+
+        componentEditorViews.put(Vehicle.class, VEHICLE_VIEW);
+        componentEditorViews.put(Weapon.class, WEAPON_VIEW);
+        componentEditorViews.put(Ammo.class, AMMO_VIEW);
+
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VEHICLE_VIEW));
+//        try {
+//            editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
@@ -148,12 +157,9 @@ public class EstabDataController implements Initializable {
         estabDataTitledPane.setText(title);
     }
 
+
     public void setEditable(boolean isEditable) {
-        if (isEditable) {
-
-        } else {
-
-        }
+        this.isEditable = isEditable;
     }
 
     @FXML
@@ -198,41 +204,32 @@ public class EstabDataController implements Initializable {
         }
     }
 
-    private void loadEditor(EstabReference<?> estabReference) {
-        Class estabClass = estabReference.getElementClass();
-        String editorView = VEHICLE_VIEW;
-        if (estabClass.equals(Weapon.class)) {
-            editorView = WEAPON_VIEW;
-        } else if (estabClass.equals(Ammo.class)) {
-            editorView = AMMO_VIEW;
-        }
-        if (!currentView.equals(editorView))
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(editorView));
-                editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-                AssetEditorController controller;
-                switch (editorView) {
-                    case VEHICLE_VIEW:
-                        controller = fxmlLoader.<VehicleEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                    case WEAPON_VIEW:
-                        controller = fxmlLoader.<WeaponEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                    case AMMO_VIEW:
-                        controller = fxmlLoader.<AmmoEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                }
-            } catch (IOException e) {
-                //e.printStackTrace();
-            }
+    private void loadComponentEditor(Class estabClass) throws IOException {
 
+    }
+
+    private void loadEditor(EstabReference<?> estabReference) throws IOException {
+        Class estabClass = estabReference.getElementClass();
+        Node editorNode;
+        if (null == componentClass || !componentClass.equals(estabClass)) {
+            componentClass = estabClass;
+            if (componentEditorNodes.containsKey(estabClass)) {
+                editorNode = componentEditorNodes.get(estabClass);
+                componentController = componentEditorControllers.get(estabClass);
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(componentEditorViews.get(estabClass)));
+                editorNode = fxmlLoader.load();
+                componentEditorNodes.put(estabClass, editorNode);
+                componentController = fxmlLoader.getController();
+                componentController.setEditable(isEditable);
+            }
+            editorStackPane.getChildren().setAll(editorNode);
 //        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
 //        String result = sw.toString();
 //        resultsTextArea.setText(result);
 //        System.out.print(result);
+        }
+        componentController.setEstabReference(estabReference.getElement());
     }
 }
 

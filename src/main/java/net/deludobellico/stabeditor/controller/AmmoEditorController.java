@@ -20,7 +20,7 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
     }
 
     @Override
-    public void setReadOnly(boolean isReadOnly) {
+    public void setEditable(boolean isEditable) {
 
     }
 }

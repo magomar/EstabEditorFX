@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<StackPane fx:id="weaponEditorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
+<StackPane fx:id="weaponEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
    <children>
       <VBox>
           <children>

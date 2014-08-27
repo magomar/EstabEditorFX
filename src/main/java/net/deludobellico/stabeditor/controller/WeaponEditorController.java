@@ -32,7 +32,7 @@ public class WeaponEditorController implements AssetEditorController<Weapon> {
     }
 
     @Override
-    public void setReadOnly(boolean isReadOnly) {
+    public void setEditable(boolean isReadOnly) {
 
     }
 }

@@ -62,7 +62,7 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void setReadOnly(boolean isReadOnly) {
+    public void setEditable(boolean isReadOnly) {
         if (isReadOnly) {
             nameTextField.setEditable(false);
             descriptionTextArea.setEditable(false);
