@@ -3,12 +3,11 @@ package net.deludobellico.stabeditor.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
-import net.deludobellico.stabeditor.model.EstabReference;
 
 /**
  * Created by Mario on 04/08/2014.
  */
-public class WeaponEditorController extends AbstractEditorController<Weapon> {
+public class WeaponEditorController implements AssetEditorController<Weapon> {
     @FXML
     private TextField widthTextField;
 
@@ -30,5 +29,10 @@ public class WeaponEditorController extends AbstractEditorController<Weapon> {
         heightTextField.setText(String.valueOf(weapon.getSize().getHeight()));
         lengthTextField.setText(String.valueOf(weapon.getSize().getLength()));
         weightTextField.setText(String.valueOf(weapon.getSize().getWeight()));
+    }
+
+    @Override
+    public void setReadOnly(boolean isReadOnly) {
+
     }
 }

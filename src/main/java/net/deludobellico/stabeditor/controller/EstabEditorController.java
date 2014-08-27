@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 public class EstabEditorController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabEditorController.class.getName());
-    private static final String ESTAB_DATA_FOLDER = "examples";
+    private static final String ESTAB_DATA_FOLDER = "datasets";
     private static final FilenameFilter XML_FILTER = new FilenameFilter() {
         public boolean accept(File dir, String name) {
             String lowercaseName = name.toLowerCase();
@@ -58,7 +58,7 @@ public class EstabEditorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        FileChooser fileChooser = new FileChooser();
+//        FileChooser fileChooser = new FileChooser();
         Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
         File initialDirectory = examplesPath.toFile();
         List<File> files = FileIO.listFiles(initialDirectory, XML_FILTER, false);
@@ -78,6 +78,8 @@ public class EstabEditorController implements Initializable {
         });
         sourceEstabDataController.setTitle("Source Estab Data:");
         targetEstabDataController.setTitle("Target Estab Data: ");
+        sourceEstabDataController.setEditable(false);
+        targetEstabDataController.setEditable(true);
     }
 
     @FXML

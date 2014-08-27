@@ -20,12 +20,12 @@ public class MainTest {
 
         ClassLoader cl = MainTest.class.getClassLoader();
 //        ClassLoader cl = ClassLoader.getSystemClassLoader();
-        URL u1 = cl.getResource("./examples/BFTBEstab.xml");
+        URL u1 = cl.getResource("./datasets/BFTBEstab.xml");
 
         Path resPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/");
-        Path sourcePath = FileSystems.getDefault().getPath(resPath.toString(), "examples/BFTBEstab.xml");
-        Path targetPathJSON = FileSystems.getDefault().getPath(resPath.toString(), "examples/Jarama1937Estab.json");
-        Path targetPathXML = FileSystems.getDefault().getPath(resPath.toString(), "examples/Jarama1937Estab.xml");
+        Path sourcePath = FileSystems.getDefault().getPath(resPath.toString(), "datasets/BFTBEstab.xml");
+        Path targetPathJSON = FileSystems.getDefault().getPath(resPath.toString(), "datasets/Jarama1937Estab.json");
+        Path targetPathXML = FileSystems.getDefault().getPath(resPath.toString(), "datasets/Jarama1937Estab.xml");
         sw.start();
         EstabData data = (EstabData) FileIO.unmarshallXML(sourcePath.toFile(), FileIO.UNMARSHALLER);
         sw.stop();

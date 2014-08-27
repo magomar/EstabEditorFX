@@ -148,6 +148,14 @@ public class EstabDataController implements Initializable {
         estabDataTitledPane.setText(title);
     }
 
+    public void setEditable(boolean isEditable) {
+        if (isEditable) {
+
+        } else {
+
+        }
+    }
+
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
@@ -202,7 +210,7 @@ public class EstabDataController implements Initializable {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(editorView));
                 editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-                AbstractEditorController controller;
+                AssetEditorController controller;
                 switch (editorView) {
                     case VEHICLE_VIEW:
                         controller = fxmlLoader.<VehicleEditorController>getController();

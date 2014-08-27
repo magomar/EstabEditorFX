@@ -1,5 +1,7 @@
 package net.deludobellico.stabeditor.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class VehicleEditorController extends AbstractEditorController<Vehicle> implements Initializable {
+public class VehicleEditorController implements Initializable, AssetEditorController<Vehicle> {
     @FXML
     private TextField nameTextField;
 
@@ -43,11 +45,28 @@ public class VehicleEditorController extends AbstractEditorController<Vehicle> i
 
     private Vehicle vehicle;
     private ObservableList<VehicleType> vehicleTypeObservableList = FXCollections.observableArrayList();
+    private boolean isReadOnly = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        vehicle = new Vehicle();
         vehicleTypeObservableList.addAll(VehicleType.values());
         vehicleTypeComboBox.setItems(vehicleTypeObservableList);
+        vehicleTypeComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<VehicleType>() {
+            @Override
+            public void changed(ObservableValue<? extends VehicleType> observable, VehicleType oldValue, VehicleType newValue) {
+                if (null != newValue)
+                    vehicle.setType(newValue);
+            }
+        });
+    }
+
+    @Override
+    public void setReadOnly(boolean isReadOnly) {
+        if (isReadOnly) {
+            nameTextField.setEditable(false);
+            descriptionTextArea.setEditable(false);
+        }
     }
 
     @Override
@@ -60,7 +79,7 @@ public class VehicleEditorController extends AbstractEditorController<Vehicle> i
         lengthTextField.setText(String.valueOf(vehicle.getSize().getLength()));
         weightText.setText(String.valueOf(vehicle.getSize().getWeight()));
         battleWeightTextField.setText(String.valueOf(vehicle.getBattleWeight()));
-
+        vehicleTypeComboBox.getSelectionModel().select(vehicle.getType());
     }
 
 
