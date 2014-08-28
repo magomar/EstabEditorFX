@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane fx:id="estabDataTitledPane" prefHeight="400.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
+<TitledPane fx:id="estabDataTitledPane" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
     <content>
@@ -63,12 +63,10 @@
                         <ListView fx:id="searchResultsListView" minHeight="100" prefHeight="200.0" prefWidth="300.0"/>
                     </children>
                 </VBox>
-                <StackPane fx:id="editorStackPane" prefHeight="400.0" prefWidth="400.0">
-                    <!--<children>-->
+                <StackPane fx:id="editorStackPane" prefHeight="400.0" prefWidth="600.0">
                     <!--<fx:include source="vehicle-editor.fxml" />-->
                     <!--<fx:include source="ammo-editor.fxml" />-->
                     <!--<fx:include source="weapon-editor.fxml" />-->
-                    <!--</children>-->
                 </StackPane>
             </children>
         </HBox>

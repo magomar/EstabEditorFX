@@ -14,20 +14,20 @@
               <HBox prefHeight="25.0" prefWidth="600.0">
                   <children>
                       <Label text="Name" />
-                      <TextField fx:id="nameTextField" />
+                      <TextField fx:id="name" />
                   </children>
               </HBox>
               <HBox prefHeight="25.0" prefWidth="600.0">
                   <children>
                       <Label text="Type" />
-                      <ComboBox fx:id="vehicleTypeComboBox" prefWidth="150.0" />
+                      <ComboBox fx:id="vehicleType" prefWidth="150.0" />
                   </children>
               </HBox>
               <AnchorPane prefHeight="575.0" prefWidth="600.0">
                   <children>
                       <HBox prefHeight="87.0" prefWidth="800.0">
                           <children>
-                              <TextArea fx:id="descriptionTextArea" prefHeight="64.0" prefWidth="490.0" text="" wrapText="true" />
+                              <TextArea fx:id="description" prefHeight="64.0" prefWidth="490.0" text="" wrapText="true" />
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                   <children>
                                       <CheckBox mnemonicParsing="false" selected="true" text="No image" />
@@ -57,19 +57,19 @@
                           </rowConstraints>
                           <children>
                               <Label text="Width" />
-                              <TextField fx:id="widthTextField" editable="true" GridPane.columnIndex="1" />
+                              <TextField fx:id="width" editable="true" GridPane.columnIndex="1" />
                               <Label text="m" GridPane.columnIndex="2" />
                               <Label text="Height" GridPane.rowIndex="1" />
-                              <TextField fx:id="heightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="height" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label text="Length" GridPane.rowIndex="2" />
-                              <TextField fx:id="lengthTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="length" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <Label text="Weight" GridPane.rowIndex="3" />
-                              <TextField fx:id="weightText" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="weight" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Battle Weight" GridPane.rowIndex="4" />
-                              <TextField fx:id="battleWeightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="battleWeight" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                           </children>
                       </GridPane>
