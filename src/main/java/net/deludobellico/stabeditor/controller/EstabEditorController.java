@@ -64,6 +64,7 @@ public class EstabEditorController implements Initializable {
 
     private ObservableList<File> estabFileObservableList = FXCollections.observableArrayList();
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        FileChooser fileChooser = new FileChooser();
@@ -161,9 +162,9 @@ public class EstabEditorController implements Initializable {
 //        fileChooser.setInitialDirectory(initialDirectory);
 //        File file = fileChooser.showSaveDialog(null);
 //        if (null != file) {
+//        }
         targetEstabTextField.setText("NewStab.xml");
         targetEstabDataController.setEstabDataModel(new EstabDataModel());
         targetEstabDataController.setTitle("Target Estab: NewStab.xml");
-//        }
     }
 }

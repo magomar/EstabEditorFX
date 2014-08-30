@@ -151,7 +151,9 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         fuelConsumptionNormalSpeed.setEditable(isEditable);
         height.setEditable(isEditable);
         hasOpenTop.setDisable(!isEditable);
+        hasOpenTop.setStyle("-fx-opacity: 1");
         hasTurret.setDisable(!isEditable);
+        hasTurret.setStyle("-fx-opacity: 1");
         height.setEditable(isEditable);
         length.setEditable(isEditable);
         maxFordingDepth.setEditable(isEditable);
@@ -169,7 +171,8 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         takeCoverMod.setEditable(isEditable);
         topArmor.setEditable(isEditable);
         towingCapacity.setEditable(isEditable);
-        vehicleType.setEditable(isEditable);
+        vehicleType.setDisable(!isEditable);
+        vehicleType.setStyle("-fx-opacity: 1");
         weight.setEditable(isEditable);
         width.setEditable(isEditable);
     }
@@ -195,8 +198,8 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         fuelCapacity.setText(String.valueOf(v.getFuelCapacity()));
         fuelConsumptionMaxSpeed.setText(String.valueOf(v.getFuelConsumption().getMax()));
         fuelConsumptionNormalSpeed.setText(String.valueOf(v.getFuelConsumption().getNormal()));
-        hasOpenTop.setText(v.getHasOpenTop());
-        hasTurret.setText(v.getHasTurret());
+        hasOpenTop.setSelected((v.getHasOpenTop().equals("yes") ? true : false));
+        hasTurret.setSelected((v.getHasTurret().equals("yes") ? true : false));
         height.setText(String.valueOf(v.getSize().getHeight()));
         length.setText(String.valueOf(v.getSize().getLength()));
         maxFordingDepth.setText(String.valueOf(v.getMaxFordingDepth()));
