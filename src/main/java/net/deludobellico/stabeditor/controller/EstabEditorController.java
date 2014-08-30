@@ -39,10 +39,15 @@ public class EstabEditorController implements Initializable {
 
     @FXML
     private ListView estabsListView;
-    private ObservableList<File> estabFileObservableList = FXCollections.observableArrayList();
 
     @FXML
     private Button addEstabButton;
+
+    @FXML
+    private Button loadEstabButton;
+
+    @FXML
+    private Button copyComponentButton;
 
     @FXML
     private Button removeEstabButton;
@@ -56,6 +61,9 @@ public class EstabEditorController implements Initializable {
     @FXML
     private TextField targetEstabTextField;
 
+
+    private ObservableList<File> estabFileObservableList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        FileChooser fileChooser = new FileChooser();
@@ -66,13 +74,17 @@ public class EstabEditorController implements Initializable {
         estabsListView.setItems(estabFileObservableList);
         addEstabButton.setDisable(false);
         removeEstabButton.setDisable(true);
+        loadEstabButton.setDisable(true);
+        copyComponentButton.setDisable(true);
         estabsListView.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean aBoolean2) {
                 if (estabsListView.isFocused()) {
                     removeEstabButton.setDisable(false);
+                    loadEstabButton.setDisable(false);
                 } else {
                     removeEstabButton.setDisable(true);
+                    loadEstabButton.setDisable(false);
                 }
             }
         });
@@ -80,6 +92,21 @@ public class EstabEditorController implements Initializable {
         targetEstabDataController.setTitle("Target Estab Data: ");
         sourceEstabDataController.setEditable(false);
         targetEstabDataController.setEditable(true);
+        sourceEstabDataController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (null != newValue) {
+                    copyComponentButton.setDisable(false);
+                } else {
+                    copyComponentButton.setDisable(true);
+                }
+            }
+        });
+    }
+
+    @FXML
+    private void copyComponentAction(ActionEvent actionEvent) {
+        targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
     }
 
     @FXML
@@ -134,9 +161,9 @@ public class EstabEditorController implements Initializable {
 //        fileChooser.setInitialDirectory(initialDirectory);
 //        File file = fileChooser.showSaveDialog(null);
 //        if (null != file) {
-            targetEstabTextField.setText("NewStab.xml");
-            targetEstabDataController.setEstabDataModel(new EstabDataModel());
-            targetEstabDataController.setTitle("Target Estab: NewStab.xml");
+        targetEstabTextField.setText("NewStab.xml");
+        targetEstabDataController.setEstabDataModel(new EstabDataModel());
+        targetEstabDataController.setTitle("Target Estab: NewStab.xml");
 //        }
     }
 }

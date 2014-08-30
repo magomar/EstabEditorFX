@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.input.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="768.0" minWidth="1024.0" prefHeight="900.0" prefWidth="1200.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
     <children>
         <!--<MenuBar>
             <menus>
@@ -34,36 +31,40 @@
                 </Menu>
             </menus>
         </MenuBar>-->
-      <HBox>
-         <children>
-            <Label text="ESTAB being edited" />
-            <TextField fx:id="targetEstabTextField" editable="false" promptText="Open existing Estab or create a new one..." />
-            <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open" />
-            <Button mnemonicParsing="false" onAction="#newEstabAction" text="New" />
-         </children>
-      </HBox>
-        <HBox prefHeight="100.0" prefWidth="200.0">
+        <HBox>
             <children>
-            <TitledPane text="Available ESTAB sources">
-               <content>
-                      <ListView fx:id="estabsListView" prefHeight="60.0" prefWidth="600.0" />
-               </content>
-            </TitledPane>
+                <Label text="ESTAB being edited"/>
+                <TextField fx:id="targetEstabTextField" editable="false"
+                           promptText="Open existing Estab or create a new one..."/>
+                <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open"/>
+                <Button mnemonicParsing="false" onAction="#newEstabAction" text="New"/>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <TitledPane text="Available ESTAB sources">
+                    <content>
+                        <ListView fx:id="estabsListView" prefHeight="72.0" prefWidth="600.0"/>
+                    </content>
+                </TitledPane>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="addEstabButton" mnemonicParsing="false" onAction="#addEstabAction" text="Add" />
-                        <Button fx:id="removeEstabButton" mnemonicParsing="false" onAction="#removeEstabAction" text="Remove" />
-                        <Button fx:id="loadEstabButton" mnemonicParsing="false" onAction="#loadEstabAction" text="Load" />
+                        <Button fx:id="addEstabButton" mnemonicParsing="false" onAction="#addEstabAction" text="Add"/>
+                        <Button fx:id="removeEstabButton" mnemonicParsing="false" onAction="#removeEstabAction"
+                                text="Remove"/>
+                        <Button fx:id="loadEstabButton" mnemonicParsing="false" onAction="#loadEstabAction"
+                                text="Load"/>
                     </children>
                 </VBox>
             </children>
         </HBox>
-        <fx:include fx:id="sourceEstabData" source="estab-data.fxml" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button mnemonicParsing="false" text="Copy" />
-         </children>
-      </HBox>
-        <fx:include fx:id="targetEstabData" source="estab-data.fxml" />
+        <fx:include fx:id="sourceEstabData" source="estab-data.fxml"/>
+        <HBox>
+            <children>
+                <Button fx:id="copyComponentButton" mnemonicParsing="false" onAction="#copyComponentAction"
+                        text="Copy"/>
+            </children>
+        </HBox>
+        <fx:include fx:id="targetEstabData" source="estab-data.fxml"/>
     </children>
 </VBox>

@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane fx:id="estabDataTitledPane" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
+<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataTitledPane" prefHeight="450.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
     <content>
         <HBox>
@@ -60,11 +60,11 @@
                                 <RowConstraints minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                         </GridPane>
-                        <ListView fx:id="searchResultsListView" minHeight="100" prefHeight="200.0" prefWidth="300.0"/>
+                        <ListView fx:id="searchResultsListView" minHeight="100" prefHeight="250.0" prefWidth="300.0"/>
                     </children>
                 </VBox>
                 <StackPane fx:id="editorStackPane" prefHeight="400.0" prefWidth="600.0">
-                    <!--<fx:include source="vehicle-editor.fxml" />-->
+                    <!--<fx:include source="v-editor.fxml" />-->
                     <!--<fx:include source="ammo-editor.fxml" />-->
                     <!--<fx:include source="weapon-editor.fxml" />-->
                 </StackPane>

@@ -39,7 +39,7 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     private TextField fuelCapacity;
 
     @FXML
-    private TextField bulkFuel;
+    private TextField bulkFuelCapacity;
 
     @FXML
     private TextField reliability;
@@ -105,13 +105,13 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     private CheckBox hasTurret;
 
     @FXML
-    private TextField crewTF;
+    private TextField crew;
 
     @FXML
-    private TextField roadMaxSpeedTF;
+    private TextField roadMaxSpeed;
 
     @FXML
-    private TextField roadNormalSpeedTF;
+    private TextField roadNormalSpeed;
 
     @FXML
     private TextField personnelCapacity;
@@ -139,32 +139,84 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
 
     @Override
     public void setEditable(boolean isEditable) {
-        if (!isEditable) {
-            name.setEditable(false);
-            description.setEditable(false);
-            vehicleType.setEditable(false);
-            hasTurret.setDisable(true);
-            hasOpenTop.setDisable(true);
-            width.setEditable(false);
-            height.setEditable(false);
-            length.setEditable(false);
-            weight.setEditable(false);
-            battleWeight.setEditable(false);
-
-        }
+        battleWeight.setEditable(isEditable);
+        bulkFuelCapacity.setEditable(isEditable);
+        crew.setEditable(isEditable);
+        crossCountryMaxSpeed.setEditable(isEditable);
+        crossCountryNormalSpeed.setEditable(isEditable);
+        description.setEditable(isEditable);
+        frontArmor.setEditable(isEditable);
+        fuelCapacity.setEditable(isEditable);
+        fuelConsumptionMaxSpeed.setEditable(isEditable);
+        fuelConsumptionNormalSpeed.setEditable(isEditable);
+        height.setEditable(isEditable);
+        hasOpenTop.setDisable(!isEditable);
+        hasTurret.setDisable(!isEditable);
+        height.setEditable(isEditable);
+        length.setEditable(isEditable);
+        maxFordingDepth.setEditable(isEditable);
+        maxGradient.setEditable(isEditable);
+        maxTrenchWidth.setEditable(isEditable);
+        name.setEditable(isEditable);
+        payloadCapacity.setEditable(isEditable);
+        personnelCapacity.setEditable(isEditable);
+        rearArmor.setEditable(isEditable);
+        reliability.setEditable(isEditable);
+        roadMaxSpeed.setEditable(isEditable);
+        roadNormalSpeed.setEditable(isEditable);
+        ronsonability.setEditable(isEditable);
+        sideArmor.setEditable(isEditable);
+        takeCoverMod.setEditable(isEditable);
+        topArmor.setEditable(isEditable);
+        towingCapacity.setEditable(isEditable);
+        vehicleType.setEditable(isEditable);
+        weight.setEditable(isEditable);
+        width.setEditable(isEditable);
     }
 
     @Override
-    public void setEstabReference(Vehicle vehicle) {
-        this.vehicle = vehicle;
-        name.setText(vehicle.getName());
-        description.setText(vehicle.getDescription());
-        width.setText(String.valueOf(vehicle.getSize().getWidth()));
-        height.setText(String.valueOf(vehicle.getSize().getHeight()));
-        length.setText(String.valueOf(vehicle.getSize().getLength()));
-        weight.setText(String.valueOf(vehicle.getSize().getWeight()));
-        battleWeight.setText(String.valueOf(vehicle.getBattleWeight()));
+    public void setEstabReference(Vehicle v) {
+        this.vehicle = v;
+        name.setText(v.getName());
+        description.setText(v.getDescription());
+        width.setText(String.valueOf(v.getSize().getWidth()));
+        height.setText(String.valueOf(v.getSize().getHeight()));
+        length.setText(String.valueOf(v.getSize().getLength()));
+        weight.setText(String.valueOf(v.getSize().getWeight()));
+        battleWeight.setText(String.valueOf(v.getBattleWeight()));
+        vehicleType.getSelectionModel().select(v.getType());
+        battleWeight.setText(String.valueOf(v.getBattleWeight()));
+        bulkFuelCapacity.setText(String.valueOf(v.getBulkFuelCapacity()));
+        crew.setText(String.valueOf(v.getCrew()));
+        crossCountryMaxSpeed.setText(String.valueOf(v.getSpeed().getCrossCountry().getMax()));
+        crossCountryNormalSpeed.setText(String.valueOf(v.getSpeed().getCrossCountry().getNormal()));
+        description.setText(v.getDescription());
+        frontArmor.setText(String.valueOf(v.getArmour().getFront()));
+        fuelCapacity.setText(String.valueOf(v.getFuelCapacity()));
+        fuelConsumptionMaxSpeed.setText(String.valueOf(v.getFuelConsumption().getMax()));
+        fuelConsumptionNormalSpeed.setText(String.valueOf(v.getFuelConsumption().getNormal()));
+        hasOpenTop.setText(v.getHasOpenTop());
+        hasTurret.setText(v.getHasTurret());
+        height.setText(String.valueOf(v.getSize().getHeight()));
+        length.setText(String.valueOf(v.getSize().getLength()));
+        maxFordingDepth.setText(String.valueOf(v.getMaxFordingDepth()));
+        maxGradient.setText(String.valueOf(v.getMaxGradient()));
+        maxTrenchWidth.setText(String.valueOf(v.getMaxTrenchWidth()));
+        name.setText(String.valueOf(v.getName()));
+        payloadCapacity.setText(String.valueOf(v.getPayloadCapacity()));
+        personnelCapacity.setText(String.valueOf(v.getPersonnelCapacity()));
+        rearArmor.setText(String.valueOf(v.getArmour().getRear()));
+        reliability.setText(String.valueOf(v.getReliability()));
+        roadMaxSpeed.setText(String.valueOf(v.getSpeed().getRoad().getMax()));
+        roadNormalSpeed.setText(String.valueOf(v.getSpeed().getRoad().getNormal()));
+        ronsonability.setText(String.valueOf(v.getRonsonability()));
+        sideArmor.setText(String.valueOf(v.getArmour().getSide()));
+        takeCoverMod.setText(String.valueOf(v.getTakeCoverMod()));
+        topArmor.setText(String.valueOf(v.getArmour().getTop()));
+        towingCapacity.setText(String.valueOf(v.getTowingCapacity()));
         vehicleType.getSelectionModel().select(vehicle.getType());
+        weight.setText(String.valueOf(v.getSize().getWeight()));
+        width.setText(String.valueOf(v.getSize().getWidth()));
     }
 
 

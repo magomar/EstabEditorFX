@@ -98,12 +98,9 @@ public class EstabDataController implements Initializable {
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (null != newValue)
-                    try {
-                        loadEditor((EstabReference) newValue);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (null != newValue) {
+                    setActiveComponent((EstabReference) newValue);
+                }
             }
         });
         searchVehicleTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -130,12 +127,43 @@ public class EstabDataController implements Initializable {
         componentEditorViews.put(Weapon.class, WEAPON_VIEW);
         componentEditorViews.put(Ammo.class, AMMO_VIEW);
 
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VEHICLE_VIEW));
-//        try {
-//            editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
+    }
+
+    public EstabReference<?> getActiveComponent() {
+        return searchResultsListView.getSelectionModel().getSelectedItem();
+    }
+
+    public void setActiveComponent(EstabReference<?> estabReference) {
+        if (null != estabReference) {
+            Class estabClass = estabReference.getElementClass();
+            Node editorNode;
+            if (null == componentClass || !componentClass.equals(estabClass)) {
+                componentClass = estabClass;
+                if (componentEditorNodes.containsKey(estabClass)) {
+                    editorNode = componentEditorNodes.get(estabClass);
+                    componentController = componentEditorControllers.get(estabClass);
+                    editorStackPane.getChildren().setAll(editorNode);
+                } else {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(componentEditorViews.get(estabClass)));
+                    try {
+                        editorNode = fxmlLoader.load();
+                        componentEditorNodes.put(estabClass, editorNode);
+                        componentController = fxmlLoader.getController();
+                        componentController.setEditable(isEditable);
+                        editorStackPane.getChildren().setAll(editorNode);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+//        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
+//        String result = sw.toString();
+//        resultsTextArea.setText(result);
+//        System.out.print(result);
+            }
+            componentController.setEstabReference(estabReference.getElement());
+        }
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
@@ -157,9 +185,12 @@ public class EstabDataController implements Initializable {
         estabDataTitledPane.setText(title);
     }
 
-
     public void setEditable(boolean isEditable) {
         this.isEditable = isEditable;
+    }
+
+    public ListView<EstabReference> getSearchResultsListView() {
+        return searchResultsListView;
     }
 
     @FXML
@@ -202,34 +233,6 @@ public class EstabDataController implements Initializable {
         for (Ammo ammo : ammos) {
             estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
         }
-    }
-
-    private void loadComponentEditor(Class estabClass) throws IOException {
-
-    }
-
-    private void loadEditor(EstabReference<?> estabReference) throws IOException {
-        Class estabClass = estabReference.getElementClass();
-        Node editorNode;
-        if (null == componentClass || !componentClass.equals(estabClass)) {
-            componentClass = estabClass;
-            if (componentEditorNodes.containsKey(estabClass)) {
-                editorNode = componentEditorNodes.get(estabClass);
-                componentController = componentEditorControllers.get(estabClass);
-            } else {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(componentEditorViews.get(estabClass)));
-                editorNode = fxmlLoader.load();
-                componentEditorNodes.put(estabClass, editorNode);
-                componentController = fxmlLoader.getController();
-                componentController.setEditable(isEditable);
-            }
-            editorStackPane.getChildren().setAll(editorNode);
-//        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
-//        String result = sw.toString();
-//        resultsTextArea.setText(result);
-//        System.out.print(result);
-        }
-        componentController.setEstabReference(estabReference.getElement());
     }
 }
 
