@@ -1,7 +1,5 @@
 package net.deludobellico.stabeditor.model;
 
-import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
-
 import javax.xml.bind.JAXBElement;
 
 /**
@@ -13,7 +11,7 @@ public class EstabReference<T> {
     private JAXBElement<T> jaxbElement;
     private Class<T> elementClass;
 
-    public EstabReference(int id, String name, JAXBElement<T> jaxbElement,  Class<T> elementClass) {
+    public EstabReference(int id, String name, JAXBElement<T> jaxbElement, Class<T> elementClass) {
         this.id = id;
         this.name = name;
         this.jaxbElement = jaxbElement;
@@ -42,6 +40,12 @@ public class EstabReference<T> {
 
     @Override
     public String toString() {
-        return id + " : " +name;
+        return id + " : " + name;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

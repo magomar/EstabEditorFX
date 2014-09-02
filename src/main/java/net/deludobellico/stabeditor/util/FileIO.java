@@ -24,10 +24,9 @@ import java.util.zip.ZipOutputStream;
 public class FileIO {
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     private static final String JAXB_CONTEXT_PATH = "net.deludobellico.stabeditor.data.jaxb";
-    private static final String JAXB_NAMESPACE = "net/deludobellico/cotools";
     private static JAXBContext JAXB_CONTEXT;
-    public static Marshaller MARSHALLER;
-    public static Unmarshaller UNMARSHALLER;
+    private static Marshaller MARSHALLER;
+    private static Unmarshaller UNMARSHALLER;
 
     static {
         try {
@@ -38,7 +37,6 @@ public class FileIO {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
     }
 
     private FileIO() {
@@ -47,17 +45,16 @@ public class FileIO {
     /**
      * Unmarshalls XML element from file into java object
      *
-     * @param file         the XML file to be unmarshalled
-     * @param unmarshaller an unmarshaller
+     * @param file the XML file to be unmarshalled
      * @return the object unmarshalled from the {@code file}
      */
-    public static Object unmarshallXML(File file, Unmarshaller unmarshaller) {
+    public static Object unmarshallXML(File file) {
         Object object = null;
         try {
             StreamSource source = new StreamSource(file);
-            object = unmarshaller.unmarshal(source);
+            object = UNMARSHALLER.unmarshal(source);
         } catch (JAXBException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception unmarshalling XML", ex);
         } finally {
             return object;
         }
@@ -66,19 +63,17 @@ public class FileIO {
     /**
      * Marshalls Java object into XML file
      *
-     * @param object     object to be marshalled
-     * @param file       file to save the marshalled object
-     * @param marshaller a marshaller
+     * @param object object to be marshalled
+     * @param file   file to save the marshalled object
      * @return the XML file
      */
-    public static File marshallXML(Object object, File file, Marshaller marshaller) {
+    public static File marshallXML(Object object, File file) {
         try {
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try (FileOutputStream fos = new FileOutputStream(file)) {
-                marshaller.marshal(object, fos);
+                MARSHALLER.marshal(object, fos);
                 return file;
             } catch (IOException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
             }
         } catch (JAXBException ex) {
             LOG.log(Level.SEVERE, null, ex);
@@ -86,17 +81,16 @@ public class FileIO {
         return null;
     }
 
-    public static StringWriter marshallXML(Object object, Marshaller marshaller) {
+    public static StringWriter marshallXML(Object object) {
         try {
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try (StringWriter sw = new StringWriter()) {
-                marshaller.marshal(object, sw);
+                MARSHALLER.marshal(object, sw);
                 return sw;
             } catch (IOException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
             }
         } catch (JAXBException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
         }
         return null;
     }
@@ -104,31 +98,29 @@ public class FileIO {
     /**
      * Marshalls Java object in a zipped XMl file
      *
-     * @param object     object to be marshalled
-     * @param file       non zip file to save the marshalled object
-     * @param marshaller a marshaller
+     * @param object object to be marshalled
+     * @param file   non zip file to save the marshalled object
      * @return the ZIP file
      */
-    public static File marshallZipped(Object object, File file, Marshaller marshaller) {
+    public static File marshallZipped(Object object, File file) {
         File zipFile = new File(file.getAbsolutePath() + ".zip");
         try {
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try {
                 FileOutputStream fos = new FileOutputStream(zipFile);
                 try (ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(fos))) {
                     ZipEntry ze = new ZipEntry(file.getName());
                     zos.putNextEntry(ze);
-                    marshaller.marshal(object, zos);
+                    MARSHALLER.marshal(object, zos);
                     return zipFile;
                 } catch (IOException ex) {
-                    LOG.log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
                 }
             } catch (FileNotFoundException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
             }
 
         } catch (JAXBException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
         }
         return null;
     }
@@ -136,30 +128,28 @@ public class FileIO {
     /**
      * Marshalls Java object in a gzipped XMl file
      *
-     * @param object     object to be marshalled
-     * @param file       file to save the marshalled object
-     * @param marshaller a marshaller
+     * @param object object to be marshalled
+     * @param file   file to save the marshalled object
      * @return the Gzip file
      */
-    public static File marshallGzipped(Object object, File file, Marshaller marshaller) {
+    public static File marshallGzipped(Object object, File file) {
         File gzFile = new File(file.getAbsolutePath() + ".gz");
         try {
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try {
                 FileOutputStream fos = new FileOutputStream(gzFile);
                 try {
                     GZIPOutputStream gz = new GZIPOutputStream(fos);
-                    marshaller.marshal(object, gz);
+                    MARSHALLER.marshal(object, gz);
                     return gzFile;
                 } catch (IOException ex) {
-                    LOG.log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
                 }
             } catch (FileNotFoundException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
             }
 
         } catch (JAXBException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception marshalling XML", ex);
         }
         return null;
     }
@@ -193,7 +183,7 @@ public class FileIO {
         try {
             object = mapper.readValue(file, c);
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception unmarshalling Json", ex);
         }
         return object;
     }
@@ -213,23 +203,9 @@ public class FileIO {
             writer.writeValue(file, object);
             return file;
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception marshalling Json", ex);
         }
         return null;
     }
 
-//    public static File convertAndMarshallJson(File toawXMLFile) {
-//        String aresFilename = convertToawToAresFileName(toawXMLFile);
-//        Object target = convertToawFile(toawXMLFile);
-//        LOG.log(Level.INFO, "Marshalling {0}", toawXMLFile.getName());
-//        File aresFile = FileIO.marshallJson(target, new File(aresFilename));
-//        return aresFile;
-//    }
-//    public static File convertAndMarshallJson(File toawXMLFile, String targetPath) {
-//        String aresFilename = convertToawToAresFileName(toawXMLFile, targetPath);
-//        Object target = convertToawFile(toawXMLFile);
-//        LOG.log(Level.INFO, "Marshalling {0}", toawXMLFile.getName());
-//        File aresFile = FileIO.marshallJson(target, new File(aresFilename));
-//        return aresFile;
-//    }
 }

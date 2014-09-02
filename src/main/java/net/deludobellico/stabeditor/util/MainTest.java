@@ -27,15 +27,15 @@ public class MainTest {
         Path targetPathJSON = FileSystems.getDefault().getPath(resPath.toString(), "datasets/Jarama1937Estab.json");
         Path targetPathXML = FileSystems.getDefault().getPath(resPath.toString(), "datasets/Jarama1937Estab.xml");
         sw.start();
-        EstabData data = (EstabData) FileIO.unmarshallXML(sourcePath.toFile(), FileIO.UNMARSHALLER);
+        EstabData data = (EstabData) FileIO.unmarshallXML(sourcePath.toFile());
         sw.stop();
         System.out.println("Unmarshaling XML completed -->" + sw);
         sw.start();
-        FileIO.marshallJson(data,targetPathJSON.toFile());
+        FileIO.marshallJson(data, targetPathJSON.toFile());
         sw.stop();
         System.out.println("Marshalling JSON completed -->" + sw);
         sw.start();
-        FileIO.marshallXML(data,targetPathXML.toFile(), FileIO.MARSHALLER);
+        FileIO.marshallXML(data, targetPathXML.toFile());
         sw.stop();
         System.out.println("Marshalling XML  completed -->" + sw);
     }

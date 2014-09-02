@@ -20,8 +20,8 @@ import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
-import net.deludobellico.stabeditor.util.Util;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -84,7 +84,8 @@ public class EstabDataController implements Initializable {
     private StackPane editorStackPane;
 
     private EstabDataModel estabDataModel;
-    private Class componentClass = null;
+    private Class activeElementClass = null;
+    private EstabReference activeEstabElement = null;
     private AssetEditorController componentController = null;
     private Map<Class, String> componentEditorViews = new HashMap<>(3);
     private Map<Class, Node> componentEditorNodes = new HashMap<>(3);
@@ -135,11 +136,12 @@ public class EstabDataController implements Initializable {
     }
 
     public void setActiveComponent(EstabReference<?> estabReference) {
+        activeEstabElement = estabReference;
         if (null != estabReference) {
             Class estabClass = estabReference.getElementClass();
             Node editorNode;
-            if (null == componentClass || !componentClass.equals(estabClass)) {
-                componentClass = estabClass;
+            if (null == activeElementClass || !activeElementClass.equals(estabClass)) {
+                activeElementClass = estabClass;
                 if (componentEditorNodes.containsKey(estabClass)) {
                     editorNode = componentEditorNodes.get(estabClass);
                     componentController = componentEditorControllers.get(estabClass);
@@ -162,23 +164,27 @@ public class EstabDataController implements Initializable {
 //        resultsTextArea.setText(result);
 //        System.out.print(result);
             }
-            componentController.setEstabReference(estabReference.getElement());
+            componentController.setEstabElement(estabReference.getElement());
         }
     }
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel = estabDataModel;
-        numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
-        numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
-        numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
-        numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
-        numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
+        updateStatistics();
         searchVehicleButton.setDisable(false);
         searchWeaponButton.setDisable(false);
         searchAmmoButton.setDisable(false);
         searchVehicleTextField.setDisable(false);
         searchWeaponTextField.setDisable(false);
         searchAmmoTextField.setDisable(false);
+    }
+
+    private void updateStatistics() {
+        numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
+        numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
+        numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
+        numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
+        numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
     }
 
     public void setTitle(String title) {
@@ -197,11 +203,7 @@ public class EstabDataController implements Initializable {
     private void searchVehicleAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchVehicleTextField.getText();
-        List<Vehicle> vehicles = estabDataModel.searchVehicleByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Vehicle vehicle = estabDataModel.searchVehicleById(Integer.parseInt(textToSearch));
-            if (null != vehicle) vehicles.add(vehicle);
-        }
+        List<Vehicle> vehicles = estabDataModel.searchVehicle(textToSearch);
         for (Vehicle vehicle : vehicles) {
             estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
         }
@@ -211,11 +213,7 @@ public class EstabDataController implements Initializable {
     private void searchWeaponAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchWeaponTextField.getText();
-        List<Weapon> weapons = estabDataModel.searchWeaponByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Weapon weapon = estabDataModel.searchWeaponById(Integer.parseInt(textToSearch));
-            if (null != weapon) weapons.add(weapon);
-        }
+        List<Weapon> weapons = estabDataModel.searchWeapon(textToSearch);
         for (Weapon weapon : weapons) {
             estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
         }
@@ -225,15 +223,26 @@ public class EstabDataController implements Initializable {
     private void searchAmmoAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchAmmoTextField.getText();
-        List<Ammo> ammos = estabDataModel.searchAmmoByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Ammo ammo = estabDataModel.searchAmmoById(Integer.parseInt(textToSearch));
-            if (null != ammo) ammos.add(ammo);
-        }
+        List<Ammo> ammos = estabDataModel.searchAmmo(textToSearch);
         for (Ammo ammo : ammos) {
             estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
         }
     }
+
+    public void keepActiveComponent() {
+        if (!isEditable) return;
+        estabDataModel.keep(activeEstabElement);
+        updateStatistics();
+    }
+
+    public void saveDataModel(File file) {
+        estabDataModel.saveToFile(file);
+    }
+
+    public EstabDataModel getEstabDataModel() {
+        return estabDataModel;
+    }
+
 }
 
 

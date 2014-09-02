@@ -34,7 +34,7 @@
         <HBox>
             <children>
                 <Label text="ESTAB being edited"/>
-                <TextField fx:id="targetEstabTextField" editable="false"
+                <TextField fx:id="targetEstabFileTextField" editable="false"
                            promptText="Open existing Estab or create a new one..."/>
                 <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open"/>
                 <Button mnemonicParsing="false" onAction="#newEstabAction" text="New"/>
@@ -44,7 +44,7 @@
             <children>
                 <TitledPane text="Available ESTAB sources">
                     <content>
-                        <ListView fx:id="estabsListView" prefHeight="72.0" prefWidth="600.0"/>
+                        <ListView fx:id="estabFileListView" prefHeight="72.0" prefWidth="600.0"/>
                     </content>
                 </TitledPane>
                 <VBox>
@@ -53,9 +53,9 @@
                         <Button fx:id="removeEstabButton" mnemonicParsing="false" onAction="#removeEstabAction"
                                 text="Remove"/>
                         <Button fx:id="openSourceEstabButton" mnemonicParsing="false" onAction="#openSourceEstabAction"
-                                text="Select Source"/>
-                        <Button fx:id="openStabButton" mnemonicParsing="false" onAction="#openTargetEstabAction"
-                                text="Select Target"/>
+                                text="Load"/>
+                        <Button fx:id="openTargetEstabButton" mnemonicParsing="false" onAction="#openTargetEstabAction"
+                                text="Edit"/>
                     </children>
                 </VBox>
             </children>
@@ -63,8 +63,12 @@
         <fx:include fx:id="sourceEstabData" source="estab-data.fxml"/>
         <HBox>
             <children>
-                <Button fx:id="copyComponentButton" mnemonicParsing="false" onAction="#copyComponentAction"
-                        text="Copy"/>
+                <Button fx:id="copyElementButton" mnemonicParsing="false" onAction="#copyElementAction"
+                        text="Copy element"/>
+                <Button fx:id="keepElementButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                        onAction="#keepElementAction" text="Keep element"/>
+                <Button fx:id="saveDataButton" mnemonicParsing="false" onAction="#saveEstabDataAction"
+                        text="Save Data to File"/>
             </children>
         </HBox>
         <fx:include fx:id="targetEstabData" source="estab-data.fxml"/>

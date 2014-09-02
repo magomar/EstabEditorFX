@@ -23,7 +23,7 @@ public class WeaponEditorController implements AssetEditorController<Weapon> {
     private Weapon weapon;
 
     @Override
-    public void setEstabReference(Weapon weapon) {
+    public void setEstabElement(Weapon weapon) {
         this.weapon = weapon;
         widthTextField.setText(String.valueOf(weapon.getSize().getWidth()));
         heightTextField.setText(String.valueOf(weapon.getSize().getHeight()));
@@ -34,5 +34,10 @@ public class WeaponEditorController implements AssetEditorController<Weapon> {
     @Override
     public void setEditable(boolean isReadOnly) {
 
+    }
+
+    @Override
+    public Weapon getEstabElement() {
+        return weapon;
     }
 }

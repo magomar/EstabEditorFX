@@ -14,13 +14,20 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
     @FXML
     private TextField weightTextField;
 
+    private Ammo ammo;
+
     @Override
-    public void setEstabReference(Ammo ammo) {
+    public void setEstabElement(Ammo ammo) {
 
     }
 
     @Override
     public void setEditable(boolean isEditable) {
 
+    }
+
+    @Override
+    public Ammo getEstabElement() {
+        return ammo;
     }
 }
