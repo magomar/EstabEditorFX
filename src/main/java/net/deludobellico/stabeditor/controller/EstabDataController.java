@@ -230,11 +230,12 @@ public class EstabDataController implements Initializable {
             if(action == Dialog.ACTION_OK){
                 // overwrite
                 estabDataModel.paste(activeEstabElement);
+                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(),activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
             }
         } else {
             estabDataModel.paste(activeEstabElement);
+            estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(),activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
         }
-
         updateStatistics();
     }
 
