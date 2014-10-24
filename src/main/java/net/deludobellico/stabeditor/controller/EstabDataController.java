@@ -229,9 +229,9 @@ public class EstabDataController implements Initializable {
         }
     }
 
-    public void keepActiveComponent() {
+    public void pasteActiveComponent() {
         if (!isEditable) return;
-        estabDataModel.keep(activeEstabElement);
+        estabDataModel.paste(activeEstabElement);
         updateStatistics();
     }
 

@@ -122,7 +122,7 @@ public class EstabDataModel {
         return searchResults;
     }
 
-    public void keep(EstabReference estabReference) {
+    public void paste(EstabReference estabReference) {
         Map elementMap = allElements.get(estabReference.getElementClass());
         if (!elementMap.containsKey(estabReference.getId())) {
             elementMap.put(estabReference.getId(), estabReference.getElement());

@@ -65,8 +65,8 @@
             <children>
                 <Button fx:id="copyElementButton" mnemonicParsing="false" onAction="#copyElementAction"
                         text="Copy element"/>
-                <Button fx:id="keepElementButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
-                        onAction="#keepElementAction" text="Keep element"/>
+                <Button fx:id="pasteElementButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                        onAction="#pasteElementAction" text="Paste element"/>
                 <Button fx:id="saveDataButton" mnemonicParsing="false" onAction="#saveEstabDataAction"
                         text="Save Data to File"/>
             </children>
