@@ -122,11 +122,14 @@ public class EstabDataModel {
         return searchResults;
     }
 
+    public boolean isRepeatedElement(EstabReference estabReference){
+        Map elementMap = allElements.get(estabReference.getElementClass());
+        return elementMap.containsKey(estabReference.getId());
+    }
+
     public void paste(EstabReference estabReference) {
         Map elementMap = allElements.get(estabReference.getElementClass());
-        if (!elementMap.containsKey(estabReference.getId())) {
-            elementMap.put(estabReference.getId(), estabReference.getElement());
-        }
+        elementMap.put(estabReference.getId(), estabReference.getElement());
     }
 
     public void saveToFile(File file) {

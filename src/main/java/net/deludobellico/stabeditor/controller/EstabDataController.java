@@ -20,6 +20,9 @@ import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
+import net.deludobellico.stabeditor.view.UtilView;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -91,6 +94,8 @@ public class EstabDataController implements Initializable {
     private Map<Class, Node> componentEditorNodes = new HashMap<>(3);
     private Map<Class, AssetEditorController> componentEditorControllers = new HashMap<>(3);
     private boolean isEditable = false;
+
+    private UtilView utilView = new UtilView();
 
 
     @Override
@@ -220,7 +225,16 @@ public class EstabDataController implements Initializable {
 
     public void pasteActiveComponent() {
         if (!isEditable) return;
-        estabDataModel.paste(activeEstabElement);
+        if(estabDataModel.isRepeatedElement(activeEstabElement)){
+            Action action = utilView.showWarningDialogRepeatedElement();
+            if(action == Dialog.ACTION_OK){
+                // overwrite
+                estabDataModel.paste(activeEstabElement);
+            }
+        } else {
+            estabDataModel.paste(activeEstabElement);
+        }
+
         updateStatistics();
     }
 

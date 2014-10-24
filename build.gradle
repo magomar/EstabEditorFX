@@ -13,4 +13,5 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.3.+'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.3.+'
 
+    compile 'org.controlsfx:controlsfx:8.20.8'
 }

@@ -106,7 +106,9 @@ public class EstabEditorController implements Initializable {
         sourceEstabDataController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (null != newValue) {
+                // Only enable the copy button if there's a target and a selected element
+
+                if (targetEstabDataController.getEstabDataModel() != null && newValue != null) {
                     copyElementButton.setDisable(false);
                 } else {
                     copyElementButton.setDisable(true);
@@ -119,7 +121,7 @@ public class EstabEditorController implements Initializable {
     private void copyElementAction(ActionEvent actionEvent) {
         LOG.info(actionEvent.toString());
         targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
-        if (targetEstabDataController.getEstabDataModel() != null) pasteElementButton.setDisable(false);
+        pasteElementButton.setDisable(false);
     }
 
     @FXML
