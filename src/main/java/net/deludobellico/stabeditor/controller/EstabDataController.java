@@ -168,17 +168,6 @@ public class EstabDataController implements Initializable {
         }
     }
 
-    public void setEstabDataModel(EstabDataModel estabDataModel) {
-        this.estabDataModel = estabDataModel;
-        updateStatistics();
-        searchVehicleButton.setDisable(false);
-        searchWeaponButton.setDisable(false);
-        searchAmmoButton.setDisable(false);
-        searchVehicleTextField.setDisable(false);
-        searchWeaponTextField.setDisable(false);
-        searchAmmoTextField.setDisable(false);
-    }
-
     private void updateStatistics() {
         numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
         numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
@@ -241,6 +230,17 @@ public class EstabDataController implements Initializable {
 
     public EstabDataModel getEstabDataModel() {
         return estabDataModel;
+    }
+
+    public void setEstabDataModel(EstabDataModel estabDataModel) {
+        this.estabDataModel = estabDataModel;
+        updateStatistics();
+        searchVehicleButton.setDisable(false);
+        searchWeaponButton.setDisable(false);
+        searchAmmoButton.setDisable(false);
+        searchVehicleTextField.setDisable(false);
+        searchWeaponTextField.setDisable(false);
+        searchAmmoTextField.setDisable(false);
     }
 
 }

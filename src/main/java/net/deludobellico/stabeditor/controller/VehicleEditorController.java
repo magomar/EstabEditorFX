@@ -178,6 +178,11 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
+    public Vehicle getEstabElement() {
+        return vehicle;
+    }
+
+    @Override
     public void setEstabElement(Vehicle v) {
         this.vehicle = v;
         name.setText(v.getName());
@@ -220,11 +225,6 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         vehicleType.getSelectionModel().select(vehicle.getType());
         weight.setText(String.valueOf(v.getSize().getWeight()));
         width.setText(String.valueOf(v.getSize().getWidth()));
-    }
-
-    @Override
-    public Vehicle getEstabElement() {
-        return vehicle;
     }
 
 

@@ -119,7 +119,7 @@ public class EstabEditorController implements Initializable {
     private void copyElementAction(ActionEvent actionEvent) {
         LOG.info(actionEvent.toString());
         targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
-        if(targetEstabDataController.getEstabDataModel() != null) pasteElementButton.setDisable(false);
+        if (targetEstabDataController.getEstabDataModel() != null) pasteElementButton.setDisable(false);
     }
 
     @FXML

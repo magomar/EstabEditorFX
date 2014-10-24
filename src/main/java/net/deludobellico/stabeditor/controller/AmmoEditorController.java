@@ -17,11 +17,6 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
     private Ammo ammo;
 
     @Override
-    public void setEstabElement(Ammo ammo) {
-
-    }
-
-    @Override
     public void setEditable(boolean isEditable) {
 
     }
@@ -29,5 +24,10 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
     @Override
     public Ammo getEstabElement() {
         return ammo;
+    }
+
+    @Override
+    public void setEstabElement(Ammo ammo) {
+
     }
 }

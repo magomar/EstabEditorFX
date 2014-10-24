@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<StackPane fx:id="vehicleEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.VehicleEditorController">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="vehicleEditor" xmlns="http://javafx.com/javafx/8"
+           fx:controller="net.deludobellico.stabeditor.controller.VehicleEditorController">
     <children>
         <VBox prefHeight="430.0" prefWidth="700.0">
             <children>
                 <HBox>
                     <children>
-                        <Label text="Name" />
-                        <TextField fx:id="name" />
-                        <Label text="Type" />
-                        <ComboBox fx:id="vehicleType" prefWidth="150.0" />
-                        <CheckBox fx:id="hasTurret" mnemonicParsing="false" text="Turret" />
-                        <CheckBox fx:id="hasOpenTop" mnemonicParsing="false" text="Open top" />
+                        <Label text="Name"/>
+                        <TextField fx:id="name"/>
+                        <Label text="Type"/>
+                        <ComboBox fx:id="vehicleType" prefWidth="150.0"/>
+                        <CheckBox fx:id="hasTurret" mnemonicParsing="false" text="Turret"/>
+                        <CheckBox fx:id="hasOpenTop" mnemonicParsing="false" text="Open top"/>
                     </children>
                 </HBox>
                 <HBox>
                     <children>
-                        <TextArea fx:id="description" prefHeight="50.0" prefWidth="450.0" text="" wrapText="true" />
+                        <TextArea fx:id="description" prefHeight="50.0" prefWidth="450.0" text="" wrapText="true"/>
                         <VBox prefHeight="50.0" prefWidth="100.0">
                             <children>
-                                <CheckBox mnemonicParsing="false" selected="true" text="No image" />
-                                <Button mnemonicParsing="false" text="Select image" />
-                                <TextField prefHeight="25.0" prefWidth="100.0" />
+                                <CheckBox mnemonicParsing="false" selected="true" text="No image"/>
+                                <Button mnemonicParsing="false" text="Select image"/>
+                                <TextField prefHeight="25.0" prefWidth="100.0"/>
                             </children>
                         </VBox>
                         <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@/images/no-image.png" />
+                                <Image url="@/images/no-image.png"/>
                             </image>
                         </ImageView>
                     </children>
@@ -42,89 +40,92 @@
                     <children>
                         <GridPane>
                             <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="24.0" />
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="24.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Label text="Width" />
-                                <TextField fx:id="width" GridPane.columnIndex="1" />
-                                <Label text="m" GridPane.columnIndex="2" />
-                                <Label text="Height" GridPane.rowIndex="1" />
-                                <TextField fx:id="height" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <Label text="Length" GridPane.rowIndex="2" />
-                                <TextField fx:id="length" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                <Label text="Weight" GridPane.rowIndex="3" />
-                                <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                <Label text="Battle Weight" GridPane.rowIndex="4" />
-                                <TextField fx:id="battleWeight" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                <Label text="Width"/>
+                                <TextField fx:id="width" GridPane.columnIndex="1"/>
+                                <Label text="m" GridPane.columnIndex="2"/>
+                                <Label text="Height" GridPane.rowIndex="1"/>
+                                <TextField fx:id="height" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Label text="Length" GridPane.rowIndex="2"/>
+                                <TextField fx:id="length" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <Label text="Weight" GridPane.rowIndex="3"/>
+                                <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <Label text="Battle Weight" GridPane.rowIndex="4"/>
+                                <TextField fx:id="battleWeight" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
                             </children>
                         </GridPane>
                         <GridPane layoutX="10.0" layoutY="10.0">
                             <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Label text="Crew" />
-                                <TextField fx:id="crew" GridPane.columnIndex="1" />
-                                <Label text="Personnel cap." GridPane.rowIndex="1" />
-                                <TextField fx:id="personnelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label text="Fuel cap." GridPane.rowIndex="2" />
-                                <TextField fx:id="fuelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="Bulk Fuel cap." GridPane.rowIndex="3" />
-                                <TextField fx:id="bulkFuelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label text="Payload cap." GridPane.rowIndex="4" />
-                                <TextField fx:id="payloadCapacity" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label text="Towing cap." GridPane.rowIndex="5" />
-                                <TextField fx:id="towingCapacity" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label text="Crew"/>
+                                <TextField fx:id="crew" GridPane.columnIndex="1"/>
+                                <Label text="Personnel cap." GridPane.rowIndex="1"/>
+                                <TextField fx:id="personnelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="Fuel cap." GridPane.rowIndex="2"/>
+                                <TextField fx:id="fuelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="Bulk Fuel cap." GridPane.rowIndex="3"/>
+                                <TextField fx:id="bulkFuelCapacity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Payload cap." GridPane.rowIndex="4"/>
+                                <TextField fx:id="payloadCapacity" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Towing cap." GridPane.rowIndex="5"/>
+                                <TextField fx:id="towingCapacity" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                             </children>
                         </GridPane>
                         <GridPane layoutX="310.0" layoutY="10.0">
                             <children>
-                                <Label text="Reliability" />
-                                <TextField fx:id="reliability" GridPane.columnIndex="1" />
-                                <Label text="Take Cover" GridPane.rowIndex="1" />
-                                <TextField fx:id="takeCoverMod" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label text="Ronsonability" GridPane.rowIndex="2" />
-                                <TextField fx:id="ronsonability" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="Max gradient" GridPane.rowIndex="3" />
-                                <TextField fx:id="maxGradient" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label text="Max fording depth" GridPane.rowIndex="4" />
-                                <TextField fx:id="maxFordingDepth" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label text="Max trench width" GridPane.rowIndex="5" />
-                                <TextField fx:id="maxTrenchWidth" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label text="Reliability"/>
+                                <TextField fx:id="reliability" GridPane.columnIndex="1"/>
+                                <Label text="Take Cover" GridPane.rowIndex="1"/>
+                                <TextField fx:id="takeCoverMod" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="Ronsonability" GridPane.rowIndex="2"/>
+                                <TextField fx:id="ronsonability" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="Max gradient" GridPane.rowIndex="3"/>
+                                <TextField fx:id="maxGradient" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Max fording depth" GridPane.rowIndex="4"/>
+                                <TextField fx:id="maxFordingDepth" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Max trench width" GridPane.rowIndex="5"/>
+                                <TextField fx:id="maxTrenchWidth" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                             </children>
                             <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="130.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                         </GridPane>
                     </children>
@@ -133,57 +134,63 @@
                     <children>
                         <GridPane>
                             <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
+                                                   prefWidth="120.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Label text="Normal Speed" GridPane.columnIndex="1" />
-                                <Label text="Road" GridPane.rowIndex="1" />
-                                <Label text="Cross country" GridPane.rowIndex="2" />
-                                <Label text="Fuel Consumption" GridPane.rowIndex="3" />
-                                <Label text="kph" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                <Label layoutX="207.0" layoutY="37.0" text="kph" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                <Label layoutX="207.0" layoutY="61.0" text="lph" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                <Label text="Max Speed" GridPane.columnIndex="2" />
-                                <TextField fx:id="roadNormalSpeed" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <TextField fx:id="crossCountryNormalSpeed" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <TextField fx:id="fuelConsumptionNormalSpeed" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <TextField fx:id="roadMaxSpeed" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <TextField fx:id="crossCountryMaxSpeed" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                <TextField fx:id="fuelConsumptionMaxSpeed" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                <Label text="Normal Speed" GridPane.columnIndex="1"/>
+                                <Label text="Road" GridPane.rowIndex="1"/>
+                                <Label text="Cross country" GridPane.rowIndex="2"/>
+                                <Label text="Fuel Consumption" GridPane.rowIndex="3"/>
+                                <Label text="kph" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                <Label layoutX="207.0" layoutY="37.0" text="kph" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="2"/>
+                                <Label layoutX="207.0" layoutY="61.0" text="lph" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="3"/>
+                                <Label text="Max Speed" GridPane.columnIndex="2"/>
+                                <TextField fx:id="roadNormalSpeed" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <TextField fx:id="crossCountryNormalSpeed" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                <TextField fx:id="fuelConsumptionNormalSpeed" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="3"/>
+                                <TextField fx:id="roadMaxSpeed" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <TextField fx:id="crossCountryMaxSpeed" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <TextField fx:id="fuelConsumptionMaxSpeed" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="3"/>
                             </children>
                         </GridPane>
                         <GridPane>
                             <children>
-                                <Label />
-                                <Label text="Front" GridPane.rowIndex="1" />
-                                <TextField fx:id="frontArmor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label text="Side" GridPane.rowIndex="2" />
-                                <TextField fx:id="sideArmor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="Rear" GridPane.rowIndex="3" />
-                                <TextField fx:id="rearArmor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label text="Top" GridPane.rowIndex="4" />
-                                <TextField fx:id="topArmor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label text="Armour" GridPane.columnIndex="1" />
+                                <Label/>
+                                <Label text="Front" GridPane.rowIndex="1"/>
+                                <TextField fx:id="frontArmor" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="Side" GridPane.rowIndex="2"/>
+                                <TextField fx:id="sideArmor" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="Rear" GridPane.rowIndex="3"/>
+                                <TextField fx:id="rearArmor" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Top" GridPane.rowIndex="4"/>
+                                <TextField fx:id="topArmor" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Armour" GridPane.columnIndex="1"/>
                             </children>
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                         </GridPane>
                     </children>

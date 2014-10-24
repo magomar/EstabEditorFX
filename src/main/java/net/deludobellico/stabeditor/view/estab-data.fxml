@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane fx:id="estabDataTitledPane" prefHeight="450.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
+<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataTitledPane" prefHeight="450.0" prefWidth="1024.0"
+            xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
     <content>
         <VBox>
