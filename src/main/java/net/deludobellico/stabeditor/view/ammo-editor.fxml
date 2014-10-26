@@ -1,65 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="ammoEditor" xmlns="http://javafx.com/javafx/8"
-           fx:controller="net.deludobellico.stabeditor.controller.AmmoEditorController">
+
+<StackPane fx:id="ammoEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.AmmoEditorController">
     <children>
-        <VBox>
+        <VBox prefHeight="430.0" prefWidth="700.0">
             <children>
-                <HBox prefHeight="25.0" prefWidth="800.0">
+                <HBox>
                     <children>
-                        <Label text="Name:"/>
-                        <TextField/>
+                        <Label text="Name">
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="name" />
                     </children>
                 </HBox>
-                <Label text="Description"/>
-                <AnchorPane prefHeight="575.0" prefWidth="800.0">
+                <HBox prefHeight="87.0">
                     <children>
-                        <HBox prefHeight="87.0" prefWidth="800.0">
+                        <TextArea fx:id="description" text="" wrapText="true">
+                            <HBox.margin>
+                                <Insets top="5.0" />
+                            </HBox.margin>
+                        </TextArea>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
                             <children>
-                                <TextArea prefHeight="64.0" prefWidth="490.0" text="" wrapText="true"/>
-                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                    <children>
-                                        <CheckBox mnemonicParsing="false" selected="true" text="No image"/>
-                                        <Button mnemonicParsing="false" text="Open"/>
-                                        <TextField prefHeight="25.0" prefWidth="133.0"/>
-                                    </children>
-                                </VBox>
-                                <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@/images/no-image.png"/>
-                                    </image>
-                                </ImageView>
+                                <CheckBox mnemonicParsing="false" selected="true" text="No image">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </CheckBox>
+                                <Button mnemonicParsing="false" text="Open" />
+                                <TextField prefHeight="25.0" prefWidth="133.0" />
                             </children>
-                        </HBox>
-                        <GridPane layoutX="6.0" layoutY="100.0">
-                            <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
-                                                   prefWidth="100.0"/>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                            </rowConstraints>
-                            <children>
-                                <Label text="Quantity"/>
-                                <TextField fx:id="quantityTextField" editable="true" GridPane.columnIndex="1"/>
-                                <Label text="m" GridPane.columnIndex="2"/>
-                                <Label text="Weight" GridPane.rowIndex="1"/>
-                                <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="1"/>
-                                <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                            </children>
-                        </GridPane>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </VBox>
+                        <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/images/no-image.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </ImageView>
                     </children>
-                </AnchorPane>
+                </HBox>
+            <GridPane maxWidth="400.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                      <Label text="Weight (kg)" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+      
+                      <Label text="Quantity">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                      <TextField fx:id="quantity" editable="true" GridPane.columnIndex="1" />
+                      <TextField fx:id="weight" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </GridPane>
             </children>
+         <StackPane.margin>
+            <Insets left="20.0" top="15.0" />
+         </StackPane.margin>
         </VBox>
     </children>
 </StackPane>

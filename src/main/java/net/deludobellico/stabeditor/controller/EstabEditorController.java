@@ -169,6 +169,9 @@ public class EstabEditorController implements Initializable {
         targetEstabDataController.setTitle("Target Estab: " + targetEstabFile.getName());
         targetEstabDataController.setEstabDataModel(new EstabDataModel(targetEstabFile));
         saveDataButton.setDisable(false);
+        if (targetEstabDataController.getEstabDataModel() != null && sourceEstabDataController.getActiveComponent() != null) {
+            copyElementButton.setDisable(false);
+        }
 
     }
 
