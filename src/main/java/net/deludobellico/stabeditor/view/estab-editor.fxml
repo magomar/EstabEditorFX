@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox minHeight="768.0" minWidth="1024.0" prefHeight="900.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="768.0" minWidth="1024.0" prefHeight="900.0" prefWidth="1024.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
     <children>
         <!--<MenuBar>
             <menus>
@@ -35,40 +34,48 @@
         </MenuBar>-->
         <HBox>
             <children>
-                <Label text="ESTAB being edited" />
-                <TextField fx:id="targetEstabFileTextField" editable="false" promptText="Open existing Estab or create a new one..." />
-                <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open" />
-                <Button mnemonicParsing="false" onAction="#newEstabAction" text="New" />
+                <Label text="ESTAB being edited"/>
+                <TextField fx:id="targetEstabFileTextField" editable="false"
+                           promptText="Open existing Estab or create a new one..."/>
+                <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open"/>
+                <Button mnemonicParsing="false" onAction="#newEstabAction" text="New"/>
             </children>
         </HBox>
         <HBox style="-fx-border-width: 10;">
             <children>
                 <TitledPane text="Available ESTAB sources">
                     <content>
-                        <ListView fx:id="estabFileListView" prefHeight="72.0" prefWidth="600.0" />
+                        <ListView fx:id="estabFileListView" prefHeight="72.0" prefWidth="600.0"/>
                     </content>
                 </TitledPane>
                 <VBox>
                     <children>
-                        <Button fx:id="addEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#addEstabAction" text="Add" />
-                        <Button fx:id="removeEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#removeEstabAction" text="Remove" />
-                        <Button fx:id="openSourceEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#openSourceEstabAction" text="Load" />
-                        <Button fx:id="openTargetEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#openTargetEstabAction" text="Edit" />
+                        <Button fx:id="addEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0"
+                                mnemonicParsing="false" onAction="#addEstabAction" text="Add"/>
+                        <Button fx:id="removeEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0"
+                                mnemonicParsing="false" onAction="#removeEstabAction" text="Remove"/>
+                        <Button fx:id="openSourceEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER"
+                                minWidth="60.0" mnemonicParsing="false" onAction="#openSourceEstabAction" text="Load"/>
+                        <Button fx:id="openTargetEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER"
+                                minWidth="60.0" mnemonicParsing="false" onAction="#openTargetEstabAction" text="Edit"/>
                     </children>
-               <HBox.margin>
-                  <Insets left="1.0" right="15.0" />
-               </HBox.margin>
+                    <HBox.margin>
+                        <Insets left="1.0" right="15.0"/>
+                    </HBox.margin>
                 </VBox>
-            <VBox>
-               <children>
-                      <Button fx:id="copyElementButton" minWidth="150.0" mnemonicParsing="false" onAction="#copyElementAction" text="Copy selected element" />
-                      <Button fx:id="pasteElementButton" layoutX="10.0" layoutY="10.0" minWidth="150.0" mnemonicParsing="false" onAction="#pasteElementAction" text="Paste selected element" />
-                      <Button fx:id="saveDataButton" minWidth="150.0" mnemonicParsing="false" onAction="#saveEstabDataAction" text="Save Target to File" />
-               </children>
-            </VBox>
+                <VBox>
+                    <children>
+                        <Button fx:id="copyElementButton" minWidth="150.0" mnemonicParsing="false"
+                                onAction="#copyElementAction" text="Copy selected element"/>
+                        <Button fx:id="pasteElementButton" layoutX="10.0" layoutY="10.0" minWidth="150.0"
+                                mnemonicParsing="false" onAction="#pasteElementAction" text="Paste selected element"/>
+                        <Button fx:id="saveDataButton" minWidth="150.0" mnemonicParsing="false"
+                                onAction="#saveEstabDataAction" text="Save Target to File"/>
+                    </children>
+                </VBox>
             </children>
         </HBox>
-        <fx:include fx:id="sourceEstabData" source="estab-data.fxml" />
-        <fx:include fx:id="targetEstabData" source="estab-data.fxml" />
+        <fx:include fx:id="sourceEstabData" source="estab-data.fxml"/>
+        <fx:include fx:id="targetEstabData" source="estab-data.fxml"/>
     </children>
 </VBox>

@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
 
@@ -120,12 +121,13 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     private TextField takeCoverMod;
 
     private Vehicle vehicle;
+    private Vehicle previousVehicle;
     private ObservableList<VehicleType> vehicleTypeObservableList = FXCollections.observableArrayList();
     private boolean isReadOnly = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        vehicle = new Vehicle();
+        vehicle = new Vehicle(); previousVehicle = vehicle;
         vehicleTypeObservableList.addAll(VehicleType.values());
         vehicleType.setItems(vehicleTypeObservableList);
         vehicleType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<VehicleType>() {
@@ -184,9 +186,18 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
 
     @Override
     public void setEstabElement(Vehicle v) {
+        System.out.println("Before " +vehicle.getName());
+        this.previousVehicle = this.vehicle;
+
+        name.textProperty().unbindBidirectional(previousVehicle.nameProperty());
+        description.textProperty().unbindBidirectional(previousVehicle.descriptionProperty());
+        fuelCapacity.textProperty().unbindBidirectional(vehicle.fuelCapacityProperty());
         this.vehicle = v;
-        name.setText(v.getName());
-        description.setText(v.getDescription());
+
+        System.out.println("After " + vehicle.getName());
+        //name.setText(v.getName());
+        name.textProperty().bindBidirectional(vehicle.nameProperty());
+        description.textProperty().bindBidirectional(vehicle.descriptionProperty());
         width.setText(String.valueOf(v.getSize().getWidth()));
         height.setText(String.valueOf(v.getSize().getHeight()));
         length.setText(String.valueOf(v.getSize().getLength()));
@@ -200,7 +211,7 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         crossCountryNormalSpeed.setText(String.valueOf(v.getSpeed().getCrossCountry().getNormal()));
         description.setText(v.getDescription());
         frontArmor.setText(String.valueOf(v.getArmour().getFront()));
-        fuelCapacity.setText(String.valueOf(v.getFuelCapacity()));
+        fuelCapacity.textProperty().bindBidirectional(vehicle.fuelCapacityProperty(), new NumberStringConverter());
         fuelConsumptionMaxSpeed.setText(String.valueOf(v.getFuelConsumption().getMax()));
         fuelConsumptionNormalSpeed.setText(String.valueOf(v.getFuelConsumption().getNormal()));
         hasOpenTop.setSelected((v.getHasOpenTop().equals("yes") ? true : false));

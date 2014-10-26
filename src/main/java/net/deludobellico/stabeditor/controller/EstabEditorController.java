@@ -129,7 +129,7 @@ public class EstabEditorController implements Initializable {
         LOG.info(actionEvent.toString());
         pasteElementButton.setDisable(true);
         targetEstabDataController.pasteActiveComponent();
-        saveDataButton.setDisable(false);
+
     }
 
     @FXML
@@ -180,6 +180,7 @@ public class EstabEditorController implements Initializable {
         targetEstabFileTextField.setText(targetEstabFile.getName());
         targetEstabDataController.setTitle("Target Estab: " + targetEstabFile.getName());
         targetEstabDataController.setEstabDataModel(new EstabDataModel(targetEstabFile));
+        saveDataButton.setDisable(false);
 
     }
 

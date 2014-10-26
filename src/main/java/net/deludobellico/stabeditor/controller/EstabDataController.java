@@ -225,16 +225,24 @@ public class EstabDataController implements Initializable {
 
     public void pasteActiveComponent() {
         if (!isEditable) return;
-        if(estabDataModel.isRepeatedElement(activeEstabElement)){
-            Action action = utilView.showWarningDialogRepeatedElement();
-            if(action == Dialog.ACTION_OK){
+        if (estabDataModel.hasRepeatedElementName(activeEstabElement)) {
+            Action action = utilView.showWarningDialogRepeatedElementName();
+            if (action == Dialog.ACTION_OK) {
                 // overwrite
                 estabDataModel.paste(activeEstabElement);
-                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(),activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+            }
+
+        } else if (estabDataModel.hasRepeatedElement(activeEstabElement)) {
+            Action action = utilView.showWarningDialogRepeatedElement();
+            if (action == Dialog.ACTION_OK) {
+                // overwrite
+                estabDataModel.paste(activeEstabElement);
+                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
             }
         } else {
             estabDataModel.paste(activeEstabElement);
-            estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(),activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+            estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
         }
         updateStatistics();
     }

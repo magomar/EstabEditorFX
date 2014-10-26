@@ -1,70 +1,138 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <estab-data>
     <vehicle id="1027">
-        <name>Motorcycle</name>
-        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
-        <picture id="3417"/>
-        <picture-filename>
-        </picture-filename>
-        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
-        <crew>1</crew>
-        <reliability>0.954834</reliability>
         <armaments/>
-        <type>motor-cycle</type>
-        <fuel-capacity>10.0</fuel-capacity>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+        <battle-weight>0.0</battle-weight>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <crew>1</crew>
+        <description>All parties in WWII used motorcycles for liaison and recon missi</description>
+        <fuel-capacity>15.0</fuel-capacity>
+        <fuel-consumption max="1.5" normal="1.0"/>
+        <has-open-top>yes</has-open-top>
+        <has-turret>no</has-turret>
+        <max-fording-depth>0</max-fording-depth>
+        <max-gradient>20</max-gradient>
+        <max-trench-width>0</max-trench-width>
+        <name>Motor</name>
+        <payload-capacity>100.0</payload-capacity>
+        <personnel-capacity>1</personnel-capacity>
+        <picture id="3594"/>
+        <picture-filename>
+    </picture-filename>
+        <reliability>0.954834</reliability>
+        <ronsonability>0.10498</ronsonability>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
         <speed>
             <road max="100.0" normal="70.0"/>
             <cross-country max="30.0" normal="21.0"/>
         </speed>
-        <fuel-consumption max="2.0" normal="1.0"/>
-        <ronsonability>0.10498</ronsonability>
-        <max-gradient>0</max-gradient>
-        <max-fording-depth>0</max-fording-depth>
-        <max-trench-width>0</max-trench-width>
-        <towing-capacity>0.0</towing-capacity>
-        <personnel-capacity>1</personnel-capacity>
-        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
-        <payload-capacity>0.0</payload-capacity>
         <take-cover-mod>1.004883</take-cover-mod>
-        <has-turret>no</has-turret>
-        <has-open-top>no</has-open-top>
-        <battle-weight>0.0</battle-weight>
-        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+        <towing-capacity>200.0</towing-capacity>
+        <type>motor-cycle</type>
     </vehicle>
     <vehicle id="2054">
-        <name>PzKw II F</name>
-        <description>Already obsolete by the start of the war, the PzKw II nevertheless comprised a significant part of
-            Germany's tank arsenal. Later in the war it was relegated to recconaissance duties only.
-        </description>
-        <picture id="3298"/>
-        <picture-filename>Char B/FT-ok.RSRC</picture-filename>
-        <size width="2.300049" height="2.300049" length="4.810059" weight="9500.0"/>
-        <crew>3</crew>
-        <reliability>1.0</reliability>
         <armaments>
             <armament equipment-object-id="1822" equipment-name="7.92mm MG 34 AFV" qty="1"/>
             <armament equipment-object-id="2055" equipment-name="2cm KwK 30 L55 tank gun" qty="1"/>
         </armaments>
-        <type>tank</type>
+        <armour front="35.0" side="18.0" rear="15.0" top="12.0"/>
+        <battle-weight>9500.0</battle-weight>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <crew>3</crew>
+        <description>Already obsolete by the start of the war, the PzKw II nevertheless comprised a significant part of
+            Germany's tank arsenal. Later in the war it was relegated to recconaissance duties only.
+        </description>
         <fuel-capacity>170.0</fuel-capacity>
+        <fuel-consumption max="40.0" normal="25.0"/>
+        <has-open-top>no</has-open-top>
+        <has-turret>yes</has-turret>
+        <max-fording-depth>1</max-fording-depth>
+        <max-gradient>20</max-gradient>
+        <max-trench-width>1</max-trench-width>
+        <name>PzKw II F</name>
+        <payload-capacity>0.0</payload-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <picture id="3298"/>
+        <picture-filename>Char B/FT-ok.RSRC</picture-filename>
+        <reliability>1.0</reliability>
+        <ronsonability>0.404785</ronsonability>
+        <size width="2.300049" height="2.300049" length="4.810059" weight="9500.0"/>
         <speed>
             <road max="40.0" normal="30.0"/>
             <cross-country max="19.0" normal="12.0"/>
         </speed>
-        <fuel-consumption max="40.0" normal="25.0"/>
-        <ronsonability>0.404785</ronsonability>
-        <max-gradient>20</max-gradient>
-        <max-fording-depth>1</max-fording-depth>
-        <max-trench-width>1</max-trench-width>
-        <towing-capacity>9000.0</towing-capacity>
-        <personnel-capacity>0</personnel-capacity>
-        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
-        <payload-capacity>0.0</payload-capacity>
         <take-cover-mod>1.0</take-cover-mod>
-        <has-turret>yes</has-turret>
+        <towing-capacity>9000.0</towing-capacity>
+        <type>tank</type>
+    </vehicle>
+    <vehicle id="1800">
+        <armaments>
+            <armament equipment-object-id="2274" equipment-name="8.8cm PaK 43/3 L/71" qty="1"/>
+            <armament equipment-object-id="2062" equipment-name="7.92mm MG 34 - Pz" qty="1"/>
+        </armaments>
+        <armour front="169.0" side="48.0" rear="50.0" top="23.0"/>
+        <battle-weight>45158.0</battle-weight>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <crew>5</crew>
+        <description>The best all-round tank destroyer of the war. The Jagdpanther combined the Panther chassis with the 8.8cm Pak43 gun.  Low silhouette, excellent sloping armour plate and the premier hard hitting "88" made it very lethal indeed.  It entered combat service in February 1944.</description>
+        <fuel-capacity>450.0</fuel-capacity>
+        <fuel-consumption max="207.0" normal="138.0"/>
         <has-open-top>no</has-open-top>
-        <battle-weight>9500.0</battle-weight>
-        <armour front="35.0" side="18.0" rear="15.0" top="12.0"/>
+        <has-turret>no</has-turret>
+        <max-fording-depth>2</max-fording-depth>
+        <max-gradient>35</max-gradient>
+        <max-trench-width>2</max-trench-width>
+        <name>PzJg V - Jagdpanther</name>
+        <payload-capacity>0.0</payload-capacity>
+        <personnel-capacity>10</personnel-capacity>
+        <picture id="3497"/>
+        <picture-filename>
+    </picture-filename>
+        <reliability>0.924805</reliability>
+        <ronsonability>0.304932</ronsonability>
+        <size width="3.419922" height="2.719971" length="6.870117" weight="45158.0"/>
+        <speed>
+            <road max="29.0" normal="24.0"/>
+            <cross-country max="16.0" normal="12.0"/>
+        </speed>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <towing-capacity>44800.0</towing-capacity>
+        <type>tank-destroyer</type>
+    </vehicle>
+    <vehicle id="2123">
+        <armaments>
+            <armament equipment-object-id="1823" equipment-name=".50 cal M2 HB MG - veh" qty="1"/>
+            <armament equipment-object-id="2126" equipment-name="76mm M7 gun - GMC" qty="1"/>
+        </armaments>
+        <armour front="96.0" side="26.0" rear="25.0" top="19.0"/>
+        <battle-weight>29600.0</battle-weight>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <crew>5</crew>
+        <description>Nicknamed The Wolverine, the M10 Gun Motor Carriage was based on the M4A2 Medium Tank, but to give the tank destroyer greater mobility its armor was thinner. It also had a new turret, which was open-topped to increase visibility. Because the 3-inch AA gun was so large and heavy, two 1800-lb. counterweights were attached to the rear of the turret to keep it balanced. Moreover, the heavy turret lacked power traverse. After the M10 GMC's successful debut in Tunisia, where it equipped the 899th and 776th Tank Destroyer Battalions, it replaced the M3 GMC halftrack and became the standard U.S. tank destroyer until late 1944 when the M18 and M36 began to replace it. A total of 4,993 M10s were bui</description>
+        <fuel-capacity>600.0</fuel-capacity>
+        <fuel-consumption max="105.0" normal="70.0"/>
+        <has-open-top>yes</has-open-top>
+        <has-turret>yes</has-turret>
+        <max-fording-depth>1</max-fording-depth>
+        <max-gradient>30</max-gradient>
+        <max-trench-width>1</max-trench-width>
+        <name>M10 TD</name>
+        <payload-capacity>0.0</payload-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <picture id="3514"/>
+        <picture-filename>
+    </picture-filename>
+        <reliability>0.85498</reliability>
+        <ronsonability>0.404785</ronsonability>
+        <size width="3.050049" height="2.47998" length="5.969971" weight="28400.0"/>
+        <speed>
+            <road max="40.0" normal="28.0"/>
+            <cross-country max="24.0" normal="17.0"/>
+        </speed>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <towing-capacity>16765.0</towing-capacity>
+        <type>tank-destroyer</type>
     </vehicle>
     <formation-effects id="1600" type="left-echelon">
         <moving-cohesion-level>0.600098</moving-cohesion-level>

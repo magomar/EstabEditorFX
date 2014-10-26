@@ -122,9 +122,38 @@ public class EstabDataModel {
         return searchResults;
     }
 
-    public boolean isRepeatedElement(EstabReference estabReference){
+    public boolean hasRepeatedElement(EstabReference estabReference) {
         Map elementMap = allElements.get(estabReference.getElementClass());
         return elementMap.containsKey(estabReference.getId());
+    }
+
+    public boolean hasRepeatedElementName(EstabReference estabReference) {
+        boolean hasRepeatedElementName = false;
+//        Map elementMap = allElements.get(estabReference.getElementClass());
+//        Class c = estabReference.getElementClass();
+//        if (c.equals(Vehicle.class)) {
+//            for (Object element : elementMap.values()) {
+//                if (((Vehicle) element).getName().equals(estabReference.getName())) {
+//                    hasRepeatedElementName = true;
+//                    break;
+//                }
+//            }
+//        } else if (c.equals(Weapon.class)) {
+//            for (Object element : elementMap.values()) {
+//                if (((Weapon) element).getName().equals(estabReference.getName())) {
+//                    hasRepeatedElementName = true;
+//                    break;
+//                }
+//            }
+//        } else if (c.equals(Ammo.class)) {
+//            for (Object element : elementMap.values()) {
+//                if (((Ammo) element).getName().equals(estabReference.getName())) {
+//                    hasRepeatedElementName = true;
+//                    break;
+//                }
+//            }
+//        }
+        return hasRepeatedElementName;
     }
 
     public void paste(EstabReference estabReference) {
