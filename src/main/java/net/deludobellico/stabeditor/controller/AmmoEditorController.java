@@ -2,6 +2,7 @@ package net.deludobellico.stabeditor.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
 
 /**
@@ -18,7 +19,20 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
 
     @Override
     public void setEditable(boolean isEditable) {
+        quantityTextField.setEditable(isEditable);
+        weightTextField.setEditable(isEditable);
+    }
 
+    @Override
+    public void bindProperties(Ammo ammo) {
+        quantityTextField.textProperty().bindBidirectional(ammo.minOrderQtyProperty(), new NumberStringConverter());
+        weightTextField.textProperty().bindBidirectional(ammo.minOrderWeightProperty(), new NumberStringConverter());
+    }
+
+    @Override
+    public void unbindProperties(Ammo ammo) {
+        quantityTextField.textProperty().unbindBidirectional(ammo.minOrderQtyProperty());
+        weightTextField.textProperty().unbindBidirectional(ammo.minOrderWeightProperty());
     }
 
     @Override
@@ -27,7 +41,11 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
     }
 
     @Override
-    public void setEstabElement(Ammo ammo) {
+    public void setEstabElement(Ammo newAmmo) {
+        Ammo previousAmmo = this.ammo;
+        this.ammo = newAmmo;
 
+        if(previousAmmo.getName() != null) unbindProperties(previousAmmo);
+        bindProperties(newAmmo);
     }
 }

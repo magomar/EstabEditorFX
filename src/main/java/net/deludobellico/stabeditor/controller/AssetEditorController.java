@@ -9,4 +9,8 @@ public interface AssetEditorController<T> {
     void setEstabElement(T asset);
 
     void setEditable(boolean isEditable);
+
+    void bindProperties(T asset);
+
+    void unbindProperties(T asset);
 }
