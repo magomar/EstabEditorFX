@@ -225,7 +225,7 @@ public class EstabDataController implements Initializable {
 
     public void pasteActiveComponent() {
         if (!isEditable) return;
-        if (estabDataModel.hasRepeatedElementName(activeEstabElement)) {
+        /*if (estabDataModel.hasRepeatedElementName(activeEstabElement)) {
             Action action = utilView.showWarningDialogRepeatedElementName();
             if (action == Dialog.ACTION_OK) {
                 // overwrite
@@ -233,7 +233,7 @@ public class EstabDataController implements Initializable {
                 estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
             }
 
-        } else if (estabDataModel.hasRepeatedElement(activeEstabElement)) {
+        } else*/ if (estabDataModel.hasRepeatedElement(activeEstabElement)) {
             Action action = utilView.showWarningDialogRepeatedElement();
             if (action == Dialog.ACTION_OK) {
                 // overwrite

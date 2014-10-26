@@ -31,6 +31,36 @@
         <towing-capacity>200.0</towing-capacity>
         <type>motor-cycle</type>
     </vehicle>
+    <vehicle id="2325">
+        <armaments/>
+        <armour front="0.0" rear="0.0" side="0.0" top="0.0"/>
+        <battle-weight>7000.0</battle-weight>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <crew>1</crew>
+        <description>The RSO - 'Raupenschlepper Ost' was the answer to the harsh road conditions on the Eastern Front. A fully-tracked tractor, it was to prove less prone to damage than the over-engineered halftrack series. Its big handicap however, was its low speed.</description>
+        <fuel-capacity>110.0</fuel-capacity>
+        <fuel-consumption max="24.0" normal="16.0"/>
+        <has-open-top>yes</has-open-top>
+        <has-turret>no</has-turret>
+        <max-fording-depth>1</max-fording-depth>
+        <max-gradient>20</max-gradient>
+        <max-trench-width>1</max-trench-width>
+        <name>RSO - prime mover</name>
+        <payload-capacity>1500.0</payload-capacity>
+        <personnel-capacity>8</personnel-capacity>
+        <picture id="3541"/>
+        <picture-filename>Sd 11.RSRC</picture-filename>
+        <reliability>0.904785</reliability>
+        <ronsonability>0.304932</ronsonability>
+        <size height="2.350098" length="4.425049" weight="5500.0" width="1.98999"/>
+        <speed>
+            <cross-country max="14.0" normal="7.0"/>
+            <road max="17.0" normal="12.0"/>
+        </speed>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <towing-capacity>3000.0</towing-capacity>
+        <type>truck</type>
+    </vehicle>
     <vehicle id="2054">
         <armaments/>
         <armour front="35.0" rear="15.0" side="18.0" top="12.0"/>

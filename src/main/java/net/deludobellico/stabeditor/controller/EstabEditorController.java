@@ -53,9 +53,6 @@ public class EstabEditorController implements Initializable {
     private Button copyElementButton;
 
     @FXML
-    private Button pasteElementButton;
-
-    @FXML
     private Button saveDataButton;
 
     @FXML
@@ -88,7 +85,6 @@ public class EstabEditorController implements Initializable {
         openSourceEstabButton.setDisable(true);
         openTargetEstabButton.setDisable(true);
         copyElementButton.setDisable(true);
-        pasteElementButton.setDisable(true);
         saveDataButton.setDisable(true);
         estabFileListView.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -121,15 +117,7 @@ public class EstabEditorController implements Initializable {
     private void copyElementAction(ActionEvent actionEvent) {
         LOG.info(actionEvent.toString());
         targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
-        pasteElementButton.setDisable(false);
-    }
-
-    @FXML
-    private void pasteElementAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        pasteElementButton.setDisable(true);
         targetEstabDataController.pasteActiveComponent();
-
     }
 
     @FXML
