@@ -27,15 +27,15 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="size" type="{}ForceSize"/>
  *         &lt;element name="combat-class" type="{}CombatClass"/>
  *         &lt;element name="target-class" type="{}TargetClass"/>
- *         &lt;element name="infantry-value" type="{http://www.w3.org/2001/XMLSchema}short"/>
- *         &lt;element name="recon-value" type="{http://www.w3.org/2001/XMLSchema}short"/>
- *         &lt;element name="engineering-value" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="infantry-value" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="recon-value" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="engineering-value" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="move-type" type="{}MoveType"/>
- *         &lt;element name="pers-qty" type="{http://www.w3.org/2001/XMLSchema}short"/>
- *         &lt;element name="staff-capacity" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="pers-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="staff-capacity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="basics-qty" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="basics-consumption-rate-modifier" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="commander-rank" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="commander-rank" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="fuel-qty" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="fuel-load" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="speed" type="{}SpeedData"/>
@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ammo-list" type="{}AmmoList"/>
  *         &lt;element name="can-bombard" type="{}YesNo"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -107,24 +107,24 @@ public class Force {
     @XmlSchemaType(name = "string")
     protected TargetClass targetClass;
     @XmlElement(name = "infantry-value")
-    protected short infantryValue;
+    protected int infantryValue;
     @XmlElement(name = "recon-value")
-    protected short reconValue;
+    protected int reconValue;
     @XmlElement(name = "engineering-value")
-    protected byte engineeringValue;
+    protected int engineeringValue;
     @XmlElement(name = "move-type", required = true)
     @XmlSchemaType(name = "string")
     protected MoveType moveType;
     @XmlElement(name = "pers-qty")
-    protected short persQty;
+    protected int persQty;
     @XmlElement(name = "staff-capacity")
-    protected byte staffCapacity;
+    protected int staffCapacity;
     @XmlElement(name = "basics-qty")
     protected float basicsQty;
     @XmlElement(name = "basics-consumption-rate-modifier")
     protected float basicsConsumptionRateModifier;
     @XmlElement(name = "commander-rank")
-    protected byte commanderRank;
+    protected int commanderRank;
     @XmlElement(name = "fuel-qty")
     protected float fuelQty;
     @XmlElement(name = "fuel-load")
@@ -145,7 +145,7 @@ public class Force {
     @XmlSchemaType(name = "string")
     protected YesNo canBombard;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -343,7 +343,7 @@ public class Force {
      * Obtiene el valor de la propiedad infantryValue.
      * 
      */
-    public short getInfantryValue() {
+    public int getInfantryValue() {
         return infantryValue;
     }
 
@@ -351,7 +351,7 @@ public class Force {
      * Define el valor de la propiedad infantryValue.
      * 
      */
-    public void setInfantryValue(short value) {
+    public void setInfantryValue(int value) {
         this.infantryValue = value;
     }
 
@@ -359,7 +359,7 @@ public class Force {
      * Obtiene el valor de la propiedad reconValue.
      * 
      */
-    public short getReconValue() {
+    public int getReconValue() {
         return reconValue;
     }
 
@@ -367,7 +367,7 @@ public class Force {
      * Define el valor de la propiedad reconValue.
      * 
      */
-    public void setReconValue(short value) {
+    public void setReconValue(int value) {
         this.reconValue = value;
     }
 
@@ -375,7 +375,7 @@ public class Force {
      * Obtiene el valor de la propiedad engineeringValue.
      * 
      */
-    public byte getEngineeringValue() {
+    public int getEngineeringValue() {
         return engineeringValue;
     }
 
@@ -383,7 +383,7 @@ public class Force {
      * Define el valor de la propiedad engineeringValue.
      * 
      */
-    public void setEngineeringValue(byte value) {
+    public void setEngineeringValue(int value) {
         this.engineeringValue = value;
     }
 
@@ -415,7 +415,7 @@ public class Force {
      * Obtiene el valor de la propiedad persQty.
      * 
      */
-    public short getPersQty() {
+    public int getPersQty() {
         return persQty;
     }
 
@@ -423,7 +423,7 @@ public class Force {
      * Define el valor de la propiedad persQty.
      * 
      */
-    public void setPersQty(short value) {
+    public void setPersQty(int value) {
         this.persQty = value;
     }
 
@@ -431,7 +431,7 @@ public class Force {
      * Obtiene el valor de la propiedad staffCapacity.
      * 
      */
-    public byte getStaffCapacity() {
+    public int getStaffCapacity() {
         return staffCapacity;
     }
 
@@ -439,7 +439,7 @@ public class Force {
      * Define el valor de la propiedad staffCapacity.
      * 
      */
-    public void setStaffCapacity(byte value) {
+    public void setStaffCapacity(int value) {
         this.staffCapacity = value;
     }
 
@@ -479,7 +479,7 @@ public class Force {
      * Obtiene el valor de la propiedad commanderRank.
      * 
      */
-    public byte getCommanderRank() {
+    public int getCommanderRank() {
         return commanderRank;
     }
 
@@ -487,7 +487,7 @@ public class Force {
      * Define el valor de la propiedad commanderRank.
      * 
      */
-    public void setCommanderRank(byte value) {
+    public void setCommanderRank(int value) {
         this.commanderRank = value;
     }
 
@@ -695,7 +695,7 @@ public class Force {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -703,7 +703,7 @@ public class Force {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="target-percentages" type="{}TargetPercentages"/>
  *         &lt;element name="security" type="{}FormationSecurity"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="type" use="required" type="{}FormationType" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -58,7 +58,7 @@ public class FormationEffects {
     @XmlElement(required = true)
     protected FormationSecurity security;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
     @XmlAttribute(name = "type", required = true)
     protected FormationType type;
 
@@ -186,7 +186,7 @@ public class FormationEffects {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -194,7 +194,7 @@ public class FormationEffects {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

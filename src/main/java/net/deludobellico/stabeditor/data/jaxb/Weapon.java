@@ -24,18 +24,18 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="picture" type="{}Picture"/>
  *         &lt;element name="picture-filename" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="size" type="{}WeaponSize"/>
- *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="reliability" type="{}Proportion"/>
  *         &lt;element name="armaments" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="type" type="{}WeaponType"/>
  *         &lt;element name="single-shot" type="{}YesNo"/>
  *         &lt;element name="primary-role" type="{}PrimaryRole"/>
  *         &lt;element name="calibre" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="muzzle-velocity" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="muzzle-velocity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="must-deploy-to-fire" type="{}YesNo"/>
  *         &lt;element name="performance-list" type="{}PerformanceList"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -73,7 +73,7 @@ public class Weapon {
     protected String pictureFilename;
     @XmlElement(required = true)
     protected WeaponSize size;
-    protected byte crew;
+    protected int crew;
     protected float reliability;
     @XmlElement(required = true)
     protected String armaments;
@@ -88,14 +88,14 @@ public class Weapon {
     protected PrimaryRole primaryRole;
     protected float calibre;
     @XmlElement(name = "muzzle-velocity")
-    protected short muzzleVelocity;
+    protected int muzzleVelocity;
     @XmlElement(name = "must-deploy-to-fire", required = true)
     @XmlSchemaType(name = "string")
     protected YesNo mustDeployToFire;
     @XmlElement(name = "performance-list", required = true)
     protected PerformanceList performanceList;
     @XmlAttribute(name = "id")
-    protected Short id;
+    protected Integer id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -221,7 +221,7 @@ public class Weapon {
      * Obtiene el valor de la propiedad crew.
      * 
      */
-    public byte getCrew() {
+    public int getCrew() {
         return crew;
     }
 
@@ -229,7 +229,7 @@ public class Weapon {
      * Define el valor de la propiedad crew.
      * 
      */
-    public void setCrew(byte value) {
+    public void setCrew(int value) {
         this.crew = value;
     }
 
@@ -365,7 +365,7 @@ public class Weapon {
      * Obtiene el valor de la propiedad muzzleVelocity.
      * 
      */
-    public short getMuzzleVelocity() {
+    public int getMuzzleVelocity() {
         return muzzleVelocity;
     }
 
@@ -373,7 +373,7 @@ public class Weapon {
      * Define el valor de la propiedad muzzleVelocity.
      * 
      */
-    public void setMuzzleVelocity(short value) {
+    public void setMuzzleVelocity(int value) {
         this.muzzleVelocity = value;
     }
 
@@ -430,10 +430,10 @@ public class Weapon {
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -442,10 +442,10 @@ public class Weapon {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setId(Short value) {
+    public void setId(Integer value) {
         this.id = value;
     }
 

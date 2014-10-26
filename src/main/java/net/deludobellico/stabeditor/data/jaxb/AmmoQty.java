@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="AmmoQty">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="ammo-object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="ammo-object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="qty" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 public class AmmoQty {
 
     @XmlAttribute(name = "ammo-object-id", required = true)
-    protected short ammoObjectId;
+    protected int ammoObjectId;
     @XmlAttribute(name = "name", required = true)
     protected String name;
     @XmlAttribute(name = "qty", required = true)
@@ -41,7 +41,7 @@ public class AmmoQty {
      * Obtiene el valor de la propiedad ammoObjectId.
      * 
      */
-    public short getAmmoObjectId() {
+    public int getAmmoObjectId() {
         return ammoObjectId;
     }
 
@@ -49,7 +49,7 @@ public class AmmoQty {
      * Define el valor de la propiedad ammoObjectId.
      * 
      */
-    public void setAmmoObjectId(short value) {
+    public void setAmmoObjectId(int value) {
         this.ammoObjectId = value;
     }
 

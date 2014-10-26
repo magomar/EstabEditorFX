@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Equipment">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="equipment-object-id" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="equipment-object-id" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="qty" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="qty" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,21 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 public class Equipment {
 
     @XmlAttribute(name = "equipment-object-id")
-    protected Short equipmentObjectId;
+    protected Integer equipmentObjectId;
     @XmlAttribute(name = "name")
     protected String name;
     @XmlAttribute(name = "qty")
-    protected Short qty;
+    protected Integer qty;
 
     /**
      * Obtiene el valor de la propiedad equipmentObjectId.
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getEquipmentObjectId() {
+    public Integer getEquipmentObjectId() {
         return equipmentObjectId;
     }
 
@@ -54,10 +54,10 @@ public class Equipment {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setEquipmentObjectId(Short value) {
+    public void setEquipmentObjectId(Integer value) {
         this.equipmentObjectId = value;
     }
 
@@ -90,10 +90,10 @@ public class Equipment {
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getQty() {
+    public Integer getQty() {
         return qty;
     }
 
@@ -102,10 +102,10 @@ public class Equipment {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setQty(Short value) {
+    public void setQty(Integer value) {
         this.qty = value;
     }
 

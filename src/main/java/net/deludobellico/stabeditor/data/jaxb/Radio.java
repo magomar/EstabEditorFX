@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="armaments" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="net-type" type="{}NetType"/>
  *         &lt;element name="freq-type" type="{}FreqType"/>
- *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -79,10 +79,10 @@ public class Radio {
     @XmlSchemaType(name = "string")
     protected FreqType freqType;
     @XmlElement(name = "max-range")
-    protected short maxRange;
+    protected int maxRange;
     protected float gain;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -320,7 +320,7 @@ public class Radio {
      * Obtiene el valor de la propiedad maxRange.
      * 
      */
-    public short getMaxRange() {
+    public int getMaxRange() {
         return maxRange;
     }
 
@@ -328,7 +328,7 @@ public class Radio {
      * Define el valor de la propiedad maxRange.
      * 
      */
-    public void setMaxRange(short value) {
+    public void setMaxRange(int value) {
         this.maxRange = value;
     }
 
@@ -352,7 +352,7 @@ public class Radio {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -360,7 +360,7 @@ public class Radio {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

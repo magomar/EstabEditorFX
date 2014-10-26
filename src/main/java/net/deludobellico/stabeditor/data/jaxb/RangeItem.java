@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="RangeItem">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="range" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="range" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="accuracy" use="required" type="{}Proportion" />
  *       &lt;attribute name="armour-penetration" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
  *     &lt;/restriction>
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 public class RangeItem {
 
     @XmlAttribute(name = "range", required = true)
-    protected short range;
+    protected int range;
     @XmlAttribute(name = "accuracy", required = true)
     protected float accuracy;
     @XmlAttribute(name = "armour-penetration", required = true)
@@ -41,7 +41,7 @@ public class RangeItem {
      * Obtiene el valor de la propiedad range.
      * 
      */
-    public short getRange() {
+    public int getRange() {
         return range;
     }
 
@@ -49,7 +49,7 @@ public class RangeItem {
      * Define el valor de la propiedad range.
      * 
      */
-    public void setRange(short value) {
+    public void setRange(int value) {
         this.range = value;
     }
 

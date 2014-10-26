@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="ammo" type="{}AmmoLoad"/>
- *         &lt;element name="min-range" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="min-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="rof" type="{}ROF"/>
- *         &lt;element name="burst-radius" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="burst-radius" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="shell-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="range-table" type="{}RangeTable"/>
  *       &lt;/sequence>
@@ -47,11 +47,11 @@ public class Performance {
     @XmlElement(required = true)
     protected AmmoLoad ammo;
     @XmlElement(name = "min-range")
-    protected byte minRange;
+    protected int minRange;
     @XmlElement(required = true)
     protected ROF rof;
     @XmlElement(name = "burst-radius")
-    protected byte burstRadius;
+    protected int burstRadius;
     @XmlElement(name = "shell-weight")
     protected float shellWeight;
     @XmlElement(name = "range-table", required = true)
@@ -87,7 +87,7 @@ public class Performance {
      * Obtiene el valor de la propiedad minRange.
      * 
      */
-    public byte getMinRange() {
+    public int getMinRange() {
         return minRange;
     }
 
@@ -95,7 +95,7 @@ public class Performance {
      * Define el valor de la propiedad minRange.
      * 
      */
-    public void setMinRange(byte value) {
+    public void setMinRange(int value) {
         this.minRange = value;
     }
 
@@ -127,7 +127,7 @@ public class Performance {
      * Obtiene el valor de la propiedad burstRadius.
      * 
      */
-    public byte getBurstRadius() {
+    public int getBurstRadius() {
         return burstRadius;
     }
 
@@ -135,7 +135,7 @@ public class Performance {
      * Define el valor de la propiedad burstRadius.
      * 
      */
-    public void setBurstRadius(byte value) {
+    public void setBurstRadius(int value) {
         this.burstRadius = value;
     }
 

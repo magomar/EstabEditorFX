@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="large-insignia" type="{}Insignia"/>
  *         &lt;element name="small-insignia" type="{}Insignia"/>
  *         &lt;element name="basics-consumption-rate" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="default-enemy-aper-fp" type="{http://www.w3.org/2001/XMLSchema}byte"/>
- *         &lt;element name="default-enemy-aarm-fp" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="default-enemy-aper-fp" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="default-enemy-aarm-fp" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="nation" type="{}Nation" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}byte" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -61,12 +61,12 @@ public class Side {
     @XmlElement(name = "basics-consumption-rate")
     protected float basicsConsumptionRate;
     @XmlElement(name = "default-enemy-aper-fp")
-    protected byte defaultEnemyAperFp;
+    protected int defaultEnemyAperFp;
     @XmlElement(name = "default-enemy-aarm-fp")
-    protected byte defaultEnemyAarmFp;
+    protected int defaultEnemyAarmFp;
     protected List<Nation> nation;
     @XmlAttribute(name = "id", required = true)
-    protected byte id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -184,7 +184,7 @@ public class Side {
      * Obtiene el valor de la propiedad defaultEnemyAperFp.
      * 
      */
-    public byte getDefaultEnemyAperFp() {
+    public int getDefaultEnemyAperFp() {
         return defaultEnemyAperFp;
     }
 
@@ -192,7 +192,7 @@ public class Side {
      * Define el valor de la propiedad defaultEnemyAperFp.
      * 
      */
-    public void setDefaultEnemyAperFp(byte value) {
+    public void setDefaultEnemyAperFp(int value) {
         this.defaultEnemyAperFp = value;
     }
 
@@ -200,7 +200,7 @@ public class Side {
      * Obtiene el valor de la propiedad defaultEnemyAarmFp.
      * 
      */
-    public byte getDefaultEnemyAarmFp() {
+    public int getDefaultEnemyAarmFp() {
         return defaultEnemyAarmFp;
     }
 
@@ -208,7 +208,7 @@ public class Side {
      * Define el valor de la propiedad defaultEnemyAarmFp.
      * 
      */
-    public void setDefaultEnemyAarmFp(byte value) {
+    public void setDefaultEnemyAarmFp(int value) {
         this.defaultEnemyAarmFp = value;
     }
 
@@ -245,7 +245,7 @@ public class Side {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public byte getId() {
+    public int getId() {
         return id;
     }
 
@@ -253,7 +253,7 @@ public class Side {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(byte value) {
+    public void setId(int value) {
         this.id = value;
     }
 

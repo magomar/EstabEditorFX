@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="small-insignia" type="{}Insignia"/>
  *         &lt;element name="service" type="{}Service" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -58,7 +58,7 @@ public class Nation {
     protected Insignia smallInsignia;
     protected List<Service> service;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -213,7 +213,7 @@ public class Nation {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -221,7 +221,7 @@ public class Nation {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

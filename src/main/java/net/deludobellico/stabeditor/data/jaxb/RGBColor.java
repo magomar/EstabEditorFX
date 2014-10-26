@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="RGBColor">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="red" type="{http://www.w3.org/2001/XMLSchema}short" />
- *       &lt;attribute name="green" type="{http://www.w3.org/2001/XMLSchema}short" />
- *       &lt;attribute name="blue" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="red" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="green" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="blue" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,21 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 public class RGBColor {
 
     @XmlAttribute(name = "red")
-    protected Short red;
+    protected Integer red;
     @XmlAttribute(name = "green")
-    protected Short green;
+    protected Integer green;
     @XmlAttribute(name = "blue")
-    protected Short blue;
+    protected Integer blue;
 
     /**
      * Obtiene el valor de la propiedad red.
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getRed() {
+    public Integer getRed() {
         return red;
     }
 
@@ -54,10 +54,10 @@ public class RGBColor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setRed(Short value) {
+    public void setRed(Integer value) {
         this.red = value;
     }
 
@@ -66,10 +66,10 @@ public class RGBColor {
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getGreen() {
+    public Integer getGreen() {
         return green;
     }
 
@@ -78,10 +78,10 @@ public class RGBColor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setGreen(Short value) {
+    public void setGreen(Integer value) {
         this.green = value;
     }
 
@@ -90,10 +90,10 @@ public class RGBColor {
      * 
      * @return
      *     possible object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public Short getBlue() {
+    public Integer getBlue() {
         return blue;
     }
 
@@ -102,10 +102,10 @@ public class RGBColor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Short }
+     *     {@link Integer }
      *     
      */
-    public void setBlue(Short value) {
+    public void setBlue(Integer value) {
         this.blue = value;
     }
 

@@ -20,10 +20,10 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="min-order-qty" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="min-order-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="min-order-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -45,11 +45,11 @@ public class Ammo {
     @XmlElement(required = true)
     protected String description;
     @XmlElement(name = "min-order-qty")
-    protected short minOrderQty;
+    protected int minOrderQty;
     @XmlElement(name = "min-order-weight")
     protected float minOrderWeight;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -103,7 +103,7 @@ public class Ammo {
      * Obtiene el valor de la propiedad minOrderQty.
      * 
      */
-    public short getMinOrderQty() {
+    public int getMinOrderQty() {
         return minOrderQty;
     }
 
@@ -111,7 +111,7 @@ public class Ammo {
      * Define el valor de la propiedad minOrderQty.
      * 
      */
-    public void setMinOrderQty(short value) {
+    public void setMinOrderQty(int value) {
         this.minOrderQty = value;
     }
 
@@ -135,7 +135,7 @@ public class Ammo {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -143,7 +143,7 @@ public class Ammo {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

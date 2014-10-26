@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="background-light-color" type="{}RGBColor"/>
  *         &lt;element name="designation-color" type="{}RGBColor"/>
  *         &lt;element name="symbol-color" type="{}SymbolColor"/>
- *         &lt;element name="military-symbol" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="military-symbol" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="picture-symbol" type="{}PictureSymbol"/>
  *         &lt;element name="force-size-icon" type="{}ForceSize"/>
  *         &lt;element name="is-hq" type="{}YesNo"/>
@@ -61,7 +61,7 @@ public class Icon {
     @XmlSchemaType(name = "string")
     protected SymbolColor symbolColor;
     @XmlElement(name = "military-symbol")
-    protected byte militarySymbol;
+    protected int militarySymbol;
     @XmlElement(name = "picture-symbol", required = true)
     @XmlSchemaType(name = "string")
     protected PictureSymbol pictureSymbol;
@@ -196,7 +196,7 @@ public class Icon {
      * Obtiene el valor de la propiedad militarySymbol.
      * 
      */
-    public byte getMilitarySymbol() {
+    public int getMilitarySymbol() {
         return militarySymbol;
     }
 
@@ -204,7 +204,7 @@ public class Icon {
      * Define el valor de la propiedad militarySymbol.
      * 
      */
-    public void setMilitarySymbol(byte value) {
+    public void setMilitarySymbol(int value) {
         this.militarySymbol = value;
     }
 

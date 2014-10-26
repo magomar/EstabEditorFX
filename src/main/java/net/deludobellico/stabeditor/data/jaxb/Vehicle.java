@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="picture" type="{}Picture"/>
  *         &lt;element name="picture-filename" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="size" type="{}VehicleSize"/>
- *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="crew" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="reliability" type="{}Proportion"/>
  *         &lt;element name="armaments" type="{}ArmamentList"/>
  *         &lt;element name="type" type="{}VehicleType"/>
@@ -32,11 +32,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="speed" type="{}VehicleSpeeds"/>
  *         &lt;element name="fuel-consumption" type="{}FuelComsumption"/>
  *         &lt;element name="ronsonability" type="{}Proportion"/>
- *         &lt;element name="max-gradient" type="{http://www.w3.org/2001/XMLSchema}byte"/>
- *         &lt;element name="max-fording-depth" type="{http://www.w3.org/2001/XMLSchema}byte"/>
- *         &lt;element name="max-trench-width" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="max-gradient" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="max-fording-depth" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="max-trench-width" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="towing-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="personnel-capacity" type="{http://www.w3.org/2001/XMLSchema}byte"/>
+ *         &lt;element name="personnel-capacity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="bulk-fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="payload-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="take-cover-mod" type="{http://www.w3.org/2001/XMLSchema}float"/>
@@ -45,7 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="battle-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="armour" type="{}Armor"/>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -93,7 +93,7 @@ public class Vehicle {
     protected String pictureFilename;
     @XmlElement(required = true)
     protected VehicleSize size;
-    protected byte crew;
+    protected int crew;
     protected float reliability;
     @XmlElement(required = true)
     protected ArmamentList armaments;
@@ -108,15 +108,15 @@ public class Vehicle {
     protected FuelComsumption fuelConsumption;
     protected float ronsonability;
     @XmlElement(name = "max-gradient")
-    protected byte maxGradient;
+    protected int maxGradient;
     @XmlElement(name = "max-fording-depth")
-    protected byte maxFordingDepth;
+    protected int maxFordingDepth;
     @XmlElement(name = "max-trench-width")
-    protected byte maxTrenchWidth;
+    protected int maxTrenchWidth;
     @XmlElement(name = "towing-capacity")
     protected float towingCapacity;
     @XmlElement(name = "personnel-capacity")
-    protected byte personnelCapacity;
+    protected int personnelCapacity;
     @XmlElement(name = "bulk-fuel-capacity")
     protected float bulkFuelCapacity;
     @XmlElement(name = "payload-capacity")
@@ -132,7 +132,7 @@ public class Vehicle {
     @XmlElement(required = true)
     protected Armor armour;
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
 
     /**
      * Obtiene el valor de la propiedad name.
@@ -258,7 +258,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad crew.
      * 
      */
-    public byte getCrew() {
+    public int getCrew() {
         return crew;
     }
 
@@ -266,7 +266,7 @@ public class Vehicle {
      * Define el valor de la propiedad crew.
      * 
      */
-    public void setCrew(byte value) {
+    public void setCrew(int value) {
         this.crew = value;
     }
 
@@ -418,7 +418,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad maxGradient.
      * 
      */
-    public byte getMaxGradient() {
+    public int getMaxGradient() {
         return maxGradient;
     }
 
@@ -426,7 +426,7 @@ public class Vehicle {
      * Define el valor de la propiedad maxGradient.
      * 
      */
-    public void setMaxGradient(byte value) {
+    public void setMaxGradient(int value) {
         this.maxGradient = value;
     }
 
@@ -434,7 +434,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad maxFordingDepth.
      * 
      */
-    public byte getMaxFordingDepth() {
+    public int getMaxFordingDepth() {
         return maxFordingDepth;
     }
 
@@ -442,7 +442,7 @@ public class Vehicle {
      * Define el valor de la propiedad maxFordingDepth.
      * 
      */
-    public void setMaxFordingDepth(byte value) {
+    public void setMaxFordingDepth(int value) {
         this.maxFordingDepth = value;
     }
 
@@ -450,7 +450,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad maxTrenchWidth.
      * 
      */
-    public byte getMaxTrenchWidth() {
+    public int getMaxTrenchWidth() {
         return maxTrenchWidth;
     }
 
@@ -458,7 +458,7 @@ public class Vehicle {
      * Define el valor de la propiedad maxTrenchWidth.
      * 
      */
-    public void setMaxTrenchWidth(byte value) {
+    public void setMaxTrenchWidth(int value) {
         this.maxTrenchWidth = value;
     }
 
@@ -482,7 +482,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad personnelCapacity.
      * 
      */
-    public byte getPersonnelCapacity() {
+    public int getPersonnelCapacity() {
         return personnelCapacity;
     }
 
@@ -490,7 +490,7 @@ public class Vehicle {
      * Define el valor de la propiedad personnelCapacity.
      * 
      */
-    public void setPersonnelCapacity(byte value) {
+    public void setPersonnelCapacity(int value) {
         this.personnelCapacity = value;
     }
 
@@ -634,7 +634,7 @@ public class Vehicle {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -642,7 +642,7 @@ public class Vehicle {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

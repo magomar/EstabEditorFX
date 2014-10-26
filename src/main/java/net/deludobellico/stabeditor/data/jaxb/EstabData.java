@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}ammo" maxOccurs="unbounded"/>
  *         &lt;element ref="{}formation-effects" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}byte" />
+ *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -62,7 +62,7 @@ public class EstabData {
     @XmlElement(name = "formation-effects", required = true)
     protected List<FormationEffects> formationEffects;
     @XmlAttribute(name = "version")
-    protected Byte version;
+    protected Integer version;
 
     /**
      * Gets the value of the image property.
@@ -272,10 +272,10 @@ public class EstabData {
      * 
      * @return
      *     possible object is
-     *     {@link Byte }
+     *     {@link Integer }
      *     
      */
-    public Byte getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
@@ -284,10 +284,10 @@ public class EstabData {
      * 
      * @param value
      *     allowed object is
-     *     {@link Byte }
+     *     {@link Integer }
      *     
      */
-    public void setVersion(Byte value) {
+    public void setVersion(Integer value) {
         this.version = value;
     }
 

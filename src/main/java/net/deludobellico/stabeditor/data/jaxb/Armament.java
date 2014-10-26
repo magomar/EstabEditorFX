@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Armament">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="equipment-object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="equipment-object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="equipment-name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="qty" use="required" type="{http://www.w3.org/2001/XMLSchema}byte" />
+ *       &lt;attribute name="qty" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 public class Armament {
 
     @XmlAttribute(name = "equipment-object-id", required = true)
-    protected short equipmentObjectId;
+    protected int equipmentObjectId;
     @XmlAttribute(name = "equipment-name", required = true)
     protected String equipmentName;
     @XmlAttribute(name = "qty", required = true)
-    protected byte qty;
+    protected int qty;
 
     /**
      * Obtiene el valor de la propiedad equipmentObjectId.
      * 
      */
-    public short getEquipmentObjectId() {
+    public int getEquipmentObjectId() {
         return equipmentObjectId;
     }
 
@@ -49,7 +49,7 @@ public class Armament {
      * Define el valor de la propiedad equipmentObjectId.
      * 
      */
-    public void setEquipmentObjectId(short value) {
+    public void setEquipmentObjectId(int value) {
         this.equipmentObjectId = value;
     }
 
@@ -81,7 +81,7 @@ public class Armament {
      * Obtiene el valor de la propiedad qty.
      * 
      */
-    public byte getQty() {
+    public int getQty() {
         return qty;
     }
 
@@ -89,7 +89,7 @@ public class Armament {
      * Define el valor de la propiedad qty.
      * 
      */
-    public void setQty(byte value) {
+    public void setQty(int value) {
         this.qty = value;
     }
 

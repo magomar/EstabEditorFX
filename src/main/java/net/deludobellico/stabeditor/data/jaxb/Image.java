@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Image">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="file-id" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Image {
 
     @XmlAttribute(name = "id", required = true)
-    protected short id;
+    protected int id;
     @XmlAttribute(name = "file-id", required = true)
     protected String fileId;
 
@@ -38,7 +38,7 @@ public class Image {
      * Obtiene el valor de la propiedad id.
      * 
      */
-    public short getId() {
+    public int getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class Image {
      * Define el valor de la propiedad id.
      * 
      */
-    public void setId(short value) {
+    public void setId(int value) {
         this.id = value;
     }
 

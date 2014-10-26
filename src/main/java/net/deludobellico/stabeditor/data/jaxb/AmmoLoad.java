@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="AmmoLoad">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="load" use="required" type="{http://www.w3.org/2001/XMLSchema}short" />
+ *       &lt;attribute name="load" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 public class AmmoLoad {
 
     @XmlAttribute(name = "object-id", required = true)
-    protected short objectId;
+    protected int objectId;
     @XmlAttribute(name = "name", required = true)
     protected String name;
     @XmlAttribute(name = "load", required = true)
-    protected short load;
+    protected int load;
 
     /**
      * Obtiene el valor de la propiedad objectId.
      * 
      */
-    public short getObjectId() {
+    public int getObjectId() {
         return objectId;
     }
 
@@ -49,7 +49,7 @@ public class AmmoLoad {
      * Define el valor de la propiedad objectId.
      * 
      */
-    public void setObjectId(short value) {
+    public void setObjectId(int value) {
         this.objectId = value;
     }
 
@@ -81,7 +81,7 @@ public class AmmoLoad {
      * Obtiene el valor de la propiedad load.
      * 
      */
-    public short getLoad() {
+    public int getLoad() {
         return load;
     }
 
@@ -89,7 +89,7 @@ public class AmmoLoad {
      * Define el valor de la propiedad load.
      * 
      */
-    public void setLoad(short value) {
+    public void setLoad(int value) {
         this.load = value;
     }
 
