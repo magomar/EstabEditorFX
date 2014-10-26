@@ -1,68 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
-
-<TitledPane fx:id="estabDataTitledPane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataTitledPane" xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
     <content>
-      <HBox>
-         <children>
-              <VBox prefHeight="400.0" prefWidth="400.0">
-               <children>
-                   <HBox prefHeight="25.0" prefWidth="400.0">
-                       <children>
-                           <Label text="Images:" />
-                           <TextField fx:id="numImagesTextField" editable="false" prefWidth="40.0" />
-                           <Label text="Sides:" />
-                           <TextField fx:id="numSidesTextField" editable="false" prefWidth="40.0" />
-                           <Label text="Vehicles:" />
-                           <TextField fx:id="numVehiclesTextField" editable="false" prefWidth="40.0" />
-                           <Label text="Weapons:" />
-                           <TextField fx:id="numWeaponsTextField" editable="false" prefWidth="40.0" />
-                           <Label text="Ammos:" />
-                           <TextField fx:id="numAmmosTextField" editable="false" prefWidth="40.0" />
-                       </children>
-                   </HBox>
-                  <GridPane>
-                      <children>
-                          <TextField fx:id="searchVehicleTextField" disable="true" promptText="Enter part of the name or id" GridPane.columnIndex="1" />
-                          <Button fx:id="searchVehicleButton" disable="true" mnemonicParsing="false" onAction="#searchVehicleAction" text="Search" GridPane.columnIndex="2" />
-                          <Label text="Search Vehicle" />
-                          <Label text="Search Weapon" GridPane.rowIndex="1" />
-                          <Label text="Search Ammo" GridPane.rowIndex="2" />
-                          <TextField fx:id="searchWeaponTextField" disable="true" promptText="Enter part of the name or id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                          <TextField fx:id="searchAmmoTextField" disable="true" promptText="Enter part of the name or id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                          <Button fx:id="searchWeaponButton" disable="true" mnemonicParsing="false" onAction="#searchWeaponAction" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                          <Button fx:id="searchAmmoButton" disable="true" mnemonicParsing="false" onAction="#searchAmmoAction" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                      </children>
-                      <columnConstraints>
-                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="60.0" prefWidth="100.0" />
-                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="90.0" prefWidth="200.0" />
-                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="30.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                          <RowConstraints minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          <RowConstraints minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          <RowConstraints minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                  </GridPane>
-                  <ListView fx:id="searchResultsListView" minHeight="100" prefHeight="200.0" prefWidth="300.0" />
-               </children>
-            </VBox>
-            <StackPane fx:id="editorStackPane" prefHeight="400.0" prefWidth="400.0">
-               <!--<children>-->
-                  <!--<fx:include source="vehicle-editor.fxml" />-->
-                  <!--<fx:include source="ammo-editor.fxml" />-->
-                  <!--<fx:include source="weapon-editor.fxml" />-->
-               <!--</children>-->
-            </StackPane>
-         </children>
-      </HBox>
+        <VBox>
+            <children>
+                <HBox prefHeight="30.0" prefWidth="1024.0">
+                    <children>
+                        <Label text="Images:"/>
+                        <TextField fx:id="numImagesTextField" editable="false" maxHeight="20.0" minHeight="15.0"
+                                   prefWidth="40.0">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Sides:"/>
+                        <TextField fx:id="numSidesTextField" editable="false" maxHeight="20.0" minHeight="15.0"
+                                   prefWidth="40.0">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Vehicles:"/>
+                        <TextField fx:id="numVehiclesTextField" editable="false" maxHeight="20.0" minHeight="15.0"
+                                   prefWidth="40.0">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Weapons:"/>
+                        <TextField fx:id="numWeaponsTextField" editable="false" maxHeight="20.0" minHeight="15.0"
+                                   prefWidth="40.0">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </TextField>
+                        <Label text="Ammos:">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="numAmmosTextField" editable="false" maxHeight="20.0" minHeight="15.0"
+                                   prefWidth="40.0">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <VBox style="-fx-border-color: lightslategray;">
+                            <children>
+                                <TabPane minHeight="55.0" tabClosingPolicy="UNAVAILABLE">
+                                    <tabs>
+                                        <Tab text="Vehicle">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                    <children>
+                                                        <BorderPane>
+                                                            <right>
+                                                                <Button fx:id="searchVehicleButton" disable="true"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#searchVehicleAction" text="Search"
+                                                                        BorderPane.alignment="CENTER"/>
+                                                            </right>
+                                                            <center>
+                                                                <TextField fx:id="searchVehicleTextField" disable="true"
+                                                                           promptText="Enter part of the name or id"
+                                                                           BorderPane.alignment="CENTER"/>
+                                                            </center>
+                                                        </BorderPane>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Weapon">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                    <children>
+                                                        <BorderPane>
+                                                            <right>
+                                                                <Button fx:id="searchWeaponButton" disable="true"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#searchWeaponAction" text="Search"
+                                                                        BorderPane.alignment="CENTER"/>
+                                                            </right>
+                                                            <center>
+                                                                <TextField fx:id="searchWeaponTextField" disable="true"
+                                                                           promptText="Enter part of the name or id"
+                                                                           BorderPane.alignment="CENTER"/>
+                                                            </center>
+                                                        </BorderPane>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ammo">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                    <children>
+                                                        <BorderPane>
+                                                            <right>
+                                                                <Button fx:id="searchAmmoButton" disable="true"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#searchAmmoAction" text="Search"
+                                                                        BorderPane.alignment="CENTER"/>
+                                                            </right>
+                                                            <center>
+                                                                <TextField fx:id="searchAmmoTextField" disable="true"
+                                                                           promptText="Enter part of the name or id"
+                                                                           BorderPane.alignment="CENTER"/>
+                                                            </center>
+                                                        </BorderPane>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                                <ListView fx:id="searchResultsListView" minHeight="100"/>
+                            </children>
+                        </VBox>
+                        <StackPane fx:id="editorStackPane">
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </StackPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
     </content>
 </TitledPane>

@@ -15,12 +15,12 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 
 /**
- * <p>Java class for SpeedData complex type.
+ * <p>Java class for FuelConsumption complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SpeedData">
+ * &lt;complexType name="FuelConsumption">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAttribute;
  * 
  * 
  */
-public class SpeedData {
+public class FuelConsumption {
 
     protected Float max;
     protected Float normal;

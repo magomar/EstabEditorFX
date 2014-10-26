@@ -20,11 +20,16 @@ import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
-import net.deludobellico.stabeditor.util.Util;
+import net.deludobellico.stabeditor.view.UtilView;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -33,12 +38,10 @@ import java.util.logging.Logger;
  */
 public class EstabDataController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabDataController.class.getName());
-    private EstabDataModel estabDataModel;
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
     private static final String VEHICLE_VIEW = "../view/vehicle-editor.fxml";
     private static final String WEAPON_VIEW = "../view/weapon-editor.fxml";
     private static final String AMMO_VIEW = "../view/ammo-editor.fxml";
-    private String currentView = "";
 
     @FXML
     private Button searchAmmoButton;
@@ -76,21 +79,23 @@ public class EstabDataController implements Initializable {
     @FXML
     private TextField numWeaponsTextField;
 
-//    @FXML
-//    private VehicleEditorController vehicleEditorController;
-//
-//    @FXML
-//    private WeaponEditorController weaponEditorController;
-//
-//    @FXML
-//    private AmmoEditorController ammoEditorController;
-
     @FXML
     private ListView<EstabReference> searchResultsListView;
     private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
 
     @FXML
     private StackPane editorStackPane;
+
+    private EstabDataModel estabDataModel;
+    private Class activeElementClass = null;
+    private EstabReference activeEstabElement = null;
+    private AssetEditorController componentController = null;
+    private Map<Class, String> componentEditorViews = new HashMap<>(3);
+    private Map<Class, Node> componentEditorNodes = new HashMap<>(3);
+    private Map<Class, AssetEditorController> componentEditorControllers = new HashMap<>(3);
+    private boolean isEditable = false;
+
+    private UtilView utilView = new UtilView();
 
 
     @Override
@@ -99,8 +104,9 @@ public class EstabDataController implements Initializable {
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (null != newValue)
-                    loadEditor((EstabReference) newValue);
+                if (null != newValue) {
+                    setActiveComponent((EstabReference) newValue);
+                }
             }
         });
         searchVehicleTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -121,42 +127,77 @@ public class EstabDataController implements Initializable {
                 searchAmmoAction(null);
             }
         });
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VEHICLE_VIEW));
-        try {
-            editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
+
+
+        componentEditorViews.put(Vehicle.class, VEHICLE_VIEW);
+        componentEditorViews.put(Weapon.class, WEAPON_VIEW);
+        componentEditorViews.put(Ammo.class, AMMO_VIEW);
+
+
+    }
+
+    public EstabReference<?> getActiveComponent() {
+        return searchResultsListView.getSelectionModel().getSelectedItem();
+    }
+
+    public void setActiveComponent(EstabReference<?> estabReference) {
+        activeEstabElement = estabReference;
+        if (null != estabReference) {
+            Class estabClass = estabReference.getElementClass();
+            Node editorNode;
+            if (null == activeElementClass || !activeElementClass.equals(estabClass)) {
+                activeElementClass = estabClass;
+                if (componentEditorNodes.containsKey(estabClass)) {
+                    editorNode = componentEditorNodes.get(estabClass);
+                    componentController = componentEditorControllers.get(estabClass);
+                    editorStackPane.getChildren().setAll(editorNode);
+                } else {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(componentEditorViews.get(estabClass)));
+                    try {
+                        editorNode = fxmlLoader.load();
+                        componentEditorNodes.put(estabClass, editorNode);
+                        componentController = fxmlLoader.getController();
+                        componentController.setEditable(isEditable);
+                        editorStackPane.getChildren().setAll(editorNode);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+//        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
+//        String result = sw.toString();
+//        resultsTextArea.setText(result);
+//        System.out.print(result);
+            }
+            componentController.setEstabElement(estabReference.getElement());
         }
     }
 
-    public void setEstabDataModel(EstabDataModel estabDataModel) {
-        this.estabDataModel = estabDataModel;
+    private void updateStatistics() {
         numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
         numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
         numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
         numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
         numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
-        searchVehicleButton.setDisable(false);
-        searchWeaponButton.setDisable(false);
-        searchAmmoButton.setDisable(false);
-        searchVehicleTextField.setDisable(false);
-        searchWeaponTextField.setDisable(false);
-        searchAmmoTextField.setDisable(false);
     }
 
     public void setTitle(String title) {
         estabDataTitledPane.setText(title);
     }
 
+    public void setEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+    }
+
+    public ListView<EstabReference> getSearchResultsListView() {
+        return searchResultsListView;
+    }
+
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchVehicleTextField.getText();
-        List<Vehicle> vehicles = estabDataModel.searchVehicleByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Vehicle vehicle = estabDataModel.searchVehicleById(Integer.parseInt(textToSearch));
-            if (null != vehicle) vehicles.add(vehicle);
-        }
+        List<Vehicle> vehicles = estabDataModel.searchVehicle(textToSearch);
         for (Vehicle vehicle : vehicles) {
             estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
         }
@@ -166,11 +207,7 @@ public class EstabDataController implements Initializable {
     private void searchWeaponAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchWeaponTextField.getText();
-        List<Weapon> weapons = estabDataModel.searchWeaponByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Weapon weapon = estabDataModel.searchWeaponById(Integer.parseInt(textToSearch));
-            if (null != weapon) weapons.add(weapon);
-        }
+        List<Weapon> weapons = estabDataModel.searchWeapon(textToSearch);
         for (Weapon weapon : weapons) {
             estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
         }
@@ -180,52 +217,55 @@ public class EstabDataController implements Initializable {
     private void searchAmmoAction(ActionEvent actionEvent) {
         estabReferenceObservableList.clear();
         String textToSearch = searchAmmoTextField.getText();
-        List<Ammo> ammos = estabDataModel.searchAmmoByName(textToSearch);
-        if (Util.isInteger(textToSearch)) {
-            Ammo ammo = estabDataModel.searchAmmoById(Integer.parseInt(textToSearch));
-            if (null != ammo) ammos.add(ammo);
-        }
+        List<Ammo> ammos = estabDataModel.searchAmmo(textToSearch);
         for (Ammo ammo : ammos) {
             estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
         }
     }
 
-    private void loadEditor(EstabReference<?> estabReference) {
-        Class estabClass = estabReference.getElementClass();
-        String editorView = VEHICLE_VIEW;
-        if (estabClass.equals(Weapon.class)) {
-            editorView = WEAPON_VIEW;
-        } else if (estabClass.equals(Ammo.class)) {
-            editorView = AMMO_VIEW;
-        }
-        if (!currentView.equals(editorView))
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(editorView));
-                editorStackPane.getChildren().setAll((Node) fxmlLoader.load());
-                AbstractEditorController controller;
-                switch (editorView) {
-                    case VEHICLE_VIEW:
-                        controller = fxmlLoader.<VehicleEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                    case WEAPON_VIEW:
-                        controller = fxmlLoader.<WeaponEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                    case AMMO_VIEW:
-                        controller = fxmlLoader.<AmmoEditorController>getController();
-                        controller.setEstabReference(estabReference.getElement());
-                        break;
-                }
-            } catch (IOException e) {
-                //e.printStackTrace();
+    public void pasteActiveComponent() {
+        if (!isEditable) return;
+        /*if (estabDataModel.hasRepeatedElementName(activeEstabElement)) {
+            Action action = utilView.showWarningDialogRepeatedElementName();
+            if (action == Dialog.ACTION_OK) {
+                // overwrite
+                estabDataModel.paste(activeEstabElement);
+                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
             }
 
-//        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
-//        String result = sw.toString();
-//        resultsTextArea.setText(result);
-//        System.out.print(result);
+        } else*/ if (estabDataModel.hasRepeatedElement(activeEstabElement)) {
+            Action action = utilView.showWarningDialogRepeatedElement();
+            if (action == Dialog.ACTION_OK) {
+                // overwrite
+                estabDataModel.paste(activeEstabElement);
+                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+            }
+        } else {
+            estabDataModel.paste(activeEstabElement);
+            estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+        }
+        updateStatistics();
     }
+
+    public void saveDataModel(File file) {
+        estabDataModel.saveToFile(file);
+    }
+
+    public EstabDataModel getEstabDataModel() {
+        return estabDataModel;
+    }
+
+    public void setEstabDataModel(EstabDataModel estabDataModel) {
+        this.estabDataModel = estabDataModel;
+        updateStatistics();
+        searchVehicleButton.setDisable(false);
+        searchWeaponButton.setDisable(false);
+        searchAmmoButton.setDisable(false);
+        searchVehicleTextField.setDisable(false);
+        searchWeaponTextField.setDisable(false);
+        searchAmmoTextField.setDisable(false);
+    }
+
 }
 
 
