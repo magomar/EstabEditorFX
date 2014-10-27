@@ -8,9 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="weaponEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
+<StackPane fx:id="weaponEditor" maxWidth="700.0" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
     <children>
-        <VBox prefHeight="430.0" prefWidth="700.0">
+        <VBox>
             <children>
                 <HBox>
                     <children>
@@ -18,128 +18,168 @@
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin></Label>
-                        <TextField fx:id="name" />
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="500.0" />
                     </children>
                 </HBox>
-                <HBox prefHeight="87.0">
-                    <children>
-                        <TextArea fx:id="description" text="" wrapText="true">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin></TextArea>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <CheckBox mnemonicParsing="false" selected="true" text="No image">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin></CheckBox>
-                                <Button mnemonicParsing="false" text="Open" />
-                                <TextField prefHeight="25.0" prefWidth="133.0" />
-                            </children>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                        </VBox>
-                        <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/no-image.png" />
-                            </image>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                        </ImageView>
-                    </children>
-                </HBox>
-                <HBox>
-                    <children>
-                        <GridPane>
-                            <children>
-                                <Label text="Calibre">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Label>
-                                <TextField fx:id="calibre" editable="true" GridPane.columnIndex="1" />
-                                <Label text="Muzzle velocity" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Label>
-                                <TextField fx:id="muzzleVelocity" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label text="Crew" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Label>
-                                <TextField fx:id="crew" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="Reliability" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Label>
-                                <TextField fx:id="reliability" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label text="Weight (kg)" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin></Label>
-                            </children>
-                            <columnConstraints>
-                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
-                        <VBox minWidth="300.0" prefHeight="148.0" prefWidth="128.0">
-                            <children>
-                        <GridPane>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
+            <TabPane prefHeight="394.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="General">
+                  <content>
+                    <AnchorPane minHeight="350.0">
                            <children>
-                                      <CheckBox fx:id="singleShot" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Single shot" textAlignment="RIGHT" GridPane.halignment="RIGHT" />
-                                      <CheckBox fx:id="mustDeployToFire" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Must deploy to fire" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                              <BorderPane layoutX="40.0" layoutY="40.0" minHeight="300.0" prefHeight="300.0" prefWidth="556.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Description" />
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                      <TextArea fx:id="description" maxHeight="100.0" maxWidth="400.0" minHeight="50.0" text="" wrapText="true" />
+                                                      <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@/images/no-image.png" />
+                                                          </image>
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                      </ImageView>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </top>
+                                 <center>
+                                          <VBox minWidth="250.0" BorderPane.alignment="CENTER_LEFT">
+                                              <children>
+                                          <GridPane>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                        <CheckBox fx:id="singleShot" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Single shot" textAlignment="RIGHT" GridPane.halignment="LEFT" />
+                                                        <CheckBox fx:id="mustDeployToFire" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Must deploy to fire" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </CheckBox>
+                                             </children>
+                                          </GridPane>
+                                          <GridPane minHeight="90.0" prefHeight="90.0" prefWidth="543.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="72.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="235.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="232.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                      <Label text="Type">
+                                                   <GridPane.margin>
+                                                      <Insets right="5.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                      <ComboBox fx:id="weaponType" minWidth="200.0" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" />
+                                                      <Label text="Primary role" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets right="5.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                      <ComboBox fx:id="weaponPrimaryRole" minWidth="200.0" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                        <CheckBox mnemonicParsing="false" selected="true" text="No image" GridPane.columnIndex="2" />
+                                                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                        <Button mnemonicParsing="false" text="Open" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                              </children>
+                                          </VBox>
+                                 </center>
+                              </BorderPane>
                            </children>
-                        </GridPane>
-                        <GridPane minHeight="90.0">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="94.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="206.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Performance">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                                    <Label text="Type">
-                                 <GridPane.margin>
-                                    <Insets right="5.0" />
-                                 </GridPane.margin></Label>
-                                    <ComboBox fx:id="weaponType" minWidth="200.0" prefHeight="25.0" prefWidth="208.0" GridPane.columnIndex="1" />
-                                    <Label text="Primary role" GridPane.rowIndex="1">
-                                 <GridPane.margin>
-                                    <Insets right="5.0" />
-                                 </GridPane.margin></Label>
-                                    <ComboBox fx:id="weaponPrimaryRole" minWidth="200.0" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                  <HBox>
+                                      <children>
+                                          <GridPane>
+                                              <children>
+                                                  <Label text="Calibre">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                                  <TextField fx:id="calibre" editable="true" GridPane.columnIndex="1" />
+                                                  <Label text="Muzzle velocity" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                                  <TextField fx:id="muzzleVelocity" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                  <Label text="Crew" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                                  <TextField fx:id="crew" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                  <Label text="Reliability" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                                  <TextField fx:id="reliability" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                  <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                  <Label text="Weight (kg)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                              </children>
+                                              <columnConstraints>
+                                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              </columnConstraints>
+                                              <rowConstraints>
+                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              </rowConstraints>
+                                          </GridPane>
+                                      </children>
+                                  </HBox>
                            </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </GridPane>
-                            </children>
-                     <HBox.margin>
-                        <Insets top="20.0" />
-                     </HBox.margin>
-                        </VBox>
-                    </children>
-                </HBox>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
+            </TabPane>
             </children>
         </VBox>
     </children>
