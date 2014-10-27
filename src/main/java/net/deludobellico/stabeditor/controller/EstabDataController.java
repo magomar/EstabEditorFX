@@ -79,6 +79,12 @@ public class EstabDataController implements Initializable {
     @FXML
     private ListView<EstabReference> searchResultsListView;
     private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
+    // Optimize tab swap
+    private Map<Class, SearchList> searchLists = new HashMap<Class, SearchList>() {{
+        put(Vehicle.class, new SearchList());
+        put(Weapon.class, new SearchList());
+        put(Ammo.class, new SearchList());
+    }};
 
     @FXML
     private StackPane editorStackPane;
@@ -218,33 +224,71 @@ public class EstabDataController implements Initializable {
         return searchResultsListView;
     }
 
+
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
-        estabReferenceObservableList.clear();
+        SearchList savedList = searchLists.get(Vehicle.class);
         String textToSearch = searchVehicleTextField.getText();
-        List<Vehicle> vehicles = estabDataModel.searchVehicle(textToSearch);
-        for (Vehicle vehicle : vehicles) {
-            estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
+
+        estabReferenceObservableList.clear();
+        if (textToSearch.equals(savedList.getLastSearch())) {
+            // Load saved list
+            estabReferenceObservableList.addAll(savedList.getList());
+        } else {
+            // New search
+            savedList.getList().clear();
+            savedList.setLastSearch(textToSearch);
+
+            List<Vehicle> vehicles = estabDataModel.searchVehicle(textToSearch);
+            for (Vehicle vehicle : vehicles) {
+                estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
+                savedList.getList().addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
+            }
         }
     }
 
+
     @FXML
     private void searchWeaponAction(ActionEvent actionEvent) {
-        estabReferenceObservableList.clear();
+        SearchList savedList = searchLists.get(Weapon.class);
         String textToSearch = searchWeaponTextField.getText();
-        List<Weapon> weapons = estabDataModel.searchWeapon(textToSearch);
-        for (Weapon weapon : weapons) {
-            estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
+
+        estabReferenceObservableList.clear();
+        if(textToSearch.equals(savedList.getLastSearch())) {
+            // Load saved list
+            estabReferenceObservableList.addAll(savedList.getList());
+
+        } else {
+            savedList.getList().clear();
+            savedList.setLastSearch(textToSearch);
+
+            List<Weapon> weapons = estabDataModel.searchWeapon(textToSearch);
+            for (Weapon weapon : weapons) {
+                estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
+                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
+            }
         }
     }
 
     @FXML
     private void searchAmmoAction(ActionEvent actionEvent) {
-        estabReferenceObservableList.clear();
+        SearchList savedList = searchLists.get(Ammo.class);
         String textToSearch = searchAmmoTextField.getText();
-        List<Ammo> ammos = estabDataModel.searchAmmo(textToSearch);
-        for (Ammo ammo : ammos) {
-            estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
+
+        estabReferenceObservableList.clear();
+        if (textToSearch.equals(savedList.getLastSearch())) {
+            // Load saved list
+            estabReferenceObservableList.addAll(savedList.getList());
+        } else {
+            // New search
+            savedList.getList().clear();
+            savedList.setLastSearch(textToSearch);
+
+            List<Ammo> ammos = estabDataModel.searchAmmo(textToSearch);
+            for (Ammo ammo : ammos) {
+                estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
+                savedList.getList().addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
+            }
         }
     }
 
