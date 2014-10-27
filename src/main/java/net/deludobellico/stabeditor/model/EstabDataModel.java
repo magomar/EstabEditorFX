@@ -2,12 +2,14 @@ package net.deludobellico.stabeditor.model;
 
 import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.util.FileIO;
+import net.deludobellico.stabeditor.util.Util;
+import net.deludobellico.stabeditor.view.CustomAction;
+import net.deludobellico.stabeditor.view.UtilView;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.DialogAction;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by mario on 30-Jul-14.
@@ -122,43 +124,114 @@ public class EstabDataModel {
         return searchResults;
     }
 
-    public boolean hasRepeatedElement(EstabReference estabReference) {
+    public boolean hasRepeatedElements(EstabReference estabReference) {
         Map elementMap = allElements.get(estabReference.getElementClass());
         return elementMap.containsKey(estabReference.getId());
     }
 
-    public boolean hasRepeatedElementName(EstabReference estabReference) {
-        boolean hasRepeatedElementName = false;
-//        Map elementMap = allElements.get(estabReference.getElementClass());
-//        Class c = estabReference.getElementClass();
-//        if (c.equals(Vehicle.class)) {
-//            for (Object element : elementMap.values()) {
-//                if (((Vehicle) element).getName().equals(estabReference.getName())) {
-//                    hasRepeatedElementName = true;
-//                    break;
-//                }
-//            }
-//        } else if (c.equals(Weapon.class)) {
-//            for (Object element : elementMap.values()) {
-//                if (((Weapon) element).getName().equals(estabReference.getName())) {
-//                    hasRepeatedElementName = true;
-//                    break;
-//                }
-//            }
-//        } else if (c.equals(Ammo.class)) {
-//            for (Object element : elementMap.values()) {
-//                if (((Ammo) element).getName().equals(estabReference.getName())) {
-//                    hasRepeatedElementName = true;
-//                    break;
-//                }
-//            }
-//        }
-        return hasRepeatedElementName;
+    public void checkRepeatedElements(CopyPasteLists copyPasteLists) {
+
+        Iterator<Vehicle> itV = copyPasteLists.getNonRepeatedVehicles().iterator();
+        while(itV.hasNext()){
+            Vehicle v = itV.next();
+            if (vehicles.containsKey(v.getId())) {
+                copyPasteLists.getRepeatedVehicles().add(v);
+                itV.remove();
+            }
+        }
+
+        Iterator<Weapon> itW = copyPasteLists.getNonRepeatedWeapons().iterator();
+        while (itW.hasNext()) {
+            Weapon w = itW.next();
+            if (weapons.containsKey(w.getId())) {
+                copyPasteLists.getRepeatedWeapons().add(w);
+                itW.remove();
+            }
+        }
+
+        Iterator<Ammo> itA = copyPasteLists.getNonRepeatedAmmo().iterator();
+        while (itA.hasNext()) {
+            Ammo a = itA.next();
+            if (ammos.containsKey(a.getId())) {
+                copyPasteLists.getRepeatedAmmo().add(a);
+                itA.remove();
+            }
+        }
     }
 
-    public void paste(EstabReference estabReference) {
-        Map elementMap = allElements.get(estabReference.getElementClass());
-        elementMap.put(estabReference.getId(), estabReference.getElement());
+    private List<Weapon> getWeaponListFromVehicle(Vehicle vehicle) {
+        List<Weapon> weaponList = new ArrayList<>();
+        for (Armament armament : vehicle.getArmaments().getArmament()) {
+            Weapon weapon = weapons.get(armament.getEquipmentObjectId());
+            if (weapon != null) {
+                weaponList.add(weapon);
+            }
+        }
+
+        return weaponList;
+    }
+
+    private List<Ammo> getAmmoListFromWeapon(Weapon weapon) {
+        List<Ammo> ammoList = new ArrayList<>();
+
+        for(Performance performance : weapon.getPerformanceList().getPerformance()) {
+            Ammo ammo = ammos.get(performance.getAmmo().getObjectId());
+            if(ammo != null) {
+                ammoList.add(ammo);
+            }
+        }
+        return ammoList;
+    }
+
+    public CopyPasteLists getElementsToCopy(EstabReference estabReference) {
+        CopyPasteLists copyPasteLists = new CopyPasteLists();
+        if (estabReference.getElementClass() == Vehicle.class) {
+            Vehicle vehicle = (Vehicle) estabReference.getElement();
+            copyPasteLists.getNonRepeatedVehicles().add(vehicle);
+        } else if (estabReference.getElementClass() == Weapon.class) {
+            Weapon weapon = (Weapon) estabReference.getElement();
+            copyPasteLists.getNonRepeatedWeapons().add(weapon);
+        } else if (estabReference.getElementClass() == Ammo.class) {
+            Ammo ammo = (Ammo) estabReference.getElement();
+            copyPasteLists.getNonRepeatedAmmo().add(ammo);
+        }
+
+        for (Vehicle v : copyPasteLists.getNonRepeatedVehicles()) {
+            copyPasteLists.getNonRepeatedWeapons().addAll(getWeaponListFromVehicle(v));
+        }
+
+        for (Weapon w : copyPasteLists.getNonRepeatedWeapons()) {
+            copyPasteLists.getNonRepeatedAmmo().addAll(getAmmoListFromWeapon(w));
+        }
+        return copyPasteLists;
+    }
+
+    public void paste(CopyPasteLists copyPasteLists, Action dialogAnswer) {
+
+        if (dialogAnswer == UtilView.DIALOG_OVERWRITE) {
+            for (Vehicle v : copyPasteLists.getRepeatedVehicles()) {
+                vehicles.put(v.getId(), v);
+            }
+            for (Weapon w : copyPasteLists.getRepeatedWeapons()) {
+                weapons.put(w.getId(), w);
+            }
+            for (Ammo a : copyPasteLists.getRepeatedAmmo()) {
+                ammos.put(a.getId(), a);
+            }
+        }
+
+        if (dialogAnswer == UtilView.DIALOG_SKIP_REPEATED || dialogAnswer == UtilView.DIALOG_OVERWRITE) {
+            for (Vehicle v : copyPasteLists.getNonRepeatedVehicles()) {
+                vehicles.put(v.getId(), v);
+            }
+            for (Weapon w : copyPasteLists.getNonRepeatedWeapons()) {
+                weapons.put(w.getId(), w);
+            }
+            for (Ammo a : copyPasteLists.getNonRepeatedAmmo()) {
+                ammos.put(a.getId(), a);
+            }
+        } else {
+        }
     }
 
     public void saveToFile(File file) {
