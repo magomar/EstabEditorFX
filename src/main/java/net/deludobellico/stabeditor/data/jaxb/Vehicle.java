@@ -58,7 +58,7 @@ import javax.xml.bind.annotation.XmlElement;
  * 
  * 
  */
-public class Vehicle {
+public class Vehicle implements Asset {
 
     protected String name;
     protected String description;
