@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlElement;
  * 
  * 
  */
-public class Ammo {
+public class Ammo implements Asset{
 
     protected String name;
     protected String description;

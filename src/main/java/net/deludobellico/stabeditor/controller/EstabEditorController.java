@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import net.deludobellico.stabeditor.model.CopyPasteLists;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.util.FileIO;
 
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -117,7 +119,9 @@ public class EstabEditorController implements Initializable {
     private void copyElementAction(ActionEvent actionEvent) {
         LOG.info(actionEvent.toString());
         targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
-        targetEstabDataController.pasteActiveComponent();
+        // All the assets/elements that we are going to copy
+        CopyPasteLists copyPasteElementLists = sourceEstabDataController.getEstabDataModel().getElementsToCopy(sourceEstabDataController.getActiveComponent());
+        targetEstabDataController.pasteActiveComponent(copyPasteElementLists);
     }
 
     @FXML
@@ -169,6 +173,9 @@ public class EstabEditorController implements Initializable {
         targetEstabDataController.setTitle("Target Estab: " + targetEstabFile.getName());
         targetEstabDataController.setEstabDataModel(new EstabDataModel(targetEstabFile));
         saveDataButton.setDisable(false);
+        if (targetEstabDataController.getEstabDataModel() != null && sourceEstabDataController.getActiveComponent() != null) {
+            copyElementButton.setDisable(false);
+        }
 
     }
 

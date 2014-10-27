@@ -122,7 +122,6 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
 
     private Vehicle vehicle;
     private ObservableList<VehicleType> vehicleTypeObservableList = FXCollections.observableArrayList();
-    private boolean isReadOnly = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -266,11 +265,6 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public Vehicle getEstabElement() {
-        return this.vehicle;
-    }
-
-    @Override
     public void setEstabElement(Vehicle newVehicle) {
         Vehicle previousVehicle = this.vehicle;
         this.vehicle =  newVehicle;
@@ -278,6 +272,12 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         if(previousVehicle.getName() != null) unbindProperties(previousVehicle);
         bindProperties(newVehicle);
     }
+
+    @Override
+    public Vehicle getEstabElement() {
+        return this.vehicle;
+    }
+
 
 
 }

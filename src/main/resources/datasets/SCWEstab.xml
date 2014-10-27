@@ -29,7 +29,7 @@
         </speed>
         <take-cover-mod>1.004883</take-cover-mod>
         <towing-capacity>200.0</towing-capacity>
-        <type>motor-cycle</type>
+        <type>tank</type>
     </vehicle>
     <vehicle id="2325">
         <armaments/>
@@ -155,6 +155,38 @@
         <towing-capacity>16765.0</towing-capacity>
         <type>tank-destroyer</type>
     </vehicle>
+    <weapon id="517">
+        <armaments></armaments>
+        <calibre>9999.0</calibre>
+        <crew>9999</crew>
+        <description>
+    </description>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <muzzle-velocity>9999</muzzle-velocity>
+        <name>4.2in mortar (BR)</name>
+        <performance-list/>
+        <picture id="3417"/>
+        <picture-filename>4.2in mortar-ok.RSRC</picture-filename>
+        <primary-role>anti-air</primary-role>
+        <reliability>9999.0</reliability>
+        <single-shot>yes</single-shot>
+        <size height="1.0" length="1.0" weight="9999.0" width="1.0"/>
+        <type>rocket-launcher</type>
+    </weapon>
+    <ammo id="259">
+        <description>
+    9999</description>
+        <min-order-qty>5</min-order-qty>
+        <min-order-weight>52.0</min-order-weight>
+        <name>75mm AP</name>
+    </ammo>
+    <ammo id="2134">
+        <description>
+    999988</description>
+        <min-order-qty>9999</min-order-qty>
+        <min-order-weight>9999.0</min-order-weight>
+        <name>90mm AP</name>
+    </ammo>
     <formation-effects id="1600" type="left-echelon">
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>

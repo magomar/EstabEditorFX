@@ -9,20 +9,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
+import net.deludobellico.stabeditor.model.CopyPasteLists;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +83,9 @@ public class EstabDataController implements Initializable {
     @FXML
     private StackPane editorStackPane;
 
+    @FXML
+    private TabPane tabPane;
+
     private EstabDataModel estabDataModel;
     private Class activeElementClass = null;
     private EstabReference activeEstabElement = null;
@@ -128,11 +128,28 @@ public class EstabDataController implements Initializable {
             }
         });
 
+        tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
+                if (newValue != null && estabDataModel != null) {
+                    if (newValue.getText().startsWith("V")) {
+                        //Vehicle tab
+                        searchVehicleAction(null);
+                    } else if (newValue.getText().startsWith("W")) {
+                        //Weapon tab
+                        searchWeaponAction(null);
+                    } else {
+                        //Ammo tab
+                        searchAmmoAction(null);
+                    }
+                }
+            }
+        });
+
 
         componentEditorViews.put(Vehicle.class, VEHICLE_VIEW);
         componentEditorViews.put(Weapon.class, WEAPON_VIEW);
         componentEditorViews.put(Ammo.class, AMMO_VIEW);
-
 
     }
 
@@ -179,6 +196,14 @@ public class EstabDataController implements Initializable {
         numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
         numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
         numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
+        String tabName = tabPane.getSelectionModel().selectedItemProperty().getValue().getText();
+        if (tabName.startsWith("V")) {
+            searchVehicleAction(null);
+        } else if (tabName.startsWith("W")) {
+            searchWeaponAction(null);
+        } else {
+            searchAmmoAction(null);
+        }
     }
 
     public void setTitle(String title) {
@@ -223,26 +248,16 @@ public class EstabDataController implements Initializable {
         }
     }
 
-    public void pasteActiveComponent() {
+    public void pasteActiveComponent(CopyPasteLists copyPasteLists) {
         if (!isEditable) return;
-        /*if (estabDataModel.hasRepeatedElementName(activeEstabElement)) {
-            Action action = utilView.showWarningDialogRepeatedElementName();
-            if (action == Dialog.ACTION_OK) {
-                // overwrite
-                estabDataModel.paste(activeEstabElement);
-                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
-            }
+        estabDataModel.checkRepeatedElements(copyPasteLists);
 
-        } else*/ if (estabDataModel.hasRepeatedElement(activeEstabElement)) {
-            Action action = utilView.showWarningDialogRepeatedElement();
-            if (action == Dialog.ACTION_OK) {
-                // overwrite
-                estabDataModel.paste(activeEstabElement);
-                estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
-            }
+        if (copyPasteLists.hasRepeatedElements()) {
+            Action answer = utilView.showWarningDialogRepeatedElement(copyPasteLists);
+            estabDataModel.paste(copyPasteLists, answer);
         } else {
-            estabDataModel.paste(activeEstabElement);
-            estabReferenceObservableList.add(new EstabReference(activeEstabElement.getId(), activeEstabElement.getName(), activeEstabElement.getJaxbElement(), activeEstabElement.getElementClass()));
+            // if there are no repeated element, proceed as if overwriting
+            estabDataModel.paste(copyPasteLists, UtilView.DIALOG_OVERWRITE);
         }
         updateStatistics();
     }
@@ -265,6 +280,7 @@ public class EstabDataController implements Initializable {
         searchWeaponTextField.setDisable(false);
         searchAmmoTextField.setDisable(false);
     }
+
 
 }
 

@@ -1,38 +1,56 @@
 package net.deludobellico.stabeditor.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Created by Mario on 04/08/2014.
  */
-public class AmmoEditorController implements AssetEditorController<Ammo> {
+public class AmmoEditorController implements Initializable, AssetEditorController<Ammo> {
     @FXML
-    private TextField quantityTextField;
+    private TextField quantity;
 
     @FXML
-    private TextField weightTextField;
+    private TextField weight;
+
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextArea description;
 
     private Ammo ammo;
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ammo = new Ammo();
+    }
     @Override
     public void setEditable(boolean isEditable) {
-        quantityTextField.setEditable(isEditable);
-        weightTextField.setEditable(isEditable);
+        quantity.setEditable(isEditable);
+        weight.setEditable(isEditable);
     }
 
     @Override
     public void bindProperties(Ammo ammo) {
-        quantityTextField.textProperty().bindBidirectional(ammo.minOrderQtyProperty(), new NumberStringConverter());
-        weightTextField.textProperty().bindBidirectional(ammo.minOrderWeightProperty(), new NumberStringConverter());
+        quantity.textProperty().bindBidirectional(ammo.minOrderQtyProperty(), new NumberStringConverter());
+        weight.textProperty().bindBidirectional(ammo.minOrderWeightProperty(), new NumberStringConverter());
+        name.textProperty().bindBidirectional(ammo.nameProperty());
+        description.textProperty().bindBidirectional(ammo.descriptionProperty());
     }
 
     @Override
     public void unbindProperties(Ammo ammo) {
-        quantityTextField.textProperty().unbindBidirectional(ammo.minOrderQtyProperty());
-        weightTextField.textProperty().unbindBidirectional(ammo.minOrderWeightProperty());
+        quantity.textProperty().unbindBidirectional(ammo.minOrderQtyProperty());
+        weight.textProperty().unbindBidirectional(ammo.minOrderWeightProperty());
+        name.textProperty().unbindBidirectional(ammo.nameProperty());
+        description.textProperty().unbindBidirectional(ammo.descriptionProperty());
     }
 
     @Override
@@ -48,4 +66,6 @@ public class AmmoEditorController implements AssetEditorController<Ammo> {
         if(previousAmmo.getName() != null) unbindProperties(previousAmmo);
         bindProperties(newAmmo);
     }
+
+
 }
