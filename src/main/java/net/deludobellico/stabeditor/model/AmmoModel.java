@@ -13,15 +13,75 @@ public class AmmoModel implements PojoJFXModel<Ammo>{
     private final  IntegerProperty minOrderQty = new SimpleIntegerProperty();
     private final  FloatProperty minOrderWeight = new SimpleFloatProperty();
 
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public String getName() {
+        return name.get();
+    }
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public String getDescription() {
+        return description.get();
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description.set(description);
+    }
+
+    public int getMinOrderQty() {
+        return minOrderQty.get();
+    }
+
+    public IntegerProperty minOrderQtyProperty() {
+        return minOrderQty;
+    }
+
+    public void setMinOrderQty(int minOrderQty) {
+        this.minOrderQty.set(minOrderQty);
+    }
+
+    public float getMinOrderWeight() {
+        return minOrderWeight.get();
+    }
+
+    public FloatProperty minOrderWeightProperty() {
+        return minOrderWeight;
+    }
+
+    public void setMinOrderWeight(float minOrderWeight) {
+        this.minOrderWeight.set(minOrderWeight);
+    }
+
     @Override
     public Ammo getPojo() {
-        Ammo a = new Ammo();
-        a.setId(id.get());
-        a.setName(name.get());
-        a.setDescription(description.get());
-        a.setMinOrderQty(minOrderQty.get());
-        a.setMinOrderWeight(minOrderWeight.get());
-        return null;
+        Ammo ammo = new Ammo();
+        ammo.setId(id.get());
+        ammo.setName(name.get());
+        ammo.setDescription(description.get());
+        ammo.setMinOrderQty(minOrderQty.get());
+        ammo.setMinOrderWeight(minOrderWeight.get());
+        return ammo;
     }
 
     @Override
