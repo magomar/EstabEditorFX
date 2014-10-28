@@ -12,10 +12,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import net.deludobellico.stabeditor.data.jaxb.Armament;
 
 
-
-public class ArmamentModel {
+public class ArmamentModel implements PojoJFXModel<Armament> {
 
     private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
     private final transient StringProperty equipmentName = new SimpleStringProperty();
@@ -55,5 +55,21 @@ public class ArmamentModel {
 
     public void setQty(int qty) {
         this.qty.set(qty);
+    }
+
+    @Override
+    public Armament getPojo() {
+        Armament armament = new Armament();
+        armament.setEquipmentObjectId(equipmentObjectId.get());
+        armament.setEquipmentName(equipmentName.get());
+        armament.setQty(qty.get());
+        return armament;
+    }
+
+    @Override
+    public void setPojo(Armament pojo) {
+        equipmentObjectId.set(pojo.getEquipmentObjectId());
+        equipmentName.set(pojo.getEquipmentName());
+        qty.set(pojo.getQty());
     }
 }
