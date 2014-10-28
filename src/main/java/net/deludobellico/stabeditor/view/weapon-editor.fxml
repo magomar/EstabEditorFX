@@ -179,7 +179,7 @@
                                     </VBox>
                                     <Pane prefHeight="305.0" prefWidth="472.0" style="-fx-border-color: grey;">
                                        <children>
-                                          <Label layoutX="20.0" layoutY="6.0" text="Label">
+                                          <Label fx:id="fireTypeLabel" layoutX="20.0" layoutY="6.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -242,9 +242,9 @@
                                           </GridPane>
                                           <TableView fx:id="rangeTable" layoutX="152.0" layoutY="147.0" prefHeight="157.0" prefWidth="320.0">
                                             <columns>
-                                              <TableColumn prefWidth="75.0" text="Range" />
-                                              <TableColumn prefWidth="75.0" text="Accuracy" />
-                                                <TableColumn prefWidth="126.0" text="Armor Penetration" />
+                                              <TableColumn fx:id="rangeTableRangeColumn" prefWidth="75.0" text="Range" />
+                                              <TableColumn fx:id="rangeTableAccuracyColumn" prefWidth="75.0" text="Accuracy" />
+                                              <TableColumn fx:id="rangeTableArmorColumn" prefWidth="126.0" text="Armor Penetration" />
                                             </columns>
                                           </TableView>
                                        </children>

@@ -3,11 +3,14 @@ package net.deludobellico.stabeditor.controller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
+import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.model.WeaponModel;
@@ -91,7 +94,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     private TextField tableArmor;
 
     @FXML
-    private TableView<RangeItem> rangeTable;
+    private Label fireTypeLabel;
 
     @FXML
     private TextField minRange;
@@ -101,14 +104,24 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     private ListView<FireType> performanceFireTypeList;
     private ObservableList<FireType> fireTypeObservableList = FXCollections.observableArrayList();
 
+    @FXML
+    private TableView<RangeItem> rangeTable;
+    @FXML
+    private TableColumn<RangeItem, Integer> rangeTableRangeColumn;
+    @FXML
+    private TableColumn<RangeItem, Float> rangeTableAccuracyColumn;
+    @FXML
+    private TableColumn<RangeItem, Float> rangeTableArmorColumn;
+    private ObservableList<RangeItem> rangeItemObservableList = FXCollections.observableArrayList();
+
     private Weapon weapon;
     private Performance performance;
-    private ObservableList<WeaponType> weaponTypeObservableList = FXCollections.observableArrayList();
-    private ObservableList<PrimaryRole> weaponPrimaryRoleObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         weapon = new Weapon();
+
+        rangeTable.setItems(rangeItemObservableList);
 
 
         performanceFireTypeList.setItems(fireTypeObservableList);
@@ -118,7 +131,8 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
                 Performance previousPerformance = performance;
                 for (Performance p : WeaponEditorController.this.weapon.getPerformanceList().getPerformance()) {
                     if (p.getFireType().equals(newValue)) {
-                        if(oldValue!=null && previousPerformance != null)unbindPerformanceProperties(previousPerformance);
+                        if (oldValue != null && previousPerformance != null)
+                            unbindPerformanceProperties(previousPerformance);
                         bindPerformanceProperties(p);
                         performance = p;
                         break;
@@ -127,8 +141,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
             }
         });
 
-        weaponTypeObservableList.addAll(WeaponType.values());
-        weaponType.setItems(weaponTypeObservableList);
+        weaponType.setItems(FXCollections.observableArrayList(WeaponType.values()));
         weaponType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<WeaponType>() {
             @Override
             public void changed(ObservableValue<? extends WeaponType> observable, WeaponType oldValue, WeaponType newValue) {
@@ -137,8 +150,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
             }
         });
 
-        weaponPrimaryRoleObservableList.addAll(PrimaryRole.values());
-        weaponPrimaryRole.setItems(weaponPrimaryRoleObservableList);
+        weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         weaponPrimaryRole.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PrimaryRole>() {
             @Override
             public void changed(ObservableValue<? extends PrimaryRole> observable, PrimaryRole oldValue, PrimaryRole newValue) {
@@ -176,6 +188,9 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         burstRadius.textProperty().unbindBidirectional(p.burstRadiusProperty());
         shellWeight.textProperty().unbindBidirectional(p.shellWeightProperty());
         load.textProperty().unbindBidirectional(p.getAmmo().loadProperty());
+
+        rangeItemObservableList.clear();
+
     }
 
     private void bindPerformanceProperties(Performance p) {
@@ -186,7 +201,41 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), new NumberStringConverter());
         shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), new NumberStringConverter());
         load.textProperty().bindBidirectional(p.getAmmo().loadProperty(), new NumberStringConverter());
+
         ammoName.setText(p.getAmmo().getName());
+        fireTypeLabel.setText(p.getFireType().value());
+        // Fill Range Items
+
+        rangeItemObservableList.addAll(p.getRangeTable().getRangeItem());
+        rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItem, Integer>forTableColumn(new IntegerStringConverter()));
+        rangeTableRangeColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RangeItem, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<RangeItem, Integer> param) {
+                return param.getValue().rangeProperty().asObject();
+            }
+        });
+
+        rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItem, Float>forTableColumn(new FloatStringConverter()));
+        rangeTableAccuracyColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RangeItem, Float>, ObservableValue<Float>>() {
+            @Override
+            public ObservableValue<Float> call(TableColumn.CellDataFeatures<RangeItem, Float> param) {
+                return param.getValue().accuracyProperty().asObject();
+            }
+        });
+
+        rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItem, Float>forTableColumn(new FloatStringConverter()));
+        rangeTableArmorColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RangeItem, Float>, ObservableValue<Float>>() {
+            @Override
+            public ObservableValue<Float> call(TableColumn.CellDataFeatures<RangeItem, Float> param) {
+                return param.getValue().armourPenetrationProperty().asObject();
+            }
+        });
+        rangeTable.getColumns().clear();
+        rangeTable.getColumns().add(rangeTableRangeColumn);
+        rangeTable.getColumns().add(rangeTableAccuracyColumn);
+        rangeTable.getColumns().add(rangeTableArmorColumn);
+        //rangeItemObservableList.clear();
+        //rangeItemObservableList.addAll(p.getRangeTable().rangeItemProperty());
     }
 
     @Override
@@ -204,6 +253,14 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         mustDeployToFire.setStyle("-fx-opacity: 1");
         calibre.setEditable(isEditable);
         muzzleVelocity.setEditable(isEditable);
+        minRange.setEditable(isEditable);
+        fireRateSlow.setEditable(isEditable);
+        fireRateNormal.setEditable(isEditable);
+        fireRateRapid.setEditable(isEditable);
+        burstRadius.setEditable(isEditable);
+        shellWeight.setEditable(isEditable);
+        load.setEditable(isEditable);
+        rangeTable.setEditable(isEditable);
     }
 
     @Override
@@ -255,9 +312,9 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         bindProperties(newWeapon);
 
         fireTypeObservableList.clear();
-
+        // Fill Fire Type list
         for (Map.Entry<FireType, Boolean> entry : WeaponModel.getFireTypeMap(this.weapon).entrySet()) {
-            if(entry.getValue()) fireTypeObservableList.add(entry.getKey());
+            if (entry.getValue()) fireTypeObservableList.add(entry.getKey());
         }
     }
 
