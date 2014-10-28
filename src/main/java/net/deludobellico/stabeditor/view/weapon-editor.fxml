@@ -209,7 +209,7 @@
                                           <Label layoutX="25.0" layoutY="200.0" text="Burst Radius" />
                                           <Label layoutX="25.0" layoutY="230.0" text="Shell Weight" />
                                           <Label layoutX="25.0" layoutY="260.0" text="Load" />
-                                          <Label fx:id="ammoName" layoutX="90.0" layoutY="40.0" prefHeight="17.0" prefWidth="232.0" style="-fx-border-color: black;" text="">
+                                          <Label fx:id="ammoNameLabel" layoutX="90.0" layoutY="40.0" prefHeight="17.0" prefWidth="232.0" style="-fx-border-color: black;" text="">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -233,14 +233,14 @@
                                                 <Label text="Range" />
                                                 <Label text="Accuracy" GridPane.columnIndex="1" />
                                                 <Label text="Armor Pen." GridPane.columnIndex="2" />
-                                                <TextField fx:id="tableRange" maxWidth="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <TextField fx:id="tableAccuracy" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <TextField fx:id="tableArmor" maxWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <Button fx:id="addRange" minWidth="60.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                                                <Button fx:id="removeRange" disable="true" minWidth="60.0" mnemonicParsing="false" text="Remove" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tableNewRangeValue" maxWidth="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <TextField fx:id="tableNewAccuracyValue" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <TextField fx:id="tableNewArmorPenetrationValue" maxWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <Button fx:id="addRangeButton" disable="true" minWidth="60.0" mnemonicParsing="false" onAction="#addRangeToTable" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                                                <Button fx:id="removeRangeButton" disable="true" minWidth="60.0" mnemonicParsing="false" onAction="#removeRangeFromTable" text="Remove" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
-                                          <TableView fx:id="rangeTable" layoutX="152.0" layoutY="147.0" prefHeight="157.0" prefWidth="320.0">
+                                          <TableView fx:id="rangeItemTableView" layoutX="152.0" layoutY="147.0" prefHeight="155.0" prefWidth="315.0">
                                             <columns>
                                               <TableColumn fx:id="rangeTableRangeColumn" prefWidth="75.0" text="Range" />
                                               <TableColumn fx:id="rangeTableAccuracyColumn" prefWidth="75.0" text="Accuracy" />

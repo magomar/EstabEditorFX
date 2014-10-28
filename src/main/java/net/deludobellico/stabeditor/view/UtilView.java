@@ -17,10 +17,11 @@ public class UtilView {
     public static final CustomAction DIALOG_OVERWRITE = new CustomAction("Overwrite");
     public static final CustomAction DIALOG_SKIP_REPEATED = new CustomAction("Skip repeated");
 
-    public Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
+    public static Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
         StringBuilder sb = new StringBuilder();
         sb.append(System.getProperty("line.separator"));
         for (Map.Entry<Asset, Class> entry : copyPasteLists.getRepeatedAssets().entrySet()) {
+            //TODO: override toString in Asset class
             sb.append(entry.getValue().getSimpleName());
             sb.append(" | ID: ");
             sb.append(entry.getKey().getId());
@@ -39,14 +40,21 @@ public class UtilView {
         return response;
     }
 
-    public Action showWarningDialogRepeatedElementName() {
-        Action response = Dialogs.create()
-                .title("Warning - Element name already exists")
-                .masthead("There's an element with the same name in the target file.")
-                .message("Do you want to overwrite it?")
-                .actions(Dialog.ACTION_OK, Dialog.ACTION_CANCEL)
-                .showConfirm();
-        return response;
+    public static void showWarningEmptyFields() {
+        Dialogs.create()
+                .title("Missing fields")
+                .masthead(null)
+                .message("There are empty fields. Please fill them before proceeding.")
+                .showWarning();
     }
 
+    public static Action showWarningRemoveElement() {
+        Action response = Dialogs.create()
+                .title("Deleting element")
+                .masthead(null)
+                .message("You are deleting an element. Proceed?")
+                .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
+                .showWarning();
+        return response;
+    }
 }

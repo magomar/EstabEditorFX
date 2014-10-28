@@ -34,6 +34,10 @@ public class WeaponModel {
         return fireTypeMap.get(fireType);
     }
 
+    /*
+        Map key: Weapon fire type
+        Map value: if the weapon has the fire type
+     */
     public static Map<FireType, Boolean> getFireTypeMap(Weapon weapon) {
         Map<FireType, Boolean> fireTypeMap = new HashMap<>();
         if (fireTypeMap.isEmpty()) {
