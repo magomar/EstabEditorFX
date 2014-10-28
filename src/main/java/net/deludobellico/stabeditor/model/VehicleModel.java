@@ -15,7 +15,7 @@ public class VehicleModel implements PojoJFXModel<Vehicle> {
     private final StringProperty description = new SimpleStringProperty();
     //    private final ObjectProperty<Picture> picture = new SimpleObjectProperty<Picture>();
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
-    private final StringProperty pictureFilename = new SimpleStringProperty();// I don't think this is necessary here
+    //    private final StringProperty pictureFilename = new SimpleStringProperty();// I don't think this is necessary here
     //    private final  ObjectProperty<VehicleSize> size = new SimpleObjectProperty<VehicleSize>();
     private final FloatProperty width = new SimpleFloatProperty();
     private final FloatProperty height = new SimpleFloatProperty();
@@ -88,18 +88,6 @@ public class VehicleModel implements PojoJFXModel<Vehicle> {
 
     public void setPictureId(int pictureId) {
         this.pictureId.set(pictureId);
-    }
-
-    public String getPictureFilename() {
-        return pictureFilename.get();
-    }
-
-    public StringProperty pictureFilenameProperty() {
-        return pictureFilename;
-    }
-
-    public void setPictureFilename(String pictureFilename) {
-        this.pictureFilename.set(pictureFilename);
     }
 
     public float getWidth() {
