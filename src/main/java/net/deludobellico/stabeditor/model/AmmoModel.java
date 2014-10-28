@@ -1,7 +1,7 @@
 package net.deludobellico.stabeditor.model;
 
 import javafx.beans.property.*;
-import net.deludobellico.stabeditor.model.temp.Ammo;
+import net.deludobellico.stabeditor.data.jaxb.Ammo;
 
 /**
  * Created by Mario on 28/10/2014.
