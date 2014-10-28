@@ -1,7 +1,5 @@
 package net.deludobellico.stabeditor.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -101,57 +99,23 @@ public class EstabDataController implements Initializable {
     private Map<Class, AssetEditorController> componentEditorControllers = new HashMap<>(3);
     private boolean isEditable = false;
 
-    private UtilView utilView = new UtilView();
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchResultsListView.setItems(estabReferenceObservableList);
-        searchResultsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (null != newValue) {
-                    setActiveComponent((EstabReference) newValue);
-                }
-            }
+        searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null != newValue) setActiveComponent(newValue);
         });
-        searchVehicleTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                searchVehicleAction(null);
-            }
-        });
-        searchWeaponTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                searchWeaponAction(null);
-            }
-        });
-        searchAmmoTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                searchAmmoAction(null);
-            }
-        });
+        searchVehicleTextField.textProperty().addListener((observable, oldValue, newValue) -> searchVehicleAction(null));
+        searchWeaponTextField.textProperty().addListener((observable, oldValue, newValue) -> searchWeaponAction(null));
+        searchAmmoTextField.textProperty().addListener((observable, oldValue, newValue) -> searchAmmoAction(null));
 
-        tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
-            @Override
-            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
-                if (newValue != null && estabDataModel != null) {
-                    if (newValue.getText().startsWith("V")) {
-                        //Vehicle tab
-                        searchVehicleAction(null);
-                    } else if (newValue.getText().startsWith("W")) {
-                        //Weapon tab
-                        searchWeaponAction(null);
-                    } else {
-                        //Ammo tab
-                        searchAmmoAction(null);
-                    }
-                }
+        tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && estabDataModel != null) {
+                if (newValue.getText().startsWith("V")) searchVehicleAction(null); // Vehicle tab
+                else if (newValue.getText().startsWith("W")) searchWeaponAction(null);  //Weapon tab
+                else searchAmmoAction(null); //Ammo tab
             }
         });
-
 
         componentEditorViews.put(Vehicle.class, VEHICLE_VIEW);
         componentEditorViews.put(Weapon.class, WEAPON_VIEW);
@@ -203,13 +167,9 @@ public class EstabDataController implements Initializable {
         numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
         numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
         String tabName = tabPane.getSelectionModel().selectedItemProperty().getValue().getText();
-        if (tabName.startsWith("V")) {
-            searchVehicleAction(null);
-        } else if (tabName.startsWith("W")) {
-            searchWeaponAction(null);
-        } else {
-            searchAmmoAction(null);
-        }
+        if (tabName.startsWith("V")) searchVehicleAction(null);
+        else if (tabName.startsWith("W")) searchWeaponAction(null);
+        else searchAmmoAction(null);
     }
 
     public void setTitle(String title) {
@@ -297,7 +257,7 @@ public class EstabDataController implements Initializable {
         estabDataModel.checkRepeatedElements(copyPasteLists);
 
         if (copyPasteLists.hasRepeatedElements()) {
-            Action answer = utilView.showWarningDialogRepeatedElement(copyPasteLists);
+            Action answer = UtilView.showWarningDialogRepeatedElement(copyPasteLists);
             estabDataModel.paste(copyPasteLists, answer);
         } else {
             // if there are no repeated element, proceed as if overwriting
