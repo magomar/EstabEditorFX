@@ -24,6 +24,8 @@ public class Settings {
 
     private static Boolean visibleTargetPanel;
 
+    private static Boolean verticalPanes;
+
     private static List<String> sourceRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
 
     private static List<String> targetRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
@@ -98,6 +100,15 @@ public class Settings {
 
     public void setVisibleTargetPanel(Boolean visibleTargetPanel) {
         Settings.visibleTargetPanel = visibleTargetPanel;
+    }
+
+    @XmlElement(name = "vertical-panes")
+    public Boolean getVerticalPanes() {
+        return verticalPanes;
+    }
+
+    public void setVerticalPanes(Boolean verticalPanes) {
+        Settings.verticalPanes = verticalPanes;
     }
 
     public static void save() {

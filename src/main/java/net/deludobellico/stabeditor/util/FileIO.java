@@ -6,10 +6,16 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import javafx.stage.FileChooser;
 import org.xml.sax.SAXParseException;
 
-import javax.xml.bind.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.nio.file.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,7 +54,6 @@ public class FileIO {
             new FileChooser.ExtensionFilter("XML (*.xml)", "*.xml"),
             new FileChooser.ExtensionFilter("All (*.*)", "*.*")
     };
-
 
 
     static {
@@ -238,14 +243,15 @@ public class FileIO {
     public static void loadSettings() {
         try {
             File file = new File(FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE).toString());
-            if(file.exists()){
-                Unmarshaller um = JAXBContext.newInstance(Settings.class).createUnmarshaller();
-                um.unmarshal(file);
+            if (!file.exists()) {
+                file = getNewSettingsFile();
             }
+            Unmarshaller um = JAXBContext.newInstance(Settings.class).createUnmarshaller();
+            um.unmarshal(file);
 
         } catch (JAXBException e) {
             if (e.getLinkedException().getClass().equals(SAXParseException.class)) {
-                LOG.log(Level.WARNING, "Settings file has incorrect syntax",e);
+                LOG.log(Level.WARNING, "Settings file has incorrect syntax", e);
             }
         }
     }
@@ -293,7 +299,7 @@ public class FileIO {
         File f = null;
         try {
             f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.NEW_ESTAB_PATH).toString());
-            FileOutputStream  fos = new FileOutputStream(f, false);
+            FileOutputStream fos = new FileOutputStream(f, false);
             fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><estab-data></estab-data>".getBytes());
             fos.close();
         } catch (FileNotFoundException e) {
@@ -304,6 +310,18 @@ public class FileIO {
         return f;
     }
 
+    public static File getNewSettingsFile(){
+        File f = null;
+        try {
+            f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.SETTINGS_XML_FILE).toString());
+            FileOutputStream fos = new FileOutputStream(f, false);
+            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><source-recent-files /><target-recent-files /><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width></settings>".getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
     public static void copy(File sourceFile, File targetFile) {
         try {
             Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -314,6 +332,7 @@ public class FileIO {
 
     /**
      * File.createNewFile() proxy
+     *
      * @param file
      * @return
      */

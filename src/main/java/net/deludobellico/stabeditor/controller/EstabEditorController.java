@@ -130,6 +130,7 @@ public class EstabEditorController implements Initializable {
         sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
         targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
         estabDataContainer.setFitToWidth(true);
+        if(!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
     }
 
     private void populateOpenRecentTargetMenu() {
@@ -278,23 +279,28 @@ public class EstabEditorController implements Initializable {
     }
 
     @FXML
+    public void togglePanesContainer(ActionEvent actionEvent) {
+        Pane container;
+        boolean verticalPanes;
+        if (estabDataContainer.getContent() instanceof VBox) {
+            container = new HBox();
+            verticalPanes = false;
+        } else if (estabDataContainer.getContent() instanceof HBox) {
+            container = new VBox();
+            verticalPanes = true;
+        } else return;
+
+        container.getChildren().addAll(((Pane) estabDataContainer.getContent()).getChildren());
+        estabDataContainer.setContent(container);
+        Settings.getInstance().setVerticalPanes(verticalPanes);
+    }
+
+    @FXML
     public void exitApplication(ActionEvent actionEvent) {
         Platform.exit();
     }
 
     private Stage getStage() {
         return (Stage) rootPane.getScene().getWindow();
-    }
-
-    public void togglePanesContainer(ActionEvent actionEvent) {
-        Pane container;
-        if (estabDataContainer.getContent() instanceof VBox) {
-            container = new HBox();
-        } else if (estabDataContainer.getContent() instanceof HBox) {
-            container = new VBox();
-        } else return;
-
-        container.getChildren().addAll(((Pane) estabDataContainer.getContent()).getChildren());
-        estabDataContainer.setContent(container);
     }
 }
