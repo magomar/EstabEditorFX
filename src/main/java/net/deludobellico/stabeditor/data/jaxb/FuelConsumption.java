@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "FuelComsumption")
-public class FuelComsumption {
+@XmlType(name = "FuelConsumption")
+public class FuelConsumption {
 
     @XmlAttribute(name = "max")
     protected Float max;
