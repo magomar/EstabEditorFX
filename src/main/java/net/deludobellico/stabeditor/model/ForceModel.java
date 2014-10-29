@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.stabeditor.data.jaxb.*;
-import net.deludobellico.stabeditor.model.temp.Icon;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -15,7 +14,7 @@ public class ForceModel implements PojoJFXModel<Force> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
-    private final ObjectProperty<Icon> icon = new SimpleObjectProperty<Icon>();
+    private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<ForceType>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<ForceSubtype>();
     private final ObjectProperty<ForceSize> size = new SimpleObjectProperty<ForceSize>();
