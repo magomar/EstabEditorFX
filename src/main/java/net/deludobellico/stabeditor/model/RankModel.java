@@ -11,16 +11,41 @@ public class RankModel implements PojoJFXModel<Rank> {
     private final StringProperty shortName = new SimpleStringProperty();
     private final StringProperty fullName = new SimpleStringProperty();
 
-    // TODO getters & setters, but first do the pojo methods
-
     @Override
     public Rank getPojo() {
-        // TODO
-        return null;
+        Rank rank = new Rank();
+        rank.setShortName(shortName.getValue());
+        rank.setFullName(fullName.getValue());
+        return rank;
     }
 
     @Override
     public void setPojo(Rank pojo) {
-        // TODO
+        shortName.set(pojo.getShortName());
+        fullName.set(pojo.getFullName());
+    }
+
+    public String getShortName() {
+        return shortName.get();
+    }
+
+    public StringProperty shortNameProperty() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName.set(shortName);
+    }
+
+    public String getFullName() {
+        return fullName.get();
+    }
+
+    public StringProperty fullNameProperty() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName.set(fullName);
     }
 }
