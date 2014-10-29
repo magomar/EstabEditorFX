@@ -191,7 +191,6 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         fuelConsumptionMaxSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().maxProperty(), new NumberStringConverter());
         fuelConsumptionNormalSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().normalProperty(), new NumberStringConverter());
 
-        //TODO: fix boolean properties
         hasOpenTop.setSelected((vehicle.getHasOpenTop().equals("yes") ? true : false));
         hasTurret.setSelected((vehicle.getHasTurret().equals("yes") ? true : false));
 
@@ -212,12 +211,9 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
         takeCoverMod.textProperty().bindBidirectional(vehicle.takeCoverModProperty(), new NumberStringConverter());
         topArmor.textProperty().bindBidirectional(vehicle.getArmour().topProperty(), new NumberStringConverter());
         towingCapacity.textProperty().bindBidirectional(vehicle.towingCapacityProperty(), new NumberStringConverter());
-
-        //TODO: fix combo box property
-        vehicleType.getSelectionModel().select(vehicle.getType());
-
         weight.textProperty().bindBidirectional(vehicle.getSize().weightProperty(), new NumberStringConverter());
         width.textProperty().bindBidirectional(vehicle.getSize().widthProperty(), new NumberStringConverter());
+        vehicleType.getSelectionModel().select(vehicle.getType());
 
     }
 

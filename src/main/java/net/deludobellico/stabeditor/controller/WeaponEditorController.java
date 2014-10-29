@@ -100,7 +100,6 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     @FXML
     private TextField minRange;
 
-    //TODO: add PerformanceList
     @FXML
     private ListView<FireType> performanceFireTypeList;
     private ObservableList<FireType> fireTypeObservableList = FXCollections.observableArrayList();
@@ -170,7 +169,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     void addRangeToTable(ActionEvent event) {
 
         if (tableNewRangeValue.getText().isEmpty() || tableNewAccuracyValue.getText().isEmpty() || tableNewArmorPenetrationValue.getText().isEmpty()) {
-            UtilView.showWarningEmptyFields();
+            UtilView.showErrorEmptyFields();
         } else {
             RangeItem rangeItem = new RangeItem();
             rangeItem.setRange(Integer.valueOf(tableNewRangeValue.getText()));

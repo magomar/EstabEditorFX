@@ -1,79 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
+    <children>
+        <BorderPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0">
+            <top>
+                <VBox>
+                    <children>
+                        <MenuBar BorderPane.alignment="CENTER">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="ESTAB">
+                                    <items>
+                                        <MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
+                                                  onAction="#exitApplication" text="Exit"/>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Source">
+                                    <items>
+                                        <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="false"
+                                                  onAction="#openSourceAction" text="Open"/>
+                                        <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="false"
+                                              text="Open recent">
+                                            <items/>
+                                        </Menu>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem fx:id="sourceSaveAsMenuItem" disable="true" mnemonicParsing="false"
+                                                  onAction="#saveSouceAsAction" text="Save as ..."/>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false"
+                                                  text="Close"/>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Target">
+                                    <items>
+                                        <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="false"
+                                                  onAction="#openNewTarget" text="New"/>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="false"
+                                                  onAction="#openTargetAction" text="Open"/>
+                                        <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="false"
+                                              text="Open recent">
+                                            <items/>
+                                        </Menu>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem fx:id="targetSaveMenuItem" disable="true" mnemonicParsing="false"
+                                                  onAction="#saveTargetAction" text="Save"/>
+                                        <MenuItem fx:id="targetSaveAsMenuItem" disable="true" mnemonicParsing="false"
+                                                  onAction="#saveTargetAsAction" text="Save as ..."/>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false"
+                                                  text="Close"/>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="View">
+                                    <items>
+                                        <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="false" selected="true"
+                                                       onAction="#toggleToolBarVisibility" text="Toolbar"/>
+                                        <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="false" selected="true"
+                                                       onAction="#toggleSourcePaneVisibility" text="Source"/>
+                                        <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="false" selected="true"
+                                                       onAction="#toggleTargetPaneVisibility" text="Target"/>
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <RadioMenuItem fx:id="horizontalViewRadioItem" mnemonicParsing="false"
+                                                       onAction="#togglePanesContainer" text="Horizontal Panels"/>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Help">
+                                    <items>
+                                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About"/>
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                        <ToolBar fx:id="toolBar">
+                            <items>
+                                <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
+                                        onAction="#copyElementAction" text="Copy Selected Element"/>
+                                <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
+                                        onAction="#saveTargetAction" text="Save Target File"/>
+                            </items>
+                        </ToolBar>
+                    </children>
+                </VBox>
+            </top>
+            <center>
+                <ScrollPane fx:id="estabDataContainer">
+                    <content>
+                            <VBox>
+                                <children>
+                                    <fx:include fx:id="sourcePane" source="estab-data.fxml" style="-fx-border-color: grey;"/>
+                                    <fx:include fx:id="targetPane" source="estab-data.fxml"/>
+                                </children>
+                            </VBox>
+                    </content>
+                </ScrollPane>
+            </center>
 
-
-<ScrollPane minHeight="768.0" minWidth="1024.0" prefHeight="900.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
-   <content>
-      <VBox>
-          <children>
-              <!--<MenuBar>
-                  <menus>
-                      <Menu mnemonicParsing="false" text="File">
-                          <items>
-                              <MenuItem mnemonicParsing="false" onAction="#openEstabAction" text="Open">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
-                              <MenuItem mnemonicParsing="false" onAction="#newEstabAction" text="New">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
-                          </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Edit">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="Delete" />
-                          </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="About" />
-                          </items>
-                      </Menu>
-                  </menus>
-              </MenuBar>-->
-              <HBox>
-                  <children>
-                      <Label text="ESTAB being edited" />
-                      <TextField fx:id="targetEstabFileTextField" editable="false" promptText="Open existing Estab or create a new one..." />
-                      <Button mnemonicParsing="false" onAction="#openEstabAction" text="Open" />
-                      <Button mnemonicParsing="false" onAction="#newEstabAction" text="New" />
-                  </children>
-              </HBox>
-              <HBox style="-fx-border-width: 10;">
-                  <children>
-                      <TitledPane text="Available ESTAB sources">
-                          <content>
-                              <ListView fx:id="estabFileListView" prefHeight="72.0" prefWidth="600.0" />
-                          </content>
-                      </TitledPane>
-                      <VBox>
-                          <children>
-                              <Button fx:id="addEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#addEstabAction" text="Add" />
-                              <Button fx:id="removeEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#removeEstabAction" text="Remove" />
-                              <Button fx:id="openSourceEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#openSourceEstabAction" text="Load" />
-                              <Button fx:id="openTargetEstabButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="60.0" mnemonicParsing="false" onAction="#openTargetEstabAction" text="Edit" />
-                          </children>
-                          <HBox.margin>
-                              <Insets left="1.0" right="15.0" />
-                          </HBox.margin>
-                      </VBox>
-                      <VBox>
-                          <children>
-                              <Button fx:id="copyElementButton" minWidth="150.0" mnemonicParsing="false" onAction="#copyElementAction" text="Copy selected element" />
-                              <Button fx:id="saveDataButton" minWidth="150.0" mnemonicParsing="false" onAction="#saveEstabDataAction" text="Save Target to File" />
-                          </children>
-                      </VBox>
-                  </children>
-              </HBox>
-              <fx:include fx:id="sourceEstabData" source="estab-data.fxml" />
-              <fx:include fx:id="targetEstabData" source="estab-data.fxml" />
-          </children>
-      </VBox>
-   </content>
-</ScrollPane>
+        </BorderPane>
+    </children>
+</AnchorPane>

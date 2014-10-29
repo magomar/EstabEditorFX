@@ -5,11 +5,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="estabDataTitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
+<TitledPane fx:id="estabDataTitledPane" minWidth="900" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
     <content>
         <VBox>
             <children>
-                <HBox prefHeight="30.0" prefWidth="1024.0">
+                <HBox>
                     <children>
                         <Label text="Images:" />
                         <TextField fx:id="numImagesTextField" editable="false" maxHeight="20.0" minHeight="15.0" prefWidth="40.0">
