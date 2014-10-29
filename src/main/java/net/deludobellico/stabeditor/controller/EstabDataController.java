@@ -150,12 +150,10 @@ public class EstabDataController implements Initializable {
                         e.printStackTrace();
                     }
                 }
-
-//        StringWriter sw = FileIO.marshallXML(estabReference.getJaxbElement(), FileIO.MARSHALLER);
-//        String result = sw.toString();
-//        resultsTextArea.setText(result);
-//        System.out.print(result);
             }
+            // TODO: fix null pointer exception around here
+            //System.out.println(estabReference+" "+componentController+" "+activeElementClass);
+
             componentController.setEstabElement(estabReference.getElement());
         }
     }

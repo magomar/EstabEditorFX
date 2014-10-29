@@ -4,8 +4,10 @@ import net.deludobellico.stabeditor.data.jaxb.Asset;
 import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.DialogAction;
 import org.controlsfx.dialog.Dialogs;
 
+import java.io.File;
 import java.util.Map;
 
 
@@ -40,12 +42,12 @@ public class UtilView {
         return response;
     }
 
-    public static void showWarningEmptyFields() {
+    public static void showErrorEmptyFields() {
         Dialogs.create()
                 .title("Missing fields")
                 .masthead(null)
                 .message("There are empty fields. Please fill them before proceeding.")
-                .showWarning();
+                .showError();
     }
 
     public static Action showWarningRemoveElement() {
@@ -55,6 +57,17 @@ public class UtilView {
                 .message("You are deleting an element. Proceed?")
                 .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
                 .showWarning();
+        return response;
+    }
+
+    public static Action showWarningFileExists(File file) {
+        Action response = Dialogs.create()
+                .title("File already exists")
+                .masthead(null)
+                .message("Do you want to overwrite the following file?" + System.getProperty("line.separator") + file.getAbsolutePath())
+                .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
+                .showWarning();
+
         return response;
     }
 }
