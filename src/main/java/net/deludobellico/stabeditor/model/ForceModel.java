@@ -43,8 +43,6 @@ public class ForceModel implements PojoJFXModel<Force> {
     private final ObservableList<AmmoLoadModel> ammoList = FXCollections.observableArrayList();
     private final BooleanProperty canBombard = new SimpleBooleanProperty();
 
-    // TODO getters & setters, but first do the pojo methods. Please read the following Notes
-
     /**
      * NOTES
      * <p>
@@ -67,4 +65,6 @@ public class ForceModel implements PojoJFXModel<Force> {
     public void setPojo(Force pojo) {
         // TODO
     }
+
+    // TODO getters & setters, but first do the pojo methods. Please read the following Notes
 }

@@ -6,12 +6,32 @@ import net.deludobellico.stabeditor.data.jaxb.Ammo;
 /**
  * Created by Mario on 28/10/2014.
  */
-public class AmmoModel implements PojoJFXModel<Ammo>{
-    private final  IntegerProperty id = new SimpleIntegerProperty();
-    private final  StringProperty name = new SimpleStringProperty();
-    private final  StringProperty description = new SimpleStringProperty();
-    private final  IntegerProperty minOrderQty = new SimpleIntegerProperty();
-    private final  FloatProperty minOrderWeight = new SimpleFloatProperty();
+public class AmmoModel implements PojoJFXModel<Ammo> {
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty description = new SimpleStringProperty();
+    private final IntegerProperty minOrderQty = new SimpleIntegerProperty();
+    private final FloatProperty minOrderWeight = new SimpleFloatProperty();
+
+    @Override
+    public Ammo getPojo() {
+        Ammo ammo = new Ammo();
+        ammo.setId(id.get());
+        ammo.setName(name.get());
+        ammo.setDescription(description.get());
+        ammo.setMinOrderQty(minOrderQty.get());
+        ammo.setMinOrderWeight(minOrderWeight.get());
+        return ammo;
+    }
+
+    @Override
+    public void setPojo(Ammo pojo) {
+        id.set(pojo.getId());
+        name.set(pojo.getName());
+        description.set(pojo.getDescription());
+        minOrderQty.set(pojo.getMinOrderQty());
+        minOrderWeight.set(pojo.getMinOrderWeight());
+    }
 
     public int getId() {
         return id.get();
@@ -73,23 +93,4 @@ public class AmmoModel implements PojoJFXModel<Ammo>{
         this.minOrderWeight.set(minOrderWeight);
     }
 
-    @Override
-    public Ammo getPojo() {
-        Ammo ammo = new Ammo();
-        ammo.setId(id.get());
-        ammo.setName(name.get());
-        ammo.setDescription(description.get());
-        ammo.setMinOrderQty(minOrderQty.get());
-        ammo.setMinOrderWeight(minOrderWeight.get());
-        return ammo;
-    }
-
-    @Override
-    public void setPojo(Ammo pojo) {
-        id.set(pojo.getId());
-        name.set(pojo.getName());
-        description.set(pojo.getDescription());
-        minOrderQty.set(pojo.getMinOrderQty());
-        minOrderWeight.set(pojo.getMinOrderWeight());
-    }
 }

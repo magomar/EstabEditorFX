@@ -426,7 +426,7 @@
             <xs:attribute name="normal" type="xs:float"/>
     </xs:complexType>
 
-    <xs:complexType name="FuelComsumption">
+    <xs:complexType name="FuelConsumption">
         <xs:attribute name="max" type="xs:float"/>
         <xs:attribute name="normal" type="xs:float"/>
     </xs:complexType>

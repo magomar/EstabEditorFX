@@ -4,7 +4,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.data.jaxb.AmmoLoad;
 
 /**
@@ -14,6 +13,22 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     private final IntegerProperty objectId = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty load = new SimpleIntegerProperty();
+
+    @Override
+    public AmmoLoad getPojo() {
+        AmmoLoad ammoLoad = new AmmoLoad();
+        ammoLoad.setObjectId(objectId.get());
+        ammoLoad.setName(name.get());
+        ammoLoad.setLoad(load.get());
+        return ammoLoad;
+    }
+
+    @Override
+    public void setPojo(AmmoLoad pojo) {
+        objectId.set(pojo.getObjectId());
+        name.set(pojo.getName());
+        load.set(pojo.getLoad());
+    }
 
     public int getObjectId() {
         return objectId.get();
@@ -51,19 +66,4 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
         this.load.set(load);
     }
 
-    @Override
-    public AmmoLoad getPojo() {
-        AmmoLoad ammoLoad = new AmmoLoad();
-        ammoLoad.setObjectId(objectId.get());
-        ammoLoad.setName(name.get());
-        ammoLoad.setLoad(load.get());
-        return ammoLoad;
-    }
-
-    @Override
-    public void setPojo(AmmoLoad pojo) {
-        objectId.set(pojo.getObjectId());
-        name.set(pojo.getName());
-        load.set(pojo.getLoad());
-    }
 }

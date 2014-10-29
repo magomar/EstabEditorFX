@@ -49,6 +49,7 @@ public class NationModel implements PojoJFXModel<Nation> {
         nationality.set(pojo.getNationality());
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
+        service.clear();
         pojo.getService().stream().map((s) -> {
             ServiceModel serviceModel = new ServiceModel();
             serviceModel.setPojo(s);

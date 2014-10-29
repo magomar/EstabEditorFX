@@ -21,6 +21,22 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
     private final transient StringProperty equipmentName = new SimpleStringProperty();
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
 
+    @Override
+    public Armament getPojo() {
+        Armament armament = new Armament();
+        armament.setEquipmentObjectId(equipmentObjectId.get());
+        armament.setEquipmentName(equipmentName.get());
+        armament.setQty(qty.get());
+        return armament;
+    }
+
+    @Override
+    public void setPojo(Armament pojo) {
+        equipmentObjectId.set(pojo.getEquipmentObjectId());
+        equipmentName.set(pojo.getEquipmentName());
+        qty.set(pojo.getQty());
+    }
+
     public int getEquipmentObjectId() {
         return equipmentObjectId.get();
     }
@@ -57,19 +73,4 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
         this.qty.set(qty);
     }
 
-    @Override
-    public Armament getPojo() {
-        Armament armament = new Armament();
-        armament.setEquipmentObjectId(equipmentObjectId.get());
-        armament.setEquipmentName(equipmentName.get());
-        armament.setQty(qty.get());
-        return armament;
-    }
-
-    @Override
-    public void setPojo(Armament pojo) {
-        equipmentObjectId.set(pojo.getEquipmentObjectId());
-        equipmentName.set(pojo.getEquipmentName());
-        qty.set(pojo.getQty());
-    }
 }

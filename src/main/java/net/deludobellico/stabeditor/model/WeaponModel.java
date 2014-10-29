@@ -26,6 +26,63 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
     private final BooleanProperty mustDeployToFire = new SimpleBooleanProperty();
     private final ObservableList<PerformanceModel> performanceList = FXCollections.observableArrayList();
 
+    @Override
+    public Weapon getPojo() {
+        Weapon weapon = new Weapon();
+        weapon.setId(id.get());
+        weapon.setName(name.get());
+        weapon.setDescription(description.get());
+        Picture p = new Picture();
+        p.setId(pictureId.get());
+        weapon.setPicture(p);
+        weapon.setPictureFilename(pictureFilename.get());
+        WeaponSize weaponSize = new WeaponSize();
+        weaponSize.setWidth((float) 1.0);
+        weaponSize.setHeight((float) 1.0);
+        weaponSize.setLength((float) 1.0);
+        weaponSize.setWeight(weight.get());
+        weapon.setSize(weaponSize);
+        weapon.setCrew(crew.get());
+        weapon.setReliability(reliability.get());
+        weapon.setType(type.get());
+        weapon.setSingleShot(JFXModelUtil.booleanToYesNo(singleShot.get()));
+        weapon.setPrimaryRole(primaryRole.get());
+        weapon.setCalibre(calibre.get());
+        weapon.setMuzzleVelocity(muzzleVelocity.get());
+        weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
+        PerformanceList pl = new PerformanceList();
+        performanceList.stream().forEach((performanceModel) -> {
+            pl.getPerformance().add(performanceModel.getPojo());
+        });
+        return weapon;
+    }
+
+    @Override
+    public void setPojo(Weapon pojo) {
+        id.set(pojo.getId());
+        name.set(pojo.getName());
+        description.set(pojo.getDescription());
+        pictureId.set(pojo.getPicture().getId());
+        pictureFilename.set(pojo.getPictureFilename());
+        weight.set(pojo.getSize().getWeight());
+        crew.set(pojo.getCrew());
+        reliability.set(pojo.getReliability());
+        type.set(pojo.getType());
+        singleShot.set(JFXModelUtil.yesNoToBoolean(pojo.getSingleShot()));
+        primaryRole.set(pojo.getPrimaryRole());
+        calibre.set(pojo.getCalibre());
+        muzzleVelocity.set(pojo.getMuzzleVelocity());
+        mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
+        performanceList.clear();
+        pojo.getPerformanceList().getPerformance().stream().map((performance) -> {
+            PerformanceModel performanceModel = new PerformanceModel();
+            performanceModel.setPojo(performance);
+            return performanceModel;
+        }).forEach((performanceModel) -> {
+            performanceList.add(performanceModel);
+        });
+    }
+
     public int getId() {
         return id.get();
     }
@@ -196,60 +253,5 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
 
     public ObservableList<PerformanceModel> getPerformanceList() {
         return performanceList;
-    }
-
-    @Override
-    public Weapon getPojo() {
-        Weapon weapon = new Weapon();
-        weapon.setId(id.get());
-        weapon.setName(name.get());
-        weapon.setDescription(description.get());
-        Picture p = new Picture();
-        p.setId(pictureId.get());
-        weapon.setPicture(p);
-        weapon.setPictureFilename(pictureFilename.get());
-        WeaponSize weaponSize = new WeaponSize();
-        weaponSize.setWidth((float) 1.0);
-        weaponSize.setHeight((float) 1.0);
-        weaponSize.setLength((float) 1.0);
-        weaponSize.setWeight(weight.get());
-        weapon.setSize(weaponSize);
-        weapon.setCrew(crew.get());
-        weapon.setReliability(reliability.get());
-        weapon.setType(type.get());
-        weapon.setSingleShot(JFXModelUtil.booleanToYesNo(singleShot.get()));
-        weapon.setPrimaryRole(primaryRole.get());
-        weapon.setCalibre(calibre.get());
-        weapon.setMuzzleVelocity(muzzleVelocity.get());
-        weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
-        PerformanceList pl = new PerformanceList();
-        for (PerformanceModel performanceModel : performanceList) {
-            pl.getPerformance().add(performanceModel.getPojo());
-        }
-        return weapon;
-    }
-
-    @Override
-    public void setPojo(Weapon pojo) {
-        id.set(pojo.getId());
-        name.set(pojo.getName());
-        description.set(pojo.getDescription());
-        pictureId.set(pojo.getPicture().getId());
-        pictureFilename.set(pojo.getPictureFilename());
-        weight.set(pojo.getSize().getWeight());
-        crew.set(pojo.getCrew());
-        reliability.set(pojo.getReliability());
-        type.set(pojo.getType());
-        singleShot.set(JFXModelUtil.yesNoToBoolean(pojo.getSingleShot()));
-        primaryRole.set(pojo.getPrimaryRole());
-        calibre.set(pojo.getCalibre());
-        muzzleVelocity.set(pojo.getMuzzleVelocity());
-        mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
-        for (Performance performance : pojo.getPerformanceList().getPerformance()) {
-            PerformanceModel performanceModel = new PerformanceModel();
-            performanceModel.setPojo(performance);
-            performanceList.add(performanceModel);
-        }
-
     }
 }

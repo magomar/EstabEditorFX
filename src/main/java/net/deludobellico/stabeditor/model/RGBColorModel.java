@@ -12,6 +12,22 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
     private final IntegerProperty green = new SimpleIntegerProperty();
     private final IntegerProperty blue = new SimpleIntegerProperty();
 
+    @Override
+    public RGBColor getPojo() {
+        RGBColor rgbColor = new RGBColor();
+        rgbColor.setRed(red.getValue());
+        rgbColor.setGreen(green.getValue());
+        rgbColor.setBlue(blue.getValue());
+        return rgbColor;
+    }
+
+    @Override
+    public void setPojo(RGBColor pojo) {
+        red.set(pojo.getRed());
+        green.set(pojo.getGreen());
+        blue.set(pojo.getBlue());
+    }
+
     public int getRed() {
         return red.get();
     }
@@ -48,19 +64,4 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
         this.blue.set(blue);
     }
 
-    @Override
-    public RGBColor getPojo() {
-        RGBColor rgbColor = new RGBColor();
-        rgbColor.setRed(red.getValue());
-        rgbColor.setGreen(green.getValue());
-        rgbColor.setBlue(blue.getValue());
-        return rgbColor;
-    }
-
-    @Override
-    public void setPojo(RGBColor pojo) {
-        red.set(pojo.getRed());
-        green.set(pojo.getGreen());
-        blue.set(pojo.getBlue());
-    }
 }

@@ -23,8 +23,6 @@ public class ServiceModel implements PojoJFXModel<Service> {
     private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
 
-    // TODO getters & setters, but first do the pojo methods
-
     @Override
     public Service getPojo() {
         // TODO
@@ -35,4 +33,6 @@ public class ServiceModel implements PojoJFXModel<Service> {
     public void setPojo(Service pojo) {
         // TODO
     }
+
+    // TODO getters & setters, but first do the pojo methods
 }

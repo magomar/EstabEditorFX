@@ -328,11 +328,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FuelComsumption }
+     * Create an instance of {@link FuelConsumption }
      * 
      */
-    public FuelComsumption createFuelComsumption() {
-        return new FuelComsumption();
+    public FuelConsumption createFuelComsumption() {
+        return new FuelConsumption();
     }
 
     /**

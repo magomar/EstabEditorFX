@@ -17,7 +17,51 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     private final IntegerProperty burstRadius = new SimpleIntegerProperty();
     private final FloatProperty shellWeight = new SimpleFloatProperty();
     private final ObservableList<RangeItemModel> ranges = FXCollections.observableArrayList();
-    private final ObjectProperty<FireType> fireType = new SimpleObjectProperty<FireType>();
+    private final ObjectProperty<FireType> fireType = new SimpleObjectProperty<>();
+
+    @Override
+    public Performance getPojo() {
+        Performance performance = new Performance();
+        performance.setAmmo(ammoLoad.get().getPojo());
+        performance.setMinRange(minRange.get());
+        ROF rof = new ROF();
+        rof.setSlow(slowROF.get());
+        rof.setNormal(normalROF.get());
+        rof.setRapid(rapidROF.get());
+        performance.setRof(rof);
+        performance.setBurstRadius(burstRadius.get());
+        performance.setShellWeight(shellWeight.get());
+        RangeTable rangeTable = new RangeTable();
+        ranges.stream().forEach((rangeItemModel) -> {
+            rangeTable.getRangeItem().add(rangeItemModel.getPojo());
+        });
+        performance.setRangeTable(rangeTable);
+        performance.setFireType(fireType.get());
+        return performance;
+    }
+
+    @Override
+    public void setPojo(Performance pojo) {
+        AmmoLoadModel ammoLoadModel = new AmmoLoadModel();
+        ammoLoadModel.setPojo(pojo.getAmmo());
+        ammoLoad.set(ammoLoadModel);
+        minRange.set(pojo.getMinRange());
+        ROF rof = pojo.getRof();
+        slowROF.set(rof.getSlow());
+        normalROF.set(rof.getNormal());
+        rapidROF.set(rof.getRapid());
+        burstRadius.set(pojo.getBurstRadius());
+        shellWeight.set(pojo.getShellWeight());
+        ranges.clear();
+        pojo.getRangeTable().getRangeItem().stream().map((rangeItem) -> {
+            RangeItemModel rangeItemModel = new RangeItemModel();
+            rangeItemModel.setPojo(rangeItem);
+            return rangeItemModel;
+        }).forEach((rangeItemModel) -> {
+            ranges.add(rangeItemModel);
+        });
+        fireType.set(pojo.getFireType());
+    }
 
     public AmmoLoadModel getAmmoLoad() {
         return ammoLoad.get();
@@ -119,44 +163,4 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         this.fireType.set(fireType);
     }
 
-    @Override
-    public Performance getPojo() {
-        Performance performance = new Performance();
-        performance.setAmmo(ammoLoad.get().getPojo());
-        performance.setMinRange(minRange.get());
-        ROF rof = new ROF();
-        rof.setSlow(slowROF.get());
-        rof.setNormal(normalROF.get());
-        rof.setRapid(rapidROF.get());
-        performance.setRof(rof);
-        performance.setBurstRadius(burstRadius.get());
-        performance.setShellWeight(shellWeight.get());
-        RangeTable rangeTable = new RangeTable();
-        for (RangeItemModel rangeItemModel : ranges) {
-            rangeTable.getRangeItem().add(rangeItemModel.getPojo());
-        }
-        performance.setRangeTable(rangeTable);
-        performance.setFireType(fireType.get());
-        return performance;
-    }
-
-    @Override
-    public void setPojo(Performance pojo) {
-        AmmoLoadModel ammoLoadModel = new AmmoLoadModel();
-        ammoLoadModel.setPojo(pojo.getAmmo());
-        ammoLoad.set(ammoLoadModel);
-        minRange.set(pojo.getMinRange());
-        ROF rof = pojo.getRof();
-        slowROF.set(rof.getSlow());
-        normalROF.set(rof.getNormal());
-        rapidROF.set(rof.getRapid());
-        burstRadius.set(pojo.getBurstRadius());
-        shellWeight.set(pojo.getShellWeight());
-        for (RangeItem rangeItem : pojo.getRangeTable().getRangeItem()) {
-            RangeItemModel rangeItemModel = new RangeItemModel();
-            rangeItemModel.setPojo(rangeItem);
-            ranges.add(rangeItemModel);
-        }
-        fireType.set(pojo.getFireType());
-    }
 }

@@ -14,6 +14,22 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
     private final  FloatProperty accuracy = new SimpleFloatProperty();
     private final  FloatProperty armourPenetration = new SimpleFloatProperty();
 
+    @Override
+    public RangeItem getPojo() {
+        RangeItem rangeItem = new RangeItem();
+        rangeItem.setRange(range.get());
+        rangeItem.setAccuracy(accuracy.get());
+        rangeItem.setArmourPenetration(armourPenetration.get());
+        return rangeItem;
+    }
+
+    @Override
+    public void setPojo(RangeItem pojo) {
+        range.set(pojo.getRange());
+        accuracy.set(pojo.getAccuracy());
+        armourPenetration.set(pojo.getArmourPenetration());
+    }
+
     public int getRange() {
         return range.get();
     }
@@ -50,19 +66,5 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
         this.armourPenetration.set(armourPenetration);
     }
 
-    @Override
-    public RangeItem getPojo() {
-        RangeItem rangeItem = new RangeItem();
-        rangeItem.setRange(range.get());
-        rangeItem.setAccuracy(accuracy.get());
-        rangeItem.setArmourPenetration(armourPenetration.get());
-        return rangeItem;
-    }
 
-    @Override
-    public void setPojo(RangeItem pojo) {
-        range.set(pojo.getRange());
-        accuracy.set(pojo.getAccuracy());
-        armourPenetration.set(pojo.getArmourPenetration());
-    }
 }

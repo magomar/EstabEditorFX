@@ -105,7 +105,7 @@ public class Vehicle {
     @XmlElement(required = true)
     protected VehicleSpeeds speed;
     @XmlElement(name = "fuel-consumption", required = true)
-    protected FuelComsumption fuelConsumption;
+    protected FuelConsumption fuelConsumption;
     protected float ronsonability;
     @XmlElement(name = "max-gradient")
     protected int maxGradient;
@@ -379,10 +379,10 @@ public class Vehicle {
      * 
      * @return
      *     possible object is
-     *     {@link FuelComsumption }
+     *     {@link FuelConsumption }
      *     
      */
-    public FuelComsumption getFuelConsumption() {
+    public FuelConsumption getFuelConsumption() {
         return fuelConsumption;
     }
 
@@ -391,10 +391,10 @@ public class Vehicle {
      * 
      * @param value
      *     allowed object is
-     *     {@link FuelComsumption }
+     *     {@link FuelConsumption }
      *     
      */
-    public void setFuelConsumption(FuelComsumption value) {
+    public void setFuelConsumption(FuelConsumption value) {
         this.fuelConsumption = value;
     }
 

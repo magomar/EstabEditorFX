@@ -26,11 +26,13 @@ public class VehicleModel implements PojoJFXModel<Vehicle> {
     private final FloatProperty reliability = new SimpleFloatProperty();
     //    private final ObjectProperty<ArmamentList> armaments = new SimpleObjectProperty<ArmamentList>();
     private final ObservableList<Armament> armaments = FXCollections.observableArrayList();
-    private final ObjectProperty<VehicleType> type = new SimpleObjectProperty<VehicleType>();
+    private final ObjectProperty<VehicleType> type = new SimpleObjectProperty<>();
     private final FloatProperty fuelCapacity = new SimpleFloatProperty();
     //    private final  ObjectProperty<VehicleSpeeds> speed = new SimpleObjectProperty<VehicleSpeeds>();
-    private final ObjectProperty<SpeedDataModel> roadSpeed = new SimpleObjectProperty<SpeedDataModel>();
-    private final ObjectProperty<SpeedDataModel> crossCountrySpeed = new SimpleObjectProperty<SpeedDataModel>();
+    private final ObjectProperty<SpeedDataModel> roadSpeed = new SimpleObjectProperty<>();
+    private final ObjectProperty<SpeedDataModel> crossCountrySpeed = new SimpleObjectProperty<>();
+     private final ObjectProperty<FuelConsumptionModel> roadFuelConsumption = new SimpleObjectProperty<>();
+    private final ObjectProperty<FuelConsumptionModel> crossCountryFuelConsumption = new SimpleObjectProperty<>();
     // end VehicleSpeeds
 //    private final  ObjectProperty<FuelConsumption> fuelConsumption = new SimpleObjectProperty<FuelConsumption>();
     // fuel consumption moved into SpeedDataModel
@@ -53,8 +55,6 @@ public class VehicleModel implements PojoJFXModel<Vehicle> {
     private final FloatProperty topArmor = new SimpleFloatProperty();
     // end Armor
 
-   // TODO getters and setters
-
     @Override
     public Vehicle getPojo() {
         // TODO convert all properties into a Vehicle pojo
@@ -65,4 +65,6 @@ public class VehicleModel implements PojoJFXModel<Vehicle> {
     public void setPojo(Vehicle pojo) {
         // TODO set all properties of this object taking the appropriate data from the pojo
     }
+    
+       // TODO getters and setters
 }
