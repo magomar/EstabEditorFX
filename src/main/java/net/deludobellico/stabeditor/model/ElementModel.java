@@ -3,7 +3,7 @@ package net.deludobellico.stabeditor.model;
 /**
  * Created by Heine on 10/30/2014.
  */
-public interface AssetModel {
+public interface ElementModel {
 
     public Integer getId();
 

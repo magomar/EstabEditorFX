@@ -78,7 +78,7 @@
                         <ToolBar fx:id="toolBar">
                             <items>
                                 <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
-                                        onAction="#copyElementAction" text="Copy Selected Element"/>
+                                        onAction="#copyToolbarButtonAction" text="Copy Selected Element"/>
                                 <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
                                         onAction="#saveTargetAction" text="Save Target File"/>
                             </items>

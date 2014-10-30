@@ -13,7 +13,7 @@ import net.deludobellico.stabeditor.data.jaxb.Weapon;
  * @author Mario
  */
 public interface PojoJFXModel<T> {
-    public static AssetModel wrapper(Object o) {
+    public static ElementModel wrapper(Object o) {
         if (o != null) {
             if (o instanceof Weapon) {
                 Weapon w = (Weapon) o;

@@ -9,7 +9,7 @@ import net.deludobellico.stabeditor.util.JFXModelUtil;
 /**
  * Created by Mario on 26/10/2014.
  */
-public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
+public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

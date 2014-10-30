@@ -34,6 +34,8 @@ public class FileIO {
     public static final String ESTAB_EDITOR_VIEW = "./view/estab-editor.fxml";
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
     public static final String RESOURCES_FOLDER = "/src/main/resources";
+    public static final String REMOVE_ICON_RESOURCE = "/images/removeicon.png";
+    public static final String COPY_ICON_RESOURCE = "/images/copyicon.png";
     public static final String ESTAB_DATASETS_FOLDER = RESOURCES_FOLDER + "/datasets";
     public static final String NEW_ESTAB_PATH = ESTAB_DATASETS_FOLDER + "/newestab.xml";
     /**

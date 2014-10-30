@@ -14,6 +14,7 @@ import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 import net.deludobellico.stabeditor.model.*;
+import net.deludobellico.stabeditor.view.EstabListCell;
 import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
 
@@ -73,10 +74,10 @@ public class EstabDataController implements Initializable {
     private TextField numWeaponsTextField;
 
     @FXML
-    private ListView<EstabReference> searchResultsListView;
-    private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
+    private ListView<EstabListCell> searchResultsListView;
+    private ObservableList<EstabListCell> estabReferenceObservableList = FXCollections.observableArrayList();
     // Optimize tab swap
-    private Map<Class, SearchList> searchLists = new HashMap<Class, SearchList>() {{
+    private Map<Class, SearchList<EstabListCell>> searchLists = new HashMap<Class, SearchList<EstabListCell>>() {{
         put(VehicleModel.class, new SearchList());
         put(WeaponModel.class, new SearchList());
         put(AmmoModel.class, new SearchList());
@@ -91,17 +92,19 @@ public class EstabDataController implements Initializable {
     private EstabDataModel estabDataModel;
     private Class activeElementClass = null;
     private EstabReference activeEstabElement = null;
-    private AssetEditorController componentController = null;
-    private Map<Class, String> componentEditorViews = new HashMap<>(3);
-    private Map<Class, Node> componentEditorNodes = new HashMap<>(3);
-    private Map<Class, AssetEditorController> componentEditorControllers = new HashMap<>(3);
+    private ElementEditorController elementController = null;
+    private Map<Class, String> elementEditorViews = new HashMap<>(3);
+    private Map<Class, Node> elementEditorNodes = new HashMap<>(3);
+    private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(3);
     private boolean isEditable = false;
+    private EstabEditorController editorController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         searchResultsListView.setItems(estabReferenceObservableList);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) setActiveComponent(newValue);
+            if (null != newValue) setActiveElement(newValue.getEstabReference());
         });
         searchVehicleTextField.textProperty().addListener((observable, oldValue, newValue) -> searchVehicleAction(null));
         searchWeaponTextField.textProperty().addListener((observable, oldValue, newValue) -> searchWeaponAction(null));
@@ -115,34 +118,34 @@ public class EstabDataController implements Initializable {
             }
         });
 
-        componentEditorViews.put(Vehicle.class, VEHICLE_VIEW);
-        componentEditorViews.put(Weapon.class, WEAPON_VIEW);
-        componentEditorViews.put(Ammo.class, AMMO_VIEW);
+        elementEditorViews.put(Vehicle.class, VEHICLE_VIEW);
+        elementEditorViews.put(Weapon.class, WEAPON_VIEW);
+        elementEditorViews.put(Ammo.class, AMMO_VIEW);
 
     }
 
-    public EstabReference<?> getActiveComponent() {
-        return searchResultsListView.getSelectionModel().getSelectedItem();
+    public EstabReference<?> getActiveElement() {
+        return searchResultsListView.getSelectionModel().getSelectedItem().getEstabReference();
     }
 
-    public void setActiveComponent(EstabReference<?> estabReference) {
+    public void setActiveElement(EstabReference<?> estabReference) {
         activeEstabElement = estabReference;
         if (null != estabReference) {
             Class estabClass = estabReference.getElementClass();
             Node editorNode;
             if (null == activeElementClass || !activeElementClass.equals(estabClass)) {
                 activeElementClass = estabClass;
-                if (componentEditorNodes.containsKey(estabClass)) {
-                    editorNode = componentEditorNodes.get(estabClass);
-                    componentController = componentEditorControllers.get(estabClass);
+                if (elementEditorNodes.containsKey(estabClass)) {
+                    editorNode = elementEditorNodes.get(estabClass);
+                    elementController = elementEditorControllers.get(estabClass);
                     editorStackPane.getChildren().setAll(editorNode);
                 } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(componentEditorViews.get(estabClass)));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(elementEditorViews.get(estabClass)));
                     try {
                         editorNode = fxmlLoader.load();
-                        componentEditorNodes.put(estabClass, editorNode);
-                        componentController = fxmlLoader.getController();
-                        componentController.setEditable(isEditable);
+                        elementEditorNodes.put(estabClass, editorNode);
+                        elementController = fxmlLoader.getController();
+                        elementController.setEditable(isEditable);
                         editorStackPane.getChildren().setAll(editorNode);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -150,10 +153,8 @@ public class EstabDataController implements Initializable {
                 }
             }
             // TODO: fix null pointer exception around here
-            //System.out.println(estabReference+" "+componentController+" "+activeElementClass);
-            Object o = estabReference.getElement();
-            Object op = PojoJFXModel.wrapper(o);
-            componentController.setEstabElement(PojoJFXModel.wrapper(estabReference.getElement()));
+            //System.out.println(estabReference+" "+elementController+" "+activeElementClass);
+            elementController.setEstabElement((ElementModel) PojoJFXModel.wrapper(estabReference.getElement()));
 
         }
     }
@@ -178,88 +179,69 @@ public class EstabDataController implements Initializable {
         this.isEditable = isEditable;
     }
 
-    public ListView<EstabReference> getSearchResultsListView() {
+    public ListView<EstabListCell> getSearchResultsListView() {
         return searchResultsListView;
     }
 
 
-    @FXML
-    private void searchVehicleAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(VehicleModel.class);
-        String textToSearch = searchVehicleTextField.getText();
+    private void searchElement(TextField textField, Class elementClass) {
+        SearchList<EstabListCell> savedList = searchLists.get(elementClass);
+        String textToSearch = textField.getText();
 
         estabReferenceObservableList.clear();
         if (textToSearch.equals(savedList.getLastSearch())) {
-            // Load saved list
             estabReferenceObservableList.addAll(savedList.getList());
         } else {
-            // New search
             savedList.getList().clear();
             savedList.setLastSearch(textToSearch);
-
-            List<AssetModel> vehicles = estabDataModel.searchAsset(textToSearch, VehicleModel.class);
-            for (AssetModel vehicle : vehicles) {
-                estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) vehicle).getPojo()), Vehicle.class));
-                savedList.getList().addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) vehicle).getPojo()), Vehicle.class));
+            List<ElementModel> elements = estabDataModel.searchElement(textToSearch, elementClass);
+            for (ElementModel element : elements) {
+                EstabReference es;
+                if (elementClass.equals(VehicleModel.class)) {
+                    es = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) element).getPojo()), Vehicle.class);
+                } else if (elementClass.equals(WeaponModel.class)) {
+                    es = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) element).getPojo()), Weapon.class);
+                } else {
+                    es = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) element).getPojo()), Ammo.class);
+                }
+                EstabListCell cell = new EstabListCell(es, editorController::copyEstabElementFromCellList, editorController.getCopyElementButton().disableProperty(), isEditable);
+                estabReferenceObservableList.add(cell);
+                savedList.getList().add(cell);
             }
         }
+    }
+
+    @FXML
+    private void searchVehicleAction(ActionEvent actionEvent) {
+        searchElement(searchVehicleTextField, VehicleModel.class);
     }
 
 
     @FXML
     private void searchWeaponAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(WeaponModel.class);
-        String textToSearch = searchWeaponTextField.getText();
-
-        estabReferenceObservableList.clear();
-        if (textToSearch.equals(savedList.getLastSearch())) {
-            // Load saved list
-            estabReferenceObservableList.addAll(savedList.getList());
-
-        } else {
-            savedList.getList().clear();
-            savedList.setLastSearch(textToSearch);
-
-            List<AssetModel> weapons = estabDataModel.searchAsset(textToSearch, WeaponModel.class);
-            for (AssetModel weapon : weapons) {
-                estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
-                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
-            }
-        }
+        searchElement(searchWeaponTextField, WeaponModel.class);
     }
 
     @FXML
     private void searchAmmoAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(AmmoModel.class);
-        String textToSearch = searchAmmoTextField.getText();
-
-        estabReferenceObservableList.clear();
-        if (textToSearch.equals(savedList.getLastSearch())) {
-            // Load saved list
-            estabReferenceObservableList.addAll(savedList.getList());
-        } else {
-            // New search
-            savedList.getList().clear();
-            savedList.setLastSearch(textToSearch);
-
-            List<AssetModel> ammos = estabDataModel.searchAsset(textToSearch, AmmoModel.class);
-            for (AssetModel ammo : ammos) {
-                estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) ammo).getPojo()), Ammo.class));
-                savedList.getList().addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) ammo).getPojo()), Ammo.class));
-            }
-        }
+        searchElement(searchAmmoTextField, AmmoModel.class);
     }
 
-    public void pasteActiveComponent(CopyPasteLists copyPasteLists) {
+
+    public void copyEstabElement(EstabReference elementToCopy, CopyPasteLists copyPasteLists) {
         if (!isEditable) return;
+        boolean successPasting = false;
         if (copyPasteLists.hasRepeatedElements()) {
             Action answer = UtilView.showWarningDialogRepeatedElement(copyPasteLists);
-            estabDataModel.paste(copyPasteLists, answer);
+            successPasting = estabDataModel.paste(copyPasteLists, answer);
         } else {
-            // if there are no repeated element, proceed as if overwriting
-            estabDataModel.paste(copyPasteLists, UtilView.DIALOG_OVERWRITE);
+            // if there are no repeated elements, proceed as if overwriting
+            successPasting = estabDataModel.paste(copyPasteLists, UtilView.DIALOG_OVERWRITE);
         }
-        updateStatistics();
+        if(successPasting){
+            setActiveElement(elementToCopy);
+            updateStatistics();
+        }
     }
 
     public void saveDataModel(File file) {
@@ -296,6 +278,35 @@ public class EstabDataController implements Initializable {
         setTitle("");
         editorStackPane.setVisible(false);
     }
+
+    public void set(String title, boolean isEditable, EstabEditorController editorController) {
+        setTitle(title);
+        setEditable(isEditable);
+        setEditorController(editorController);
+    }
+
+    public void setEditorController(EstabEditorController editorController) {
+        this.editorController = editorController;
+    }
+
+    public EstabEditorController getEditorController() {
+        return editorController;
+    }
+
+    /**
+     * I need a better name
+     * @param title
+     * @param isEditable
+     * @param cellButtonAction
+     * @param disableButtonProperty
+     */
+//    public void set(String title, boolean isEditable, Consumer<EstabReference> cellButtonAction, BooleanProperty disableButtonProperty) {
+//        setTitle(title);
+//        setEditable(isEditable);
+//        searchResultsListView.setCellFactory(param -> new IconListCell(isEditable, cellButtonAction, disableButtonProperty));
+//    }
+
+
 }
 
 

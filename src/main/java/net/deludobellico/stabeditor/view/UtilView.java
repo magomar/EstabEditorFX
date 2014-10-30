@@ -1,6 +1,6 @@
 package net.deludobellico.stabeditor.view;
 
-import net.deludobellico.stabeditor.model.AssetModel;
+import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
@@ -14,16 +14,16 @@ import java.io.File;
  */
 public class UtilView {
 
-    public static final CustomAction DIALOG_OVERWRITE = new CustomAction("Overwrite");
-    public static final CustomAction DIALOG_SKIP_REPEATED = new CustomAction("Skip repeated");
+    public static final CustomDialogAction DIALOG_OVERWRITE = new CustomDialogAction("Overwrite");
+    public static final CustomDialogAction DIALOG_SKIP_REPEATED = new CustomDialogAction("Skip repeated");
     public static final double MIN_WINDOW_WIDTH = 920.0;
     public static final double MIN_WINDOW_HEIGHT = 640.0;
 
     public static Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
         StringBuilder sb = new StringBuilder();
         sb.append(System.getProperty("line.separator"));
-        for (AssetModel asset : copyPasteLists.getRepeatedAssets().keySet()) {
-            sb.append(asset.print());
+        for (ElementModel element : copyPasteLists.getRepeatedElements().keySet()) {
+            sb.append(element.print());
             sb.append(System.getProperty("line.separator"));
         }
 

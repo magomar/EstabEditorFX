@@ -11,8 +11,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import net.deludobellico.stabeditor.model.CopyPasteLists;
 import net.deludobellico.stabeditor.model.EstabDataModel;
+import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.util.FileIO;
 import net.deludobellico.stabeditor.util.Settings;
 
@@ -103,10 +103,8 @@ public class EstabEditorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sourcePaneController.setTitle("Source Estab Data:");
-        targetPaneController.setTitle("Target Estab Data: ");
-        sourcePaneController.setEditable(false);
-        targetPaneController.setEditable(true);
+        targetPaneController.set("Target Estab Data:", true, this);
+        sourcePaneController.set("Source Estab Data:", false, this);
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Only enable the copy button if there's a target file and a selected element
             if (targetPaneController.getEstabDataModel() != null && newValue != null)
@@ -196,7 +194,7 @@ public class EstabEditorController implements Initializable {
         targetSaveAsMenuItem.setDisable(false);
         targetCloseMenuItem.setDisable(false);
 
-        if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveComponent() != null)
+        if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveElement() != null)
             copyElementButton.setDisable(false);
 
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
@@ -218,15 +216,6 @@ public class EstabEditorController implements Initializable {
     @FXML
     public void openNewTarget(ActionEvent actionEvent) {
         openTarget(FileIO.getNewEstabFile());
-    }
-
-    @FXML
-    public void copyElementAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        targetPaneController.setActiveComponent(sourcePaneController.getActiveComponent());
-        // All the assets/elements that we are going to copy
-        CopyPasteLists copyPasteElementLists = sourcePaneController.getEstabDataModel().getElementsToCopy(sourcePaneController.getActiveComponent());
-        targetPaneController.pasteActiveComponent(copyPasteElementLists);
     }
 
     @FXML
@@ -311,11 +300,34 @@ public class EstabEditorController implements Initializable {
     }
 
     @FXML
+    public void copyToolbarButtonAction(ActionEvent actionEvent) {
+        LOG.log(Level.INFO, "Copying estab element " + sourcePaneController.getActiveElement().getName());
+        targetPaneController.copyEstabElement(
+                sourcePaneController.getActiveElement(),
+                sourcePaneController.getEstabDataModel().getElementsToCopy(sourcePaneController.getActiveElement()));
+    }
+
+    public void copyEstabElementFromCellList(EstabReference estabReference) {
+        sourcePaneController.setActiveElement(estabReference);
+        LOG.log(Level.INFO, "Copying estab element " + estabReference.getName());
+        targetPaneController.copyEstabElement(
+                estabReference,
+                sourcePaneController.getEstabDataModel().getElementsToCopy(estabReference));
+    }
+    public void removeEstabElement(EstabReference estabReference) {
+
+    }
+
+    @FXML
     public void exitApplication(ActionEvent actionEvent) {
         Platform.exit();
     }
 
-    private Stage getStage() {
+    public Stage getStage() {
         return (Stage) rootPane.getScene().getWindow();
+    }
+
+    public Button getCopyElementButton() {
+        return copyElementButton;
     }
 }

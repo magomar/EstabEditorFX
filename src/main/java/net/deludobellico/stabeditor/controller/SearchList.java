@@ -7,16 +7,14 @@ import net.deludobellico.stabeditor.model.EstabReference;
 /**
  * Created by Heine on 10/27/2014.
  */
-public class SearchList {
-    private Boolean isFullSearch;
+public class SearchList<T> {
     private String lastSearch;
-    private ObservableList<EstabReference> estabReferenceObservableList;
+    private ObservableList<T> observableList;
 
 
     public SearchList() {
         lastSearch = null;
-        isFullSearch = false;
-        estabReferenceObservableList = FXCollections.observableArrayList();
+        observableList = FXCollections.observableArrayList();
     }
 
     public String getLastSearch() {
@@ -27,7 +25,7 @@ public class SearchList {
         this.lastSearch = search;
     }
 
-    public ObservableList<EstabReference> getList() {
-        return estabReferenceObservableList;
+    public ObservableList<T> getList() {
+        return observableList;
     }
 }

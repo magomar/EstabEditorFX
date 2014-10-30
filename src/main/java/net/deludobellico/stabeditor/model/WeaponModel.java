@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Mario on 28/10/2014.
  */
-public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
+public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

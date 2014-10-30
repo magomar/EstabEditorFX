@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
-import net.deludobellico.stabeditor.model.AssetModel;
+import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.VehicleModel;
 
 import java.net.URL;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class VehicleEditorController implements Initializable, AssetEditorController {
+public class VehicleEditorController implements Initializable, ElementEditorController {
     @FXML
     private TextField maxTrenchWidth;
 
@@ -172,7 +172,7 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void bindProperties(AssetModel asset) {
+    public void bindProperties(ElementModel element) {
         battleWeight.textProperty().bindBidirectional(vehicle.battleWeightProperty(), new NumberStringConverter());
         bulkFuelCapacity.textProperty().bindBidirectional(vehicle.bulkFuelCapacityProperty(), new NumberStringConverter());
         crew.textProperty().bindBidirectional(vehicle.crewProperty(), new NumberStringConverter());
@@ -211,7 +211,7 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void unbindProperties(AssetModel asset) {
+    public void unbindProperties(ElementModel element) {
         battleWeight.textProperty().unbindBidirectional(vehicle.battleWeightProperty());
         bulkFuelCapacity.textProperty().unbindBidirectional(vehicle.bulkFuelCapacityProperty());
         crew.textProperty().unbindBidirectional(vehicle.crewProperty());
@@ -254,8 +254,8 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void setEstabElement(AssetModel asset) {
-        VehicleModel newVehicle = (VehicleModel) asset;
+    public void setEstabElement(ElementModel element) {
+        VehicleModel newVehicle = (VehicleModel) element;
         VehicleModel previousVehicle = this.vehicle;
         this.vehicle = newVehicle;
 

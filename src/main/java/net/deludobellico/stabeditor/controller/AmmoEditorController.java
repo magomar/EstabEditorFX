@@ -6,7 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.model.AmmoModel;
-import net.deludobellico.stabeditor.model.AssetModel;
+import net.deludobellico.stabeditor.model.ElementModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class AmmoEditorController implements Initializable, AssetEditorController {
+public class AmmoEditorController implements Initializable, ElementEditorController {
     @FXML
     private TextField quantity;
 
@@ -40,7 +40,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public void bindProperties(AssetModel asset) {
+    public void bindProperties(ElementModel element) {
         quantity.textProperty().bindBidirectional(ammo.minOrderQtyProperty(), new NumberStringConverter());
         weight.textProperty().bindBidirectional(ammo.minOrderWeightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(ammo.nameProperty());
@@ -48,7 +48,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public void unbindProperties(AssetModel asset) {
+    public void unbindProperties(ElementModel element) {
         quantity.textProperty().unbindBidirectional(ammo.minOrderQtyProperty());
         weight.textProperty().unbindBidirectional(ammo.minOrderWeightProperty());
         name.textProperty().unbindBidirectional(ammo.nameProperty());
@@ -62,8 +62,8 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public void setEstabElement(AssetModel asset) {
-        AmmoModel newAmmo = (AmmoModel) asset;
+    public void setEstabElement(ElementModel element) {
+        AmmoModel newAmmo = (AmmoModel) element;
         AmmoModel previousAmmo = this.ammo;
         this.ammo = newAmmo;
 

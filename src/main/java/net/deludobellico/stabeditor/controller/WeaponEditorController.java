@@ -13,7 +13,7 @@ import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.FireType;
 import net.deludobellico.stabeditor.data.jaxb.PrimaryRole;
 import net.deludobellico.stabeditor.data.jaxb.WeaponType;
-import net.deludobellico.stabeditor.model.AssetModel;
+import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.PerformanceModel;
 import net.deludobellico.stabeditor.model.RangeItemModel;
 import net.deludobellico.stabeditor.model.WeaponModel;
@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class WeaponEditorController implements Initializable, AssetEditorController {
+public class WeaponEditorController implements Initializable, ElementEditorController {
 
     @FXML
     private TextField reliability;
@@ -267,7 +267,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     }
 
     @Override
-    public void bindProperties(AssetModel asset) {
+    public void bindProperties(ElementModel element) {
         weightTextField.textProperty().bindBidirectional(weapon.weightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(weapon.nameProperty());
         description.textProperty().bindBidirectional(weapon.descriptionProperty());
@@ -285,7 +285,7 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     }
 
     @Override
-    public void unbindProperties(AssetModel asset) {
+    public void unbindProperties(ElementModel element) {
         weightTextField.textProperty().unbindBidirectional(weapon.weightProperty());
         name.textProperty().unbindBidirectional(weapon.nameProperty());
         description.textProperty().unbindBidirectional(weapon.descriptionProperty());
@@ -301,8 +301,8 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     }
 
     @Override
-    public void setEstabElement(AssetModel asset) {
-        WeaponModel newWeapon = (WeaponModel) asset;
+    public void setEstabElement(ElementModel element) {
+        WeaponModel newWeapon = (WeaponModel) element;
         WeaponModel previousWeapon = this.weapon;
         this.weapon = newWeapon;
 

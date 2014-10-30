@@ -6,7 +6,7 @@ import net.deludobellico.stabeditor.data.jaxb.Ammo;
 /**
  * Created by Mario on 28/10/2014.
  */
-public class AmmoModel implements AssetModel, PojoJFXModel<Ammo> {
+public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

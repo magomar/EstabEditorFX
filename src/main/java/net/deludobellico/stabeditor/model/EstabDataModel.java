@@ -6,16 +6,16 @@ import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
  * Created by mario on 30-Jul-14.
  */
 public class EstabDataModel {
+    private static final Logger LOG = Logger.getLogger(EstabDataModel.class.getName());
     private Map<Integer, Image> images;
     private Map<Integer, Side> sides;
     private Map<Integer, VehicleModel> vehicles;
@@ -85,16 +85,11 @@ public class EstabDataModel {
         return ammos;
     }
 
-    public List<AssetModel> searchAsset(String name, Class assetClass) {
+    public List<ElementModel> searchElement(String name, Class elementClass) {
         String lowerCase = name.toLowerCase();
-        return (List<AssetModel>) allElements.get(assetClass).values().parallelStream()
-                .filter(asset -> ((AssetModel) asset).getName().toLowerCase().contains(lowerCase))
-                .collect(Collectors.<AssetModel>toList());
-    }
-
-    public boolean hasRepeatedElements(EstabReference estabReference) {
-        Map elementMap = allElements.get(estabReference.getElementClass());
-        return elementMap.containsKey(estabReference.getId());
+        return (List<ElementModel>) allElements.get(elementClass).values().parallelStream()
+                .filter(element -> ((ElementModel) element).getName().toLowerCase().contains(lowerCase))
+                .collect(Collectors.<ElementModel>toList());
     }
 
     private List<WeaponModel> getWeaponListFromVehicle(VehicleModel vehicle) {
@@ -125,26 +120,27 @@ public class EstabDataModel {
     }
 
     /**
-     * Elements are first saved to "NonRepeated" lists
+     * All elements are first saved to "NonRepeated" lists, which might confuse until {@sortRepeatedElements} is invoked
+     *
      * @param estabReference
      * @return
      */
     public CopyPasteLists getElementsToCopy(EstabReference estabReference) {
         CopyPasteLists copyPasteLists = new CopyPasteLists();
         if (estabReference.getElementClass() == Vehicle.class) {
-            copyPasteLists.getAllVehicles().add(new VehicleModel((Vehicle) estabReference.getElement()));
+            copyPasteLists.getNonRepeatedVehicles().add(new VehicleModel((Vehicle) estabReference.getElement()));
         } else if (estabReference.getElementClass() == Weapon.class) {
-            copyPasteLists.getAllWeapons().add(new WeaponModel((Weapon) estabReference.getElement()));
+            copyPasteLists.getNonRepeatedWeapons().add(new WeaponModel((Weapon) estabReference.getElement()));
         } else if (estabReference.getElementClass() == Ammo.class) {
-            copyPasteLists.getAllAmmo().add(new AmmoModel((Ammo) estabReference.getElement()));
+            copyPasteLists.getNonRepeatedAmmo().add(new AmmoModel((Ammo) estabReference.getElement()));
         }
 
-        for (VehicleModel v : copyPasteLists.getAllVehicles()) {
-            copyPasteLists.getAllWeapons().addAll(getWeaponListFromVehicle(v));
+        for (VehicleModel v : copyPasteLists.getNonRepeatedVehicles()) {
+            copyPasteLists.getNonRepeatedWeapons().addAll(getWeaponListFromVehicle(v));
         }
 
-        for (WeaponModel w : copyPasteLists.getAllWeapons()) {
-            copyPasteLists.getAllAmmo().addAll(getAmmoListFromWeapon(w));
+        for (WeaponModel w : copyPasteLists.getNonRepeatedWeapons()) {
+            copyPasteLists.getNonRepeatedAmmo().addAll(getAmmoListFromWeapon(w));
         }
         sortRepeatedElements(copyPasteLists);
         return copyPasteLists;
@@ -152,58 +148,101 @@ public class EstabDataModel {
 
     /**
      * Move all repeated elements from NonRepeated to Repeated
+     *
      * @param copyPasteLists
      */
     public void sortRepeatedElements(CopyPasteLists copyPasteLists) {
+        //Iterators are the only way to safe delete while iterating
+        Iterator<VehicleModel> itV = copyPasteLists.getNonRepeatedVehicles().iterator();
+        while (itV.hasNext()) {
+            VehicleModel v = itV.next();
+            if (vehicles.containsKey(v.getId())) {
+                copyPasteLists.getRepeatedVehicles().add(v);
+                itV.remove();
+            }
+        }
 
+        Iterator<WeaponModel> itW = copyPasteLists.getNonRepeatedWeapons().iterator();
+        while (itW.hasNext()) {
+            WeaponModel w = itW.next();
+            if (weapons.containsKey(w.getId())) {
+                copyPasteLists.getRepeatedWeapons().add(w);
+                itW.remove();
+            }
+        }
 
-
-        copyPasteLists.getAllVehicles().stream()
-                .filter(vehicle -> vehicles.containsKey(vehicle.getId()))
-                .forEach(vehicle -> {
-                    copyPasteLists.getRepeatedVehicles().add(vehicle);
-                });
-
-        copyPasteLists.getAllWeapons().stream()
-                .filter(weapon -> weapons.containsKey(weapon.getId()))
-                .forEach(weapon -> {
-                    copyPasteLists.getRepeatedWeapons().add(weapon);
-                });
-
-        copyPasteLists.getAllAmmo().stream()
-                .filter(ammo -> ammos.containsKey(ammo.getId()))
-                .forEach(ammo -> {
-                    copyPasteLists.getRepeatedAmmo().add(ammo);
-                });
+        Iterator<AmmoModel> itA = copyPasteLists.getNonRepeatedAmmo().iterator();
+        while (itA.hasNext()) {
+            AmmoModel a = itA.next();
+            if (ammos.containsKey(a.getId())) {
+                copyPasteLists.getRepeatedAmmo().add(a);
+                itA.remove();
+            }
+        }
     }
 
 
-    public void paste(CopyPasteLists copyPasteLists, Action dialogAnswer) {
+    public boolean paste(CopyPasteLists copyPasteLists, Action dialogAnswer) {
 
         if (dialogAnswer == UtilView.DIALOG_OVERWRITE) {
+            StringBuilder logMessage = new StringBuilder("Overwriting repeated elements: ");
+            logMessage.append(System.getProperty("line.separator"));
+
             for (VehicleModel v : copyPasteLists.getRepeatedVehicles()) {
                 vehicles.put(v.getId(), v);
+
+                logMessage.append("-- ");
+                logMessage.append(v.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
             for (WeaponModel w : copyPasteLists.getRepeatedWeapons()) {
                 weapons.put(w.getId(), w);
+
+                logMessage.append("-- ");
+                logMessage.append(w.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
             for (AmmoModel a : copyPasteLists.getRepeatedAmmo()) {
                 ammos.put(a.getId(), a);
+
+                logMessage.append("-- ");
+                logMessage.append(a.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
+            LOG.log(Level.INFO, logMessage.toString());
         }
 
         if (dialogAnswer == UtilView.DIALOG_SKIP_REPEATED || dialogAnswer == UtilView.DIALOG_OVERWRITE) {
-            for (VehicleModel v : copyPasteLists.getAllVehicles()) {
+            StringBuilder logMessage = new StringBuilder("Copying non repeated elements");
+            logMessage.append(System.getProperty("line.separator"));
+
+            for (VehicleModel v : copyPasteLists.getNonRepeatedVehicles()) {
                 vehicles.put(v.getId(), v);
+
+                logMessage.append("-- ");
+                logMessage.append(v.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
-            for (WeaponModel w : copyPasteLists.getAllWeapons()) {
+            for (WeaponModel w : copyPasteLists.getNonRepeatedWeapons()) {
                 weapons.put(w.getId(), w);
+
+                logMessage.append("-- ");
+                logMessage.append(w.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
-            for (AmmoModel a : copyPasteLists.getAllAmmo()) {
+            for (AmmoModel a : copyPasteLists.getNonRepeatedAmmo()) {
                 ammos.put(a.getId(), a);
+
+                logMessage.append("-- ");
+                logMessage.append(a.getName());
+                logMessage.append(System.getProperty("line.separator"));
             }
+            LOG.log(Level.INFO, logMessage.toString());
         } else {
+            LOG.log(Level.INFO, "Copy canceled");
+            return false;
         }
+        return true;
     }
 
     public void saveToFile(File file) {
