@@ -28,10 +28,10 @@
                                         </Menu>
                                         <SeparatorMenuItem mnemonicParsing="false"/>
                                         <MenuItem fx:id="sourceSaveAsMenuItem" disable="true" mnemonicParsing="false"
-                                                  onAction="#saveSouceAsAction" text="Save as ..."/>
+                                                  onAction="#saveSourceAsAction" text="Save as ..."/>
                                         <SeparatorMenuItem mnemonicParsing="false"/>
                                         <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false"
-                                                  text="Close"/>
+                                                  onAction="#closeSourceAction" text="Close"/>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Target">
@@ -52,7 +52,7 @@
                                                   onAction="#saveTargetAsAction" text="Save as ..."/>
                                         <SeparatorMenuItem mnemonicParsing="false"/>
                                         <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false"
-                                                  text="Close"/>
+                                                  onAction="#closeTargetAction" text="Close"/>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="View">
@@ -93,7 +93,8 @@
                             <children>
                                 <fx:include fx:id="sourcePane" source="estab-data.fxml"
                                             style="-fx-border-color: grey;"/>
-                                <fx:include fx:id="targetPane" source="estab-data.fxml"/>
+                                <fx:include fx:id="targetPane" source="estab-data.fxml"
+                                            style="-fx-border-color: grey;"/>
                             </children>
                         </VBox>
                     </content>

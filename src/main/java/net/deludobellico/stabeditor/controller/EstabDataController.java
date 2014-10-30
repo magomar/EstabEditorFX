@@ -272,6 +272,7 @@ public class EstabDataController implements Initializable {
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel = estabDataModel;
+        editorStackPane.setVisible(true);
         updateStatistics();
         searchVehicleButton.setDisable(false);
         searchWeaponButton.setDisable(false);
@@ -282,6 +283,19 @@ public class EstabDataController implements Initializable {
     }
 
 
+    public void clear() {
+        searchResultsListView.getItems().clear();
+        searchWeaponTextField.clear();
+        searchAmmoTextField.clear();
+        searchVehicleTextField.clear();
+        numAmmosTextField.clear();
+        numImagesTextField.clear();
+        numSidesTextField.clear();
+        numVehiclesTextField.clear();
+        numWeaponsTextField.clear();
+        setTitle("");
+        editorStackPane.setVisible(false);
+    }
 }
 
 

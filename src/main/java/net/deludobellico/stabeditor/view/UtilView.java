@@ -16,6 +16,8 @@ public class UtilView {
 
     public static final CustomAction DIALOG_OVERWRITE = new CustomAction("Overwrite");
     public static final CustomAction DIALOG_SKIP_REPEATED = new CustomAction("Skip repeated");
+    public static final double MIN_WINDOW_WIDTH = 920.0;
+    public static final double MIN_WINDOW_HEIGHT = 640.0;
 
     public static Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
         StringBuilder sb = new StringBuilder();

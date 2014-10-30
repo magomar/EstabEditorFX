@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.deludobellico.stabeditor.util.FileIO;
 import net.deludobellico.stabeditor.util.Settings;
+import net.deludobellico.stabeditor.view.UtilView;
 
 import java.io.File;
 import java.util.prefs.Preferences;
@@ -28,10 +29,11 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-
+        primaryStage.setMinWidth(UtilView.MIN_WINDOW_WIDTH);
+        primaryStage.setMinHeight(UtilView.MIN_WINDOW_HEIGHT);
         primaryStage.setHeight(Settings.getInstance().getWindowHeight());
         primaryStage.setWidth(Settings.getInstance().getWindowWidth());
+        primaryStage.show();
     }
 
     @Override

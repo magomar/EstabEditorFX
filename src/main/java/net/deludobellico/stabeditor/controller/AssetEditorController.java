@@ -15,4 +15,5 @@ public interface AssetEditorController {
     void bindProperties(AssetModel asset);
 
     void unbindProperties(AssetModel asset);
+
 }

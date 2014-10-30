@@ -55,6 +55,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
         description.textProperty().unbindBidirectional(ammo.descriptionProperty());
     }
 
+
     @Override
     public AmmoModel getEstabElement() {
         return ammo;

@@ -178,7 +178,7 @@ public class EstabEditorController implements Initializable {
         sourcePaneController.setEstabDataModel(new EstabDataModel(sourceEstabFile));
 
         sourceSaveAsMenuItem.setDisable(false);
-
+        sourceCloseMenuItem.setDisable(false);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
     }
@@ -194,6 +194,7 @@ public class EstabEditorController implements Initializable {
         saveDataButton.setDisable(false);
         targetSaveMenuItem.setDisable(false);
         targetSaveAsMenuItem.setDisable(false);
+        targetCloseMenuItem.setDisable(false);
 
         if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveComponent() != null)
             copyElementButton.setDisable(false);
@@ -249,7 +250,7 @@ public class EstabEditorController implements Initializable {
     }
 
     @FXML
-    public void saveSouceAsAction(ActionEvent actionEvent) {
+    public void saveSourceAsAction(ActionEvent actionEvent) {
         File file = openFileChooser(true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + targetEstabFile.getName() + " as " + file.getName());
@@ -257,6 +258,19 @@ public class EstabEditorController implements Initializable {
             openSource(file);
         }
     }
+
+    @FXML
+    public void closeSourceAction(ActionEvent actionEvent) {
+        sourcePaneController.clear();
+        sourceCloseMenuItem.setDisable(true);
+    }
+
+    @FXML
+    public void closeTargetAction(ActionEvent actionEvent) {
+        targetPaneController.clear();
+        targetCloseMenuItem.setDisable(true);
+    }
+
 
     @FXML
     public void toggleToolBarVisibility(ActionEvent actionEvent) {
