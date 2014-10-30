@@ -249,6 +249,11 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
+    public void clear() {
+        unbindProperties(vehicle);
+    }
+
+    @Override
     public VehicleModel getEstabElement() {
         return this.vehicle;
     }

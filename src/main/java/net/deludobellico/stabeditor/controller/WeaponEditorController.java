@@ -296,6 +296,11 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
+    public void clear() {
+        unbindProperties(weapon);
+    }
+
+    @Override
     public WeaponModel getEstabElement() {
         return weapon;
     }

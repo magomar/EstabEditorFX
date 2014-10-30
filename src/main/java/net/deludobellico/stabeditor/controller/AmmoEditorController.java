@@ -55,6 +55,11 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
         description.textProperty().unbindBidirectional(ammo.descriptionProperty());
     }
 
+    @Override
+    public void clear() {
+        unbindProperties(ammo);
+    }
+
 
     @Override
     public AmmoModel getEstabElement() {

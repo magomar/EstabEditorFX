@@ -7,12 +7,12 @@ import net.deludobellico.stabeditor.model.EstabReference;
 /**
  * Created by Heine on 10/27/2014.
  */
-public class SearchList<T> {
+public class SavedSearchList<T> {
     private String lastSearch;
     private ObservableList<T> observableList;
 
 
-    public SearchList() {
+    public SavedSearchList() {
         lastSearch = null;
         observableList = FXCollections.observableArrayList();
     }

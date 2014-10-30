@@ -23,12 +23,12 @@ public class EstabListCell extends HBox {
     private Pane pane = new Pane();
     private Button button = new Button();
 
-    public EstabListCell(EstabReference estabReference, Consumer<EstabReference> cellButtonAction, BooleanProperty disableButtonProperty, Boolean isEditable) {
+    public EstabListCell(EstabReference estabReference, Consumer<EstabReference> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
         super();
         label.setText(estabReference.getName());
         pane.setMinWidth(5.0);
         this.estabReference = estabReference;
-        button.setGraphic(isEditable ?
+        button.setGraphic(removeIcon ?
                 new ImageView(new Image(EstabListCell.class.getResourceAsStream(FileIO.REMOVE_ICON_RESOURCE)))
                 :
                 new ImageView(new Image(EstabListCell.class.getResourceAsStream(FileIO.COPY_ICON_RESOURCE))));

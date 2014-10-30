@@ -1,12 +1,13 @@
 package net.deludobellico.stabeditor.view;
 
 import net.deludobellico.stabeditor.model.ElementModel;
-import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 /**
@@ -18,14 +19,12 @@ public class UtilView {
     public static final CustomDialogAction DIALOG_SKIP_REPEATED = new CustomDialogAction("Skip repeated");
     public static final double MIN_WINDOW_WIDTH = 920.0;
     public static final double MIN_WINDOW_HEIGHT = 640.0;
+    public static final String newline = System.getProperty("line.separator");
 
-    public static Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
+    public static Action showWarningRepeatedElement(Collection<ElementModel> collection) {
+
         StringBuilder sb = new StringBuilder();
-        sb.append(System.getProperty("line.separator"));
-        for (ElementModel element : copyPasteLists.getRepeatedElements().keySet()) {
-            sb.append(element.print());
-            sb.append(System.getProperty("line.separator"));
-        }
+        collection.stream().forEach(element -> sb.append(element.print() + newline));
 
         Action response = Dialogs.create()
                 .title("Repeated elements found")
@@ -46,10 +45,25 @@ public class UtilView {
     }
 
     public static Action showWarningRemoveElement() {
+        return showWarningRemoveElement(new ArrayList<>());
+    }
+
+    public static Action showWarningRemoveElement(Collection<ElementModel> collection) {
+        String plural = "";
+        String message;
+        if (collection.isEmpty()) {
+            message = "You are deleting an element.";
+        } else {
+            plural = "s";
+            StringBuilder sb = new StringBuilder();
+            collection.stream().forEach(element -> sb.append(element.print() + newline));
+            message = sb.toString();
+        }
+
         Action response = Dialogs.create()
-                .title("Deleting element")
-                .masthead(null)
-                .message("You are deleting an element. Proceed?")
+                .title("Removing element"+plural)
+                .masthead("The Following elements will be deleted")
+                .message(message + newline + "Proceed?")
                 .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
                 .showWarning();
         return response;

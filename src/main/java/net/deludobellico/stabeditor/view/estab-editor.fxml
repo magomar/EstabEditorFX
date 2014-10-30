@@ -31,7 +31,7 @@
                                                   onAction="#saveSourceAsAction" text="Save as ..."/>
                                         <SeparatorMenuItem mnemonicParsing="false"/>
                                         <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false"
-                                                  onAction="#closeSourceAction" text="Close"/>
+                                                  onAction="#sourceCloseAction" text="Close"/>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Target">
@@ -52,7 +52,7 @@
                                                   onAction="#saveTargetAsAction" text="Save as ..."/>
                                         <SeparatorMenuItem mnemonicParsing="false"/>
                                         <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false"
-                                                  onAction="#closeTargetAction" text="Close"/>
+                                                  onAction="#targetCloseAction" text="Close"/>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="View">
@@ -79,6 +79,8 @@
                             <items>
                                 <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
                                         onAction="#copyToolbarButtonAction" text="Copy Selected Element"/>
+                                <Button fx:id="removeElementButton" disable="true" mnemonicParsing="false"
+                                        onAction="#removeToolbarButtonAction" text="Remove Selected Element"/>
                                 <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
                                         onAction="#saveTargetAction" text="Save Target File"/>
                             </items>

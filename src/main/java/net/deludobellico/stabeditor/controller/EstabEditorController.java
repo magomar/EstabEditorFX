@@ -87,6 +87,9 @@ public class EstabEditorController implements Initializable {
     private Button copyElementButton;
 
     @FXML
+    private Button removeElementButton;
+
+    @FXML
     private Button saveDataButton;
 
     @FXML
@@ -100,18 +103,23 @@ public class EstabEditorController implements Initializable {
 
     private Stage stage;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         targetPaneController.set("Target Estab Data:", true, this);
         sourcePaneController.set("Source Estab Data:", false, this);
+
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            // Only enable the copy button if there's a target file and a selected element
+            // Only enable the paste button if there's a target file and a selected element
             if (targetPaneController.getEstabDataModel() != null && newValue != null)
                 copyElementButton.setDisable(false);
             else copyElementButton.setDisable(true);
         });
 
+        targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (targetPaneController.getEstabDataModel() != null && newValue != null) {
+                removeElementButton.setDisable(false);
+            }
+        });
         populateOpenRecentSourceMenu();
         populateOpenRecentTargetMenu();
 
@@ -135,9 +143,7 @@ public class EstabEditorController implements Initializable {
         for (String targetFile : Settings.getInstance().getTargetRecentFiles()) {
             File file = new File(targetFile);
             MenuItem recentTargetMenuItem = new MenuItem(file.getName());
-            recentTargetMenuItem.setOnAction(event -> {
-                openTarget(file);
-            });
+            recentTargetMenuItem.setOnAction(event -> openTarget(file));
             targetOpenRecentMenuList.getItems().add(recentTargetMenuItem);
         }
     }
@@ -146,11 +152,9 @@ public class EstabEditorController implements Initializable {
         sourceOpenRecentMenuList.getItems().clear();
         for (String sourceFile : Settings.getInstance().getSourceRecentFiles()) {
             File file = new File(sourceFile);
-            if(file.exists()){
+            if (file.exists()) {
                 MenuItem recentSourceMenuItem = new MenuItem(file.getName());
-                recentSourceMenuItem.setOnAction(event -> {
-                    openSource(file);
-                });
+                recentSourceMenuItem.setOnAction(event -> openSource(file));
                 sourceOpenRecentMenuList.getItems().add(recentSourceMenuItem);
             }
         }
@@ -249,13 +253,13 @@ public class EstabEditorController implements Initializable {
     }
 
     @FXML
-    public void closeSourceAction(ActionEvent actionEvent) {
+    public void sourceCloseAction(ActionEvent actionEvent) {
         sourcePaneController.clear();
         sourceCloseMenuItem.setDisable(true);
     }
 
     @FXML
-    public void closeTargetAction(ActionEvent actionEvent) {
+    public void targetCloseAction(ActionEvent actionEvent) {
         targetPaneController.clear();
         targetCloseMenuItem.setDisable(true);
     }
@@ -300,11 +304,17 @@ public class EstabEditorController implements Initializable {
     }
 
     @FXML
-    public void copyToolbarButtonAction(ActionEvent actionEvent) {
+    private void copyToolbarButtonAction(ActionEvent actionEvent) {
         LOG.log(Level.INFO, "Copying estab element " + sourcePaneController.getActiveElement().getName());
         targetPaneController.copyEstabElement(
                 sourcePaneController.getActiveElement(),
-                sourcePaneController.getEstabDataModel().getElementsToCopy(sourcePaneController.getActiveElement()));
+                sourcePaneController.getEstabDataModel().getRelatedElements(sourcePaneController.getActiveElement()));
+    }
+
+    @FXML
+    private void removeToolbarButtonAction(ActionEvent actionEvent) {
+        LOG.log(Level.INFO, "Removing estab element " + targetPaneController.getActiveElement().getName());
+        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(targetPaneController.getActiveElement()));
     }
 
     public void copyEstabElementFromCellList(EstabReference estabReference) {
@@ -312,10 +322,12 @@ public class EstabEditorController implements Initializable {
         LOG.log(Level.INFO, "Copying estab element " + estabReference.getName());
         targetPaneController.copyEstabElement(
                 estabReference,
-                sourcePaneController.getEstabDataModel().getElementsToCopy(estabReference));
+                sourcePaneController.getEstabDataModel().getRelatedElements(estabReference));
     }
-    public void removeEstabElement(EstabReference estabReference) {
 
+    public void removeEstabElementFromCellList(EstabReference estabReference) {
+        LOG.log(Level.INFO, "Removing estab element " + estabReference.getName());
+        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(estabReference));
     }
 
     @FXML
@@ -330,4 +342,13 @@ public class EstabEditorController implements Initializable {
     public Button getCopyElementButton() {
         return copyElementButton;
     }
+
+    public Button getRemoveElementButton() {
+        return removeElementButton;
+    }
+
+    public EstabDataController getSourceEditor() {
+        return sourcePaneController;
+    }
+
 }

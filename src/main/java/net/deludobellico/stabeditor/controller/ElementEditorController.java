@@ -16,4 +16,5 @@ public interface ElementEditorController {
 
     void unbindProperties(ElementModel element);
 
+    void clear();
 }
