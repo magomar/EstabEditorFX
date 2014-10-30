@@ -57,9 +57,9 @@ public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
         weapon.setCalibre(calibre.get());
         weapon.setMuzzleVelocity(muzzleVelocity.get());
         weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
-        PerformanceList pl = new PerformanceList();
+        weapon.setPerformanceList(new PerformanceList());
         performances.stream().forEach((performanceModel) -> {
-            pl.getPerformance().add(performanceModel.getPojo());
+            weapon.getPerformanceList().getPerformance().add(performanceModel.getPojo());
         });
         return weapon;
     }
@@ -80,15 +80,9 @@ public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
-        // Random null pointer exception
-        if (pojo.getPerformanceList() != null) {
-            if (pojo.getPerformanceList().getPerformance() != null) {
-                performances.clear();
-                pojo.getPerformanceList().getPerformance().stream().map((performance) -> new PerformanceModel(performance)).forEach((performanceModel) -> {
-                    performances.add(performanceModel);
-                });
-            }
-        }
+        pojo.getPerformanceList().getPerformance().stream().map((performance) -> new PerformanceModel(performance)).forEach((performanceModel) -> {
+            performances.add(performanceModel);
+        });
     }
 
     public Integer getId() {

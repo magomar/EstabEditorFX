@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Performance complex type.
+ * <p>Java class for Performance complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Performance">
@@ -60,7 +60,7 @@ public class Performance {
     protected FireType fireType;
 
     /**
-     * Obtiene el valor de la propiedad ammo.
+     * Gets the value of the ammo property.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad ammo.
+     * Sets the value of the ammo property.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad minRange.
+     * Gets the value of the minRange property.
      * 
      */
     public int getMinRange() {
@@ -92,7 +92,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad minRange.
+     * Sets the value of the minRange property.
      * 
      */
     public void setMinRange(int value) {
@@ -100,7 +100,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad rof.
+     * Gets the value of the rof property.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad rof.
+     * Sets the value of the rof property.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad burstRadius.
+     * Gets the value of the burstRadius property.
      * 
      */
     public int getBurstRadius() {
@@ -132,7 +132,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad burstRadius.
+     * Sets the value of the burstRadius property.
      * 
      */
     public void setBurstRadius(int value) {
@@ -140,7 +140,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad shellWeight.
+     * Gets the value of the shellWeight property.
      * 
      */
     public float getShellWeight() {
@@ -148,7 +148,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad shellWeight.
+     * Sets the value of the shellWeight property.
      * 
      */
     public void setShellWeight(float value) {
@@ -156,7 +156,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad rangeTable.
+     * Gets the value of the rangeTable property.
      * 
      * @return
      *     possible object is
@@ -168,7 +168,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad rangeTable.
+     * Sets the value of the rangeTable property.
      * 
      * @param value
      *     allowed object is
@@ -180,7 +180,7 @@ public class Performance {
     }
 
     /**
-     * Obtiene el valor de la propiedad fireType.
+     * Gets the value of the fireType property.
      * 
      * @return
      *     possible object is
@@ -192,7 +192,7 @@ public class Performance {
     }
 
     /**
-     * Define el valor de la propiedad fireType.
+     * Sets the value of the fireType property.
      * 
      * @param value
      *     allowed object is

@@ -18,13 +18,7 @@ public interface PojoJFXModel<T> {
     T getPojo();
     void setPojo(T pojo);
 
-    public static String boolToYesNo(boolean cond) {
-        return cond ? YesNo.YES.value() : YesNo.NO.value();
-    }
 
-    public static boolean yesNoToBool(String cond) {
-        return cond.equals(YesNo.YES);
-    }
 
     public static AssetModel wrapper(Object o) {
         if (o != null) {
@@ -40,16 +34,5 @@ public interface PojoJFXModel<T> {
             }
         }
         return null;
-    }
-    public static WeaponModel wrapper(Weapon weapon) {
-        return new WeaponModel(weapon);
-    }
-
-    public static VehicleModel wrapper(Vehicle vehicle) {
-        return new VehicleModel(vehicle);
-    }
-
-    public static AmmoModel wrapper(Ammo ammo) {
-        return new AmmoModel(ammo);
     }
 }

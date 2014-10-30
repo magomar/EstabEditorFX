@@ -1,6 +1,5 @@
 package net.deludobellico.stabeditor.view;
 
-import net.deludobellico.stabeditor.data.jaxb.Asset;
 import net.deludobellico.stabeditor.model.AssetModel;
 import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;

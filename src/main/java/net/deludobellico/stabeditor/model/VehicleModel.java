@@ -3,8 +3,8 @@ package net.deludobellico.stabeditor.model;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.util.converter.IntegerStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.*;
+import net.deludobellico.stabeditor.util.JFXModelUtil;
 
 /**
  * Created by Mario on 26/10/2014.
@@ -69,8 +69,8 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         vehicle.setSize(vs);
         vehicle.setCrew(crew.get());
         vehicle.setReliability(reliability.get());
-        ArmamentList al = new ArmamentList();
-        armaments.stream().forEach(armamentModel -> al.getArmament().add(armamentModel.getPojo()));
+        vehicle.setArmaments(new ArmamentList());
+        armaments.stream().forEach(armamentModel -> vehicle.getArmaments().getArmament().add(armamentModel.getPojo()));
         vehicle.setType(type.get());
         vehicle.setFuelCapacity(fuelCapacity.get());
         SpeedData rs = new SpeedData();
@@ -96,8 +96,8 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         vehicle.setBulkFuelCapacity(bulkFuelCapacity.get());
         vehicle.setPayloadCapacity(payloadCapacity.get());
         vehicle.setTakeCoverMod(takeCoverMod.get());
-        vehicle.setHasOpenTop(PojoJFXModel.boolToYesNo(hasOpenTop.get()));
-        vehicle.setHasTurret(PojoJFXModel.boolToYesNo(hasTurret.get()));
+        vehicle.setHasOpenTop(JFXModelUtil.booleanToYesNo(hasOpenTop.get()).value());
+        vehicle.setHasTurret(JFXModelUtil.booleanToYesNo(hasTurret.get()).value());
         vehicle.setBattleWeight(battleWeight.get());
         Armor a = new Armor();
         a.setFront(frontArmor.get());
@@ -120,13 +120,7 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         width.set(pojo.getSize().getWeight());
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
-        // Random null pointer exception here
-        if (pojo.getArmaments() != null){
-            if (pojo.getArmaments().getArmament() != null) {
-                pojo.getArmaments().getArmament().stream().map(armament -> new ArmamentModel(armament)).forEach(armamentModel -> armaments.add(armamentModel));
-            }
-        }
-
+        pojo.getArmaments().getArmament().stream().map(armament -> new ArmamentModel(armament)).forEach(armamentModel -> armaments.add(armamentModel));
         type.set(pojo.getType());
         fuelCapacity.set(pojo.getFuelCapacity());
         SpeedDataModel csd = new SpeedDataModel(pojo.getSpeed().getCrossCountry().getMax(), pojo.getSpeed().getCrossCountry().getNormal());
@@ -142,8 +136,8 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         bulkFuelCapacity.set(pojo.getBulkFuelCapacity());
         payloadCapacity.set(pojo.getPayloadCapacity());
         takeCoverMod.set(pojo.getTakeCoverMod());
-        hasOpenTop.set(PojoJFXModel.yesNoToBool(pojo.getHasOpenTop()));
-        hasTurret.set(PojoJFXModel.yesNoToBool(pojo.getHasTurret()));
+        hasOpenTop.set(pojo.getHasOpenTop().equals(YesNo.YES.value()));
+        hasTurret.set(pojo.getHasTurret().equals(YesNo.YES.value()));
         battleWeight.set(pojo.getBattleWeight());
         frontArmor.set(pojo.getArmour().getFront());
         sideArmor.set(pojo.getArmour().getSide());

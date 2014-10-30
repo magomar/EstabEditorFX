@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FuelComsumption complex type.
+ * <p>Java class for FuelConsumption complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="FuelComsumption">
+ * &lt;complexType name="FuelConsumption">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -35,7 +35,7 @@ public class FuelConsumption {
     protected Float normal;
 
     /**
-     * Obtiene el valor de la propiedad max.
+     * Gets the value of the max property.
      * 
      * @return
      *     possible object is
@@ -47,7 +47,7 @@ public class FuelConsumption {
     }
 
     /**
-     * Define el valor de la propiedad max.
+     * Sets the value of the max property.
      * 
      * @param value
      *     allowed object is
@@ -59,7 +59,7 @@ public class FuelConsumption {
     }
 
     /**
-     * Obtiene el valor de la propiedad normal.
+     * Gets the value of the normal property.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class FuelConsumption {
     }
 
     /**
-     * Define el valor de la propiedad normal.
+     * Sets the value of the normal property.
      * 
      * @param value
      *     allowed object is

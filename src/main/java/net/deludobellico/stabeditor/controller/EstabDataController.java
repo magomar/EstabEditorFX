@@ -151,7 +151,8 @@ public class EstabDataController implements Initializable {
             }
             // TODO: fix null pointer exception around here
             //System.out.println(estabReference+" "+componentController+" "+activeElementClass);
-
+            Object o = estabReference.getElement();
+            Object op = PojoJFXModel.wrapper(o);
             componentController.setEstabElement(PojoJFXModel.wrapper(estabReference.getElement()));
 
         }

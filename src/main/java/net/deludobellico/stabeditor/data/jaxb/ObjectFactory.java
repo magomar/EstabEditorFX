@@ -184,6 +184,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FuelConsumption }
+     * 
+     */
+    public FuelConsumption createFuelConsumption() {
+        return new FuelConsumption();
+    }
+
+    /**
      * Create an instance of {@link Nation }
      * 
      */
@@ -325,14 +333,6 @@ public class ObjectFactory {
      */
     public RangeItem createRangeItem() {
         return new RangeItem();
-    }
-
-    /**
-     * Create an instance of {@link FuelConsumption }
-     * 
-     */
-    public FuelConsumption createFuelComsumption() {
-        return new FuelConsumption();
     }
 
     /**

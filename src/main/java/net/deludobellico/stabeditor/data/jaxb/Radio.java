@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Radio complex type.
+ * <p>Java class for Radio complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Radio">
@@ -85,7 +85,7 @@ public class Radio {
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad picture.
+     * Gets the value of the picture property.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad picture.
+     * Sets the value of the picture property.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureFilename.
+     * Gets the value of the pictureFilename property.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad pictureFilename.
+     * Sets the value of the pictureFilename property.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
+     * Gets the value of the size property.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad size.
+     * Sets the value of the size property.
      * 
      * @param value
      *     allowed object is
@@ -205,7 +205,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad crew.
+     * Gets the value of the crew property.
      * 
      * @return
      *     possible object is
@@ -217,7 +217,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad crew.
+     * Sets the value of the crew property.
      * 
      * @param value
      *     allowed object is
@@ -229,7 +229,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad reliability.
+     * Gets the value of the reliability property.
      * 
      */
     public float getReliability() {
@@ -237,7 +237,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad reliability.
+     * Sets the value of the reliability property.
      * 
      */
     public void setReliability(float value) {
@@ -245,7 +245,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad armaments.
+     * Gets the value of the armaments property.
      * 
      * @return
      *     possible object is
@@ -257,7 +257,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad armaments.
+     * Sets the value of the armaments property.
      * 
      * @param value
      *     allowed object is
@@ -269,7 +269,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad netType.
+     * Gets the value of the netType property.
      * 
      * @return
      *     possible object is
@@ -281,7 +281,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad netType.
+     * Sets the value of the netType property.
      * 
      * @param value
      *     allowed object is
@@ -293,7 +293,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad freqType.
+     * Gets the value of the freqType property.
      * 
      * @return
      *     possible object is
@@ -305,7 +305,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad freqType.
+     * Sets the value of the freqType property.
      * 
      * @param value
      *     allowed object is
@@ -317,7 +317,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxRange.
+     * Gets the value of the maxRange property.
      * 
      */
     public int getMaxRange() {
@@ -325,7 +325,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad maxRange.
+     * Sets the value of the maxRange property.
      * 
      */
     public void setMaxRange(int value) {
@@ -333,7 +333,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad gain.
+     * Gets the value of the gain property.
      * 
      */
     public float getGain() {
@@ -341,7 +341,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad gain.
+     * Sets the value of the gain property.
      * 
      */
     public void setGain(float value) {
@@ -349,7 +349,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -357,7 +357,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {

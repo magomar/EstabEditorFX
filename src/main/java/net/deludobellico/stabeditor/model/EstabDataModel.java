@@ -87,7 +87,7 @@ public class EstabDataModel {
 
     public List<AssetModel> searchAsset(String name, Class assetClass) {
         String lowerCase = name.toLowerCase();
-        return (List<AssetModel>) allElements.get(assetClass).values().stream()
+        return (List<AssetModel>) allElements.get(assetClass).values().parallelStream()
                 .filter(asset -> ((AssetModel) asset).getName().toLowerCase().contains(lowerCase))
                 .collect(Collectors.<AssetModel>toList());
     }

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Icon complex type.
+ * <p>Java class for Icon complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Icon">
@@ -73,7 +73,7 @@ public class Icon {
     protected YesNo isHq;
 
     /**
-     * Obtiene el valor de la propiedad backgroundColor.
+     * Gets the value of the backgroundColor property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad backgroundColor.
+     * Sets the value of the backgroundColor property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad backgroundDarkColor.
+     * Gets the value of the backgroundDarkColor property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad backgroundDarkColor.
+     * Sets the value of the backgroundDarkColor property.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad backgroundLightColor.
+     * Gets the value of the backgroundLightColor property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad backgroundLightColor.
+     * Sets the value of the backgroundLightColor property.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad designationColor.
+     * Gets the value of the designationColor property.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad designationColor.
+     * Sets the value of the designationColor property.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad symbolColor.
+     * Gets the value of the symbolColor property.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad symbolColor.
+     * Sets the value of the symbolColor property.
      * 
      * @param value
      *     allowed object is
@@ -193,7 +193,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad militarySymbol.
+     * Gets the value of the militarySymbol property.
      * 
      */
     public int getMilitarySymbol() {
@@ -201,7 +201,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad militarySymbol.
+     * Sets the value of the militarySymbol property.
      * 
      */
     public void setMilitarySymbol(int value) {
@@ -209,7 +209,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureSymbol.
+     * Gets the value of the pictureSymbol property.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad pictureSymbol.
+     * Sets the value of the pictureSymbol property.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +233,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad forceSizeIcon.
+     * Gets the value of the forceSizeIcon property.
      * 
      * @return
      *     possible object is
@@ -245,7 +245,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad forceSizeIcon.
+     * Sets the value of the forceSizeIcon property.
      * 
      * @param value
      *     allowed object is
@@ -257,7 +257,7 @@ public class Icon {
     }
 
     /**
-     * Obtiene el valor de la propiedad isHq.
+     * Gets the value of the isHq property.
      * 
      * @return
      *     possible object is
@@ -269,7 +269,7 @@ public class Icon {
     }
 
     /**
-     * Define el valor de la propiedad isHq.
+     * Sets the value of the isHq property.
      * 
      * @param value
      *     allowed object is
@@ -281,4 +281,3 @@ public class Icon {
     }
 
 }
-

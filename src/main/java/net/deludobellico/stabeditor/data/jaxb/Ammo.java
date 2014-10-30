@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Ammo complex type.
+ * <p>Java class for Ammo complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Ammo">
@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "minOrderQty",
     "minOrderWeight"
 })
-public class Ammo implements Asset {
+public class Ammo {
 
     @XmlElement(required = true)
     protected String name;
@@ -52,7 +52,7 @@ public class Ammo implements Asset {
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderQty.
+     * Gets the value of the minOrderQty property.
      * 
      */
     public int getMinOrderQty() {
@@ -108,7 +108,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Define el valor de la propiedad minOrderQty.
+     * Sets the value of the minOrderQty property.
      * 
      */
     public void setMinOrderQty(int value) {
@@ -116,7 +116,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderWeight.
+     * Gets the value of the minOrderWeight property.
      * 
      */
     public float getMinOrderWeight() {
@@ -124,7 +124,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Define el valor de la propiedad minOrderWeight.
+     * Sets the value of the minOrderWeight property.
      * 
      */
     public void setMinOrderWeight(float value) {
@@ -132,7 +132,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -140,7 +140,7 @@ public class Ammo implements Asset {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {

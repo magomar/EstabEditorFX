@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Nation complex type.
+ * <p>Java class for Nation complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Nation">
@@ -61,7 +61,7 @@ public class Nation {
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad nationality.
+     * Gets the value of the nationality property.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad nationality.
+     * Sets the value of the nationality property.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad largeInsignia.
+     * Gets the value of the largeInsignia property.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad largeInsignia.
+     * Sets the value of the largeInsignia property.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad smallInsignia.
+     * Gets the value of the smallInsignia property.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad smallInsignia.
+     * Sets the value of the smallInsignia property.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +210,7 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -218,7 +218,7 @@ public class Nation {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {

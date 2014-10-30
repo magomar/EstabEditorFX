@@ -1,7 +1,6 @@
 package net.deludobellico.stabeditor.model;
 
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
-import net.deludobellico.stabeditor.data.jaxb.Asset;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 
