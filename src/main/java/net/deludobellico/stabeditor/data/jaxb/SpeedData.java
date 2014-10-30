@@ -16,8 +16,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="SpeedData">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="normal" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="normal" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -30,19 +30,19 @@ import javax.xml.bind.annotation.XmlType;
 public class SpeedData {
 
     @XmlAttribute(name = "max")
-    protected Float max;
+    protected Double max;
     @XmlAttribute(name = "normal")
-    protected Float normal;
+    protected Double normal;
 
     /**
      * Gets the value of the max property.
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getMax() {
+    public Double getMax() {
         return max;
     }
 
@@ -51,10 +51,10 @@ public class SpeedData {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setMax(Float value) {
+    public void setMax(Double value) {
         this.max = value;
     }
 
@@ -63,10 +63,10 @@ public class SpeedData {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getNormal() {
+    public Double getNormal() {
         return normal;
     }
 
@@ -75,10 +75,10 @@ public class SpeedData {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setNormal(Float value) {
+    public void setNormal(Double value) {
         this.normal = value;
     }
 

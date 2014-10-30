@@ -44,7 +44,7 @@
             <xs:element name="description" type="xs:string"/>
             <xs:element name="large-insignia" type="Insignia"/>
             <xs:element name="small-insignia" type="Insignia"/>
-            <xs:element name="basics-consumption-rate" type="xs:float"/>
+            <xs:element name="basics-consumption-rate" type="xs:double"/>
             <xs:element name="default-enemy-aper-fp" type="xs:int"/>
             <xs:element name="default-enemy-aarm-fp" type="xs:int"/>
             <xs:element name="nation" type="Nation" maxOccurs="unbounded" minOccurs="0"/>
@@ -115,11 +115,11 @@
             <xs:element name="move-type" type="MoveType"/>
             <xs:element name="pers-qty" type="xs:int"/>
             <xs:element name="staff-capacity" type="xs:int"/>
-            <xs:element name="basics-qty" type="xs:float"/>
-            <xs:element name="basics-consumption-rate-modifier" type="xs:float"/>
+            <xs:element name="basics-qty" type="xs:double"/>
+            <xs:element name="basics-consumption-rate-modifier" type="xs:double"/>
             <xs:element name="commander-rank" type="xs:int"/>
-            <xs:element name="fuel-qty" type="xs:float"/>
-            <xs:element name="fuel-load" type="xs:float"/>
+            <xs:element name="fuel-qty" type="xs:double"/>
+            <xs:element name="fuel-load" type="xs:double"/>
             <xs:element name="speed" type="SpeedData"/>
             <xs:element name="deployment-duration" type="DeploymentDuration"/>
             <xs:element name="ready-to-fire-duration" type="xs:string"/>
@@ -195,21 +195,21 @@
             <xs:element name="reliability" type="Proportion"/>
             <xs:element name="armaments" type="ArmamentList"/>
             <xs:element name="type" type="VehicleType"/>
-            <xs:element name="fuel-capacity" type="xs:float"/>
+            <xs:element name="fuel-capacity" type="xs:double"/>
             <xs:element name="speed" type="VehicleSpeeds"/>
             <xs:element name="fuel-consumption" type="FuelConsumption"/>
             <xs:element name="ronsonability" type="Proportion"/>
             <xs:element name="max-gradient" type="xs:int"/>
             <xs:element name="max-fording-depth" type="xs:int"/>
             <xs:element name="max-trench-width" type="xs:int"/>
-            <xs:element name="towing-capacity" type="xs:float"/>
+            <xs:element name="towing-capacity" type="xs:double"/>
             <xs:element name="personnel-capacity" type="xs:int"/>
-            <xs:element name="bulk-fuel-capacity" type="xs:float"/>
-            <xs:element name="payload-capacity" type="xs:float"/>
-            <xs:element name="take-cover-mod" type="xs:float"/>
+            <xs:element name="bulk-fuel-capacity" type="xs:double"/>
+            <xs:element name="payload-capacity" type="xs:double"/>
+            <xs:element name="take-cover-mod" type="xs:double"/>
             <xs:element name="has-turret" type="xs:string"/>
             <xs:element name="has-open-top" type="xs:string"/>
-            <xs:element name="battle-weight" type="xs:float"/>
+            <xs:element name="battle-weight" type="xs:double"/>
             <xs:element name="armour" type="Armor"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
@@ -220,10 +220,10 @@
     </xs:complexType>
 
     <xs:complexType name="VehicleSize">
-        <xs:attribute name="width" type="xs:float"/>
-        <xs:attribute name="height" type="xs:float"/>
-        <xs:attribute name="length" type="xs:float"/>
-        <xs:attribute name="weight" type="xs:float"/>
+        <xs:attribute name="width" type="xs:double"/>
+        <xs:attribute name="height" type="xs:double"/>
+        <xs:attribute name="length" type="xs:double"/>
+        <xs:attribute name="weight" type="xs:double"/>
     </xs:complexType>
 
     <xs:complexType name="ArmamentList">
@@ -246,10 +246,10 @@
     </xs:complexType>
 
     <xs:complexType name="Armor">
-        <xs:attribute name="front" type="xs:float"/>
-        <xs:attribute name="side" type="xs:float"/>
-        <xs:attribute name="rear" type="xs:float"/>
-        <xs:attribute name="top" type="xs:float"/>
+        <xs:attribute name="front" type="xs:double"/>
+        <xs:attribute name="side" type="xs:double"/>
+        <xs:attribute name="rear" type="xs:double"/>
+        <xs:attribute name="top" type="xs:double"/>
     </xs:complexType>
 
     <!-- Weapons -->
@@ -267,7 +267,7 @@
             <xs:element name="type" type="WeaponType"/>
             <xs:element name="single-shot" type="YesNo"/>
             <xs:element name="primary-role" type="PrimaryRole"/>
-            <xs:element name="calibre" type="xs:float"/>
+            <xs:element name="calibre" type="xs:double"/>
             <xs:element name="muzzle-velocity" type="xs:int"/>
             <xs:element name="must-deploy-to-fire" type="YesNo"/>
             <xs:element name="performance-list" type="PerformanceList"/>
@@ -276,10 +276,10 @@
     </xs:complexType>
 
     <xs:complexType name="WeaponSize">
-        <xs:attribute name="width" type="xs:float"/>
-        <xs:attribute name="height" type="xs:float"/>
-        <xs:attribute name="length" type="xs:float"/>
-        <xs:attribute name="weight" type="xs:float"/>
+        <xs:attribute name="width" type="xs:double"/>
+        <xs:attribute name="height" type="xs:double"/>
+        <xs:attribute name="length" type="xs:double"/>
+        <xs:attribute name="weight" type="xs:double"/>
     </xs:complexType>
 
     <xs:complexType name="PerformanceList">
@@ -294,7 +294,7 @@
             <xs:element name="min-range" type="xs:int"/>
             <xs:element name="rof" type="ROF"/>
             <xs:element name="burst-radius" type="xs:int"/>
-            <xs:element name="shell-weight" type="xs:float"/>
+            <xs:element name="shell-weight" type="xs:double"/>
             <xs:element name="range-table" type="RangeTable"/>
         </xs:sequence>
         <xs:attribute name="fire-type" type="FireType"/>
@@ -307,9 +307,9 @@
     </xs:complexType>
 
     <xs:complexType name="ROF">
-        <xs:attribute name="slow" type="xs:float"/>
-        <xs:attribute name="normal" type="xs:float"/>
-        <xs:attribute name="rapid" type="xs:float"/>
+        <xs:attribute name="slow" type="xs:double"/>
+        <xs:attribute name="normal" type="xs:double"/>
+        <xs:attribute name="rapid" type="xs:double"/>
     </xs:complexType>
 
     <xs:complexType name="RangeTable">
@@ -321,7 +321,7 @@
     <xs:complexType name="RangeItem">
         <xs:attribute name="range" type="xs:int" use="required"/>
         <xs:attribute name="accuracy" type="Proportion" use="required"/>
-        <xs:attribute name="armour-penetration" type="xs:float" use="required"/>
+        <xs:attribute name="armour-penetration" type="xs:double" use="required"/>
     </xs:complexType>
 
     <!-- Radios -->
@@ -340,16 +340,16 @@
             <xs:element name="net-type" type="NetType"/>
             <xs:element name="freq-type" type="FreqType"/>
             <xs:element name="max-range" type="xs:int"/>
-            <xs:element name="gain" type="xs:float"/>
+            <xs:element name="gain" type="xs:double"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="RadioSize"> <!-- weight OK, but the rest?  -->
-        <xs:attribute name="width" type="xs:float" use="required"/>
-        <xs:attribute name="height" type="xs:float" use="required"/>
-        <xs:attribute name="length" type="xs:float" use="required"/>
-        <xs:attribute name="weight" type="xs:float" use="required"/>
+        <xs:attribute name="width" type="xs:double" use="required"/>
+        <xs:attribute name="height" type="xs:double" use="required"/>
+        <xs:attribute name="length" type="xs:double" use="required"/>
+        <xs:attribute name="weight" type="xs:double" use="required"/>
     </xs:complexType>
 
     <!-- Ammo -->
@@ -359,7 +359,7 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
             <xs:element name="min-order-qty" type="xs:int"/>
-            <xs:element name="min-order-weight" type="xs:float"/>
+            <xs:element name="min-order-weight" type="xs:double"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
@@ -368,9 +368,9 @@
 
     <xs:complexType name="FormationEffects">
         <xs:sequence>
-            <xs:element name="moving-cohesion-level" type="xs:float"/>
-            <xs:element name="frontage-per-man" type="xs:float"/>
-            <xs:element name="depth-per-man" type="xs:float"/>
+            <xs:element name="moving-cohesion-level" type="xs:double"/>
+            <xs:element name="frontage-per-man" type="xs:double"/>
+            <xs:element name="depth-per-man" type="xs:double"/>
             <xs:element name="firing-percentages" type="FiringPercentages"/>
             <xs:element name="target-percentages" type="TargetPercentages"/>
             <xs:element name="security" type="FormationSecurity"/>
@@ -411,7 +411,7 @@
 
 
     <xs:simpleType name="Proportion">
-        <xs:restriction base="xs:float">
+        <xs:restriction base="xs:double">
             <xs:minInclusive value="0.0"/>
             <xs:maxInclusive value="1.0"/>
         </xs:restriction>
@@ -422,13 +422,13 @@
     </xs:complexType>
 
     <xs:complexType name="SpeedData">
-        <xs:attribute name="max" type="xs:float"/>
-        <xs:attribute name="normal" type="xs:float"/>
+        <xs:attribute name="max" type="xs:double"/>
+        <xs:attribute name="normal" type="xs:double"/>
     </xs:complexType>
 
     <xs:complexType name="FuelConsumption">
-        <xs:attribute name="max" type="xs:float"/>
-        <xs:attribute name="normal" type="xs:float"/>
+        <xs:attribute name="max" type="xs:double"/>
+        <xs:attribute name="normal" type="xs:double"/>
     </xs:complexType>
 
     <xs:complexType name="RGBColor">

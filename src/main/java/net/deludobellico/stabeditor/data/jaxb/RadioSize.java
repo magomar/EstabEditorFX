@@ -16,10 +16,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="RadioSize">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="width" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="height" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="weight" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="width" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="height" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="weight" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -32,19 +32,19 @@ import javax.xml.bind.annotation.XmlType;
 public class RadioSize {
 
     @XmlAttribute(name = "width", required = true)
-    protected float width;
+    protected double width;
     @XmlAttribute(name = "height", required = true)
-    protected float height;
+    protected double height;
     @XmlAttribute(name = "length", required = true)
-    protected float length;
+    protected double length;
     @XmlAttribute(name = "weight", required = true)
-    protected float weight;
+    protected double weight;
 
     /**
      * Gets the value of the width property.
      * 
      */
-    public float getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -52,7 +52,7 @@ public class RadioSize {
      * Sets the value of the width property.
      * 
      */
-    public void setWidth(float value) {
+    public void setWidth(double value) {
         this.width = value;
     }
 
@@ -60,7 +60,7 @@ public class RadioSize {
      * Gets the value of the height property.
      * 
      */
-    public float getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -68,7 +68,7 @@ public class RadioSize {
      * Sets the value of the height property.
      * 
      */
-    public void setHeight(float value) {
+    public void setHeight(double value) {
         this.height = value;
     }
 
@@ -76,7 +76,7 @@ public class RadioSize {
      * Gets the value of the length property.
      * 
      */
-    public float getLength() {
+    public double getLength() {
         return length;
     }
 
@@ -84,7 +84,7 @@ public class RadioSize {
      * Sets the value of the length property.
      * 
      */
-    public void setLength(float value) {
+    public void setLength(double value) {
         this.length = value;
     }
 
@@ -92,7 +92,7 @@ public class RadioSize {
      * Gets the value of the weight property.
      * 
      */
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -100,7 +100,7 @@ public class RadioSize {
      * Sets the value of the weight property.
      * 
      */
-    public void setWeight(float value) {
+    public void setWeight(double value) {
         this.weight = value;
     }
 

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="large-insignia" type="{}Insignia"/>
  *         &lt;element name="small-insignia" type="{}Insignia"/>
- *         &lt;element name="basics-consumption-rate" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="basics-consumption-rate" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="default-enemy-aper-fp" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="default-enemy-aarm-fp" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="nation" type="{}Nation" maxOccurs="unbounded" minOccurs="0"/>
@@ -59,7 +59,7 @@ public class Side {
     @XmlElement(name = "small-insignia", required = true)
     protected Insignia smallInsignia;
     @XmlElement(name = "basics-consumption-rate")
-    protected float basicsConsumptionRate;
+    protected double basicsConsumptionRate;
     @XmlElement(name = "default-enemy-aper-fp")
     protected int defaultEnemyAperFp;
     @XmlElement(name = "default-enemy-aarm-fp")
@@ -168,7 +168,7 @@ public class Side {
      * Gets the value of the basicsConsumptionRate property.
      * 
      */
-    public float getBasicsConsumptionRate() {
+    public double getBasicsConsumptionRate() {
         return basicsConsumptionRate;
     }
 
@@ -176,7 +176,7 @@ public class Side {
      * Sets the value of the basicsConsumptionRate property.
      * 
      */
-    public void setBasicsConsumptionRate(float value) {
+    public void setBasicsConsumptionRate(double value) {
         this.basicsConsumptionRate = value;
     }
 

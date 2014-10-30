@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import java.util.ArrayList;
 
 
 /**
@@ -29,21 +28,21 @@ import java.util.ArrayList;
  *         &lt;element name="reliability" type="{}Proportion"/>
  *         &lt;element name="armaments" type="{}ArmamentList"/>
  *         &lt;element name="type" type="{}VehicleType"/>
- *         &lt;element name="fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="speed" type="{}VehicleSpeeds"/>
  *         &lt;element name="fuel-consumption" type="{}FuelConsumption"/>
  *         &lt;element name="ronsonability" type="{}Proportion"/>
  *         &lt;element name="max-gradient" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="max-fording-depth" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="max-trench-width" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="towing-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="towing-capacity" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="personnel-capacity" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="bulk-fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="payload-capacity" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="take-cover-mod" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="bulk-fuel-capacity" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="payload-capacity" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="take-cover-mod" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="has-turret" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="has-open-top" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="battle-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="battle-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="armour" type="{}Armor"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
@@ -95,19 +94,19 @@ public class Vehicle {
     @XmlElement(required = true)
     protected VehicleSize size;
     protected int crew;
-    protected float reliability;
+    protected double reliability;
     @XmlElement(required = true)
     protected ArmamentList armaments;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected VehicleType type;
     @XmlElement(name = "fuel-capacity")
-    protected float fuelCapacity;
+    protected double fuelCapacity;
     @XmlElement(required = true)
     protected VehicleSpeeds speed;
     @XmlElement(name = "fuel-consumption", required = true)
     protected FuelConsumption fuelConsumption;
-    protected float ronsonability;
+    protected double ronsonability;
     @XmlElement(name = "max-gradient")
     protected int maxGradient;
     @XmlElement(name = "max-fording-depth")
@@ -115,21 +114,21 @@ public class Vehicle {
     @XmlElement(name = "max-trench-width")
     protected int maxTrenchWidth;
     @XmlElement(name = "towing-capacity")
-    protected float towingCapacity;
+    protected double towingCapacity;
     @XmlElement(name = "personnel-capacity")
     protected int personnelCapacity;
     @XmlElement(name = "bulk-fuel-capacity")
-    protected float bulkFuelCapacity;
+    protected double bulkFuelCapacity;
     @XmlElement(name = "payload-capacity")
-    protected float payloadCapacity;
+    protected double payloadCapacity;
     @XmlElement(name = "take-cover-mod")
-    protected float takeCoverMod;
+    protected double takeCoverMod;
     @XmlElement(name = "has-turret", required = true)
     protected String hasTurret;
     @XmlElement(name = "has-open-top", required = true)
     protected String hasOpenTop;
     @XmlElement(name = "battle-weight")
-    protected float battleWeight;
+    protected double battleWeight;
     @XmlElement(required = true)
     protected Armor armour;
     @XmlAttribute(name = "id", required = true)
@@ -275,7 +274,7 @@ public class Vehicle {
      * Gets the value of the reliability property.
      * 
      */
-    public float getReliability() {
+    public double getReliability() {
         return reliability;
     }
 
@@ -283,7 +282,7 @@ public class Vehicle {
      * Sets the value of the reliability property.
      * 
      */
-    public void setReliability(float value) {
+    public void setReliability(double value) {
         this.reliability = value;
     }
 
@@ -301,10 +300,10 @@ public class Vehicle {
 
     /**
      * Sets the value of the armaments property.
-     *
+     * 
      * @param value
      *     allowed object is
-     *     {@link net.deludobellico.stabeditor.data.jaxb.ArmamentList }
+     *     {@link ArmamentList }
      *     
      */
     public void setArmaments(ArmamentList value) {
@@ -339,7 +338,7 @@ public class Vehicle {
      * Gets the value of the fuelCapacity property.
      * 
      */
-    public float getFuelCapacity() {
+    public double getFuelCapacity() {
         return fuelCapacity;
     }
 
@@ -347,7 +346,7 @@ public class Vehicle {
      * Sets the value of the fuelCapacity property.
      * 
      */
-    public void setFuelCapacity(float value) {
+    public void setFuelCapacity(double value) {
         this.fuelCapacity = value;
     }
 
@@ -403,7 +402,7 @@ public class Vehicle {
      * Gets the value of the ronsonability property.
      * 
      */
-    public float getRonsonability() {
+    public double getRonsonability() {
         return ronsonability;
     }
 
@@ -411,7 +410,7 @@ public class Vehicle {
      * Sets the value of the ronsonability property.
      * 
      */
-    public void setRonsonability(float value) {
+    public void setRonsonability(double value) {
         this.ronsonability = value;
     }
 
@@ -467,7 +466,7 @@ public class Vehicle {
      * Gets the value of the towingCapacity property.
      * 
      */
-    public float getTowingCapacity() {
+    public double getTowingCapacity() {
         return towingCapacity;
     }
 
@@ -475,7 +474,7 @@ public class Vehicle {
      * Sets the value of the towingCapacity property.
      * 
      */
-    public void setTowingCapacity(float value) {
+    public void setTowingCapacity(double value) {
         this.towingCapacity = value;
     }
 
@@ -499,7 +498,7 @@ public class Vehicle {
      * Gets the value of the bulkFuelCapacity property.
      * 
      */
-    public float getBulkFuelCapacity() {
+    public double getBulkFuelCapacity() {
         return bulkFuelCapacity;
     }
 
@@ -507,7 +506,7 @@ public class Vehicle {
      * Sets the value of the bulkFuelCapacity property.
      * 
      */
-    public void setBulkFuelCapacity(float value) {
+    public void setBulkFuelCapacity(double value) {
         this.bulkFuelCapacity = value;
     }
 
@@ -515,7 +514,7 @@ public class Vehicle {
      * Gets the value of the payloadCapacity property.
      * 
      */
-    public float getPayloadCapacity() {
+    public double getPayloadCapacity() {
         return payloadCapacity;
     }
 
@@ -523,7 +522,7 @@ public class Vehicle {
      * Sets the value of the payloadCapacity property.
      * 
      */
-    public void setPayloadCapacity(float value) {
+    public void setPayloadCapacity(double value) {
         this.payloadCapacity = value;
     }
 
@@ -531,7 +530,7 @@ public class Vehicle {
      * Gets the value of the takeCoverMod property.
      * 
      */
-    public float getTakeCoverMod() {
+    public double getTakeCoverMod() {
         return takeCoverMod;
     }
 
@@ -539,7 +538,7 @@ public class Vehicle {
      * Sets the value of the takeCoverMod property.
      * 
      */
-    public void setTakeCoverMod(float value) {
+    public void setTakeCoverMod(double value) {
         this.takeCoverMod = value;
     }
 
@@ -595,7 +594,7 @@ public class Vehicle {
      * Gets the value of the battleWeight property.
      * 
      */
-    public float getBattleWeight() {
+    public double getBattleWeight() {
         return battleWeight;
     }
 
@@ -603,7 +602,7 @@ public class Vehicle {
      * Sets the value of the battleWeight property.
      * 
      */
-    public void setBattleWeight(float value) {
+    public void setBattleWeight(double value) {
         this.battleWeight = value;
     }
 

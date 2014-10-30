@@ -29,23 +29,23 @@ public class RankModel implements PojoJFXModel<Rank> {
         return shortName.get();
     }
 
-    public StringProperty shortNameProperty() {
-        return shortName;
-    }
-
     public void setShortName(String shortName) {
         this.shortName.set(shortName);
+    }
+
+    public StringProperty shortNameProperty() {
+        return shortName;
     }
 
     public String getFullName() {
         return fullName.get();
     }
 
-    public StringProperty fullNameProperty() {
-        return fullName;
-    }
-
     public void setFullName(String fullName) {
         this.fullName.set(fullName);
+    }
+
+    public StringProperty fullNameProperty() {
+        return fullName;
     }
 }

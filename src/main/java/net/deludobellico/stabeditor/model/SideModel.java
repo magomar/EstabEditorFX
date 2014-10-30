@@ -15,7 +15,7 @@ public class SideModel implements PojoJFXModel<Side> {
     private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
-    private final FloatProperty basicsConsumptionRate = new SimpleFloatProperty();
+    private final DoubleProperty basicsConsumptionRate = new SimpleDoubleProperty();
     private final IntegerProperty defaultEnemyAperFp = new SimpleIntegerProperty();
     private final IntegerProperty defaultEnemyAarmFp = new SimpleIntegerProperty();
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();

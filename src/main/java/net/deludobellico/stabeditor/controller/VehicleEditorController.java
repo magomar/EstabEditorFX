@@ -1,7 +1,5 @@
 package net.deludobellico.stabeditor.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,11 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
 import net.deludobellico.stabeditor.model.AssetModel;
 import net.deludobellico.stabeditor.model.VehicleModel;
-import net.deludobellico.stabeditor.model.WeaponModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class VehicleEditorController implements Initializable, AssetEditorController{
+public class VehicleEditorController implements Initializable, AssetEditorController {
     @FXML
     private TextField maxTrenchWidth;
 
@@ -253,20 +249,19 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void setEstabElement(AssetModel asset) {
-        VehicleModel newVehicle = (VehicleModel) asset;
-        VehicleModel previousVehicle = this.vehicle;
-        this.vehicle =  newVehicle;
-
-        if(previousVehicle != null) unbindProperties(previousVehicle);
-        bindProperties(newVehicle);
-    }
-
-    @Override
     public VehicleModel getEstabElement() {
         return this.vehicle;
     }
 
+    @Override
+    public void setEstabElement(AssetModel asset) {
+        VehicleModel newVehicle = (VehicleModel) asset;
+        VehicleModel previousVehicle = this.vehicle;
+        this.vehicle = newVehicle;
+
+        if (previousVehicle != null) unbindProperties(previousVehicle);
+        bindProperties(newVehicle);
+    }
 
 
 }

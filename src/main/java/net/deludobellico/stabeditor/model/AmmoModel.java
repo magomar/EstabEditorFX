@@ -11,7 +11,7 @@ public class AmmoModel implements AssetModel, PojoJFXModel<Ammo> {
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty minOrderQty = new SimpleIntegerProperty();
-    private final FloatProperty minOrderWeight = new SimpleFloatProperty();
+    private final DoubleProperty minOrderWeight = new SimpleDoubleProperty();
 
     public AmmoModel(Ammo ammo) {
         setPojo(ammo);
@@ -41,60 +41,60 @@ public class AmmoModel implements AssetModel, PojoJFXModel<Ammo> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public int getMinOrderQty() {
         return minOrderQty.get();
     }
 
-    public IntegerProperty minOrderQtyProperty() {
-        return minOrderQty;
-    }
-
     public void setMinOrderQty(int minOrderQty) {
         this.minOrderQty.set(minOrderQty);
     }
 
-    public float getMinOrderWeight() {
+    public IntegerProperty minOrderQtyProperty() {
+        return minOrderQty;
+    }
+
+    public double getMinOrderWeight() {
         return minOrderWeight.get();
     }
 
-    public FloatProperty minOrderWeightProperty() {
-        return minOrderWeight;
+    public void setMinOrderWeight(double minOrderWeight) {
+        this.minOrderWeight.set(minOrderWeight);
     }
 
-    public void setMinOrderWeight(float minOrderWeight) {
-        this.minOrderWeight.set(minOrderWeight);
+    public DoubleProperty minOrderWeightProperty() {
+        return minOrderWeight;
     }
 
 }

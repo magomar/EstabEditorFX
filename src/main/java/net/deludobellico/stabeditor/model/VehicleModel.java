@@ -16,36 +16,36 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
     private final StringProperty pictureFilename = new SimpleStringProperty();
     /* */
-    private final FloatProperty width = new SimpleFloatProperty();
-    private final FloatProperty height = new SimpleFloatProperty();
-    private final FloatProperty length = new SimpleFloatProperty();
-    private final FloatProperty weight = new SimpleFloatProperty();
+    private final DoubleProperty width = new SimpleDoubleProperty();
+    private final DoubleProperty height = new SimpleDoubleProperty();
+    private final DoubleProperty length = new SimpleDoubleProperty();
+    private final DoubleProperty weight = new SimpleDoubleProperty();
     /* end VehicleSize */
     private final IntegerProperty crew = new SimpleIntegerProperty();
-    private final FloatProperty reliability = new SimpleFloatProperty();
+    private final DoubleProperty reliability = new SimpleDoubleProperty();
     private final ObservableList<ArmamentModel> armaments = FXCollections.observableArrayList();
     private final ObjectProperty<VehicleType> type = new SimpleObjectProperty<>();
-    private final FloatProperty fuelCapacity = new SimpleFloatProperty();
+    private final DoubleProperty fuelCapacity = new SimpleDoubleProperty();
     private final ObjectProperty<SpeedDataModel> roadSpeed = new SimpleObjectProperty<>();
     private final ObjectProperty<SpeedDataModel> crossCountrySpeed = new SimpleObjectProperty<>();
     private final ObjectProperty<FuelConsumptionModel> fuelConsumption = new SimpleObjectProperty<>();
     // end VehicleSpeeds
-    private final FloatProperty ronsonability = new SimpleFloatProperty();
+    private final DoubleProperty ronsonability = new SimpleDoubleProperty();
     private final IntegerProperty maxGradient = new SimpleIntegerProperty();
     private final IntegerProperty maxFordingDepth = new SimpleIntegerProperty();
     private final IntegerProperty maxTrenchWidth = new SimpleIntegerProperty();
-    private final FloatProperty towingCapacity = new SimpleFloatProperty();
+    private final DoubleProperty towingCapacity = new SimpleDoubleProperty();
     private final IntegerProperty personnelCapacity = new SimpleIntegerProperty();
-    private final FloatProperty bulkFuelCapacity = new SimpleFloatProperty();
-    private final FloatProperty payloadCapacity = new SimpleFloatProperty();
-    private final FloatProperty takeCoverMod = new SimpleFloatProperty();
+    private final DoubleProperty bulkFuelCapacity = new SimpleDoubleProperty();
+    private final DoubleProperty payloadCapacity = new SimpleDoubleProperty();
+    private final DoubleProperty takeCoverMod = new SimpleDoubleProperty();
     private final BooleanProperty hasTurret = new SimpleBooleanProperty();
     private final BooleanProperty hasOpenTop = new SimpleBooleanProperty();
-    private final FloatProperty battleWeight = new SimpleFloatProperty();
-    private final FloatProperty frontArmor = new SimpleFloatProperty();
-    private final FloatProperty sideArmor = new SimpleFloatProperty();
-    private final FloatProperty rearArmor = new SimpleFloatProperty();
-    private final FloatProperty topArmor = new SimpleFloatProperty();
+    private final DoubleProperty battleWeight = new SimpleDoubleProperty();
+    private final DoubleProperty frontArmor = new SimpleDoubleProperty();
+    private final DoubleProperty sideArmor = new SimpleDoubleProperty();
+    private final DoubleProperty rearArmor = new SimpleDoubleProperty();
+    private final DoubleProperty topArmor = new SimpleDoubleProperty();
 
     public VehicleModel(Vehicle vehicle) {
         setPojo(vehicle);
@@ -149,132 +149,132 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public int getPictureId() {
         return pictureId.get();
     }
 
-    public IntegerProperty pictureIdProperty() {
-        return pictureId;
-    }
-
     public void setPictureId(int pictureId) {
         this.pictureId.set(pictureId);
+    }
+
+    public IntegerProperty pictureIdProperty() {
+        return pictureId;
     }
 
     public String getPictureFilename() {
         return pictureFilename.get();
     }
 
-    public StringProperty pictureFilenameProperty() {
-        return pictureFilename;
-    }
-
     public void setPictureFilename(String pictureFilename) {
         this.pictureFilename.set(pictureFilename);
     }
 
-    public float getWidth() {
+    public StringProperty pictureFilenameProperty() {
+        return pictureFilename;
+    }
+
+    public double getWidth() {
         return width.get();
     }
 
-    public FloatProperty widthProperty() {
-        return width;
-    }
-
-    public void setWidth(float width) {
+    public void setWidth(double width) {
         this.width.set(width);
     }
 
-    public float getHeight() {
+    public DoubleProperty widthProperty() {
+        return width;
+    }
+
+    public double getHeight() {
         return height.get();
     }
 
-    public FloatProperty heightProperty() {
-        return height;
-    }
-
-    public void setHeight(float height) {
+    public void setHeight(double height) {
         this.height.set(height);
     }
 
-    public float getLength() {
+    public DoubleProperty heightProperty() {
+        return height;
+    }
+
+    public double getLength() {
         return length.get();
     }
 
-    public FloatProperty lengthProperty() {
-        return length;
-    }
-
-    public void setLength(float length) {
+    public void setLength(double length) {
         this.length.set(length);
     }
 
-    public float getWeight() {
+    public DoubleProperty lengthProperty() {
+        return length;
+    }
+
+    public double getWeight() {
         return weight.get();
     }
 
-    public FloatProperty weightProperty() {
-        return weight;
+    public void setWeight(double weight) {
+        this.weight.set(weight);
     }
 
-    public void setWeight(float weight) {
-        this.weight.set(weight);
+    public DoubleProperty weightProperty() {
+        return weight;
     }
 
     public int getCrew() {
         return crew.get();
     }
 
-    public IntegerProperty crewProperty() {
-        return crew;
-    }
-
     public void setCrew(int crew) {
         this.crew.set(crew);
     }
 
-    public float getReliability() {
+    public IntegerProperty crewProperty() {
+        return crew;
+    }
+
+    public double getReliability() {
         return reliability.get();
     }
 
-    public FloatProperty reliabilityProperty() {
-        return reliability;
+    public void setReliability(double reliability) {
+        this.reliability.set(reliability);
     }
 
-    public void setReliability(float reliability) {
-        this.reliability.set(reliability);
+    public DoubleProperty reliabilityProperty() {
+        return reliability;
     }
 
     public ObservableList<ArmamentModel> getArmaments() {
@@ -285,251 +285,251 @@ public class VehicleModel implements AssetModel, PojoJFXModel<Vehicle> {
         return type.get();
     }
 
-    public ObjectProperty<VehicleType> typeProperty() {
-        return type;
-    }
-
     public void setType(VehicleType type) {
         this.type.set(type);
     }
 
-    public float getFuelCapacity() {
+    public ObjectProperty<VehicleType> typeProperty() {
+        return type;
+    }
+
+    public double getFuelCapacity() {
         return fuelCapacity.get();
     }
 
-    public FloatProperty fuelCapacityProperty() {
-        return fuelCapacity;
+    public void setFuelCapacity(double fuelCapacity) {
+        this.fuelCapacity.set(fuelCapacity);
     }
 
-    public void setFuelCapacity(float fuelCapacity) {
-        this.fuelCapacity.set(fuelCapacity);
+    public DoubleProperty fuelCapacityProperty() {
+        return fuelCapacity;
     }
 
     public SpeedDataModel getRoadSpeed() {
         return roadSpeed.get();
     }
 
-    public ObjectProperty<SpeedDataModel> roadSpeedProperty() {
-        return roadSpeed;
-    }
-
     public void setRoadSpeed(SpeedDataModel roadSpeed) {
         this.roadSpeed.set(roadSpeed);
+    }
+
+    public ObjectProperty<SpeedDataModel> roadSpeedProperty() {
+        return roadSpeed;
     }
 
     public SpeedDataModel getCrossCountrySpeed() {
         return crossCountrySpeed.get();
     }
 
-    public ObjectProperty<SpeedDataModel> crossCountrySpeedProperty() {
-        return crossCountrySpeed;
-    }
-
     public void setCrossCountrySpeed(SpeedDataModel crossCountrySpeed) {
         this.crossCountrySpeed.set(crossCountrySpeed);
+    }
+
+    public ObjectProperty<SpeedDataModel> crossCountrySpeedProperty() {
+        return crossCountrySpeed;
     }
 
     public FuelConsumptionModel getFuelConsumption() {
         return fuelConsumption.get();
     }
 
-    public ObjectProperty<FuelConsumptionModel> fuelConsumptionProperty() {
-        return fuelConsumption;
-    }
-
     public void setFuelConsumption(FuelConsumptionModel fuelConsumption) {
         this.fuelConsumption.set(fuelConsumption);
     }
 
-    public float getRonsonability() {
+    public ObjectProperty<FuelConsumptionModel> fuelConsumptionProperty() {
+        return fuelConsumption;
+    }
+
+    public double getRonsonability() {
         return ronsonability.get();
     }
 
-    public FloatProperty ronsonabilityProperty() {
-        return ronsonability;
+    public void setRonsonability(double ronsonability) {
+        this.ronsonability.set(ronsonability);
     }
 
-    public void setRonsonability(float ronsonability) {
-        this.ronsonability.set(ronsonability);
+    public DoubleProperty ronsonabilityProperty() {
+        return ronsonability;
     }
 
     public int getMaxGradient() {
         return maxGradient.get();
     }
 
-    public IntegerProperty maxGradientProperty() {
-        return maxGradient;
-    }
-
     public void setMaxGradient(int maxGradient) {
         this.maxGradient.set(maxGradient);
+    }
+
+    public IntegerProperty maxGradientProperty() {
+        return maxGradient;
     }
 
     public int getMaxFordingDepth() {
         return maxFordingDepth.get();
     }
 
-    public IntegerProperty maxFordingDepthProperty() {
-        return maxFordingDepth;
-    }
-
     public void setMaxFordingDepth(int maxFordingDepth) {
         this.maxFordingDepth.set(maxFordingDepth);
+    }
+
+    public IntegerProperty maxFordingDepthProperty() {
+        return maxFordingDepth;
     }
 
     public int getMaxTrenchWidth() {
         return maxTrenchWidth.get();
     }
 
-    public IntegerProperty maxTrenchWidthProperty() {
-        return maxTrenchWidth;
-    }
-
     public void setMaxTrenchWidth(int maxTrenchWidth) {
         this.maxTrenchWidth.set(maxTrenchWidth);
     }
 
-    public float getTowingCapacity() {
+    public IntegerProperty maxTrenchWidthProperty() {
+        return maxTrenchWidth;
+    }
+
+    public double getTowingCapacity() {
         return towingCapacity.get();
     }
 
-    public FloatProperty towingCapacityProperty() {
-        return towingCapacity;
+    public void setTowingCapacity(double towingCapacity) {
+        this.towingCapacity.set(towingCapacity);
     }
 
-    public void setTowingCapacity(float towingCapacity) {
-        this.towingCapacity.set(towingCapacity);
+    public DoubleProperty towingCapacityProperty() {
+        return towingCapacity;
     }
 
     public int getPersonnelCapacity() {
         return personnelCapacity.get();
     }
 
-    public IntegerProperty personnelCapacityProperty() {
-        return personnelCapacity;
-    }
-
     public void setPersonnelCapacity(int personnelCapacity) {
         this.personnelCapacity.set(personnelCapacity);
     }
 
-    public float getBulkFuelCapacity() {
+    public IntegerProperty personnelCapacityProperty() {
+        return personnelCapacity;
+    }
+
+    public double getBulkFuelCapacity() {
         return bulkFuelCapacity.get();
     }
 
-    public FloatProperty bulkFuelCapacityProperty() {
-        return bulkFuelCapacity;
-    }
-
-    public void setBulkFuelCapacity(float bulkFuelCapacity) {
+    public void setBulkFuelCapacity(double bulkFuelCapacity) {
         this.bulkFuelCapacity.set(bulkFuelCapacity);
     }
 
-    public float getPayloadCapacity() {
+    public DoubleProperty bulkFuelCapacityProperty() {
+        return bulkFuelCapacity;
+    }
+
+    public double getPayloadCapacity() {
         return payloadCapacity.get();
     }
 
-    public FloatProperty payloadCapacityProperty() {
-        return payloadCapacity;
-    }
-
-    public void setPayloadCapacity(float payloadCapacity) {
+    public void setPayloadCapacity(double payloadCapacity) {
         this.payloadCapacity.set(payloadCapacity);
     }
 
-    public float getTakeCoverMod() {
+    public DoubleProperty payloadCapacityProperty() {
+        return payloadCapacity;
+    }
+
+    public double getTakeCoverMod() {
         return takeCoverMod.get();
     }
 
-    public FloatProperty takeCoverModProperty() {
-        return takeCoverMod;
+    public void setTakeCoverMod(double takeCoverMod) {
+        this.takeCoverMod.set(takeCoverMod);
     }
 
-    public void setTakeCoverMod(float takeCoverMod) {
-        this.takeCoverMod.set(takeCoverMod);
+    public DoubleProperty takeCoverModProperty() {
+        return takeCoverMod;
     }
 
     public boolean getHasTurret() {
         return hasTurret.get();
     }
 
-    public BooleanProperty hasTurretProperty() {
-        return hasTurret;
-    }
-
     public void setHasTurret(boolean hasTurret) {
         this.hasTurret.set(hasTurret);
+    }
+
+    public BooleanProperty hasTurretProperty() {
+        return hasTurret;
     }
 
     public boolean getHasOpenTop() {
         return hasOpenTop.get();
     }
 
-    public BooleanProperty hasOpenTopProperty() {
-        return hasOpenTop;
-    }
-
     public void setHasOpenTop(boolean hasOpenTop) {
         this.hasOpenTop.set(hasOpenTop);
     }
 
-    public float getBattleWeight() {
+    public BooleanProperty hasOpenTopProperty() {
+        return hasOpenTop;
+    }
+
+    public double getBattleWeight() {
         return battleWeight.get();
     }
 
-    public FloatProperty battleWeightProperty() {
-        return battleWeight;
-    }
-
-    public void setBattleWeight(float battleWeight) {
+    public void setBattleWeight(double battleWeight) {
         this.battleWeight.set(battleWeight);
     }
 
-    public float getFrontArmor() {
+    public DoubleProperty battleWeightProperty() {
+        return battleWeight;
+    }
+
+    public double getFrontArmor() {
         return frontArmor.get();
     }
 
-    public FloatProperty frontArmorProperty() {
-        return frontArmor;
-    }
-
-    public void setFrontArmor(float frontArmor) {
+    public void setFrontArmor(double frontArmor) {
         this.frontArmor.set(frontArmor);
     }
 
-    public float getSideArmor() {
+    public DoubleProperty frontArmorProperty() {
+        return frontArmor;
+    }
+
+    public double getSideArmor() {
         return sideArmor.get();
     }
 
-    public FloatProperty sideArmorProperty() {
-        return sideArmor;
-    }
-
-    public void setSideArmor(float sideArmor) {
+    public void setSideArmor(double sideArmor) {
         this.sideArmor.set(sideArmor);
     }
 
-    public float getRearArmor() {
+    public DoubleProperty sideArmorProperty() {
+        return sideArmor;
+    }
+
+    public double getRearArmor() {
         return rearArmor.get();
     }
 
-    public FloatProperty rearArmorProperty() {
-        return rearArmor;
-    }
-
-    public void setRearArmor(float rearArmor) {
+    public void setRearArmor(double rearArmor) {
         this.rearArmor.set(rearArmor);
     }
 
-    public float getTopArmor() {
+    public DoubleProperty rearArmorProperty() {
+        return rearArmor;
+    }
+
+    public double getTopArmor() {
         return topArmor.get();
     }
 
-    public FloatProperty topArmorProperty() {
-        return topArmor;
+    public void setTopArmor(double topArmor) {
+        this.topArmor.set(topArmor);
     }
 
-    public void setTopArmor(float topArmor) {
-        this.topArmor.set(topArmor);
+    public DoubleProperty topArmorProperty() {
+        return topArmor;
     }
 }

@@ -13,9 +13,9 @@ import java.util.Map;
  * Created by Heine on 10/27/2014.
  */
 public class CopyPasteLists {
-    private List<VehicleModel> nonRepeatedVehicles;
-    private List<WeaponModel> nonRepeatedWeapons;
-    private List<AmmoModel> nonRepeatedAmmo;
+    private List<VehicleModel> allVehicles;
+    private List<WeaponModel> allWeapons;
+    private List<AmmoModel> allAmmo;
 
     private List<VehicleModel> repeatedVehicles;
     private List<WeaponModel> repeatedWeapons;
@@ -23,42 +23,42 @@ public class CopyPasteLists {
 
     private Map<AssetModel, Class> repeatedAssets;
 
-    public boolean hasRepeatedElements() {
-        return !repeatedAmmo.isEmpty() || !repeatedVehicles.isEmpty() || !repeatedWeapons.isEmpty();
-    }
-
     public CopyPasteLists() {
-        this.nonRepeatedVehicles = new ArrayList<>();
-        this.nonRepeatedWeapons = new ArrayList<>();
-        this.nonRepeatedAmmo = new ArrayList<>();
+        this.allVehicles = new ArrayList<>();
+        this.allWeapons = new ArrayList<>();
+        this.allAmmo = new ArrayList<>();
         this.repeatedVehicles = new ArrayList<>();
         this.repeatedWeapons = new ArrayList<>();
         this.repeatedAmmo = new ArrayList<>();
         this.repeatedAssets = new HashMap<>();
     }
 
-    public List<VehicleModel> getNonRepeatedVehicles() {
-        return nonRepeatedVehicles;
+    public boolean hasRepeatedElements() {
+        return !repeatedAmmo.isEmpty() || !repeatedVehicles.isEmpty() || !repeatedWeapons.isEmpty();
     }
 
-    public void setNonRepeatedVehicles(List<VehicleModel> nonRepeatedVehicles) {
-        this.nonRepeatedVehicles = nonRepeatedVehicles;
+    public List<VehicleModel> getAllVehicles() {
+        return allVehicles;
     }
 
-    public List<WeaponModel> getNonRepeatedWeapons() {
-        return nonRepeatedWeapons;
+    public void setAllVehicles(List<VehicleModel> allVehicles) {
+        this.allVehicles = allVehicles;
     }
 
-    public void setNonRepeatedWeapons(List<WeaponModel> nonRepeatedWeapons) {
-        this.nonRepeatedWeapons = nonRepeatedWeapons;
+    public List<WeaponModel> getAllWeapons() {
+        return allWeapons;
     }
 
-    public List<AmmoModel> getNonRepeatedAmmo() {
-        return nonRepeatedAmmo;
+    public void setAllWeapons(List<WeaponModel> allWeapons) {
+        this.allWeapons = allWeapons;
     }
 
-    public void setNonRepeatedAmmo(List<AmmoModel> nonRepeatedAmmo) {
-        this.nonRepeatedAmmo = nonRepeatedAmmo;
+    public List<AmmoModel> getAllAmmo() {
+        return allAmmo;
+    }
+
+    public void setAllAmmo(List<AmmoModel> allAmmo) {
+        this.allAmmo = allAmmo;
     }
 
     public List<VehicleModel> getRepeatedVehicles() {

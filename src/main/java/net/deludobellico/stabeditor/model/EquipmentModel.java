@@ -41,36 +41,36 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
         return equipmentObjectId.get();
     }
 
-    public IntegerProperty equipmentObjectIdProperty() {
-        return equipmentObjectId;
-    }
-
     public void setEquipmentObjectId(int equipmentObjectId) {
         this.equipmentObjectId.set(equipmentObjectId);
+    }
+
+    public IntegerProperty equipmentObjectIdProperty() {
+        return equipmentObjectId;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public int getQty() {
         return qty.get();
     }
 
-    public IntegerProperty qtyProperty() {
-        return qty;
-    }
-
     public void setQty(int qty) {
         this.qty.set(qty);
+    }
+
+    public IntegerProperty qtyProperty() {
+        return qty;
     }
 
 }

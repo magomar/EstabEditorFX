@@ -33,11 +33,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="move-type" type="{}MoveType"/>
  *         &lt;element name="pers-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="staff-capacity" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="basics-qty" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="basics-consumption-rate-modifier" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="basics-qty" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="basics-consumption-rate-modifier" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="commander-rank" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="fuel-qty" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="fuel-load" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="fuel-qty" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="fuel-load" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="speed" type="{}SpeedData"/>
  *         &lt;element name="deployment-duration" type="{}DeploymentDuration"/>
  *         &lt;element name="ready-to-fire-duration" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -120,15 +120,15 @@ public class Force {
     @XmlElement(name = "staff-capacity")
     protected int staffCapacity;
     @XmlElement(name = "basics-qty")
-    protected float basicsQty;
+    protected double basicsQty;
     @XmlElement(name = "basics-consumption-rate-modifier")
-    protected float basicsConsumptionRateModifier;
+    protected double basicsConsumptionRateModifier;
     @XmlElement(name = "commander-rank")
     protected int commanderRank;
     @XmlElement(name = "fuel-qty")
-    protected float fuelQty;
+    protected double fuelQty;
     @XmlElement(name = "fuel-load")
-    protected float fuelLoad;
+    protected double fuelLoad;
     @XmlElement(required = true)
     protected SpeedData speed;
     @XmlElement(name = "deployment-duration", required = true)
@@ -447,7 +447,7 @@ public class Force {
      * Gets the value of the basicsQty property.
      * 
      */
-    public float getBasicsQty() {
+    public double getBasicsQty() {
         return basicsQty;
     }
 
@@ -455,7 +455,7 @@ public class Force {
      * Sets the value of the basicsQty property.
      * 
      */
-    public void setBasicsQty(float value) {
+    public void setBasicsQty(double value) {
         this.basicsQty = value;
     }
 
@@ -463,7 +463,7 @@ public class Force {
      * Gets the value of the basicsConsumptionRateModifier property.
      * 
      */
-    public float getBasicsConsumptionRateModifier() {
+    public double getBasicsConsumptionRateModifier() {
         return basicsConsumptionRateModifier;
     }
 
@@ -471,7 +471,7 @@ public class Force {
      * Sets the value of the basicsConsumptionRateModifier property.
      * 
      */
-    public void setBasicsConsumptionRateModifier(float value) {
+    public void setBasicsConsumptionRateModifier(double value) {
         this.basicsConsumptionRateModifier = value;
     }
 
@@ -495,7 +495,7 @@ public class Force {
      * Gets the value of the fuelQty property.
      * 
      */
-    public float getFuelQty() {
+    public double getFuelQty() {
         return fuelQty;
     }
 
@@ -503,7 +503,7 @@ public class Force {
      * Sets the value of the fuelQty property.
      * 
      */
-    public void setFuelQty(float value) {
+    public void setFuelQty(double value) {
         this.fuelQty = value;
     }
 
@@ -511,7 +511,7 @@ public class Force {
      * Gets the value of the fuelLoad property.
      * 
      */
-    public float getFuelLoad() {
+    public double getFuelLoad() {
         return fuelLoad;
     }
 
@@ -519,7 +519,7 @@ public class Force {
      * Sets the value of the fuelLoad property.
      * 
      */
-    public void setFuelLoad(float value) {
+    public void setFuelLoad(double value) {
         this.fuelLoad = value;
     }
 

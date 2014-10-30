@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="type" type="{}WeaponType"/>
  *         &lt;element name="single-shot" type="{}YesNo"/>
  *         &lt;element name="primary-role" type="{}PrimaryRole"/>
- *         &lt;element name="calibre" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="calibre" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="muzzle-velocity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="must-deploy-to-fire" type="{}YesNo"/>
  *         &lt;element name="performance-list" type="{}PerformanceList"/>
@@ -74,7 +74,7 @@ public class Weapon {
     @XmlElement(required = true)
     protected WeaponSize size;
     protected int crew;
-    protected float reliability;
+    protected double reliability;
     @XmlElement(required = true)
     protected String armaments;
     @XmlElement(required = true)
@@ -86,7 +86,7 @@ public class Weapon {
     @XmlElement(name = "primary-role", required = true)
     @XmlSchemaType(name = "string")
     protected PrimaryRole primaryRole;
-    protected float calibre;
+    protected double calibre;
     @XmlElement(name = "muzzle-velocity")
     protected int muzzleVelocity;
     @XmlElement(name = "must-deploy-to-fire", required = true)
@@ -237,7 +237,7 @@ public class Weapon {
      * Gets the value of the reliability property.
      * 
      */
-    public float getReliability() {
+    public double getReliability() {
         return reliability;
     }
 
@@ -245,7 +245,7 @@ public class Weapon {
      * Sets the value of the reliability property.
      * 
      */
-    public void setReliability(float value) {
+    public void setReliability(double value) {
         this.reliability = value;
     }
 
@@ -349,7 +349,7 @@ public class Weapon {
      * Gets the value of the calibre property.
      * 
      */
-    public float getCalibre() {
+    public double getCalibre() {
         return calibre;
     }
 
@@ -357,7 +357,7 @@ public class Weapon {
      * Sets the value of the calibre property.
      * 
      */
-    public void setCalibre(float value) {
+    public void setCalibre(double value) {
         this.calibre = value;
     }
 

@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="net-type" type="{}NetType"/>
  *         &lt;element name="freq-type" type="{}FreqType"/>
  *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
@@ -69,7 +69,7 @@ public class Radio {
     protected RadioSize size;
     @XmlElement(required = true)
     protected String crew;
-    protected float reliability;
+    protected double reliability;
     @XmlElement(required = true)
     protected String armaments;
     @XmlElement(name = "net-type", required = true)
@@ -80,7 +80,7 @@ public class Radio {
     protected FreqType freqType;
     @XmlElement(name = "max-range")
     protected int maxRange;
-    protected float gain;
+    protected double gain;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
@@ -232,7 +232,7 @@ public class Radio {
      * Gets the value of the reliability property.
      * 
      */
-    public float getReliability() {
+    public double getReliability() {
         return reliability;
     }
 
@@ -240,7 +240,7 @@ public class Radio {
      * Sets the value of the reliability property.
      * 
      */
-    public void setReliability(float value) {
+    public void setReliability(double value) {
         this.reliability = value;
     }
 
@@ -336,7 +336,7 @@ public class Radio {
      * Gets the value of the gain property.
      * 
      */
-    public float getGain() {
+    public double getGain() {
         return gain;
     }
 
@@ -344,7 +344,7 @@ public class Radio {
      * Sets the value of the gain property.
      * 
      */
-    public void setGain(float value) {
+    public void setGain(double value) {
         this.gain = value;
     }
 

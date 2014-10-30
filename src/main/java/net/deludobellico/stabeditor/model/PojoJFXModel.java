@@ -8,18 +8,11 @@ package net.deludobellico.stabeditor.model;
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
-import net.deludobellico.stabeditor.data.jaxb.YesNo;
 
 /**
- *
  * @author Mario
  */
 public interface PojoJFXModel<T> {
-    T getPojo();
-    void setPojo(T pojo);
-
-
-
     public static AssetModel wrapper(Object o) {
         if (o != null) {
             if (o instanceof Weapon) {
@@ -35,4 +28,8 @@ public interface PojoJFXModel<T> {
         }
         return null;
     }
+
+    T getPojo();
+
+    void setPojo(T pojo);
 }

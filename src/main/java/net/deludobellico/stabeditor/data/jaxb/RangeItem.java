@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="range" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="accuracy" use="required" type="{}Proportion" />
- *       &lt;attribute name="armour-penetration" use="required" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="armour-penetration" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -33,9 +33,9 @@ public class RangeItem {
     @XmlAttribute(name = "range", required = true)
     protected int range;
     @XmlAttribute(name = "accuracy", required = true)
-    protected float accuracy;
+    protected double accuracy;
     @XmlAttribute(name = "armour-penetration", required = true)
-    protected float armourPenetration;
+    protected double armourPenetration;
 
     /**
      * Gets the value of the range property.
@@ -57,7 +57,7 @@ public class RangeItem {
      * Gets the value of the accuracy property.
      * 
      */
-    public float getAccuracy() {
+    public double getAccuracy() {
         return accuracy;
     }
 
@@ -65,7 +65,7 @@ public class RangeItem {
      * Sets the value of the accuracy property.
      * 
      */
-    public void setAccuracy(float value) {
+    public void setAccuracy(double value) {
         this.accuracy = value;
     }
 
@@ -73,7 +73,7 @@ public class RangeItem {
      * Gets the value of the armourPenetration property.
      * 
      */
-    public float getArmourPenetration() {
+    public double getArmourPenetration() {
         return armourPenetration;
     }
 
@@ -81,7 +81,7 @@ public class RangeItem {
      * Sets the value of the armourPenetration property.
      * 
      */
-    public void setArmourPenetration(float value) {
+    public void setArmourPenetration(double value) {
         this.armourPenetration = value;
     }
 

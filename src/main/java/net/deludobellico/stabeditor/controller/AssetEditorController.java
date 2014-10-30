@@ -1,7 +1,6 @@
 package net.deludobellico.stabeditor.controller;
 
 import net.deludobellico.stabeditor.model.AssetModel;
-import net.deludobellico.stabeditor.model.WeaponModel;
 
 /**
  * Created by Mario on 26/08/2014.

@@ -18,19 +18,28 @@ public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
     private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
     private final StringProperty pictureFilename = new SimpleStringProperty();
-    private final FloatProperty weight = new SimpleFloatProperty();
+    private final DoubleProperty weight = new SimpleDoubleProperty();
     private final IntegerProperty crew = new SimpleIntegerProperty();
-    private final FloatProperty reliability = new SimpleFloatProperty();
+    private final DoubleProperty reliability = new SimpleDoubleProperty();
     private final ObjectProperty<WeaponType> type = new SimpleObjectProperty<>();
     private final BooleanProperty singleShot = new SimpleBooleanProperty();
     private final ObjectProperty<PrimaryRole> primaryRole = new SimpleObjectProperty<>();
-    private final FloatProperty calibre = new SimpleFloatProperty();
+    private final DoubleProperty calibre = new SimpleDoubleProperty();
     private final IntegerProperty muzzleVelocity = new SimpleIntegerProperty();
     private final BooleanProperty mustDeployToFire = new SimpleBooleanProperty();
     private final ObservableList<PerformanceModel> performances = FXCollections.observableArrayList();
 
     public WeaponModel(Weapon weapon) {
         setPojo(weapon);
+    }
+
+    public static Map<FireType, Boolean> getFireTypeMap(WeaponModel weapon) {
+        Map<FireType, Boolean> fireTypeMap = new HashMap<>();
+        if (fireTypeMap.isEmpty()) {
+            for (FireType f : FireType.values()) fireTypeMap.put(f, false);
+            for (PerformanceModel p : weapon.getPerformances()) fireTypeMap.put(p.getFireType(), true);
+        }
+        return fireTypeMap;
     }
 
     @Override
@@ -44,9 +53,9 @@ public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
         weapon.setPicture(p);
         weapon.setPictureFilename(pictureFilename.get());
         WeaponSize weaponSize = new WeaponSize();
-        weaponSize.setWidth((float) 1.0);
-        weaponSize.setHeight((float) 1.0);
-        weaponSize.setLength((float) 1.0);
+        weaponSize.setWidth((double) 1.0);
+        weaponSize.setHeight((double) 1.0);
+        weaponSize.setLength((double) 1.0);
         weaponSize.setWeight(weight.get());
         weapon.setSize(weaponSize);
         weapon.setCrew(crew.get());
@@ -89,180 +98,171 @@ public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public int getPictureId() {
         return pictureId.get();
     }
 
-    public IntegerProperty pictureIdProperty() {
-        return pictureId;
-    }
-
     public void setPictureId(int pictureId) {
         this.pictureId.set(pictureId);
+    }
+
+    public IntegerProperty pictureIdProperty() {
+        return pictureId;
     }
 
     public String getPictureFilename() {
         return pictureFilename.get();
     }
 
-    public StringProperty pictureFilenameProperty() {
-        return pictureFilename;
-    }
-
     public void setPictureFilename(String pictureFilename) {
         this.pictureFilename.set(pictureFilename);
     }
 
-    public float getWeight() {
+    public StringProperty pictureFilenameProperty() {
+        return pictureFilename;
+    }
+
+    public double getWeight() {
         return weight.get();
     }
 
-    public FloatProperty weightProperty() {
-        return weight;
+    public void setWeight(double weight) {
+        this.weight.set(weight);
     }
 
-    public void setWeight(float weight) {
-        this.weight.set(weight);
+    public DoubleProperty weightProperty() {
+        return weight;
     }
 
     public int getCrew() {
         return crew.get();
     }
 
-    public IntegerProperty crewProperty() {
-        return crew;
-    }
-
     public void setCrew(int crew) {
         this.crew.set(crew);
     }
 
-    public float getReliability() {
+    public IntegerProperty crewProperty() {
+        return crew;
+    }
+
+    public double getReliability() {
         return reliability.get();
     }
 
-    public FloatProperty reliabilityProperty() {
-        return reliability;
+    public void setReliability(double reliability) {
+        this.reliability.set(reliability);
     }
 
-    public void setReliability(float reliability) {
-        this.reliability.set(reliability);
+    public DoubleProperty reliabilityProperty() {
+        return reliability;
     }
 
     public WeaponType getType() {
         return type.get();
     }
 
-    public ObjectProperty<WeaponType> typeProperty() {
-        return type;
-    }
-
     public void setType(WeaponType type) {
         this.type.set(type);
+    }
+
+    public ObjectProperty<WeaponType> typeProperty() {
+        return type;
     }
 
     public boolean getSingleShot() {
         return singleShot.get();
     }
 
-    public BooleanProperty singleShotProperty() {
-        return singleShot;
-    }
-
     public void setSingleShot(boolean singleShot) {
         this.singleShot.set(singleShot);
+    }
+
+    public BooleanProperty singleShotProperty() {
+        return singleShot;
     }
 
     public PrimaryRole getPrimaryRole() {
         return primaryRole.get();
     }
 
-    public ObjectProperty<PrimaryRole> primaryRoleProperty() {
-        return primaryRole;
-    }
-
     public void setPrimaryRole(PrimaryRole primaryRole) {
         this.primaryRole.set(primaryRole);
     }
 
-    public float getCalibre() {
+    public ObjectProperty<PrimaryRole> primaryRoleProperty() {
+        return primaryRole;
+    }
+
+    public double getCalibre() {
         return calibre.get();
     }
 
-    public FloatProperty calibreProperty() {
-        return calibre;
+    public void setCalibre(double calibre) {
+        this.calibre.set(calibre);
     }
 
-    public void setCalibre(float calibre) {
-        this.calibre.set(calibre);
+    public DoubleProperty calibreProperty() {
+        return calibre;
     }
 
     public int getMuzzleVelocity() {
         return muzzleVelocity.get();
     }
 
-    public IntegerProperty muzzleVelocityProperty() {
-        return muzzleVelocity;
-    }
-
     public void setMuzzleVelocity(int muzzleVelocity) {
         this.muzzleVelocity.set(muzzleVelocity);
+    }
+
+    public IntegerProperty muzzleVelocityProperty() {
+        return muzzleVelocity;
     }
 
     public boolean getMustDeployToFire() {
         return mustDeployToFire.get();
     }
 
-    public BooleanProperty mustDeployToFireProperty() {
-        return mustDeployToFire;
-    }
-
     public void setMustDeployToFire(boolean mustDeployToFire) {
         this.mustDeployToFire.set(mustDeployToFire);
     }
 
-    public ObservableList<PerformanceModel> getPerformances() {
-        return performances;
+    public BooleanProperty mustDeployToFireProperty() {
+        return mustDeployToFire;
     }
 
-    public static Map<FireType, Boolean> getFireTypeMap(WeaponModel weapon) {
-        Map<FireType, Boolean> fireTypeMap = new HashMap<>();
-        if (fireTypeMap.isEmpty()) {
-            for (FireType f : FireType.values()) fireTypeMap.put(f, false);
-            for (PerformanceModel p : weapon.getPerformances()) fireTypeMap.put(p.getFireType(), true);
-        }
-        return fireTypeMap;
+    public ObservableList<PerformanceModel> getPerformances() {
+        return performances;
     }
 }

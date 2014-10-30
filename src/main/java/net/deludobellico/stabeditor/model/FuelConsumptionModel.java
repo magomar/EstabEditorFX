@@ -1,16 +1,15 @@
 package net.deludobellico.stabeditor.model;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import net.deludobellico.stabeditor.data.jaxb.FuelConsumption;
-import net.deludobellico.stabeditor.data.jaxb.SpeedData;
 
 /**
  * Created by Mario on 29/10/2014.
  */
 public class FuelConsumptionModel implements PojoJFXModel<FuelConsumption> {
-    private final FloatProperty maxFuelConsumption = new SimpleFloatProperty();
-    private final FloatProperty normalFuelConsumption = new SimpleFloatProperty();
+    private final DoubleProperty maxFuelConsumption = new SimpleDoubleProperty();
+    private final DoubleProperty normalFuelConsumption = new SimpleDoubleProperty();
 
     public FuelConsumptionModel(FuelConsumption fuelConsumption) {
         setPojo(fuelConsumption);
@@ -30,27 +29,27 @@ public class FuelConsumptionModel implements PojoJFXModel<FuelConsumption> {
         normalFuelConsumption.set(pojo.getNormal());
     }
 
-    public float getMax() {
+    public double getMax() {
         return maxFuelConsumption.get();
     }
 
-    public FloatProperty maxProperty() {
-        return maxFuelConsumption;
-    }
-
-    public void setMax(float maxFuelConsumption) {
+    public void setMax(double maxFuelConsumption) {
         this.maxFuelConsumption.set(maxFuelConsumption);
     }
 
-    public float getNormal() {
+    public DoubleProperty maxProperty() {
+        return maxFuelConsumption;
+    }
+
+    public double getNormal() {
         return normalFuelConsumption.get();
     }
 
-    public FloatProperty normalProperty() {
+    public DoubleProperty normalProperty() {
         return normalFuelConsumption;
     }
 
-    public void setNormalFuelConsumption(float normalFuelConsumption) {
+    public void setNormalFuelConsumption(double normalFuelConsumption) {
         this.normalFuelConsumption.set(normalFuelConsumption);
     }
 

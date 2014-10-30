@@ -32,36 +32,36 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
         return red.get();
     }
 
-    public IntegerProperty redProperty() {
-        return red;
-    }
-
     public void setRed(int red) {
         this.red.set(red);
+    }
+
+    public IntegerProperty redProperty() {
+        return red;
     }
 
     public int getGreen() {
         return green.get();
     }
 
-    public IntegerProperty greenProperty() {
-        return green;
-    }
-
     public void setGreen(int green) {
         this.green.set(green);
+    }
+
+    public IntegerProperty greenProperty() {
+        return green;
     }
 
     public int getBlue() {
         return blue.get();
     }
 
-    public IntegerProperty blueProperty() {
-        return blue;
-    }
-
     public void setBlue(int blue) {
         this.blue.set(blue);
+    }
+
+    public IntegerProperty blueProperty() {
+        return blue;
     }
 
 }

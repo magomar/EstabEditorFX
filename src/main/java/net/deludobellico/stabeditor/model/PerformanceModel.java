@@ -3,7 +3,10 @@ package net.deludobellico.stabeditor.model;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import net.deludobellico.stabeditor.data.jaxb.*;
+import net.deludobellico.stabeditor.data.jaxb.FireType;
+import net.deludobellico.stabeditor.data.jaxb.Performance;
+import net.deludobellico.stabeditor.data.jaxb.ROF;
+import net.deludobellico.stabeditor.data.jaxb.RangeTable;
 
 /**
  * Created by Mario on 28/10/2014.
@@ -11,11 +14,11 @@ import net.deludobellico.stabeditor.data.jaxb.*;
 public class PerformanceModel implements PojoJFXModel<Performance> {
     private final ObjectProperty<AmmoLoadModel> ammoLoad = new SimpleObjectProperty<>();
     private final IntegerProperty minRange = new SimpleIntegerProperty();
-    private final FloatProperty slowROF = new SimpleFloatProperty();
-    private final FloatProperty normalROF = new SimpleFloatProperty();
-    private final FloatProperty rapidROF = new SimpleFloatProperty();
+    private final DoubleProperty slowROF = new SimpleDoubleProperty();
+    private final DoubleProperty normalROF = new SimpleDoubleProperty();
+    private final DoubleProperty rapidROF = new SimpleDoubleProperty();
     private final IntegerProperty burstRadius = new SimpleIntegerProperty();
-    private final FloatProperty shellWeight = new SimpleFloatProperty();
+    private final DoubleProperty shellWeight = new SimpleDoubleProperty();
     private final ObservableList<RangeItemModel> ranges = FXCollections.observableArrayList();
     private final ObjectProperty<FireType> fireType = new SimpleObjectProperty<>();
 
@@ -71,84 +74,84 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         return ammoLoad.get();
     }
 
-    public ObjectProperty<AmmoLoadModel> ammoLoadProperty() {
-        return ammoLoad;
-    }
-
     public void setAmmoLoad(AmmoLoadModel ammoLoad) {
         this.ammoLoad.set(ammoLoad);
+    }
+
+    public ObjectProperty<AmmoLoadModel> ammoLoadProperty() {
+        return ammoLoad;
     }
 
     public int getMinRange() {
         return minRange.get();
     }
 
-    public IntegerProperty minRangeProperty() {
-        return minRange;
-    }
-
     public void setMinRange(int minRange) {
         this.minRange.set(minRange);
     }
 
-    public float getSlowROF() {
+    public IntegerProperty minRangeProperty() {
+        return minRange;
+    }
+
+    public double getSlowROF() {
         return slowROF.get();
     }
 
-    public FloatProperty slowROFProperty() {
-        return slowROF;
-    }
-
-    public void setSlowROF(float slowROF) {
+    public void setSlowROF(double slowROF) {
         this.slowROF.set(slowROF);
     }
 
-    public float getNormalROF() {
+    public DoubleProperty slowROFProperty() {
+        return slowROF;
+    }
+
+    public double getNormalROF() {
         return normalROF.get();
     }
 
-    public FloatProperty normalROFProperty() {
-        return normalROF;
-    }
-
-    public void setNormalROF(float normalROF) {
+    public void setNormalROF(double normalROF) {
         this.normalROF.set(normalROF);
     }
 
-    public float getRapidROF() {
+    public DoubleProperty normalROFProperty() {
+        return normalROF;
+    }
+
+    public double getRapidROF() {
         return rapidROF.get();
     }
 
-    public FloatProperty rapidROFProperty() {
-        return rapidROF;
+    public void setRapidROF(double rapidROF) {
+        this.rapidROF.set(rapidROF);
     }
 
-    public void setRapidROF(float rapidROF) {
-        this.rapidROF.set(rapidROF);
+    public DoubleProperty rapidROFProperty() {
+        return rapidROF;
     }
 
     public int getBurstRadius() {
         return burstRadius.get();
     }
 
-    public IntegerProperty burstRadiusProperty() {
-        return burstRadius;
-    }
-
     public void setBurstRadius(int burstRadius) {
         this.burstRadius.set(burstRadius);
     }
 
-    public float getShellWeight() {
+    public IntegerProperty burstRadiusProperty() {
+        return burstRadius;
+    }
+
+    public double getShellWeight() {
         return shellWeight.get();
     }
 
-    public FloatProperty shellWeightProperty() {
-        return shellWeight;
+    public void setShellWeight(double shellWeight) {
+        this.shellWeight.set(shellWeight);
     }
 
-    public void setShellWeight(float shellWeight) {
-        this.shellWeight.set(shellWeight);
+    public DoubleProperty shellWeightProperty() {
+        return shellWeight;
     }
 
     public ObservableList<RangeItemModel> getRanges() {
@@ -159,12 +162,12 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         return fireType.get();
     }
 
-    public ObjectProperty<FireType> fireTypeProperty() {
-        return fireType;
-    }
-
     public void setFireType(FireType fireType) {
         this.fireType.set(fireType);
+    }
+
+    public ObjectProperty<FireType> fireTypeProperty() {
+        return fireType;
     }
 
 }

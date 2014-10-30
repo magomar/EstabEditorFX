@@ -8,16 +8,16 @@
 
 package net.deludobellico.stabeditor.model;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import net.deludobellico.stabeditor.data.jaxb.SpeedData;
 
 public class SpeedDataModel implements PojoJFXModel<SpeedData> {
 
-    private final FloatProperty max = new SimpleFloatProperty();
-    private final FloatProperty normal = new SimpleFloatProperty();
+    private final DoubleProperty max = new SimpleDoubleProperty();
+    private final DoubleProperty normal = new SimpleDoubleProperty();
 
-    public SpeedDataModel(Float max, Float normal) {
+    public SpeedDataModel(Double max, Double normal) {
         setMax(max);
         setNormal(normal);
     }
@@ -36,28 +36,28 @@ public class SpeedDataModel implements PojoJFXModel<SpeedData> {
         normal.set(pojo.getNormal());
     }
 
-    public float getMax() {
+    public double getMax() {
         return max.get();
     }
 
-    public FloatProperty maxProperty() {
-        return max;
-    }
-
-    public void setMax(float max) {
+    public void setMax(double max) {
         this.max.set(max);
     }
 
-    public float getNormal() {
+    public DoubleProperty maxProperty() {
+        return max;
+    }
+
+    public double getNormal() {
         return normal.get();
     }
 
-    public FloatProperty normalProperty() {
-        return normal;
+    public void setNormal(double normal) {
+        this.normal.set(normal);
     }
 
-    public void setNormal(float normal) {
-        this.normal.set(normal);
+    public DoubleProperty normalProperty() {
+        return normal;
     }
 
 }

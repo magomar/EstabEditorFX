@@ -16,10 +16,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="VehicleSize">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="width" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="height" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="length" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="weight" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="width" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="height" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="length" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="weight" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -32,23 +32,23 @@ import javax.xml.bind.annotation.XmlType;
 public class VehicleSize {
 
     @XmlAttribute(name = "width")
-    protected Float width;
+    protected Double width;
     @XmlAttribute(name = "height")
-    protected Float height;
+    protected Double height;
     @XmlAttribute(name = "length")
-    protected Float length;
+    protected Double length;
     @XmlAttribute(name = "weight")
-    protected Float weight;
+    protected Double weight;
 
     /**
      * Gets the value of the width property.
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getWidth() {
+    public Double getWidth() {
         return width;
     }
 
@@ -57,10 +57,10 @@ public class VehicleSize {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setWidth(Float value) {
+    public void setWidth(Double value) {
         this.width = value;
     }
 
@@ -69,10 +69,10 @@ public class VehicleSize {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getHeight() {
+    public Double getHeight() {
         return height;
     }
 
@@ -81,10 +81,10 @@ public class VehicleSize {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setHeight(Float value) {
+    public void setHeight(Double value) {
         this.height = value;
     }
 
@@ -93,10 +93,10 @@ public class VehicleSize {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getLength() {
+    public Double getLength() {
         return length;
     }
 
@@ -105,10 +105,10 @@ public class VehicleSize {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setLength(Float value) {
+    public void setLength(Double value) {
         this.length = value;
     }
 
@@ -117,10 +117,10 @@ public class VehicleSize {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
@@ -129,10 +129,10 @@ public class VehicleSize {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setWeight(Float value) {
+    public void setWeight(Double value) {
         this.weight = value;
     }
 

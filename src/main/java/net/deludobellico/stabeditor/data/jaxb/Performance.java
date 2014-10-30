@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="min-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="rof" type="{}ROF"/>
  *         &lt;element name="burst-radius" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="shell-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="shell-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="range-table" type="{}RangeTable"/>
  *       &lt;/sequence>
  *       &lt;attribute name="fire-type" type="{}FireType" />
@@ -53,7 +53,7 @@ public class Performance {
     @XmlElement(name = "burst-radius")
     protected int burstRadius;
     @XmlElement(name = "shell-weight")
-    protected float shellWeight;
+    protected double shellWeight;
     @XmlElement(name = "range-table", required = true)
     protected RangeTable rangeTable;
     @XmlAttribute(name = "fire-type")
@@ -143,7 +143,7 @@ public class Performance {
      * Gets the value of the shellWeight property.
      * 
      */
-    public float getShellWeight() {
+    public double getShellWeight() {
         return shellWeight;
     }
 
@@ -151,7 +151,7 @@ public class Performance {
      * Sets the value of the shellWeight property.
      * 
      */
-    public void setShellWeight(float value) {
+    public void setShellWeight(double value) {
         this.shellWeight = value;
     }
 

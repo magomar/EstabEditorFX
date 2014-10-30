@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="moving-cohesion-level" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="frontage-per-man" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="depth-per-man" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="moving-cohesion-level" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="frontage-per-man" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="depth-per-man" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="firing-percentages" type="{}FiringPercentages"/>
  *         &lt;element name="target-percentages" type="{}TargetPercentages"/>
  *         &lt;element name="security" type="{}FormationSecurity"/>
@@ -46,11 +46,11 @@ import javax.xml.bind.annotation.XmlType;
 public class FormationEffects {
 
     @XmlElement(name = "moving-cohesion-level")
-    protected float movingCohesionLevel;
+    protected double movingCohesionLevel;
     @XmlElement(name = "frontage-per-man")
-    protected float frontagePerMan;
+    protected double frontagePerMan;
     @XmlElement(name = "depth-per-man")
-    protected float depthPerMan;
+    protected double depthPerMan;
     @XmlElement(name = "firing-percentages", required = true)
     protected FiringPercentages firingPercentages;
     @XmlElement(name = "target-percentages", required = true)
@@ -66,7 +66,7 @@ public class FormationEffects {
      * Gets the value of the movingCohesionLevel property.
      * 
      */
-    public float getMovingCohesionLevel() {
+    public double getMovingCohesionLevel() {
         return movingCohesionLevel;
     }
 
@@ -74,7 +74,7 @@ public class FormationEffects {
      * Sets the value of the movingCohesionLevel property.
      * 
      */
-    public void setMovingCohesionLevel(float value) {
+    public void setMovingCohesionLevel(double value) {
         this.movingCohesionLevel = value;
     }
 
@@ -82,7 +82,7 @@ public class FormationEffects {
      * Gets the value of the frontagePerMan property.
      * 
      */
-    public float getFrontagePerMan() {
+    public double getFrontagePerMan() {
         return frontagePerMan;
     }
 
@@ -90,7 +90,7 @@ public class FormationEffects {
      * Sets the value of the frontagePerMan property.
      * 
      */
-    public void setFrontagePerMan(float value) {
+    public void setFrontagePerMan(double value) {
         this.frontagePerMan = value;
     }
 
@@ -98,7 +98,7 @@ public class FormationEffects {
      * Gets the value of the depthPerMan property.
      * 
      */
-    public float getDepthPerMan() {
+    public double getDepthPerMan() {
         return depthPerMan;
     }
 
@@ -106,7 +106,7 @@ public class FormationEffects {
      * Sets the value of the depthPerMan property.
      * 
      */
-    public void setDepthPerMan(float value) {
+    public void setDepthPerMan(double value) {
         this.depthPerMan = value;
     }
 

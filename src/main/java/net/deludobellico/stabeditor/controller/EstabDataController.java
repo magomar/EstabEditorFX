@@ -212,7 +212,7 @@ public class EstabDataController implements Initializable {
         String textToSearch = searchWeaponTextField.getText();
 
         estabReferenceObservableList.clear();
-        if(textToSearch.equals(savedList.getLastSearch())) {
+        if (textToSearch.equals(savedList.getLastSearch())) {
             // Load saved list
             estabReferenceObservableList.addAll(savedList.getList());
 
@@ -223,7 +223,7 @@ public class EstabDataController implements Initializable {
             List<AssetModel> weapons = estabDataModel.searchAsset(textToSearch, WeaponModel.class);
             for (AssetModel weapon : weapons) {
                 estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
-                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel)weapon).getPojo()), Weapon.class));
+                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
             }
         }
     }
@@ -252,8 +252,6 @@ public class EstabDataController implements Initializable {
 
     public void pasteActiveComponent(CopyPasteLists copyPasteLists) {
         if (!isEditable) return;
-        estabDataModel.checkRepeatedElements(copyPasteLists);
-
         if (copyPasteLists.hasRepeatedElements()) {
             Action answer = UtilView.showWarningDialogRepeatedElement(copyPasteLists);
             estabDataModel.paste(copyPasteLists, answer);

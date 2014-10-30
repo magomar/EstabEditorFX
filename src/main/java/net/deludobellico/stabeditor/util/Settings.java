@@ -10,25 +10,16 @@ import java.util.List;
 @XmlRootElement(name = "settings")
 public class Settings {
 
-    private static Settings settings;
-
     private static final Integer MAX_RECENT_FILES = 4;
-
-    private static Double windowWidth;
-
-    private static Double windowHeight;
-
-    private static Boolean visibleToolbar;
-
-    private static Boolean visibleSourcePanel;
-
-    private static Boolean visibleTargetPanel;
-
-    private static Boolean verticalPanes;
-
     private static List<String> sourceRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
-
     private static List<String> targetRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
+    private static Settings settings;
+    private static Double windowWidth;
+    private static Double windowHeight;
+    private static Boolean visibleToolbar;
+    private static Boolean visibleSourcePanel;
+    private static Boolean visibleTargetPanel;
+    private static Boolean verticalPanes;
 
 
     private Settings() {
@@ -37,6 +28,14 @@ public class Settings {
     public static Settings getInstance() {
         if (settings == null) settings = new Settings();
         return settings;
+    }
+
+    public static void save() {
+        FileIO.saveSettings();
+    }
+
+    public static void load() {
+        FileIO.loadSettings();
     }
 
     @XmlElement(name = "source-recent-files")
@@ -109,13 +108,5 @@ public class Settings {
 
     public void setVerticalPanes(Boolean verticalPanes) {
         Settings.verticalPanes = verticalPanes;
-    }
-
-    public static void save() {
-        FileIO.saveSettings();
-    }
-
-    public static void load() {
-        FileIO.loadSettings();
     }
 }

@@ -5,10 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.model.AmmoModel;
 import net.deludobellico.stabeditor.model.AssetModel;
-import net.deludobellico.stabeditor.model.WeaponModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,9 +28,11 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     private TextArea description;
 
     private AmmoModel ammo;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+
     @Override
     public void setEditable(boolean isEditable) {
         quantity.setEditable(isEditable);
@@ -66,7 +66,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
         AmmoModel previousAmmo = this.ammo;
         this.ammo = newAmmo;
 
-        if(previousAmmo != null) unbindProperties(previousAmmo);
+        if (previousAmmo != null) unbindProperties(previousAmmo);
         bindProperties(newAmmo);
     }
 

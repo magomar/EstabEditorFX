@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="min-order-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="min-order-weight" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="min-order-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
@@ -47,7 +47,7 @@ public class Ammo {
     @XmlElement(name = "min-order-qty")
     protected int minOrderQty;
     @XmlElement(name = "min-order-weight")
-    protected float minOrderWeight;
+    protected double minOrderWeight;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
@@ -119,7 +119,7 @@ public class Ammo {
      * Gets the value of the minOrderWeight property.
      * 
      */
-    public float getMinOrderWeight() {
+    public double getMinOrderWeight() {
         return minOrderWeight;
     }
 
@@ -127,7 +127,7 @@ public class Ammo {
      * Sets the value of the minOrderWeight property.
      * 
      */
-    public void setMinOrderWeight(float value) {
+    public void setMinOrderWeight(double value) {
         this.minOrderWeight = value;
     }
 

@@ -1,8 +1,8 @@
 package net.deludobellico.stabeditor.model;
 
-import javafx.beans.property.FloatProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import net.deludobellico.stabeditor.data.jaxb.RangeItem;
 
@@ -10,9 +10,9 @@ import net.deludobellico.stabeditor.data.jaxb.RangeItem;
  * Created by Mario on 28/10/2014.
  */
 public class RangeItemModel implements PojoJFXModel<RangeItem> {
-    private final  IntegerProperty range = new SimpleIntegerProperty();
-    private final  FloatProperty accuracy = new SimpleFloatProperty();
-    private final  FloatProperty armourPenetration = new SimpleFloatProperty();
+    private final IntegerProperty range = new SimpleIntegerProperty();
+    private final DoubleProperty accuracy = new SimpleDoubleProperty();
+    private final DoubleProperty armourPenetration = new SimpleDoubleProperty();
 
     @Override
     public RangeItem getPojo() {
@@ -34,36 +34,36 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
         return range.get();
     }
 
-    public IntegerProperty rangeProperty() {
-        return range;
-    }
-
     public void setRange(int range) {
         this.range.set(range);
     }
 
-    public float getAccuracy() {
+    public IntegerProperty rangeProperty() {
+        return range;
+    }
+
+    public double getAccuracy() {
         return accuracy.get();
     }
 
-    public FloatProperty accuracyProperty() {
-        return accuracy;
-    }
-
-    public void setAccuracy(float accuracy) {
+    public void setAccuracy(double accuracy) {
         this.accuracy.set(accuracy);
     }
 
-    public float getArmourPenetration() {
+    public DoubleProperty accuracyProperty() {
+        return accuracy;
+    }
+
+    public double getArmourPenetration() {
         return armourPenetration.get();
     }
 
-    public FloatProperty armourPenetrationProperty() {
-        return armourPenetration;
+    public void setArmourPenetration(double armourPenetration) {
+        this.armourPenetration.set(armourPenetration);
     }
 
-    public void setArmourPenetration(float armourPenetration) {
-        this.armourPenetration.set(armourPenetration);
+    public DoubleProperty armourPenetrationProperty() {
+        return armourPenetration;
     }
 
 

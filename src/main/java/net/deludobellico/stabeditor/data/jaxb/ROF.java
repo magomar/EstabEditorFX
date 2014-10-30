@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="ROF">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="slow" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="normal" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="rapid" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="slow" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="normal" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="rapid" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,21 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 public class ROF {
 
     @XmlAttribute(name = "slow")
-    protected Float slow;
+    protected Double slow;
     @XmlAttribute(name = "normal")
-    protected Float normal;
+    protected Double normal;
     @XmlAttribute(name = "rapid")
-    protected Float rapid;
+    protected Double rapid;
 
     /**
      * Gets the value of the slow property.
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getSlow() {
+    public Double getSlow() {
         return slow;
     }
 
@@ -54,10 +54,10 @@ public class ROF {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setSlow(Float value) {
+    public void setSlow(Double value) {
         this.slow = value;
     }
 
@@ -66,10 +66,10 @@ public class ROF {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getNormal() {
+    public Double getNormal() {
         return normal;
     }
 
@@ -78,10 +78,10 @@ public class ROF {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setNormal(Float value) {
+    public void setNormal(Double value) {
         this.normal = value;
     }
 
@@ -90,10 +90,10 @@ public class ROF {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getRapid() {
+    public Double getRapid() {
         return rapid;
     }
 
@@ -102,10 +102,10 @@ public class ROF {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setRapid(Float value) {
+    public void setRapid(Double value) {
         this.rapid = value;
     }
 

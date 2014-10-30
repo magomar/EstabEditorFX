@@ -45,36 +45,36 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
         return equipmentObjectId.get();
     }
 
-    public IntegerProperty equipmentObjectIdProperty() {
-        return equipmentObjectId;
-    }
-
     public void setEquipmentObjectId(int equipmentObjectId) {
         this.equipmentObjectId.set(equipmentObjectId);
+    }
+
+    public IntegerProperty equipmentObjectIdProperty() {
+        return equipmentObjectId;
     }
 
     public String getEquipmentName() {
         return equipmentName.get();
     }
 
-    public StringProperty equipmentNameProperty() {
-        return equipmentName;
-    }
-
     public void setEquipmentName(String equipmentName) {
         this.equipmentName.set(equipmentName);
+    }
+
+    public StringProperty equipmentNameProperty() {
+        return equipmentName;
     }
 
     public int getQty() {
         return qty.get();
     }
 
-    public IntegerProperty qtyProperty() {
-        return qty;
-    }
-
     public void setQty(int qty) {
         this.qty.set(qty);
+    }
+
+    public IntegerProperty qtyProperty() {
+        return qty;
     }
 
 }

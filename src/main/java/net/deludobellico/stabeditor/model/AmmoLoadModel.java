@@ -34,36 +34,36 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
         return objectId.get();
     }
 
-    public IntegerProperty objectIdProperty() {
-        return objectId;
-    }
-
     public void setObjectId(int objectId) {
         this.objectId.set(objectId);
+    }
+
+    public IntegerProperty objectIdProperty() {
+        return objectId;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public int getLoad() {
         return load.get();
     }
 
-    public IntegerProperty loadProperty() {
-        return load;
-    }
-
     public void setLoad(int load) {
         this.load.set(load);
+    }
+
+    public IntegerProperty loadProperty() {
+        return load;
     }
 
 }

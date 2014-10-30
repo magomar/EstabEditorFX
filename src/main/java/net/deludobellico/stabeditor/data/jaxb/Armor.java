@@ -16,10 +16,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Armor">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="front" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="side" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="rear" type="{http://www.w3.org/2001/XMLSchema}float" />
- *       &lt;attribute name="top" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *       &lt;attribute name="front" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="side" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="rear" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="top" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -32,23 +32,23 @@ import javax.xml.bind.annotation.XmlType;
 public class Armor {
 
     @XmlAttribute(name = "front")
-    protected Float front;
+    protected Double front;
     @XmlAttribute(name = "side")
-    protected Float side;
+    protected Double side;
     @XmlAttribute(name = "rear")
-    protected Float rear;
+    protected Double rear;
     @XmlAttribute(name = "top")
-    protected Float top;
+    protected Double top;
 
     /**
      * Gets the value of the front property.
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getFront() {
+    public Double getFront() {
         return front;
     }
 
@@ -57,10 +57,10 @@ public class Armor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setFront(Float value) {
+    public void setFront(Double value) {
         this.front = value;
     }
 
@@ -69,10 +69,10 @@ public class Armor {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getSide() {
+    public Double getSide() {
         return side;
     }
 
@@ -81,10 +81,10 @@ public class Armor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setSide(Float value) {
+    public void setSide(Double value) {
         this.side = value;
     }
 
@@ -93,10 +93,10 @@ public class Armor {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getRear() {
+    public Double getRear() {
         return rear;
     }
 
@@ -105,10 +105,10 @@ public class Armor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setRear(Float value) {
+    public void setRear(Double value) {
         this.rear = value;
     }
 
@@ -117,10 +117,10 @@ public class Armor {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public Float getTop() {
+    public Double getTop() {
         return top;
     }
 
@@ -129,10 +129,10 @@ public class Armor {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link Double }
      *     
      */
-    public void setTop(Float value) {
+    public void setTop(Double value) {
         this.top = value;
     }
 

@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
-import net.deludobellico.stabeditor.data.jaxb.*;
+import net.deludobellico.stabeditor.data.jaxb.FireType;
+import net.deludobellico.stabeditor.data.jaxb.PrimaryRole;
+import net.deludobellico.stabeditor.data.jaxb.WeaponType;
 import net.deludobellico.stabeditor.model.AssetModel;
 import net.deludobellico.stabeditor.model.PerformanceModel;
 import net.deludobellico.stabeditor.model.RangeItemModel;
@@ -21,7 +23,6 @@ import org.controlsfx.dialog.Dialog;
 
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -113,9 +114,9 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     @FXML
     private TableColumn<RangeItemModel, Integer> rangeTableRangeColumn;
     @FXML
-    private TableColumn<RangeItemModel, Float> rangeTableAccuracyColumn;
+    private TableColumn<RangeItemModel, Double> rangeTableAccuracyColumn;
     @FXML
-    private TableColumn<RangeItemModel, Float> rangeTableArmorColumn;
+    private TableColumn<RangeItemModel, Double> rangeTableArmorColumn;
     private ObservableList<RangeItemModel> rangeItemObservableList = FXCollections.observableArrayList();
 
     private WeaponModel weapon;
@@ -176,8 +177,8 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         } else {
             RangeItemModel rangeItem = new RangeItemModel();
             rangeItem.setRange(Integer.valueOf(tableNewRangeValue.getText()));
-            rangeItem.setAccuracy(Float.valueOf(tableNewAccuracyValue.getText()));
-            rangeItem.setArmourPenetration(Float.valueOf(tableNewArmorPenetrationValue.getText()));
+            rangeItem.setAccuracy(Double.valueOf(tableNewAccuracyValue.getText()));
+            rangeItem.setArmourPenetration(Double.valueOf(tableNewArmorPenetrationValue.getText()));
             performance.getRanges().add(rangeItem);
             rangeItemObservableList.add(rangeItem);
         }
@@ -223,10 +224,10 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(new IntegerStringConverter()));
         rangeTableRangeColumn.setCellValueFactory(param -> param.getValue().rangeProperty().asObject());
 
-        rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Float>forTableColumn(new FloatStringConverter()));
+        rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
         rangeTableAccuracyColumn.setCellValueFactory(param -> param.getValue().accuracyProperty().asObject());
 
-        rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Float>forTableColumn(new FloatStringConverter()));
+        rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
         rangeTableArmorColumn.setCellValueFactory(param -> param.getValue().armourPenetrationProperty().asObject());
         rangeItemTableView.getColumns().clear();
         rangeItemTableView.getColumns().add(rangeTableRangeColumn);
@@ -295,6 +296,11 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
     }
 
     @Override
+    public WeaponModel getEstabElement() {
+        return weapon;
+    }
+
+    @Override
     public void setEstabElement(AssetModel asset) {
         WeaponModel newWeapon = (WeaponModel) asset;
         WeaponModel previousWeapon = this.weapon;
@@ -307,11 +313,6 @@ public class WeaponEditorController implements Initializable, AssetEditorControl
         // Fill Fire Type list
         WeaponModel.getFireTypeMap(this.weapon).entrySet().stream().filter(entry -> entry.getValue()).forEach(entry -> fireTypeObservableList.add(entry.getKey()));
         performanceFireTypeList.getSelectionModel().clearSelection();
-    }
-
-    @Override
-    public WeaponModel getEstabElement() {
-        return weapon;
     }
 
 

@@ -9,7 +9,7 @@ public interface AssetModel {
 
     public String getName();
 
-    default public String print(){
+    default public String print() {
         return this.getClass().getSimpleName()
                 + " | ID: "
                 + getId()

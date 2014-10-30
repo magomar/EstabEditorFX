@@ -4,11 +4,9 @@ import net.deludobellico.stabeditor.model.AssetModel;
 import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.DialogAction;
 import org.controlsfx.dialog.Dialogs;
 
 import java.io.File;
-import java.util.Map;
 
 
 /**

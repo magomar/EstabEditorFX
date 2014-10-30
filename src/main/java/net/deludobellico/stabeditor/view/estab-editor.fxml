@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
     <children>
         <BorderPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
@@ -89,12 +89,13 @@
             <center>
                 <ScrollPane fx:id="estabDataContainer">
                     <content>
-                            <VBox>
-                                <children>
-                                    <fx:include fx:id="sourcePane" source="estab-data.fxml" style="-fx-border-color: grey;"/>
-                                    <fx:include fx:id="targetPane" source="estab-data.fxml"/>
-                                </children>
-                            </VBox>
+                        <VBox>
+                            <children>
+                                <fx:include fx:id="sourcePane" source="estab-data.fxml"
+                                            style="-fx-border-color: grey;"/>
+                                <fx:include fx:id="targetPane" source="estab-data.fxml"/>
+                            </children>
+                        </VBox>
                     </content>
                 </ScrollPane>
             </center>

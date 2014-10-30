@@ -37,16 +37,16 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FiringPercentages {
 
-    protected float front;
-    protected float left;
-    protected float right;
-    protected float rear;
+    protected double front;
+    protected double left;
+    protected double right;
+    protected double rear;
 
     /**
      * Gets the value of the front property.
      * 
      */
-    public float getFront() {
+    public double getFront() {
         return front;
     }
 
@@ -54,7 +54,7 @@ public class FiringPercentages {
      * Sets the value of the front property.
      * 
      */
-    public void setFront(float value) {
+    public void setFront(double value) {
         this.front = value;
     }
 
@@ -62,7 +62,7 @@ public class FiringPercentages {
      * Gets the value of the left property.
      * 
      */
-    public float getLeft() {
+    public double getLeft() {
         return left;
     }
 
@@ -70,7 +70,7 @@ public class FiringPercentages {
      * Sets the value of the left property.
      * 
      */
-    public void setLeft(float value) {
+    public void setLeft(double value) {
         this.left = value;
     }
 
@@ -78,7 +78,7 @@ public class FiringPercentages {
      * Gets the value of the right property.
      * 
      */
-    public float getRight() {
+    public double getRight() {
         return right;
     }
 
@@ -86,7 +86,7 @@ public class FiringPercentages {
      * Sets the value of the right property.
      * 
      */
-    public void setRight(float value) {
+    public void setRight(double value) {
         this.right = value;
     }
 
@@ -94,7 +94,7 @@ public class FiringPercentages {
      * Gets the value of the rear property.
      * 
      */
-    public float getRear() {
+    public double getRear() {
         return rear;
     }
 
@@ -102,7 +102,7 @@ public class FiringPercentages {
      * Sets the value of the rear property.
      * 
      */
-    public void setRear(float value) {
+    public void setRear(double value) {
         this.rear = value;
     }
 

@@ -26,11 +26,11 @@ public class ForceModel implements PojoJFXModel<Force> {
     private final ObjectProperty<MoveType> moveType = new SimpleObjectProperty<MoveType>();
     private final IntegerProperty persQty = new SimpleIntegerProperty();
     private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
-    private final FloatProperty basicsQty = new SimpleFloatProperty();
-    private final FloatProperty basicsConsumptionRateModifier = new SimpleFloatProperty();
+    private final DoubleProperty basicsQty = new SimpleDoubleProperty();
+    private final DoubleProperty basicsConsumptionRateModifier = new SimpleDoubleProperty();
     private final IntegerProperty commanderRank = new SimpleIntegerProperty();
-    private final FloatProperty fuelQty = new SimpleFloatProperty();
-    private final FloatProperty fuelLoad = new SimpleFloatProperty();
+    private final DoubleProperty fuelQty = new SimpleDoubleProperty();
+    private final DoubleProperty fuelLoad = new SimpleDoubleProperty();
     private final ObjectProperty<SpeedDataModel> speed = new SimpleObjectProperty<SpeedDataModel>();
     private final ObjectProperty<DeploymentDuration> deploymentDuration = new SimpleObjectProperty<DeploymentDuration>();
     private final ObjectProperty<XMLGregorianCalendar> deployed = new SimpleObjectProperty<XMLGregorianCalendar>();

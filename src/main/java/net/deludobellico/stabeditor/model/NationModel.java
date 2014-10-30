@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.stabeditor.data.jaxb.Insignia;
 import net.deludobellico.stabeditor.data.jaxb.Nation;
-import net.deludobellico.stabeditor.data.jaxb.Service;
 
 /**
  * Created by Mario on 29/10/2014.
@@ -63,72 +62,72 @@ public class NationModel implements PojoJFXModel<Nation> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public String getNationality() {
         return nationality.get();
     }
 
-    public StringProperty nationalityProperty() {
-        return nationality;
-    }
-
     public void setNationality(String nationality) {
         this.nationality.set(nationality);
+    }
+
+    public StringProperty nationalityProperty() {
+        return nationality;
     }
 
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
 
-    public IntegerProperty largeInsigniaProperty() {
-        return largeInsignia;
-    }
-
     public void setLargeInsignia(int largeInsignia) {
         this.largeInsignia.set(largeInsignia);
+    }
+
+    public IntegerProperty largeInsigniaProperty() {
+        return largeInsignia;
     }
 
     public int getSmallInsignia() {
         return smallInsignia.get();
     }
 
-    public IntegerProperty smallInsigniaProperty() {
-        return smallInsignia;
-    }
-
     public void setSmallInsignia(int smallInsignia) {
         this.smallInsignia.set(smallInsignia);
+    }
+
+    public IntegerProperty smallInsigniaProperty() {
+        return smallInsignia;
     }
 
     public ObservableList<ServiceModel> getService() {
