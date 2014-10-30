@@ -6,10 +6,13 @@ import javafx.collections.ObservableList;
 import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.util.JFXModelUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Mario on 28/10/2014.
  */
-public class WeaponModel implements PojoJFXModel<Weapon> {
+public class WeaponModel implements AssetModel, PojoJFXModel<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -24,7 +27,11 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
     private final FloatProperty calibre = new SimpleFloatProperty();
     private final IntegerProperty muzzleVelocity = new SimpleIntegerProperty();
     private final BooleanProperty mustDeployToFire = new SimpleBooleanProperty();
-    private final ObservableList<PerformanceModel> performanceList = FXCollections.observableArrayList();
+    private final ObservableList<PerformanceModel> performances = FXCollections.observableArrayList();
+
+    public WeaponModel(Weapon weapon) {
+        setPojo(weapon);
+    }
 
     @Override
     public Weapon getPojo() {
@@ -51,7 +58,7 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
         weapon.setMuzzleVelocity(muzzleVelocity.get());
         weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
         PerformanceList pl = new PerformanceList();
-        performanceList.stream().forEach((performanceModel) -> {
+        performances.stream().forEach((performanceModel) -> {
             pl.getPerformance().add(performanceModel.getPojo());
         });
         return weapon;
@@ -73,17 +80,18 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
-        performanceList.clear();
-        pojo.getPerformanceList().getPerformance().stream().map((performance) -> {
-            PerformanceModel performanceModel = new PerformanceModel();
-            performanceModel.setPojo(performance);
-            return performanceModel;
-        }).forEach((performanceModel) -> {
-            performanceList.add(performanceModel);
-        });
+        // Random null pointer exception
+        if (pojo.getPerformanceList() != null) {
+            if (pojo.getPerformanceList().getPerformance() != null) {
+                performances.clear();
+                pojo.getPerformanceList().getPerformance().stream().map((performance) -> new PerformanceModel(performance)).forEach((performanceModel) -> {
+                    performances.add(performanceModel);
+                });
+            }
+        }
     }
 
-    public int getId() {
+    public Integer getId() {
         return id.get();
     }
 
@@ -251,7 +259,16 @@ public class WeaponModel implements PojoJFXModel<Weapon> {
         this.mustDeployToFire.set(mustDeployToFire);
     }
 
-    public ObservableList<PerformanceModel> getPerformanceList() {
-        return performanceList;
+    public ObservableList<PerformanceModel> getPerformances() {
+        return performances;
+    }
+
+    public static Map<FireType, Boolean> getFireTypeMap(WeaponModel weapon) {
+        Map<FireType, Boolean> fireTypeMap = new HashMap<>();
+        if (fireTypeMap.isEmpty()) {
+            for (FireType f : FireType.values()) fireTypeMap.put(f, false);
+            for (PerformanceModel p : weapon.getPerformances()) fireTypeMap.put(p.getFireType(), true);
+        }
+        return fireTypeMap;
     }
 }

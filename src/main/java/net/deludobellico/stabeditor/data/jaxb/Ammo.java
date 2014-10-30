@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "minOrderQty",
     "minOrderWeight"
 })
-public class Ammo {
+public class Ammo implements Asset {
 
     @XmlElement(required = true)
     protected String name;

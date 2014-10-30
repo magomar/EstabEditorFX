@@ -1,108 +1,389 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<StackPane fx:id="weaponEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
-   <children>
-      <VBox prefHeight="430.0" prefWidth="700.0">
-          <children>
-              <HBox>
-                  <children>
-                      <Label text="Name:" />
-                      <TextField />
-                  <Label text="Type" />
-                  <ComboBox fx:id="weaponType" prefWidth="150.0" />
-                  <Label text="Primary role" />
-                  <ComboBox fx:id="weaponPrimaryRole" layoutX="194.0" layoutY="10.0" prefWidth="150.0" />
-                  </children>
-              </HBox>
-                <HBox prefHeight="87.0">
+<?import javafx.scene.text.Font?>
+<StackPane fx:id="weaponEditor" maxWidth="700.0" minHeight="430.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="net.deludobellico.stabeditor.controller.WeaponEditorController">
+    <children>
+        <VBox>
+            <children>
+                <HBox>
                     <children>
-                        <TextArea prefHeight="64.0" prefWidth="490.0" text="" wrapText="true" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <CheckBox mnemonicParsing="false" selected="true" text="No image" />
-                                <Button mnemonicParsing="false" text="Open" />
-                                <TextField prefHeight="25.0" prefWidth="133.0" />
-                            </children>
-                        </VBox>
-                        <ImageView fitHeight="48.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/no-image.png" />
-                            </image>
-                        </ImageView>
+                        <Label text="Name" translateY="4.0" minWidth="40">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="600.0"/>
                     </children>
                 </HBox>
-            <HBox>
-               <children>
-                  <VBox prefHeight="148.0" prefWidth="128.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Single shot" />
-                        <CheckBox layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Must deploy to fire" />
-                     </children>
-                  </VBox>
-                      <GridPane layoutX="6.0" layoutY="100.0">
-                          <columnConstraints>
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="72.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="24.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                          <children>
-                              <Label text="Width" />
-                              <TextField fx:id="widthTextField" editable="true" GridPane.columnIndex="1" />
-                              <Label text="m" GridPane.columnIndex="2" />
-                              <Label text="Height" GridPane.rowIndex="1" />
-                              <TextField fx:id="heightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Label text="Length" GridPane.rowIndex="2" />
-                              <TextField fx:id="lengthTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Label text="Weight" GridPane.rowIndex="3" />
-                              <TextField fx:id="weightTextField" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="Kg" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                          </children>
-                      </GridPane>
-                  <GridPane>
-                     <children>
-                        <Label text="Calibre" />
-                        <TextField fx:id="widthTextField1" editable="true" GridPane.columnIndex="1" />
-                        <Label text="Muzzle velocity" GridPane.rowIndex="1" />
-                        <TextField fx:id="heightTextField1" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Crew" GridPane.rowIndex="2" />
-                        <TextField fx:id="lengthTextField1" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Reliability" GridPane.rowIndex="3" />
-                        <TextField fx:id="weightTextField1" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <ChoiceBox prefWidth="150.0" />
-               </children>
-            </HBox>
-          </children>
-      </VBox>
-   </children>
+                <TabPane tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="General">
+                            <content>
+                                <AnchorPane minHeight="350.0">
+                                    <children>
+                                        <BorderPane layoutX="40.0" layoutY="40.0" minHeight="300.0"
+                                                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <top>
+                                                <VBox BorderPane.alignment="CENTER">
+                                                    <children>
+                                                        <Label text="Description"/>
+                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                            <children>
+                                                                <TextArea fx:id="description" maxHeight="100.0"
+                                                                          maxWidth="400.0" minHeight="50.0" text=""
+                                                                          wrapText="true"/>
+                                                                <ImageView fitHeight="48.0" fitWidth="96.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
+                                                                    <image>
+                                                                        <Image url="@/images/no-image.png"/>
+                                                                    </image>
+                                                                    <HBox.margin>
+                                                                        <Insets left="20.0"/>
+                                                                    </HBox.margin>
+                                                                </ImageView>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </top>
+                                            <center>
+                                                <VBox minWidth="250.0" BorderPane.alignment="CENTER_LEFT">
+                                                    <children>
+                                                        <GridPane>
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <CheckBox fx:id="singleShot" alignment="CENTER_RIGHT"
+                                                                          contentDisplay="RIGHT" mnemonicParsing="false"
+                                                                          nodeOrientation="LEFT_TO_RIGHT"
+                                                                          text="Single shot" textAlignment="RIGHT"
+                                                                          GridPane.halignment="LEFT"/>
+                                                                <CheckBox fx:id="mustDeployToFire"
+                                                                          contentDisplay="RIGHT" mnemonicParsing="false"
+                                                                          nodeOrientation="LEFT_TO_RIGHT"
+                                                                          text="Must deploy to fire"
+                                                                          textAlignment="RIGHT"
+                                                                          GridPane.halignment="LEFT"
+                                                                          GridPane.rowIndex="1">
+                                                                    <GridPane.margin>
+                                                                        <Insets/>
+                                                                    </GridPane.margin>
+                                                                </CheckBox>
+                                                            </children>
+                                                        </GridPane>
+                                                        <GridPane minHeight="90.0" prefHeight="90.0" prefWidth="543.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+                                                                                   maxWidth="145.0" minWidth="10.0"
+                                                                                   prefWidth="72.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0"
+                                                                                   minWidth="10.0" prefWidth="235.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0"
+                                                                                   minWidth="10.0" prefWidth="232.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <Label text="Type">
+                                                                    <GridPane.margin>
+                                                                        <Insets right="5.0"/>
+                                                                    </GridPane.margin>
+                                                                </Label>
+                                                                <ComboBox fx:id="weaponType" minWidth="200.0"
+                                                                          prefHeight="25.0" prefWidth="210.0"
+                                                                          GridPane.columnIndex="1"/>
+                                                                <Label text="Primary role" GridPane.rowIndex="1">
+                                                                    <GridPane.margin>
+                                                                        <Insets right="5.0"/>
+                                                                    </GridPane.margin>
+                                                                </Label>
+                                                                <ComboBox fx:id="weaponPrimaryRole" minWidth="200.0"
+                                                                          prefHeight="25.0" prefWidth="210.0"
+                                                                          GridPane.columnIndex="1"
+                                                                          GridPane.rowIndex="1"/>
+                                                                <CheckBox mnemonicParsing="false" selected="true"
+                                                                          text="No image" GridPane.columnIndex="2"/>
+                                                                <TextField GridPane.columnIndex="2"
+                                                                           GridPane.rowIndex="1"/>
+                                                                <Button mnemonicParsing="false" text="Open"
+                                                                        GridPane.columnIndex="2"
+                                                                        GridPane.halignment="RIGHT"/>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets top="20.0"/>
+                                                            </VBox.margin>
+                                                        </GridPane>
+                                                    </children>
+                                                </VBox>
+                                            </center>
+                                        </BorderPane>
+                                    </children>
+                                    <padding>
+                                        <Insets left="20.0" right="20.0" top="20.0"/>
+                                    </padding>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Performance">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <HBox>
+                                            <children>
+                                                <GridPane prefHeight="30.0" prefWidth="592.0">
+                                                    <children>
+                                                        <Label text="Calibre" GridPane.halignment="RIGHT">
+                                                            <GridPane.margin>
+                                                                <Insets right="5.0"/>
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <TextField fx:id="calibre" editable="true"
+                                                                   GridPane.columnIndex="1"/>
+                                                        <Label text="Muzzle Vel." GridPane.columnIndex="2"
+                                                               GridPane.halignment="RIGHT">
+                                                            <GridPane.margin>
+                                                                <Insets right="5.0"/>
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <TextField fx:id="muzzleVelocity" editable="true"
+                                                                   GridPane.columnIndex="3"/>
+                                                        <Label text="Crew" GridPane.columnIndex="4"
+                                                               GridPane.halignment="RIGHT">
+                                                            <GridPane.margin>
+                                                                <Insets right="5.0"/>
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <TextField fx:id="crew" editable="true"
+                                                                   GridPane.columnIndex="5"/>
+                                                        <Label text="Reliability" GridPane.columnIndex="6"
+                                                               GridPane.halignment="RIGHT">
+                                                            <GridPane.margin>
+                                                                <Insets right="5.0"/>
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <TextField fx:id="reliability" editable="true"
+                                                                   GridPane.columnIndex="7"/>
+                                                        <TextField fx:id="weightTextField" editable="true"
+                                                                   GridPane.columnIndex="9"/>
+                                                        <Label text="Weight (kg)" GridPane.columnIndex="8"
+                                                               GridPane.halignment="RIGHT">
+                                                            <GridPane.margin>
+                                                                <Insets right="5.0"/>
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                    </children>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+                                                                           minWidth="10.0" prefWidth="30.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0"
+                                                                           minWidth="10.0" prefWidth="20.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0"
+                                                                           minWidth="10.0" prefWidth="20.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0"
+                                                                           minWidth="10.0" prefWidth="20.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0"
+                                                                           minWidth="10.0" prefWidth="20.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0"
+                                                                           minWidth="10.0" prefWidth="20.0"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </HBox>
+                                        <HBox layoutX="8.0" layoutY="39.0">
+                                            <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                    <children>
+                                                        <ListView fx:id="performanceFireTypeList" prefHeight="130.0"
+                                                                  prefWidth="100.0"/>
+                                                    </children>
+                                                </VBox>
+                                                <Pane style="-fx-border-color: grey;">
+                                                    <children>
+                                                        <Label fx:id="fireTypeLabel" layoutX="20.0" layoutY="6.0">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label layoutX="25.0" layoutY="40.0" text="Ammo"/>
+                                                        <GridPane layoutX="30.0" layoutY="112.0" prefHeight="80.0"
+                                                                  prefWidth="107.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.0"
+                                                                                   minWidth="10.0" prefWidth="69.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0"
+                                                                                   minWidth="10.0" prefWidth="38.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <Label text="Slow" GridPane.halignment="CENTER"/>
+                                                                <Label text="Normal" GridPane.halignment="CENTER"
+                                                                       GridPane.rowIndex="1"/>
+                                                                <Label text="Rapid" GridPane.halignment="CENTER"
+                                                                       GridPane.rowIndex="2"/>
+                                                                <TextField fx:id="fireRateSlow" prefHeight="25.0"
+                                                                           prefWidth="37.0" GridPane.columnIndex="1">
+                                                                    <padding>
+                                                                        <Insets top="1.0"/>
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField fx:id="fireRateNormal" prefHeight="25.0"
+                                                                           prefWidth="37.0" GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="1">
+                                                                    <padding>
+                                                                        <Insets bottom="1.0" top="1.0"/>
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField fx:id="fireRateRapid" prefHeight="25.0"
+                                                                           prefWidth="37.0" GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="2">
+                                                                    <padding>
+                                                                        <Insets top="1.0"/>
+                                                                    </padding>
+                                                                </TextField>
+                                                            </children>
+                                                        </GridPane>
+                                                        <Label layoutX="25.0" layoutY="70.0" text="Min Range"/>
+                                                        <Label layoutX="25.0" layoutY="100.0" text="Rate of fire:"/>
+                                                        <Label layoutX="25.0" layoutY="200.0" text="Burst Radius"/>
+                                                        <Label layoutX="25.0" layoutY="230.0" text="Shell Weight"/>
+                                                        <Label layoutX="25.0" layoutY="260.0" text="Load"/>
+                                                        <Label fx:id="ammoNameLabel" layoutX="90.0" layoutY="40.0"
+                                                               prefHeight="17.0" prefWidth="232.0"
+                                                               style="-fx-border-color: black;" text="">
+                                                            <padding>
+                                                                <Insets left="5.0"/>
+                                                            </padding>
+                                                        </Label>
+                                                        <TextField fx:id="minRange" layoutX="100.0" layoutY="66.0"
+                                                                   prefHeight="25.0" prefWidth="37.0"/>
+                                                        <TextField fx:id="burstRadius" layoutX="100.0" layoutY="197.0"
+                                                                   prefHeight="25.0" prefWidth="37.0"/>
+                                                        <TextField fx:id="shellWeight" layoutX="100.0" layoutY="226.0"
+                                                                   prefHeight="25.0" prefWidth="37.0"/>
+                                                        <TextField fx:id="load" layoutX="100.0" layoutY="254.0"
+                                                                   prefHeight="25.0" prefWidth="37.0"/>
+                                                        <GridPane layoutX="152.0" layoutY="83.0" prefHeight="56.0"
+                                                                  prefWidth="314.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints maxHeight="27.0" minHeight="10.0"
+                                                                                prefHeight="26.0" vgrow="SOMETIMES"/>
+                                                                <RowConstraints maxHeight="43.0" minHeight="10.0"
+                                                                                prefHeight="38.0" vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <Label text="Range"/>
+                                                                <Label text="Accuracy" GridPane.columnIndex="1"/>
+                                                                <Label text="Armor Pen." GridPane.columnIndex="2"/>
+                                                                <TextField fx:id="tableNewRangeValue" maxWidth="50.0"
+                                                                           GridPane.rowIndex="1"
+                                                                           GridPane.valignment="TOP"/>
+                                                                <TextField fx:id="tableNewAccuracyValue" maxWidth="50.0"
+                                                                           GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="1"
+                                                                           GridPane.valignment="TOP"/>
+                                                                <TextField fx:id="tableNewArmorPenetrationValue"
+                                                                           maxWidth="50.0" GridPane.columnIndex="2"
+                                                                           GridPane.rowIndex="1"
+                                                                           GridPane.valignment="TOP"/>
+                                                                <Button fx:id="addRangeButton" disable="true"
+                                                                        minWidth="60.0" mnemonicParsing="false"
+                                                                        onAction="#addRangeToTable" text="Add"
+                                                                        GridPane.columnIndex="3"
+                                                                        GridPane.halignment="CENTER"/>
+                                                                <Button fx:id="removeRangeButton" disable="true"
+                                                                        minWidth="60.0" mnemonicParsing="false"
+                                                                        onAction="#removeRangeFromTable" text="Remove"
+                                                                        GridPane.columnIndex="3"
+                                                                        GridPane.halignment="CENTER"
+                                                                        GridPane.rowIndex="1"/>
+                                                            </children>
+                                                        </GridPane>
+                                                        <TableView fx:id="rangeItemTableView" layoutX="152.0"
+                                                                   layoutY="147.0" prefHeight="155.0" prefWidth="315.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="rangeTableRangeColumn"
+                                                                             prefWidth="75.0" text="Range"/>
+                                                                <TableColumn fx:id="rangeTableAccuracyColumn"
+                                                                             prefWidth="75.0" text="Accuracy"/>
+                                                                <TableColumn fx:id="rangeTableArmorColumn"
+                                                                             prefWidth="126.0"
+                                                                             text="Armor Penetration"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                    <HBox.margin>
+                                                        <Insets left="20.0"/>
+                                                    </HBox.margin>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets left="20.0" right="20.0" top="20.0"/>
+                                    </padding>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets top="15.0"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets right="20.0"/>
+                    </VBox.margin>
+                </TabPane>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets left="20.0" top="15.0"/>
+    </padding>
 </StackPane>

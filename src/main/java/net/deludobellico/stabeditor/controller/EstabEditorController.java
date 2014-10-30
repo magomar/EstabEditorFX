@@ -1,213 +1,306 @@
 package net.deludobellico.stabeditor.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import net.deludobellico.stabeditor.model.CopyPasteLists;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.util.FileIO;
+import net.deludobellico.stabeditor.util.Settings;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EstabEditorController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabEditorController.class.getName());
-    private static final String ESTAB_DATA_FOLDER = "datasets";
-    private static final FilenameFilter XML_FILTER = new FilenameFilter() {
-        public boolean accept(File dir, String name) {
-            String lowercaseName = name.toLowerCase();
-            if (lowercaseName.endsWith(".xml")) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    };
 
     @FXML
-    private ListView<File> estabFileListView;
+    private AnchorPane rootPane;
 
     @FXML
-    private Button addEstabButton;
+    private ScrollPane estabDataContainer;
 
     @FXML
-    private Button openSourceEstabButton;
+    private TitledPane sourcePane;
 
     @FXML
-    private Button openTargetEstabButton;
+    private TitledPane targetPane;
+
+    @FXML
+    private MenuItem exitMenuItem;
+
+    @FXML
+    private Menu sourceOpenRecentMenuList;
+
+    @FXML
+    private MenuItem sourceSaveAsMenuItem;
+
+    @FXML
+    private MenuItem sourceCloseMenuItem;
+
+    @FXML
+    private MenuItem targetOpenNewMenuItem;
+
+    @FXML
+    private MenuItem targetOpenMenuItem;
+
+    @FXML
+    private Menu targetOpenRecentMenuList;
+
+    @FXML
+    private MenuItem targetSaveMenuItem;
+
+    @FXML
+    private MenuItem targetSaveAsMenuItem;
+
+    @FXML
+    private MenuItem targetCloseMenuItem;
+
+    @FXML
+    private RadioMenuItem toolbarRadioItem;
+
+    @FXML
+    private RadioMenuItem sourceRadioItem;
+
+    @FXML
+    private RadioMenuItem targetRadioItem;
+
+    // TODO: Create about info
+    @FXML
+    private MenuItem aboutMenuItem;
+
+    @FXML
+    private ToolBar toolBar;
 
     @FXML
     private Button copyElementButton;
 
     @FXML
-    private Button keepElementButton;
-
-    @FXML
     private Button saveDataButton;
 
     @FXML
-    private Button removeEstabButton;
+    private EstabDataController sourcePaneController;
 
     @FXML
-    private EstabDataController sourceEstabDataController;
+    private EstabDataController targetPaneController;
 
-    @FXML
-    private EstabDataController targetEstabDataController;
-
-    @FXML
-    private TextField targetEstabFileTextField;
-
-
-    private ObservableList<File> estabFileObservableList = FXCollections.observableArrayList();
+    private File sourceEstabFile;
     private File targetEstabFile;
+
+    private Stage stage;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        FileChooser fileChooser = new FileChooser();
-        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
-        File initialDirectory = examplesPath.toFile();
-        List<File> files = FileIO.listFiles(initialDirectory, XML_FILTER, false);
-        estabFileObservableList.addAll(files);
-        estabFileListView.setItems(estabFileObservableList);
-        addEstabButton.setDisable(false);
-        removeEstabButton.setDisable(true);
-        openSourceEstabButton.setDisable(true);
-        openTargetEstabButton.setDisable(true);
-        copyElementButton.setDisable(true);
-        keepElementButton.setDisable(true);
-        saveDataButton.setDisable(true);
-        estabFileListView.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean aBoolean2) {
-                boolean estabsListViewFocused = estabFileListView.isFocused();
-                removeEstabButton.setDisable(!estabsListViewFocused);
-                openSourceEstabButton.setDisable(false);
-                openTargetEstabButton.setDisable(false);
-            }
+        sourcePaneController.setTitle("Source Estab Data:");
+        targetPaneController.setTitle("Target Estab Data: ");
+        sourcePaneController.setEditable(false);
+        targetPaneController.setEditable(true);
+        sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Only enable the copy button if there's a target file and a selected element
+            if (targetPaneController.getEstabDataModel() != null && newValue != null)
+                copyElementButton.setDisable(false);
+            else copyElementButton.setDisable(true);
         });
-        sourceEstabDataController.setTitle("Source Estab Data:");
-        targetEstabDataController.setTitle("Target Estab Data: ");
-        sourceEstabDataController.setEditable(false);
-        targetEstabDataController.setEditable(true);
-        sourceEstabDataController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (null != newValue) {
-                    copyElementButton.setDisable(false);
-                } else {
-                    copyElementButton.setDisable(true);
-                }
-            }
-        });
+
+        populateOpenRecentSourceMenu();
+        populateOpenRecentTargetMenu();
+
+        toolBar.managedProperty().bind(toolBar.visibleProperty());
+        sourcePane.managedProperty().bind(sourcePane.visibleProperty());
+        targetPane.managedProperty().bind(targetPane.visibleProperty());
+
+        toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
+        sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
+        targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
+
+        toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
+        sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
+        targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
+        estabDataContainer.setFitToWidth(true);
+        if(!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
     }
 
-    @FXML
-    private void copyElementAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        targetEstabDataController.setActiveComponent(sourceEstabDataController.getActiveComponent());
-        keepElementButton.setDisable(false);
+    private void populateOpenRecentTargetMenu() {
+        targetOpenRecentMenuList.getItems().clear();
+        for (String targetFile : Settings.getInstance().getTargetRecentFiles()) {
+            File file = new File(targetFile);
+            MenuItem recentTargetMenuItem = new MenuItem(file.getName());
+            recentTargetMenuItem.setOnAction(event -> {
+                openTarget(file);
+            });
+            targetOpenRecentMenuList.getItems().add(recentTargetMenuItem);
+        }
     }
 
-    @FXML
-    private void keepElementAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        keepElementButton.setDisable(true);
-        targetEstabDataController.keepActiveComponent();
+    private void populateOpenRecentSourceMenu() {
+        sourceOpenRecentMenuList.getItems().clear();
+        for (String sourceFile : Settings.getInstance().getSourceRecentFiles()) {
+            File file = new File(sourceFile);
+            MenuItem recentSourceMenuItem = new MenuItem(file.getName());
+            recentSourceMenuItem.setOnAction(event -> {
+                openSource(file);
+            });
+            sourceOpenRecentMenuList.getItems().add(recentSourceMenuItem);
+        }
+    }
+
+    private File openFileChooser(boolean isSaving) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Opening ESTAB File");
+        fileChooser.setInitialDirectory(FileIO.getDatasetsPath().toFile());
+        fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
+
+        return isSaving ? fileChooser.showSaveDialog(getStage()) : fileChooser.showOpenDialog(getStage());
+    }
+
+
+//  Careful, no file == null check on both openSource and openTarget
+
+    private void openSource(File file) {
+        LOG.log(Level.INFO, "Opening source file: " + file.getName());
+
+        sourceEstabFile = file;
+        sourcePaneController.setTitle("Source Estab: " + file.getName());
+        sourcePaneController.setEstabDataModel(new EstabDataModel(sourceEstabFile));
+
+        sourceSaveAsMenuItem.setDisable(false);
+
+        Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
+        populateOpenRecentSourceMenu();
+    }
+
+    // TODO: check target has correct xml syntax
+    private void openTarget(File file) {
+        LOG.log(Level.INFO, "Opening target file: " + file.getName());
+
+        targetEstabFile = file;
+        targetPaneController.setTitle("Target Estab: " + targetEstabFile.getName());
+        targetPaneController.setEstabDataModel(new EstabDataModel(targetEstabFile));
+
         saveDataButton.setDisable(false);
+        targetSaveMenuItem.setDisable(false);
+        targetSaveAsMenuItem.setDisable(false);
+
+        if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveComponent() != null)
+            copyElementButton.setDisable(false);
+
+        Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
+        populateOpenRecentTargetMenu();
     }
 
     @FXML
-    private void saveEstabDataAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-//        saveDataButton.setDisable(true);
-        targetEstabDataController.saveDataModel(targetEstabFile);
+    public void openSourceAction(ActionEvent actionEvent) {
+        File file = openFileChooser(false);
+        if (null != file) openSource(file);
     }
 
     @FXML
-    private void addEstabAction(ActionEvent actionEvent) {
+    public void openTargetAction(ActionEvent actionEvent) {
+        File file = openFileChooser(false);
+        if (file != null) openTarget(file);
+    }
+
+    @FXML
+    public void openNewTarget(ActionEvent actionEvent) {
+        openTarget(FileIO.getNewEstabFile());
+    }
+
+    @FXML
+    public void copyElementAction(ActionEvent actionEvent) {
         LOG.info(actionEvent.toString());
-        FileChooser fileChooser = new FileChooser();
-        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
-        File initialDirectory = examplesPath.toFile();
-        fileChooser.setInitialDirectory(initialDirectory);
-        File file = fileChooser.showOpenDialog(null);
-        if (null != file) {
-            estabFileObservableList.add(file);
-            LOG.info("New Estab included: " + file);
+        targetPaneController.setActiveComponent(sourcePaneController.getActiveComponent());
+        // All the assets/elements that we are going to copy
+        CopyPasteLists copyPasteElementLists = sourcePaneController.getEstabDataModel().getElementsToCopy(sourcePaneController.getActiveComponent());
+        targetPaneController.pasteActiveComponent(copyPasteElementLists);
+    }
+
+    @FXML
+    public void saveTargetAction(ActionEvent actionEvent) {
+        if (targetEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
+            saveTargetAsAction(actionEvent);
+        } else {
+            LOG.log(Level.INFO, "Saving target file: " + targetEstabFile.getName());
+        }
+        targetPaneController.saveDataModel(targetEstabFile);
+    }
+
+    @FXML
+    public void saveTargetAsAction(ActionEvent actionEvent) {
+        File file = openFileChooser(true);
+        if (file != null) {
+            LOG.log(Level.INFO, "Saving target file " + targetEstabFile.getName() + " as " + file.getName());
+            FileIO.copy(targetEstabFile, file);
+            openTarget(file);
         }
     }
 
     @FXML
-    private void removeEstabAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        int selectedItem = estabFileListView.getSelectionModel().getSelectedIndex();
-        if (selectedItem != -1) {
-            estabFileObservableList.remove(selectedItem);
+    public void saveSouceAsAction(ActionEvent actionEvent) {
+        File file = openFileChooser(true);
+        if (file != null) {
+            LOG.log(Level.INFO, "Saving source file " + targetEstabFile.getName() + " as " + file.getName());
+            FileIO.copy(sourceEstabFile, file);
+            openSource(file);
         }
     }
 
     @FXML
-    private void openSourceEstabAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        int selectedItem = estabFileListView.getSelectionModel().getSelectedIndex();
-        if (selectedItem == -1) return;
-        File file = estabFileObservableList.get(selectedItem);
-        sourceEstabDataController.setTitle("Source Estab: " + file.getName());
-        sourceEstabDataController.setEstabDataModel(new EstabDataModel(file));
+    public void toggleToolBarVisibility(ActionEvent actionEvent) {
+        boolean isVisible = !toolBar.isVisible();
+        toolBar.setVisible(isVisible);
+        Settings.getInstance().setVisibleToolbar(isVisible);
     }
 
     @FXML
-    private void openTargetEstabAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        targetEstabFile = estabFileListView.getSelectionModel().getSelectedItem();
-        if (null == targetEstabFile) return;
-        targetEstabFileTextField.setText(targetEstabFile.getName());
-        targetEstabDataController.setTitle("Target Estab: " + targetEstabFile.getName());
-        targetEstabDataController.setEstabDataModel(new EstabDataModel(targetEstabFile));
-
+    public void toggleSourcePaneVisibility(ActionEvent actionEvent) {
+        boolean isVisible = !sourcePane.isVisible();
+        sourcePane.setVisible(isVisible);
+        Settings.getInstance().setVisibleSourcePanel(isVisible);
     }
 
     @FXML
-    private void openEstabAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-        FileChooser fileChooser = new FileChooser();
-        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
-        File initialDirectory = examplesPath.toFile();
-        fileChooser.setInitialDirectory(initialDirectory);
-        File file = fileChooser.showOpenDialog(null);
-        if (null != file) {
-            targetEstabFileTextField.setText(file.getName());
-            targetEstabDataController.setEstabDataModel(new EstabDataModel(file));
-            targetEstabDataController.setTitle("Target Estab: " + file.getName());
-        }
+    public void toggleTargetPaneVisibility(ActionEvent actionEvent) {
+        boolean isVisible = !targetPane.isVisible();
+        targetPane.setVisible(isVisible);
+        Settings.getInstance().setVisibleTargetPanel(isVisible);
     }
 
     @FXML
-    private void newEstabAction(ActionEvent actionEvent) {
-        LOG.info(actionEvent.toString());
-//        FileChooser fileChooser = new FileChooser();
-//        Path examplesPath = FileSystems.getDefault().getPath(System.getProperty("user.dir"), "/src/main/resources/", ESTAB_DATA_FOLDER);
-//        File initialDirectory = examplesPath.toFile();
-//        fileChooser.setInitialDirectory(initialDirectory);
-//        File file = fileChooser.showSaveDialog(null);
-//        if (null != file) {
-//        }
-        targetEstabFileTextField.setText("NewStab.xml");
-        targetEstabDataController.setEstabDataModel(new EstabDataModel());
-        targetEstabDataController.setTitle("Target Estab: NewStab.xml");
+    public void togglePanesContainer(ActionEvent actionEvent) {
+        Pane container;
+        boolean verticalPanes;
+        if (estabDataContainer.getContent() instanceof VBox) {
+            container = new HBox();
+            verticalPanes = false;
+        } else if (estabDataContainer.getContent() instanceof HBox) {
+            container = new VBox();
+            verticalPanes = true;
+        } else return;
+
+        container.getChildren().addAll(((Pane) estabDataContainer.getContent()).getChildren());
+        estabDataContainer.setContent(container);
+        Settings.getInstance().setVerticalPanes(verticalPanes);
+    }
+
+    @FXML
+    public void exitApplication(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
+    private Stage getStage() {
+        return (Stage) rootPane.getScene().getWindow();
     }
 }

@@ -3,6 +3,8 @@ package net.deludobellico.stabeditor.util;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import javafx.stage.FileChooser;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -10,6 +12,10 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,10 +29,32 @@ import java.util.zip.ZipOutputStream;
  */
 public class FileIO {
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
+
+    /**
+     * JAXB paths
+     */
     private static final String JAXB_CONTEXT_PATH = "net.deludobellico.stabeditor.data.jaxb";
     private static JAXBContext JAXB_CONTEXT;
     private static Marshaller MARSHALLER;
     private static Unmarshaller UNMARSHALLER;
+
+    /**
+     * File  and folder paths
+     */
+    public static final String ESTAB_EDITOR_VIEW = "./view/estab-editor.fxml";
+    public static final String SETTINGS_XML_FILE = "estab-settings.xml";
+    public static final String RESOURCES_FOLDER = "/src/main/resources";
+    public static final String ESTAB_DATASETS_FOLDER = RESOURCES_FOLDER + "/datasets";
+    public static final String NEW_ESTAB_PATH = ESTAB_DATASETS_FOLDER + "/newestab.xml";
+
+    /**
+     * File filters
+     */
+    public static final FileChooser.ExtensionFilter[] FILECHOOSER_FILTERS = {
+            new FileChooser.ExtensionFilter("XML (*.xml)", "*.xml"),
+            new FileChooser.ExtensionFilter("All (*.*)", "*.*")
+    };
+
 
     static {
         try {
@@ -208,4 +236,120 @@ public class FileIO {
         return null;
     }
 
+    public static Settings loadProperties() {
+        return null;
+    }
+
+    public static void loadSettings() {
+        try {
+            File file = new File(FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE).toString());
+            if (!file.exists()) {
+                file = getNewSettingsFile();
+            }
+            Unmarshaller um = JAXBContext.newInstance(Settings.class).createUnmarshaller();
+            um.unmarshal(file);
+
+        } catch (JAXBException e) {
+            if (e.getLinkedException().getClass().equals(SAXParseException.class)) {
+                LOG.log(Level.WARNING, "Settings file has incorrect syntax", e);
+            }
+        }
+    }
+
+    public static void saveSettings() {
+        try {
+            Marshaller m = JAXBContext.newInstance(Settings.class).createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(Settings.getInstance(), getFileOrCreateNew(SETTINGS_XML_FILE));
+
+        } catch (JAXBException e) {
+            LOG.log(Level.WARNING, "Couldn't save settings", e);
+        }
+    }
+
+    /**
+     * Tries to create a new file in @path, if it exists then returns the file
+     *
+     * @param path
+     * @return
+     */
+    public static File getFileOrCreateNew(String path) {
+        File f = null;
+
+        try {
+            f = new File(path);
+            boolean exists = f.exists();
+            if (!exists) {
+                boolean createNew = f.createNewFile();
+                if (!createNew) {
+                    throw new IOException();
+                }
+            }
+        } catch (IOException e) {
+            LOG.log(Level.WARNING, "Error creating: " + path, new IOException());
+        }
+        return f;
+    }
+
+    public static File getFile(Path path) {
+        return getFileOrCreateNew(path.toString());
+    }
+
+    public static File getNewEstabFile() {
+        File f = null;
+        try {
+            f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.NEW_ESTAB_PATH).toString());
+            FileOutputStream fos = new FileOutputStream(f, false);
+            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><estab-data></estab-data>".getBytes());
+            fos.close();
+        } catch (FileNotFoundException e) {
+            LOG.log(Level.SEVERE, "Error creating new estab file: " + f.getPath(), e);
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, "Error creating new estab file: " + f.getPath(), e);
+        }
+        return f;
+    }
+
+    public static File getNewSettingsFile(){
+        File f = null;
+        try {
+            f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.SETTINGS_XML_FILE).toString());
+            FileOutputStream fos = new FileOutputStream(f, false);
+            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><source-recent-files /><target-recent-files /><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width></settings>".getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
+    public static void copy(File sourceFile, File targetFile) {
+        try {
+            Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * File.createNewFile() proxy
+     *
+     * @param file
+     * @return
+     */
+    public static File createNewFile(File file) {
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
+    public static Path getNewEstabPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.NEW_ESTAB_PATH);
+    }
+
+    public static Path getDatasetsPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.ESTAB_DATASETS_FOLDER);
+    }
 }

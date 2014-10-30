@@ -5,11 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.deludobellico.stabeditor.util.FileIO;
+import net.deludobellico.stabeditor.util.Settings;
 
 import java.io.File;
 import java.util.prefs.Preferences;
 
 public class Main extends Application {
+
+    Stage primaryStage;
 
     public static void main(String[] args) {
         launch(args);
@@ -17,12 +21,25 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./view/estab-editor.fxml"));
+
+        Settings.load();
+        Parent root = FXMLLoader.load(getClass().getResource(FileIO.ESTAB_EDITOR_VIEW));
+
+        this.primaryStage = primaryStage;
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        primaryStage.setHeight(Settings.getInstance().getWindowHeight());
+        primaryStage.setWidth(Settings.getInstance().getWindowWidth());
     }
 
+    @Override
+    public void stop() {
+        Settings.getInstance().setWindowWidth(primaryStage.getWidth());
+        Settings.getInstance().setWindowHeight(primaryStage.getHeight());
+        Settings.save();
+    }
     /**
      * Returns the source estab file preference, i.e. the estab file that was last opened
      * as a source to copy estab data.

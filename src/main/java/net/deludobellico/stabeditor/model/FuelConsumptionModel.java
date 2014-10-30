@@ -12,6 +12,10 @@ public class FuelConsumptionModel implements PojoJFXModel<FuelConsumption> {
     private final FloatProperty maxFuelConsumption = new SimpleFloatProperty();
     private final FloatProperty normalFuelConsumption = new SimpleFloatProperty();
 
+    public FuelConsumptionModel(FuelConsumption fuelConsumption) {
+        setPojo(fuelConsumption);
+    }
+
     @Override
     public FuelConsumption getPojo() {
         FuelConsumption fuelConsumption = new FuelConsumption();
@@ -26,23 +30,23 @@ public class FuelConsumptionModel implements PojoJFXModel<FuelConsumption> {
         normalFuelConsumption.set(pojo.getNormal());
     }
 
-    public float getMaxFuelConsumption() {
+    public float getMax() {
         return maxFuelConsumption.get();
     }
 
-    public FloatProperty maxFuelConsumptionProperty() {
+    public FloatProperty maxProperty() {
         return maxFuelConsumption;
     }
 
-    public void setMaxFuelConsumption(float maxFuelConsumption) {
+    public void setMax(float maxFuelConsumption) {
         this.maxFuelConsumption.set(maxFuelConsumption);
     }
 
-    public float getNormalFuelConsumption() {
+    public float getNormal() {
         return normalFuelConsumption.get();
     }
 
-    public FloatProperty normalFuelConsumptionProperty() {
+    public FloatProperty normalProperty() {
         return normalFuelConsumption;
     }
 

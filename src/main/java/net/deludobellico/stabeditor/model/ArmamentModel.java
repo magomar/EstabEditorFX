@@ -21,6 +21,10 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
     private final transient StringProperty equipmentName = new SimpleStringProperty();
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
 
+    public ArmamentModel(Armament armament) {
+        setPojo(armament);
+    }
+
     @Override
     public Armament getPojo() {
         Armament armament = new Armament();

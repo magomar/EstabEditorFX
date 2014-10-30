@@ -14,8 +14,13 @@ import net.deludobellico.stabeditor.data.jaxb.SpeedData;
 
 public class SpeedDataModel implements PojoJFXModel<SpeedData> {
 
-    private final  FloatProperty max = new SimpleFloatProperty();
-    private final  FloatProperty normal = new SimpleFloatProperty();
+    private final FloatProperty max = new SimpleFloatProperty();
+    private final FloatProperty normal = new SimpleFloatProperty();
+
+    public SpeedDataModel(Float max, Float normal) {
+        setMax(max);
+        setNormal(normal);
+    }
 
     @Override
     public SpeedData getPojo() {

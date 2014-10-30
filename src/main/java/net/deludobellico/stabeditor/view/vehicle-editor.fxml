@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="vehicleEditor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.VehicleEditorController">
+<StackPane fx:id="vehicleEditor" minHeight="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.stabeditor.controller.VehicleEditorController">
     <children>
         <VBox prefHeight="430.0" prefWidth="700.0">
             <children>
@@ -191,4 +192,7 @@
             </children>
         </VBox>
     </children>
+   <padding>
+      <Insets left="20.0" top="15.0" />
+   </padding>
 </StackPane>
