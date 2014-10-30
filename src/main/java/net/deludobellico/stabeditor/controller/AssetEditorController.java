@@ -1,16 +1,18 @@
 package net.deludobellico.stabeditor.controller;
 
+import net.deludobellico.stabeditor.model.AssetModel;
+
 /**
  * Created by Mario on 26/08/2014.
  */
-public interface AssetEditorController<T> {
-    T getEstabElement();
+public interface AssetEditorController {
+    AssetModel getEstabElement();
 
-    void setEstabElement(T asset);
+    void setEstabElement(AssetModel asset);
 
     void setEditable(boolean isEditable);
 
-    void bindProperties(T asset);
+    void bindProperties(AssetModel asset);
 
-    void unbindProperties(T asset);
+    void unbindProperties(AssetModel asset);
 }

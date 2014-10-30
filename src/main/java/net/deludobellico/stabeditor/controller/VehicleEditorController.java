@@ -1,7 +1,5 @@
 package net.deludobellico.stabeditor.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,8 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
+import net.deludobellico.stabeditor.model.AssetModel;
+import net.deludobellico.stabeditor.model.VehicleModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class VehicleEditorController implements Initializable, AssetEditorController<Vehicle> {
+public class VehicleEditorController implements Initializable, AssetEditorController {
     @FXML
     private TextField maxTrenchWidth;
 
@@ -120,20 +119,15 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     @FXML
     private TextField takeCoverMod;
 
-    private Vehicle vehicle;
+    private VehicleModel vehicle;
     private ObservableList<VehicleType> vehicleTypeObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        vehicle = new Vehicle();
         vehicleTypeObservableList.addAll(VehicleType.values());
         vehicleType.setItems(vehicleTypeObservableList);
-        vehicleType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<VehicleType>() {
-            @Override
-            public void changed(ObservableValue<? extends VehicleType> observable, VehicleType oldValue, VehicleType newValue) {
-                if (null != newValue)
-                    vehicle.setType(newValue);
-            }
+        vehicleType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null != newValue) vehicle.setType(newValue);
         });
     }
 
@@ -178,102 +172,96 @@ public class VehicleEditorController implements Initializable, AssetEditorContro
     }
 
     @Override
-    public void bindProperties(Vehicle vehicle) {
-        
+    public void bindProperties(AssetModel asset) {
         battleWeight.textProperty().bindBidirectional(vehicle.battleWeightProperty(), new NumberStringConverter());
         bulkFuelCapacity.textProperty().bindBidirectional(vehicle.bulkFuelCapacityProperty(), new NumberStringConverter());
         crew.textProperty().bindBidirectional(vehicle.crewProperty(), new NumberStringConverter());
-        crossCountryMaxSpeed.textProperty().bindBidirectional(vehicle.getSpeed().getCrossCountry().maxProperty(), new NumberStringConverter());
-        crossCountryNormalSpeed.textProperty().bindBidirectional(vehicle.getSpeed().getCrossCountry().normalProperty(), new NumberStringConverter());
+        crossCountryMaxSpeed.textProperty().bindBidirectional(vehicle.crossCountrySpeedProperty().get().maxProperty(), new NumberStringConverter());
+        crossCountryNormalSpeed.textProperty().bindBidirectional(vehicle.crossCountrySpeedProperty().get().normalProperty(), new NumberStringConverter());
         description.textProperty().bindBidirectional(vehicle.descriptionProperty());
-        frontArmor.textProperty().bindBidirectional(vehicle.getArmour().frontProperty(), new NumberStringConverter());
+        frontArmor.textProperty().bindBidirectional(vehicle.frontArmorProperty(), new NumberStringConverter());
         fuelCapacity.textProperty().bindBidirectional(vehicle.fuelCapacityProperty(), new NumberStringConverter());
         fuelConsumptionMaxSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().maxProperty(), new NumberStringConverter());
         fuelConsumptionNormalSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().normalProperty(), new NumberStringConverter());
 
-        hasOpenTop.setSelected((vehicle.getHasOpenTop().equals("yes") ? true : false));
-        hasTurret.setSelected((vehicle.getHasTurret().equals("yes") ? true : false));
+        hasOpenTop.selectedProperty().bindBidirectional(vehicle.hasOpenTopProperty());
+        hasTurret.selectedProperty().bindBidirectional(vehicle.hasTurretProperty());
 
-        height.textProperty().bindBidirectional(vehicle.getSize().heightProperty(), new NumberStringConverter());
-        length.textProperty().bindBidirectional(vehicle.getSize().lengthProperty(), new NumberStringConverter());
+        height.textProperty().bindBidirectional(vehicle.heightProperty(), new NumberStringConverter());
+        length.textProperty().bindBidirectional(vehicle.lengthProperty(), new NumberStringConverter());
         maxFordingDepth.textProperty().bindBidirectional(vehicle.maxFordingDepthProperty(), new NumberStringConverter());
         maxGradient.textProperty().bindBidirectional(vehicle.maxGradientProperty(), new NumberStringConverter());
         maxTrenchWidth.textProperty().bindBidirectional(vehicle.maxTrenchWidthProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(vehicle.nameProperty());
         payloadCapacity.textProperty().bindBidirectional(vehicle.payloadCapacityProperty(), new NumberStringConverter());
         personnelCapacity.textProperty().bindBidirectional(vehicle.personnelCapacityProperty(), new NumberStringConverter());
-        rearArmor.textProperty().bindBidirectional(vehicle.getArmour().rearProperty(), new NumberStringConverter());
+        rearArmor.textProperty().bindBidirectional(vehicle.rearArmorProperty(), new NumberStringConverter());
         reliability.textProperty().bindBidirectional(vehicle.reliabilityProperty(), new NumberStringConverter());
-        roadMaxSpeed.textProperty().bindBidirectional(vehicle.getSpeed().getRoad().maxProperty(), new NumberStringConverter());
-        roadNormalSpeed.textProperty().bindBidirectional(vehicle.getSpeed().getRoad().maxProperty(), new NumberStringConverter());
+        roadMaxSpeed.textProperty().bindBidirectional(vehicle.getRoadSpeed().maxProperty(), new NumberStringConverter());
+        roadNormalSpeed.textProperty().bindBidirectional(vehicle.getRoadSpeed().normalProperty(), new NumberStringConverter());
         ronsonability.textProperty().bindBidirectional(vehicle.ronsonabilityProperty(), new NumberStringConverter());
-        sideArmor.textProperty().bindBidirectional(vehicle.getArmour().sideProperty(), new NumberStringConverter());
+        sideArmor.textProperty().bindBidirectional(vehicle.sideArmorProperty(), new NumberStringConverter());
         takeCoverMod.textProperty().bindBidirectional(vehicle.takeCoverModProperty(), new NumberStringConverter());
-        topArmor.textProperty().bindBidirectional(vehicle.getArmour().topProperty(), new NumberStringConverter());
+        topArmor.textProperty().bindBidirectional(vehicle.topArmorProperty(), new NumberStringConverter());
         towingCapacity.textProperty().bindBidirectional(vehicle.towingCapacityProperty(), new NumberStringConverter());
-        weight.textProperty().bindBidirectional(vehicle.getSize().weightProperty(), new NumberStringConverter());
-        width.textProperty().bindBidirectional(vehicle.getSize().widthProperty(), new NumberStringConverter());
+        weight.textProperty().bindBidirectional(vehicle.weightProperty(), new NumberStringConverter());
+        width.textProperty().bindBidirectional(vehicle.widthProperty(), new NumberStringConverter());
         vehicleType.getSelectionModel().select(vehicle.getType());
 
     }
 
     @Override
-    public void unbindProperties(Vehicle vehicle) {
-        
+    public void unbindProperties(AssetModel asset) {
         battleWeight.textProperty().unbindBidirectional(vehicle.battleWeightProperty());
         bulkFuelCapacity.textProperty().unbindBidirectional(vehicle.bulkFuelCapacityProperty());
         crew.textProperty().unbindBidirectional(vehicle.crewProperty());
-        crossCountryMaxSpeed.textProperty().unbindBidirectional(vehicle.getSpeed().getCrossCountry().maxProperty());
-        crossCountryNormalSpeed.textProperty().unbindBidirectional(vehicle.getSpeed().getCrossCountry().normalProperty());
+        crossCountryMaxSpeed.textProperty().unbindBidirectional(vehicle.crossCountrySpeedProperty().get().maxProperty());
+        crossCountryNormalSpeed.textProperty().unbindBidirectional(vehicle.crossCountrySpeedProperty().get().normalProperty());
         description.textProperty().unbindBidirectional(vehicle.descriptionProperty());
-        frontArmor.textProperty().unbindBidirectional(vehicle.getArmour().frontProperty());
+        frontArmor.textProperty().unbindBidirectional(vehicle.frontArmorProperty());
         fuelCapacity.textProperty().unbindBidirectional(vehicle.fuelCapacityProperty());
         fuelConsumptionMaxSpeed.textProperty().unbindBidirectional(vehicle.getFuelConsumption().maxProperty());
         fuelConsumptionNormalSpeed.textProperty().unbindBidirectional(vehicle.getFuelConsumption().normalProperty());
 
+        hasOpenTop.selectedProperty().unbindBidirectional(vehicle.hasOpenTopProperty());
+        hasTurret.selectedProperty().unbindBidirectional(vehicle.hasTurretProperty());
 
-        //hasOpenTop.setSelected((vehicle.getHasOpenTop().equals("yes") ? true : false));
-        //hasTurret.setSelected((vehicle.getHasTurret().equals("yes") ? true : false));
-
-        height.textProperty().unbindBidirectional(vehicle.getSize().heightProperty());
-        length.textProperty().unbindBidirectional(vehicle.getSize().lengthProperty());
+        height.textProperty().unbindBidirectional(vehicle.heightProperty());
+        length.textProperty().unbindBidirectional(vehicle.lengthProperty());
         maxFordingDepth.textProperty().unbindBidirectional(vehicle.maxFordingDepthProperty());
         maxGradient.textProperty().unbindBidirectional(vehicle.maxGradientProperty());
         maxTrenchWidth.textProperty().unbindBidirectional(vehicle.maxTrenchWidthProperty());
         name.textProperty().unbindBidirectional(vehicle.nameProperty());
         payloadCapacity.textProperty().unbindBidirectional(vehicle.payloadCapacityProperty());
         personnelCapacity.textProperty().unbindBidirectional(vehicle.personnelCapacityProperty());
-        rearArmor.textProperty().unbindBidirectional(vehicle.getArmour().rearProperty());
+        rearArmor.textProperty().unbindBidirectional(vehicle.rearArmorProperty());
         reliability.textProperty().unbindBidirectional(vehicle.reliabilityProperty());
-        roadMaxSpeed.textProperty().unbindBidirectional(vehicle.getSpeed().getRoad().maxProperty());
-        roadNormalSpeed.textProperty().unbindBidirectional(vehicle.getSpeed().getRoad().maxProperty());
+        roadMaxSpeed.textProperty().unbindBidirectional(vehicle.getRoadSpeed().maxProperty());
+        roadNormalSpeed.textProperty().unbindBidirectional(vehicle.getRoadSpeed().normalProperty());
         ronsonability.textProperty().unbindBidirectional(vehicle.ronsonabilityProperty());
-        sideArmor.textProperty().unbindBidirectional(vehicle.getArmour().sideProperty());
+        sideArmor.textProperty().unbindBidirectional(vehicle.sideArmorProperty());
         takeCoverMod.textProperty().unbindBidirectional(vehicle.takeCoverModProperty());
-        topArmor.textProperty().unbindBidirectional(vehicle.getArmour().topProperty());
+        topArmor.textProperty().unbindBidirectional(vehicle.topArmorProperty());
         towingCapacity.textProperty().unbindBidirectional(vehicle.towingCapacityProperty());
+        weight.textProperty().unbindBidirectional(vehicle.weightProperty());
+        width.textProperty().unbindBidirectional(vehicle.widthProperty());
 
-
-        //vehicleType.getSelectionModel().select(vehicle.getType());
-
-        weight.textProperty().unbindBidirectional(vehicle.getSize().weightProperty());
-        width.textProperty().unbindBidirectional(vehicle.getSize().widthProperty());
     }
 
     @Override
-    public void setEstabElement(Vehicle newVehicle) {
-        Vehicle previousVehicle = this.vehicle;
-        this.vehicle =  newVehicle;
-
-        if(previousVehicle.getName() != null) unbindProperties(previousVehicle);
-        bindProperties(newVehicle);
-    }
-
-    @Override
-    public Vehicle getEstabElement() {
+    public VehicleModel getEstabElement() {
         return this.vehicle;
     }
 
+    @Override
+    public void setEstabElement(AssetModel asset) {
+        VehicleModel newVehicle = (VehicleModel) asset;
+        VehicleModel previousVehicle = this.vehicle;
+        this.vehicle = newVehicle;
+
+        if (previousVehicle != null) unbindProperties(previousVehicle);
+        bindProperties(newVehicle);
+    }
 
 
 }

@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -130,7 +129,7 @@ public class EstabEditorController implements Initializable {
         sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
         targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
         estabDataContainer.setFitToWidth(true);
-        if(!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
+        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
     }
 
     private void populateOpenRecentTargetMenu() {
@@ -149,11 +148,13 @@ public class EstabEditorController implements Initializable {
         sourceOpenRecentMenuList.getItems().clear();
         for (String sourceFile : Settings.getInstance().getSourceRecentFiles()) {
             File file = new File(sourceFile);
-            MenuItem recentSourceMenuItem = new MenuItem(file.getName());
-            recentSourceMenuItem.setOnAction(event -> {
-                openSource(file);
-            });
-            sourceOpenRecentMenuList.getItems().add(recentSourceMenuItem);
+            if(file.exists()){
+                MenuItem recentSourceMenuItem = new MenuItem(file.getName());
+                recentSourceMenuItem.setOnAction(event -> {
+                    openSource(file);
+                });
+                sourceOpenRecentMenuList.getItems().add(recentSourceMenuItem);
+            }
         }
     }
 

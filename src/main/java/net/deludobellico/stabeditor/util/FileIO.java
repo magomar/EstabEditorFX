@@ -28,16 +28,6 @@ import java.util.zip.ZipOutputStream;
  * Created by Mario on 24/07/2014.
  */
 public class FileIO {
-    private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
-
-    /**
-     * JAXB paths
-     */
-    private static final String JAXB_CONTEXT_PATH = "net.deludobellico.stabeditor.data.jaxb";
-    private static JAXBContext JAXB_CONTEXT;
-    private static Marshaller MARSHALLER;
-    private static Unmarshaller UNMARSHALLER;
-
     /**
      * File  and folder paths
      */
@@ -46,7 +36,6 @@ public class FileIO {
     public static final String RESOURCES_FOLDER = "/src/main/resources";
     public static final String ESTAB_DATASETS_FOLDER = RESOURCES_FOLDER + "/datasets";
     public static final String NEW_ESTAB_PATH = ESTAB_DATASETS_FOLDER + "/newestab.xml";
-
     /**
      * File filters
      */
@@ -55,6 +44,14 @@ public class FileIO {
             new FileChooser.ExtensionFilter("All (*.*)", "*.*")
     };
 
+    private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
+    /**
+     * JAXB paths
+     */
+    private static final String JAXB_CONTEXT_PATH = "net.deludobellico.stabeditor.data.jaxb";
+    private static JAXBContext JAXB_CONTEXT;
+    private static Marshaller MARSHALLER;
+    private static Unmarshaller UNMARSHALLER;
 
     static {
         try {
@@ -66,7 +63,6 @@ public class FileIO {
             e.printStackTrace();
         }
     }
-
     private FileIO() {
     }
 
@@ -310,18 +306,19 @@ public class FileIO {
         return f;
     }
 
-    public static File getNewSettingsFile(){
+    public static File getNewSettingsFile() {
         File f = null;
         try {
             f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.SETTINGS_XML_FILE).toString());
             FileOutputStream fos = new FileOutputStream(f, false);
-            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><source-recent-files /><target-recent-files /><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width></settings>".getBytes());
+            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width></settings>".getBytes());
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return f;
     }
+
     public static void copy(File sourceFile, File targetFile) {
         try {
             Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);

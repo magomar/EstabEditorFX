@@ -1,7 +1,6 @@
 package net.deludobellico.stabeditor.model;
 
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
-import net.deludobellico.stabeditor.data.jaxb.Asset;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
 
@@ -14,88 +13,88 @@ import java.util.Map;
  * Created by Heine on 10/27/2014.
  */
 public class CopyPasteLists {
-    private List<Vehicle> nonRepeatedVehicles;
-    private List<Weapon> nonRepeatedWeapons;
-    private List<Ammo> nonRepeatedAmmo;
+    private List<VehicleModel> allVehicles;
+    private List<WeaponModel> allWeapons;
+    private List<AmmoModel> allAmmo;
 
-    private List<Vehicle> repeatedVehicles;
-    private List<Weapon> repeatedWeapons;
-    private List<Ammo> repeatedAmmo;
+    private List<VehicleModel> repeatedVehicles;
+    private List<WeaponModel> repeatedWeapons;
+    private List<AmmoModel> repeatedAmmo;
 
-    private Map<Asset, Class> repeatedAssets;
-
-    public boolean hasRepeatedElements() {
-        return !repeatedAmmo.isEmpty() || !repeatedVehicles.isEmpty() || !repeatedWeapons.isEmpty();
-    }
+    private Map<AssetModel, Class> repeatedAssets;
 
     public CopyPasteLists() {
-        this.nonRepeatedVehicles = new ArrayList<>();
-        this.nonRepeatedWeapons = new ArrayList<>();
-        this.nonRepeatedAmmo = new ArrayList<>();
+        this.allVehicles = new ArrayList<>();
+        this.allWeapons = new ArrayList<>();
+        this.allAmmo = new ArrayList<>();
         this.repeatedVehicles = new ArrayList<>();
         this.repeatedWeapons = new ArrayList<>();
         this.repeatedAmmo = new ArrayList<>();
         this.repeatedAssets = new HashMap<>();
     }
 
-    public List<Vehicle> getNonRepeatedVehicles() {
-        return nonRepeatedVehicles;
+    public boolean hasRepeatedElements() {
+        return !repeatedAmmo.isEmpty() || !repeatedVehicles.isEmpty() || !repeatedWeapons.isEmpty();
     }
 
-    public void setNonRepeatedVehicles(List<Vehicle> nonRepeatedVehicles) {
-        this.nonRepeatedVehicles = nonRepeatedVehicles;
+    public List<VehicleModel> getAllVehicles() {
+        return allVehicles;
     }
 
-    public List<Weapon> getNonRepeatedWeapons() {
-        return nonRepeatedWeapons;
+    public void setAllVehicles(List<VehicleModel> allVehicles) {
+        this.allVehicles = allVehicles;
     }
 
-    public void setNonRepeatedWeapons(List<Weapon> nonRepeatedWeapons) {
-        this.nonRepeatedWeapons = nonRepeatedWeapons;
+    public List<WeaponModel> getAllWeapons() {
+        return allWeapons;
     }
 
-    public List<Ammo> getNonRepeatedAmmo() {
-        return nonRepeatedAmmo;
+    public void setAllWeapons(List<WeaponModel> allWeapons) {
+        this.allWeapons = allWeapons;
     }
 
-    public void setNonRepeatedAmmo(List<Ammo> nonRepeatedAmmo) {
-        this.nonRepeatedAmmo = nonRepeatedAmmo;
+    public List<AmmoModel> getAllAmmo() {
+        return allAmmo;
     }
 
-    public List<Vehicle> getRepeatedVehicles() {
+    public void setAllAmmo(List<AmmoModel> allAmmo) {
+        this.allAmmo = allAmmo;
+    }
+
+    public List<VehicleModel> getRepeatedVehicles() {
         return repeatedVehicles;
     }
 
-    public void setRepeatedVehicles(List<Vehicle> repeatedVehicles) {
+    public void setRepeatedVehicles(List<VehicleModel> repeatedVehicles) {
         this.repeatedVehicles = repeatedVehicles;
     }
 
-    public List<Weapon> getRepeatedWeapons() {
+    public List<WeaponModel> getRepeatedWeapons() {
         return repeatedWeapons;
     }
 
-    public void setRepeatedWeapons(List<Weapon> repeatedWeapons) {
+    public void setRepeatedWeapons(List<WeaponModel> repeatedWeapons) {
         this.repeatedWeapons = repeatedWeapons;
     }
 
-    public List<Ammo> getRepeatedAmmo() {
+    public List<AmmoModel> getRepeatedAmmo() {
         return repeatedAmmo;
     }
 
-    public void setRepeatedAmmo(List<Ammo> repeatedAmmo) {
+    public void setRepeatedAmmo(List<AmmoModel> repeatedAmmo) {
         this.repeatedAmmo = repeatedAmmo;
     }
 
-    public Map<Asset, Class> getRepeatedAssets() {
+    public Map<AssetModel, Class> getRepeatedAssets() {
         this.repeatedAssets = new HashMap<>();
-        for (Vehicle v : getRepeatedVehicles()) {
-            repeatedAssets.put((Asset) v, Vehicle.class);
+        for (VehicleModel v : getRepeatedVehicles()) {
+            repeatedAssets.put((AssetModel) v, Vehicle.class);
         }
-        for (Weapon w : getRepeatedWeapons()) {
-            repeatedAssets.put((Asset) w, Weapon.class);
+        for (WeaponModel w : getRepeatedWeapons()) {
+            repeatedAssets.put((AssetModel) w, Weapon.class);
         }
-        for (Ammo a : getRepeatedAmmo()) {
-            repeatedAssets.put((Asset) a, Ammo.class);
+        for (AmmoModel a : getRepeatedAmmo()) {
+            repeatedAssets.put((AssetModel) a, Ammo.class);
         }
         return repeatedAssets;
     }

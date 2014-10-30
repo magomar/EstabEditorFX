@@ -2,7 +2,6 @@ package net.deludobellico.stabeditor.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import net.deludobellico.stabeditor.data.jaxb.Asset;
 import net.deludobellico.stabeditor.model.EstabReference;
 
 /**
@@ -17,11 +16,7 @@ public class SearchList {
     public SearchList() {
         lastSearch = null;
         isFullSearch = false;
-        estabReferenceObservableList  = FXCollections.observableArrayList();
-    }
-
-    public Boolean getIsFullSearch() {
-        return lastSearch.equals("");
+        estabReferenceObservableList = FXCollections.observableArrayList();
     }
 
     public String getLastSearch() {

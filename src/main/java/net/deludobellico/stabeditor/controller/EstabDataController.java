@@ -13,9 +13,7 @@ import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
 import net.deludobellico.stabeditor.data.jaxb.Weapon;
-import net.deludobellico.stabeditor.model.CopyPasteLists;
-import net.deludobellico.stabeditor.model.EstabDataModel;
-import net.deludobellico.stabeditor.model.EstabReference;
+import net.deludobellico.stabeditor.model.*;
 import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
 
@@ -79,9 +77,9 @@ public class EstabDataController implements Initializable {
     private ObservableList<EstabReference> estabReferenceObservableList = FXCollections.observableArrayList();
     // Optimize tab swap
     private Map<Class, SearchList> searchLists = new HashMap<Class, SearchList>() {{
-        put(Vehicle.class, new SearchList());
-        put(Weapon.class, new SearchList());
-        put(Ammo.class, new SearchList());
+        put(VehicleModel.class, new SearchList());
+        put(WeaponModel.class, new SearchList());
+        put(AmmoModel.class, new SearchList());
     }};
 
     @FXML
@@ -153,8 +151,10 @@ public class EstabDataController implements Initializable {
             }
             // TODO: fix null pointer exception around here
             //System.out.println(estabReference+" "+componentController+" "+activeElementClass);
+            Object o = estabReference.getElement();
+            Object op = PojoJFXModel.wrapper(o);
+            componentController.setEstabElement(PojoJFXModel.wrapper(estabReference.getElement()));
 
-            componentController.setEstabElement(estabReference.getElement());
         }
     }
 
@@ -185,7 +185,7 @@ public class EstabDataController implements Initializable {
 
     @FXML
     private void searchVehicleAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(Vehicle.class);
+        SearchList savedList = searchLists.get(VehicleModel.class);
         String textToSearch = searchVehicleTextField.getText();
 
         estabReferenceObservableList.clear();
@@ -197,10 +197,10 @@ public class EstabDataController implements Initializable {
             savedList.getList().clear();
             savedList.setLastSearch(textToSearch);
 
-            List<Vehicle> vehicles = estabDataModel.searchVehicle(textToSearch);
-            for (Vehicle vehicle : vehicles) {
-                estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
-                savedList.getList().addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(vehicle), Vehicle.class));
+            List<AssetModel> vehicles = estabDataModel.searchAsset(textToSearch, VehicleModel.class);
+            for (AssetModel vehicle : vehicles) {
+                estabReferenceObservableList.addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) vehicle).getPojo()), Vehicle.class));
+                savedList.getList().addAll(new EstabReference(vehicle.getId(), vehicle.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) vehicle).getPojo()), Vehicle.class));
             }
         }
     }
@@ -208,11 +208,11 @@ public class EstabDataController implements Initializable {
 
     @FXML
     private void searchWeaponAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(Weapon.class);
+        SearchList savedList = searchLists.get(WeaponModel.class);
         String textToSearch = searchWeaponTextField.getText();
 
         estabReferenceObservableList.clear();
-        if(textToSearch.equals(savedList.getLastSearch())) {
+        if (textToSearch.equals(savedList.getLastSearch())) {
             // Load saved list
             estabReferenceObservableList.addAll(savedList.getList());
 
@@ -220,17 +220,17 @@ public class EstabDataController implements Initializable {
             savedList.getList().clear();
             savedList.setLastSearch(textToSearch);
 
-            List<Weapon> weapons = estabDataModel.searchWeapon(textToSearch);
-            for (Weapon weapon : weapons) {
-                estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
-                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(weapon), Weapon.class));
+            List<AssetModel> weapons = estabDataModel.searchAsset(textToSearch, WeaponModel.class);
+            for (AssetModel weapon : weapons) {
+                estabReferenceObservableList.addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
+                savedList.getList().addAll(new EstabReference(weapon.getId(), weapon.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) weapon).getPojo()), Weapon.class));
             }
         }
     }
 
     @FXML
     private void searchAmmoAction(ActionEvent actionEvent) {
-        SearchList savedList = searchLists.get(Ammo.class);
+        SearchList savedList = searchLists.get(AmmoModel.class);
         String textToSearch = searchAmmoTextField.getText();
 
         estabReferenceObservableList.clear();
@@ -242,18 +242,16 @@ public class EstabDataController implements Initializable {
             savedList.getList().clear();
             savedList.setLastSearch(textToSearch);
 
-            List<Ammo> ammos = estabDataModel.searchAmmo(textToSearch);
-            for (Ammo ammo : ammos) {
-                estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
-                savedList.getList().addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(ammo), Ammo.class));
+            List<AssetModel> ammos = estabDataModel.searchAsset(textToSearch, AmmoModel.class);
+            for (AssetModel ammo : ammos) {
+                estabReferenceObservableList.addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) ammo).getPojo()), Ammo.class));
+                savedList.getList().addAll(new EstabReference(ammo.getId(), ammo.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) ammo).getPojo()), Ammo.class));
             }
         }
     }
 
     public void pasteActiveComponent(CopyPasteLists copyPasteLists) {
         if (!isEditable) return;
-        estabDataModel.checkRepeatedElements(copyPasteLists);
-
         if (copyPasteLists.hasRepeatedElements()) {
             Action answer = UtilView.showWarningDialogRepeatedElement(copyPasteLists);
             estabDataModel.paste(copyPasteLists, answer);

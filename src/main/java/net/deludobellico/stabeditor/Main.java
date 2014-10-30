@@ -40,6 +40,7 @@ public class Main extends Application {
         Settings.getInstance().setWindowHeight(primaryStage.getHeight());
         Settings.save();
     }
+
     /**
      * Returns the source estab file preference, i.e. the estab file that was last opened
      * as a source to copy estab data.

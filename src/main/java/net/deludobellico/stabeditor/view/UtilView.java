@@ -1,14 +1,12 @@
 package net.deludobellico.stabeditor.view;
 
-import net.deludobellico.stabeditor.data.jaxb.Asset;
+import net.deludobellico.stabeditor.model.AssetModel;
 import net.deludobellico.stabeditor.model.CopyPasteLists;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.DialogAction;
 import org.controlsfx.dialog.Dialogs;
 
 import java.io.File;
-import java.util.Map;
 
 
 /**
@@ -22,13 +20,8 @@ public class UtilView {
     public static Action showWarningDialogRepeatedElement(CopyPasteLists copyPasteLists) {
         StringBuilder sb = new StringBuilder();
         sb.append(System.getProperty("line.separator"));
-        for (Map.Entry<Asset, Class> entry : copyPasteLists.getRepeatedAssets().entrySet()) {
-            //TODO: override toString in Asset class
-            sb.append(entry.getValue().getSimpleName());
-            sb.append(" | ID: ");
-            sb.append(entry.getKey().getId());
-            sb.append(" | Name: ");
-            sb.append(entry.getKey().getName());
+        for (AssetModel asset : copyPasteLists.getRepeatedAssets().keySet()) {
+            sb.append(asset.print());
             sb.append(System.getProperty("line.separator"));
         }
 

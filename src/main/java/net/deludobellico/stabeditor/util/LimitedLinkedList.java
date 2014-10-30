@@ -48,7 +48,7 @@ public class LimitedLinkedList<T> implements List<T> {
     public boolean add(T t) {
         boolean success = true;
         int index = buffer.indexOf(t);
-        if(index != -1) {
+        if (index != -1) {
             // found it, bring it forward
             buffer.addFirst(buffer.remove(index));
         } else {
@@ -150,7 +150,7 @@ public class LimitedLinkedList<T> implements List<T> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return buffer.toString();
     }
 }

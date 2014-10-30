@@ -5,7 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-import net.deludobellico.stabeditor.data.jaxb.Ammo;
+import net.deludobellico.stabeditor.model.AmmoModel;
+import net.deludobellico.stabeditor.model.AssetModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class AmmoEditorController implements Initializable, AssetEditorController<Ammo> {
+public class AmmoEditorController implements Initializable, AssetEditorController {
     @FXML
     private TextField quantity;
 
@@ -26,11 +27,12 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     @FXML
     private TextArea description;
 
-    private Ammo ammo;
+    private AmmoModel ammo;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ammo = new Ammo();
     }
+
     @Override
     public void setEditable(boolean isEditable) {
         quantity.setEditable(isEditable);
@@ -38,7 +40,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public void bindProperties(Ammo ammo) {
+    public void bindProperties(AssetModel asset) {
         quantity.textProperty().bindBidirectional(ammo.minOrderQtyProperty(), new NumberStringConverter());
         weight.textProperty().bindBidirectional(ammo.minOrderWeightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(ammo.nameProperty());
@@ -46,7 +48,7 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public void unbindProperties(Ammo ammo) {
+    public void unbindProperties(AssetModel asset) {
         quantity.textProperty().unbindBidirectional(ammo.minOrderQtyProperty());
         weight.textProperty().unbindBidirectional(ammo.minOrderWeightProperty());
         name.textProperty().unbindBidirectional(ammo.nameProperty());
@@ -54,16 +56,17 @@ public class AmmoEditorController implements Initializable, AssetEditorControlle
     }
 
     @Override
-    public Ammo getEstabElement() {
+    public AmmoModel getEstabElement() {
         return ammo;
     }
 
     @Override
-    public void setEstabElement(Ammo newAmmo) {
-        Ammo previousAmmo = this.ammo;
+    public void setEstabElement(AssetModel asset) {
+        AmmoModel newAmmo = (AmmoModel) asset;
+        AmmoModel previousAmmo = this.ammo;
         this.ammo = newAmmo;
 
-        if(previousAmmo.getName() != null) unbindProperties(previousAmmo);
+        if (previousAmmo != null) unbindProperties(previousAmmo);
         bindProperties(newAmmo);
     }
 
