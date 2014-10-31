@@ -122,14 +122,15 @@ public class EstabDataModel {
     /**
      * {@sortRepeatedElements} has to be invoked in order to clean NonRepeated lists
      *
+     *
      * @param estabReference
      * @return
      */
     public RelatedElementLists getRelatedElements(EstabReference estabReference) {
-        return getRelatedElements(estabReference, true);
+        return getRelatedElements(estabReference, null);
     }
 
-    public RelatedElementLists getRelatedElements(EstabReference estabReference, boolean sort) {
+    public RelatedElementLists getRelatedElements(EstabReference estabReference, EstabDataModel targetModel) {
 
         RelatedElementLists relatedElementLists = new RelatedElementLists();
 
@@ -156,12 +157,8 @@ public class EstabDataModel {
             relatedElementLists.getAllAmmo().addAll(ammo);
         }
 
-        if(sort) {
-            relatedElementLists.setSorted(sort);
-            relatedElementLists.getNonRepeatedVehicles().addAll(relatedElementLists.getAllVehicles());
-            relatedElementLists.getNonRepeatedWeapons().addAll(relatedElementLists.getAllWeapons());
-            relatedElementLists.getNonRepeatedAmmo().addAll(relatedElementLists.getAllAmmo());
-            sortRepeatedElements(relatedElementLists);
+        if(targetModel != null) {
+            sortRelatedElements(relatedElementLists);
         }
         return relatedElementLists;
     }
@@ -171,7 +168,13 @@ public class EstabDataModel {
      *
      * @param relatedElementLists
      */
-    public void sortRepeatedElements(RelatedElementLists relatedElementLists) {
+    public void sortRelatedElements(RelatedElementLists relatedElementLists) {
+
+        relatedElementLists.setSorted(true);
+        relatedElementLists.getNonRepeatedVehicles().addAll(relatedElementLists.getAllVehicles());
+        relatedElementLists.getNonRepeatedWeapons().addAll(relatedElementLists.getAllWeapons());
+        relatedElementLists.getNonRepeatedAmmo().addAll(relatedElementLists.getAllAmmo());
+
         //Iterators are the only way to safe delete while iterating
         Iterator<VehicleModel> itV = relatedElementLists.getNonRepeatedVehicles().iterator();
         while (itV.hasNext()) {
@@ -201,7 +204,7 @@ public class EstabDataModel {
         }
     }
 
-    public void remove(RelatedElementLists relatedElementLists) {
+    public boolean remove(RelatedElementLists relatedElementLists) {
 
         String newLine = System.getProperty("line.separator");
         StringBuilder logMessage = new StringBuilder("Removing elements:" + newLine);
@@ -220,6 +223,7 @@ public class EstabDataModel {
         });
 
         LOG.log(Level.INFO, logMessage.toString());
+        return true;
 
     }
 
@@ -280,5 +284,4 @@ public class EstabDataModel {
         data.getWeapon().addAll(weapons.values().stream().map(WeaponModel::getPojo).collect(Collectors.toList()));
         FileIO.marshallXML(data, file);
     }
-
 }

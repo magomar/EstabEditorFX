@@ -1,8 +1,7 @@
 package net.deludobellico.stabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +24,10 @@ import org.controlsfx.dialog.Dialog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
@@ -113,7 +115,6 @@ public class EstabDataController implements Initializable {
              * Yes, I know this is very hard to read. After many attempts to solve the tab lock
              * in nicer ways and failing every time, I decided to go full derp
              */
-            System.out.println(lockActiveElement);
             if (null != newValue) {
                 if (null != oldValue) lockActiveElement = 0;
                 if (oldValue == null) lockActiveElement = ++lockActiveElement % 4;
@@ -128,7 +129,6 @@ public class EstabDataController implements Initializable {
 
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && estabDataModel != null) {
-                searchResultsListView.getSelectionModel().clearSelection();
                 if (newValue.getText().startsWith("V")) searchVehicleAction(null); // Vehicle tab
                 else if (newValue.getText().startsWith("W")) searchWeaponAction(null);  //Weapon tab
                 else searchAmmoAction(null); //Ammo tab
@@ -142,7 +142,7 @@ public class EstabDataController implements Initializable {
     }
 
     public EstabReference<?> getActiveElement() {
-        if(!searchResultsListView.getSelectionModel().getSelectedItems().isEmpty()){
+        if (!searchResultsListView.getSelectionModel().getSelectedItems().isEmpty()) {
             return searchResultsListView.getSelectionModel().getSelectedItem().getEstabReference();
         }
         return null;
@@ -175,7 +175,6 @@ public class EstabDataController implements Initializable {
                     }
                 }
             }
-            System.out.println(estabReference+" "+ elementEditorController +" "+activeElementClass);
             Object element = estabReference.getElement();
             ElementModel elementModel = (ElementModel) PojoJFXModel.wrapper(element);
             elementEditorController.setEstabElement(elementModel);
@@ -183,13 +182,14 @@ public class EstabDataController implements Initializable {
         }
     }
 
-    private void updateStatistics() {
+    public void update() {
         numImagesTextField.setText(String.valueOf(estabDataModel.getImages().size()));
         numSidesTextField.setText(String.valueOf(estabDataModel.getSides().size()));
         numVehiclesTextField.setText(String.valueOf(estabDataModel.getVehicles().size()));
         numWeaponsTextField.setText(String.valueOf(estabDataModel.getWeapons().size()));
         numAmmosTextField.setText(String.valueOf(estabDataModel.getAmmos().size()));
         String tabName = tabPane.getSelectionModel().selectedItemProperty().getValue().getText();
+        searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         if (tabName.startsWith("V")) searchVehicleAction(null);
         else if (tabName.startsWith("W")) searchWeaponAction(null);
         else searchAmmoAction(null);
@@ -213,10 +213,11 @@ public class EstabDataController implements Initializable {
         String textToSearch = textField.getText();
 
         estabReferenceObservableList.clear();
-        if (textToSearch.equals(savedList.getLastSearch())) {
+        if (!savedList.isForceSearch() && textToSearch.equals(savedList.getLastSearch())) {
             estabReferenceObservableList.addAll(savedList.getList());
         } else {
             savedList.getList().clear();
+            savedList.setForceSearch(false);
             savedList.setLastSearch(textToSearch);
 
             Consumer<EstabReference> buttonAction;
@@ -224,10 +225,10 @@ public class EstabDataController implements Initializable {
 
             if (isEditable) {
                 buttonAction = editorController::removeEstabElementFromCellList;
-                buttonDisableProperty = editorController.getRemoveElementButton().disableProperty();
+                buttonDisableProperty = new SimpleBooleanProperty(false);
             } else {
                 buttonAction = editorController::copyEstabElementFromCellList;
-                buttonDisableProperty = editorController.getCopyElementButton().disableProperty();
+                buttonDisableProperty = editorController.getDisableCopyProperty();
             }
 
             List<ElementModel> elements = estabDataModel.searchElement(textToSearch, elementClass);
@@ -266,37 +267,32 @@ public class EstabDataController implements Initializable {
     }
 
 
-    public void copyEstabElement(EstabReference elementToCopy, RelatedElementLists relatedElementLists) {
-        if (!isEditable) return;
+    public boolean copyEstabElement(RelatedElementLists relatedElementLists) {
+        if (!isEditable) return false;
         boolean successPasting = false;
         if (relatedElementLists.hasRepeatedElements()) {
             Action answer = UtilView.showWarningRepeatedElement(relatedElementLists.getRepeatedElements());
-            successPasting = estabDataModel.paste(relatedElementLists, answer);
+            successPasting = this.estabDataModel.paste(relatedElementLists, answer);
         } else {
             // if there are no repeated elements, proceed as if overwriting
-            successPasting = estabDataModel.paste(relatedElementLists, UtilView.DIALOG_OVERWRITE);
+            successPasting = this.estabDataModel.paste(relatedElementLists, UtilView.DIALOG_OVERWRITE);
         }
-        if (successPasting) {
-            setActiveElement(elementToCopy);
-            updateStatistics();
-        }
+        if (successPasting) update();
+        return successPasting;
     }
 
-    public void removeEstabElement(RelatedElementLists relatedElements) {
+    public boolean removeEstabElement(RelatedElementLists relatedElements) {
         List<ElementModel> removeElementList = relatedElements.getAllElements();
-
         Action answer = UtilView.showWarningRemoveElement(removeElementList);
+        boolean successRemoving = false;
         if (answer == Dialog.ACTION_OK) {
             // clear target editor if the active element is in the list
-            for (ElementModel e : removeElementList) {
-                if (e.getId().equals(activeEstabElement.getId())) {
-                    clear();
-                    break;
-                }
-            }
-            estabDataModel.remove(relatedElements);
-            updateStatistics();
+            clear();
+            successRemoving = estabDataModel.remove(relatedElements);
+            if (successRemoving) update();
+
         }
+        return successRemoving;
     }
 
     public void saveDataModel(File file) {
@@ -310,7 +306,7 @@ public class EstabDataController implements Initializable {
     public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel = estabDataModel;
         editorStackPane.setVisible(true);
-        updateStatistics();
+        update();
         searchVehicleButton.setDisable(false);
         searchWeaponButton.setDisable(false);
         searchAmmoButton.setDisable(false);
@@ -332,7 +328,7 @@ public class EstabDataController implements Initializable {
         numWeaponsTextField.clear();
         setTitle("");
         editorStackPane.setVisible(false);
-        elementEditorController.clear();
+        if(elementEditorController!=null)elementEditorController.clear();
     }
 
     public void set(String title, boolean isEditable, EstabEditorController editorController) {

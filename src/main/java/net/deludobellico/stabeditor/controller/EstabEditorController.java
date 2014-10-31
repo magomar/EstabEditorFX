@@ -1,6 +1,8 @@
 package net.deludobellico.stabeditor.controller;
 
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
+import net.deludobellico.stabeditor.model.RelatedElementLists;
 import net.deludobellico.stabeditor.util.FileIO;
 import net.deludobellico.stabeditor.util.Settings;
 
@@ -102,6 +105,7 @@ public class EstabEditorController implements Initializable {
     private File targetEstabFile;
 
     private Stage stage;
+    private BooleanProperty disableCopy = new SimpleBooleanProperty(true);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -120,22 +124,31 @@ public class EstabEditorController implements Initializable {
                 removeElementButton.setDisable(false);
             }
         });
-        populateOpenRecentSourceMenu();
-        populateOpenRecentTargetMenu();
 
         toolBar.managedProperty().bind(toolBar.visibleProperty());
         sourcePane.managedProperty().bind(sourcePane.visibleProperty());
         targetPane.managedProperty().bind(targetPane.visibleProperty());
+        sourcePane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedSourcePane(sourcePane.isExpanded()));
+        targetPane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedTargetPane(targetPane.isExpanded()));
 
-        toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
-        sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
-        targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
-
-        toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
-        sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
-        targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
         estabDataContainer.setFitToWidth(true);
-        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
+        try {
+            toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
+            sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
+            targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
+
+            toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
+            sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
+            targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
+            sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
+            targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
+
+            if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
+        } catch (NullPointerException e) {
+        }
+
+        populateOpenRecentSourceMenu();
+        populateOpenRecentTargetMenu();
     }
 
     private void populateOpenRecentTargetMenu() {
@@ -174,7 +187,6 @@ public class EstabEditorController implements Initializable {
 
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
-
         sourceEstabFile = file;
         sourcePaneController.setTitle("Source Estab: " + file.getName());
         sourcePaneController.setEstabDataModel(new EstabDataModel(sourceEstabFile));
@@ -183,12 +195,14 @@ public class EstabEditorController implements Initializable {
         sourceCloseMenuItem.setDisable(false);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
+        sourcePane.expandedProperty().set(true);
+        if (targetPaneController.getEstabDataModel() != null) disableCopy.set(false);
     }
 
     // TODO: check target has correct xml syntax
     private void openTarget(File file) {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
-
+        disableCopy.set(true);
         targetEstabFile = file;
         targetPaneController.setTitle("Target Estab: " + targetEstabFile.getName());
         targetPaneController.setEstabDataModel(new EstabDataModel(targetEstabFile));
@@ -197,10 +211,14 @@ public class EstabEditorController implements Initializable {
         targetSaveMenuItem.setDisable(false);
         targetSaveAsMenuItem.setDisable(false);
         targetCloseMenuItem.setDisable(false);
+        if (targetPaneController.getEstabDataModel() != null) {
+            disableCopy.set(false);
+            if (sourcePaneController.getActiveElement() != null) {
+                copyElementButton.setDisable(false);
+            }
+        }
 
-        if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveElement() != null)
-            copyElementButton.setDisable(false);
-
+        targetPane.expandedProperty().set(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentTargetMenu();
     }
@@ -256,12 +274,16 @@ public class EstabEditorController implements Initializable {
     public void sourceCloseAction(ActionEvent actionEvent) {
         sourcePaneController.clear();
         sourceCloseMenuItem.setDisable(true);
+        disableCopy.set(true);
+        sourcePane.expandedProperty().set(false);
     }
 
     @FXML
     public void targetCloseAction(ActionEvent actionEvent) {
         targetPaneController.clear();
         targetCloseMenuItem.setDisable(true);
+        disableCopy.set(true);
+        targetPane.expandedProperty().set(false);
     }
 
 
@@ -305,10 +327,7 @@ public class EstabEditorController implements Initializable {
 
     @FXML
     private void copyToolbarButtonAction(ActionEvent actionEvent) {
-        LOG.log(Level.INFO, "Copying estab element " + sourcePaneController.getActiveElement().getName());
-        targetPaneController.copyEstabElement(
-                sourcePaneController.getActiveElement(),
-                sourcePaneController.getEstabDataModel().getRelatedElements(sourcePaneController.getActiveElement()));
+        copyEstabElementFromCellList(sourcePaneController.getActiveElement());
     }
 
     @FXML
@@ -318,15 +337,17 @@ public class EstabEditorController implements Initializable {
     }
 
     public void copyEstabElementFromCellList(EstabReference estabReference) {
-        sourcePaneController.setActiveElement(estabReference);
         LOG.log(Level.INFO, "Copying estab element " + estabReference.getName());
-        targetPaneController.copyEstabElement(
-                estabReference,
-                sourcePaneController.getEstabDataModel().getRelatedElements(estabReference));
+        RelatedElementLists relatedElements = sourcePaneController.getEstabDataModel().getRelatedElements(estabReference);
+        targetPaneController.getEstabDataModel().sortRelatedElements(relatedElements);
+        if (targetPaneController.copyEstabElement(relatedElements)) {
+            targetPaneController.setActiveElement(estabReference);
+        }
     }
 
     public void removeEstabElementFromCellList(EstabReference estabReference) {
         LOG.log(Level.INFO, "Removing estab element " + estabReference.getName());
+        targetPaneController.setActiveElement(estabReference);
         targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(estabReference));
     }
 
@@ -351,4 +372,7 @@ public class EstabEditorController implements Initializable {
         return sourcePaneController;
     }
 
+    public BooleanProperty getDisableCopyProperty() {
+        return disableCopy;
+    }
 }

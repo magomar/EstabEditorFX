@@ -248,6 +248,7 @@ public class FileIO {
             um.unmarshal(file);
 
         } catch (JAXBException e) {
+            System.out.println(e);
             if (e.getLinkedException().getClass().equals(SAXParseException.class)) {
                 LOG.log(Level.WARNING, "Settings file has incorrect syntax", e);
             }
@@ -313,7 +314,7 @@ public class FileIO {
         try {
             f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.SETTINGS_XML_FILE).toString());
             FileOutputStream fos = new FileOutputStream(f, false);
-            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width></settings>".getBytes());
+            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width><expanded-source-pane>true</expanded-source-pane><expanded-target-pane>false</expanded-target-pane></settings>".getBytes());
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();

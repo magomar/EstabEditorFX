@@ -31,8 +31,12 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(UtilView.MIN_WINDOW_WIDTH);
         primaryStage.setMinHeight(UtilView.MIN_WINDOW_HEIGHT);
-        primaryStage.setHeight(Settings.getInstance().getWindowHeight());
-        primaryStage.setWidth(Settings.getInstance().getWindowWidth());
+        try {
+            primaryStage.setHeight(Settings.getInstance().getWindowHeight());
+            primaryStage.setWidth(Settings.getInstance().getWindowWidth());
+        } catch (NullPointerException e) {
+
+        }
         primaryStage.show();
     }
 

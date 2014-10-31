@@ -10,6 +10,7 @@ import net.deludobellico.stabeditor.model.EstabReference;
 public class SavedSearchList<T> {
     private String lastSearch;
     private ObservableList<T> observableList;
+    private boolean forceSearch;
 
 
     public SavedSearchList() {
@@ -27,5 +28,21 @@ public class SavedSearchList<T> {
 
     public ObservableList<T> getList() {
         return observableList;
+    }
+
+    public ObservableList<T> getObservableList() {
+        return observableList;
+    }
+
+    public void setObservableList(ObservableList<T> observableList) {
+        this.observableList = observableList;
+    }
+
+    public boolean isForceSearch() {
+        return forceSearch;
+    }
+
+    public void setForceSearch(boolean forceSearch) {
+        this.forceSearch = forceSearch;
     }
 }

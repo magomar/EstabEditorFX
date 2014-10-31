@@ -20,6 +20,8 @@ public class Settings {
     private static Boolean visibleSourcePanel;
     private static Boolean visibleTargetPanel;
     private static Boolean verticalPanes;
+    private static Boolean expandedSourcePane;
+    private static Boolean expandedTargetPane;
 
 
     private Settings() {
@@ -108,5 +110,23 @@ public class Settings {
 
     public void setVerticalPanes(Boolean verticalPanes) {
         Settings.verticalPanes = verticalPanes;
+    }
+
+    @XmlElement(name = "expanded-source-pane")
+    public Boolean getExpandedSourcePane() {
+        return expandedSourcePane;
+    }
+
+    public void setExpandedSourcePane(Boolean expandedSourcePane) {
+        Settings.expandedSourcePane = expandedSourcePane;
+    }
+
+    @XmlElement(name = "expanded-target-pane")
+    public Boolean getExpandedTargetPane() {
+        return expandedTargetPane;
+    }
+
+    public void setExpandedTargetPane(Boolean expandedTargetPane) {
+        Settings.expandedTargetPane = expandedTargetPane;
     }
 }
