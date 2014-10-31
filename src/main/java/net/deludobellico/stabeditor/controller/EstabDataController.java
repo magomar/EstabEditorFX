@@ -92,7 +92,7 @@ public class EstabDataController implements Initializable {
     private EstabDataModel estabDataModel;
     private Class activeElementClass = null;
     private EstabReference activeEstabElement = null;
-    private ElementEditorController elementController = null;
+    private ElementEditorController elementEditorController = null;
     private Map<Class, String> elementEditorViews = new HashMap<>(3);
     private Map<Class, Node> elementEditorNodes = new HashMap<>(3);
     private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(3);
@@ -138,26 +138,31 @@ public class EstabDataController implements Initializable {
             Node editorNode;
             if (null == activeElementClass || !activeElementClass.equals(estabClass)) {
                 activeElementClass = estabClass;
-                if (elementEditorNodes.containsKey(estabClass)) {
+                if (elementEditorNodes.containsKey(estabClass) && elementEditorControllers.containsKey(estabClass)) {
                     editorNode = elementEditorNodes.get(estabClass);
-                    elementController = elementEditorControllers.get(estabClass);
+                    elementEditorController = elementEditorControllers.get(estabClass);
                     editorStackPane.getChildren().setAll(editorNode);
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(elementEditorViews.get(estabClass)));
                     try {
                         editorNode = fxmlLoader.load();
                         elementEditorNodes.put(estabClass, editorNode);
-                        elementController = fxmlLoader.getController();
-                        elementController.setEditable(isEditable);
+                        elementEditorController = fxmlLoader.getController();
+                        elementEditorController.setEditable(isEditable);
+                        elementEditorControllers.put(activeElementClass, elementEditorController);
                         editorStackPane.getChildren().setAll(editorNode);
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
             }
-            // TODO: fix null pointer exception around here
-            //System.out.println(estabReference+" "+elementController+" "+activeElementClass);
-            elementController.setEstabElement((ElementModel) PojoJFXModel.wrapper(estabReference.getElement()));
+            // TODO: fix null pointer exception around here, elementEditorController
+            System.out.println(estabReference+" "+ elementEditorController +" "+activeElementClass);
+            Object element = estabReference.getElement();
+            ElementModel elementModel = (ElementModel) PojoJFXModel.wrapper(element);
+            elementEditorController.setEstabElement(elementModel);
 
         }
     }
@@ -311,7 +316,7 @@ public class EstabDataController implements Initializable {
         numWeaponsTextField.clear();
         setTitle("");
         editorStackPane.setVisible(false);
-        elementController.clear();
+        elementEditorController.clear();
     }
 
     public void set(String title, boolean isEditable, EstabEditorController editorController) {

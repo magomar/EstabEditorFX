@@ -3,9 +3,13 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataTitledPane" minWidth="900"
+<?import net.deludobellico.stabeditor.view.UtilView?>
+<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataTitledPane"
             xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.stabeditor.controller.EstabDataController">
+    <minWidth>
+        <UtilView fx:constant="MIN_WINDOW_WIDTH"/>
+    </minWidth>
     <content>
         <VBox>
             <children>
