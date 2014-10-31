@@ -20,6 +20,10 @@ public class IconModel implements PojoJFXModel<Icon> {
     private final ObjectProperty<ForceSize> forceSizeIcon = new SimpleObjectProperty<>();
     private final BooleanProperty isHq = new SimpleBooleanProperty();
 
+    public IconModel(Icon pojo) {
+        setPojo(pojo);
+    }
+
     @Override
     public Icon getPojo() {
         Icon icon = new Icon();

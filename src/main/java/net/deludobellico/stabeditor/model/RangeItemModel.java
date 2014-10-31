@@ -14,6 +14,13 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
     private final DoubleProperty accuracy = new SimpleDoubleProperty();
     private final DoubleProperty armourPenetration = new SimpleDoubleProperty();
 
+    public RangeItemModel() {
+
+    }
+    public RangeItemModel(RangeItem pojo) {
+        setPojo(pojo);
+    }
+
     @Override
     public RangeItem getPojo() {
         RangeItem rangeItem = new RangeItem();

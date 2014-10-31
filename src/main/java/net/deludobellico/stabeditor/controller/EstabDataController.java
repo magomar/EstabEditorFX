@@ -1,6 +1,8 @@
 package net.deludobellico.stabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -98,13 +100,27 @@ public class EstabDataController implements Initializable {
     private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(3);
     private boolean isEditable = false;
     private EstabEditorController editorController;
+    // stupid tweak to lock tabs
+    private int lockActiveElement = -1;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         searchResultsListView.setItems(estabReferenceObservableList);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) setActiveElement(newValue.getEstabReference());
+            /**
+             * Yes, I know this is very hard to read. After many attempts to solve the tab lock
+             * in nicer ways and failing every time, I decided to go full derp
+             */
+            System.out.println(lockActiveElement);
+            if (null != newValue) {
+                if (null != oldValue) lockActiveElement = 0;
+                if (oldValue == null) lockActiveElement = ++lockActiveElement % 4;
+                if (lockActiveElement == 0) setActiveElement(newValue.getEstabReference());
+            } else if (null != oldValue) {
+                ++lockActiveElement;
+            }
         });
         searchVehicleTextField.textProperty().addListener((observable, oldValue, newValue) -> searchVehicleAction(null));
         searchWeaponTextField.textProperty().addListener((observable, oldValue, newValue) -> searchWeaponAction(null));
@@ -112,6 +128,7 @@ public class EstabDataController implements Initializable {
 
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && estabDataModel != null) {
+                searchResultsListView.getSelectionModel().clearSelection();
                 if (newValue.getText().startsWith("V")) searchVehicleAction(null); // Vehicle tab
                 else if (newValue.getText().startsWith("W")) searchWeaponAction(null);  //Weapon tab
                 else searchAmmoAction(null); //Ammo tab
@@ -158,7 +175,6 @@ public class EstabDataController implements Initializable {
                     }
                 }
             }
-            // TODO: fix null pointer exception around here, elementEditorController
             System.out.println(estabReference+" "+ elementEditorController +" "+activeElementClass);
             Object element = estabReference.getElement();
             ElementModel elementModel = (ElementModel) PojoJFXModel.wrapper(element);

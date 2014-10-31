@@ -26,9 +26,12 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
     private final ObservableList<ArmamentModel> armaments = FXCollections.observableArrayList();
     private final ObjectProperty<VehicleType> type = new SimpleObjectProperty<>();
     private final DoubleProperty fuelCapacity = new SimpleDoubleProperty();
-    private final ObjectProperty<SpeedDataModel> roadSpeed = new SimpleObjectProperty<>();
-    private final ObjectProperty<SpeedDataModel> crossCountrySpeed = new SimpleObjectProperty<>();
-    private final ObjectProperty<FuelConsumptionModel> fuelConsumption = new SimpleObjectProperty<>();
+    private final DoubleProperty maxRoadSpeed = new SimpleDoubleProperty();
+    private final DoubleProperty normalRoadSpeed = new SimpleDoubleProperty();
+    private final DoubleProperty maxCrossCountrySpeed = new SimpleDoubleProperty();
+    private final DoubleProperty normalCrossCountrySpeed = new SimpleDoubleProperty();
+    private final DoubleProperty maxFuelConsumption = new SimpleDoubleProperty();
+    private final DoubleProperty normalFuelConsumption = new SimpleDoubleProperty();
     // end VehicleSpeeds
     private final DoubleProperty ronsonability = new SimpleDoubleProperty();
     private final IntegerProperty maxGradient = new SimpleIntegerProperty();
@@ -70,22 +73,22 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         vehicle.setCrew(crew.get());
         vehicle.setReliability(reliability.get());
         vehicle.setArmaments(new ArmamentList());
-        armaments.stream().forEach(armamentModel -> vehicle.getArmaments().getArmament().add(armamentModel.getPojo()));
+        armaments.stream().map(ArmamentModel::getPojo).forEach(a -> vehicle.getArmaments().getArmament().add(a));
         vehicle.setType(type.get());
         vehicle.setFuelCapacity(fuelCapacity.get());
         SpeedData rs = new SpeedData();
-        rs.setMax(roadSpeed.get().getMax());
-        rs.setNormal(roadSpeed.get().getNormal());
         SpeedData cs = new SpeedData();
-        cs.setMax(crossCountrySpeed.get().getMax());
-        cs.setNormal(crossCountrySpeed.get().getNormal());
+        rs.setMax(maxRoadSpeed.get());
+        rs.setNormal(normalRoadSpeed.get());
+        cs.setMax(maxCrossCountrySpeed.get());
+        cs.setNormal(normalCrossCountrySpeed.get());
         VehicleSpeeds vss = new VehicleSpeeds();
         vss.setRoad(rs);
         vss.setCrossCountry(cs);
         vehicle.setSpeed(vss);
         FuelConsumption fc = new FuelConsumption();
-        fc.setMax(fuelConsumption.get().getMax());
-        fc.setNormal(fuelConsumption.get().getNormal());
+        fc.setMax(maxFuelConsumption.get());
+        fc.setNormal(normalFuelConsumption.get());
         vehicle.setFuelConsumption(fc);
         vehicle.setRonsonability(ronsonability.get());
         vehicle.setMaxGradient(maxGradient.get());
@@ -120,14 +123,15 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         width.set(pojo.getSize().getWeight());
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
-        pojo.getArmaments().getArmament().stream().map(armament -> new ArmamentModel(armament)).forEach(armamentModel -> armaments.add(armamentModel));
+        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(a -> armaments.add(a));
         type.set(pojo.getType());
         fuelCapacity.set(pojo.getFuelCapacity());
-        SpeedDataModel csd = new SpeedDataModel(pojo.getSpeed().getCrossCountry().getMax(), pojo.getSpeed().getCrossCountry().getNormal());
-        SpeedDataModel rsd = new SpeedDataModel(pojo.getSpeed().getRoad().getMax(), pojo.getSpeed().getRoad().getNormal());
-        crossCountrySpeed.set(csd);
-        roadSpeed.set(rsd);
-        fuelConsumption.set(new FuelConsumptionModel(pojo.getFuelConsumption()));
+        maxCrossCountrySpeed.set(pojo.getSpeed().getCrossCountry().getMax());
+        normalCrossCountrySpeed.set(pojo.getSpeed().getCrossCountry().getNormal());
+        maxRoadSpeed.set(pojo.getSpeed().getRoad().getMax());
+        normalRoadSpeed.set(pojo.getSpeed().getRoad().getNormal());
+        maxFuelConsumption.set(pojo.getFuelConsumption().getMax());
+        normalFuelConsumption.set(pojo.getFuelConsumption().getNormal());
         ronsonability.set(pojo.getRonsonability());
         maxGradient.set(pojo.getMaxGradient());
         maxFordingDepth.set(pojo.getMaxFordingDepth());
@@ -305,40 +309,76 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         return fuelCapacity;
     }
 
-    public SpeedDataModel getRoadSpeed() {
-        return roadSpeed.get();
+    public double getMaxRoadSpeed() {
+        return maxRoadSpeed.get();
     }
 
-    public void setRoadSpeed(SpeedDataModel roadSpeed) {
-        this.roadSpeed.set(roadSpeed);
+    public DoubleProperty maxRoadSpeedProperty() {
+        return maxRoadSpeed;
     }
 
-    public ObjectProperty<SpeedDataModel> roadSpeedProperty() {
-        return roadSpeed;
+    public void setMaxRoadSpeed(double maxRoadSpeed) {
+        this.maxRoadSpeed.set(maxRoadSpeed);
     }
 
-    public SpeedDataModel getCrossCountrySpeed() {
-        return crossCountrySpeed.get();
+    public double getNormalRoadSpeed() {
+        return normalRoadSpeed.get();
     }
 
-    public void setCrossCountrySpeed(SpeedDataModel crossCountrySpeed) {
-        this.crossCountrySpeed.set(crossCountrySpeed);
+    public DoubleProperty normalRoadSpeedProperty() {
+        return normalRoadSpeed;
     }
 
-    public ObjectProperty<SpeedDataModel> crossCountrySpeedProperty() {
-        return crossCountrySpeed;
+    public void setNormalRoadSpeed(double normalRoadSpeed) {
+        this.normalRoadSpeed.set(normalRoadSpeed);
     }
 
-    public FuelConsumptionModel getFuelConsumption() {
-        return fuelConsumption.get();
+    public double getMaxCrossCountrySpeed() {
+        return maxCrossCountrySpeed.get();
     }
 
-    public void setFuelConsumption(FuelConsumptionModel fuelConsumption) {
-        this.fuelConsumption.set(fuelConsumption);
+    public DoubleProperty maxCrossCountrySpeedProperty() {
+        return maxCrossCountrySpeed;
     }
 
-    public ObjectProperty<FuelConsumptionModel> fuelConsumptionProperty() {
-        return fuelConsumption;
+    public void setMaxCrossCountrySpeed(double maxCrossCountrySpeed) {
+        this.maxCrossCountrySpeed.set(maxCrossCountrySpeed);
+    }
+
+    public double getNormalCrossCountrySpeed() {
+        return normalCrossCountrySpeed.get();
+    }
+
+    public DoubleProperty normalCrossCountrySpeedProperty() {
+        return normalCrossCountrySpeed;
+    }
+
+    public void setNormalCrossCountrySpeed(double normalCrossCountrySpeed) {
+        this.normalCrossCountrySpeed.set(normalCrossCountrySpeed);
+    }
+
+    public double getMaxFuelConsumption() {
+        return maxFuelConsumption.get();
+    }
+
+    public DoubleProperty maxFuelConsumptionProperty() {
+        return maxFuelConsumption;
+    }
+
+    public void setMaxFuelConsumption(double maxFuelConsumption) {
+        this.maxFuelConsumption.set(maxFuelConsumption);
+    }
+
+    public double getNormalFuelConsumption() {
+        return normalFuelConsumption.get();
+    }
+
+    public DoubleProperty normalFuelConsumptionProperty() {
+        return normalFuelConsumption;
+    }
+
+    public void setNormalFuelConsumption(double normalFuelConsumption) {
+        this.normalFuelConsumption.set(normalFuelConsumption);
     }
 
     public double getRonsonability() {

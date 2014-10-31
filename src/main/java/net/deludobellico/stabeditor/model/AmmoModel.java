@@ -96,5 +96,4 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
     public DoubleProperty minOrderWeightProperty() {
         return minOrderWeight;
     }
-
 }

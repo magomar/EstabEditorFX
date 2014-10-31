@@ -176,13 +176,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         battleWeight.textProperty().bindBidirectional(vehicle.battleWeightProperty(), new NumberStringConverter());
         bulkFuelCapacity.textProperty().bindBidirectional(vehicle.bulkFuelCapacityProperty(), new NumberStringConverter());
         crew.textProperty().bindBidirectional(vehicle.crewProperty(), new NumberStringConverter());
-        crossCountryMaxSpeed.textProperty().bindBidirectional(vehicle.crossCountrySpeedProperty().get().maxProperty(), new NumberStringConverter());
-        crossCountryNormalSpeed.textProperty().bindBidirectional(vehicle.crossCountrySpeedProperty().get().normalProperty(), new NumberStringConverter());
+        crossCountryMaxSpeed.textProperty().bindBidirectional(vehicle.maxCrossCountrySpeedProperty(), new NumberStringConverter());
+        crossCountryNormalSpeed.textProperty().bindBidirectional(vehicle.normalCrossCountrySpeedProperty(), new NumberStringConverter());
         description.textProperty().bindBidirectional(vehicle.descriptionProperty());
         frontArmor.textProperty().bindBidirectional(vehicle.frontArmorProperty(), new NumberStringConverter());
         fuelCapacity.textProperty().bindBidirectional(vehicle.fuelCapacityProperty(), new NumberStringConverter());
-        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().maxProperty(), new NumberStringConverter());
-        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(vehicle.getFuelConsumption().normalProperty(), new NumberStringConverter());
+        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(vehicle.maxFuelConsumptionProperty(), new NumberStringConverter());
+        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(vehicle.normalFuelConsumptionProperty(), new NumberStringConverter());
 
         hasOpenTop.selectedProperty().bindBidirectional(vehicle.hasOpenTopProperty());
         hasTurret.selectedProperty().bindBidirectional(vehicle.hasTurretProperty());
@@ -197,8 +197,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         personnelCapacity.textProperty().bindBidirectional(vehicle.personnelCapacityProperty(), new NumberStringConverter());
         rearArmor.textProperty().bindBidirectional(vehicle.rearArmorProperty(), new NumberStringConverter());
         reliability.textProperty().bindBidirectional(vehicle.reliabilityProperty(), new NumberStringConverter());
-        roadMaxSpeed.textProperty().bindBidirectional(vehicle.getRoadSpeed().maxProperty(), new NumberStringConverter());
-        roadNormalSpeed.textProperty().bindBidirectional(vehicle.getRoadSpeed().normalProperty(), new NumberStringConverter());
+        roadMaxSpeed.textProperty().bindBidirectional(vehicle.maxRoadSpeedProperty(), new NumberStringConverter());
+        roadNormalSpeed.textProperty().bindBidirectional(vehicle.normalRoadSpeedProperty(), new NumberStringConverter());
         ronsonability.textProperty().bindBidirectional(vehicle.ronsonabilityProperty(), new NumberStringConverter());
         sideArmor.textProperty().bindBidirectional(vehicle.sideArmorProperty(), new NumberStringConverter());
         takeCoverMod.textProperty().bindBidirectional(vehicle.takeCoverModProperty(), new NumberStringConverter());
@@ -215,13 +215,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         battleWeight.textProperty().unbindBidirectional(vehicle.battleWeightProperty());
         bulkFuelCapacity.textProperty().unbindBidirectional(vehicle.bulkFuelCapacityProperty());
         crew.textProperty().unbindBidirectional(vehicle.crewProperty());
-        crossCountryMaxSpeed.textProperty().unbindBidirectional(vehicle.crossCountrySpeedProperty().get().maxProperty());
-        crossCountryNormalSpeed.textProperty().unbindBidirectional(vehicle.crossCountrySpeedProperty().get().normalProperty());
+        crossCountryMaxSpeed.textProperty().unbindBidirectional(vehicle.maxCrossCountrySpeedProperty());
+        crossCountryNormalSpeed.textProperty().unbindBidirectional(vehicle.normalCrossCountrySpeedProperty());
         description.textProperty().unbindBidirectional(vehicle.descriptionProperty());
         frontArmor.textProperty().unbindBidirectional(vehicle.frontArmorProperty());
         fuelCapacity.textProperty().unbindBidirectional(vehicle.fuelCapacityProperty());
-        fuelConsumptionMaxSpeed.textProperty().unbindBidirectional(vehicle.getFuelConsumption().maxProperty());
-        fuelConsumptionNormalSpeed.textProperty().unbindBidirectional(vehicle.getFuelConsumption().normalProperty());
+        fuelConsumptionMaxSpeed.textProperty().unbindBidirectional(vehicle.maxFuelConsumptionProperty());
+        fuelConsumptionNormalSpeed.textProperty().unbindBidirectional(vehicle.normalFuelConsumptionProperty());
 
         hasOpenTop.selectedProperty().unbindBidirectional(vehicle.hasOpenTopProperty());
         hasTurret.selectedProperty().unbindBidirectional(vehicle.hasTurretProperty());
@@ -236,8 +236,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         personnelCapacity.textProperty().unbindBidirectional(vehicle.personnelCapacityProperty());
         rearArmor.textProperty().unbindBidirectional(vehicle.rearArmorProperty());
         reliability.textProperty().unbindBidirectional(vehicle.reliabilityProperty());
-        roadMaxSpeed.textProperty().unbindBidirectional(vehicle.getRoadSpeed().maxProperty());
-        roadNormalSpeed.textProperty().unbindBidirectional(vehicle.getRoadSpeed().normalProperty());
+        roadMaxSpeed.textProperty().unbindBidirectional(vehicle.maxRoadSpeedProperty());
+        roadNormalSpeed.textProperty().unbindBidirectional(vehicle.normalRoadSpeedProperty());
         ronsonability.textProperty().unbindBidirectional(vehicle.ronsonabilityProperty());
         sideArmor.textProperty().unbindBidirectional(vehicle.sideArmorProperty());
         takeCoverMod.textProperty().unbindBidirectional(vehicle.takeCoverModProperty());

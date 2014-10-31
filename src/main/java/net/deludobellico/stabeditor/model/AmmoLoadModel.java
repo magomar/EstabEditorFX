@@ -10,14 +10,18 @@ import net.deludobellico.stabeditor.data.jaxb.AmmoLoad;
  * Created by Mario on 28/10/2014.
  */
 public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
-    private final IntegerProperty objectId = new SimpleIntegerProperty();
+    private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty load = new SimpleIntegerProperty();
+
+    public AmmoLoadModel(AmmoLoad pojo) {
+        setPojo(pojo);
+    }
 
     @Override
     public AmmoLoad getPojo() {
         AmmoLoad ammoLoad = new AmmoLoad();
-        ammoLoad.setObjectId(objectId.get());
+        ammoLoad.setObjectId(id.get());
         ammoLoad.setName(name.get());
         ammoLoad.setLoad(load.get());
         return ammoLoad;
@@ -25,21 +29,21 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
 
     @Override
     public void setPojo(AmmoLoad pojo) {
-        objectId.set(pojo.getObjectId());
+        id.set(pojo.getObjectId());
         name.set(pojo.getName());
         load.set(pojo.getLoad());
     }
 
-    public int getObjectId() {
-        return objectId.get();
+    public int getId() {
+        return id.get();
     }
 
-    public void setObjectId(int objectId) {
-        this.objectId.set(objectId);
+    public void setId(int id) {
+        this.id.set(id);
     }
 
-    public IntegerProperty objectIdProperty() {
-        return objectId;
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {

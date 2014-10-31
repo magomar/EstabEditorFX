@@ -39,9 +39,8 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         performance.setBurstRadius(burstRadius.get());
         performance.setShellWeight(shellWeight.get());
         RangeTable rangeTable = new RangeTable();
-        ranges.stream().forEach((rangeItemModel) -> {
-            rangeTable.getRangeItem().add(rangeItemModel.getPojo());
-        });
+
+        ranges.stream().map(RangeItemModel::getPojo).forEach(r -> rangeTable.getRangeItem().add(r));
         performance.setRangeTable(rangeTable);
         performance.setFireType(fireType.get());
         return performance;
@@ -49,8 +48,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
 
     @Override
     public void setPojo(Performance pojo) {
-        AmmoLoadModel ammoLoadModel = new AmmoLoadModel();
-        ammoLoadModel.setPojo(pojo.getAmmo());
+        AmmoLoadModel ammoLoadModel = new AmmoLoadModel(pojo.getAmmo());
         ammoLoad.set(ammoLoadModel);
         minRange.set(pojo.getMinRange());
         ROF rof = pojo.getRof();
@@ -60,13 +58,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         burstRadius.set(pojo.getBurstRadius());
         shellWeight.set(pojo.getShellWeight());
         ranges.clear();
-        pojo.getRangeTable().getRangeItem().stream().map((rangeItem) -> {
-            RangeItemModel rangeItemModel = new RangeItemModel();
-            rangeItemModel.setPojo(rangeItem);
-            return rangeItemModel;
-        }).forEach((rangeItemModel) -> {
-            ranges.add(rangeItemModel);
-        });
+        pojo.getRangeTable().getRangeItem().stream().map(RangeItemModel::new).forEach(r -> ranges.add(r));
         fireType.set(pojo.getFireType());
     }
 

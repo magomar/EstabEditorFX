@@ -37,15 +37,15 @@ public class EstabDataModel {
         estabData.getFormationEffects().stream().forEach(effects -> formationEffects.put(Integer.valueOf(effects.getId()), effects));
 
         estabData.getVehicle().stream()
-                .map(vehicle -> new VehicleModel(vehicle))
+                .map(VehicleModel::new)
                 .forEach(vehicleModel -> vehicles.put(vehicleModel.getId(), vehicleModel));
 
         estabData.getWeapon().stream()
-                .map(weapon -> new WeaponModel(weapon))
+                .map(WeaponModel::new)
                 .forEach(weaponModel -> weapons.put(weaponModel.getId(), weaponModel));
 
         estabData.getAmmo().stream()
-                .map(ammo -> new AmmoModel(ammo))
+                .map(AmmoModel::new)
                 .forEach(ammoModel -> ammos.put(ammoModel.getId(), ammoModel));
     }
 
@@ -111,7 +111,7 @@ public class EstabDataModel {
         List<AmmoModel> ammoList = new ArrayList<>();
 
         for (PerformanceModel performance : weapon.getPerformances()) {
-            AmmoModel ammo = ammos.get(performance.getAmmoLoad().getObjectId());
+            AmmoModel ammo = ammos.get(performance.getAmmoLoad().getId());
             if (ammo != null) {
                 ammoList.add(ammo);
             }

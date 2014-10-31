@@ -8,6 +8,8 @@ import net.deludobellico.stabeditor.util.JFXModelUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by Mario on 28/10/2014.
@@ -67,9 +69,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         weapon.setMuzzleVelocity(muzzleVelocity.get());
         weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
         weapon.setPerformanceList(new PerformanceList());
-        performances.stream().forEach((performanceModel) -> {
-            weapon.getPerformanceList().getPerformance().add(performanceModel.getPojo());
-        });
+        performances.stream().map(PerformanceModel::getPojo).forEach(pp -> weapon.getPerformanceList().getPerformance().add(pp));
         return weapon;
     }
 
@@ -89,9 +89,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
-        pojo.getPerformanceList().getPerformance().stream().map((performance) -> new PerformanceModel(performance)).forEach((performanceModel) -> {
-            performances.add(performanceModel);
-        });
+        pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
     }
 
     public Integer getId() {
