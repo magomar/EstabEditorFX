@@ -31,8 +31,14 @@ public class FileIO {
     /**
      * File  and folder paths
      */
-    public static final String ESTAB_EDITOR_VIEW = "./view/estab-editor.fxml";
+    //Views
+    public static final String ESTAB_EDITOR_VIEW = "./view/main.fxml";
+    public static final String VEHICLE_VIEW = "../view/vehicle-editor-v2.0.fxml";
+    public static final String WEAPON_VIEW = "../view/weapon-editor-v2.0.fxml";
+    public static final String AMMO_VIEW = "../view/ammo-editor-v2.0.fxml";
+    //Settings
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
+    //Resources
     public static final String RESOURCES_FOLDER = "/src/main/resources";
     public static final String REMOVE_ICON_RESOURCE = "/images/removeicon.png";
     public static final String COPY_ICON_RESOURCE = "/images/copyicon.png";

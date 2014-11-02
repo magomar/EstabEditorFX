@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" xmlns="http://javafx.com/javafx/8"
-            fx:controller="net.deludobellico.stabeditor.controller.EstabEditorController">
+            fx:controller="net.deludobellico.stabeditor.controller.MainController">
     <children>
         <BorderPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                     AnchorPane.rightAnchor="0.0">
@@ -93,10 +93,8 @@
                     <content>
                         <VBox>
                             <children>
-                                <fx:include fx:id="sourcePane" source="estab-data.fxml"
-                                            style="-fx-border-color: grey;"/>
-                                <fx:include fx:id="targetPane" source="estab-data.fxml"
-                                            style="-fx-border-color: grey;"/>
+                                <fx:include fx:id="sourcePane" source="estab-data-v2.0.fxml"/>
+                                <fx:include fx:id="targetPane" source="estab-data-v2.0.fxml"/>
                             </children>
                         </VBox>
                     </content>

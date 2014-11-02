@@ -100,9 +100,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     private TextField tableNewArmorPenetrationValue;
 
     @FXML
-    private Label fireTypeLabel;
-
-    @FXML
     private TextField minRange;
 
     @FXML
@@ -217,7 +214,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         load.textProperty().bindBidirectional(p.getAmmoLoad().loadProperty(), new NumberStringConverter());
 
         ammoNameLabel.setText(p.getAmmoLoad().getName());
-        fireTypeLabel.setText(p.getFireType().value());
         // Fill Range Items
 
         rangeItemObservableList.addAll(p.getRanges());
@@ -245,12 +241,10 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         description.setEditable(isEditable);
         crew.setEditable(isEditable);
         reliability.setEditable(isEditable);
-        weaponPrimaryRole.setEditable(isEditable);
-        weaponType.setEditable(isEditable);
+        weaponPrimaryRole.setDisable(!isEditable);
+        weaponType.setDisable(!isEditable);
         singleShot.setDisable(!isEditable);
-        singleShot.setStyle("-fx-opacity: 1");
         mustDeployToFire.setDisable(!isEditable);
-        mustDeployToFire.setStyle("-fx-opacity: 1");
         calibre.setEditable(isEditable);
         muzzleVelocity.setEditable(isEditable);
         minRange.setEditable(isEditable);

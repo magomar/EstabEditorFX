@@ -59,9 +59,9 @@ public class EstabDataModel {
         allElements = new HashMap<>();
         allElements.put(Image.class, images);
         allElements.put(Side.class, sides);
-        allElements.put(VehicleModel.class, vehicles);
-        allElements.put(WeaponModel.class, weapons);
-        allElements.put(AmmoModel.class, ammos);
+        allElements.put(Vehicle.class, vehicles);
+        allElements.put(Weapon.class, weapons);
+        allElements.put(Ammo.class, ammos);
         allElements.put(FormationEffects.class, formationEffects);
     }
 
@@ -81,7 +81,7 @@ public class EstabDataModel {
         return weapons;
     }
 
-    public Map<Integer, AmmoModel> getAmmos() {
+    public Map<Integer, AmmoModel> getAmmo() {
         return ammos;
     }
 

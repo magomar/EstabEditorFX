@@ -1,7 +1,5 @@
 package net.deludobellico.stabeditor.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -31,9 +29,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
     @FXML
     private TextField sideArmor;
-
-//    @FXML
-//    private StackPane vehicleEditor;
 
     @FXML
     private TextField fuelCapacity;
@@ -120,12 +115,10 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     private TextField takeCoverMod;
 
     private VehicleModel vehicle;
-    private ObservableList<VehicleType> vehicleTypeObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        vehicleTypeObservableList.addAll(VehicleType.values());
-        vehicleType.setItems(vehicleTypeObservableList);
+        for (int i = 0; i < VehicleType.values().length; i++) vehicleType.getItems().add(VehicleType.values()[i]);
         vehicleType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (null != newValue) vehicle.setType(newValue);
         });

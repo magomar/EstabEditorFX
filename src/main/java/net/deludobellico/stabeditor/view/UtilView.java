@@ -51,18 +51,18 @@ public class UtilView {
     public static Action showWarningRemoveElement(Collection<ElementModel> collection) {
         String plural = "";
         String message;
-        if (collection.isEmpty()) {
-            message = "You are deleting an element.";
-        } else {
+        if (collection.size() != 1) {
             plural = "s";
-            StringBuilder sb = new StringBuilder();
-            collection.stream().forEach(element -> sb.append(element.print() + newline));
-            message = sb.toString();
         }
 
+        StringBuilder sb = new StringBuilder();
+        collection.stream().forEach(element -> sb.append(element.print() + newline));
+        message = sb.toString();
+
+
         Action response = Dialogs.create()
-                .title("Removing element"+plural)
-                .masthead("The Following elements will be deleted")
+                .title("Removing element" + plural)
+                .masthead("The Following element"+plural+" will be deleted")
                 .message(message + newline + "Proceed?")
                 .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
                 .showWarning();

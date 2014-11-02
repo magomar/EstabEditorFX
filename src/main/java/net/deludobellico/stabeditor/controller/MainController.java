@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EstabEditorController implements Initializable {
-    private static final Logger LOG = Logger.getLogger(EstabEditorController.class.getName());
+public class MainController implements Initializable {
+    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
 
     @FXML
     private AnchorPane rootPane;
@@ -109,8 +109,8 @@ public class EstabEditorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        targetPaneController.set("Target Estab Data:", true, this);
-        sourcePaneController.set("Source Estab Data:", false, this);
+        targetPaneController.set("Target Estab", true, this);
+        sourcePaneController.set("Source Estab", false, this);
 
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Only enable the paste button if there's a target file and a selected element
@@ -188,9 +188,8 @@ public class EstabEditorController implements Initializable {
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
-        sourcePaneController.setTitle("Source Estab: " + file.getName());
         sourcePaneController.setEstabDataModel(new EstabDataModel(sourceEstabFile));
-
+        sourcePaneController.setTitle("Source Estab " + file.getName());
         sourceSaveAsMenuItem.setDisable(false);
         sourceCloseMenuItem.setDisable(false);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
@@ -204,9 +203,8 @@ public class EstabEditorController implements Initializable {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
         disableCopy.set(true);
         targetEstabFile = file;
-        targetPaneController.setTitle("Target Estab: " + targetEstabFile.getName());
         targetPaneController.setEstabDataModel(new EstabDataModel(targetEstabFile));
-
+        targetPaneController.setTitle("Target Estab " + file.getName());
         saveDataButton.setDisable(false);
         targetSaveMenuItem.setDisable(false);
         targetSaveAsMenuItem.setDisable(false);
@@ -272,20 +270,25 @@ public class EstabEditorController implements Initializable {
 
     @FXML
     public void sourceCloseAction(ActionEvent actionEvent) {
-        sourcePaneController.clear();
-        sourceCloseMenuItem.setDisable(true);
         disableCopy.set(true);
+        getDisableCopyProperty().set(true);
+        sourceCloseMenuItem.setDisable(true);
         sourcePane.expandedProperty().set(false);
+        sourcePaneController.setEstabDataModel(null);
+        sourcePaneController.clear();
     }
 
     @FXML
     public void targetCloseAction(ActionEvent actionEvent) {
-        targetPaneController.clear();
-        targetCloseMenuItem.setDisable(true);
         disableCopy.set(true);
+        getDisableCopyProperty().set(true);
+        getDisableRemoveProperty().set(true);
+        getDisableSaveProperty().set(true);
+        targetCloseMenuItem.setDisable(true);
         targetPane.expandedProperty().set(false);
+        targetPaneController.setEstabDataModel(null);
+        targetPaneController.clear();
     }
-
 
     @FXML
     public void toggleToolBarVisibility(ActionEvent actionEvent) {
@@ -374,5 +377,13 @@ public class EstabEditorController implements Initializable {
 
     public BooleanProperty getDisableCopyProperty() {
         return disableCopy;
+    }
+
+    public BooleanProperty getDisableRemoveProperty() {
+        return removeElementButton.disableProperty();
+    }
+
+    public BooleanProperty getDisableSaveProperty() {
+        return saveDataButton.disableProperty();
     }
 }
