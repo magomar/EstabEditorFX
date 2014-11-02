@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
 import net.deludobellico.stabeditor.data.jaxb.Ammo;
 import net.deludobellico.stabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.stabeditor.data.jaxb.Vehicle;
@@ -39,6 +38,8 @@ import java.util.logging.Logger;
 public class EstabDataController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabDataController.class.getName());
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
+    private static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class};
+    private static final Class[] ELEMENT_CLASSES = {Vehicle.class, Weapon.class, Ammo.class};
 
     @FXML
     private TitledPane estabDataPane;
@@ -61,9 +62,9 @@ public class EstabDataController implements Initializable {
     private ObservableList<EstabListCell> estabListCells = FXCollections.observableArrayList();
     // Save last search to optimize tab swap
     private Map<Class, SavedSearchList<EstabListCell>> searchLists = new HashMap<Class, SavedSearchList<EstabListCell>>() {{
-        put(Vehicle.class, new SavedSearchList());
-        put(Weapon.class, new SavedSearchList());
-        put(Ammo.class, new SavedSearchList());
+        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) {
+            put(ELEMENT_MODEL_CLASSES[i], new SavedSearchList<>());
+        }
     }};
 
     // Save loaded views, controllers and panes (element panes have to be AnchorPanes)
@@ -71,9 +72,9 @@ public class EstabDataController implements Initializable {
     private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(3);
     private Map<Class, AnchorPane> elementEditorPanes = new HashMap<>(3);
     private Map<Class, String> elementEditorViews = new HashMap<Class, String>() {{
-        put(Vehicle.class, FileIO.VEHICLE_VIEW);
-        put(Weapon.class, FileIO.WEAPON_VIEW);
-        put(Ammo.class, FileIO.AMMO_VIEW);
+        put(VehicleModel.class, FileIO.VEHICLE_VIEW);
+        put(WeaponModel.class, FileIO.WEAPON_VIEW);
+        put(AmmoModel.class, FileIO.AMMO_VIEW);
     }};
 
     // Current element editor (either vehicle, weapon or ammo) and estab data model (source or target)
@@ -84,7 +85,7 @@ public class EstabDataController implements Initializable {
     private boolean isEditable = false;
 
     // Active element = element currently displayed
-    private EstabReference activeElement = null;
+    private ElementModel activeElement = null;
 
 
     @Override
@@ -97,18 +98,16 @@ public class EstabDataController implements Initializable {
         searchResultsListView.setItems(estabListCells);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // if we select and item, display it
-            if (newValue != null) setActiveElement(newValue.getEstabReference());
+            if (newValue != null) setActiveElement(newValue.getElementModel());
         });
-        elementClassComboBox.getItems().add(new Pair<>(Vehicle.class, "Vehicle", false));
-        elementClassComboBox.getItems().add(new Pair<>(Weapon.class, "Weapon", false));
-        elementClassComboBox.getItems().add(new Pair<>(Ammo.class, "Ammo", false));
+
+
+        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++)
+            elementClassComboBox.getItems().add(new Pair<>(ELEMENT_MODEL_CLASSES[i], ELEMENT_CLASSES[i].getSimpleName(), false));
         elementClassComboBox.getSelectionModel().selectFirst();
         // Update the list when choosing a new element class from the choice box
         elementClassComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && estabDataModel != null) {
-                searchElement(null);
-
-            }
+            if (newValue != null && estabDataModel != null) searchElement(null);
         });
     }
 
@@ -124,8 +123,8 @@ public class EstabDataController implements Initializable {
      * @param actionEvent
      */
     public void searchElement(ActionEvent actionEvent) {
-        Class elementClass = elementClassComboBox.getSelectionModel().getSelectedItem().getKey();
-        SavedSearchList<EstabListCell> savedList = searchLists.get(elementClass);
+        Class elementModelClass = elementClassComboBox.getSelectionModel().getSelectedItem().getKey();
+        SavedSearchList<EstabListCell> savedList = searchLists.get(elementModelClass);
         String textToSearch = searchTextField.getText();
 
         estabListCells.clear();
@@ -139,7 +138,7 @@ public class EstabDataController implements Initializable {
 
 
             // This passes the method to invoke when pressing a button from the search list
-            Consumer<EstabReference> buttonAction;
+            Consumer<ElementModel> buttonAction;
             BooleanProperty buttonDisableProperty;
 
             if (isEditable) {
@@ -152,20 +151,10 @@ public class EstabDataController implements Initializable {
                 buttonDisableProperty = mainController.getDisableCopyProperty();
             }
             // Get al elements with name watching the seatch text
-            List<ElementModel> elements = estabDataModel.searchElement(textToSearch, elementClass);
+            List<ElementModel> elements = estabDataModel.searchElement(textToSearch, elementModelClass);
             for (ElementModel element : elements) {
-                EstabReference estab;
                 EstabListCell cell;
-
-                //TODO: why do I need this to be a estab reference list
-                if (elementClass.equals(Vehicle.class)) {
-                    estab = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createVehicle(((VehicleModel) element).getPojo()), elementClass);
-                } else if (elementClass.equals(Weapon.class)) {
-                    estab = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createWeapon(((WeaponModel) element).getPojo()), elementClass);
-                } else {
-                    estab = new EstabReference(element.getId(), element.getName(), OBJECT_FACTORY.createAmmo(((AmmoModel) element).getPojo()), elementClass);
-                }
-                cell = new EstabListCell(estab, buttonAction, buttonDisableProperty, isEditable);
+                cell = new EstabListCell(element, buttonAction, buttonDisableProperty, isEditable);
                 estabListCells.add(cell);
                 savedList.getList().add(cell);
             }
@@ -214,29 +203,29 @@ public class EstabDataController implements Initializable {
     /**
      * Displays an element using its associated {@link EstabReference}
      *
-     * @param estabReference
+     * @param elementModel
      */
-    public void setActiveElement(EstabReference<ElementModel> estabReference) {
-        if (null != estabReference) {
-            Class estabClass = estabReference.getElementClass();
+    public void setActiveElement(ElementModel elementModel) {
+        if (null != elementModel) {
+            Class elementClass = elementModel.getClass();
             AnchorPane editorNode;
             // If the current element isn't set (null) or it's from other class than the one we want to display
             // then update the editor
-            if (activeElement == null || !activeElement.getElementClass().equals(estabClass)) {
+            if ((activeElement == null) || !(activeElement.getClass() == elementClass)) {
                 // if we have saved the controller and editorPane, use them; else load them
-                if (elementEditorPanes.containsKey(estabClass) && elementEditorControllers.containsKey(estabClass)) {
-                    editorPane = elementEditorPanes.get(estabClass);
-                    elementEditorController = elementEditorControllers.get(estabClass);
+                if (elementEditorPanes.containsKey(elementClass) && elementEditorControllers.containsKey(elementClass)) {
+                    editorPane = elementEditorPanes.get(elementClass);
+                    elementEditorController = elementEditorControllers.get(elementClass);
                 } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(elementEditorViews.get(estabClass)));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(elementEditorViews.get(elementClass)));
                     try {
                         editorPane.getChildren().clear();
                         editorNode = fxmlLoader.load();
                         editorPane.getChildren().addAll(editorNode.getChildren());
-                        elementEditorPanes.put(estabClass, editorNode);
+                        elementEditorPanes.put(elementClass, editorNode);
                         elementEditorController = fxmlLoader.getController();
                         elementEditorController.setEditable(isEditable);
-                        elementEditorControllers.put(estabClass, elementEditorController);
+                        elementEditorControllers.put(elementClass, elementEditorController);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
@@ -244,10 +233,8 @@ public class EstabDataController implements Initializable {
                     }
                 }
             }
-            Object element = estabReference.getElement();
-            ElementModel elementModel = (ElementModel) PojoJFXModel.wrapper(element);
             elementEditorController.setEstabElement(elementModel);
-            activeElement = estabReference;
+            activeElement = elementModel;
         }
     }
 
@@ -295,10 +282,10 @@ public class EstabDataController implements Initializable {
     }
 
 
-    public EstabReference<ElementModel> getActiveElement() {
+    public ElementModel getActiveElement() {
         // TODO: check this later, why not return just the activElement field
         if (!searchResultsListView.getSelectionModel().getSelectedItems().isEmpty()) {
-            return searchResultsListView.getSelectionModel().getSelectedItem().getEstabReference();
+            return searchResultsListView.getSelectionModel().getSelectedItem().getElementModel();
         }
         return null;
     }

@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.EstabDataModel;
 import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.model.RelatedElementLists;
@@ -339,19 +340,19 @@ public class MainController implements Initializable {
         targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(targetPaneController.getActiveElement()));
     }
 
-    public void copyEstabElementFromCellList(EstabReference estabReference) {
-        LOG.log(Level.INFO, "Copying estab element " + estabReference.getName());
-        RelatedElementLists relatedElements = sourcePaneController.getEstabDataModel().getRelatedElements(estabReference);
+    public void copyEstabElementFromCellList(ElementModel elementModel) {
+        LOG.log(Level.INFO, "Copying estab element " + elementModel.getName());
+        RelatedElementLists relatedElements = sourcePaneController.getEstabDataModel().getRelatedElements(elementModel);
         targetPaneController.getEstabDataModel().sortRelatedElements(relatedElements);
         if (targetPaneController.copyEstabElement(relatedElements)) {
-            targetPaneController.setActiveElement(estabReference);
+            targetPaneController.setActiveElement(elementModel);
         }
     }
 
-    public void removeEstabElementFromCellList(EstabReference estabReference) {
-        LOG.log(Level.INFO, "Removing estab element " + estabReference.getName());
-        targetPaneController.setActiveElement(estabReference);
-        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(estabReference));
+    public void removeEstabElementFromCellList(ElementModel elementModel) {
+        LOG.log(Level.INFO, "Removing estab element " + elementModel.getName());
+        targetPaneController.setActiveElement(elementModel);
+        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(elementModel));
     }
 
     @FXML

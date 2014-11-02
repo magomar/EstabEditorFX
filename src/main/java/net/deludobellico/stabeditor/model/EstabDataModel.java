@@ -58,10 +58,10 @@ public class EstabDataModel {
         formationEffects = new HashMap<>();
         allElements = new HashMap<>();
         allElements.put(Image.class, images);
-        allElements.put(Side.class, sides);
-        allElements.put(Vehicle.class, vehicles);
-        allElements.put(Weapon.class, weapons);
-        allElements.put(Ammo.class, ammos);
+        allElements.put(SideModel.class, sides);
+        allElements.put(VehicleModel.class, vehicles);
+        allElements.put(WeaponModel.class, weapons);
+        allElements.put(AmmoModel.class, ammos);
         allElements.put(FormationEffects.class, formationEffects);
     }
 
@@ -85,9 +85,9 @@ public class EstabDataModel {
         return ammos;
     }
 
-    public List<ElementModel> searchElement(String name, Class elementClass) {
+    public List<ElementModel> searchElement(String name, Class elementModelClass) {
         String lowerCase = name.toLowerCase();
-        return (List<ElementModel>) allElements.get(elementClass).values().parallelStream()
+        return (List<ElementModel>) allElements.get(elementModelClass).values().parallelStream()
                 .filter(element -> ((ElementModel) element).getName().toLowerCase().contains(lowerCase))
                 .collect(Collectors.<ElementModel>toList());
     }
@@ -123,28 +123,23 @@ public class EstabDataModel {
      * {@sortRepeatedElements} has to be invoked in order to clean NonRepeated lists
      *
      *
-     * @param estabReference
+     * @param
      * @return
      */
-    public RelatedElementLists getRelatedElements(EstabReference estabReference) {
-        return getRelatedElements(estabReference, null);
+    public RelatedElementLists getRelatedElements(ElementModel elementModel) {
+        return getRelatedElements(elementModel, null);
     }
 
-    public RelatedElementLists getRelatedElements(EstabReference estabReference, EstabDataModel targetModel) {
+    public RelatedElementLists getRelatedElements(ElementModel elementModel, EstabDataModel targetModel) {
 
         RelatedElementLists relatedElementLists = new RelatedElementLists();
 
-        if (estabReference.getElementClass() == Vehicle.class) {
-            VehicleModel v = new VehicleModel((Vehicle) estabReference.getElement());
-            relatedElementLists.getAllVehicles().add(v);
-
-        } else if (estabReference.getElementClass() == Weapon.class) {
-            WeaponModel w = new WeaponModel((Weapon) estabReference.getElement());
-            relatedElementLists.getAllWeapons().add(w);
-
+        if (elementModel.getClass() == VehicleModel.class) {
+            relatedElementLists.getAllVehicles().add((VehicleModel) elementModel);
+        } else if (elementModel.getClass() == WeaponModel.class) {
+            relatedElementLists.getAllWeapons().add((WeaponModel) elementModel);
         } else {
-            AmmoModel a = new AmmoModel((Ammo) estabReference.getElement());
-            relatedElementLists.getAllAmmo().add(a);
+            relatedElementLists.getAllAmmo().add((AmmoModel) elementModel);
         }
 
         for (VehicleModel v : relatedElementLists.getAllVehicles()) {

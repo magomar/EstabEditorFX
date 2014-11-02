@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.util.FileIO;
 
@@ -18,28 +18,28 @@ import java.util.function.Consumer;
  */
 public class EstabListCell extends HBox {
 
-    private EstabReference estabReference;
+    private ElementModel elementModel;
     private Label label = new Label();
     private Pane pane = new Pane();
     private Button button = new Button();
 
-    public EstabListCell(EstabReference estabReference, Consumer<EstabReference> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
+    public EstabListCell(ElementModel elementModel, Consumer<ElementModel> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
         super();
-        label.setText(estabReference.getName());
+        label.setText(elementModel.getName());
         pane.setMinWidth(5.0);
-        this.estabReference = estabReference;
+        this.elementModel = elementModel;
         button.setGraphic(removeIcon ?
                 new ImageView(new Image(EstabListCell.class.getResourceAsStream(FileIO.REMOVE_ICON_RESOURCE)))
                 :
                 new ImageView(new Image(EstabListCell.class.getResourceAsStream(FileIO.COPY_ICON_RESOURCE))));
         button.disableProperty().bind(disableButtonProperty);
-        button.setOnAction(event -> cellButtonAction.accept(estabReference));
+        button.setOnAction(event -> cellButtonAction.accept(elementModel));
 
         this.getChildren().addAll(button, pane, label);
     }
 
-    public EstabReference getEstabReference() {
-        return estabReference;
+    public ElementModel getElementModel() {
+        return elementModel;
     }
 
 }
