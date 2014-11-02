@@ -263,4 +263,51 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
     public ObservableList<PerformanceModel> getPerformances() {
         return performances;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WeaponModel that = (WeaponModel) o;
+
+        if (calibre != null ? !calibre.equals(that.calibre) : that.calibre != null) return false;
+        if (crew != null ? !crew.equals(that.crew) : that.crew != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (mustDeployToFire != null ? !mustDeployToFire.equals(that.mustDeployToFire) : that.mustDeployToFire != null)
+            return false;
+        if (muzzleVelocity != null ? !muzzleVelocity.equals(that.muzzleVelocity) : that.muzzleVelocity != null)
+            return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (performances != null ? !performances.equals(that.performances) : that.performances != null) return false;
+        if (pictureFilename != null ? !pictureFilename.equals(that.pictureFilename) : that.pictureFilename != null)
+            return false;
+        if (pictureId != null ? !pictureId.equals(that.pictureId) : that.pictureId != null) return false;
+        if (primaryRole != null ? !primaryRole.equals(that.primaryRole) : that.primaryRole != null) return false;
+        if (reliability != null ? !reliability.equals(that.reliability) : that.reliability != null) return false;
+        if (singleShot != null ? !singleShot.equals(that.singleShot) : that.singleShot != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (pictureId != null ? pictureId.hashCode() : 0);
+        result = 31 * result + (pictureFilename != null ? pictureFilename.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (crew != null ? crew.hashCode() : 0);
+        result = 31 * result + (reliability != null ? reliability.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (singleShot != null ? singleShot.hashCode() : 0);
+        result = 31 * result + (primaryRole != null ? primaryRole.hashCode() : 0);
+        result = 31 * result + (calibre != null ? calibre.hashCode() : 0);
+        result = 31 * result + (muzzleVelocity != null ? muzzleVelocity.hashCode() : 0);
+        result = 31 * result + (mustDeployToFire != null ? mustDeployToFire.hashCode() : 0);
+        result = 31 * result + (performances != null ? performances.hashCode() : 0);
+        return result;
+    }
 }

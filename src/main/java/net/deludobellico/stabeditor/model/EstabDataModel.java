@@ -32,11 +32,34 @@ public class EstabDataModel {
     public EstabDataModel(EstabData estabData) {
         this();
 
-        estabData.getImage().stream().forEach(image -> images.put(Integer.valueOf(image.getId()), image));
-        estabData.getSide().stream().forEach(side -> sides.put(Integer.valueOf(side.getId()), side));
-        estabData.getFormationEffects().stream().forEach(effects -> formationEffects.put(Integer.valueOf(effects.getId()), effects));
+        List<Image> estabImage = estabData.getImage();
+        List<Side> estabSides = estabData.getSide();
+        List<Vehicle> estabVehicles = estabData.getVehicle();
+        List<Weapon> estabWeapons = estabData.getWeapon();
+        List<Ammo> estabAmmo = estabData.getAmmo();
+        List<FormationEffects> estabFormationEffects = estabData.getFormationEffects();
 
-        estabData.getVehicle().stream()
+        // Initial size to avoid resizing
+        images = new HashMap<>(estabImage.size());
+        sides = new HashMap<>(estabSides.size());
+        vehicles = new HashMap<>(estabVehicles.size());
+        weapons = new HashMap<>(estabWeapons.size());
+        ammos = new HashMap<>(estabAmmo.size());
+        formationEffects = new HashMap<>(estabFormationEffects.size());
+
+        allElements = new HashMap<>(6);
+        allElements.put(Image.class, images);
+        allElements.put(SideModel.class, sides);
+        allElements.put(VehicleModel.class, vehicles);
+        allElements.put(WeaponModel.class, weapons);
+        allElements.put(AmmoModel.class, ammos);
+        allElements.put(FormationEffects.class, formationEffects);
+
+        estabImage.stream().forEach(image -> images.put(Integer.valueOf(image.getId()), image));
+        estabSides.stream().forEach(side -> sides.put(Integer.valueOf(side.getId()), side));
+        estabFormationEffects.stream().forEach(effects -> formationEffects.put(Integer.valueOf(effects.getId()), effects));
+
+        estabVehicles.stream()
                 .map(VehicleModel::new)
                 .forEach(vehicleModel -> vehicles.put(vehicleModel.getId(), vehicleModel));
 
@@ -130,6 +153,7 @@ public class EstabDataModel {
         return getRelatedElements(elementModel, null);
     }
 
+    //TODO: change ElementModel to Collection<ElementModel>
     public RelatedElementLists getRelatedElements(ElementModel elementModel, EstabDataModel targetModel) {
 
         RelatedElementLists relatedElementLists = new RelatedElementLists();

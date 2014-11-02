@@ -96,4 +96,31 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
     public DoubleProperty minOrderWeightProperty() {
         return minOrderWeight;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AmmoModel ammoModel = (AmmoModel) o;
+
+        if (description != null ? !description.equals(ammoModel.description) : ammoModel.description != null)
+            return false;
+        if (minOrderQty != null ? !minOrderQty.equals(ammoModel.minOrderQty) : ammoModel.minOrderQty != null)
+            return false;
+        if (minOrderWeight != null ? !minOrderWeight.equals(ammoModel.minOrderWeight) : ammoModel.minOrderWeight != null)
+            return false;
+        if (name != null ? !name.equals(ammoModel.name) : ammoModel.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (minOrderQty != null ? minOrderQty.hashCode() : 0);
+        result = 31 * result + (minOrderWeight != null ? minOrderWeight.hashCode() : 0);
+        return result;
+    }
 }

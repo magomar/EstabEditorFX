@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class VehicleEditorController implements Initializable, ElementEditorController {
+public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
     @FXML
     private TextField maxTrenchWidth;
 
@@ -165,79 +165,79 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void bindProperties(ElementModel element) {
-        battleWeight.textProperty().bindBidirectional(vehicle.battleWeightProperty(), new NumberStringConverter());
-        bulkFuelCapacity.textProperty().bindBidirectional(vehicle.bulkFuelCapacityProperty(), new NumberStringConverter());
-        crew.textProperty().bindBidirectional(vehicle.crewProperty(), new NumberStringConverter());
-        crossCountryMaxSpeed.textProperty().bindBidirectional(vehicle.maxCrossCountrySpeedProperty(), new NumberStringConverter());
-        crossCountryNormalSpeed.textProperty().bindBidirectional(vehicle.normalCrossCountrySpeedProperty(), new NumberStringConverter());
-        description.textProperty().bindBidirectional(vehicle.descriptionProperty());
-        frontArmor.textProperty().bindBidirectional(vehicle.frontArmorProperty(), new NumberStringConverter());
-        fuelCapacity.textProperty().bindBidirectional(vehicle.fuelCapacityProperty(), new NumberStringConverter());
-        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(vehicle.maxFuelConsumptionProperty(), new NumberStringConverter());
-        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(vehicle.normalFuelConsumptionProperty(), new NumberStringConverter());
+    public void bindProperties(VehicleModel element) {
+        battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), new NumberStringConverter());
+        bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), new NumberStringConverter());
+        crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
+        crossCountryMaxSpeed.textProperty().bindBidirectional(element.maxCrossCountrySpeedProperty(), new NumberStringConverter());
+        crossCountryNormalSpeed.textProperty().bindBidirectional(element.normalCrossCountrySpeedProperty(), new NumberStringConverter());
+        description.textProperty().bindBidirectional(element.descriptionProperty());
+        frontArmor.textProperty().bindBidirectional(element.frontArmorProperty(), new NumberStringConverter());
+        fuelCapacity.textProperty().bindBidirectional(element.fuelCapacityProperty(), new NumberStringConverter());
+        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(element.maxFuelConsumptionProperty(), new NumberStringConverter());
+        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(element.normalFuelConsumptionProperty(), new NumberStringConverter());
 
-        hasOpenTop.selectedProperty().bindBidirectional(vehicle.hasOpenTopProperty());
-        hasTurret.selectedProperty().bindBidirectional(vehicle.hasTurretProperty());
+        hasOpenTop.selectedProperty().bindBidirectional(element.hasOpenTopProperty());
+        hasTurret.selectedProperty().bindBidirectional(element.hasTurretProperty());
 
-        height.textProperty().bindBidirectional(vehicle.heightProperty(), new NumberStringConverter());
-        length.textProperty().bindBidirectional(vehicle.lengthProperty(), new NumberStringConverter());
-        maxFordingDepth.textProperty().bindBidirectional(vehicle.maxFordingDepthProperty(), new NumberStringConverter());
-        maxGradient.textProperty().bindBidirectional(vehicle.maxGradientProperty(), new NumberStringConverter());
-        maxTrenchWidth.textProperty().bindBidirectional(vehicle.maxTrenchWidthProperty(), new NumberStringConverter());
-        name.textProperty().bindBidirectional(vehicle.nameProperty());
-        payloadCapacity.textProperty().bindBidirectional(vehicle.payloadCapacityProperty(), new NumberStringConverter());
-        personnelCapacity.textProperty().bindBidirectional(vehicle.personnelCapacityProperty(), new NumberStringConverter());
-        rearArmor.textProperty().bindBidirectional(vehicle.rearArmorProperty(), new NumberStringConverter());
-        reliability.textProperty().bindBidirectional(vehicle.reliabilityProperty(), new NumberStringConverter());
-        roadMaxSpeed.textProperty().bindBidirectional(vehicle.maxRoadSpeedProperty(), new NumberStringConverter());
-        roadNormalSpeed.textProperty().bindBidirectional(vehicle.normalRoadSpeedProperty(), new NumberStringConverter());
-        ronsonability.textProperty().bindBidirectional(vehicle.ronsonabilityProperty(), new NumberStringConverter());
-        sideArmor.textProperty().bindBidirectional(vehicle.sideArmorProperty(), new NumberStringConverter());
-        takeCoverMod.textProperty().bindBidirectional(vehicle.takeCoverModProperty(), new NumberStringConverter());
-        topArmor.textProperty().bindBidirectional(vehicle.topArmorProperty(), new NumberStringConverter());
-        towingCapacity.textProperty().bindBidirectional(vehicle.towingCapacityProperty(), new NumberStringConverter());
-        weight.textProperty().bindBidirectional(vehicle.weightProperty(), new NumberStringConverter());
-        width.textProperty().bindBidirectional(vehicle.widthProperty(), new NumberStringConverter());
-        vehicleType.getSelectionModel().select(vehicle.getType());
+        height.textProperty().bindBidirectional(element.heightProperty(), new NumberStringConverter());
+        length.textProperty().bindBidirectional(element.lengthProperty(), new NumberStringConverter());
+        maxFordingDepth.textProperty().bindBidirectional(element.maxFordingDepthProperty(), new NumberStringConverter());
+        maxGradient.textProperty().bindBidirectional(element.maxGradientProperty(), new NumberStringConverter());
+        maxTrenchWidth.textProperty().bindBidirectional(element.maxTrenchWidthProperty(), new NumberStringConverter());
+        name.textProperty().bindBidirectional(element.nameProperty());
+        payloadCapacity.textProperty().bindBidirectional(element.payloadCapacityProperty(), new NumberStringConverter());
+        personnelCapacity.textProperty().bindBidirectional(element.personnelCapacityProperty(), new NumberStringConverter());
+        rearArmor.textProperty().bindBidirectional(element.rearArmorProperty(), new NumberStringConverter());
+        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), new NumberStringConverter());
+        roadMaxSpeed.textProperty().bindBidirectional(element.maxRoadSpeedProperty(), new NumberStringConverter());
+        roadNormalSpeed.textProperty().bindBidirectional(element.normalRoadSpeedProperty(), new NumberStringConverter());
+        ronsonability.textProperty().bindBidirectional(element.ronsonabilityProperty(), new NumberStringConverter());
+        sideArmor.textProperty().bindBidirectional(element.sideArmorProperty(), new NumberStringConverter());
+        takeCoverMod.textProperty().bindBidirectional(element.takeCoverModProperty(), new NumberStringConverter());
+        topArmor.textProperty().bindBidirectional(element.topArmorProperty(), new NumberStringConverter());
+        towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), new NumberStringConverter());
+        weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
+        width.textProperty().bindBidirectional(element.widthProperty(), new NumberStringConverter());
+        vehicleType.getSelectionModel().select(element.getType());
 
     }
 
     @Override
-    public void unbindProperties(ElementModel element) {
-        battleWeight.textProperty().unbindBidirectional(vehicle.battleWeightProperty());
-        bulkFuelCapacity.textProperty().unbindBidirectional(vehicle.bulkFuelCapacityProperty());
-        crew.textProperty().unbindBidirectional(vehicle.crewProperty());
-        crossCountryMaxSpeed.textProperty().unbindBidirectional(vehicle.maxCrossCountrySpeedProperty());
-        crossCountryNormalSpeed.textProperty().unbindBidirectional(vehicle.normalCrossCountrySpeedProperty());
-        description.textProperty().unbindBidirectional(vehicle.descriptionProperty());
-        frontArmor.textProperty().unbindBidirectional(vehicle.frontArmorProperty());
-        fuelCapacity.textProperty().unbindBidirectional(vehicle.fuelCapacityProperty());
-        fuelConsumptionMaxSpeed.textProperty().unbindBidirectional(vehicle.maxFuelConsumptionProperty());
-        fuelConsumptionNormalSpeed.textProperty().unbindBidirectional(vehicle.normalFuelConsumptionProperty());
+    public void unbindProperties(VehicleModel element) {
+        battleWeight.textProperty().unbindBidirectional(element.battleWeightProperty());
+        bulkFuelCapacity.textProperty().unbindBidirectional(element.bulkFuelCapacityProperty());
+        crew.textProperty().unbindBidirectional(element.crewProperty());
+        crossCountryMaxSpeed.textProperty().unbindBidirectional(element.maxCrossCountrySpeedProperty());
+        crossCountryNormalSpeed.textProperty().unbindBidirectional(element.normalCrossCountrySpeedProperty());
+        description.textProperty().unbindBidirectional(element.descriptionProperty());
+        frontArmor.textProperty().unbindBidirectional(element.frontArmorProperty());
+        fuelCapacity.textProperty().unbindBidirectional(element.fuelCapacityProperty());
+        fuelConsumptionMaxSpeed.textProperty().unbindBidirectional(element.maxFuelConsumptionProperty());
+        fuelConsumptionNormalSpeed.textProperty().unbindBidirectional(element.normalFuelConsumptionProperty());
 
-        hasOpenTop.selectedProperty().unbindBidirectional(vehicle.hasOpenTopProperty());
-        hasTurret.selectedProperty().unbindBidirectional(vehicle.hasTurretProperty());
+        hasOpenTop.selectedProperty().unbindBidirectional(element.hasOpenTopProperty());
+        hasTurret.selectedProperty().unbindBidirectional(element.hasTurretProperty());
 
-        height.textProperty().unbindBidirectional(vehicle.heightProperty());
-        length.textProperty().unbindBidirectional(vehicle.lengthProperty());
-        maxFordingDepth.textProperty().unbindBidirectional(vehicle.maxFordingDepthProperty());
-        maxGradient.textProperty().unbindBidirectional(vehicle.maxGradientProperty());
-        maxTrenchWidth.textProperty().unbindBidirectional(vehicle.maxTrenchWidthProperty());
-        name.textProperty().unbindBidirectional(vehicle.nameProperty());
-        payloadCapacity.textProperty().unbindBidirectional(vehicle.payloadCapacityProperty());
-        personnelCapacity.textProperty().unbindBidirectional(vehicle.personnelCapacityProperty());
-        rearArmor.textProperty().unbindBidirectional(vehicle.rearArmorProperty());
-        reliability.textProperty().unbindBidirectional(vehicle.reliabilityProperty());
-        roadMaxSpeed.textProperty().unbindBidirectional(vehicle.maxRoadSpeedProperty());
-        roadNormalSpeed.textProperty().unbindBidirectional(vehicle.normalRoadSpeedProperty());
-        ronsonability.textProperty().unbindBidirectional(vehicle.ronsonabilityProperty());
-        sideArmor.textProperty().unbindBidirectional(vehicle.sideArmorProperty());
-        takeCoverMod.textProperty().unbindBidirectional(vehicle.takeCoverModProperty());
-        topArmor.textProperty().unbindBidirectional(vehicle.topArmorProperty());
-        towingCapacity.textProperty().unbindBidirectional(vehicle.towingCapacityProperty());
-        weight.textProperty().unbindBidirectional(vehicle.weightProperty());
-        width.textProperty().unbindBidirectional(vehicle.widthProperty());
+        height.textProperty().unbindBidirectional(element.heightProperty());
+        length.textProperty().unbindBidirectional(element.lengthProperty());
+        maxFordingDepth.textProperty().unbindBidirectional(element.maxFordingDepthProperty());
+        maxGradient.textProperty().unbindBidirectional(element.maxGradientProperty());
+        maxTrenchWidth.textProperty().unbindBidirectional(element.maxTrenchWidthProperty());
+        name.textProperty().unbindBidirectional(element.nameProperty());
+        payloadCapacity.textProperty().unbindBidirectional(element.payloadCapacityProperty());
+        personnelCapacity.textProperty().unbindBidirectional(element.personnelCapacityProperty());
+        rearArmor.textProperty().unbindBidirectional(element.rearArmorProperty());
+        reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
+        roadMaxSpeed.textProperty().unbindBidirectional(element.maxRoadSpeedProperty());
+        roadNormalSpeed.textProperty().unbindBidirectional(element.normalRoadSpeedProperty());
+        ronsonability.textProperty().unbindBidirectional(element.ronsonabilityProperty());
+        sideArmor.textProperty().unbindBidirectional(element.sideArmorProperty());
+        takeCoverMod.textProperty().unbindBidirectional(element.takeCoverModProperty());
+        topArmor.textProperty().unbindBidirectional(element.topArmorProperty());
+        towingCapacity.textProperty().unbindBidirectional(element.towingCapacityProperty());
+        weight.textProperty().unbindBidirectional(element.weightProperty());
+        width.textProperty().unbindBidirectional(element.widthProperty());
 
     }
 
@@ -252,13 +252,10 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void setEstabElement(ElementModel element) {
-        VehicleModel newVehicle = (VehicleModel) element;
-        VehicleModel previousVehicle = this.vehicle;
-        this.vehicle = newVehicle;
-
-        if (previousVehicle != null) unbindProperties(previousVehicle);
-        bindProperties(newVehicle);
+    public void setEstabElement(VehicleModel element) {
+        if (vehicle != null) unbindProperties(vehicle);
+        this.vehicle = element;
+        bindProperties(vehicle);
     }
 
 

@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 04/08/2014.
  */
-public class WeaponEditorController implements Initializable, ElementEditorController {
+public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
 
     @FXML
     private TextField reliability;
@@ -261,32 +261,32 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public void bindProperties(ElementModel element) {
-        weightTextField.textProperty().bindBidirectional(weapon.weightProperty(), new NumberStringConverter());
-        name.textProperty().bindBidirectional(weapon.nameProperty());
-        description.textProperty().bindBidirectional(weapon.descriptionProperty());
-        crew.textProperty().bindBidirectional(weapon.crewProperty(), new NumberStringConverter());
-        reliability.textProperty().bindBidirectional(weapon.reliabilityProperty(), new NumberStringConverter());
-        calibre.textProperty().bindBidirectional(weapon.calibreProperty(), new NumberStringConverter());
-        muzzleVelocity.textProperty().bindBidirectional(weapon.muzzleVelocityProperty(), new NumberStringConverter());
+    public void bindProperties(WeaponModel element) {
+        weightTextField.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
+        name.textProperty().bindBidirectional(element.nameProperty());
+        description.textProperty().bindBidirectional(element.descriptionProperty());
+        crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
+        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), new NumberStringConverter());
+        calibre.textProperty().bindBidirectional(element.calibreProperty(), new NumberStringConverter());
+        muzzleVelocity.textProperty().bindBidirectional(element.muzzleVelocityProperty(), new NumberStringConverter());
 
-        weaponType.getSelectionModel().select(weapon.getType());
-        weaponPrimaryRole.getSelectionModel().select(weapon.getPrimaryRole());
+        weaponType.getSelectionModel().select(element.getType());
+        weaponPrimaryRole.getSelectionModel().select(element.getPrimaryRole());
 
-        singleShot.setSelected(weapon.getSingleShot());
-        mustDeployToFire.setSelected(weapon.getMustDeployToFire());
+        singleShot.setSelected(element.getSingleShot());
+        mustDeployToFire.setSelected(element.getMustDeployToFire());
 
     }
 
     @Override
-    public void unbindProperties(ElementModel element) {
-        weightTextField.textProperty().unbindBidirectional(weapon.weightProperty());
-        name.textProperty().unbindBidirectional(weapon.nameProperty());
-        description.textProperty().unbindBidirectional(weapon.descriptionProperty());
-        crew.textProperty().unbindBidirectional(weapon.crewProperty());
-        reliability.textProperty().unbindBidirectional(weapon.reliabilityProperty());
-        calibre.textProperty().unbindBidirectional(weapon.calibreProperty());
-        muzzleVelocity.textProperty().unbindBidirectional(weapon.muzzleVelocityProperty());
+    public void unbindProperties(WeaponModel element) {
+        weightTextField.textProperty().unbindBidirectional(element.weightProperty());
+        name.textProperty().unbindBidirectional(element.nameProperty());
+        description.textProperty().unbindBidirectional(element.descriptionProperty());
+        crew.textProperty().unbindBidirectional(element.crewProperty());
+        reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
+        calibre.textProperty().unbindBidirectional(element.calibreProperty());
+        muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
     }
 
     @Override
@@ -300,14 +300,11 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public void setEstabElement(ElementModel element) {
-        WeaponModel newWeapon = (WeaponModel) element;
-        WeaponModel previousWeapon = this.weapon;
-        this.weapon = newWeapon;
-
-        if (previousWeapon != null) unbindProperties(previousWeapon);
-        bindProperties(newWeapon);
-
+    public void setEstabElement(WeaponModel element) {
+        if(weapon != null) unbindProperties(weapon);
+        this.weapon = element;
+        bindProperties(weapon);
+        
         fireTypeObservableList.clear();
         // Fill Fire Type list
         WeaponModel.getFireTypeMap(this.weapon).entrySet().stream().filter(entry -> entry.getValue()).forEach(entry -> fireTypeObservableList.add(entry.getKey()));

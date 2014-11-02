@@ -5,16 +5,16 @@ import net.deludobellico.stabeditor.model.ElementModel;
 /**
  * Created by Mario on 26/08/2014.
  */
-public interface ElementEditorController {
-    ElementModel getEstabElement();
+public interface ElementEditorController<T extends ElementModel> {
+    T getEstabElement();
 
-    void setEstabElement(ElementModel element);
+    void setEstabElement(T t);
 
     void setEditable(boolean isEditable);
 
-    void bindProperties(ElementModel element);
+    void bindProperties(T t);
 
-    void unbindProperties(ElementModel element);
+    void unbindProperties(T t);
 
     void clear();
 }

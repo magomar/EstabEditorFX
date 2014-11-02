@@ -25,7 +25,7 @@ public class EstabListCell extends HBox {
 
     public EstabListCell(ElementModel elementModel, Consumer<ElementModel> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
         super();
-        label.setText(elementModel.getName());
+        label.textProperty().bind(elementModel.nameProperty());
         pane.setMinWidth(5.0);
         this.elementModel = elementModel;
         button.setGraphic(removeIcon ?
@@ -40,6 +40,10 @@ public class EstabListCell extends HBox {
 
     public ElementModel getElementModel() {
         return elementModel;
+    }
+
+    public Label getLabel() {
+        return label;
     }
 
 }

@@ -86,6 +86,7 @@ public class EstabDataController implements Initializable {
 
     // Active element = element currently displayed
     private ElementModel activeElement = null;
+    private File activeFile = null;
 
 
     @Override
@@ -114,11 +115,11 @@ public class EstabDataController implements Initializable {
     public void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         setTitle();
-        searchElement(null);
+        if(estabDataModel != null) searchElement(null);
     }
 
     /**
-     * Gets the text from the {@link TextField} and searches matching names
+     * Gets the text from the  search {@link TextField} and searches matching names
      *
      * @param actionEvent
      */
@@ -195,37 +196,39 @@ public class EstabDataController implements Initializable {
 
     public void clear() {
         searchResultsListView.getItems().clear();
-        editorPane.setVisible(false);
+//        editorPane.setVisible(false);
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
     }
 
     /**
-     * Displays an element using its associated {@link EstabReference}
+     * Displays an element in the editor pane
      *
-     * @param elementModel
+     * @param elementModel element to be displayed
      */
     public void setActiveElement(ElementModel elementModel) {
         if (null != elementModel) {
             Class elementClass = elementModel.getClass();
-            AnchorPane editorNode;
+            AnchorPane editorNode = null;
             // If the current element isn't set (null) or it's from other class than the one we want to display
             // then update the editor
-            if ((activeElement == null) || !(activeElement.getClass() == elementClass)) {
+            if (activeElement == null || !activeElement.getClass().equals(elementClass)) {
+                editorPane.getChildren().clear();
                 // if we have saved the controller and editorPane, use them; else load them
                 if (elementEditorPanes.containsKey(elementClass) && elementEditorControllers.containsKey(elementClass)) {
+                    //TODO: this actually never worked before, because of next TODO down here
                     editorPane = elementEditorPanes.get(elementClass);
                     elementEditorController = elementEditorControllers.get(elementClass);
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(elementEditorViews.get(elementClass)));
                     try {
-                        editorPane.getChildren().clear();
                         editorNode = fxmlLoader.load();
                         editorPane.getChildren().addAll(editorNode.getChildren());
                         elementEditorPanes.put(elementClass, editorNode);
                         elementEditorController = fxmlLoader.getController();
                         elementEditorController.setEditable(isEditable);
-                        elementEditorControllers.put(elementClass, elementEditorController);
+                        // TODO: this line was missing, so only the else block was executing
+                        // elementEditorControllers.put(elementClass, elementEditorController);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
@@ -257,9 +260,14 @@ public class EstabDataController implements Initializable {
             int vehicles = estabDataModel.getVehicles().size();
             int weapons = estabDataModel.getVehicles().size();
             int ammo = estabDataModel.getAmmo().size();
-            title = String.format(title + " | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", sides, images, vehicles, weapons, ammo);
+            String filename = activeFile == null ? "" : activeFile.getName();
+            title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
         }
         estabDataPane.setText(title);
+    }
+
+    public void setFile(File file) {
+        this.activeFile = file;
     }
 
     public void setEditable(boolean isEditable) {
@@ -270,11 +278,19 @@ public class EstabDataController implements Initializable {
         this.mainController = mainController;
     }
 
+    /**
+     * File has to be set first in order to display the correct title
+     * @param file
+     */
+    public void setEstabDataModel(File file) {
+        setFile(file);
+        setEstabDataModel(new EstabDataModel(file));
+    }
     public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel = estabDataModel;
         searchButton.setDisable(false);
         searchTextField.setDisable(false);
-        if (estabDataModel != null) update();
+        update();
     }
 
     public MainController getMainController() {
@@ -283,11 +299,7 @@ public class EstabDataController implements Initializable {
 
 
     public ElementModel getActiveElement() {
-        // TODO: check this later, why not return just the activElement field
-        if (!searchResultsListView.getSelectionModel().getSelectedItems().isEmpty()) {
-            return searchResultsListView.getSelectionModel().getSelectedItem().getElementModel();
-        }
-        return null;
+        return activeElement;
     }
 
     public EstabDataModel getEstabDataModel() {
