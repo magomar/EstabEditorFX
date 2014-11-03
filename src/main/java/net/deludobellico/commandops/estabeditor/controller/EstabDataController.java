@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import net.deludobellico.commandops.estabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.commandops.estabeditor.model.*;
@@ -51,6 +53,15 @@ public class EstabDataController implements Initializable {
 
     @FXML
     private Button ammoButton;
+
+    @FXML
+    private ImageView vehicleButtonImage;
+
+    @FXML
+    private ImageView weaponButtonImage;
+
+    @FXML
+    private ImageView ammoButtonImage;
 
     @FXML
     private ListView<EstabListCell> searchResultsListView;
@@ -103,9 +114,14 @@ public class EstabDataController implements Initializable {
             if (newValue != null) setActiveElement(newValue.getElementModel());
         });
 
+
         vehicleButton.disableProperty().bind(searchDisable);
         weaponButton.disableProperty().bind(searchDisable);
         ammoButton.disableProperty().bind(searchDisable);
+
+        vehicleButtonImage.setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
+        weaponButtonImage.setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
+        ammoButtonImage.setImage(new Image(FileIO.AMMO_ICON_RESOURCE));
     }
 
     public void update() {

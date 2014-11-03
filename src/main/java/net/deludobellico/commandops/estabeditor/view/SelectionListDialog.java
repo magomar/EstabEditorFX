@@ -77,6 +77,7 @@ public class SelectionListDialog implements Initializable {
 
         dialog = new Stage();
         dialog.initModality(Modality.WINDOW_MODAL);
+        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.setMinHeight(400);
         dialog.setMinWidth(600);
 

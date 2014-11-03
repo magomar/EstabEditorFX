@@ -64,6 +64,7 @@ public class InfoDialog implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         dialog = new Stage(StageStyle.DECORATED);
+        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
 
     }

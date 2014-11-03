@@ -17,22 +17,16 @@
                      <children>
                         <Button fx:id="vehicleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="vehicleButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
-                                 <image>
-                                    <Image url="@../images/vehicleicon.png" />
-                                 </image>
                               </ImageView>
                            </graphic>
                         </Button>
                         <Button fx:id="weaponButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/weaponicon.png" />
-                                 </image>
+                              <ImageView fx:id="weaponButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
@@ -41,10 +35,7 @@
                         </Button>
                         <Button fx:id="ammoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/ammoicon.png" />
-                                 </image>
+                              <ImageView fx:id="ammoButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>

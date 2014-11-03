@@ -75,7 +75,7 @@ public class SearchDialog implements Initializable {
             }
         };
         dialog.initModality(Modality.WINDOW_MODAL);
-
+        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         searchTextField.textProperty().addListener(event -> searchAction(null));
 
         searchListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
