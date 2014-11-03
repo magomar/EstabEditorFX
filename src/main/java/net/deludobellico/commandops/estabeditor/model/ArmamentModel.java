@@ -77,4 +77,27 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
         return qty;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ArmamentModel)) return false;
+
+        ArmamentModel that = (ArmamentModel) o;
+
+        if (equipmentName != null ? !equipmentName.equals(that.equipmentName) : that.equipmentName != null)
+            return false;
+        if (equipmentObjectId != null ? !equipmentObjectId.equals(that.equipmentObjectId) : that.equipmentObjectId != null)
+            return false;
+        if (qty != null ? !qty.equals(that.qty) : that.qty != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = equipmentObjectId != null ? equipmentObjectId.hashCode() : 0;
+        result = 31 * result + (equipmentName != null ? equipmentName.hashCode() : 0);
+        result = 31 * result + (qty != null ? qty.hashCode() : 0);
+        return result;
+    }
 }

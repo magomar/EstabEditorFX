@@ -54,4 +54,24 @@ public class ImageModel implements PojoJFXModel<Image> {
     public void setFileId(String fileId) {
         this.fileId.set(fileId);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ImageModel)) return false;
+
+        ImageModel that = (ImageModel) o;
+
+        if (fileId != null ? !fileId.equals(that.fileId) : that.fileId != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (fileId != null ? fileId.hashCode() : 0);
+        return result;
+    }
 }

@@ -64,4 +64,26 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
     public IntegerProperty qtyProperty() {
         return qty;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AmmoQtyModel)) return false;
+
+        AmmoQtyModel that = (AmmoQtyModel) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (qty != null ? !qty.equals(that.qty) : that.qty != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (qty != null ? qty.hashCode() : 0);
+        return result;
+    }
 }

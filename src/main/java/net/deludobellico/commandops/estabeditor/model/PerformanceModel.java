@@ -165,4 +165,37 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         return fireType;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PerformanceModel)) return false;
+
+        PerformanceModel that = (PerformanceModel) o;
+
+        if (ammoLoad != null ? !ammoLoad.equals(that.ammoLoad) : that.ammoLoad != null) return false;
+        if (burstRadius != null ? !burstRadius.equals(that.burstRadius) : that.burstRadius != null) return false;
+        if (fireType != null ? !fireType.equals(that.fireType) : that.fireType != null) return false;
+        if (minRange != null ? !minRange.equals(that.minRange) : that.minRange != null) return false;
+        if (normalROF != null ? !normalROF.equals(that.normalROF) : that.normalROF != null) return false;
+        if (ranges != null ? !ranges.equals(that.ranges) : that.ranges != null) return false;
+        if (rapidROF != null ? !rapidROF.equals(that.rapidROF) : that.rapidROF != null) return false;
+        if (shellWeight != null ? !shellWeight.equals(that.shellWeight) : that.shellWeight != null) return false;
+        if (slowROF != null ? !slowROF.equals(that.slowROF) : that.slowROF != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ammoLoad != null ? ammoLoad.hashCode() : 0;
+        result = 31 * result + (minRange != null ? minRange.hashCode() : 0);
+        result = 31 * result + (slowROF != null ? slowROF.hashCode() : 0);
+        result = 31 * result + (normalROF != null ? normalROF.hashCode() : 0);
+        result = 31 * result + (rapidROF != null ? rapidROF.hashCode() : 0);
+        result = 31 * result + (burstRadius != null ? burstRadius.hashCode() : 0);
+        result = 31 * result + (shellWeight != null ? shellWeight.hashCode() : 0);
+        result = 31 * result + (ranges != null ? ranges.hashCode() : 0);
+        result = 31 * result + (fireType != null ? fireType.hashCode() : 0);
+        return result;
+    }
 }

@@ -46,6 +46,7 @@ public class EstabReference<T> {
 
     @Override
     public int hashCode() {
+        // TODO hasCode based on the wrapped element
         return super.hashCode();
     }
 }

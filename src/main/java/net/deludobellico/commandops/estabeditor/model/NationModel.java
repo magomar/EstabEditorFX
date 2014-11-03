@@ -129,5 +129,37 @@ public class NationModel implements PojoJFXModel<Nation> {
     public ObservableList<ServiceModel> getService() {
         return service;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NationModel)) return false;
+
+        NationModel that = (NationModel) o;
+
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (largeInsignia != null ? !largeInsignia.equals(that.largeInsignia) : that.largeInsignia != null)
+            return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (nationality != null ? !nationality.equals(that.nationality) : that.nationality != null) return false;
+        if (service != null ? !service.equals(that.service) : that.service != null) return false;
+        if (smallInsignia != null ? !smallInsignia.equals(that.smallInsignia) : that.smallInsignia != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (nationality != null ? nationality.hashCode() : 0);
+        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
+        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
+        result = 31 * result + (service != null ? service.hashCode() : 0);
+        return result;
+    }
 }
 

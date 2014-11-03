@@ -162,4 +162,44 @@ public class SideModel implements PojoJFXModel<Side> {
     public ObservableList<NationModel> getNation() {
         return nation;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SideModel)) return false;
+
+        SideModel sideModel = (SideModel) o;
+
+        if (basicsConsumptionRate != null ? !basicsConsumptionRate.equals(sideModel.basicsConsumptionRate) : sideModel.basicsConsumptionRate != null)
+            return false;
+        if (defaultEnemyAarmFp != null ? !defaultEnemyAarmFp.equals(sideModel.defaultEnemyAarmFp) : sideModel.defaultEnemyAarmFp != null)
+            return false;
+        if (defaultEnemyAperFp != null ? !defaultEnemyAperFp.equals(sideModel.defaultEnemyAperFp) : sideModel.defaultEnemyAperFp != null)
+            return false;
+        if (description != null ? !description.equals(sideModel.description) : sideModel.description != null)
+            return false;
+        if (id != null ? !id.equals(sideModel.id) : sideModel.id != null) return false;
+        if (largeInsignia != null ? !largeInsignia.equals(sideModel.largeInsignia) : sideModel.largeInsignia != null)
+            return false;
+        if (name != null ? !name.equals(sideModel.name) : sideModel.name != null) return false;
+        if (nation != null ? !nation.equals(sideModel.nation) : sideModel.nation != null) return false;
+        if (smallInsignia != null ? !smallInsignia.equals(sideModel.smallInsignia) : sideModel.smallInsignia != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
+        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
+        result = 31 * result + (basicsConsumptionRate != null ? basicsConsumptionRate.hashCode() : 0);
+        result = 31 * result + (defaultEnemyAperFp != null ? defaultEnemyAperFp.hashCode() : 0);
+        result = 31 * result + (defaultEnemyAarmFp != null ? defaultEnemyAarmFp.hashCode() : 0);
+        result = 31 * result + (nation != null ? nation.hashCode() : 0);
+        return result;
+    }
 }

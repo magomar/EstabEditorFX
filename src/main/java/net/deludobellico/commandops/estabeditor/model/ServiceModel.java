@@ -193,4 +193,50 @@ public class ServiceModel implements PojoJFXModel<Service> {
     public ObservableList<ForceModel> getForce() {
         return force;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ServiceModel)) return false;
+
+        ServiceModel that = (ServiceModel) o;
+
+        if (backgroundColor != null ? !backgroundColor.equals(that.backgroundColor) : that.backgroundColor != null)
+            return false;
+        if (backgroundDarkColor != null ? !backgroundDarkColor.equals(that.backgroundDarkColor) : that.backgroundDarkColor != null)
+            return false;
+        if (backgroundLightColor != null ? !backgroundLightColor.equals(that.backgroundLightColor) : that.backgroundLightColor != null)
+            return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (designationColor != null ? !designationColor.equals(that.designationColor) : that.designationColor != null)
+            return false;
+        if (force != null ? !force.equals(that.force) : that.force != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (largeInsignia != null ? !largeInsignia.equals(that.largeInsignia) : that.largeInsignia != null)
+            return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (rankList != null ? !rankList.equals(that.rankList) : that.rankList != null) return false;
+        if (smallInsignia != null ? !smallInsignia.equals(that.smallInsignia) : that.smallInsignia != null)
+            return false;
+        if (symbolColor != null ? !symbolColor.equals(that.symbolColor) : that.symbolColor != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
+        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
+        result = 31 * result + (rankList != null ? rankList.hashCode() : 0);
+        result = 31 * result + (backgroundColor != null ? backgroundColor.hashCode() : 0);
+        result = 31 * result + (backgroundDarkColor != null ? backgroundDarkColor.hashCode() : 0);
+        result = 31 * result + (backgroundLightColor != null ? backgroundLightColor.hashCode() : 0);
+        result = 31 * result + (designationColor != null ? designationColor.hashCode() : 0);
+        result = 31 * result + (symbolColor != null ? symbolColor.hashCode() : 0);
+        result = 31 * result + (force != null ? force.hashCode() : 0);
+        return result;
+    }
 }

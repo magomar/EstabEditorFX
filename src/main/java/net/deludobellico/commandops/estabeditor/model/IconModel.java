@@ -147,4 +147,46 @@ public class IconModel implements PojoJFXModel<Icon> {
     public BooleanProperty isHqProperty() {
         return isHq;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IconModel)) return false;
+
+        IconModel iconModel = (IconModel) o;
+
+        if (backgroundColor != null ? !backgroundColor.equals(iconModel.backgroundColor) : iconModel.backgroundColor != null)
+            return false;
+        if (backgroundDarkColor != null ? !backgroundDarkColor.equals(iconModel.backgroundDarkColor) : iconModel.backgroundDarkColor != null)
+            return false;
+        if (backgroundLightColor != null ? !backgroundLightColor.equals(iconModel.backgroundLightColor) : iconModel.backgroundLightColor != null)
+            return false;
+        if (designationColor != null ? !designationColor.equals(iconModel.designationColor) : iconModel.designationColor != null)
+            return false;
+        if (forceSizeIcon != null ? !forceSizeIcon.equals(iconModel.forceSizeIcon) : iconModel.forceSizeIcon != null)
+            return false;
+        if (isHq != null ? !isHq.equals(iconModel.isHq) : iconModel.isHq != null) return false;
+        if (militarySymbol != null ? !militarySymbol.equals(iconModel.militarySymbol) : iconModel.militarySymbol != null)
+            return false;
+        if (pictureSymbol != null ? !pictureSymbol.equals(iconModel.pictureSymbol) : iconModel.pictureSymbol != null)
+            return false;
+        if (symbolColor != null ? !symbolColor.equals(iconModel.symbolColor) : iconModel.symbolColor != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = backgroundColor != null ? backgroundColor.hashCode() : 0;
+        result = 31 * result + (backgroundDarkColor != null ? backgroundDarkColor.hashCode() : 0);
+        result = 31 * result + (backgroundLightColor != null ? backgroundLightColor.hashCode() : 0);
+        result = 31 * result + (designationColor != null ? designationColor.hashCode() : 0);
+        result = 31 * result + (symbolColor != null ? symbolColor.hashCode() : 0);
+        result = 31 * result + (militarySymbol != null ? militarySymbol.hashCode() : 0);
+        result = 31 * result + (pictureSymbol != null ? pictureSymbol.hashCode() : 0);
+        result = 31 * result + (forceSizeIcon != null ? forceSizeIcon.hashCode() : 0);
+        result = 31 * result + (isHq != null ? isHq.hashCode() : 0);
+        return result;
+    }
 }

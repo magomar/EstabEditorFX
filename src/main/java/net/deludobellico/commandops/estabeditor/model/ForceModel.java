@@ -493,4 +493,90 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
     public BooleanProperty canBombardProperty() {
         return canBombard;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ForceModel)) return false;
+
+        ForceModel that = (ForceModel) o;
+
+        if (ammoList != null ? !ammoList.equals(that.ammoList) : that.ammoList != null) return false;
+        if (basicsConsumptionRateModifier != null ? !basicsConsumptionRateModifier.equals(that.basicsConsumptionRateModifier) : that.basicsConsumptionRateModifier != null)
+            return false;
+        if (basicsQty != null ? !basicsQty.equals(that.basicsQty) : that.basicsQty != null) return false;
+        if (canBombard != null ? !canBombard.equals(that.canBombard) : that.canBombard != null) return false;
+        if (combatClass != null ? !combatClass.equals(that.combatClass) : that.combatClass != null) return false;
+        if (commanderRank != null ? !commanderRank.equals(that.commanderRank) : that.commanderRank != null)
+            return false;
+        if (deployed != null ? !deployed.equals(that.deployed) : that.deployed != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (dugIn != null ? !dugIn.equals(that.dugIn) : that.dugIn != null) return false;
+        if (engineeringValue != null ? !engineeringValue.equals(that.engineeringValue) : that.engineeringValue != null)
+            return false;
+        if (entrenched != null ? !entrenched.equals(that.entrenched) : that.entrenched != null) return false;
+        if (equipmentList != null ? !equipmentList.equals(that.equipmentList) : that.equipmentList != null)
+            return false;
+        if (fortified != null ? !fortified.equals(that.fortified) : that.fortified != null) return false;
+        if (fuelLoad != null ? !fuelLoad.equals(that.fuelLoad) : that.fuelLoad != null) return false;
+        if (fuelQty != null ? !fuelQty.equals(that.fuelQty) : that.fuelQty != null) return false;
+        if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (infantryValue != null ? !infantryValue.equals(that.infantryValue) : that.infantryValue != null)
+            return false;
+        if (maxSpeed != null ? !maxSpeed.equals(that.maxSpeed) : that.maxSpeed != null) return false;
+        if (moveType != null ? !moveType.equals(that.moveType) : that.moveType != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (normalSpeed != null ? !normalSpeed.equals(that.normalSpeed) : that.normalSpeed != null) return false;
+        if (persQty != null ? !persQty.equals(that.persQty) : that.persQty != null) return false;
+        if (readyToBombardDuration != null ? !readyToBombardDuration.equals(that.readyToBombardDuration) : that.readyToBombardDuration != null)
+            return false;
+        if (readyToFireDuration != null ? !readyToFireDuration.equals(that.readyToFireDuration) : that.readyToFireDuration != null)
+            return false;
+        if (reconValue != null ? !reconValue.equals(that.reconValue) : that.reconValue != null) return false;
+        if (size != null ? !size.equals(that.size) : that.size != null) return false;
+        if (staffCapacity != null ? !staffCapacity.equals(that.staffCapacity) : that.staffCapacity != null)
+            return false;
+        if (subType != null ? !subType.equals(that.subType) : that.subType != null) return false;
+        if (targetClass != null ? !targetClass.equals(that.targetClass) : that.targetClass != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (icon != null ? icon.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (subType != null ? subType.hashCode() : 0);
+        result = 31 * result + (size != null ? size.hashCode() : 0);
+        result = 31 * result + (combatClass != null ? combatClass.hashCode() : 0);
+        result = 31 * result + (targetClass != null ? targetClass.hashCode() : 0);
+        result = 31 * result + (infantryValue != null ? infantryValue.hashCode() : 0);
+        result = 31 * result + (reconValue != null ? reconValue.hashCode() : 0);
+        result = 31 * result + (engineeringValue != null ? engineeringValue.hashCode() : 0);
+        result = 31 * result + (moveType != null ? moveType.hashCode() : 0);
+        result = 31 * result + (persQty != null ? persQty.hashCode() : 0);
+        result = 31 * result + (staffCapacity != null ? staffCapacity.hashCode() : 0);
+        result = 31 * result + (basicsQty != null ? basicsQty.hashCode() : 0);
+        result = 31 * result + (basicsConsumptionRateModifier != null ? basicsConsumptionRateModifier.hashCode() : 0);
+        result = 31 * result + (commanderRank != null ? commanderRank.hashCode() : 0);
+        result = 31 * result + (fuelQty != null ? fuelQty.hashCode() : 0);
+        result = 31 * result + (fuelLoad != null ? fuelLoad.hashCode() : 0);
+        result = 31 * result + (maxSpeed != null ? maxSpeed.hashCode() : 0);
+        result = 31 * result + (normalSpeed != null ? normalSpeed.hashCode() : 0);
+        result = 31 * result + (deployed != null ? deployed.hashCode() : 0);
+        result = 31 * result + (dugIn != null ? dugIn.hashCode() : 0);
+        result = 31 * result + (entrenched != null ? entrenched.hashCode() : 0);
+        result = 31 * result + (fortified != null ? fortified.hashCode() : 0);
+        result = 31 * result + (readyToFireDuration != null ? readyToFireDuration.hashCode() : 0);
+        result = 31 * result + (readyToBombardDuration != null ? readyToBombardDuration.hashCode() : 0);
+        result = 31 * result + (equipmentList != null ? equipmentList.hashCode() : 0);
+        result = 31 * result + (ammoList != null ? ammoList.hashCode() : 0);
+        result = 31 * result + (canBombard != null ? canBombard.hashCode() : 0);
+        return result;
+    }
 }
