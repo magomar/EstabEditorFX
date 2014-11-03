@@ -85,16 +85,16 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         force.setCommanderRank(commanderRank.get());
         force.setFuelQty(fuelQty.get());
         force.setFuelLoad(fuelLoad.get());
-        SpeedData sd = new SpeedData();
-        sd.setMax(maxSpeed.get());
-        sd.setNormal(normalSpeed.get());
-        force.setSpeed(sd);
-        DeploymentDuration dd = new DeploymentDuration();
-        dd.setDeployed(deployed.get());
-        dd.setDugIn(dugIn.get());
-        dd.setEntrenched(entrenched.get());
-        dd.setFortified(fortified.get());
-        force.setDeploymentDuration(dd);
+        SpeedData speedData = new SpeedData();
+        speedData.setMax(maxSpeed.get());
+        speedData.setNormal(normalSpeed.get());
+        force.setSpeed(speedData);
+        DeploymentDuration deploymentDuration = new DeploymentDuration();
+        deploymentDuration.setDeployed(deployed.get());
+        deploymentDuration.setDugIn(dugIn.get());
+        deploymentDuration.setEntrenched(entrenched.get());
+        deploymentDuration.setFortified(fortified.get());
+        force.setDeploymentDuration(deploymentDuration);
         force.setReadyToFireDuration(readyToFireDuration.get());
         force.setReadyToBombardDuration(readyToBombardDuration.get());
         equipmentList.stream().map(EquipmentModel::getPojo).forEach(e -> force.getEquipmentList().getEquipment().add(e));
@@ -133,12 +133,8 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         fortified.set(pojo.getDeploymentDuration().getFortified());
         readyToBombardDuration.set(pojo.getReadyToBombardDuration());
         readyToFireDuration.set(pojo.getReadyToFireDuration());
-        pojo.getEquipmentList().getEquipment().stream()
-                .map(EquipmentModel::new)
-                .forEach(equipmentModel -> equipmentList.add(equipmentModel));
-        pojo.getAmmoList().getAmmo().stream()
-                .map(AmmoQtyModel::new)
-                .forEach(ammoQtyModel -> ammoList.add(ammoQtyModel));
+        pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentModel -> equipmentList.add(equipmentModel));
+        pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoQtyModel -> ammoList.add(ammoQtyModel));
         canBombard.set(JFXModelUtil.yesNoToBoolean(pojo.getCanBombard()));
     }
 

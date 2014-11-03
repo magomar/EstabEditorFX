@@ -11,6 +11,10 @@ public class RankModel implements PojoJFXModel<Rank> {
     private final StringProperty shortName = new SimpleStringProperty();
     private final StringProperty fullName = new SimpleStringProperty();
 
+    public RankModel(Rank rank) {
+        setPojo(rank);
+    }
+
     @Override
     public Rank getPojo() {
         Rank rank = new Rank();

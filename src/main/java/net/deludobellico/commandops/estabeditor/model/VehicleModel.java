@@ -72,9 +72,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         vehicle.setCrew(crew.get());
         vehicle.setReliability(reliability.get());
         vehicle.setArmaments(new ArmamentList());
-        armaments.stream()
-                .map(ArmamentModel::getPojo)
-                .forEach(a -> vehicle.getArmaments().getArmament().add(a));
+        armaments.stream().map(ArmamentModel::getPojo).forEach(a -> vehicle.getArmaments().getArmament().add(a));
         vehicle.setType(type.get());
         vehicle.setFuelCapacity(fuelCapacity.get());
         SpeedData rs = new SpeedData();
@@ -124,9 +122,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         width.set(pojo.getSize().getWeight());
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
-        pojo.getArmaments().getArmament().stream()
-                .map(ArmamentModel::new)
-                .forEach(armamentModel -> armaments.add(armamentModel));
+        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(armamentModel -> armaments.add(armamentModel));
         type.set(pojo.getType());
         fuelCapacity.set(pojo.getFuelCapacity());
         maxCrossCountrySpeed.set(pojo.getSpeed().getCrossCountry().getMax());

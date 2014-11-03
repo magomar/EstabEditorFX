@@ -38,9 +38,7 @@ public class NationModel implements PojoJFXModel<Nation> {
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
         nation.setSmallInsignia(largeIns);
-        service.stream().forEach((serviceModel) -> {
-            nation.getService().add(serviceModel.getPojo());
-        });
+        service.stream().forEach((serviceModel) -> nation.getService().add(serviceModel.getPojo()));
         return nation;
     }
 
@@ -53,11 +51,7 @@ public class NationModel implements PojoJFXModel<Nation> {
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
-        pojo.getService().stream()
-                .map(ServiceModel::new)
-                .forEach((serviceModel) -> {
-            service.add(serviceModel);
-        });
+        pojo.getService().stream().map(ServiceModel::new).forEach((serviceModel) -> service.add(serviceModel));
     }
 
     public int getId() {

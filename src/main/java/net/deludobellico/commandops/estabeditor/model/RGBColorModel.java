@@ -12,6 +12,10 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
     private final IntegerProperty green = new SimpleIntegerProperty();
     private final IntegerProperty blue = new SimpleIntegerProperty();
 
+    public RGBColorModel(RGBColor rgbColor) {
+        setPojo(rgbColor);
+    }
+
     @Override
     public RGBColor getPojo() {
         RGBColor rgbColor = new RGBColor();
