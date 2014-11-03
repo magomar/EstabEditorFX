@@ -14,6 +14,7 @@ public class Settings {
     private static List<String> sourceRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
     private static List<String> targetRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
     private static Settings settings;
+    private static String lastOpenedFolder;
     private static Double windowWidth;
     private static Double windowHeight;
     private static Boolean visibleToolbar;
@@ -22,6 +23,7 @@ public class Settings {
     private static Boolean verticalPanes;
     private static Boolean expandedSourcePane;
     private static Boolean expandedTargetPane;
+
 
 
     private Settings() {
@@ -128,5 +130,14 @@ public class Settings {
 
     public void setExpandedTargetPane(Boolean expandedTargetPane) {
         Settings.expandedTargetPane = expandedTargetPane;
+    }
+
+    @XmlElement(name = "last-opened-folder")
+    public String getLastOpenedFolder() {
+        return lastOpenedFolder;
+    }
+
+    public void setLastOpenedFolder(String lastOpenedFolder) {
+        Settings.lastOpenedFolder = lastOpenedFolder;
     }
 }

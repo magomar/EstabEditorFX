@@ -3,7 +3,10 @@ package net.deludobellico.commandops.estabeditor.model;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import net.deludobellico.commandops.estabeditor.data.jaxb.DefaultIconColors;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Insignia;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Service;
+import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 
 /**
  * Created by Mario on 29/10/2014.
@@ -38,7 +41,7 @@ public class ServiceModel implements PojoJFXModel<Service> {
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
         service.setSmallInsignia(largeIns);
-        rankList.stream().forEach((rankModel)-> service.getRankList().getRank().add(rankModel.getPojo()));
+        rankList.stream().forEach((rankModel) -> service.getRankList().getRank().add(rankModel.getPojo()));
         DefaultIconColors iconColors = new DefaultIconColors();
         iconColors.setBackgroundColor(backgroundColor.get().getPojo());
         iconColors.setBackgroundDarkColor(backgroundDarkColor.get().getPojo());
@@ -46,7 +49,7 @@ public class ServiceModel implements PojoJFXModel<Service> {
         iconColors.setDesignationColor(designationColor.get().getPojo());
         iconColors.setSymbolColor(symbolColor.get());
         service.setDefaultIconColors(iconColors);
-        force.stream().forEach((forceModel)-> service.getForce().add(forceModel.getPojo()));
+        force.stream().forEach((forceModel) -> service.getForce().add(forceModel.getPojo()));
         return service;
     }
 
@@ -70,60 +73,60 @@ public class ServiceModel implements PojoJFXModel<Service> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
 
-    public IntegerProperty largeInsigniaProperty() {
-        return largeInsignia;
-    }
-
     public void setLargeInsignia(int largeInsignia) {
         this.largeInsignia.set(largeInsignia);
+    }
+
+    public IntegerProperty largeInsigniaProperty() {
+        return largeInsignia;
     }
 
     public int getSmallInsignia() {
         return smallInsignia.get();
     }
 
-    public IntegerProperty smallInsigniaProperty() {
-        return smallInsignia;
-    }
-
     public void setSmallInsignia(int smallInsignia) {
         this.smallInsignia.set(smallInsignia);
+    }
+
+    public IntegerProperty smallInsigniaProperty() {
+        return smallInsignia;
     }
 
     public ObservableList<RankModel> getRankList() {
@@ -134,60 +137,60 @@ public class ServiceModel implements PojoJFXModel<Service> {
         return backgroundColor.get();
     }
 
-    public ObjectProperty<RGBColorModel> backgroundColorProperty() {
-        return backgroundColor;
-    }
-
     public void setBackgroundColor(RGBColorModel backgroundColor) {
         this.backgroundColor.set(backgroundColor);
+    }
+
+    public ObjectProperty<RGBColorModel> backgroundColorProperty() {
+        return backgroundColor;
     }
 
     public RGBColorModel getBackgroundDarkColor() {
         return backgroundDarkColor.get();
     }
 
-    public ObjectProperty<RGBColorModel> backgroundDarkColorProperty() {
-        return backgroundDarkColor;
-    }
-
     public void setBackgroundDarkColor(RGBColorModel backgroundDarkColor) {
         this.backgroundDarkColor.set(backgroundDarkColor);
+    }
+
+    public ObjectProperty<RGBColorModel> backgroundDarkColorProperty() {
+        return backgroundDarkColor;
     }
 
     public RGBColorModel getBackgroundLightColor() {
         return backgroundLightColor.get();
     }
 
-    public ObjectProperty<RGBColorModel> backgroundLightColorProperty() {
-        return backgroundLightColor;
-    }
-
     public void setBackgroundLightColor(RGBColorModel backgroundLightColor) {
         this.backgroundLightColor.set(backgroundLightColor);
+    }
+
+    public ObjectProperty<RGBColorModel> backgroundLightColorProperty() {
+        return backgroundLightColor;
     }
 
     public RGBColorModel getDesignationColor() {
         return designationColor.get();
     }
 
-    public ObjectProperty<RGBColorModel> designationColorProperty() {
-        return designationColor;
-    }
-
     public void setDesignationColor(RGBColorModel designationColor) {
         this.designationColor.set(designationColor);
+    }
+
+    public ObjectProperty<RGBColorModel> designationColorProperty() {
+        return designationColor;
     }
 
     public SymbolColor getSymbolColor() {
         return symbolColor.get();
     }
 
-    public ObjectProperty<SymbolColor> symbolColorProperty() {
-        return symbolColor;
-    }
-
     public void setSymbolColor(SymbolColor symbolColor) {
         this.symbolColor.set(symbolColor);
+    }
+
+    public ObjectProperty<SymbolColor> symbolColorProperty() {
+        return symbolColor;
     }
 
     public ObservableList<ForceModel> getForce() {

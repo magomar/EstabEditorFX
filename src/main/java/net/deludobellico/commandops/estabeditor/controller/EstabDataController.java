@@ -16,8 +16,8 @@ import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Pair;
 import net.deludobellico.commandops.estabeditor.util.SavedSearchList;
 import net.deludobellico.commandops.estabeditor.util.Util;
-import net.deludobellico.commandops.estabeditor.util.view.EstabListCell;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.util.view.EstabListCell;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -186,6 +187,8 @@ public class EstabDataController implements Initializable {
             successRemoving = estabDataModel.remove(selectedItems);
             clear();
             if (successRemoving) update();
+        } else {
+            LOG.log(Level.INFO, "Remove canceled");
         }
         return successRemoving;
     }

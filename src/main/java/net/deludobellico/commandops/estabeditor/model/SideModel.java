@@ -67,96 +67,96 @@ public class SideModel implements PojoJFXModel<Side> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
 
-    public IntegerProperty largeInsigniaProperty() {
-        return largeInsignia;
-    }
-
     public void setLargeInsignia(int largeInsignia) {
         this.largeInsignia.set(largeInsignia);
+    }
+
+    public IntegerProperty largeInsigniaProperty() {
+        return largeInsignia;
     }
 
     public int getSmallInsignia() {
         return smallInsignia.get();
     }
 
-    public IntegerProperty smallInsigniaProperty() {
-        return smallInsignia;
-    }
-
     public void setSmallInsignia(int smallInsignia) {
         this.smallInsignia.set(smallInsignia);
+    }
+
+    public IntegerProperty smallInsigniaProperty() {
+        return smallInsignia;
     }
 
     public double getBasicsConsumptionRate() {
         return basicsConsumptionRate.get();
     }
 
-    public DoubleProperty basicsConsumptionRateProperty() {
-        return basicsConsumptionRate;
-    }
-
     public void setBasicsConsumptionRate(double basicsConsumptionRate) {
         this.basicsConsumptionRate.set(basicsConsumptionRate);
+    }
+
+    public DoubleProperty basicsConsumptionRateProperty() {
+        return basicsConsumptionRate;
     }
 
     public int getDefaultEnemyAperFp() {
         return defaultEnemyAperFp.get();
     }
 
-    public IntegerProperty defaultEnemyAperFpProperty() {
-        return defaultEnemyAperFp;
-    }
-
     public void setDefaultEnemyAperFp(int defaultEnemyAperFp) {
         this.defaultEnemyAperFp.set(defaultEnemyAperFp);
+    }
+
+    public IntegerProperty defaultEnemyAperFpProperty() {
+        return defaultEnemyAperFp;
     }
 
     public int getDefaultEnemyAarmFp() {
         return defaultEnemyAarmFp.get();
     }
 
-    public IntegerProperty defaultEnemyAarmFpProperty() {
-        return defaultEnemyAarmFp;
-    }
-
     public void setDefaultEnemyAarmFp(int defaultEnemyAarmFp) {
         this.defaultEnemyAarmFp.set(defaultEnemyAarmFp);
+    }
+
+    public IntegerProperty defaultEnemyAarmFpProperty() {
+        return defaultEnemyAarmFp;
     }
 
     public ObservableList<NationModel> getNation() {

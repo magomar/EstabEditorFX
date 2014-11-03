@@ -35,24 +35,24 @@ public class ImageModel implements PojoJFXModel<Image> {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getFileId() {
         return fileId.get();
     }
 
-    public StringProperty fileIdProperty() {
-        return fileId;
-    }
-
     public void setFileId(String fileId) {
         this.fileId.set(fileId);
+    }
+
+    public StringProperty fileIdProperty() {
+        return fileId;
     }
 
     @Override

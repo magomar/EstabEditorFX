@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="EstabEditor.jnlp">
+  <information>
+    <title>ESTAB Editor</title>
+    <vendor>Deludobellico</vendor>
+    <description>This project aims at providing an alternative Estab editor for the Command Ops Battles from the Bulgue game series, from Panther Games. The emphasis of this editor (compared with the original editor) is on the reuse and adaptation of existing data.  This is a desktop application made with Java and JavaFX</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="EstabEditor.jar" size="3131448" download="eager" />
+  </resources>
+  <applet-desc  width="1280" height="768" main-class="com.javafx.main.NoJavaFXFallback"  name="EstabEditor" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="1280" height="768" main-class="net.deludobellico.commandops.estabeditor.Main"  name="EstabEditor" />
+  <update check="background"/>
+</jnlp>

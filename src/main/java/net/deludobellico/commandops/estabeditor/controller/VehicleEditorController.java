@@ -177,6 +177,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                 newArmament.setQty(Integer.valueOf(armamentQty.getText()));
 
                 ArmamentModel aModel = new ArmamentModel(newArmament);
+                //TODO: don't add repeated weapons
                 armamentTableView.getItems().add(aModel);
                 vehicle.getArmaments().add(aModel);
             }
@@ -188,7 +189,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
         WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabDataController().getEstabDataModel().getWeapons().values());
-        if(weapon != null) {
+        if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
         }
@@ -196,13 +197,12 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
     @FXML
     private void armamentRemoveAction(ActionEvent actionEvent) {
-        if(!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
+        if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
             vehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
             armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }
     }
-
 
 
     @Override
@@ -334,6 +334,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         towingCapacity.textProperty().unbindBidirectional(element.towingCapacityProperty());
         weight.textProperty().unbindBidirectional(element.weightProperty());
         width.textProperty().unbindBidirectional(element.widthProperty());
+
+        armamentTableView.getItems().clear();
 
     }
 

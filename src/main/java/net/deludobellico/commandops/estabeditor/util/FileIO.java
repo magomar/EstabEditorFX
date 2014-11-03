@@ -29,22 +29,23 @@ import java.util.zip.ZipOutputStream;
  */
 public class FileIO {
     /**
-     * File  and folder paths
+     * Resources paths
      */
-    //Views
-    public static final String ESTAB_EDITOR_VIEW = "./view/main.fxml";
-    public static final String VEHICLE_VIEW = "../view/vehicle-editor-v2.0.fxml";
-    public static final String WEAPON_VIEW = "../view/weapon-editor-v2.0.fxml";
-    public static final String AMMO_VIEW = "../view/ammo-editor-v2.0.fxml";
-    public static final String SEARCH_DIALOG_VIEW = "search-dialog.fxml";
-    public static final String SELECTION_DIALOG_VIEW = "selection-list-dialog.fxml";
-    public static final String INFO_DIALOG_VIEW = "info-dialog.fxml";
     //Settings
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
-    //Resources
-    public static final String RESOURCES_FOLDER = "/src/main/resources";
-    public static final String ESTAB_DATASETS_FOLDER = RESOURCES_FOLDER + "/datasets";
-    public static final String NEW_ESTAB_PATH = ESTAB_DATASETS_FOLDER + "/newestab.xml";
+    //Datasets
+    //public static final String ESTAB_DATASETS_FOLDER = HOME_FOLDER + "/datasets";
+    public static final String NEW_ESTAB_PATH = "newestab.xml";
+    //Views
+    public static final String VIEWS_FOLDER = "/views";
+    public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
+    public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor-v2.0.fxml";
+    public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor-v2.0.fxml";
+    public static final String AMMO_VIEW = VIEWS_FOLDER + "/ammo-editor-v2.0.fxml";
+    public static final String SEARCH_DIALOG_VIEW = VIEWS_FOLDER + "/search-dialog.fxml";
+    public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
+    public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
+    // Images
     public static final String REMOVE_ICON_RESOURCE = "/images/removeicon.png";
     public static final String COPY_ICON_RESOURCE = "/images/copyicon.png";
     public static final String WARNING_ICON_RESOURCE = "/images/warning.png";
@@ -252,7 +253,7 @@ public class FileIO {
 
     public static void loadSettings() {
         try {
-            File file = new File(FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE).toString());
+            File file = new File(FileIO.getSettingsPath().toString());
             if (!file.exists()) {
                 file = getNewSettingsFile();
             }
@@ -302,14 +303,10 @@ public class FileIO {
         return f;
     }
 
-    public static File getFile(Path path) {
-        return getFileOrCreateNew(path.toString());
-    }
-
     public static File getNewEstabFile() {
         File f = null;
         try {
-            f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.NEW_ESTAB_PATH).toString());
+            f = getFileOrCreateNew(getNewEstabPath().toString());
             FileOutputStream fos = new FileOutputStream(f, false);
             fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><estab-data></estab-data>".getBytes());
             fos.close();
@@ -324,7 +321,7 @@ public class FileIO {
     public static File getNewSettingsFile() {
         File f = null;
         try {
-            f = getFileOrCreateNew(FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.SETTINGS_XML_FILE).toString());
+            f = getFileOrCreateNew(getSettingsPath().toString());
             FileOutputStream fos = new FileOutputStream(f, false);
             fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width><expanded-source-pane>true</expanded-source-pane><expanded-target-pane>false</expanded-target-pane></settings>".getBytes());
             fos.close();
@@ -358,10 +355,10 @@ public class FileIO {
     }
 
     public static Path getNewEstabPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.NEW_ESTAB_PATH);
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
     }
 
-    public static Path getDatasetsPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), FileIO.ESTAB_DATASETS_FOLDER);
+    public static Path getSettingsPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE);
     }
 }

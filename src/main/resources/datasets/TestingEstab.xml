@@ -2,14 +2,16 @@
 <estab-data>
     <vehicle id="1800">
         <name>JgPz V Jagdpanther</name>
-        <description>The best all-round tank destroyer of the war. The Jagdpanther combined the Panther chassis with the 8.8cm Pak43 gun.  Low silhouette, excellent sloping armour plate and the premier hard hitting "88" made it very lethal indeed.  It entered combat service in February 1944.</description>
+        <description>The best all-round tank destroyer of the war. The Jagdpanther combined the Panther chassis with the
+            8.8cm Pak43 gun. Low silhouette, excellent sloping armour plate and the premier hard hitting "88" made it
+            very lethal indeed. It entered combat service in February 1944.
+        </description>
         <picture id="3289"/>
         <size width="45158.0" height="2.51001" length="9.850098" weight="45158.0"/>
         <crew>5</crew>
         <reliability>0.924805</reliability>
         <armaments>
-            <armament equipment-object-id="1799" equipment-name="8.8cm PaK 43/3 L71 AT gun" qty="2"/>
-            <armament equipment-object-id="1822" equipment-name="7.92mm MG 34 AFV" qty="1"/>
+            <armament equipment-object-id="1799" equipment-name="8.8cm PaK 43/3 L71 AT gun" qty="9999"/>
         </armaments>
         <type>tank-destroyer</type>
         <fuel-capacity>450.0</fuel-capacity>
@@ -34,7 +36,10 @@
     </vehicle>
     <vehicle id="2309">
         <name>SdKfz 260 Radio AC</name>
-        <description>This very light four-wheeled armoured car was based on a commercial 4WD chassis, the Horch 801. In this version, and in the very similar SdKfz 261, the armament was removed to make way for a more powerful radio fit and signals personnel.</description>
+        <description>This very light four-wheeled armoured car was based on a commercial 4WD chassis, the Horch 801. In
+            this version, and in the very similar SdKfz 261, the armament was removed to make way for a more powerful
+            radio fit and signals personnel.
+        </description>
         <picture id="3313"/>
         <size width="4300.0" height="1.800049" length="4.800049" weight="4300.0"/>
         <crew>4</crew>
@@ -61,13 +66,42 @@
         <battle-weight>4300.0</battle-weight>
         <armour front="8.0" side="8.0" rear="6.0" top="0.0"/>
     </vehicle>
+    <vehicle id="1027">
+        <name>Motorcycle</name>
+        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
+        <picture id="3594"/>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.954834</reliability>
+        <armaments/>
+        <type>motor-cycle</type>
+        <fuel-capacity>10.0</fuel-capacity>
+        <speed>
+            <road max="100.0" normal="70.0"/>
+            <cross-country max="30.0" normal="21.0"/>
+        </speed>
+        <fuel-consumption max="1.5" normal="1.0"/>
+        <ronsonability>0.10498</ronsonability>
+        <max-gradient>20</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>200.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>100.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>yes</has-open-top>
+        <battle-weight>0.0</battle-weight>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+    </vehicle>
     <weapon id="1822">
         <name>7.92mm MG 34 AFV</name>
         <description>
-    </description>
+        </description>
         <picture id="3040"/>
         <picture-filename>
-    </picture-filename>
+        </picture-filename>
         <size width="1.0" height="1.0" length="1.0" weight="11.899902"/>
         <crew>1</crew>
         <reliability>0.959961</reliability>
@@ -98,10 +132,10 @@
     <weapon id="1799">
         <name>8.8cm PaK 43/3 L71 AT gun</name>
         <description>
-    </description>
+        </description>
         <picture id="3397"/>
         <picture-filename>
-    </picture-filename>
+        </picture-filename>
         <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
         <crew>2</crew>
         <reliability>0.97998</reliability>
@@ -146,21 +180,21 @@
     <ammo id="1797">
         <name>8.8cm PaK 43 AP</name>
         <description>
-    </description>
+        </description>
         <min-order-qty>2</min-order-qty>
         <min-order-weight>49.0</min-order-weight>
     </ammo>
     <ammo id="1">
         <name>7.92mm</name>
         <description>
-    </description>
+        </description>
         <min-order-qty>100</min-order-qty>
         <min-order-weight>3.0</min-order-weight>
     </ammo>
     <ammo id="1798">
         <name>8.8cm PaK 43 HE</name>
         <description>
-    </description>
+        </description>
         <min-order-qty>2</min-order-qty>
         <min-order-weight>49.0</min-order-weight>
     </ammo>

@@ -179,10 +179,11 @@ public class MainController implements Initializable {
     private File openFileChooser(boolean isSaving) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Opening ESTAB File");
-        fileChooser.setInitialDirectory(FileIO.getDatasetsPath().toFile());
+        if(Settings.getInstance().getLastOpenedFolder() != null) fileChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
-
-        return isSaving ? fileChooser.showSaveDialog(getStage()) : fileChooser.showOpenDialog(getStage());
+        File selectedFile = isSaving ? fileChooser.showSaveDialog(getStage()) : fileChooser.showOpenDialog(getStage());
+        if(selectedFile != null) Settings.getInstance().setLastOpenedFolder(selectedFile.getParentFile().getAbsolutePath());
+        return selectedFile;
     }
 
 
