@@ -14,6 +14,10 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty load = new SimpleIntegerProperty();
 
+    public AmmoLoadModel(){
+
+    }
+
     public AmmoLoadModel(AmmoLoad pojo) {
         setPojo(pojo);
     }

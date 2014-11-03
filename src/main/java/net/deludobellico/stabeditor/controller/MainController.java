@@ -156,9 +156,11 @@ public class MainController implements Initializable {
         targetOpenRecentMenuList.getItems().clear();
         for (String targetFile : Settings.getInstance().getTargetRecentFiles()) {
             File file = new File(targetFile);
-            MenuItem recentTargetMenuItem = new MenuItem(file.getName());
-            recentTargetMenuItem.setOnAction(event -> openTarget(file));
-            targetOpenRecentMenuList.getItems().add(recentTargetMenuItem);
+            if (file.exists()){
+                MenuItem recentTargetMenuItem = new MenuItem(file.getName());
+                recentTargetMenuItem.setOnAction(event -> openTarget(file));
+                targetOpenRecentMenuList.getItems().add(recentTargetMenuItem);
+            }
         }
     }
 

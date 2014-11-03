@@ -6,7 +6,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.model.AmmoModel;
-import net.deludobellico.stabeditor.model.ElementModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +28,8 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
 
     private AmmoModel ammo;
 
+    private EstabDataController estabDataController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -37,6 +38,16 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     public void setEditable(boolean isEditable) {
         quantity.setEditable(isEditable);
         weight.setEditable(isEditable);
+    }
+
+    @Override
+    public EstabDataController getEstabDataController() {
+        return estabDataController;
+    }
+
+    @Override
+    public void setEstabDataController(EstabDataController mainController) {
+        this.estabDataController = mainController;
     }
 
     @Override

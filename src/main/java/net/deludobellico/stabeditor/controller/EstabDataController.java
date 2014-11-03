@@ -17,6 +17,7 @@ import net.deludobellico.stabeditor.data.jaxb.Weapon;
 import net.deludobellico.stabeditor.model.*;
 import net.deludobellico.stabeditor.util.FileIO;
 import net.deludobellico.stabeditor.util.Pair;
+import net.deludobellico.stabeditor.util.SavedSearchList;
 import net.deludobellico.stabeditor.view.EstabListCell;
 import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
@@ -227,6 +228,7 @@ public class EstabDataController implements Initializable {
                         elementEditorPanes.put(elementClass, editorNode);
                         elementEditorController = fxmlLoader.getController();
                         elementEditorController.setEditable(isEditable);
+                        elementEditorController.setEstabDataController(this);
                         // TODO: this line was missing, so only the else block was executing
                         // elementEditorControllers.put(elementClass, elementEditorController);
                     } catch (IOException e) {
@@ -296,7 +298,6 @@ public class EstabDataController implements Initializable {
     public MainController getMainController() {
         return mainController;
     }
-
 
     public ElementModel getActiveElement() {
         return activeElement;

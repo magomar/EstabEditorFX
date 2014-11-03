@@ -22,6 +22,9 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     private final ObservableList<RangeItemModel> ranges = FXCollections.observableArrayList();
     private final ObjectProperty<FireType> fireType = new SimpleObjectProperty<>();
 
+    public PerformanceModel() {
+    }
+
     public PerformanceModel(Performance performance) {
         setPojo(performance);
     }

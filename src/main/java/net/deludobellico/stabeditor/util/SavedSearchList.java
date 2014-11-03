@@ -1,4 +1,4 @@
-package net.deludobellico.stabeditor.controller;
+package net.deludobellico.stabeditor.util;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

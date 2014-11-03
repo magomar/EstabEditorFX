@@ -8,7 +8,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.stabeditor.data.jaxb.VehicleType;
-import net.deludobellico.stabeditor.model.ElementModel;
 import net.deludobellico.stabeditor.model.VehicleModel;
 
 import java.net.URL;
@@ -115,6 +114,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     private TextField takeCoverMod;
 
     private VehicleModel vehicle;
+    private EstabDataController estabDataController;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -258,5 +259,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         bindProperties(vehicle);
     }
 
+    @Override
+    public EstabDataController getEstabDataController() {
+        return estabDataController;
+    }
 
+    @Override
+    public void setEstabDataController(EstabDataController estabDataController) {
+        this.estabDataController = estabDataController;
+    }
 }

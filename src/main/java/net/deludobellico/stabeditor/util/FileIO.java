@@ -36,6 +36,7 @@ public class FileIO {
     public static final String VEHICLE_VIEW = "../view/vehicle-editor-v2.0.fxml";
     public static final String WEAPON_VIEW = "../view/weapon-editor-v2.0.fxml";
     public static final String AMMO_VIEW = "../view/ammo-editor-v2.0.fxml";
+    public static final String SEARCH_DIALOG_VIEW = "search-dialog.fxml";
     //Settings
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
     //Resources
