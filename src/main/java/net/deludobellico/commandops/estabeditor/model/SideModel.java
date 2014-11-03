@@ -62,4 +62,104 @@ public class SideModel implements PojoJFXModel<Side> {
                     nation.add(nationModel);
                 });
     }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public String getName() {
+        return name.get();
+    }
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public String getDescription() {
+        return description.get();
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description.set(description);
+    }
+
+    public int getLargeInsignia() {
+        return largeInsignia.get();
+    }
+
+    public IntegerProperty largeInsigniaProperty() {
+        return largeInsignia;
+    }
+
+    public void setLargeInsignia(int largeInsignia) {
+        this.largeInsignia.set(largeInsignia);
+    }
+
+    public int getSmallInsignia() {
+        return smallInsignia.get();
+    }
+
+    public IntegerProperty smallInsigniaProperty() {
+        return smallInsignia;
+    }
+
+    public void setSmallInsignia(int smallInsignia) {
+        this.smallInsignia.set(smallInsignia);
+    }
+
+    public double getBasicsConsumptionRate() {
+        return basicsConsumptionRate.get();
+    }
+
+    public DoubleProperty basicsConsumptionRateProperty() {
+        return basicsConsumptionRate;
+    }
+
+    public void setBasicsConsumptionRate(double basicsConsumptionRate) {
+        this.basicsConsumptionRate.set(basicsConsumptionRate);
+    }
+
+    public int getDefaultEnemyAperFp() {
+        return defaultEnemyAperFp.get();
+    }
+
+    public IntegerProperty defaultEnemyAperFpProperty() {
+        return defaultEnemyAperFp;
+    }
+
+    public void setDefaultEnemyAperFp(int defaultEnemyAperFp) {
+        this.defaultEnemyAperFp.set(defaultEnemyAperFp);
+    }
+
+    public int getDefaultEnemyAarmFp() {
+        return defaultEnemyAarmFp.get();
+    }
+
+    public IntegerProperty defaultEnemyAarmFpProperty() {
+        return defaultEnemyAarmFp;
+    }
+
+    public void setDefaultEnemyAarmFp(int defaultEnemyAarmFp) {
+        this.defaultEnemyAarmFp.set(defaultEnemyAarmFp);
+    }
+
+    public ObservableList<NationModel> getNation() {
+        return nation;
+    }
 }
