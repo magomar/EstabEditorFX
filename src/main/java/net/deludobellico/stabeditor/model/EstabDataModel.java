@@ -2,8 +2,7 @@ package net.deludobellico.stabeditor.model;
 
 import net.deludobellico.stabeditor.data.jaxb.*;
 import net.deludobellico.stabeditor.util.FileIO;
-import net.deludobellico.stabeditor.view.UtilView;
-import org.controlsfx.control.action.Action;
+import net.deludobellico.stabeditor.view.SelectionListDialog;
 
 import java.io.File;
 import java.util.*;
@@ -30,7 +29,6 @@ public class EstabDataModel {
     }
 
     public EstabDataModel(EstabData estabData) {
-        this();
 
         List<Image> estabImage = estabData.getImage();
         List<Side> estabSides = estabData.getSide();
@@ -70,22 +68,6 @@ public class EstabDataModel {
         estabData.getAmmo().stream()
                 .map(AmmoModel::new)
                 .forEach(ammoModel -> ammos.put(ammoModel.getId(), ammoModel));
-    }
-
-    public EstabDataModel() {
-        images = new HashMap<>();
-        sides = new HashMap<>();
-        vehicles = new HashMap<>();
-        weapons = new HashMap<>();
-        ammos = new HashMap<>();
-        formationEffects = new HashMap<>();
-        allElements = new HashMap<>();
-        allElements.put(Image.class, images);
-        allElements.put(SideModel.class, sides);
-        allElements.put(VehicleModel.class, vehicles);
-        allElements.put(WeaponModel.class, weapons);
-        allElements.put(AmmoModel.class, ammos);
-        allElements.put(FormationEffects.class, formationEffects);
     }
 
     public Map<Integer, Image> getImages() {
@@ -145,7 +127,6 @@ public class EstabDataModel {
     /**
      * {@sortRepeatedElements} has to be invoked in order to clean NonRepeated lists
      *
-     *
      * @param
      * @return
      */
@@ -176,7 +157,7 @@ public class EstabDataModel {
             relatedElementLists.getAllAmmo().addAll(ammo);
         }
 
-        if(targetModel != null) {
+        if (targetModel != null) {
             sortRelatedElements(relatedElementLists);
         }
         return relatedElementLists;
@@ -246,31 +227,27 @@ public class EstabDataModel {
 
     }
 
-    public boolean paste(RelatedElementLists relatedElementLists, Action dialogAnswer) {
+    public boolean paste(RelatedElementLists relatedElementLists, SelectionListDialog.Action answer, Collection selectedItems) {
 
         String newLine = System.getProperty("line.separator");
-        if (dialogAnswer == UtilView.DIALOG_OVERWRITE) {
+        if (answer.equals(SelectionListDialog.Action.OVERWRITE)) {
+            StringBuilder logMessage = new StringBuilder("Copying elements (Overwriting repeated): " + newLine);
 
-            StringBuilder logMessage = new StringBuilder("Overwriting repeated elements: "+newLine);
-
-            for (VehicleModel v : relatedElementLists.getRepeatedVehicles()) {
+            for (VehicleModel v : relatedElementLists.getAllVehicles()) {
                 vehicles.put(v.getId(), v);
                 logMessage.append("-- " + v.print() + newLine);
             }
-            for (WeaponModel w : relatedElementLists.getRepeatedWeapons()) {
+            for (WeaponModel w : relatedElementLists.getAllWeapons()) {
                 weapons.put(w.getId(), w);
                 logMessage.append("-- " + w.print() + newLine);
             }
-            for (AmmoModel a : relatedElementLists.getRepeatedAmmo()) {
+            for (AmmoModel a : relatedElementLists.getAllAmmo()) {
                 ammos.put(a.getId(), a);
                 logMessage.append("-- " + a.print() + newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
-        }
-
-        if (dialogAnswer == UtilView.DIALOG_SKIP_REPEATED || dialogAnswer == UtilView.DIALOG_OVERWRITE) {
-            StringBuilder logMessage = new StringBuilder("Copying non repeated elements");
-            logMessage.append(System.getProperty("line.separator"));
+        } else if (answer.equals(SelectionListDialog.Action.SKIP_REPEATED)) {
+            StringBuilder logMessage = new StringBuilder("Copying elements (Skipping repeated): " + newLine);
 
             for (VehicleModel v : relatedElementLists.getNonRepeatedVehicles()) {
                 vehicles.put(v.getId(), v);
@@ -283,6 +260,24 @@ public class EstabDataModel {
             for (AmmoModel a : relatedElementLists.getNonRepeatedAmmo()) {
                 ammos.put(a.getId(), a);
                 logMessage.append("-- " + a.print() + newLine);
+            }
+            LOG.log(Level.INFO, logMessage.toString());
+        } else if (answer.equals(SelectionListDialog.Action.COPY_SELECTION)) {
+            StringBuilder logMessage = new StringBuilder("Copying elements (Selected only): " + newLine);
+            for (Object selectedItem : selectedItems) {
+                if (selectedItem instanceof AmmoModel) {
+                    AmmoModel a = (AmmoModel) selectedItem;
+                    ammos.put(a.getId(), a);
+                    logMessage.append("-- " + a.print() + newLine);
+                } else if (selectedItem instanceof WeaponModel) {
+                    WeaponModel w = (WeaponModel) selectedItem;
+                    weapons.put(w.getId(), w);
+                    logMessage.append("-- " + w.print() + newLine);
+                } else if (selectedItem instanceof VehicleModel) {
+                    VehicleModel v = (VehicleModel) selectedItem;
+                    vehicles.put(v.getId(), v);
+                    logMessage.append("-- " + v.print() + newLine);
+                }
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else {
@@ -303,4 +298,5 @@ public class EstabDataModel {
         data.getWeapon().addAll(weapons.values().stream().map(WeaponModel::getPojo).collect(Collectors.toList()));
         FileIO.marshallXML(data, file);
     }
+
 }

@@ -1,4 +1,4 @@
-package net.deludobellico.stabeditor.view;
+package net.deludobellico.stabeditor.util.view;
 
 import javafx.beans.NamedArg;
 import org.controlsfx.dialog.DialogAction;

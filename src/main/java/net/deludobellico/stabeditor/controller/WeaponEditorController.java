@@ -195,11 +195,12 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel ammo = (AmmoModel) SearchDialog.init(getEstabDataController().getMainController().getStage(), "Select ammo", getEstabDataController().getEstabDataModel().getAmmo().values()).show();
+            AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabDataController().getEstabDataModel().getAmmo().values());
 
             AmmoLoad ammoLoad = new AmmoLoad();
             ammoLoad.setObjectId(ammo.getId());
             ammoLoad.setName(ammo.getName());
+            ammoLoad.setLoad(0);
 
             ROF rof = new ROF();
             rof.setNormal(0.0);

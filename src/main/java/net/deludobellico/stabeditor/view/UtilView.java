@@ -1,6 +1,8 @@
 package net.deludobellico.stabeditor.view;
 
+import javafx.stage.Stage;
 import net.deludobellico.stabeditor.model.ElementModel;
+import net.deludobellico.stabeditor.util.view.CustomDialogAction;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
@@ -20,8 +22,10 @@ public class UtilView {
     public static final double MIN_WINDOW_WIDTH = 920.0;
     public static final double MIN_WINDOW_HEIGHT = 640.0;
     public static final String newline = System.getProperty("line.separator");
+    public static Stage ROOT_STAGE;
 
-    public static Action showWarningRepeatedElement(Collection<ElementModel> collection) {
+    @Deprecated
+    public static Action showWarningRepeatedElements(Collection<ElementModel> collection) {
 
         StringBuilder sb = new StringBuilder();
         collection.stream().forEach(element -> sb.append(element.print() + newline));
@@ -62,7 +66,7 @@ public class UtilView {
 
         Action response = Dialogs.create()
                 .title("Removing element" + plural)
-                .masthead("The Following element"+plural+" will be deleted")
+                .masthead("The Following element" + plural + " will be deleted")
                 .message(message + newline + "Proceed?")
                 .actions(Dialog.ACTION_CANCEL, Dialog.ACTION_OK)
                 .showWarning();
@@ -78,5 +82,23 @@ public class UtilView {
                 .showWarning();
 
         return response;
+    }
+
+    public static Object showSearchDialog(String title, Collection items) {
+        return SearchDialog.init()
+                .setOwner(ROOT_STAGE)
+                .setTitle(title)
+                .setItems(items)
+                .show();
+    }
+
+    public static SelectionListDialog.Action showWarningRepeatedElement(Collection items, Collection selectedItems) {
+        return SelectionListDialog.init()
+                .setOwner(ROOT_STAGE)
+                .setTitle("Warning - Repeated elements found")
+                .setHeadText("The following elements already exist in the target file")
+                .setItems(items)
+                .setActions(SelectionListDialog.Action.CANCEL, SelectionListDialog.Action.COPY_SELECTION, SelectionListDialog.Action.SKIP_REPEATED, SelectionListDialog.Action.OVERWRITE)
+                .show(selectedItems);
     }
 }

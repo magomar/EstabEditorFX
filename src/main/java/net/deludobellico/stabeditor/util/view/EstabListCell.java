@@ -1,4 +1,4 @@
-package net.deludobellico.stabeditor.view;
+package net.deludobellico.stabeditor.util.view;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.scene.control.Button;
@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import net.deludobellico.stabeditor.model.ElementModel;
-import net.deludobellico.stabeditor.model.EstabReference;
 import net.deludobellico.stabeditor.util.FileIO;
 
 import java.util.function.Consumer;

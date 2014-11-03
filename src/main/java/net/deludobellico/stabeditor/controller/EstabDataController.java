@@ -18,7 +18,9 @@ import net.deludobellico.stabeditor.model.*;
 import net.deludobellico.stabeditor.util.FileIO;
 import net.deludobellico.stabeditor.util.Pair;
 import net.deludobellico.stabeditor.util.SavedSearchList;
-import net.deludobellico.stabeditor.view.EstabListCell;
+import net.deludobellico.stabeditor.util.Util;
+import net.deludobellico.stabeditor.util.view.EstabListCell;
+import net.deludobellico.stabeditor.view.SelectionListDialog;
 import net.deludobellico.stabeditor.view.UtilView;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
@@ -26,10 +28,7 @@ import org.controlsfx.dialog.Dialog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
@@ -39,8 +38,6 @@ import java.util.logging.Logger;
 public class EstabDataController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabDataController.class.getName());
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
-    private static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class};
-    private static final Class[] ELEMENT_CLASSES = {Vehicle.class, Weapon.class, Ammo.class};
 
     @FXML
     private TitledPane estabDataPane;
@@ -63,8 +60,8 @@ public class EstabDataController implements Initializable {
     private ObservableList<EstabListCell> estabListCells = FXCollections.observableArrayList();
     // Save last search to optimize tab swap
     private Map<Class, SavedSearchList<EstabListCell>> searchLists = new HashMap<Class, SavedSearchList<EstabListCell>>() {{
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) {
-            put(ELEMENT_MODEL_CLASSES[i], new SavedSearchList<>());
+        for (int i = 0; i < Util.ELEMENT_MODEL_CLASSES.length; i++) {
+            put(Util.ELEMENT_MODEL_CLASSES[i], new SavedSearchList<>());
         }
     }};
 
@@ -104,8 +101,8 @@ public class EstabDataController implements Initializable {
         });
 
 
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++)
-            elementClassComboBox.getItems().add(new Pair<>(ELEMENT_MODEL_CLASSES[i], ELEMENT_CLASSES[i].getSimpleName(), false));
+        for (int i = 0; i < Util.ELEMENT_MODEL_CLASSES.length; i++)
+            elementClassComboBox.getItems().add(new Pair<>(Util.ELEMENT_MODEL_CLASSES[i], Util.ELEMENT_POJO_CLASSES[i].getSimpleName(), false));
         elementClassComboBox.getSelectionModel().selectFirst();
         // Update the list when choosing a new element class from the choice box
         elementClassComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -167,11 +164,12 @@ public class EstabDataController implements Initializable {
         if (!isEditable) return false;
         boolean successPasting = false;
         if (relatedElementLists.hasRepeatedElements()) {
-            Action answer = UtilView.showWarningRepeatedElement(relatedElementLists.getRepeatedElements());
-            successPasting = this.estabDataModel.paste(relatedElementLists, answer);
+            Collection selectedItems = new ArrayList<>();
+            SelectionListDialog.Action answer = UtilView.showWarningRepeatedElement(relatedElementLists.getRepeatedElements(), selectedItems);
+            successPasting = this.estabDataModel.paste(relatedElementLists, answer, selectedItems);
         } else {
             // if there are no repeated elements, proceed as if overwriting
-            successPasting = this.estabDataModel.paste(relatedElementLists, UtilView.DIALOG_OVERWRITE);
+            successPasting = this.estabDataModel.paste(relatedElementLists, SelectionListDialog.Action.OVERWRITE, null);
         }
         if (successPasting) update();
         return successPasting;

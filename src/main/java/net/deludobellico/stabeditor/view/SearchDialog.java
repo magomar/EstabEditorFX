@@ -8,14 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import net.deludobellico.stabeditor.model.AmmoModel;
 import net.deludobellico.stabeditor.util.FileIO;
 
 import java.io.IOException;
@@ -30,11 +31,14 @@ public class SearchDialog implements Initializable {
     @FXML
     private TextField searchTextField;
 
+    @FXML
+    private Button addButton;
+
     private Stage dialog;
 
     private FXMLLoader fxmlLoader;
 
-    private Pane pane;
+    private Parent parent;
 
     private boolean closeWithAdd = false;
 
@@ -59,21 +63,19 @@ public class SearchDialog implements Initializable {
 
         searchListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             this.selectedItem = newValue;
+            addButton.setDisable(false);
         });
 
     }
 
 
-    public static SearchDialog init(Stage parent, String title, Collection items) {
+    public static SearchDialog init() {
         FXMLLoader fxmlLoader = new FXMLLoader(SearchDialog.class.getResource(FileIO.SEARCH_DIALOG_VIEW));
         SearchDialog searchDialog = null;
         try {
-            Pane pane = fxmlLoader.load();
+            Parent parent = fxmlLoader.load();
             searchDialog = fxmlLoader.getController();
-            searchDialog.setTitle(title);
-            searchDialog.setItems(items);
-            searchDialog.setOwner(parent);
-            searchDialog.setPane(pane);
+            searchDialog.setParent(parent);
         } catch (NullPointerException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -88,27 +90,31 @@ public class SearchDialog implements Initializable {
      *         otherwise it returns null
      */
     public Object show() {
-        dialog.setScene(new Scene(pane));
+        dialog.setScene(new Scene(parent));
         dialog.showAndWait();
         return selectedItem;
     }
 
-    public void setItems(Collection items) {
+    public SearchDialog setItems(Collection items) {
         this.items = new ArrayList(items);
         searchListView.getItems().clear();
         searchListView.getItems().addAll(items);
+        return this;
     }
 
-    public void setTitle(String title) {
+    public SearchDialog setTitle(String title) {
         dialog.setTitle(title);
+        return this;
     }
 
-    public void setOwner(Stage parent) {
+    public SearchDialog setOwner(Stage parent) {
         dialog.initOwner(parent);
+        return this;
     }
 
-    public void setPane(Pane pane) {
-        this.pane = pane;
+    public SearchDialog setParent(Parent parent) {
+        this.parent = parent;
+        return this;
     }
 
     @FXML

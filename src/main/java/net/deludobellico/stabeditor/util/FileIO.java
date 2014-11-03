@@ -37,12 +37,14 @@ public class FileIO {
     public static final String WEAPON_VIEW = "../view/weapon-editor-v2.0.fxml";
     public static final String AMMO_VIEW = "../view/ammo-editor-v2.0.fxml";
     public static final String SEARCH_DIALOG_VIEW = "search-dialog.fxml";
+    public static final String CHECKLIST_DIALOG_VIEW = "selection-list-dialog.fxml";
     //Settings
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
     //Resources
     public static final String RESOURCES_FOLDER = "/src/main/resources";
     public static final String REMOVE_ICON_RESOURCE = "/images/removeicon.png";
     public static final String COPY_ICON_RESOURCE = "/images/copyicon.png";
+    public static final String WARNING_ICON_RESOURCE = "/images/warning.png";
     public static final String ESTAB_DATASETS_FOLDER = RESOURCES_FOLDER + "/datasets";
     public static final String NEW_ESTAB_PATH = ESTAB_DATASETS_FOLDER + "/newestab.xml";
     /**

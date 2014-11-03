@@ -27,6 +27,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource(FileIO.ESTAB_EDITOR_VIEW));
 
         this.primaryStage = primaryStage;
+        UtilView.ROOT_STAGE = primaryStage;
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(UtilView.MIN_WINDOW_WIDTH);
