@@ -1,280 +1,443 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <estab-data>
-
+    <vehicle id="1800">
+        <name>JgPz V Jagdpanther</name>
+        <description>The best all-round tank destroyer of the war. The Jagdpanther combined the Panther chassis with the 8.8cm Pak43 gun.  Low silhouette, excellent sloping armour plate and the premier hard hitting "88" made it very lethal indeed.  It entered combat service in February 1944.</description>
+        <picture id="3289"/>
+        <size width="45158.0" height="2.51001" length="9.850098" weight="45158.0"/>
+        <crew>5</crew>
+        <reliability>0.924805</reliability>
+        <armaments>
+            <armament equipment-object-id="1799" equipment-name="8.8cm PaK 43/3 L71 AT gun" qty="2"/>
+            <armament equipment-object-id="1822" equipment-name="7.92mm MG 34 AFV" qty="1"/>
+        </armaments>
+        <type>tank-destroyer</type>
+        <fuel-capacity>450.0</fuel-capacity>
+        <speed>
+            <road max="29.0" normal="24.0"/>
+            <cross-country max="16.0" normal="12.0"/>
+        </speed>
+        <fuel-consumption max="276.0" normal="138.0"/>
+        <ronsonability>0.304932</ronsonability>
+        <max-gradient>35</max-gradient>
+        <max-fording-depth>2</max-fording-depth>
+        <max-trench-width>2</max-trench-width>
+        <towing-capacity>44800.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>0.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>no</has-open-top>
+        <battle-weight>45158.0</battle-weight>
+        <armour front="80.0" side="40.0" rear="20.0" top="15.0"/>
+    </vehicle>
+    <vehicle id="2309">
+        <name>SdKfz 260 Radio AC</name>
+        <description>This very light four-wheeled armoured car was based on a commercial 4WD chassis, the Horch 801. In this version, and in the very similar SdKfz 261, the armament was removed to make way for a more powerful radio fit and signals personnel.</description>
+        <picture id="3313"/>
+        <size width="4300.0" height="1.800049" length="4.800049" weight="4300.0"/>
+        <crew>4</crew>
+        <reliability>1.0</reliability>
+        <armaments/>
+        <type>armoured-car</type>
+        <fuel-capacity>110.0</fuel-capacity>
+        <speed>
+            <road max="85.0" normal="60.0"/>
+            <cross-country max="40.0" normal="30.0"/>
+        </speed>
+        <fuel-consumption max="30.0" normal="15.0"/>
+        <ronsonability>0.204834</ronsonability>
+        <max-gradient>30</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>4000.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>0.0</payload-capacity>
+        <take-cover-mod>0.014893</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>yes</has-open-top>
+        <battle-weight>4300.0</battle-weight>
+        <armour front="8.0" side="8.0" rear="6.0" top="0.0"/>
+    </vehicle>
+    <weapon id="1822">
+        <name>7.92mm MG 34 AFV</name>
+        <description>
+    </description>
+        <picture id="3040"/>
+        <picture-filename>
+    </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="11.899902"/>
+        <crew>1</crew>
+        <reliability>0.959961</reliability>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.919922</calibre>
+        <muzzle-velocity>755</muzzle-velocity>
+        <must-deploy-to-fire>no</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="1" name="7.92mm" load="2000"/>
+                <min-range>10</min-range>
+                <rof slow="10.0" normal="20.0" rapid="40.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.009766</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.85498" armour-penetration="0.0"/>
+                    <range-item range="250" accuracy="0.724854" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.574951" armour-penetration="0.0"/>
+                    <range-item range="750" accuracy="0.424805" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.294922" armour-penetration="0.0"/>
+                    <range-item range="1500" accuracy="0.144775" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="1799">
+        <name>8.8cm PaK 43/3 L71 AT gun</name>
+        <description>
+    </description>
+        <picture id="3397"/>
+        <picture-filename>
+    </picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>2</crew>
+        <reliability>0.97998</reliability>
+        <type>gun</type>
+        <single-shot>no</single-shot>
+        <calibre>88.0</calibre>
+        <muzzle-velocity>1000</muzzle-velocity>
+        <must-deploy-to-fire>no</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aarm">
+                <ammo object-id="1797" name="8.8cm PaK 43 AP" load="30"/>
+                <min-range>20</min-range>
+                <rof slow="0.5" normal="1.0" rapid="2.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>10.159912</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.964844" armour-penetration="215.837402"/>
+                    <range-item range="500" accuracy="0.914795" armour-penetration="198.395996"/>
+                    <range-item range="1000" accuracy="0.774902" armour-penetration="182.044678"/>
+                    <range-item range="1500" accuracy="0.625" armour-penetration="166.783447"/>
+                    <range-item range="2000" accuracy="0.474854" armour-penetration="151.522217"/>
+                    <range-item range="3000" accuracy="0.334961" armour-penetration="138.441162"/>
+                </range-table>
+            </performance>
+            <performance fire-type="aper">
+                <ammo object-id="1798" name="8.8cm PaK 43 HE" load="27"/>
+                <min-range>50</min-range>
+                <rof slow="0.5" normal="1.0" rapid="2.0"/>
+                <burst-radius>12</burst-radius>
+                <shell-weight>9.399902</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.984863" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.934814" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.844971" armour-penetration="0.0"/>
+                    <range-item range="1500" accuracy="0.714844" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.574951" armour-penetration="0.0"/>
+                    <range-item range="3000" accuracy="0.434814" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <ammo id="1797">
+        <name>8.8cm PaK 43 AP</name>
+        <description>
+    </description>
+        <min-order-qty>2</min-order-qty>
+        <min-order-weight>49.0</min-order-weight>
+    </ammo>
+    <ammo id="1">
+        <name>7.92mm</name>
+        <description>
+    </description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>3.0</min-order-weight>
+    </ammo>
+    <ammo id="1798">
+        <name>8.8cm PaK 43 HE</name>
+        <description>
+    </description>
+        <min-order-qty>2</min-order-qty>
+        <min-order-weight>49.0</min-order-weight>
+    </ammo>
     <formation-effects id="1600" type="left-echelon">
+        <moving-cohesion-level>0.600098</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.699951</front>
             <left>0.600098</left>
-            <rear>0.199951</rear>
             <right>0.199951</right>
+            <rear>0.199951</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.600098</moving-cohesion-level>
-        <security>
-            <front>max</front>
-            <left>normal</left>
-            <rear>min</rear>
-            <right>min</right>
-        </security>
         <target-percentages>
             <front>0.600098</front>
             <left>0.5</left>
-            <rear>0.5</rear>
             <right>0.399902</right>
+            <rear>0.5</rear>
         </target-percentages>
+        <security>
+            <front>max</front>
+            <left>normal</left>
+            <right>min</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1601" type="right-echelon">
+        <moving-cohesion-level>0.600098</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.699951</front>
             <left>0.199951</left>
-            <rear>0.199951</rear>
             <right>0.600098</right>
+            <rear>0.199951</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.600098</moving-cohesion-level>
-        <security>
-            <front>max</front>
-            <left>min</left>
-            <rear>min</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.600098</front>
             <left>0.399902</left>
-            <rear>0.5</rear>
             <right>0.5</right>
+            <rear>0.5</rear>
         </target-percentages>
+        <security>
+            <front>max</front>
+            <left>min</left>
+            <right>normal</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1602" type="vee">
+        <moving-cohesion-level>0.5</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.75</front>
             <left>0.300049</left>
-            <rear>0.25</rear>
             <right>0.300049</right>
+            <rear>0.25</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.5</moving-cohesion-level>
+        <target-percentages>
+            <front>0.5</front>
+            <left>0.5</left>
+            <right>0.5</right>
+            <rear>0.5</rear>
+        </target-percentages>
         <security>
             <front>max</front>
             <left>normal</left>
-            <rear>min</rear>
             <right>normal</right>
+            <rear>min</rear>
         </security>
-        <target-percentages>
-            <front>0.5</front>
-            <left>0.5</left>
-            <rear>0.5</rear>
-            <right>0.5</right>
-        </target-percentages>
     </formation-effects>
     <formation-effects id="1603" type="all-round-defence">
+        <moving-cohesion-level>0.300049</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.5</front>
             <left>0.5</left>
-            <rear>0.5</rear>
             <right>0.5</right>
+            <rear>0.5</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.300049</moving-cohesion-level>
-        <security>
-            <front>normal</front>
-            <left>normal</left>
-            <rear>normal</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.300049</front>
             <left>0.300049</left>
-            <rear>0.300049</rear>
             <right>0.300049</right>
+            <rear>0.300049</rear>
         </target-percentages>
+        <security>
+            <front>normal</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>normal</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1604" type="in-situ">
+        <moving-cohesion-level>0.300049</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.300049</front>
             <left>0.300049</left>
-            <rear>0.300049</rear>
             <right>0.300049</right>
+            <rear>0.300049</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.300049</moving-cohesion-level>
-        <security>
-            <front>normal</front>
-            <left>normal</left>
-            <rear>normal</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.300049</front>
             <left>0.300049</left>
-            <rear>0.300049</rear>
             <right>0.300049</right>
+            <rear>0.300049</rear>
         </target-percentages>
+        <security>
+            <front>normal</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>normal</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1605" type="unspecified">
+        <moving-cohesion-level>0.5</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.330078</front>
             <left>0.330078</left>
-            <rear>0.330078</rear>
             <right>0.330078</right>
+            <rear>0.330078</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.5</moving-cohesion-level>
-        <security>
-            <front>normal</front>
-            <left>normal</left>
-            <rear>normal</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.330078</front>
             <left>0.330078</left>
-            <rear>0.330078</rear>
             <right>0.330078</right>
+            <rear>0.330078</rear>
         </target-percentages>
+        <security>
+            <front>normal</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>normal</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1594" type="mob">
+        <moving-cohesion-level>0.100098</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.100098</front>
             <left>0.100098</left>
-            <rear>0.100098</rear>
             <right>0.100098</right>
+            <rear>0.100098</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.100098</moving-cohesion-level>
-        <security>
-            <front>min</front>
-            <left>min</left>
-            <rear>min</rear>
-            <right>min</right>
-        </security>
         <target-percentages>
             <front>0.300049</front>
             <left>0.300049</left>
-            <rear>0.300049</rear>
             <right>0.300049</right>
+            <rear>0.300049</rear>
         </target-percentages>
+        <security>
+            <front>min</front>
+            <left>min</left>
+            <right>min</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1595" type="road-column">
+        <moving-cohesion-level>0.899902</moving-cohesion-level>
+        <frontage-per-man>0.100098</frontage-per-man>
         <depth-per-man>3.0</depth-per-man>
         <firing-percentages>
             <front>0.199951</front>
             <left>0.300049</left>
-            <rear>0.149902</rear>
             <right>0.300049</right>
+            <rear>0.149902</rear>
         </firing-percentages>
-        <frontage-per-man>0.100098</frontage-per-man>
-        <moving-cohesion-level>0.899902</moving-cohesion-level>
-        <security>
-            <front>min</front>
-            <left>normal</left>
-            <rear>min</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.253906</front>
             <left>0.800049</left>
-            <rear>0.25</rear>
             <right>0.800049</right>
+            <rear>0.25</rear>
         </target-percentages>
+        <security>
+            <front>min</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1596" type="line">
+        <moving-cohesion-level>0.699951</moving-cohesion-level>
+        <frontage-per-man>2.5</frontage-per-man>
         <depth-per-man>1.0</depth-per-man>
         <firing-percentages>
             <front>1.0</front>
             <left>0.199951</left>
-            <rear>0.330078</rear>
             <right>0.199951</right>
+            <rear>0.330078</rear>
         </firing-percentages>
-        <frontage-per-man>2.5</frontage-per-man>
-        <moving-cohesion-level>0.699951</moving-cohesion-level>
-        <security>
-            <front>max</front>
-            <left>min</left>
-            <rear>min</rear>
-            <right>min</right>
-        </security>
         <target-percentages>
             <front>0.800049</front>
             <left>0.300049</left>
-            <rear>0.800049</rear>
             <right>0.303955</right>
+            <rear>0.800049</rear>
         </target-percentages>
+        <security>
+            <front>max</front>
+            <left>min</left>
+            <right>min</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1597" type="successive-lines">
+        <moving-cohesion-level>0.600098</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>1.5</depth-per-man>
         <firing-percentages>
             <front>0.600098</front>
             <left>0.399902</left>
-            <rear>0.300049</rear>
             <right>0.399902</right>
+            <rear>0.300049</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.600098</moving-cohesion-level>
-        <security>
-            <front>max</front>
-            <left>normal</left>
-            <rear>min</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.399902</front>
             <left>0.300049</left>
-            <rear>0.399902</rear>
             <right>0.300049</right>
+            <rear>0.399902</rear>
         </target-percentages>
+        <security>
+            <front>max</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1598" type="square">
+        <moving-cohesion-level>0.399902</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.600098</front>
             <left>0.300049</left>
-            <rear>0.199951</rear>
             <right>0.300049</right>
+            <rear>0.199951</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.399902</moving-cohesion-level>
-        <security>
-            <front>normal</front>
-            <left>normal</left>
-            <rear>normal</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.25</front>
             <left>0.25</left>
-            <rear>0.25</rear>
             <right>0.25</right>
+            <rear>0.25</rear>
         </target-percentages>
+        <security>
+            <front>normal</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>normal</rear>
+        </security>
     </formation-effects>
     <formation-effects id="1599" type="arrow-head">
+        <moving-cohesion-level>0.75</moving-cohesion-level>
+        <frontage-per-man>2.0</frontage-per-man>
         <depth-per-man>2.0</depth-per-man>
         <firing-percentages>
             <front>0.600098</front>
             <left>0.449951</left>
-            <rear>0.300049</rear>
             <right>0.449951</right>
+            <rear>0.300049</rear>
         </firing-percentages>
-        <frontage-per-man>2.0</frontage-per-man>
-        <moving-cohesion-level>0.75</moving-cohesion-level>
-        <security>
-            <front>max</front>
-            <left>normal</left>
-            <rear>min</rear>
-            <right>normal</right>
-        </security>
         <target-percentages>
             <front>0.5</front>
             <left>0.5</left>
-            <rear>0.5</rear>
             <right>0.5</right>
+            <rear>0.5</rear>
         </target-percentages>
+        <security>
+            <front>max</front>
+            <left>normal</left>
+            <right>normal</right>
+            <rear>min</rear>
+        </security>
     </formation-effects>
 </estab-data>

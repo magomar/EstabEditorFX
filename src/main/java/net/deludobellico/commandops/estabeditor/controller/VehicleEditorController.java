@@ -1,14 +1,20 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
+import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
 import net.deludobellico.commandops.estabeditor.model.VehicleModel;
+import net.deludobellico.commandops.estabeditor.model.WeaponModel;
+import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -113,7 +119,42 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @FXML
     private TextField takeCoverMod;
 
+    @FXML
+    private TableView<ArmamentModel> armamentTableView;
+
+    @FXML
+    private TableColumn<ArmamentModel, String> armamentTypeColumn;
+
+
+    @FXML
+    private TableColumn<ArmamentModel, String> armamentNameColumn;
+
+
+    @FXML
+    private TableColumn<ArmamentModel, Integer> armamentQuantityColumn;
+
+    @FXML
+    private Button armamentAddButton;
+
+    @FXML
+    private Button armamentRemoveButton;
+
+    @FXML
+    private Button armamentSelectButton;
+
+
+    @FXML
+    private TextField armamentType;
+
+    @FXML
+    private TextField armamentName;
+
+    @FXML
+    private TextField armamentQty;
+
+
     private VehicleModel vehicle;
+    private ArmamentModel armament;
     private EstabDataController estabDataController;
 
 
@@ -124,6 +165,45 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
             if (null != newValue) vehicle.setType(newValue);
         });
     }
+
+    @FXML
+    private void armamentAddAction(ActionEvent actionEvent) {
+        if (!armamentName.getText().isEmpty() && !armamentQty.getText().isEmpty()) {
+            WeaponModel weapon = (WeaponModel) armamentName.getUserData();
+            if (weapon != null) {
+                Armament newArmament = new Armament();
+                newArmament.setEquipmentObjectId(weapon.getId());
+                newArmament.setEquipmentName(weapon.getName());
+                newArmament.setQty(Integer.valueOf(armamentQty.getText()));
+
+                ArmamentModel aModel = new ArmamentModel(newArmament);
+                armamentTableView.getItems().add(aModel);
+                vehicle.getArmaments().add(aModel);
+            }
+        } else {
+            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
+        }
+    }
+
+    @FXML
+    private void armamentSelectAction(ActionEvent actionEvent) {
+        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabDataController().getEstabDataModel().getWeapons().values());
+        if(weapon != null) {
+            armamentName.setUserData(weapon);
+            armamentName.setText(weapon.getName());
+        }
+    }
+
+    @FXML
+    private void armamentRemoveAction(ActionEvent actionEvent) {
+        if(!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
+            //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
+            vehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
+            armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
+        }
+    }
+
+
 
     @Override
     public void setEditable(boolean isEditable) {
@@ -163,6 +243,11 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         vehicleType.setStyle("-fx-opacity: 1");
         weight.setEditable(isEditable);
         width.setEditable(isEditable);
+        armamentQty.setEditable(isEditable);
+        armamentAddButton.setDisable(!isEditable);
+        armamentRemoveButton.setDisable(!isEditable);
+        armamentSelectButton.setDisable(!isEditable);
+        armamentTableView.setEditable(isEditable);
     }
 
     @Override
@@ -201,6 +286,16 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
         width.textProperty().bindBidirectional(element.widthProperty(), new NumberStringConverter());
         vehicleType.getSelectionModel().select(element.getType());
+
+        armamentTableView.getColumns().clear();
+        armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
+        armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEquipmentName()));
+        armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(new IntegerStringConverter()));
+        armamentQuantityColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
+        armamentTableView.getColumns().add(armamentTypeColumn);
+        armamentTableView.getColumns().add(armamentNameColumn);
+        armamentTableView.getColumns().add(armamentQuantityColumn);
+        armamentTableView.getItems().addAll(element.getArmaments());
 
     }
 

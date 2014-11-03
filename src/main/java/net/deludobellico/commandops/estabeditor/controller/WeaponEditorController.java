@@ -185,38 +185,41 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
             AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabDataController().getEstabDataModel().getAmmo().values());
+            if (ammo != null) {
+                AmmoLoad ammoLoad = new AmmoLoad();
+                ammoLoad.setObjectId(ammo.getId());
+                ammoLoad.setName(ammo.getName());
+                ammoLoad.setLoad(0);
 
-            AmmoLoad ammoLoad = new AmmoLoad();
-            ammoLoad.setObjectId(ammo.getId());
-            ammoLoad.setName(ammo.getName());
-            ammoLoad.setLoad(0);
+                ROF rof = new ROF();
+                rof.setNormal(0.0);
+                rof.setRapid(0.0);
+                rof.setSlow(0.0);
 
-            ROF rof = new ROF();
-            rof.setNormal(0.0);
-            rof.setRapid(0.0);
-            rof.setSlow(0.0);
+                RangeTable rangeTable = new RangeTable();
 
-            RangeTable rangeTable = new RangeTable();
+                Performance p = new Performance();
+                p.setAmmo(ammoLoad);
+                p.setRof(rof);
+                p.setRangeTable(rangeTable);
 
-            Performance p = new Performance();
-            p.setAmmo(ammoLoad);
-            p.setRof(rof);
-            p.setRangeTable(rangeTable);
+                PerformanceModel pModel = new PerformanceModel(p);
 
-            PerformanceModel pModel = new PerformanceModel(p);
-
-            FireType newFireType = performanceFireTypeComboBox.getSelectionModel().getSelectedItem();
-            pModel.setFireType(newFireType);
-            performanceFireTypeMap.put(newFireType, pModel);
-            performanceFireTypeList.getItems().add(newFireType);
-            performanceFireTypeComboBox.getItems().remove(performanceFireTypeComboBox.getSelectionModel().getSelectedIndex());
-            weapon.getPerformances().add(pModel);
+                FireType newFireType = performanceFireTypeComboBox.getSelectionModel().getSelectedItem();
+                pModel.setFireType(newFireType);
+                performanceFireTypeMap.put(newFireType, pModel);
+                performanceFireTypeList.getItems().add(newFireType);
+                performanceFireTypeComboBox.getItems().remove(performanceFireTypeComboBox.getSelectionModel().getSelectedIndex());
+                weapon.getPerformances().add(pModel);
+            }
         }
     }
 
     @FXML
     protected void performanceRemoveFireType(ActionEvent actionEvent) {
         if (!performanceFireTypeList.getSelectionModel().getSelectedItems().isEmpty()) {
+            //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
+            weapon.getPerformances().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
             performanceFireTypeList.getItems().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
         }
     }
