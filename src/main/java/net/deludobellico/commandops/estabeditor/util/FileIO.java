@@ -46,10 +46,14 @@ public class FileIO {
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
     // Images
-    public static final String REMOVE_ICON_RESOURCE = "/images/removeicon.png";
-    public static final String COPY_ICON_RESOURCE = "/images/copyicon.png";
-    public static final String WARNING_ICON_RESOURCE = "/images/warning.png";
-    public static final String APP_ICON = "/images/tankicon.png";
+    public static final String IMAGES_FOLDER = "/images";
+    public static final String REMOVE_ICON_RESOURCE = IMAGES_FOLDER +"/removeicon.png";
+    public static final String COPY_ICON_RESOURCE = IMAGES_FOLDER +"/copyicon.png";
+    public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER +"/warning.png";
+    public static final String VEHICLE_ICON_RESOURCE = IMAGES_FOLDER +"/vehicleicon.png";
+    public static final String WEAPON_ICON_RESOURCE = IMAGES_FOLDER + "/weaponicon.png";
+    public static final String AMMO_ICON_RESOURCE = IMAGES_FOLDER + "/ammoicon.png";
+    public static final String APP_ICON = IMAGES_FOLDER + "/appicon.png";
     /**
      * File filters
      */

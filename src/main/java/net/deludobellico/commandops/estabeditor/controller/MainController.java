@@ -106,6 +106,8 @@ public class MainController implements Initializable {
 
     private Stage stage;
     private BooleanProperty disableCopy = new SimpleBooleanProperty(true);
+    private BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
+    private BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -147,6 +149,16 @@ public class MainController implements Initializable {
             if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
         } catch (NullPointerException e) {
         }
+
+        sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
+        sourceCloseMenuItem.disableProperty().bind(sourceIsClosed);
+        sourcePaneController.searchDisableProperty().bind(sourceIsClosed);
+
+        targetSaveMenuItem.disableProperty().bind(targetIsClosed);
+        targetSaveAsMenuItem.disableProperty().bind(targetIsClosed);
+        targetCloseMenuItem.disableProperty().bind(targetIsClosed);
+        targetPaneController.searchDisableProperty().bind(targetIsClosed);
+        saveDataButton.disableProperty().bind(targetIsClosed);
 
         populateOpenRecentSourceMenu();
         populateOpenRecentTargetMenu();
@@ -192,9 +204,9 @@ public class MainController implements Initializable {
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
+        sourceIsClosed.setValue(false);
         sourcePaneController.setEstabDataModel(sourceEstabFile);
-        sourceSaveAsMenuItem.setDisable(false);
-        sourceCloseMenuItem.setDisable(false);
+
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
         sourcePane.expandedProperty().set(true);
@@ -205,13 +217,10 @@ public class MainController implements Initializable {
     // TODO: check target has correct xml syntax
     private void openTarget(File file) {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
-        disableCopy.set(true);
         targetEstabFile = file;
         targetPaneController.setEstabDataModel(targetEstabFile);
-        saveDataButton.setDisable(false);
-        targetSaveMenuItem.setDisable(false);
-        targetSaveAsMenuItem.setDisable(false);
-        targetCloseMenuItem.setDisable(false);
+        targetIsClosed.set(false);
+        disableCopy.set(true);
         if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveElement() != null)
             disableCopy.set(false);
 
@@ -271,8 +280,7 @@ public class MainController implements Initializable {
     public void sourceCloseAction(ActionEvent actionEvent) {
         LOG.log(Level.INFO, "Closing source file " + sourceEstabFile.getName());
         disableCopy.set(true);
-        getDisableCopyProperty().set(true);
-        sourceCloseMenuItem.setDisable(true);
+        sourceIsClosed.set(true);
         sourcePane.expandedProperty().set(false);
         EstabDataModel edm = null;
         sourcePaneController.setEstabDataModel(edm);
@@ -285,8 +293,7 @@ public class MainController implements Initializable {
         disableCopy.set(true);
         getDisableCopyProperty().set(true);
         getDisableRemoveProperty().set(true);
-        getDisableSaveProperty().set(true);
-        targetCloseMenuItem.setDisable(true);
+        targetIsClosed.set(true);
         targetPane.expandedProperty().set(false);
         EstabDataModel edm = null;
         targetPaneController.setEstabDataModel(edm);
@@ -386,7 +393,4 @@ public class MainController implements Initializable {
         return removeElementButton.disableProperty();
     }
 
-    public BooleanProperty getDisableSaveProperty() {
-        return saveDataButton.disableProperty();
-    }
 }

@@ -13,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import net.deludobellico.commandops.estabeditor.data.jaxb.ObjectFactory;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.Pair;
 import net.deludobellico.commandops.estabeditor.util.SavedSearchList;
 import net.deludobellico.commandops.estabeditor.util.Util;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
@@ -39,21 +38,29 @@ public class EstabDataController implements Initializable {
     private TitledPane estabDataPane;
 
     @FXML
-    private ComboBox<Pair<Class, String>> elementClassComboBox;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
     private TextField searchTextField;
 
     @FXML
     private AnchorPane editorPane;
 
     @FXML
+    private Button vehicleButton;
+
+    @FXML
+    private Button weaponButton;
+
+    @FXML
+    private Button ammoButton;
+
+    @FXML
     private ListView<EstabListCell> searchResultsListView;
 
+    // Current search list elements class
+    private Class activeSearchListClass = VehicleModel.class;
+    private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
+
     private ObservableList<EstabListCell> estabListCells = FXCollections.observableArrayList();
+
     // Save last search to optimize tab swap
     private Map<Class, SavedSearchList<EstabListCell>> searchLists = new HashMap<Class, SavedSearchList<EstabListCell>>() {{
         for (int i = 0; i < Util.ELEMENT_MODEL_CLASSES.length; i++) {
@@ -96,14 +103,9 @@ public class EstabDataController implements Initializable {
             if (newValue != null) setActiveElement(newValue.getElementModel());
         });
 
-
-        for (int i = 0; i < Util.ELEMENT_MODEL_CLASSES.length; i++)
-            elementClassComboBox.getItems().add(new Pair<>(Util.ELEMENT_MODEL_CLASSES[i], Util.ELEMENT_POJO_CLASSES[i].getSimpleName(), false));
-        elementClassComboBox.getSelectionModel().selectFirst();
-        // Update the list when choosing a new element class from the choice box
-        elementClassComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && estabDataModel != null) searchElement(null);
-        });
+        vehicleButton.disableProperty().bind(searchDisable);
+        weaponButton.disableProperty().bind(searchDisable);
+        ammoButton.disableProperty().bind(searchDisable);
     }
 
     public void update() {
@@ -112,14 +114,30 @@ public class EstabDataController implements Initializable {
         if (estabDataModel != null) searchElement(null);
     }
 
+    @FXML
+    private void searchVehicle(ActionEvent actionEvent) {
+        activeSearchListClass = VehicleModel.class;
+        searchElement(null);
+    }
+
+    @FXML
+    private void searchWeapon(ActionEvent actionEvent) {
+        activeSearchListClass = WeaponModel.class;
+        searchElement(null);
+    }
+
+    @FXML
+    private void searchAmmo(ActionEvent actionEvent) {
+        activeSearchListClass = AmmoModel.class;
+        searchElement(null);
+    }
     /**
      * Gets the text from the  search {@link TextField} and searches matching names
      *
      * @param actionEvent
      */
-    public void searchElement(ActionEvent actionEvent) {
-        Class elementModelClass = elementClassComboBox.getSelectionModel().getSelectedItem().getKey();
-        SavedSearchList<EstabListCell> savedList = searchLists.get(elementModelClass);
+    private void searchElement(ActionEvent actionEvent) {
+        SavedSearchList<EstabListCell> savedList = searchLists.get(activeSearchListClass);
         String textToSearch = searchTextField.getText();
 
         estabListCells.clear();
@@ -146,7 +164,7 @@ public class EstabDataController implements Initializable {
                 buttonDisableProperty = mainController.getDisableCopyProperty();
             }
             // Get al elements with name watching the seatch text
-            List<ElementModel> elements = estabDataModel.searchElement(textToSearch, elementModelClass);
+            List<ElementModel> elements = estabDataModel.searchElement(textToSearch, activeSearchListClass);
             for (ElementModel element : elements) {
                 EstabListCell cell;
                 cell = new EstabListCell(element, buttonAction, buttonDisableProperty, isEditable);
@@ -305,13 +323,20 @@ public class EstabDataController implements Initializable {
 
     public void setEstabDataModel(EstabDataModel estabDataModel) {
         this.estabDataModel = estabDataModel;
-        searchButton.setDisable(false);
         searchTextField.setDisable(false);
         update();
     }
 
     public ListView<EstabListCell> getSearchResultsListView() {
         return searchResultsListView;
+    }
+
+    public BooleanProperty searchDisableProperty(){
+        return searchDisable;
+    }
+
+    public void setSearchDisableProperty(boolean b) {
+        this.searchDisable.set(b);
     }
 }
 

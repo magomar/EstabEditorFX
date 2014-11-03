@@ -1,40 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane xmlns:fx="http://javafx.com/fxml/1" fx:id="estabDataPane" maxHeight="-Infinity" maxWidth="-Infinity"
-            minWidth="-Infinity"
-            prefWidth="900.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabDataController">
+
+<TitledPane fx:id="estabDataPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabDataController">
     <content>
         <AnchorPane minHeight="500" minWidth="900.0" prefHeight="500" prefWidth="900.0">
             <children>
-                <VBox minWidth="250.0" prefWidth="250.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-                      AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <VBox minWidth="250.0" prefWidth="250.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <ComboBox fx:id="elementClassComboBox" minWidth="250.0" prefWidth="250.0"/>
+                  <HBox maxHeight="40.0" prefHeight="40.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="vehicleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/vehicleicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="weaponButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/weaponicon.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ammoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ammoicon.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                         <HBox fillHeight="false" prefWidth="200.0">
                             <children>
-                                <TextField fx:id="searchTextField" HBox.hgrow="ALWAYS"/>
-                                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchElement"
-                                        text="Search"/>
+                                <TextField fx:id="searchTextField" promptText="Search" HBox.hgrow="ALWAYS" />
                             </children>
                             <VBox.margin>
-                                <Insets/>
+                                <Insets />
                             </VBox.margin>
                         </HBox>
-                        <ListView fx:id="searchResultsListView" prefHeight="200.0" prefWidth="200.0"
-                                  style="-fx-border-color: grey;" VBox.vgrow="ALWAYS">
+                        <ListView fx:id="searchResultsListView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey;" VBox.vgrow="ALWAYS">
                             <VBox.margin>
-                                <Insets/>
+                                <Insets />
                             </VBox.margin>
                         </ListView>
                     </children>
                 </VBox>
-                <AnchorPane fx:id="editorPane" layoutX="269.6000061035156" layoutY="9.600000381469727"
-                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0"
-                            AnchorPane.topAnchor="0.0"/>
+                <AnchorPane fx:id="editorPane" layoutX="269.6000061035156" layoutY="9.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
     </content>
