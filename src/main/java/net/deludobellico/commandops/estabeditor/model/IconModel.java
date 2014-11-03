@@ -35,15 +35,9 @@ public class IconModel implements PojoJFXModel<Icon> {
 
     @Override
     public void setPojo(Icon pojo) {
-        RGBColorModel bColor = new RGBColorModel();
-        bColor.setPojo(pojo.getBackgroundColor());
-        backgroundColor.set(bColor);
-        RGBColorModel bdColor = new RGBColorModel();
-        bdColor.setPojo(pojo.getBackgroundDarkColor());
-        backgroundDarkColor.set(bdColor);
-        RGBColorModel blColor = new RGBColorModel();
-        blColor.setPojo(pojo.getBackgroundLightColor());
-        backgroundLightColor.set(blColor);
+        backgroundColor.set(new RGBColorModel(pojo.getBackgroundColor()));
+        backgroundDarkColor.set(new RGBColorModel(pojo.getBackgroundDarkColor()));
+        backgroundLightColor.set(new RGBColorModel(pojo.getBackgroundLightColor()));
     }
 
     public RGBColorModel getBackgroundColor() {
