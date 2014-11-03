@@ -21,6 +21,10 @@ public class NationModel implements PojoJFXModel<Nation> {
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<ServiceModel> service = FXCollections.observableArrayList();
 
+    public NationModel(Nation nation) {
+        setPojo(nation);
+    }
+
     @Override
     public Nation getPojo() {
         Nation nation = new Nation();
@@ -49,11 +53,9 @@ public class NationModel implements PojoJFXModel<Nation> {
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
-        pojo.getService().stream().map((s) -> {
-            ServiceModel serviceModel = new ServiceModel();
-            serviceModel.setPojo(s);
-            return serviceModel;
-        }).forEach((serviceModel) -> {
+        pojo.getService().stream()
+                .map(ServiceModel::new)
+                .forEach((serviceModel) -> {
             service.add(serviceModel);
         });
     }

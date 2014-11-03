@@ -20,6 +20,10 @@ public class SideModel implements PojoJFXModel<Side> {
     private final IntegerProperty defaultEnemyAarmFp = new SimpleIntegerProperty();
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();
 
+    public SideModel(Side side) {
+        setPojo(side);
+    }
+
     @Override
     public Side getPojo() {
         Side side = new Side();
@@ -35,8 +39,8 @@ public class SideModel implements PojoJFXModel<Side> {
         side.setBasicsConsumptionRate(basicsConsumptionRate.get());
         side.setDefaultEnemyAperFp(defaultEnemyAperFp.get());
         side.setDefaultEnemyAarmFp(defaultEnemyAarmFp.get());
-        nation.stream().forEach((n) -> {
-            side.getNation().add(n.getPojo());
+        nation.stream().forEach((nationModel) -> {
+            side.getNation().add(nationModel.getPojo());
         });
         return side;
     }
@@ -52,12 +56,10 @@ public class SideModel implements PojoJFXModel<Side> {
         defaultEnemyAperFp.set(pojo.getDefaultEnemyAperFp());
         defaultEnemyAarmFp.set(pojo.getDefaultEnemyAarmFp());
         nation.clear();
-        pojo.getNation().stream().map((n) -> {
-            NationModel nationModel = new NationModel();
-            nationModel.setPojo(n);
-            return nationModel;
-        }).forEach((nationModel) -> {
-            nation.add(nationModel);
-        });
+        pojo.getNation().stream()
+                .map(NationModel::new)
+                .forEach((nationModel) -> {
+                    nation.add(nationModel);
+                });
     }
 }
