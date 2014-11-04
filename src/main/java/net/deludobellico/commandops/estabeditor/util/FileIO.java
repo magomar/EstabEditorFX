@@ -34,7 +34,7 @@ public class FileIO {
     //Settings
     public static final String SETTINGS_XML_FILE = "estab-settings.xml";
     //Datasets
-    //public static final String ESTAB_DATASETS_FOLDER = HOME_FOLDER + "/datasets";
+    public static final String DATASETS_FOLDER = "/datasets";
     public static final String NEW_ESTAB_PATH = "newestab.xml";
     //Views
     public static final String VIEWS_FOLDER = "/views";
@@ -47,10 +47,10 @@ public class FileIO {
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
     // Images
     public static final String IMAGES_FOLDER = "/images";
-    public static final String REMOVE_ICON_RESOURCE = IMAGES_FOLDER +"/removeicon.png";
-    public static final String COPY_ICON_RESOURCE = IMAGES_FOLDER +"/copyicon.png";
-    public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER +"/warning.png";
-    public static final String VEHICLE_ICON_RESOURCE = IMAGES_FOLDER +"/vehicleicon.png";
+    public static final String REMOVE_ICON_RESOURCE = IMAGES_FOLDER + "/removeicon.png";
+    public static final String COPY_ICON_RESOURCE = IMAGES_FOLDER + "/copyicon.png";
+    public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
+    public static final String VEHICLE_ICON_RESOURCE = IMAGES_FOLDER + "/vehicleicon.png";
     public static final String WEAPON_ICON_RESOURCE = IMAGES_FOLDER + "/weaponicon.png";
     public static final String AMMO_ICON_RESOURCE = IMAGES_FOLDER + "/ammoicon.png";
     public static final String APP_ICON = IMAGES_FOLDER + "/appicon.png";
@@ -358,11 +358,58 @@ public class FileIO {
         return file;
     }
 
+    public static void copy(InputStream resourceAsStream, Path path) {
+        try {
+            Files.copy(resourceAsStream, path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Path getNewEstabPath() {
         return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
     }
 
     public static Path getSettingsPath() {
         return FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE);
+    }
+
+    public static File installDataset(String datasetName, File targetFolder) {
+        LOG.log(Level.INFO, "Installing " + datasetName + " dataset in folder: " + targetFolder.getName());
+        File targetFile = new File(targetFolder.getPath(), datasetName + "Estab.xml");
+        if (targetFile != null && targetFile.exists()) {
+            LOG.log(Level.SEVERE, "Aborting installation. " +datasetName + " dataset already exists in folder: " + targetFolder.getName());
+            targetFile = null;
+        } else {
+            // Installing dataset from resources to file
+            FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + targetFile.getName()), targetFile.getAbsoluteFile().toPath());
+
+            // Installing all dataset images included in the index
+            // Preparing the image folder on disk
+            File targetImageFolder = new File(targetFolder, datasetName + "image");
+            targetImageFolder.mkdirs();
+
+            String datasetResourceImageFolder = FileIO.IMAGES_FOLDER + "/" + datasetName;
+            String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + "index";
+            InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String imageFileName;
+            try {
+                while ((imageFileName = reader.readLine()) != null) {
+                    FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName), new File(targetImageFolder, imageFileName).toPath());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return targetFile;
     }
 }

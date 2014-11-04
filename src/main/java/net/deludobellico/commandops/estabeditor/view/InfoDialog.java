@@ -7,6 +7,7 @@ package net.deludobellico.commandops.estabeditor.view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -66,6 +67,7 @@ public class InfoDialog implements Initializable {
         dialog = new Stage(StageStyle.DECORATED);
         dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
+        buttonBox.getChildren().stream().forEach(b -> ((Button)b).setOnAction(event -> dialog.close()));
 
     }
 
@@ -111,14 +113,13 @@ public class InfoDialog implements Initializable {
                 HBox.setHgrow(b, Priority.ALWAYS);
                 buttonBox.getChildren().add(b);
             }
-        } else {
+        } else if (actions.length == 1) {
             Button b = (Button) buttonBox.getChildren().get(0);
             b.setText(actions[0].getAction());
             b.setOnAction(event -> {
                 this.selectedAction = actions[0];
                 dialog.close();
             });
-
         }
         return this;
     }

@@ -55,6 +55,15 @@
                                                   onAction="#targetCloseAction" text="Close"/>
                                     </items>
                                 </Menu>
+                                <Menu mnemonicParsing="false" text="Install Dataset">
+                                    <items>
+                                        <MenuItem fx:id="datasetBFTB" mnemonicParsing="false"
+                                                  onAction="#installDatasetBFTB" text="BFTBE"/>
+                                        <MenuItem fx:id="datasetCOTA" mnemonicParsing="false"
+                                                  onAction="#installDatasetCOTA" text="COTA"/>
+                                    </items>
+                                </Menu>
+
                                 <Menu mnemonicParsing="false" text="View">
                                     <items>
                                         <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="false" selected="true"

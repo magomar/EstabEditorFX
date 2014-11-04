@@ -1,5 +1,6 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
+import com.sun.istack.internal.NotNull;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -11,16 +12,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jdk.internal.util.xml.impl.Input;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.EstabDataModel;
 import net.deludobellico.commandops.estabeditor.model.RelatedElementLists;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
+import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.io.File;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -191,17 +196,28 @@ public class MainController implements Initializable {
     private File openFileChooser(boolean isSaving) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Opening ESTAB File");
-        if(Settings.getInstance().getLastOpenedFolder() != null) fileChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
+        if (Settings.getInstance().getLastOpenedFolder() != null)
+            fileChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
-        File selectedFile = isSaving ? fileChooser.showSaveDialog(getStage()) : fileChooser.showOpenDialog(getStage());
-        if(selectedFile != null) Settings.getInstance().setLastOpenedFolder(selectedFile.getParentFile().getAbsolutePath());
+        File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
+        if (selectedFile != null)
+            Settings.getInstance().setLastOpenedFolder(selectedFile.getParentFile().getAbsolutePath());
         return selectedFile;
+    }
+
+    private File openDirectoryChooser() {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select a folder");
+        if (Settings.getInstance().getLastOpenedFolder() != null)
+            directoryChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
+        return directoryChooser.showDialog(UtilView.ROOT_STAGE);
+
     }
 
 
 //  Careful, no file == null check on both openSource and openTarget
 
-    private void openSource(File file) {
+    private void openSource(@NotNull File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
         sourceIsClosed.setValue(false);
@@ -227,6 +243,14 @@ public class MainController implements Initializable {
         targetPane.expandedProperty().set(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentTargetMenu();
+    }
+
+    public void openSourceBFTBE(ActionEvent actionEvent) {
+
+    }
+
+    public void openSourceCOTA(ActionEvent actionEvent) {
+
     }
 
     @FXML
@@ -364,13 +388,33 @@ public class MainController implements Initializable {
         targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(elementModel));
     }
 
+    public void installDatasetBFTB(ActionEvent actionEvent) {
+        File folder = openDirectoryChooser();
+        if (folder != null) {
+            File installedDataset = FileIO.installDataset("BFTB", folder);
+            if (installedDataset != null) {
+                openSource(installedDataset);
+            } else {
+                UtilView.showInfoDialog("Dataset already exists", "Aborting installation");
+            }
+        }
+    }
+
+    public void installDatasetCOTA(ActionEvent actionEvent) {
+        File folder = openDirectoryChooser();
+        if (folder != null) {
+            File installedDataset = FileIO.installDataset("COTA", folder);
+            if (installedDataset != null) {
+                openSource(installedDataset);
+            } else {
+                UtilView.showInfoDialog("Dataset already exists", "Aborting installation");
+            }
+        }
+    }
+
     @FXML
     public void exitApplication(ActionEvent actionEvent) {
         Platform.exit();
-    }
-
-    public Stage getStage() {
-        return (Stage) rootPane.getScene().getWindow();
     }
 
     public Button getCopyElementButton() {
@@ -392,5 +436,4 @@ public class MainController implements Initializable {
     public BooleanProperty getDisableRemoveProperty() {
         return removeElementButton.disableProperty();
     }
-
 }
