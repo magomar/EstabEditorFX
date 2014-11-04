@@ -266,6 +266,10 @@ public class EstabDataController implements Initializable {
         this.activeFile = file;
     }
 
+    public File getActiveFile() {
+        return activeFile;
+    }
+
     public void setEditable(boolean isEditable) {
         this.isEditable = isEditable;
     }

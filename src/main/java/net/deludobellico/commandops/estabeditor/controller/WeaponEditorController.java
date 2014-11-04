@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -14,6 +15,7 @@ import net.deludobellico.commandops.estabeditor.model.AmmoModel;
 import net.deludobellico.commandops.estabeditor.model.PerformanceModel;
 import net.deludobellico.commandops.estabeditor.model.RangeItemModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
+import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
@@ -56,6 +58,9 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @FXML
     private Button removeRangeButton;
+
+    @FXML
+    private ImageView weaponImage;
 
     @FXML
     private ComboBox<PrimaryRole> weaponPrimaryRole;
@@ -305,6 +310,12 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         singleShot.selectedProperty().bindBidirectional(element.singleShotProperty());
         mustDeployToFire.selectedProperty().bindBidirectional(element.mustDeployToFireProperty());
 
+        // Careful, this is our pojo Image class, not the javafx Image class
+        Image image = getEstabDataController().getEstabDataModel().getImages().get(element.getPictureId());
+        if(image != null){
+            javafx.scene.image.Image javafxImage = FileIO.getDatasetImage(getEstabDataController().getActiveFile(), image.getFileId());
+            weaponImage.setImage(javafxImage);
+        }
     }
 
     @Override
@@ -316,6 +327,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
         calibre.textProperty().unbindBidirectional(element.calibreProperty());
         muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
+        weaponImage.setImage(null);
     }
 
     @Override

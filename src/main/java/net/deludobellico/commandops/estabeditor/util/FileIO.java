@@ -3,6 +3,7 @@ package net.deludobellico.commandops.estabeditor.util;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import org.xml.sax.SAXParseException;
 
@@ -12,6 +13,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -411,5 +413,28 @@ public class FileIO {
 
         }
         return targetFile;
+    }
+
+    /**
+     * Gets an image from the dataset image folder
+     * Names are strict and have to match the following pattern:
+     * <p>Dataset name: COTA</p>
+     * <p>Dataset file: COTAEstab.xml</p>
+     * <p>Dataset image folder: COTAimage</p>
+     * @param datasetFile
+     * @param imageFileName
+     * @return
+     */
+    public static Image getDatasetImage(File datasetFile, String imageFileName) {
+        String datasetName = datasetFile.getName().split("Estab.xml")[0];
+        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + "image");
+        File datasetPicture = new File(datasetImageFolder, imageFileName);
+        Image picture = null;
+        try {
+            picture = new Image(datasetPicture.toURI().toURL().toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return picture;
     }
 }

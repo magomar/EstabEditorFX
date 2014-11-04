@@ -196,8 +196,10 @@ public class MainController implements Initializable {
     private File openFileChooser(boolean isSaving) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Opening ESTAB File");
-        if (Settings.getInstance().getLastOpenedFolder() != null)
-            fileChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
+        if (Settings.getInstance().getLastOpenedFolder() != null) {
+            File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
+            if(lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
+        }
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
         File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
         if (selectedFile != null)
@@ -208,8 +210,11 @@ public class MainController implements Initializable {
     private File openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a folder");
-        if (Settings.getInstance().getLastOpenedFolder() != null)
-            directoryChooser.setInitialDirectory(new File(Settings.getInstance().getLastOpenedFolder()));
+        if (Settings.getInstance().getLastOpenedFolder() != null){
+            File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
+            if(lastOpenedFolder.exists())directoryChooser.setInitialDirectory(lastOpenedFolder);
+        }
+
         return directoryChooser.showDialog(UtilView.ROOT_STAGE);
 
     }

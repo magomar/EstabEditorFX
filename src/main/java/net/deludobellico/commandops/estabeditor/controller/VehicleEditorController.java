@@ -6,13 +6,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
 import net.deludobellico.commandops.estabeditor.model.VehicleModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
+import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
@@ -94,6 +97,9 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
     @FXML
     private ComboBox<VehicleType> vehicleType;
+
+    @FXML
+    private ImageView vehicleImage;
 
     @FXML
     private TextField weight;
@@ -297,6 +303,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         armamentTableView.getColumns().add(armamentQuantityColumn);
         armamentTableView.getItems().addAll(element.getArmaments());
 
+        // Careful, this is our pojo Image class, not the javafx Image class
+        Image image = getEstabDataController().getEstabDataModel().getImages().get(element.getPictureId());
+        if(image != null){
+            javafx.scene.image.Image javafxImage = FileIO.getDatasetImage(getEstabDataController().getActiveFile(), image.getFileId());
+            vehicleImage.setImage(javafxImage);
+        }
+
     }
 
     @Override
@@ -336,6 +349,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         width.textProperty().unbindBidirectional(element.widthProperty());
 
         armamentTableView.getItems().clear();
+        vehicleImage.setImage(null);
 
     }
 
