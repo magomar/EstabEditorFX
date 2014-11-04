@@ -138,7 +138,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         canBombard.set(JFXModelUtil.yesNoToBoolean(pojo.getCanBombard()));
     }
 
-    public Integer getId() {
+    public int getId() {
         return id.get();
     }
 

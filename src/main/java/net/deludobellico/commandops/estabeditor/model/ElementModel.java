@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
  */
 public interface ElementModel {
 
-    public Integer getId();
+    public int getId();
 
     public void setId(int i);
 

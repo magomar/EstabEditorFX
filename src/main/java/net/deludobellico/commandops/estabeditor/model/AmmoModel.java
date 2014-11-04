@@ -37,7 +37,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         minOrderWeight.set(pojo.getMinOrderWeight());
     }
 
-    public Integer getId() {
+    public int getId() {
         return id.get();
     }
 

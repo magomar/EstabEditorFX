@@ -12,7 +12,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Nation;
 /**
  * Created by Mario on 29/10/2014.
  */
-public class NationModel implements PojoJFXModel<Nation> {
+public class NationModel implements ElementModel, PojoJFXModel<Nation> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
