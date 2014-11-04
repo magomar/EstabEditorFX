@@ -1,6 +1,5 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
-import com.sun.istack.internal.NotNull;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -15,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.internal.util.xml.impl.Input;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.EstabDataModel;
 import net.deludobellico.commandops.estabeditor.model.RelatedElementLists;
@@ -23,9 +21,8 @@ import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.io.*;
+import java.io.File;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -198,7 +195,7 @@ public class MainController implements Initializable {
         fileChooser.setTitle("Opening ESTAB File");
         if (Settings.getInstance().getLastOpenedFolder() != null) {
             File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if(lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
+            if (lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
         }
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
         File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
@@ -210,9 +207,9 @@ public class MainController implements Initializable {
     private File openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a folder");
-        if (Settings.getInstance().getLastOpenedFolder() != null){
+        if (Settings.getInstance().getLastOpenedFolder() != null) {
             File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if(lastOpenedFolder.exists())directoryChooser.setInitialDirectory(lastOpenedFolder);
+            if (lastOpenedFolder.exists()) directoryChooser.setInitialDirectory(lastOpenedFolder);
         }
 
         return directoryChooser.showDialog(UtilView.ROOT_STAGE);
@@ -222,7 +219,7 @@ public class MainController implements Initializable {
 
 //  Careful, no file == null check on both openSource and openTarget
 
-    private void openSource(@NotNull File file) {
+    private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
         sourceIsClosed.setValue(false);
