@@ -4,33 +4,31 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Radio;
 
 /**
- * Created by Mario on 03/11/2014.
+ * Created by Mario on 04/11/2014.
  */
-public class ImageModel implements ElementModel, PojoJFXModel<Image> {
+public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty fileId = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
 
-    public ImageModel(Image image) {
-        setPojo(image);
+    public RadioModel(Radio radio) {
+        setPojo(radio);
     }
 
     @Override
-    public Image getPojo() {
-        Image image = new Image();
-        image.setId(id.get());
-        image.setFileId(fileId.get());
-        return image;
+    public Radio getPojo() {
+        Radio radio = new Radio();
+        radio.setId(id.get());
+        radio.setName(name.get());
+        return radio;
     }
 
     @Override
-    public void setPojo(Image pojo) {
+    public void setPojo(Radio pojo) {
         id.set(pojo.getId());
-        fileId.set(pojo.getFileId());
-        name.set(pojo.getFileId());
+        name.set(pojo.getName());
     }
 
     @Override
@@ -46,18 +44,6 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     @Override
     public void setId(int id) {
         this.id.set(id);
-    }
-
-    public String getFileId() {
-        return fileId.get();
-    }
-
-    public StringProperty fileIdProperty() {
-        return fileId;
-    }
-
-    public void setFileId(String fileId) {
-        this.fileId.set(fileId);
     }
 
     @Override
@@ -78,12 +64,12 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ImageModel)) return false;
+        if (!(o instanceof RadioModel)) return false;
 
-        ImageModel that = (ImageModel) o;
+        RadioModel that = (RadioModel) o;
 
-        if (fileId != null ? !fileId.equals(that.fileId) : that.fileId != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
@@ -91,7 +77,7 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (fileId != null ? fileId.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }
