@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,113 +8,99 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for VehicleSize complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para VehicleSize complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="VehicleSize">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="width" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="height" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="length" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="weight" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="width" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="height" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="length" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="weight" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VehicleSize")
 public class VehicleSize {
 
-    @XmlAttribute(name = "width")
-    protected Double width;
-    @XmlAttribute(name = "height")
-    protected Double height;
-    @XmlAttribute(name = "length")
-    protected Double length;
-    @XmlAttribute(name = "weight")
-    protected Double weight;
+    @XmlAttribute(name = "width", required = true)
+    protected double width;
+    @XmlAttribute(name = "height", required = true)
+    protected double height;
+    @XmlAttribute(name = "length", required = true)
+    protected double length;
+    @XmlAttribute(name = "weight", required = true)
+    protected double weight;
 
     /**
-     * Gets the value of the width property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad width.
+     * 
      */
-    public Double getWidth() {
+    public double getWidth() {
         return width;
     }
 
     /**
-     * Sets the value of the width property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad width.
+     * 
      */
-    public void setWidth(Double value) {
+    public void setWidth(double value) {
         this.width = value;
     }
 
     /**
-     * Gets the value of the height property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad height.
+     * 
      */
-    public Double getHeight() {
+    public double getHeight() {
         return height;
     }
 
     /**
-     * Sets the value of the height property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad height.
+     * 
      */
-    public void setHeight(Double value) {
+    public void setHeight(double value) {
         this.height = value;
     }
 
     /**
-     * Gets the value of the length property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad length.
+     * 
      */
-    public Double getLength() {
+    public double getLength() {
         return length;
     }
 
     /**
-     * Sets the value of the length property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad length.
+     * 
      */
-    public void setLength(Double value) {
+    public void setLength(double value) {
         this.length = value;
     }
 
     /**
-     * Gets the value of the weight property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad weight.
+     * 
      */
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
     /**
-     * Sets the value of the weight property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad weight.
+     * 
      */
-    public void setWeight(Double value) {
+    public void setWeight(double value) {
         this.weight = value;
     }
 

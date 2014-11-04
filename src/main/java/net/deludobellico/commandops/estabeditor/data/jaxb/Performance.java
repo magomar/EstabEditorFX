@@ -1,13 +1,18 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Performance complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Performance complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Performance">
  *   &lt;complexContent>
@@ -20,20 +25,22 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="shell-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="range-table" type="{}RangeTable"/>
  *       &lt;/sequence>
- *       &lt;attribute name="fire-type" type="{}FireType" />
+ *       &lt;attribute name="fire-type" use="required" type="{}FireType" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Performance", propOrder = {
-        "ammo",
-        "minRange",
-        "rof",
-        "burstRadius",
-        "shellWeight",
-        "rangeTable"
+    "ammo",
+    "minRange",
+    "rof",
+    "burstRadius",
+    "shellWeight",
+    "rangeTable"
 })
 public class Performance {
 
@@ -49,126 +56,148 @@ public class Performance {
     protected double shellWeight;
     @XmlElement(name = "range-table", required = true)
     protected RangeTable rangeTable;
-    @XmlAttribute(name = "fire-type")
+    @XmlAttribute(name = "fire-type", required = true)
     protected FireType fireType;
 
     /**
-     * Gets the value of the ammo property.
-     *
-     * @return possible object is
-     * {@link AmmoLoad }
+     * Obtiene el valor de la propiedad ammo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AmmoLoad }
+     *     
      */
     public AmmoLoad getAmmo() {
         return ammo;
     }
 
     /**
-     * Sets the value of the ammo property.
-     *
-     * @param value allowed object is
-     *              {@link AmmoLoad }
+     * Define el valor de la propiedad ammo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AmmoLoad }
+     *     
      */
     public void setAmmo(AmmoLoad value) {
         this.ammo = value;
     }
 
     /**
-     * Gets the value of the minRange property.
+     * Obtiene el valor de la propiedad minRange.
+     * 
      */
     public int getMinRange() {
         return minRange;
     }
 
     /**
-     * Sets the value of the minRange property.
+     * Define el valor de la propiedad minRange.
+     * 
      */
     public void setMinRange(int value) {
         this.minRange = value;
     }
 
     /**
-     * Gets the value of the rof property.
-     *
-     * @return possible object is
-     * {@link ROF }
+     * Obtiene el valor de la propiedad rof.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ROF }
+     *     
      */
     public ROF getRof() {
         return rof;
     }
 
     /**
-     * Sets the value of the rof property.
-     *
-     * @param value allowed object is
-     *              {@link ROF }
+     * Define el valor de la propiedad rof.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ROF }
+     *     
      */
     public void setRof(ROF value) {
         this.rof = value;
     }
 
     /**
-     * Gets the value of the burstRadius property.
+     * Obtiene el valor de la propiedad burstRadius.
+     * 
      */
     public int getBurstRadius() {
         return burstRadius;
     }
 
     /**
-     * Sets the value of the burstRadius property.
+     * Define el valor de la propiedad burstRadius.
+     * 
      */
     public void setBurstRadius(int value) {
         this.burstRadius = value;
     }
 
     /**
-     * Gets the value of the shellWeight property.
+     * Obtiene el valor de la propiedad shellWeight.
+     * 
      */
     public double getShellWeight() {
         return shellWeight;
     }
 
     /**
-     * Sets the value of the shellWeight property.
+     * Define el valor de la propiedad shellWeight.
+     * 
      */
     public void setShellWeight(double value) {
         this.shellWeight = value;
     }
 
     /**
-     * Gets the value of the rangeTable property.
-     *
-     * @return possible object is
-     * {@link RangeTable }
+     * Obtiene el valor de la propiedad rangeTable.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RangeTable }
+     *     
      */
     public RangeTable getRangeTable() {
         return rangeTable;
     }
 
     /**
-     * Sets the value of the rangeTable property.
-     *
-     * @param value allowed object is
-     *              {@link RangeTable }
+     * Define el valor de la propiedad rangeTable.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RangeTable }
+     *     
      */
     public void setRangeTable(RangeTable value) {
         this.rangeTable = value;
     }
 
     /**
-     * Gets the value of the fireType property.
-     *
-     * @return possible object is
-     * {@link FireType }
+     * Obtiene el valor de la propiedad fireType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FireType }
+     *     
      */
     public FireType getFireType() {
         return fireType;
     }
 
     /**
-     * Sets the value of the fireType property.
-     *
-     * @param value allowed object is
-     *              {@link FireType }
+     * Define el valor de la propiedad fireType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FireType }
+     *     
      */
     public void setFireType(FireType value) {
         this.fireType = value;

@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -6,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for YesNo.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Clase Java para YesNo.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
  * &lt;simpleType name="YesNo">
@@ -18,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
+ * 
  */
 @XmlType(name = "YesNo")
 @XmlEnum
@@ -33,17 +35,17 @@ public enum YesNo {
         value = v;
     }
 
+    public String value() {
+        return value;
+    }
+
     public static YesNo fromValue(String v) {
-        for (YesNo c : YesNo.values()) {
+        for (YesNo c: YesNo.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    public String value() {
-        return value;
     }
 
 }

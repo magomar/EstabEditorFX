@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AmmoQty complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para AmmoQty complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="AmmoQty">
  *   &lt;complexContent>
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AmmoQty")
@@ -35,48 +38,56 @@ public class AmmoQty {
     protected int qty;
 
     /**
-     * Gets the value of the ammoObjectId property.
+     * Obtiene el valor de la propiedad ammoObjectId.
+     * 
      */
     public int getAmmoObjectId() {
         return ammoObjectId;
     }
 
     /**
-     * Sets the value of the ammoObjectId property.
+     * Define el valor de la propiedad ammoObjectId.
+     * 
      */
     public void setAmmoObjectId(int value) {
         this.ammoObjectId = value;
     }
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the qty property.
+     * Obtiene el valor de la propiedad qty.
+     * 
      */
     public int getQty() {
         return qty;
     }
 
     /**
-     * Sets the value of the qty property.
+     * Define el valor de la propiedad qty.
+     * 
      */
     public void setQty(int value) {
         this.qty = value;

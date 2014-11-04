@@ -1,13 +1,19 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Radio complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Radio complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Radio">
  *   &lt;complexContent>
@@ -31,21 +37,23 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Radio", propOrder = {
-        "name",
-        "description",
-        "picture",
-        "pictureFilename",
-        "size",
-        "crew",
-        "reliability",
-        "armaments",
-        "netType",
-        "freqType",
-        "maxRange",
-        "gain"
+    "name",
+    "description",
+    "picture",
+    "pictureFilename",
+    "size",
+    "crew",
+    "reliability",
+    "armaments",
+    "netType",
+    "freqType",
+    "maxRange",
+    "gain"
 })
 public class Radio {
 
@@ -77,236 +85,280 @@ public class Radio {
     protected int id;
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the description property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad description.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Sets the value of the description property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad description.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the picture property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad picture.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPicture() {
         return picture;
     }
 
     /**
-     * Sets the value of the picture property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad picture.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPicture(String value) {
         this.picture = value;
     }
 
     /**
-     * Gets the value of the pictureFilename property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad pictureFilename.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPictureFilename() {
         return pictureFilename;
     }
 
     /**
-     * Sets the value of the pictureFilename property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad pictureFilename.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPictureFilename(String value) {
         this.pictureFilename = value;
     }
 
     /**
-     * Gets the value of the size property.
-     *
-     * @return possible object is
-     * {@link RadioSize }
+     * Obtiene el valor de la propiedad size.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RadioSize }
+     *     
      */
     public RadioSize getSize() {
         return size;
     }
 
     /**
-     * Sets the value of the size property.
-     *
-     * @param value allowed object is
-     *              {@link RadioSize }
+     * Define el valor de la propiedad size.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RadioSize }
+     *     
      */
     public void setSize(RadioSize value) {
         this.size = value;
     }
 
     /**
-     * Gets the value of the crew property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad crew.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getCrew() {
         return crew;
     }
 
     /**
-     * Sets the value of the crew property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad crew.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setCrew(String value) {
         this.crew = value;
     }
 
     /**
-     * Gets the value of the reliability property.
+     * Obtiene el valor de la propiedad reliability.
+     * 
      */
     public double getReliability() {
         return reliability;
     }
 
     /**
-     * Sets the value of the reliability property.
+     * Define el valor de la propiedad reliability.
+     * 
      */
     public void setReliability(double value) {
         this.reliability = value;
     }
 
     /**
-     * Gets the value of the armaments property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad armaments.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getArmaments() {
         return armaments;
     }
 
     /**
-     * Sets the value of the armaments property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad armaments.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setArmaments(String value) {
         this.armaments = value;
     }
 
     /**
-     * Gets the value of the netType property.
-     *
-     * @return possible object is
-     * {@link NetType }
+     * Obtiene el valor de la propiedad netType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NetType }
+     *     
      */
     public NetType getNetType() {
         return netType;
     }
 
     /**
-     * Sets the value of the netType property.
-     *
-     * @param value allowed object is
-     *              {@link NetType }
+     * Define el valor de la propiedad netType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NetType }
+     *     
      */
     public void setNetType(NetType value) {
         this.netType = value;
     }
 
     /**
-     * Gets the value of the freqType property.
-     *
-     * @return possible object is
-     * {@link FreqType }
+     * Obtiene el valor de la propiedad freqType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FreqType }
+     *     
      */
     public FreqType getFreqType() {
         return freqType;
     }
 
     /**
-     * Sets the value of the freqType property.
-     *
-     * @param value allowed object is
-     *              {@link FreqType }
+     * Define el valor de la propiedad freqType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FreqType }
+     *     
      */
     public void setFreqType(FreqType value) {
         this.freqType = value;
     }
 
     /**
-     * Gets the value of the maxRange property.
+     * Obtiene el valor de la propiedad maxRange.
+     * 
      */
     public int getMaxRange() {
         return maxRange;
     }
 
     /**
-     * Sets the value of the maxRange property.
+     * Define el valor de la propiedad maxRange.
+     * 
      */
     public void setMaxRange(int value) {
         this.maxRange = value;
     }
 
     /**
-     * Gets the value of the gain property.
+     * Obtiene el valor de la propiedad gain.
+     * 
      */
     public double getGain() {
         return gain;
     }
 
     /**
-     * Sets the value of the gain property.
+     * Define el valor de la propiedad gain.
+     * 
      */
     public void setGain(double value) {
         this.gain = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(int value) {
         this.id = value;
