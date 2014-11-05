@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Side complex type.
+ * <p>Clase Java para Side complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Side">
@@ -73,7 +73,7 @@ public class Side {
     protected int id;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the largeInsignia property.
+     * Obtiene el valor de la propiedad largeInsignia.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the largeInsignia property.
+     * Define el valor de la propiedad largeInsignia.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the smallInsignia property.
+     * Obtiene el valor de la propiedad smallInsignia.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the smallInsignia property.
+     * Define el valor de la propiedad smallInsignia.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the basicsConsumptionRate property.
+     * Obtiene el valor de la propiedad basicsConsumptionRate.
      * 
      */
     public double getBasicsConsumptionRate() {
@@ -177,7 +177,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the basicsConsumptionRate property.
+     * Define el valor de la propiedad basicsConsumptionRate.
      * 
      */
     public void setBasicsConsumptionRate(double value) {
@@ -185,7 +185,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the defaultEnemyAperFp property.
+     * Obtiene el valor de la propiedad defaultEnemyAperFp.
      * 
      */
     public int getDefaultEnemyAperFp() {
@@ -193,7 +193,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the defaultEnemyAperFp property.
+     * Define el valor de la propiedad defaultEnemyAperFp.
      * 
      */
     public void setDefaultEnemyAperFp(int value) {
@@ -201,7 +201,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the defaultEnemyAarmFp property.
+     * Obtiene el valor de la propiedad defaultEnemyAarmFp.
      * 
      */
     public int getDefaultEnemyAarmFp() {
@@ -209,7 +209,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the defaultEnemyAarmFp property.
+     * Define el valor de la propiedad defaultEnemyAarmFp.
      * 
      */
     public void setDefaultEnemyAarmFp(int value) {
@@ -246,7 +246,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the flags property.
+     * Obtiene el valor de la propiedad flags.
      * 
      * @return
      *     possible object is
@@ -258,7 +258,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the flags property.
+     * Define el valor de la propiedad flags.
      * 
      * @param value
      *     allowed object is
@@ -270,7 +270,7 @@ public class Side {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -278,7 +278,7 @@ public class Side {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {

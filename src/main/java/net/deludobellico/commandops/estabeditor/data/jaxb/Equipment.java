@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Equipment complex type.
+ * <p>Clase Java para Equipment complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Equipment">
@@ -38,7 +38,7 @@ public class Equipment {
     protected int qty;
 
     /**
-     * Gets the value of the equipmentObjectId property.
+     * Obtiene el valor de la propiedad equipmentObjectId.
      * 
      */
     public int getEquipmentObjectId() {
@@ -46,7 +46,7 @@ public class Equipment {
     }
 
     /**
-     * Sets the value of the equipmentObjectId property.
+     * Define el valor de la propiedad equipmentObjectId.
      * 
      */
     public void setEquipmentObjectId(int value) {
@@ -54,7 +54,7 @@ public class Equipment {
     }
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class Equipment {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class Equipment {
     }
 
     /**
-     * Gets the value of the qty property.
+     * Obtiene el valor de la propiedad qty.
      * 
      */
     public int getQty() {
@@ -86,7 +86,7 @@ public class Equipment {
     }
 
     /**
-     * Sets the value of the qty property.
+     * Define el valor de la propiedad qty.
      * 
      */
     public void setQty(int value) {

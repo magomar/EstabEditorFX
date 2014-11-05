@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FormationSecurity complex type.
+ * <p>Clase Java para FormationSecurity complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FormationSecurity">
@@ -53,7 +53,7 @@ public class FormationSecurity {
     protected Security rear;
 
     /**
-     * Gets the value of the front property.
+     * Obtiene el valor de la propiedad front.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Sets the value of the front property.
+     * Define el valor de la propiedad front.
      * 
      * @param value
      *     allowed object is
@@ -77,7 +77,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Gets the value of the left property.
+     * Obtiene el valor de la propiedad left.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Sets the value of the left property.
+     * Define el valor de la propiedad left.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Gets the value of the right property.
+     * Obtiene el valor de la propiedad right.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Sets the value of the right property.
+     * Define el valor de la propiedad right.
      * 
      * @param value
      *     allowed object is
@@ -125,7 +125,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Gets the value of the rear property.
+     * Obtiene el valor de la propiedad rear.
      * 
      * @return
      *     possible object is
@@ -137,7 +137,7 @@ public class FormationSecurity {
     }
 
     /**
-     * Sets the value of the rear property.
+     * Define el valor de la propiedad rear.
      * 
      * @param value
      *     allowed object is

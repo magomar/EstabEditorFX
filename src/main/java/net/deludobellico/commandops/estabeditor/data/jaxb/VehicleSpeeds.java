@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for VehicleSpeeds complex type.
+ * <p>Clase Java para VehicleSpeeds complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="VehicleSpeeds">
@@ -40,7 +40,7 @@ public class VehicleSpeeds {
     protected SpeedData crossCountry;
 
     /**
-     * Gets the value of the road property.
+     * Obtiene el valor de la propiedad road.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class VehicleSpeeds {
     }
 
     /**
-     * Sets the value of the road property.
+     * Define el valor de la propiedad road.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class VehicleSpeeds {
     }
 
     /**
-     * Gets the value of the crossCountry property.
+     * Obtiene el valor de la propiedad crossCountry.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class VehicleSpeeds {
     }
 
     /**
-     * Sets the value of the crossCountry property.
+     * Define el valor de la propiedad crossCountry.
      * 
      * @param value
      *     allowed object is

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AmmoLoad complex type.
+ * <p>Clase Java para AmmoLoad complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="AmmoLoad">
@@ -38,7 +38,7 @@ public class AmmoLoad {
     protected int load;
 
     /**
-     * Gets the value of the objectId property.
+     * Obtiene el valor de la propiedad objectId.
      * 
      */
     public int getObjectId() {
@@ -46,7 +46,7 @@ public class AmmoLoad {
     }
 
     /**
-     * Sets the value of the objectId property.
+     * Define el valor de la propiedad objectId.
      * 
      */
     public void setObjectId(int value) {
@@ -54,7 +54,7 @@ public class AmmoLoad {
     }
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class AmmoLoad {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class AmmoLoad {
     }
 
     /**
-     * Gets the value of the load property.
+     * Obtiene el valor de la propiedad load.
      * 
      */
     public int getLoad() {
@@ -86,7 +86,7 @@ public class AmmoLoad {
     }
 
     /**
-     * Sets the value of the load property.
+     * Define el valor de la propiedad load.
      * 
      */
     public void setLoad(int value) {

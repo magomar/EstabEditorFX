@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DefaultIconColors complex type.
+ * <p>Clase Java para DefaultIconColors complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="DefaultIconColors">
@@ -54,7 +54,7 @@ public class DefaultIconColors {
     protected SymbolColor symbolColor;
 
     /**
-     * Gets the value of the backgroundColor property.
+     * Obtiene el valor de la propiedad backgroundColor.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Sets the value of the backgroundColor property.
+     * Define el valor de la propiedad backgroundColor.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Gets the value of the backgroundDarkColor property.
+     * Obtiene el valor de la propiedad backgroundDarkColor.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Sets the value of the backgroundDarkColor property.
+     * Define el valor de la propiedad backgroundDarkColor.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Gets the value of the backgroundLightColor property.
+     * Obtiene el valor de la propiedad backgroundLightColor.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Sets the value of the backgroundLightColor property.
+     * Define el valor de la propiedad backgroundLightColor.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Gets the value of the designationColor property.
+     * Obtiene el valor de la propiedad designationColor.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Sets the value of the designationColor property.
+     * Define el valor de la propiedad designationColor.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Gets the value of the symbolColor property.
+     * Obtiene el valor de la propiedad symbolColor.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class DefaultIconColors {
     }
 
     /**
-     * Sets the value of the symbolColor property.
+     * Define el valor de la propiedad symbolColor.
      * 
      * @param value
      *     allowed object is

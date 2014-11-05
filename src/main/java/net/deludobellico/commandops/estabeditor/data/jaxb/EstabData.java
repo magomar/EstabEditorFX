@@ -8,13 +8,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType>
@@ -29,7 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}ammo" maxOccurs="unbounded"/>
  *         &lt;element ref="{}formation-effects" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" default="4" />
+ *       &lt;attribute name="edited" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
+ *       &lt;attribute name="last-edit" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -63,6 +67,11 @@ public class EstabData {
     protected List<FormationEffects> formationEffects;
     @XmlAttribute(name = "version")
     protected Integer version;
+    @XmlAttribute(name = "edited")
+    protected Boolean edited;
+    @XmlAttribute(name = "last-edit")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastEdit;
 
     /**
      * Gets the value of the image property.
@@ -268,19 +277,23 @@ public class EstabData {
     }
 
     /**
-     * Gets the value of the version property.
+     * Obtiene el valor de la propiedad version.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getVersion() {
-        return version;
+    public int getVersion() {
+        if (version == null) {
+            return  4;
+        } else {
+            return version;
+        }
     }
 
     /**
-     * Sets the value of the version property.
+     * Define el valor de la propiedad version.
      * 
      * @param value
      *     allowed object is
@@ -289,6 +302,58 @@ public class EstabData {
      */
     public void setVersion(Integer value) {
         this.version = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad edited.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isEdited() {
+        if (edited == null) {
+            return false;
+        } else {
+            return edited;
+        }
+    }
+
+    /**
+     * Define el valor de la propiedad edited.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setEdited(Boolean value) {
+        this.edited = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad lastEdit.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastEdit() {
+        return lastEdit;
+    }
+
+    /**
+     * Define el valor de la propiedad lastEdit.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastEdit(XMLGregorianCalendar value) {
+        this.lastEdit = value;
     }
 
 }

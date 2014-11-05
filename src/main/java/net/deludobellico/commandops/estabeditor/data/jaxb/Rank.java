@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Rank complex type.
+ * <p>Clase Java para Rank complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Rank">
@@ -35,7 +35,7 @@ public class Rank {
     protected String fullName;
 
     /**
-     * Gets the value of the shortName property.
+     * Obtiene el valor de la propiedad shortName.
      * 
      * @return
      *     possible object is
@@ -47,7 +47,7 @@ public class Rank {
     }
 
     /**
-     * Sets the value of the shortName property.
+     * Define el valor de la propiedad shortName.
      * 
      * @param value
      *     allowed object is
@@ -59,7 +59,7 @@ public class Rank {
     }
 
     /**
-     * Gets the value of the fullName property.
+     * Obtiene el valor de la propiedad fullName.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class Rank {
     }
 
     /**
-     * Sets the value of the fullName property.
+     * Define el valor de la propiedad fullName.
      * 
      * @param value
      *     allowed object is

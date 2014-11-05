@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FormationEffects complex type.
+ * <p>Clase Java para FormationEffects complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="FormationEffects">
@@ -67,7 +67,7 @@ public class FormationEffects {
     protected FormationType type;
 
     /**
-     * Gets the value of the movingCohesionLevel property.
+     * Obtiene el valor de la propiedad movingCohesionLevel.
      * 
      */
     public double getMovingCohesionLevel() {
@@ -75,7 +75,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the movingCohesionLevel property.
+     * Define el valor de la propiedad movingCohesionLevel.
      * 
      */
     public void setMovingCohesionLevel(double value) {
@@ -83,7 +83,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the frontagePerMan property.
+     * Obtiene el valor de la propiedad frontagePerMan.
      * 
      */
     public double getFrontagePerMan() {
@@ -91,7 +91,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the frontagePerMan property.
+     * Define el valor de la propiedad frontagePerMan.
      * 
      */
     public void setFrontagePerMan(double value) {
@@ -99,7 +99,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the depthPerMan property.
+     * Obtiene el valor de la propiedad depthPerMan.
      * 
      */
     public double getDepthPerMan() {
@@ -107,7 +107,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the depthPerMan property.
+     * Define el valor de la propiedad depthPerMan.
      * 
      */
     public void setDepthPerMan(double value) {
@@ -115,7 +115,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the firingPercentages property.
+     * Obtiene el valor de la propiedad firingPercentages.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the firingPercentages property.
+     * Define el valor de la propiedad firingPercentages.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the targetPercentages property.
+     * Obtiene el valor de la propiedad targetPercentages.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the targetPercentages property.
+     * Define el valor de la propiedad targetPercentages.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the security property.
+     * Obtiene el valor de la propiedad security.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the security property.
+     * Define el valor de la propiedad security.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the flags property.
+     * Obtiene el valor de la propiedad flags.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the flags property.
+     * Define el valor de la propiedad flags.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -219,7 +219,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {
@@ -227,7 +227,7 @@ public class FormationEffects {
     }
 
     /**
-     * Gets the value of the type property.
+     * Obtiene el valor de la propiedad type.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class FormationEffects {
     }
 
     /**
-     * Sets the value of the type property.
+     * Define el valor de la propiedad type.
      * 
      * @param value
      *     allowed object is

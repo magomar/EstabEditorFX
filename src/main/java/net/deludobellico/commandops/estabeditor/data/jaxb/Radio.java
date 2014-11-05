@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Radio complex type.
+ * <p>Clase Java para Radio complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Radio">
@@ -89,7 +89,7 @@ public class Radio {
     protected int id;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -101,7 +101,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +113,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -125,7 +125,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -137,7 +137,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the picture property.
+     * Obtiene el valor de la propiedad picture.
      * 
      * @return
      *     possible object is
@@ -149,7 +149,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the picture property.
+     * Define el valor de la propiedad picture.
      * 
      * @param value
      *     allowed object is
@@ -161,7 +161,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the pictureFilename property.
+     * Obtiene el valor de la propiedad pictureFilename.
      * 
      * @return
      *     possible object is
@@ -173,7 +173,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the pictureFilename property.
+     * Define el valor de la propiedad pictureFilename.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +185,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the size property.
+     * Obtiene el valor de la propiedad size.
      * 
      * @return
      *     possible object is
@@ -197,7 +197,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the size property.
+     * Define el valor de la propiedad size.
      * 
      * @param value
      *     allowed object is
@@ -209,7 +209,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the crew property.
+     * Obtiene el valor de la propiedad crew.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the crew property.
+     * Define el valor de la propiedad crew.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +233,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the reliability property.
+     * Obtiene el valor de la propiedad reliability.
      * 
      */
     public double getReliability() {
@@ -241,7 +241,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the reliability property.
+     * Define el valor de la propiedad reliability.
      * 
      */
     public void setReliability(double value) {
@@ -249,7 +249,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the armaments property.
+     * Obtiene el valor de la propiedad armaments.
      * 
      * @return
      *     possible object is
@@ -261,7 +261,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the armaments property.
+     * Define el valor de la propiedad armaments.
      * 
      * @param value
      *     allowed object is
@@ -273,7 +273,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the netType property.
+     * Obtiene el valor de la propiedad netType.
      * 
      * @return
      *     possible object is
@@ -285,7 +285,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the netType property.
+     * Define el valor de la propiedad netType.
      * 
      * @param value
      *     allowed object is
@@ -297,7 +297,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the freqType property.
+     * Obtiene el valor de la propiedad freqType.
      * 
      * @return
      *     possible object is
@@ -309,7 +309,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the freqType property.
+     * Define el valor de la propiedad freqType.
      * 
      * @param value
      *     allowed object is
@@ -321,7 +321,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the maxRange property.
+     * Obtiene el valor de la propiedad maxRange.
      * 
      */
     public int getMaxRange() {
@@ -329,7 +329,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the maxRange property.
+     * Define el valor de la propiedad maxRange.
      * 
      */
     public void setMaxRange(int value) {
@@ -337,7 +337,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the gain property.
+     * Obtiene el valor de la propiedad gain.
      * 
      */
     public double getGain() {
@@ -345,7 +345,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the gain property.
+     * Define el valor de la propiedad gain.
      * 
      */
     public void setGain(double value) {
@@ -353,7 +353,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the flags property.
+     * Obtiene el valor de la propiedad flags.
      * 
      * @return
      *     possible object is
@@ -365,7 +365,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the flags property.
+     * Define el valor de la propiedad flags.
      * 
      * @param value
      *     allowed object is
@@ -377,7 +377,7 @@ public class Radio {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -385,7 +385,7 @@ public class Radio {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {

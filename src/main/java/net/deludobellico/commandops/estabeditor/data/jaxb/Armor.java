@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Armor complex type.
+ * <p>Clase Java para Armor complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Armor">
@@ -41,7 +41,7 @@ public class Armor {
     protected double top;
 
     /**
-     * Gets the value of the front property.
+     * Obtiene el valor de la propiedad front.
      * 
      */
     public double getFront() {
@@ -49,7 +49,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the front property.
+     * Define el valor de la propiedad front.
      * 
      */
     public void setFront(double value) {
@@ -57,7 +57,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the side property.
+     * Obtiene el valor de la propiedad side.
      * 
      */
     public double getSide() {
@@ -65,7 +65,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the side property.
+     * Define el valor de la propiedad side.
      * 
      */
     public void setSide(double value) {
@@ -73,7 +73,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the rear property.
+     * Obtiene el valor de la propiedad rear.
      * 
      */
     public double getRear() {
@@ -81,7 +81,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the rear property.
+     * Define el valor de la propiedad rear.
      * 
      */
     public void setRear(double value) {
@@ -89,7 +89,7 @@ public class Armor {
     }
 
     /**
-     * Gets the value of the top property.
+     * Obtiene el valor de la propiedad top.
      * 
      */
     public double getTop() {
@@ -97,7 +97,7 @@ public class Armor {
     }
 
     /**
-     * Sets the value of the top property.
+     * Define el valor de la propiedad top.
      * 
      */
     public void setTop(double value) {

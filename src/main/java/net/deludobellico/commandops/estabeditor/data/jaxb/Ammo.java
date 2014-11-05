@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Ammo complex type.
+ * <p>Clase Java para Ammo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Ammo">
@@ -56,7 +56,7 @@ public class Ammo {
     protected int id;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class Ammo {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +104,7 @@ public class Ammo {
     }
 
     /**
-     * Gets the value of the minOrderQty property.
+     * Obtiene el valor de la propiedad minOrderQty.
      * 
      */
     public int getMinOrderQty() {
@@ -112,7 +112,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the minOrderQty property.
+     * Define el valor de la propiedad minOrderQty.
      * 
      */
     public void setMinOrderQty(int value) {
@@ -120,7 +120,7 @@ public class Ammo {
     }
 
     /**
-     * Gets the value of the minOrderWeight property.
+     * Obtiene el valor de la propiedad minOrderWeight.
      * 
      */
     public double getMinOrderWeight() {
@@ -128,7 +128,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the minOrderWeight property.
+     * Define el valor de la propiedad minOrderWeight.
      * 
      */
     public void setMinOrderWeight(double value) {
@@ -136,7 +136,7 @@ public class Ammo {
     }
 
     /**
-     * Gets the value of the flags property.
+     * Obtiene el valor de la propiedad flags.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the flags property.
+     * Define el valor de la propiedad flags.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public class Ammo {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -168,7 +168,7 @@ public class Ammo {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {

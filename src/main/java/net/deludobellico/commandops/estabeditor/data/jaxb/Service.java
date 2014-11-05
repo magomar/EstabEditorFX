@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Service complex type.
+ * <p>Clase Java para Service complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Service">
@@ -69,7 +69,7 @@ public class Service {
     protected int id;
 
     /**
-     * Gets the value of the name property.
+     * Obtiene el valor de la propiedad name.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the name property.
+     * Define el valor de la propiedad name.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the description property.
+     * Obtiene el valor de la propiedad description.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the description property.
+     * Define el valor de la propiedad description.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the largeInsignia property.
+     * Obtiene el valor de la propiedad largeInsignia.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the largeInsignia property.
+     * Define el valor de la propiedad largeInsignia.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +141,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the smallInsignia property.
+     * Obtiene el valor de la propiedad smallInsignia.
      * 
      * @return
      *     possible object is
@@ -153,7 +153,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the smallInsignia property.
+     * Define el valor de la propiedad smallInsignia.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +165,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the rankList property.
+     * Obtiene el valor de la propiedad rankList.
      * 
      * @return
      *     possible object is
@@ -177,7 +177,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the rankList property.
+     * Define el valor de la propiedad rankList.
      * 
      * @param value
      *     allowed object is
@@ -189,7 +189,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the defaultIconColors property.
+     * Obtiene el valor de la propiedad defaultIconColors.
      * 
      * @return
      *     possible object is
@@ -201,7 +201,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the defaultIconColors property.
+     * Define el valor de la propiedad defaultIconColors.
      * 
      * @param value
      *     allowed object is
@@ -242,7 +242,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the flags property.
+     * Obtiene el valor de la propiedad flags.
      * 
      * @return
      *     possible object is
@@ -254,7 +254,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the flags property.
+     * Define el valor de la propiedad flags.
      * 
      * @param value
      *     allowed object is
@@ -266,7 +266,7 @@ public class Service {
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -274,7 +274,7 @@ public class Service {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {
