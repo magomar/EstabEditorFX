@@ -15,17 +15,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.internal.util.xml.impl.Input;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.model.EstabDataModel;
+import net.deludobellico.commandops.estabeditor.model.EstabModel;
 import net.deludobellico.commandops.estabeditor.model.RelatedElementLists;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.io.*;
+import java.io.File;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +35,7 @@ public class MainController implements Initializable {
     private AnchorPane rootPane;
 
     @FXML
-    private ScrollPane estabDataContainer;
+    private ScrollPane estabsContainer;
 
     @FXML
     private TitledPane sourcePane;
@@ -101,10 +99,10 @@ public class MainController implements Initializable {
     private Button saveDataButton;
 
     @FXML
-    private EstabDataController sourcePaneController;
+    private EstabController sourcePaneController;
 
     @FXML
-    private EstabDataController targetPaneController;
+    private EstabController targetPaneController;
 
     private File sourceEstabFile;
     private File targetEstabFile;
@@ -116,19 +114,19 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        targetPaneController.set("Target Estab", true, this);
-        sourcePaneController.set("Source Estab", false, this);
+        targetPaneController.init("Target Estab", true, this);
+        sourcePaneController.init("Source Estab", false, this);
 
         copyElementButton.disableProperty().bindBidirectional(disableCopy);
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Only enable the paste button if there's a target file and a selected element
-            if (targetPaneController.getEstabDataModel() != null && newValue != null)
+            if (targetPaneController.getEstabModel() != null && newValue != null)
                 copyElementButton.setDisable(false);
             else copyElementButton.setDisable(true);
         });
 
         targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (targetPaneController.getEstabDataModel() != null && newValue != null) {
+            if (targetPaneController.getEstabModel() != null && newValue != null) {
                 removeElementButton.setDisable(false);
             }
         });
@@ -139,7 +137,7 @@ public class MainController implements Initializable {
         sourcePane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedSourcePane(sourcePane.isExpanded()));
         targetPane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedTargetPane(targetPane.isExpanded()));
 
-        estabDataContainer.setFitToWidth(true);
+        estabsContainer.setFitToWidth(true);
         try {
             toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
             sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
@@ -198,7 +196,7 @@ public class MainController implements Initializable {
         fileChooser.setTitle("Opening ESTAB File");
         if (Settings.getInstance().getLastOpenedFolder() != null) {
             File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if(lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
+            if (lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
         }
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
         File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
@@ -210,9 +208,9 @@ public class MainController implements Initializable {
     private File openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a folder");
-        if (Settings.getInstance().getLastOpenedFolder() != null){
+        if (Settings.getInstance().getLastOpenedFolder() != null) {
             File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if(lastOpenedFolder.exists())directoryChooser.setInitialDirectory(lastOpenedFolder);
+            if (lastOpenedFolder.exists()) directoryChooser.setInitialDirectory(lastOpenedFolder);
         }
 
         return directoryChooser.showDialog(UtilView.ROOT_STAGE);
@@ -226,12 +224,12 @@ public class MainController implements Initializable {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
         sourceIsClosed.setValue(false);
-        sourcePaneController.setEstabDataModel(sourceEstabFile);
+        sourcePaneController.setEstabModel(sourceEstabFile);
 
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
         sourcePane.expandedProperty().set(true);
-        if (targetPaneController.getEstabDataModel() != null && targetPaneController.getActiveElement() != null)
+        if (targetPaneController.getEstabModel() != null && targetPaneController.getActiveElement() != null)
             disableCopy.set(false);
     }
 
@@ -239,10 +237,10 @@ public class MainController implements Initializable {
     private void openTarget(File file) {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
         targetEstabFile = file;
-        targetPaneController.setEstabDataModel(targetEstabFile);
+        targetPaneController.setEstabModel(targetEstabFile);
         targetIsClosed.set(false);
         disableCopy.set(true);
-        if (targetPaneController.getEstabDataModel() != null && sourcePaneController.getActiveElement() != null)
+        if (targetPaneController.getEstabModel() != null && sourcePaneController.getActiveElement() != null)
             disableCopy.set(false);
 
         targetPane.expandedProperty().set(true);
@@ -282,7 +280,7 @@ public class MainController implements Initializable {
         } else {
             LOG.log(Level.INFO, "Saving target file: " + targetEstabFile.getName());
         }
-        targetPaneController.saveDataModel(targetEstabFile);
+        targetPaneController.saveModel(targetEstabFile);
     }
 
     @FXML
@@ -311,8 +309,8 @@ public class MainController implements Initializable {
         disableCopy.set(true);
         sourceIsClosed.set(true);
         sourcePane.expandedProperty().set(false);
-        EstabDataModel edm = null;
-        sourcePaneController.setEstabDataModel(edm);
+        EstabModel edm = null;
+        sourcePaneController.setEstabModel(edm);
         sourcePaneController.clear();
     }
 
@@ -324,8 +322,8 @@ public class MainController implements Initializable {
         getDisableRemoveProperty().set(true);
         targetIsClosed.set(true);
         targetPane.expandedProperty().set(false);
-        EstabDataModel edm = null;
-        targetPaneController.setEstabDataModel(edm);
+        EstabModel edm = null;
+        targetPaneController.setEstabModel(edm);
         targetPaneController.clear();
     }
 
@@ -354,16 +352,16 @@ public class MainController implements Initializable {
     public void togglePanesContainer(ActionEvent actionEvent) {
         Pane container;
         boolean verticalPanes;
-        if (estabDataContainer.getContent() instanceof VBox) {
+        if (estabsContainer.getContent() instanceof VBox) {
             container = new HBox();
             verticalPanes = false;
-        } else if (estabDataContainer.getContent() instanceof HBox) {
+        } else if (estabsContainer.getContent() instanceof HBox) {
             container = new VBox();
             verticalPanes = true;
         } else return;
 
-        container.getChildren().addAll(((Pane) estabDataContainer.getContent()).getChildren());
-        estabDataContainer.setContent(container);
+        container.getChildren().addAll(((Pane) estabsContainer.getContent()).getChildren());
+        estabsContainer.setContent(container);
         Settings.getInstance().setVerticalPanes(verticalPanes);
     }
 
@@ -375,22 +373,21 @@ public class MainController implements Initializable {
     @FXML
     private void removeToolbarButtonAction(ActionEvent actionEvent) {
         LOG.log(Level.INFO, "Removing estab element " + targetPaneController.getActiveElement().getName());
-        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(targetPaneController.getActiveElement()));
+        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(targetPaneController.getActiveElement()));
     }
 
     public void copyEstabElementFromCellList(ElementModel elementModel) {
         LOG.log(Level.INFO, "Copying estab element " + elementModel.getName());
-        RelatedElementLists relatedElements = sourcePaneController.getEstabDataModel().getRelatedElements(elementModel);
-        targetPaneController.getEstabDataModel().sortRelatedElements(relatedElements);
-        if (targetPaneController.copyEstabElement(relatedElements)) {
+        RelatedElementLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elementModel);
+        targetPaneController.getEstabModel().sortRelatedElements(relatedElements);
+        if (targetPaneController.copyRelatedElements(relatedElements)) {
             targetPaneController.setActiveElement(elementModel);
         }
     }
 
     public void removeEstabElementFromCellList(ElementModel elementModel) {
         LOG.log(Level.INFO, "Removing estab element " + elementModel.getName());
-        targetPaneController.setActiveElement(elementModel);
-        targetPaneController.removeEstabElement(targetPaneController.getEstabDataModel().getRelatedElements(elementModel));
+        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(elementModel));
     }
 
     public void installDatasetBFTB(ActionEvent actionEvent) {
@@ -430,7 +427,7 @@ public class MainController implements Initializable {
         return removeElementButton;
     }
 
-    public EstabDataController getSourceEditor() {
+    public EstabController getSourceEditor() {
         return sourcePaneController;
     }
 

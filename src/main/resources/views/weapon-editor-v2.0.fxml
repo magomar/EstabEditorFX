@@ -64,7 +64,7 @@
                                                     </GridPane.margin>
                                                 </Button>
                                                 <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="No Image" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                <ImageView fx:id="weaponImage" fitHeight="96.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                                                <ImageView fx:id="weaponImageView" fitHeight="96.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
                                                 <GridPane hgap="5.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                                     <children>
                                                         <Label text="Primary role" GridPane.rowIndex="3" />
@@ -126,7 +126,7 @@
                                                                 <TextField fx:id="muzzleVelocity" GridPane.columnIndex="3" />
                                                                 <TextField fx:id="crew" GridPane.columnIndex="5" />
                                                                 <TextField fx:id="reliability" GridPane.columnIndex="7" />
-                                                                <TextField fx:id="weightTextField" GridPane.columnIndex="9" />
+                                                                <TextField fx:id="weight" GridPane.columnIndex="9" />
                                                             </children>
                                                         </GridPane>
                                                     </children>

@@ -17,166 +17,174 @@ import net.deludobellico.commandops.estabeditor.model.VehicleModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.view.SearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Mario on 04/08/2014.
+ * This controller manages the weapon editor view and model.
+ *
+ * @author Mario
+ * @author Heine
+ * @see EstabController
  */
 public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
+
+    /**
+     * Root node components
+     */
+    @FXML
+    private TextField name;
+
+    /**
+     * General tab components
+     */
+    @FXML
+    private TextArea description;
+    @FXML
+    private ComboBox<VehicleType> vehicleType;
+    @FXML
+    private CheckBox hasTurret;
+    @FXML
+    private CheckBox hasOpenTop;
+    @FXML
+    private TextField width;
+    @FXML
+    private TextField height;
+    @FXML
+    private TextField length;
+    @FXML
+    private TextField battleWeight;
+    @FXML
+    private TextField weight;
+    @FXML
+    private ImageView vehicleImageView;
+
+    /**
+     * Performance tab components
+     */
+    // Left column
+    @FXML
+    private TextField crew;
+    @FXML
+    private TextField personnelCapacity;
+    @FXML
+    private TextField fuelCapacity;
+    @FXML
+    private TextField bulkFuelCapacity;
+    @FXML
+    private TextField payloadCapacity;
+    @FXML
+    private TextField towingCapacity;
+    // Right column
+    @FXML
+    private TextField reliability;
+    @FXML
+    private TextField takeCoverMod;
+    @FXML
+    private TextField ronsonability;
+    @FXML
+    private TextField maxGradient;
+    @FXML
+    private TextField maxFordingDepth;
     @FXML
     private TextField maxTrenchWidth;
 
+    // Bottom region
     @FXML
-    private TextField width;
-
+    private TextField roadNormalSpeed;
     @FXML
-    private TextField length;
-
-    @FXML
-    private TextField sideArmor;
-
-    @FXML
-    private TextField fuelCapacity;
-
-    @FXML
-    private TextField bulkFuelCapacity;
-
-    @FXML
-    private TextField reliability;
-
-    @FXML
-    private TextField maxFordingDepth;
-
-    @FXML
-    private TextField crossCountryMaxSpeed;
-
+    private TextField roadMaxSpeed;
     @FXML
     private TextField crossCountryNormalSpeed;
-
     @FXML
-    private TextField maxGradient;
-
-    @FXML
-    private TextField battleWeight;
-
-    @FXML
-    private TextField frontArmor;
-
-    @FXML
-    private CheckBox hasOpenTop;
-
+    private TextField crossCountryMaxSpeed;
     @FXML
     private TextField fuelConsumptionNormalSpeed;
-
-    @FXML
-    private TextField height;
-
-    @FXML
-    private TextField rearArmor;
-
-    @FXML
-    private TextField towingCapacity;
-
     @FXML
     private TextField fuelConsumptionMaxSpeed;
 
     @FXML
-    private TextField name;
-
+    private TextField sideArmor;
     @FXML
-    private TextField ronsonability;
-
+    private TextField frontArmor;
     @FXML
-    private TextArea description;
-
-    @FXML
-    private TextField payloadCapacity;
-
-    @FXML
-    private ComboBox<VehicleType> vehicleType;
-
-    @FXML
-    private ImageView vehicleImage;
-
-    @FXML
-    private TextField weight;
-
+    private TextField rearArmor;
     @FXML
     private TextField topArmor;
 
+    /**
+     * Armaments tab
+     */
     @FXML
-    private CheckBox hasTurret;
-
+    private TextField armamentName;
     @FXML
-    private TextField crew;
-
+    private TextField armamentQty;
     @FXML
-    private TextField roadMaxSpeed;
-
+    private Button armamentSelectButton;
     @FXML
-    private TextField roadNormalSpeed;
-
+    private Button armamentAddButton;
     @FXML
-    private TextField personnelCapacity;
-
-    @FXML
-    private TextField takeCoverMod;
-
+    private Button armamentRemoveButton;
+    // Armaments table
     @FXML
     private TableView<ArmamentModel> armamentTableView;
-
     @FXML
     private TableColumn<ArmamentModel, String> armamentTypeColumn;
-
-
     @FXML
     private TableColumn<ArmamentModel, String> armamentNameColumn;
-
-
     @FXML
     private TableColumn<ArmamentModel, Integer> armamentQuantityColumn;
 
-    @FXML
-    private Button armamentAddButton;
+    /**
+     * Other
+     */
+    private VehicleModel activeVehicle;
+    private EstabController estabController;
 
-    @FXML
-    private Button armamentRemoveButton;
-
-    @FXML
-    private Button armamentSelectButton;
-
-
-    @FXML
-    private TextField armamentType;
-
-    @FXML
-    private TextField armamentName;
-
-    @FXML
-    private TextField armamentQty;
-
-
-    private VehicleModel vehicle;
-    private ArmamentModel armament;
-    private EstabDataController estabDataController;
-
-
+    /**
+     * Adds listeners to components and sets the initial item collections.
+     *
+     * @param location  is not used
+     * @param resources is not used
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < VehicleType.values().length; i++) vehicleType.getItems().add(VehicleType.values()[i]);
         vehicleType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) vehicle.setType(newValue);
+            if (null != newValue) activeVehicle.setType(newValue);
         });
     }
 
+    /**
+     * Adds a new armament to the vehicle.
+     * <p>This method should be called when the {@link #armamentAddButton} button is pressed.
+     * It creates a new armament with the text fields values and adds it
+     * to the {@link #armamentTableView} item collection and the {@link #activeVehicle} armaments collection.</p>
+     *
+     * @param actionEvent is not used
+     * @see ArmamentModel
+     */
     @FXML
     private void armamentAddAction(ActionEvent actionEvent) {
-        if (!armamentName.getText().isEmpty() && !armamentQty.getText().isEmpty()) {
+
+        if (armamentName.getText().isEmpty() || armamentQty.getText().isEmpty()) {
+            // If one text field is empty, show dialog and abort
+            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
+        } else {
+            // Extract the WeaponModel we set when we selected the armament
             WeaponModel weapon = (WeaponModel) armamentName.getUserData();
-            if (weapon != null) {
+            // Search for repeated weapons
+            boolean repeatedWeapon = false;
+            for (ArmamentModel am : activeVehicle.getArmaments())
+                if (am.getEquipmentName().equals(weapon.getName())) {
+                    repeatedWeapon = true;
+                    break;
+                }
+            // If the weapon wasn't repeated, create a new armament and add it to the table and vehicle armaments collection
+            if (weapon != null && !repeatedWeapon) {
                 Armament newArmament = new Armament();
                 newArmament.setEquipmentObjectId(weapon.getId());
                 newArmament.setEquipmentName(weapon.getName());
@@ -185,27 +193,42 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                 ArmamentModel aModel = new ArmamentModel(newArmament);
                 //TODO: don't add repeated weapons
                 armamentTableView.getItems().add(aModel);
-                vehicle.getArmaments().add(aModel);
+                activeVehicle.getArmaments().add(aModel);
+            } else {
+                UtilView.showInfoDialog("Repeated weapon", "The selected weapon is already included. Please, select another one.");
             }
-        } else {
-            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
         }
     }
 
+    /**
+     * Shows a dialog where the user can selects the desired weapon for the new armament.
+     *
+     * @param actionEvent is not used
+     * @see ArmamentModel
+     * @see SearchDialog
+     */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
-        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabDataController().getEstabDataModel().getWeapons().values());
+        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabController().getEstabModel().getWeapons().values());
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
         }
     }
 
+    /**
+     * Removes an armament from the vehicle.
+     * <p>This method should be called when the {@link #armamentRemoveButton} button is pressed.
+     * It removes the selected range from the {@link #armamentTableView} and the {@link #activeVehicle} armaments collection.</p>
+     *
+     * @param actionEvent is not used
+     * @see ArmamentModel
+     */
     @FXML
     private void armamentRemoveAction(ActionEvent actionEvent) {
         if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
-            vehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
+            activeVehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
             armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }
     }
@@ -302,14 +325,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         armamentTableView.getColumns().add(armamentNameColumn);
         armamentTableView.getColumns().add(armamentQuantityColumn);
         armamentTableView.getItems().addAll(element.getArmaments());
-
-        // Careful, this is our pojo Image class, not the javafx Image class
-        Image image = getEstabDataController().getEstabDataModel().getImages().get(element.getPictureId());
-        if(image != null){
-            javafx.scene.image.Image javafxImage = FileIO.getDatasetImage(getEstabDataController().getActiveFile(), image.getFileId());
-            vehicleImage.setImage(javafxImage);
-        }
-
     }
 
     @Override
@@ -349,13 +364,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         width.textProperty().unbindBidirectional(element.widthProperty());
 
         armamentTableView.getItems().clear();
-        vehicleImage.setImage(null);
+        vehicleImageView.setImage(null);
 
     }
 
     @Override
     public void clear() {
-        unbindProperties(vehicle);
+        unbindProperties(activeVehicle);
 
         battleWeight.setText("");
         bulkFuelCapacity.setText("");
@@ -395,24 +410,33 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public VehicleModel getEstabElement() {
-        return this.vehicle;
+    public VehicleModel getActiveElement() {
+        return this.activeVehicle;
     }
 
     @Override
-    public void setEstabElement(VehicleModel element) {
-        if (vehicle != null) unbindProperties(vehicle);
-        this.vehicle = element;
-        bindProperties(vehicle);
+    public void setActiveElement(VehicleModel element) {
+        if (activeVehicle != null) {
+            unbindProperties(activeVehicle);
+            vehicleImageView.setImage(null);
+        }
+        this.activeVehicle = element;
+        bindProperties(activeVehicle);
+
+        // Careful, this is our pojo Image class, not the javafx Image class
+        Image image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
+        if (image != null) {
+            vehicleImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
+        }
     }
 
     @Override
-    public EstabDataController getEstabDataController() {
-        return estabDataController;
+    public EstabController getEstabController() {
+        return estabController;
     }
 
     @Override
-    public void setEstabDataController(EstabDataController estabDataController) {
-        this.estabDataController = estabDataController;
+    public void setEstabController(EstabController estabController) {
+        this.estabController = estabController;
     }
 }

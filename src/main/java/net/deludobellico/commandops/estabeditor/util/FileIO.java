@@ -67,7 +67,9 @@ public class FileIO {
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     /**
      * JAXB paths
+     *
      */
+    // TODO: move jaxb class
     private static final String JAXB_CONTEXT_PATH = "net.deludobellico.commandops.estabeditor.data.jaxb";
     private static JAXBContext JAXB_CONTEXT;
     private static Marshaller MARSHALLER;

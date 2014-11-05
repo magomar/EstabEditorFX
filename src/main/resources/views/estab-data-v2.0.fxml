@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="estabDataPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabDataController">
+<TitledPane fx:id="estabPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabController">
     <content>
         <AnchorPane minHeight="500" minWidth="900.0" prefHeight="500" prefWidth="900.0">
             <children>
@@ -15,33 +15,33 @@
                     <children>
                   <HBox maxHeight="40.0" prefHeight="40.0" spacing="20.0">
                      <children>
-                        <Button fx:id="vehicleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
+                        <ToggleButton fx:id="vehicleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fx:id="vehicleButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="vehicleButtonImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic>
-                        </Button>
-                        <Button fx:id="weaponButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
+                        </ToggleButton>
+                        <ToggleButton fx:id="weaponButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fx:id="weaponButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="weaponButtonImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic>
-                        </Button>
-                        <Button fx:id="ammoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
+                        </ToggleButton>
+                        <ToggleButton fx:id="ammoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
                            <graphic>
-                              <ImageView fx:id="ammoButtonImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ammoButtonImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic>
-                        </Button>
+                        </ToggleButton>
                      </children>
                   </HBox>
                         <HBox fillHeight="false" prefWidth="200.0">

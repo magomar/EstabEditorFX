@@ -98,7 +98,7 @@
                 </VBox>
             </top>
             <center>
-                <ScrollPane fx:id="estabDataContainer">
+                <ScrollPane fx:id="estabsContainer">
                     <content>
                         <VBox>
                             <children>

@@ -54,7 +54,7 @@
                                             </rowConstraints>
                                             <children>
                                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="150.0" text="Description" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                <TextArea fx:id="description" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                                                <TextArea fx:id="description" scaleShape="false" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" />
                                                 <TextField GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                                                     <GridPane.margin>
                                                         <Insets right="55.0" />
@@ -66,7 +66,7 @@
                                                     </GridPane.margin>
                                                 </Button>
                                                 <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="No Image" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                <ImageView fx:id="vehicleImage" fitHeight="96.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                                                <ImageView fx:id="vehicleImageView" fitHeight="96.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
                                                 <GridPane hgap="5.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                                     <children>
                                                         <Label text="Type" GridPane.halignment="CENTER" />
@@ -129,10 +129,10 @@
                                             <children>
                                                 <GridPane>
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
                                                         <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="4.0" prefWidth="78.0" />
-                                                        <ColumnConstraints hgrow="NEVER" maxWidth="235.0" minWidth="10.0" prefWidth="122.0" />
+                                                        <ColumnConstraints hgrow="NEVER" maxWidth="235.0" minWidth="10.0" prefWidth="130.0" />
                                                         <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
                                                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                                                     </columnConstraints>
@@ -245,9 +245,9 @@
                                                     </rowConstraints>
                                                     <children>
                                                         <Label text="Type" />
-                                                        <Label text="Equipment Name" GridPane.columnIndex="1" />
+                                                        <Label text="Weapon Name" GridPane.columnIndex="1" />
                                                         <Label text="Quantity" GridPane.columnIndex="2" />
-                                                        <TextField fx:id="armamentType" editable="false" text="Weapon" GridPane.rowIndex="1" />
+                                                        <TextField editable="false" promptText="Weapon" GridPane.rowIndex="1" />
                                                         <TextField fx:id="armamentName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                             <GridPane.margin>
                                                                 <Insets right="30.0" />

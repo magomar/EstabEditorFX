@@ -25,97 +25,81 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
- * Created by Mario on 04/08/2014.
+ * This controller manages the weapon editor view and model.
+ *
+ * @author Mario
+ * @author Heine
+ * @see EstabController
  */
 public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
 
-    @FXML
-    private TextField reliability;
-
-    @FXML
-    private TextArea description;
-
-    @FXML
-    private Button addRangeButton;
-
-    @FXML
-    private TextField crew;
-
-    @FXML
-    private TextField burstRadius;
-
-    @FXML
-    private TextField fireRateNormal;
-
-    @FXML
-    private TextField load;
-
-    @FXML
-    private CheckBox singleShot;
-
-    @FXML
-    private CheckBox mustDeployToFire;
-
-    @FXML
-    private Button removeRangeButton;
-
-    @FXML
-    private ImageView weaponImage;
-
-    @FXML
-    private ComboBox<PrimaryRole> weaponPrimaryRole;
-
-    @FXML
-    private TextField fireRateSlow;
-
-    @FXML
-    private TextField fireRateRapid;
-
-    @FXML
-    private TextField tableNewRangeValue;
-
-    @FXML
-    private TextField muzzleVelocity;
-
-    @FXML
-    private TextField shellWeight;
-
-    @FXML
-    private Label ammoNameLabel;
-
-    @FXML
-    private TextField tableNewAccuracyValue;
-
-    @FXML
-    private TextField calibre;
-
-    @FXML
-    private TextField weightTextField;
-
+    /**
+     * Root node
+     */
     @FXML
     private TextField name;
 
+    /**
+     * General tab
+     */
+    @FXML
+    private TextArea description;
     @FXML
     private ComboBox<WeaponType> weaponType;
-
     @FXML
-    private TextField tableNewArmorPenetrationValue;
-
+    private ComboBox<PrimaryRole> weaponPrimaryRole;
     @FXML
-    private TextField minRange;
+    private CheckBox singleShot;
+    @FXML
+    private CheckBox mustDeployToFire;
+    @FXML
+    private ImageView weaponImageView;
 
+
+    /**
+     * Performance tab
+     */
+    // Top region
+    @FXML
+    private TextField calibre;
+    @FXML
+    private TextField muzzleVelocity;
+    @FXML
+    private TextField crew;
+    @FXML
+    private TextField reliability;
+    @FXML
+    private TextField weight;
+
+    // Left region
     @FXML
     private ListView<FireType> performanceFireTypeList;
-
     @FXML
     private ComboBox<FireType> performanceFireTypeComboBox;
-
     @FXML
     private Button performanceFireTypeAddButton;
-
     @FXML
     private Button performanceFireTypeRemoveButton;
 
+    // Center region
+    @FXML
+    private Label ammoNameLabel;
+    @FXML
+    private TextField load;
+    @FXML
+    private TextField minRange;
+    @FXML
+    private TextField fireRateSlow;
+    @FXML
+    private TextField fireRateNormal;
+    @FXML
+    private TextField fireRateRapid;
+    @FXML
+    private TextField burstRadius;
+    @FXML
+    private TextField shellWeight;
+
+    // Range table
     @FXML
     private TableView<RangeItemModel> rangeItemTableView;
     @FXML
@@ -125,110 +109,191 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     private TableColumn<RangeItemModel, Double> rangeTableArmorColumn;
 
-    private WeaponModel weapon;
-    private PerformanceModel performance;
+    // Range table text fields
+    @FXML
+    private TextField tableNewRangeValue;
+    @FXML
+    private TextField tableNewAccuracyValue;
+    @FXML
+    private TextField tableNewArmorPenetrationValue;
+
+    // Range table buttons
+    @FXML
+    private Button addRangeButton;
+    @FXML
+    private Button removeRangeButton;
+
+    /**
+     * Other
+     */
+    // Last binded weapon
+    private WeaponModel activeWeapon;
+    // Last binded weapon performance
+    private PerformanceModel activePerformance;
+    // Weapon performance by fire type map
     private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
-
-    private EstabDataController estabDataController;
-
+    // Parent controller
+    private EstabController estabController;
+    /**
+     * @see {@link #setEditable(boolean)}
+     */
     private boolean isEditable;
 
+    /**
+     * Adds listeners to components and sets the initial item collections.
+     *
+     * @param location  is not used
+     * @param resources is not used
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        rangeItemTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            removeRangeButton.setDisable(false);
-        });
-
-        //performanceFireTypeList.setItems(fireTypeObservableList);
+        // Bind selected performance and unbind the previous active performance
         performanceFireTypeList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                if (performance != null) unbindPerformanceProperties(performance);
-                this.performance = performanceFireTypeMap.get(newValue);
-                bindPerformanceProperties(performance);
-                addRangeButton.setDisable(!isEditable);
-                removeRangeButton.setDisable(true);
+                if (activePerformance != null) unbindPerformanceProperties(activePerformance);
+                this.activePerformance = performanceFireTypeMap.get(newValue);
+                bindPerformanceProperties(activePerformance);
             }
         });
 
+        // Populate the weaponType combobox with all the weapon types
         weaponType.setItems(FXCollections.observableArrayList(WeaponType.values()));
+        // Set the activeWeapon type with the one selected in the combobox
         weaponType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) weapon.setType(newValue);
+            if (null != newValue) activeWeapon.setType(newValue);
         });
 
+        // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
+        // Set the activeWeapon primary role with the one selected in the combobox
         weaponPrimaryRole.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) weapon.setPrimaryRole(newValue);
+            if (null != newValue) activeWeapon.setPrimaryRole(newValue);
         });
     }
 
+    /**
+     * Removes a range from the performance.
+     * This method should be called when the {@link #addRangeButton} button is pressed.
+     * It creates a new range item with the text fields values and adds it
+     * to the {@link #rangeItemTableView} item collection and the {@link #activePerformance} ranges collection.
+     *
+     * @param actionEvent is not used
+     * @see RangeItemModel
+     */
     @FXML
-    protected void addRangeToTable(ActionEvent event) {
+    protected void addRangeToTable(ActionEvent actionEvent) {
+
 
         if (tableNewRangeValue.getText().isEmpty() || tableNewAccuracyValue.getText().isEmpty() || tableNewArmorPenetrationValue.getText().isEmpty()) {
+            // If one text field is empty, show dialog and abort
             UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
         } else {
+            // Prepare the new RanteItemModel
             RangeItemModel rangeItem = new RangeItemModel();
+            // Set its attributes with the text fields value
             rangeItem.setRange(Integer.valueOf(tableNewRangeValue.getText()));
             rangeItem.setAccuracy(Double.valueOf(tableNewAccuracyValue.getText()));
             rangeItem.setArmourPenetration(Double.valueOf(tableNewArmorPenetrationValue.getText()));
-            performance.getRanges().add(rangeItem);
+            // Add the new range to the active performance and the table
+            activePerformance.getRanges().add(rangeItem);
             rangeItemTableView.getItems().add(rangeItem);
         }
     }
 
+    /**
+     * Removes a range from the performance.
+     * This method should be called when the {@link #removeRangeButton} button is pressed.
+     * It removes the selected range from the {@link #rangeItemTableView} and the {@link #activePerformance} ranges collection.
+     *
+     * @param actionEvent is not used
+     * @see RangeItemModel
+     */
     @FXML
-    protected void removeRangeFromTable(ActionEvent event) {
-        DialogAction response = UtilView.showInfoDialog("Removing Range", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
-        if (response == DialogAction.OK) {
-            RangeItemModel r = rangeItemTableView.getItems().remove(rangeItemTableView.getSelectionModel().getSelectedIndex());
-            performance.getRanges().remove(r);
+    protected void removeRangeFromTable(ActionEvent actionEvent) {
+        if (!rangeItemTableView.getSelectionModel().getSelectedItems().isEmpty()) {
+            DialogAction response = UtilView.showInfoDialog("Removing Range", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
+            if (response == DialogAction.OK) {
+                // Remove range from table and performance if the user said OK
+                RangeItemModel r = rangeItemTableView.getItems().remove(rangeItemTableView.getSelectionModel().getSelectedIndex());
+                activePerformance.getRanges().remove(r);
+            }
         }
     }
 
+    /**
+     * Adds a performance to the weapon.
+     * This method should be called when the {@link #performanceFireTypeAddButton} button is pressed.
+     * It creates a new performance with the selected ammo by the user.
+     * The new performance attributes will have the default value (other than the ammo id and name, that is).
+     *
+     * @param actionEvent is not used
+     * @see PerformanceModel
+     */
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabDataController().getEstabDataModel().getAmmo().values());
-            if (ammo != null) {
+            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabController().getEstabModel().getAmmo().values());
+            // If the user didn't select any ammo, abort
+            if (selectedAmmo != null) {
+                // Create new AmmoLoad with the ammo name and id
                 AmmoLoad ammoLoad = new AmmoLoad();
-                ammoLoad.setObjectId(ammo.getId());
-                ammoLoad.setName(ammo.getName());
+                ammoLoad.setObjectId(selectedAmmo.getId());
+                ammoLoad.setName(selectedAmmo.getName());
                 ammoLoad.setLoad(0);
 
+                // Set Rate of Fire values to zero
                 ROF rof = new ROF();
                 rof.setNormal(0.0);
                 rof.setRapid(0.0);
                 rof.setSlow(0.0);
 
+                // Create an empty range table
                 RangeTable rangeTable = new RangeTable();
 
+                // Create a Performance POJO and get the PerformanceModel
                 Performance p = new Performance();
                 p.setAmmo(ammoLoad);
                 p.setRof(rof);
                 p.setRangeTable(rangeTable);
-
                 PerformanceModel pModel = new PerformanceModel(p);
 
                 FireType newFireType = performanceFireTypeComboBox.getSelectionModel().getSelectedItem();
+                // Update the performance with selected fire type
                 pModel.setFireType(newFireType);
+                // Add the fire type to the map, the list, and remove it from the combobox
                 performanceFireTypeMap.put(newFireType, pModel);
                 performanceFireTypeList.getItems().add(newFireType);
                 performanceFireTypeComboBox.getItems().remove(performanceFireTypeComboBox.getSelectionModel().getSelectedIndex());
-                weapon.getPerformances().add(pModel);
+                // Finally, add the performance to the active weapon
+                activeWeapon.getPerformances().add(pModel);
             }
         }
     }
 
+    /**
+     * Removes a performance from the weapon.
+     * This method should be called when the {@link #performanceRemoveFireType} button is pressed.
+     * It removes the performance associated with the selected fire type in the {@link #performanceFireTypeList} list
+     * from said list and the {@link #activeWeapon} performances collection.
+     *
+     * @param actionEvent is not used
+     */
     @FXML
     protected void performanceRemoveFireType(ActionEvent actionEvent) {
         if (!performanceFireTypeList.getSelectionModel().getSelectedItems().isEmpty()) {
             //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
-            weapon.getPerformances().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
+            activeWeapon.getPerformances().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
             performanceFireTypeList.getItems().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
         }
     }
 
+    /**
+     * Unbinds a performance properties from the view properties.
+     * It's similar to {@link #unbindProperties(WeaponModel)}
+     *
+     * @param p the {@link PerformanceModel} to unbind
+     */
     private void unbindPerformanceProperties(PerformanceModel p) {
         minRange.textProperty().unbindBidirectional(p.minRangeProperty());
         fireRateSlow.textProperty().unbindBidirectional(p.slowROFProperty());
@@ -241,6 +306,13 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     }
 
+    /**
+     * Binds a performance properties with the view properties.
+     * It's similar to {@link #bindProperties(WeaponModel)}
+     * <p>Also, it prepares the {@link #rangeItemTableView} columns to be editable and filled with custom values</p>
+     *
+     * @param p the {@link PerformanceModel} to unbind
+     */
     private void bindPerformanceProperties(PerformanceModel p) {
         minRange.textProperty().bindBidirectional(p.minRangeProperty(), new NumberStringConverter());
         fireRateSlow.textProperty().bindBidirectional(p.slowROFProperty(), new NumberStringConverter());
@@ -252,14 +324,16 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         ammoNameLabel.setText(p.getAmmoLoad().getName());
 
+        // Make cells editable
         rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(new IntegerStringConverter()));
-        rangeTableRangeColumn.setCellValueFactory(param -> param.getValue().rangeProperty().asObject());
-
         rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
-        rangeTableAccuracyColumn.setCellValueFactory(param -> param.getValue().accuracyProperty().asObject());
-
         rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
+
+        // Tell the columns where to extract the values from. Here param.getValue() returns a RangeItemModel
+        rangeTableRangeColumn.setCellValueFactory(param -> param.getValue().rangeProperty().asObject());
+        rangeTableAccuracyColumn.setCellValueFactory(param -> param.getValue().accuracyProperty().asObject());
         rangeTableArmorColumn.setCellValueFactory(param -> param.getValue().armourPenetrationProperty().asObject());
+
         rangeItemTableView.getColumns().clear();
         rangeItemTableView.getColumns().add(rangeTableRangeColumn);
         rangeItemTableView.getColumns().add(rangeTableAccuracyColumn);
@@ -270,7 +344,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @Override
     public void setEditable(boolean isEditable) {
         this.isEditable = isEditable;
-        weightTextField.setEditable(isEditable);
+        weight.setEditable(isEditable);
         name.setEditable(isEditable);
         description.setEditable(isEditable);
         crew.setEditable(isEditable);
@@ -292,11 +366,13 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         tableNewRangeValue.setEditable(isEditable);
         tableNewAccuracyValue.setEditable(isEditable);
         tableNewArmorPenetrationValue.setEditable(isEditable);
+        addRangeButton.setDisable(!isEditable);
+        removeRangeButton.setDisable(!isEditable);
     }
 
     @Override
     public void bindProperties(WeaponModel element) {
-        weightTextField.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
+        weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(element.nameProperty());
         description.textProperty().bindBidirectional(element.descriptionProperty());
         crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
@@ -309,33 +385,25 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         singleShot.selectedProperty().bindBidirectional(element.singleShotProperty());
         mustDeployToFire.selectedProperty().bindBidirectional(element.mustDeployToFireProperty());
-
-        // Careful, this is our pojo Image class, not the javafx Image class
-        Image image = getEstabDataController().getEstabDataModel().getImages().get(element.getPictureId());
-        if(image != null){
-            javafx.scene.image.Image javafxImage = FileIO.getDatasetImage(getEstabDataController().getActiveFile(), image.getFileId());
-            weaponImage.setImage(javafxImage);
-        }
     }
 
     @Override
     public void unbindProperties(WeaponModel element) {
-        weightTextField.textProperty().unbindBidirectional(element.weightProperty());
+        weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         crew.textProperty().unbindBidirectional(element.crewProperty());
         reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
         calibre.textProperty().unbindBidirectional(element.calibreProperty());
         muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
-        weaponImage.setImage(null);
     }
 
     @Override
     public void clear() {
-        unbindProperties(weapon);
-        unbindPerformanceProperties(performance);
+        unbindProperties(activeWeapon);
+        unbindPerformanceProperties(activePerformance);
 
-        weightTextField.setText("");
+        weight.setText("");
         name.setText("");
         description.setText("");
         crew.setText("");
@@ -362,40 +430,47 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public WeaponModel getEstabElement() {
-        return weapon;
+    public WeaponModel getActiveElement() {
+        return activeWeapon;
     }
 
     @Override
-    public void setEstabElement(WeaponModel element) {
-        if (weapon != null) unbindProperties(weapon);
-        this.weapon = element;
-        bindProperties(weapon);
+    public void setActiveElement(WeaponModel element) {
+        if (activeWeapon != null) {
+            unbindProperties(activeWeapon);
+            weaponImageView.setImage(null);
+        }
+        this.activeWeapon = element;
+        bindProperties(activeWeapon);
 
         performanceFireTypeList.getItems().clear();
         performanceFireTypeComboBox.getItems().clear();
-        performanceFireTypeMap = WeaponModel.getFireTypeMap(this.weapon);
+        performanceFireTypeMap = WeaponModel.getFireTypeMap(this.activeWeapon);
         for (Map.Entry<FireType, PerformanceModel> entry : performanceFireTypeMap.entrySet()) {
             if (entry.getValue() != null) {
-                // Fill FireTypeList with this performance fire types
+                // Fill FireTypeList with this activePerformance fire types
                 performanceFireTypeList.getItems().add(entry.getKey());
             } else {
                 // Fill combo box with the excluded fire types
                 performanceFireTypeComboBox.getItems().add(entry.getKey());
             }
         }
-
-        //WeaponModel.getFireTypeMap(this.weapon).entrySet().stream().filter(entry -> entry.getValue()).forEach(entry -> fireTypeObservableList.add(entry.getKey()));
         performanceFireTypeList.getSelectionModel().clearSelection();
+
+        // Careful, this is our pojo Image class, not the javafx Image class
+        Image image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
+        if (image != null) {
+            weaponImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
+        }
     }
 
     @Override
-    public EstabDataController getEstabDataController() {
-        return estabDataController;
+    public EstabController getEstabController() {
+        return estabController;
     }
 
     @Override
-    public void setEstabDataController(EstabDataController estabDataController) {
-        this.estabDataController = estabDataController;
+    public void setEstabController(EstabController estabController) {
+        this.estabController = estabController;
     }
 }

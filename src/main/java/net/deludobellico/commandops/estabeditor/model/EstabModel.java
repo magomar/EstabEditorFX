@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 /**
  * Created by mario on 30-Jul-14.
  */
-public class EstabDataModel {
-    private static final Logger LOG = Logger.getLogger(EstabDataModel.class.getName());
+public class EstabModel {
+    private static final Logger LOG = Logger.getLogger(EstabModel.class.getName());
     private Map<Integer, Image> images;
     private Map<Integer, Side> sides;
     private Map<Integer, VehicleModel> vehicles;
@@ -24,11 +24,11 @@ public class EstabDataModel {
     //TODO radios
     private Map<Class, Map> allElements;
 
-    public EstabDataModel(File estabDataFile) {
-        this((EstabData) FileIO.unmarshallXML(estabDataFile));
+    public EstabModel(File estabFile) {
+        this((EstabData) FileIO.unmarshallXML(estabFile));
     }
 
-    public EstabDataModel(EstabData estabData) {
+    public EstabModel(EstabData estabData) {
 
         List<Image> estabImage = estabData.getImage();
         List<Side> estabSides = estabData.getSide();
@@ -135,7 +135,7 @@ public class EstabDataModel {
     }
 
     //TODO: change ElementModel to Collection<ElementModel>
-    public RelatedElementLists getRelatedElements(ElementModel elementModel, EstabDataModel targetModel) {
+    public RelatedElementLists getRelatedElements(ElementModel elementModel, EstabModel targetModel) {
 
         RelatedElementLists relatedElementLists = new RelatedElementLists();
 

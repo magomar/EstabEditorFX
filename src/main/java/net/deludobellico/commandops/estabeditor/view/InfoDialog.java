@@ -25,7 +25,7 @@ import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+//TODO: make prettier the view
 public class InfoDialog implements Initializable {
 
     @FXML
