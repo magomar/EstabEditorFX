@@ -1,18 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para FormationSecurity complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="FormationSecurity">
  *   &lt;complexContent>
@@ -27,15 +22,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FormationSecurity", propOrder = {
-    "front",
-    "left",
-    "right",
-    "rear"
+        "front",
+        "left",
+        "right",
+        "rear"
 })
 public class FormationSecurity {
 
@@ -54,11 +47,9 @@ public class FormationSecurity {
 
     /**
      * Obtiene el valor de la propiedad front.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Security }
-     *     
+     *
+     * @return possible object is
+     * {@link Security }
      */
     public Security getFront() {
         return front;
@@ -66,11 +57,9 @@ public class FormationSecurity {
 
     /**
      * Define el valor de la propiedad front.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Security }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Security }
      */
     public void setFront(Security value) {
         this.front = value;
@@ -78,11 +67,9 @@ public class FormationSecurity {
 
     /**
      * Obtiene el valor de la propiedad left.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Security }
-     *     
+     *
+     * @return possible object is
+     * {@link Security }
      */
     public Security getLeft() {
         return left;
@@ -90,11 +77,9 @@ public class FormationSecurity {
 
     /**
      * Define el valor de la propiedad left.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Security }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Security }
      */
     public void setLeft(Security value) {
         this.left = value;
@@ -102,11 +87,9 @@ public class FormationSecurity {
 
     /**
      * Obtiene el valor de la propiedad right.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Security }
-     *     
+     *
+     * @return possible object is
+     * {@link Security }
      */
     public Security getRight() {
         return right;
@@ -114,11 +97,9 @@ public class FormationSecurity {
 
     /**
      * Define el valor de la propiedad right.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Security }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Security }
      */
     public void setRight(Security value) {
         this.right = value;
@@ -126,11 +107,9 @@ public class FormationSecurity {
 
     /**
      * Obtiene el valor de la propiedad rear.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Security }
-     *     
+     *
+     * @return possible object is
+     * {@link Security }
      */
     public Security getRear() {
         return rear;
@@ -138,11 +117,9 @@ public class FormationSecurity {
 
     /**
      * Define el valor de la propiedad rear.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Security }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Security }
      */
     public void setRear(Security value) {
         this.rear = value;

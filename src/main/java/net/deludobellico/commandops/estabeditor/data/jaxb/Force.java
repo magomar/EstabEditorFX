@@ -1,19 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para Force complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Force">
  *   &lt;complexContent>
@@ -51,37 +45,35 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Force", propOrder = {
-    "name",
-    "description",
-    "icon",
-    "type",
-    "subType",
-    "size",
-    "combatClass",
-    "targetClass",
-    "infantryValue",
-    "reconValue",
-    "engineeringValue",
-    "moveType",
-    "persQty",
-    "staffCapacity",
-    "basicsQty",
-    "basicsConsumptionRateModifier",
-    "commanderRank",
-    "fuelQty",
-    "fuelLoad",
-    "speed",
-    "deploymentDuration",
-    "readyToFireDuration",
-    "readyToBombardDuration",
-    "equipmentList",
-    "ammoList",
-    "canBombard"
+        "name",
+        "description",
+        "icon",
+        "type",
+        "subType",
+        "size",
+        "combatClass",
+        "targetClass",
+        "infantryValue",
+        "reconValue",
+        "engineeringValue",
+        "moveType",
+        "persQty",
+        "staffCapacity",
+        "basicsQty",
+        "basicsConsumptionRateModifier",
+        "commanderRank",
+        "fuelQty",
+        "fuelLoad",
+        "speed",
+        "deploymentDuration",
+        "readyToFireDuration",
+        "readyToBombardDuration",
+        "equipmentList",
+        "ammoList",
+        "canBombard"
 })
 public class Force {
 
@@ -149,11 +141,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad name.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -161,11 +151,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad name.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -173,11 +161,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad description.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -185,11 +171,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad description.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -197,11 +181,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad icon.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Icon }
-     *     
+     *
+     * @return possible object is
+     * {@link Icon }
      */
     public Icon getIcon() {
         return icon;
@@ -209,11 +191,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad icon.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Icon }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Icon }
      */
     public void setIcon(Icon value) {
         this.icon = value;
@@ -221,11 +201,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad type.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ForceType }
-     *     
+     *
+     * @return possible object is
+     * {@link ForceType }
      */
     public ForceType getType() {
         return type;
@@ -233,11 +211,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad type.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ForceType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ForceType }
      */
     public void setType(ForceType value) {
         this.type = value;
@@ -245,11 +221,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad subType.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ForceSubtype }
-     *     
+     *
+     * @return possible object is
+     * {@link ForceSubtype }
      */
     public ForceSubtype getSubType() {
         return subType;
@@ -257,11 +231,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad subType.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ForceSubtype }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ForceSubtype }
      */
     public void setSubType(ForceSubtype value) {
         this.subType = value;
@@ -269,11 +241,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad size.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ForceSize }
-     *     
+     *
+     * @return possible object is
+     * {@link ForceSize }
      */
     public ForceSize getSize() {
         return size;
@@ -281,11 +251,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad size.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ForceSize }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ForceSize }
      */
     public void setSize(ForceSize value) {
         this.size = value;
@@ -293,11 +261,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad combatClass.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CombatClass }
-     *     
+     *
+     * @return possible object is
+     * {@link CombatClass }
      */
     public CombatClass getCombatClass() {
         return combatClass;
@@ -305,11 +271,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad combatClass.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CombatClass }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link CombatClass }
      */
     public void setCombatClass(CombatClass value) {
         this.combatClass = value;
@@ -317,11 +281,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad targetClass.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TargetClass }
-     *     
+     *
+     * @return possible object is
+     * {@link TargetClass }
      */
     public TargetClass getTargetClass() {
         return targetClass;
@@ -329,11 +291,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad targetClass.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TargetClass }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TargetClass }
      */
     public void setTargetClass(TargetClass value) {
         this.targetClass = value;
@@ -341,7 +301,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad infantryValue.
-     * 
      */
     public int getInfantryValue() {
         return infantryValue;
@@ -349,7 +308,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad infantryValue.
-     * 
      */
     public void setInfantryValue(int value) {
         this.infantryValue = value;
@@ -357,7 +315,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad reconValue.
-     * 
      */
     public int getReconValue() {
         return reconValue;
@@ -365,7 +322,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad reconValue.
-     * 
      */
     public void setReconValue(int value) {
         this.reconValue = value;
@@ -373,7 +329,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad engineeringValue.
-     * 
      */
     public int getEngineeringValue() {
         return engineeringValue;
@@ -381,7 +336,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad engineeringValue.
-     * 
      */
     public void setEngineeringValue(int value) {
         this.engineeringValue = value;
@@ -389,11 +343,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad moveType.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MoveType }
-     *     
+     *
+     * @return possible object is
+     * {@link MoveType }
      */
     public MoveType getMoveType() {
         return moveType;
@@ -401,11 +353,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad moveType.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MoveType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link MoveType }
      */
     public void setMoveType(MoveType value) {
         this.moveType = value;
@@ -413,7 +363,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad persQty.
-     * 
      */
     public int getPersQty() {
         return persQty;
@@ -421,7 +370,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad persQty.
-     * 
      */
     public void setPersQty(int value) {
         this.persQty = value;
@@ -429,7 +377,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad staffCapacity.
-     * 
      */
     public int getStaffCapacity() {
         return staffCapacity;
@@ -437,7 +384,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad staffCapacity.
-     * 
      */
     public void setStaffCapacity(int value) {
         this.staffCapacity = value;
@@ -445,7 +391,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad basicsQty.
-     * 
      */
     public double getBasicsQty() {
         return basicsQty;
@@ -453,7 +398,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad basicsQty.
-     * 
      */
     public void setBasicsQty(double value) {
         this.basicsQty = value;
@@ -461,7 +405,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad basicsConsumptionRateModifier.
-     * 
      */
     public double getBasicsConsumptionRateModifier() {
         return basicsConsumptionRateModifier;
@@ -469,7 +412,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad basicsConsumptionRateModifier.
-     * 
      */
     public void setBasicsConsumptionRateModifier(double value) {
         this.basicsConsumptionRateModifier = value;
@@ -477,7 +419,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad commanderRank.
-     * 
      */
     public int getCommanderRank() {
         return commanderRank;
@@ -485,7 +426,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad commanderRank.
-     * 
      */
     public void setCommanderRank(int value) {
         this.commanderRank = value;
@@ -493,7 +433,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad fuelQty.
-     * 
      */
     public double getFuelQty() {
         return fuelQty;
@@ -501,7 +440,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad fuelQty.
-     * 
      */
     public void setFuelQty(double value) {
         this.fuelQty = value;
@@ -509,7 +447,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad fuelLoad.
-     * 
      */
     public double getFuelLoad() {
         return fuelLoad;
@@ -517,7 +454,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad fuelLoad.
-     * 
      */
     public void setFuelLoad(double value) {
         this.fuelLoad = value;
@@ -525,11 +461,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad speed.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @return possible object is
+     * {@link SpeedData }
      */
     public SpeedData getSpeed() {
         return speed;
@@ -537,11 +471,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad speed.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SpeedData }
      */
     public void setSpeed(SpeedData value) {
         this.speed = value;
@@ -549,11 +481,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad deploymentDuration.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DeploymentDuration }
-     *     
+     *
+     * @return possible object is
+     * {@link DeploymentDuration }
      */
     public DeploymentDuration getDeploymentDuration() {
         return deploymentDuration;
@@ -561,11 +491,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad deploymentDuration.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DeploymentDuration }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link DeploymentDuration }
      */
     public void setDeploymentDuration(DeploymentDuration value) {
         this.deploymentDuration = value;
@@ -573,11 +501,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad readyToFireDuration.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getReadyToFireDuration() {
         return readyToFireDuration;
@@ -585,11 +511,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad readyToFireDuration.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setReadyToFireDuration(String value) {
         this.readyToFireDuration = value;
@@ -597,11 +521,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad readyToBombardDuration.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getReadyToBombardDuration() {
         return readyToBombardDuration;
@@ -609,11 +531,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad readyToBombardDuration.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setReadyToBombardDuration(String value) {
         this.readyToBombardDuration = value;
@@ -621,11 +541,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad equipmentList.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EquipmentList }
-     *     
+     *
+     * @return possible object is
+     * {@link EquipmentList }
      */
     public EquipmentList getEquipmentList() {
         return equipmentList;
@@ -633,11 +551,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad equipmentList.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EquipmentList }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link EquipmentList }
      */
     public void setEquipmentList(EquipmentList value) {
         this.equipmentList = value;
@@ -645,11 +561,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad ammoList.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AmmoList }
-     *     
+     *
+     * @return possible object is
+     * {@link AmmoList }
      */
     public AmmoList getAmmoList() {
         return ammoList;
@@ -657,11 +571,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad ammoList.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AmmoList }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link AmmoList }
      */
     public void setAmmoList(AmmoList value) {
         this.ammoList = value;
@@ -669,11 +581,9 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad canBombard.
-     * 
-     * @return
-     *     possible object is
-     *     {@link YesNo }
-     *     
+     *
+     * @return possible object is
+     * {@link YesNo }
      */
     public YesNo getCanBombard() {
         return canBombard;
@@ -681,11 +591,9 @@ public class Force {
 
     /**
      * Define el valor de la propiedad canBombard.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link YesNo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link YesNo }
      */
     public void setCanBombard(YesNo value) {
         this.canBombard = value;
@@ -693,7 +601,6 @@ public class Force {
 
     /**
      * Obtiene el valor de la propiedad id.
-     * 
      */
     public int getId() {
         return id;
@@ -701,7 +608,6 @@ public class Force {
 
     /**
      * Define el valor de la propiedad id.
-     * 
      */
     public void setId(int value) {
         this.id = value;

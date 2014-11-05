@@ -1,18 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para DefaultIconColors complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="DefaultIconColors">
  *   &lt;complexContent>
@@ -28,16 +23,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DefaultIconColors", propOrder = {
-    "backgroundColor",
-    "backgroundDarkColor",
-    "backgroundLightColor",
-    "designationColor",
-    "symbolColor"
+        "backgroundColor",
+        "backgroundDarkColor",
+        "backgroundLightColor",
+        "designationColor",
+        "symbolColor"
 })
 public class DefaultIconColors {
 
@@ -55,11 +48,9 @@ public class DefaultIconColors {
 
     /**
      * Obtiene el valor de la propiedad backgroundColor.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @return possible object is
+     * {@link RGBColor }
      */
     public RGBColor getBackgroundColor() {
         return backgroundColor;
@@ -67,11 +58,9 @@ public class DefaultIconColors {
 
     /**
      * Define el valor de la propiedad backgroundColor.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RGBColor }
      */
     public void setBackgroundColor(RGBColor value) {
         this.backgroundColor = value;
@@ -79,11 +68,9 @@ public class DefaultIconColors {
 
     /**
      * Obtiene el valor de la propiedad backgroundDarkColor.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @return possible object is
+     * {@link RGBColor }
      */
     public RGBColor getBackgroundDarkColor() {
         return backgroundDarkColor;
@@ -91,11 +78,9 @@ public class DefaultIconColors {
 
     /**
      * Define el valor de la propiedad backgroundDarkColor.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RGBColor }
      */
     public void setBackgroundDarkColor(RGBColor value) {
         this.backgroundDarkColor = value;
@@ -103,11 +88,9 @@ public class DefaultIconColors {
 
     /**
      * Obtiene el valor de la propiedad backgroundLightColor.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @return possible object is
+     * {@link RGBColor }
      */
     public RGBColor getBackgroundLightColor() {
         return backgroundLightColor;
@@ -115,11 +98,9 @@ public class DefaultIconColors {
 
     /**
      * Define el valor de la propiedad backgroundLightColor.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RGBColor }
      */
     public void setBackgroundLightColor(RGBColor value) {
         this.backgroundLightColor = value;
@@ -127,11 +108,9 @@ public class DefaultIconColors {
 
     /**
      * Obtiene el valor de la propiedad designationColor.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @return possible object is
+     * {@link RGBColor }
      */
     public RGBColor getDesignationColor() {
         return designationColor;
@@ -139,11 +118,9 @@ public class DefaultIconColors {
 
     /**
      * Define el valor de la propiedad designationColor.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RGBColor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RGBColor }
      */
     public void setDesignationColor(RGBColor value) {
         this.designationColor = value;
@@ -151,11 +128,9 @@ public class DefaultIconColors {
 
     /**
      * Obtiene el valor de la propiedad symbolColor.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SymbolColor }
-     *     
+     *
+     * @return possible object is
+     * {@link SymbolColor }
      */
     public SymbolColor getSymbolColor() {
         return symbolColor;
@@ -163,11 +138,9 @@ public class DefaultIconColors {
 
     /**
      * Define el valor de la propiedad symbolColor.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SymbolColor }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SymbolColor }
      */
     public void setSymbolColor(SymbolColor value) {
         this.symbolColor = value;

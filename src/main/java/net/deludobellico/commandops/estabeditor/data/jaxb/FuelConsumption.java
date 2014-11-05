@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para FuelConsumption complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="FuelConsumption">
  *   &lt;complexContent>
@@ -22,8 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FuelConsumption")
@@ -36,7 +33,6 @@ public class FuelConsumption {
 
     /**
      * Obtiene el valor de la propiedad max.
-     * 
      */
     public double getMax() {
         return max;
@@ -44,7 +40,6 @@ public class FuelConsumption {
 
     /**
      * Define el valor de la propiedad max.
-     * 
      */
     public void setMax(double value) {
         this.max = value;
@@ -52,7 +47,6 @@ public class FuelConsumption {
 
     /**
      * Obtiene el valor de la propiedad normal.
-     * 
      */
     public double getNormal() {
         return normal;
@@ -60,7 +54,6 @@ public class FuelConsumption {
 
     /**
      * Define el valor de la propiedad normal.
-     * 
      */
     public void setNormal(double value) {
         this.normal = value;

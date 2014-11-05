@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para PrimaryRole.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
@@ -20,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "PrimaryRole")
 @XmlEnum
@@ -38,17 +36,17 @@ public enum PrimaryRole {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static PrimaryRole fromValue(String v) {
-        for (PrimaryRole c: PrimaryRole.values()) {
+        for (PrimaryRole c : PrimaryRole.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

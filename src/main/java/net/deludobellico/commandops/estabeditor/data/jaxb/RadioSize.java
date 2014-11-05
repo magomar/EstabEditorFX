@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para RadioSize complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RadioSize">
  *   &lt;complexContent>
@@ -24,8 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RadioSize")
@@ -42,7 +39,6 @@ public class RadioSize {
 
     /**
      * Obtiene el valor de la propiedad width.
-     * 
      */
     public double getWidth() {
         return width;
@@ -50,7 +46,6 @@ public class RadioSize {
 
     /**
      * Define el valor de la propiedad width.
-     * 
      */
     public void setWidth(double value) {
         this.width = value;
@@ -58,7 +53,6 @@ public class RadioSize {
 
     /**
      * Obtiene el valor de la propiedad height.
-     * 
      */
     public double getHeight() {
         return height;
@@ -66,7 +60,6 @@ public class RadioSize {
 
     /**
      * Define el valor de la propiedad height.
-     * 
      */
     public void setHeight(double value) {
         this.height = value;
@@ -74,7 +67,6 @@ public class RadioSize {
 
     /**
      * Obtiene el valor de la propiedad length.
-     * 
      */
     public double getLength() {
         return length;
@@ -82,7 +74,6 @@ public class RadioSize {
 
     /**
      * Define el valor de la propiedad length.
-     * 
      */
     public void setLength(double value) {
         this.length = value;
@@ -90,7 +81,6 @@ public class RadioSize {
 
     /**
      * Obtiene el valor de la propiedad weight.
-     * 
      */
     public double getWeight() {
         return weight;
@@ -98,7 +88,6 @@ public class RadioSize {
 
     /**
      * Define el valor de la propiedad weight.
-     * 
      */
     public void setWeight(double value) {
         this.weight = value;

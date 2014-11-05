@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para Armor complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Armor">
  *   &lt;complexContent>
@@ -24,8 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Armor")
@@ -42,7 +39,6 @@ public class Armor {
 
     /**
      * Obtiene el valor de la propiedad front.
-     * 
      */
     public double getFront() {
         return front;
@@ -50,7 +46,6 @@ public class Armor {
 
     /**
      * Define el valor de la propiedad front.
-     * 
      */
     public void setFront(double value) {
         this.front = value;
@@ -58,7 +53,6 @@ public class Armor {
 
     /**
      * Obtiene el valor de la propiedad side.
-     * 
      */
     public double getSide() {
         return side;
@@ -66,7 +60,6 @@ public class Armor {
 
     /**
      * Define el valor de la propiedad side.
-     * 
      */
     public void setSide(double value) {
         this.side = value;
@@ -74,7 +67,6 @@ public class Armor {
 
     /**
      * Obtiene el valor de la propiedad rear.
-     * 
      */
     public double getRear() {
         return rear;
@@ -82,7 +74,6 @@ public class Armor {
 
     /**
      * Define el valor de la propiedad rear.
-     * 
      */
     public void setRear(double value) {
         this.rear = value;
@@ -90,7 +81,6 @@ public class Armor {
 
     /**
      * Obtiene el valor de la propiedad top.
-     * 
      */
     public double getTop() {
         return top;
@@ -98,7 +88,6 @@ public class Armor {
 
     /**
      * Define el valor de la propiedad top.
-     * 
      */
     public void setTop(double value) {
         this.top = value;

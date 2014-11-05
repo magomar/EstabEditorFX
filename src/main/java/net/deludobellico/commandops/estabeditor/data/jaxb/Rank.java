@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para Rank complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Rank">
  *   &lt;complexContent>
@@ -22,8 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rank")
@@ -36,11 +33,9 @@ public class Rank {
 
     /**
      * Obtiene el valor de la propiedad shortName.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getShortName() {
         return shortName;
@@ -48,11 +43,9 @@ public class Rank {
 
     /**
      * Define el valor de la propiedad shortName.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setShortName(String value) {
         this.shortName = value;
@@ -60,11 +53,9 @@ public class Rank {
 
     /**
      * Obtiene el valor de la propiedad fullName.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getFullName() {
         return fullName;
@@ -72,11 +63,9 @@ public class Rank {
 
     /**
      * Define el valor de la propiedad fullName.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setFullName(String value) {
         this.fullName = value;

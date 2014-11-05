@@ -1,18 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para Performance complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Performance">
  *   &lt;complexContent>
@@ -30,17 +25,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Performance", propOrder = {
-    "ammo",
-    "minRange",
-    "rof",
-    "burstRadius",
-    "shellWeight",
-    "rangeTable"
+        "ammo",
+        "minRange",
+        "rof",
+        "burstRadius",
+        "shellWeight",
+        "rangeTable"
 })
 public class Performance {
 
@@ -61,11 +54,9 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad ammo.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AmmoLoad }
-     *     
+     *
+     * @return possible object is
+     * {@link AmmoLoad }
      */
     public AmmoLoad getAmmo() {
         return ammo;
@@ -73,11 +64,9 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad ammo.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AmmoLoad }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link AmmoLoad }
      */
     public void setAmmo(AmmoLoad value) {
         this.ammo = value;
@@ -85,7 +74,6 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad minRange.
-     * 
      */
     public int getMinRange() {
         return minRange;
@@ -93,7 +81,6 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad minRange.
-     * 
      */
     public void setMinRange(int value) {
         this.minRange = value;
@@ -101,11 +88,9 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad rof.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ROF }
-     *     
+     *
+     * @return possible object is
+     * {@link ROF }
      */
     public ROF getRof() {
         return rof;
@@ -113,11 +98,9 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad rof.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ROF }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ROF }
      */
     public void setRof(ROF value) {
         this.rof = value;
@@ -125,7 +108,6 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad burstRadius.
-     * 
      */
     public int getBurstRadius() {
         return burstRadius;
@@ -133,7 +115,6 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad burstRadius.
-     * 
      */
     public void setBurstRadius(int value) {
         this.burstRadius = value;
@@ -141,7 +122,6 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad shellWeight.
-     * 
      */
     public double getShellWeight() {
         return shellWeight;
@@ -149,7 +129,6 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad shellWeight.
-     * 
      */
     public void setShellWeight(double value) {
         this.shellWeight = value;
@@ -157,11 +136,9 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad rangeTable.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RangeTable }
-     *     
+     *
+     * @return possible object is
+     * {@link RangeTable }
      */
     public RangeTable getRangeTable() {
         return rangeTable;
@@ -169,11 +146,9 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad rangeTable.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RangeTable }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RangeTable }
      */
     public void setRangeTable(RangeTable value) {
         this.rangeTable = value;
@@ -181,11 +156,9 @@ public class Performance {
 
     /**
      * Obtiene el valor de la propiedad fireType.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FireType }
-     *     
+     *
+     * @return possible object is
+     * {@link FireType }
      */
     public FireType getFireType() {
         return fireType;
@@ -193,11 +166,9 @@ public class Performance {
 
     /**
      * Define el valor de la propiedad fireType.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FireType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link FireType }
      */
     public void setFireType(FireType value) {
         this.fireType = value;

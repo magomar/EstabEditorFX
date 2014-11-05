@@ -1,12 +1,5 @@
 package net.deludobellico.commandops.estabeditor.util;
 
-import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
-
-import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.logging.Logger;
-
 /**
  * Created by Mario on 24/07/2014.
  */

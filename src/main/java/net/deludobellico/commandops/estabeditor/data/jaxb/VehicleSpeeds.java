@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para VehicleSpeeds complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="VehicleSpeeds">
  *   &lt;complexContent>
@@ -24,13 +23,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VehicleSpeeds", propOrder = {
-    "road",
-    "crossCountry"
+        "road",
+        "crossCountry"
 })
 public class VehicleSpeeds {
 
@@ -41,11 +38,9 @@ public class VehicleSpeeds {
 
     /**
      * Obtiene el valor de la propiedad road.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @return possible object is
+     * {@link SpeedData }
      */
     public SpeedData getRoad() {
         return road;
@@ -53,11 +48,9 @@ public class VehicleSpeeds {
 
     /**
      * Define el valor de la propiedad road.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SpeedData }
      */
     public void setRoad(SpeedData value) {
         this.road = value;
@@ -65,11 +58,9 @@ public class VehicleSpeeds {
 
     /**
      * Obtiene el valor de la propiedad crossCountry.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @return possible object is
+     * {@link SpeedData }
      */
     public SpeedData getCrossCountry() {
         return crossCountry;
@@ -77,11 +68,9 @@ public class VehicleSpeeds {
 
     /**
      * Define el valor de la propiedad crossCountry.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SpeedData }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link SpeedData }
      */
     public void setCrossCountry(SpeedData value) {
         this.crossCountry = value;

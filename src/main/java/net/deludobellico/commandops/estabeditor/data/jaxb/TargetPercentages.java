@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para TargetPercentages complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="TargetPercentages">
  *   &lt;complexContent>
@@ -25,15 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TargetPercentages", propOrder = {
-    "front",
-    "left",
-    "right",
-    "rear"
+        "front",
+        "left",
+        "right",
+        "rear"
 })
 public class TargetPercentages {
 
@@ -44,7 +41,6 @@ public class TargetPercentages {
 
     /**
      * Obtiene el valor de la propiedad front.
-     * 
      */
     public double getFront() {
         return front;
@@ -52,7 +48,6 @@ public class TargetPercentages {
 
     /**
      * Define el valor de la propiedad front.
-     * 
      */
     public void setFront(double value) {
         this.front = value;
@@ -60,7 +55,6 @@ public class TargetPercentages {
 
     /**
      * Obtiene el valor de la propiedad left.
-     * 
      */
     public double getLeft() {
         return left;
@@ -68,7 +62,6 @@ public class TargetPercentages {
 
     /**
      * Define el valor de la propiedad left.
-     * 
      */
     public void setLeft(double value) {
         this.left = value;
@@ -76,7 +69,6 @@ public class TargetPercentages {
 
     /**
      * Obtiene el valor de la propiedad right.
-     * 
      */
     public double getRight() {
         return right;
@@ -84,7 +76,6 @@ public class TargetPercentages {
 
     /**
      * Define el valor de la propiedad right.
-     * 
      */
     public void setRight(double value) {
         this.right = value;
@@ -92,7 +83,6 @@ public class TargetPercentages {
 
     /**
      * Obtiene el valor de la propiedad rear.
-     * 
      */
     public double getRear() {
         return rear;
@@ -100,7 +90,6 @@ public class TargetPercentages {
 
     /**
      * Define el valor de la propiedad rear.
-     * 
      */
     public void setRear(double value) {
         this.rear = value;

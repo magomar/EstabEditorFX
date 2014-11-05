@@ -1,18 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para FormationEffects complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="FormationEffects">
  *   &lt;complexContent>
@@ -31,17 +26,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FormationEffects", propOrder = {
-    "movingCohesionLevel",
-    "frontagePerMan",
-    "depthPerMan",
-    "firingPercentages",
-    "targetPercentages",
-    "security"
+        "movingCohesionLevel",
+        "frontagePerMan",
+        "depthPerMan",
+        "firingPercentages",
+        "targetPercentages",
+        "security"
 })
 public class FormationEffects {
 
@@ -64,7 +57,6 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad movingCohesionLevel.
-     * 
      */
     public double getMovingCohesionLevel() {
         return movingCohesionLevel;
@@ -72,7 +64,6 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad movingCohesionLevel.
-     * 
      */
     public void setMovingCohesionLevel(double value) {
         this.movingCohesionLevel = value;
@@ -80,7 +71,6 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad frontagePerMan.
-     * 
      */
     public double getFrontagePerMan() {
         return frontagePerMan;
@@ -88,7 +78,6 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad frontagePerMan.
-     * 
      */
     public void setFrontagePerMan(double value) {
         this.frontagePerMan = value;
@@ -96,7 +85,6 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad depthPerMan.
-     * 
      */
     public double getDepthPerMan() {
         return depthPerMan;
@@ -104,7 +92,6 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad depthPerMan.
-     * 
      */
     public void setDepthPerMan(double value) {
         this.depthPerMan = value;
@@ -112,11 +99,9 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad firingPercentages.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FiringPercentages }
-     *     
+     *
+     * @return possible object is
+     * {@link FiringPercentages }
      */
     public FiringPercentages getFiringPercentages() {
         return firingPercentages;
@@ -124,11 +109,9 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad firingPercentages.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FiringPercentages }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link FiringPercentages }
      */
     public void setFiringPercentages(FiringPercentages value) {
         this.firingPercentages = value;
@@ -136,11 +119,9 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad targetPercentages.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TargetPercentages }
-     *     
+     *
+     * @return possible object is
+     * {@link TargetPercentages }
      */
     public TargetPercentages getTargetPercentages() {
         return targetPercentages;
@@ -148,11 +129,9 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad targetPercentages.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TargetPercentages }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TargetPercentages }
      */
     public void setTargetPercentages(TargetPercentages value) {
         this.targetPercentages = value;
@@ -160,11 +139,9 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad security.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FormationSecurity }
-     *     
+     *
+     * @return possible object is
+     * {@link FormationSecurity }
      */
     public FormationSecurity getSecurity() {
         return security;
@@ -172,11 +149,9 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad security.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FormationSecurity }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link FormationSecurity }
      */
     public void setSecurity(FormationSecurity value) {
         this.security = value;
@@ -184,7 +159,6 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad id.
-     * 
      */
     public int getId() {
         return id;
@@ -192,7 +166,6 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad id.
-     * 
      */
     public void setId(int value) {
         this.id = value;
@@ -200,11 +173,9 @@ public class FormationEffects {
 
     /**
      * Obtiene el valor de la propiedad type.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FormationType }
-     *     
+     *
+     * @return possible object is
+     * {@link FormationType }
      */
     public FormationType getType() {
         return type;
@@ -212,11 +183,9 @@ public class FormationEffects {
 
     /**
      * Define el valor de la propiedad type.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FormationType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link FormationType }
      */
     public void setType(FormationType value) {
         this.type = value;

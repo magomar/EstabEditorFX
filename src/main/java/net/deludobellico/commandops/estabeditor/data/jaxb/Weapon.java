@@ -1,19 +1,13 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Clase Java para Weapon complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Weapon">
  *   &lt;complexContent>
@@ -40,26 +34,24 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Weapon", propOrder = {
-    "name",
-    "description",
-    "picture",
-    "pictureFilename",
-    "size",
-    "crew",
-    "reliability",
-    "armaments",
-    "type",
-    "singleShot",
-    "primaryRole",
-    "calibre",
-    "muzzleVelocity",
-    "mustDeployToFire",
-    "performanceList"
+        "name",
+        "description",
+        "picture",
+        "pictureFilename",
+        "size",
+        "crew",
+        "reliability",
+        "armaments",
+        "type",
+        "singleShot",
+        "primaryRole",
+        "calibre",
+        "muzzleVelocity",
+        "mustDeployToFire",
+        "performanceList"
 })
 public class Weapon {
 
@@ -99,11 +91,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad name.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -111,11 +101,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad name.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -123,11 +111,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad description.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -135,11 +121,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad description.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -147,11 +131,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad picture.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Picture }
-     *     
+     *
+     * @return possible object is
+     * {@link Picture }
      */
     public Picture getPicture() {
         return picture;
@@ -159,11 +141,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad picture.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Picture }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Picture }
      */
     public void setPicture(Picture value) {
         this.picture = value;
@@ -171,11 +151,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad pictureFilename.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPictureFilename() {
         return pictureFilename;
@@ -183,11 +161,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad pictureFilename.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPictureFilename(String value) {
         this.pictureFilename = value;
@@ -195,11 +171,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad size.
-     * 
-     * @return
-     *     possible object is
-     *     {@link WeaponSize }
-     *     
+     *
+     * @return possible object is
+     * {@link WeaponSize }
      */
     public WeaponSize getSize() {
         return size;
@@ -207,11 +181,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad size.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link WeaponSize }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link WeaponSize }
      */
     public void setSize(WeaponSize value) {
         this.size = value;
@@ -219,7 +191,6 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad crew.
-     * 
      */
     public int getCrew() {
         return crew;
@@ -227,7 +198,6 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad crew.
-     * 
      */
     public void setCrew(int value) {
         this.crew = value;
@@ -235,7 +205,6 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad reliability.
-     * 
      */
     public double getReliability() {
         return reliability;
@@ -243,7 +212,6 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad reliability.
-     * 
      */
     public void setReliability(double value) {
         this.reliability = value;
@@ -251,11 +219,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad armaments.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getArmaments() {
         return armaments;
@@ -263,11 +229,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad armaments.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setArmaments(String value) {
         this.armaments = value;
@@ -275,11 +239,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad type.
-     * 
-     * @return
-     *     possible object is
-     *     {@link WeaponType }
-     *     
+     *
+     * @return possible object is
+     * {@link WeaponType }
      */
     public WeaponType getType() {
         return type;
@@ -287,11 +249,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad type.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link WeaponType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link WeaponType }
      */
     public void setType(WeaponType value) {
         this.type = value;
@@ -299,11 +259,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad singleShot.
-     * 
-     * @return
-     *     possible object is
-     *     {@link YesNo }
-     *     
+     *
+     * @return possible object is
+     * {@link YesNo }
      */
     public YesNo getSingleShot() {
         return singleShot;
@@ -311,11 +269,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad singleShot.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link YesNo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link YesNo }
      */
     public void setSingleShot(YesNo value) {
         this.singleShot = value;
@@ -323,11 +279,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad primaryRole.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PrimaryRole }
-     *     
+     *
+     * @return possible object is
+     * {@link PrimaryRole }
      */
     public PrimaryRole getPrimaryRole() {
         return primaryRole;
@@ -335,11 +289,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad primaryRole.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PrimaryRole }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link PrimaryRole }
      */
     public void setPrimaryRole(PrimaryRole value) {
         this.primaryRole = value;
@@ -347,7 +299,6 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad calibre.
-     * 
      */
     public double getCalibre() {
         return calibre;
@@ -355,7 +306,6 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad calibre.
-     * 
      */
     public void setCalibre(double value) {
         this.calibre = value;
@@ -363,7 +313,6 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad muzzleVelocity.
-     * 
      */
     public int getMuzzleVelocity() {
         return muzzleVelocity;
@@ -371,7 +320,6 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad muzzleVelocity.
-     * 
      */
     public void setMuzzleVelocity(int value) {
         this.muzzleVelocity = value;
@@ -379,11 +327,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad mustDeployToFire.
-     * 
-     * @return
-     *     possible object is
-     *     {@link YesNo }
-     *     
+     *
+     * @return possible object is
+     * {@link YesNo }
      */
     public YesNo getMustDeployToFire() {
         return mustDeployToFire;
@@ -391,11 +337,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad mustDeployToFire.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link YesNo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link YesNo }
      */
     public void setMustDeployToFire(YesNo value) {
         this.mustDeployToFire = value;
@@ -403,11 +347,9 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad performanceList.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PerformanceList }
-     *     
+     *
+     * @return possible object is
+     * {@link PerformanceList }
      */
     public PerformanceList getPerformanceList() {
         return performanceList;
@@ -415,11 +357,9 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad performanceList.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PerformanceList }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link PerformanceList }
      */
     public void setPerformanceList(PerformanceList value) {
         this.performanceList = value;
@@ -427,7 +367,6 @@ public class Weapon {
 
     /**
      * Obtiene el valor de la propiedad id.
-     * 
      */
     public int getId() {
         return id;
@@ -435,7 +374,6 @@ public class Weapon {
 
     /**
      * Define el valor de la propiedad id.
-     * 
      */
     public void setId(int value) {
         this.id = value;

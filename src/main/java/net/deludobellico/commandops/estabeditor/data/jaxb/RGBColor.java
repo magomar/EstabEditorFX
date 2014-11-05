@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para RGBColor complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RGBColor">
  *   &lt;complexContent>
@@ -23,8 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RGBColor")
@@ -39,7 +36,6 @@ public class RGBColor {
 
     /**
      * Obtiene el valor de la propiedad red.
-     * 
      */
     public int getRed() {
         return red;
@@ -47,7 +43,6 @@ public class RGBColor {
 
     /**
      * Define el valor de la propiedad red.
-     * 
      */
     public void setRed(int value) {
         this.red = value;
@@ -55,7 +50,6 @@ public class RGBColor {
 
     /**
      * Obtiene el valor de la propiedad green.
-     * 
      */
     public int getGreen() {
         return green;
@@ -63,7 +57,6 @@ public class RGBColor {
 
     /**
      * Define el valor de la propiedad green.
-     * 
      */
     public void setGreen(int value) {
         this.green = value;
@@ -71,7 +64,6 @@ public class RGBColor {
 
     /**
      * Obtiene el valor de la propiedad blue.
-     * 
      */
     public int getBlue() {
         return blue;
@@ -79,7 +71,6 @@ public class RGBColor {
 
     /**
      * Define el valor de la propiedad blue.
-     * 
      */
     public void setBlue(int value) {
         this.blue = value;

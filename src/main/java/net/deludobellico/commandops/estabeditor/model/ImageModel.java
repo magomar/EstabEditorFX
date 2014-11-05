@@ -39,25 +39,25 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     }
 
     @Override
-    public IntegerProperty idProperty() {
-        return id;
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     @Override
-    public void setId(int id) {
-        this.id.set(id);
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getFileId() {
         return fileId.get();
     }
 
-    public StringProperty fileIdProperty() {
-        return fileId;
-    }
-
     public void setFileId(String fileId) {
         this.fileId.set(fileId);
+    }
+
+    public StringProperty fileIdProperty() {
+        return fileId;
     }
 
     @Override
@@ -66,13 +66,13 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     }
 
     @Override
-    public StringProperty nameProperty() {
-        return name;
+    public void setName(String name) {
+        this.name.set(name);
     }
 
     @Override
-    public void setName(String name) {
-        this.name.set(name);
+    public StringProperty nameProperty() {
+        return name;
     }
 
     @Override

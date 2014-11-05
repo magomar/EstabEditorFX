@@ -1,19 +1,14 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
  * <p>Clase Java para DeploymentDuration complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="DeploymentDuration">
  *   &lt;complexContent>
@@ -28,15 +23,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeploymentDuration", propOrder = {
-    "deployed",
-    "dugIn",
-    "entrenched",
-    "fortified"
+        "deployed",
+        "dugIn",
+        "entrenched",
+        "fortified"
 })
 public class DeploymentDuration {
 
@@ -55,11 +48,9 @@ public class DeploymentDuration {
 
     /**
      * Obtiene el valor de la propiedad deployed.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getDeployed() {
         return deployed;
@@ -67,11 +58,9 @@ public class DeploymentDuration {
 
     /**
      * Define el valor de la propiedad deployed.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setDeployed(XMLGregorianCalendar value) {
         this.deployed = value;
@@ -79,11 +68,9 @@ public class DeploymentDuration {
 
     /**
      * Obtiene el valor de la propiedad dugIn.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getDugIn() {
         return dugIn;
@@ -91,11 +78,9 @@ public class DeploymentDuration {
 
     /**
      * Define el valor de la propiedad dugIn.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setDugIn(XMLGregorianCalendar value) {
         this.dugIn = value;
@@ -103,11 +88,9 @@ public class DeploymentDuration {
 
     /**
      * Obtiene el valor de la propiedad entrenched.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getEntrenched() {
         return entrenched;
@@ -115,11 +98,9 @@ public class DeploymentDuration {
 
     /**
      * Define el valor de la propiedad entrenched.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setEntrenched(XMLGregorianCalendar value) {
         this.entrenched = value;
@@ -127,11 +108,9 @@ public class DeploymentDuration {
 
     /**
      * Obtiene el valor de la propiedad fortified.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getFortified() {
         return fortified;
@@ -139,11 +118,9 @@ public class DeploymentDuration {
 
     /**
      * Define el valor de la propiedad fortified.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setFortified(XMLGregorianCalendar value) {
         this.fortified = value;

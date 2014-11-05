@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.JAXBElement;
@@ -8,18 +7,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the net.deludobellico.commandops.estabeditor.data.jaxb package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the net.deludobellico.commandops.estabeditor.data.jaxb package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -34,14 +32,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.deludobellico.commandops.estabeditor.data.jaxb
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link EstabData }
-     * 
      */
     public EstabData createEstabData() {
         return new EstabData();
@@ -49,7 +45,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Image }
-     * 
      */
     public Image createImage() {
         return new Image();
@@ -57,7 +52,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Side }
-     * 
      */
     public Side createSide() {
         return new Side();
@@ -65,7 +59,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Vehicle }
-     * 
      */
     public Vehicle createVehicle() {
         return new Vehicle();
@@ -73,7 +66,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Weapon }
-     * 
      */
     public Weapon createWeapon() {
         return new Weapon();
@@ -81,7 +73,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Radio }
-     * 
      */
     public Radio createRadio() {
         return new Radio();
@@ -89,7 +80,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Ammo }
-     * 
      */
     public Ammo createAmmo() {
         return new Ammo();
@@ -97,7 +87,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FormationEffects }
-     * 
      */
     public FormationEffects createFormationEffects() {
         return new FormationEffects();
@@ -105,7 +94,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AmmoLoad }
-     * 
      */
     public AmmoLoad createAmmoLoad() {
         return new AmmoLoad();
@@ -113,7 +101,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FormationSecurity }
-     * 
      */
     public FormationSecurity createFormationSecurity() {
         return new FormationSecurity();
@@ -121,7 +108,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RankList }
-     * 
      */
     public RankList createRankList() {
         return new RankList();
@@ -129,7 +115,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link TargetPercentages }
-     * 
      */
     public TargetPercentages createTargetPercentages() {
         return new TargetPercentages();
@@ -137,7 +122,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Picture }
-     * 
      */
     public Picture createPicture() {
         return new Picture();
@@ -145,7 +129,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ROF }
-     * 
      */
     public ROF createROF() {
         return new ROF();
@@ -153,7 +136,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link VehicleSize }
-     * 
      */
     public VehicleSize createVehicleSize() {
         return new VehicleSize();
@@ -161,7 +143,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Icon }
-     * 
      */
     public Icon createIcon() {
         return new Icon();
@@ -169,7 +150,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Performance }
-     * 
      */
     public Performance createPerformance() {
         return new Performance();
@@ -177,7 +157,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Armament }
-     * 
      */
     public Armament createArmament() {
         return new Armament();
@@ -185,7 +164,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FuelConsumption }
-     * 
      */
     public FuelConsumption createFuelConsumption() {
         return new FuelConsumption();
@@ -193,7 +171,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Nation }
-     * 
      */
     public Nation createNation() {
         return new Nation();
@@ -201,7 +178,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AmmoQty }
-     * 
      */
     public AmmoQty createAmmoQty() {
         return new AmmoQty();
@@ -209,7 +185,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Insignia }
-     * 
      */
     public Insignia createInsignia() {
         return new Insignia();
@@ -217,7 +192,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Force }
-     * 
      */
     public Force createForce() {
         return new Force();
@@ -225,7 +199,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RGBColor }
-     * 
      */
     public RGBColor createRGBColor() {
         return new RGBColor();
@@ -233,7 +206,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RangeTable }
-     * 
      */
     public RangeTable createRangeTable() {
         return new RangeTable();
@@ -241,7 +213,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link VehicleSpeeds }
-     * 
      */
     public VehicleSpeeds createVehicleSpeeds() {
         return new VehicleSpeeds();
@@ -249,7 +220,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FiringPercentages }
-     * 
      */
     public FiringPercentages createFiringPercentages() {
         return new FiringPercentages();
@@ -257,7 +227,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeploymentDuration }
-     * 
      */
     public DeploymentDuration createDeploymentDuration() {
         return new DeploymentDuration();
@@ -265,7 +234,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ArmamentList }
-     * 
      */
     public ArmamentList createArmamentList() {
         return new ArmamentList();
@@ -273,7 +241,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Armor }
-     * 
      */
     public Armor createArmor() {
         return new Armor();
@@ -281,7 +248,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AmmoList }
-     * 
      */
     public AmmoList createAmmoList() {
         return new AmmoList();
@@ -289,7 +255,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PerformanceList }
-     * 
      */
     public PerformanceList createPerformanceList() {
         return new PerformanceList();
@@ -297,7 +262,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RadioSize }
-     * 
      */
     public RadioSize createRadioSize() {
         return new RadioSize();
@@ -305,7 +269,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Service }
-     * 
      */
     public Service createService() {
         return new Service();
@@ -313,7 +276,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Rank }
-     * 
      */
     public Rank createRank() {
         return new Rank();
@@ -321,7 +283,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link EquipmentList }
-     * 
      */
     public EquipmentList createEquipmentList() {
         return new EquipmentList();
@@ -329,7 +290,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RangeItem }
-     * 
      */
     public RangeItem createRangeItem() {
         return new RangeItem();
@@ -337,7 +297,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Equipment }
-     * 
      */
     public Equipment createEquipment() {
         return new Equipment();
@@ -345,7 +304,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SpeedData }
-     * 
      */
     public SpeedData createSpeedData() {
         return new SpeedData();
@@ -353,7 +311,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DefaultIconColors }
-     * 
      */
     public DefaultIconColors createDefaultIconColors() {
         return new DefaultIconColors();
@@ -361,7 +318,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link WeaponSize }
-     * 
      */
     public WeaponSize createWeaponSize() {
         return new WeaponSize();
@@ -369,7 +325,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Image }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "image")
     public JAXBElement<Image> createImage(Image value) {
@@ -378,7 +333,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Weapon }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "weapon")
     public JAXBElement<Weapon> createWeapon(Weapon value) {
@@ -387,7 +341,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Side }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "side")
     public JAXBElement<Side> createSide(Side value) {
@@ -396,7 +349,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Ammo }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "ammo")
     public JAXBElement<Ammo> createAmmo(Ammo value) {
@@ -405,7 +357,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FormationEffects }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "formation-effects")
     public JAXBElement<FormationEffects> createFormationEffects(FormationEffects value) {
@@ -414,7 +365,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Vehicle }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "vehicle")
     public JAXBElement<Vehicle> createVehicle(Vehicle value) {
@@ -423,7 +373,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Radio }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "radio")
     public JAXBElement<Radio> createRadio(Radio value) {

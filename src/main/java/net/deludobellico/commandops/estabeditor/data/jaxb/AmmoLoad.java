@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para AmmoLoad complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="AmmoLoad">
  *   &lt;complexContent>
@@ -23,8 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AmmoLoad")
@@ -39,7 +36,6 @@ public class AmmoLoad {
 
     /**
      * Obtiene el valor de la propiedad objectId.
-     * 
      */
     public int getObjectId() {
         return objectId;
@@ -47,7 +43,6 @@ public class AmmoLoad {
 
     /**
      * Define el valor de la propiedad objectId.
-     * 
      */
     public void setObjectId(int value) {
         this.objectId = value;
@@ -55,11 +50,9 @@ public class AmmoLoad {
 
     /**
      * Obtiene el valor de la propiedad name.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -67,11 +60,9 @@ public class AmmoLoad {
 
     /**
      * Define el valor de la propiedad name.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -79,7 +70,6 @@ public class AmmoLoad {
 
     /**
      * Obtiene el valor de la propiedad load.
-     * 
      */
     public int getLoad() {
         return load;
@@ -87,7 +77,6 @@ public class AmmoLoad {
 
     /**
      * Define el valor de la propiedad load.
-     * 
      */
     public void setLoad(int value) {
         this.load = value;

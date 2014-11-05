@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para Security.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
@@ -20,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "Security")
 @XmlEnum
@@ -38,17 +36,17 @@ public enum Security {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static Security fromValue(String v) {
-        for (Security c: Security.values()) {
+        for (Security c : Security.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

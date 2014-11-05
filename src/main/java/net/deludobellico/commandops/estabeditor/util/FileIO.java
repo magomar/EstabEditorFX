@@ -28,6 +28,9 @@ public class FileIO {
     //Datasets
     public static final String DATASETS_FOLDER = "/datasets";
     public static final String NEW_ESTAB_PATH = "newestab.xml";
+    public static final String DATASET_FILE_SUFFIX = "Estab.xml";
+    public static final String DATASET_IMAGE_FOLDER_SUFFIX = "Estab_Images";
+    public static final String DATASET_IMAGE_FOLDER_INDEX = "index";
     //Views
     public static final String VIEWS_FOLDER = "/views";
     public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
@@ -195,10 +198,10 @@ public class FileIO {
     }
 
     public static File installDataset(String datasetName, File targetFolder) {
-        LOG.log(Level.INFO, "Installing " + datasetName + " dataset in folder: " + targetFolder.getName());
-        File targetFile = new File(targetFolder.getPath(), datasetName + "Estab.xml");
+        LOG.log(Level.INFO, String.format("Installing %s dataset in folder: %s ", datasetName, targetFolder.getName()));
+        File targetFile = new File(targetFolder.getPath(), datasetName + DATASET_FILE_SUFFIX);
         if (targetFile != null && targetFile.exists()) {
-            LOG.log(Level.SEVERE, "Aborting installation. " + datasetName + " dataset already exists in folder: " + targetFolder.getName());
+            LOG.log(Level.SEVERE, String.format("Aborting installation. %s dataset already exists in folder: %s", datasetName, targetFolder.getName()));
             targetFile = null;
         } else {
             // Installing dataset from resources to file
@@ -206,11 +209,11 @@ public class FileIO {
 
             // Installing all dataset images included in the index
             // Preparing the image folder on disk
-            File targetImageFolder = new File(targetFolder, datasetName + "image");
+            File targetImageFolder = new File(targetFolder, datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
             targetImageFolder.mkdirs();
 
-            String datasetResourceImageFolder = FileIO.IMAGES_FOLDER + "/" + datasetName;
-            String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + "index";
+            String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
+            String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
             InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String imageFileName;
@@ -236,7 +239,7 @@ public class FileIO {
     /**
      * Gets an image from the dataset image folder
      * Names are strict and have to match the following pattern:
-     * <p>Dataset name: COTA</p>
+     * <p>Dataset name: COTAEstab_Images</p>
      * <p>Dataset file: COTAEstab.xml</p>
      * <p>Dataset image folder: COTAimage</p>
      *
@@ -245,8 +248,8 @@ public class FileIO {
      * @return
      */
     public static Image getDatasetImage(File datasetFile, String imageFileName) {
-        String datasetName = datasetFile.getName().split("Estab.xml")[0];
-        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + "image");
+        String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
+        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
         File datasetPicture = new File(datasetImageFolder, imageFileName);
         Image picture = null;
         try {

@@ -301,7 +301,7 @@ public class EstabController implements Initializable {
             // In case the removed element is active in the editor
             // TODO: decide if this condition should be checked in the model
             for (ElementModel e : elementsToRemoveList)
-                if (e.getId().equals(activeElement.getId())) {
+                if (e.getId() == activeElement.getId()) {
                     clear();
                     break;
                 }
@@ -309,7 +309,7 @@ public class EstabController implements Initializable {
         } else if (answer == DialogAction.REMOVE_SELECTION) {
             // In case the removed element is active in the editor
             for (ElementModel e : elementsToRemoveList)
-                if (e.getId().equals(activeElement.getId())) {
+                if (e.getId() == activeElement.getId()) {
                     clear();
                     break;
                 }

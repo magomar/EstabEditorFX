@@ -34,6 +34,67 @@
         <battle-weight>45158.0</battle-weight>
         <armour front="80.0" side="40.0" rear="20.0" top="15.0"/>
     </vehicle>
+    <vehicle id="1027">
+        <name>Motorcycle</name>
+        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
+        <picture id="3594"/>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.954834</reliability>
+        <armaments/>
+        <type>motor-cycle</type>
+        <fuel-capacity>10.0</fuel-capacity>
+        <speed>
+            <road max="100.0" normal="70.0"/>
+            <cross-country max="30.0" normal="21.0"/>
+        </speed>
+        <fuel-consumption max="1.5" normal="1.0"/>
+        <ronsonability>0.10498</ronsonability>
+        <max-gradient>20</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>200.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>100.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>yes</has-open-top>
+        <battle-weight>0.0</battle-weight>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+    </vehicle>
+    <vehicle id="2308">
+        <name>Bicycle</name>
+        <description>The German Army had been using bicycles during the entire war, but by 1944 the growing shortages in
+            motorised transport vehicles and fuel meant that a growing number of previously motorised battalions had to
+            swap their motor transport for bicycles.
+        </description>
+        <picture id="0"/>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.954834</reliability>
+        <armaments/>
+        <type>motor-cycle</type>
+        <fuel-capacity>0.0</fuel-capacity>
+        <speed>
+            <road max="20.0" normal="12.0"/>
+            <cross-country max="9.0" normal="6.0"/>
+        </speed>
+        <fuel-consumption max="0.0" normal="0.0"/>
+        <ronsonability>0.004883</ronsonability>
+        <max-gradient>20</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>0.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>0.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>no</has-open-top>
+        <battle-weight>10.0</battle-weight>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+    </vehicle>
     <vehicle id="2309">
         <name>SdKfz 260 Radio AC</name>
         <description>This very light four-wheeled armoured car was based on a commercial 4WD chassis, the Horch 801. In
@@ -66,35 +127,50 @@
         <battle-weight>4300.0</battle-weight>
         <armour front="8.0" side="8.0" rear="6.0" top="0.0"/>
     </vehicle>
-    <vehicle id="1027">
-        <name>Motorcycle</name>
-        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
-        <picture id="3594"/>
-        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
-        <crew>1</crew>
-        <reliability>0.954834</reliability>
-        <armaments/>
-        <type>motor-cycle</type>
-        <fuel-capacity>10.0</fuel-capacity>
-        <speed>
-            <road max="100.0" normal="70.0"/>
-            <cross-country max="30.0" normal="21.0"/>
-        </speed>
-        <fuel-consumption max="1.5" normal="1.0"/>
-        <ronsonability>0.10498</ronsonability>
-        <max-gradient>20</max-gradient>
-        <max-fording-depth>0</max-fording-depth>
-        <max-trench-width>0</max-trench-width>
-        <towing-capacity>200.0</towing-capacity>
-        <personnel-capacity>0</personnel-capacity>
-        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
-        <payload-capacity>100.0</payload-capacity>
-        <take-cover-mod>1.004883</take-cover-mod>
-        <has-turret>no</has-turret>
-        <has-open-top>yes</has-open-top>
-        <battle-weight>0.0</battle-weight>
-        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
-    </vehicle>
+    <weapon id="517">
+        <name>4.2in mortar (BR)</name>
+        <description>
+        </description>
+        <picture id="3417"/>
+        <picture-filename>4.2in mortar-ok.RSRC</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="599.0"/>
+        <crew>6</crew>
+        <reliability>0.899902</reliability>
+        <type>mortar</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>107.0</calibre>
+        <muzzle-velocity>200</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="310" name="4.2in HE" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.25" normal="1.0" rapid="2.0"/>
+                <burst-radius>12</burst-radius>
+                <shell-weight>9.099854</shell-weight>
+                <range-table>
+                    <range-item range="1000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3750" accuracy="0.504883" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+            <performance fire-type="bombard">
+                <ammo object-id="310" name="4.2in HE" load="80"/>
+                <min-range>50</min-range>
+                <rof slow="0.25" normal="1.0" rapid="2.0"/>
+                <burst-radius>12</burst-radius>
+                <shell-weight>9.099854</shell-weight>
+                <range-table>
+                    <range-item range="1000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3750" accuracy="0.504883" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
     <weapon id="1822">
         <name>7.92mm MG 34 AFV</name>
         <description>
@@ -177,13 +253,6 @@
             </performance>
         </performance-list>
     </weapon>
-    <ammo id="1797">
-        <name>8.8cm PaK 43 AP</name>
-        <description>
-        </description>
-        <min-order-qty>2</min-order-qty>
-        <min-order-weight>49.0</min-order-weight>
-    </ammo>
     <ammo id="1">
         <name>7.92mm</name>
         <description>
@@ -191,12 +260,33 @@
         <min-order-qty>100</min-order-qty>
         <min-order-weight>3.0</min-order-weight>
     </ammo>
+    <ammo id="4">
+        <name>9mm</name>
+        <description>
+        </description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>3.0</min-order-weight>
+    </ammo>
+    <ammo id="1797">
+        <name>8.8cm PaK 43 AP</name>
+        <description>
+        </description>
+        <min-order-qty>2</min-order-qty>
+        <min-order-weight>49.0</min-order-weight>
+    </ammo>
     <ammo id="1798">
         <name>8.8cm PaK 43 HE</name>
         <description>
         </description>
         <min-order-qty>2</min-order-qty>
         <min-order-weight>49.0</min-order-weight>
+    </ammo>
+    <ammo id="310">
+        <name>4.2in HE</name>
+        <description>
+        </description>
+        <min-order-qty>10</min-order-qty>
+        <min-order-weight>237.0</min-order-weight>
     </ammo>
     <formation-effects id="1600" type="left-echelon">
         <moving-cohesion-level>0.600098</moving-cohesion-level>

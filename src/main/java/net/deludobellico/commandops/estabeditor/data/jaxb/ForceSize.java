@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para ForceSize.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
@@ -27,7 +26,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "ForceSize")
 @XmlEnum
@@ -59,17 +57,17 @@ public enum ForceSize {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static ForceSize fromValue(String v) {
-        for (ForceSize c: ForceSize.values()) {
+        for (ForceSize c : ForceSize.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

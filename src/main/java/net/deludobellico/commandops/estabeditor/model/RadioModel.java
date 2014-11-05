@@ -37,13 +37,13 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     }
 
     @Override
-    public IntegerProperty idProperty() {
-        return id;
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     @Override
-    public void setId(int id) {
-        this.id.set(id);
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     @Override
@@ -52,13 +52,13 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     }
 
     @Override
-    public StringProperty nameProperty() {
-        return name;
+    public void setName(String name) {
+        this.name.set(name);
     }
 
     @Override
-    public void setName(String name) {
-        this.name.set(name);
+    public StringProperty nameProperty() {
+        return name;
     }
 
     @Override

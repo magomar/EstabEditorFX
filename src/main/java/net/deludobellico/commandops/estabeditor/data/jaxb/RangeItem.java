@@ -1,4 +1,3 @@
-
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Clase Java para RangeItem complex type.
- * 
+ * <p>
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RangeItem">
  *   &lt;complexContent>
@@ -23,8 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RangeItem")
@@ -39,7 +36,6 @@ public class RangeItem {
 
     /**
      * Obtiene el valor de la propiedad range.
-     * 
      */
     public int getRange() {
         return range;
@@ -47,7 +43,6 @@ public class RangeItem {
 
     /**
      * Define el valor de la propiedad range.
-     * 
      */
     public void setRange(int value) {
         this.range = value;
@@ -55,7 +50,6 @@ public class RangeItem {
 
     /**
      * Obtiene el valor de la propiedad accuracy.
-     * 
      */
     public double getAccuracy() {
         return accuracy;
@@ -63,7 +57,6 @@ public class RangeItem {
 
     /**
      * Define el valor de la propiedad accuracy.
-     * 
      */
     public void setAccuracy(double value) {
         this.accuracy = value;
@@ -71,7 +64,6 @@ public class RangeItem {
 
     /**
      * Obtiene el valor de la propiedad armourPenetration.
-     * 
      */
     public double getArmourPenetration() {
         return armourPenetration;
@@ -79,7 +71,6 @@ public class RangeItem {
 
     /**
      * Define el valor de la propiedad armourPenetration.
-     * 
      */
     public void setArmourPenetration(double value) {
         this.armourPenetration = value;
