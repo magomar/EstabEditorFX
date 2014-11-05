@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para AmmoLoad complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for AmmoLoad complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="AmmoLoad">
  *   &lt;complexContent>
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AmmoLoad")
@@ -35,48 +38,56 @@ public class AmmoLoad {
     protected int load;
 
     /**
-     * Obtiene el valor de la propiedad objectId.
+     * Gets the value of the objectId property.
+     * 
      */
     public int getObjectId() {
         return objectId;
     }
 
     /**
-     * Define el valor de la propiedad objectId.
+     * Sets the value of the objectId property.
+     * 
      */
     public void setObjectId(int value) {
         this.objectId = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad name.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define el valor de la propiedad name.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad load.
+     * Gets the value of the load property.
+     * 
      */
     public int getLoad() {
         return load;
     }
 
     /**
-     * Define el valor de la propiedad load.
+     * Sets the value of the load property.
+     * 
      */
     public void setLoad(int value) {
         this.load = value;

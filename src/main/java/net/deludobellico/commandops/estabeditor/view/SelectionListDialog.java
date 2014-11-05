@@ -129,11 +129,13 @@ public class SelectionListDialog implements Initializable {
         return this;
     }
 
-    public DialogAction show(Collection selectedItems) {
+    public DialogAction show(Collection collection) {
         dialog.setScene(new Scene(parent));
         dialog.showAndWait();
-        if (selectedDialogAction.equals(DialogAction.COPY_SELECTION) || selectedDialogAction.equals(DialogAction.REMOVE_SELECTION))
-            selectedItems.addAll(this.selectedItems);
+        if (selectedDialogAction.equals(DialogAction.COPY_SELECTION)
+                || selectedDialogAction.equals(DialogAction.REMOVE_SELECTION)
+                || selectedDialogAction.equals(DialogAction.MARK_SELECTION))
+            collection.addAll(this.selectedItems);
         return selectedDialogAction;
     }
 

@@ -257,14 +257,17 @@ public class EstabModel {
             StringBuilder logMessage = new StringBuilder("Copying elements (Overwriting repeated): " + newLine);
 
             for (VehicleModel v : relatedElementLists.getAllVehicles()) {
+                v.setFlag(Flag.COPY);
                 vehicles.put(v.getId(), v);
                 logMessage.append("-- " + v.print() + newLine);
             }
             for (WeaponModel w : relatedElementLists.getAllWeapons()) {
+                w.setFlag(Flag.COPY);
                 weapons.put(w.getId(), w);
                 logMessage.append("-- " + w.print() + newLine);
             }
             for (AmmoModel a : relatedElementLists.getAllAmmo()) {
+                a.setFlag(Flag.COPY);
                 ammos.put(a.getId(), a);
                 logMessage.append("-- " + a.print() + newLine);
             }
@@ -273,14 +276,17 @@ public class EstabModel {
             StringBuilder logMessage = new StringBuilder("Copying elements (Skipping repeated): " + newLine);
 
             for (VehicleModel v : relatedElementLists.getNonRepeatedVehicles()) {
+                v.setFlag(Flag.COPY);
                 vehicles.put(v.getId(), v);
                 logMessage.append("-- " + v.print() + newLine);
             }
             for (WeaponModel w : relatedElementLists.getNonRepeatedWeapons()) {
+                w.setFlag(Flag.COPY);
                 weapons.put(w.getId(), w);
                 logMessage.append("-- " + w.print() + newLine);
             }
             for (AmmoModel a : relatedElementLists.getNonRepeatedAmmo()) {
+                a.setFlag(Flag.COPY);
                 ammos.put(a.getId(), a);
                 logMessage.append("-- " + a.print() + newLine);
             }
@@ -290,14 +296,17 @@ public class EstabModel {
             for (Object selectedItem : selectedItems) {
                 if (selectedItem instanceof AmmoModel) {
                     AmmoModel a = (AmmoModel) selectedItem;
+                    a.setFlag(Flag.COPY);
                     ammos.put(a.getId(), a);
                     logMessage.append("-- " + a.print() + newLine);
                 } else if (selectedItem instanceof WeaponModel) {
                     WeaponModel w = (WeaponModel) selectedItem;
+                    w.setFlag(Flag.COPY);
                     weapons.put(w.getId(), w);
                     logMessage.append("-- " + w.print() + newLine);
                 } else if (selectedItem instanceof VehicleModel) {
                     VehicleModel v = (VehicleModel) selectedItem;
+                    v.setFlag(Flag.COPY);
                     vehicles.put(v.getId(), v);
                     logMessage.append("-- " + v.print() + newLine);
                 }

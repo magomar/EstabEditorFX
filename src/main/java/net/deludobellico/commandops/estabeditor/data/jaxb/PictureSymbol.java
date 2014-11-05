@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -6,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para PictureSymbol.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>Java class for PictureSymbol.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
  * &lt;simpleType name="PictureSymbol">
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
+ * 
  */
 @XmlType(name = "PictureSymbol")
 @XmlEnum
@@ -108,17 +110,17 @@ public enum PictureSymbol {
         value = v;
     }
 
+    public String value() {
+        return value;
+    }
+
     public static PictureSymbol fromValue(String v) {
-        for (PictureSymbol c : PictureSymbol.values()) {
+        for (PictureSymbol c: PictureSymbol.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    public String value() {
-        return value;
     }
 
 }

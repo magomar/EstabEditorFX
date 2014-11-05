@@ -213,7 +213,8 @@ public class MainController implements Initializable {
         File initialDirectory = null;
         if (Settings.getInstance().getLastOpenedFolder() != null)
             initialDirectory = new File(Settings.getInstance().getLastOpenedFolder());
-        if (initialDirectory != null && initialDirectory.exists()) directoryChooser.setInitialDirectory(initialDirectory);
+        if (initialDirectory != null && initialDirectory.exists())
+            directoryChooser.setInitialDirectory(initialDirectory);
         else directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         return directoryChooser.showDialog(UtilView.ROOT_STAGE);
     }

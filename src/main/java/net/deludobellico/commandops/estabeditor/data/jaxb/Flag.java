@@ -7,31 +7,37 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SymbolColor.
+ * <p>Java class for Flag.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SymbolColor">
+ * &lt;simpleType name="Flag">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="black"/>
- *     &lt;enumeration value="white"/>
+ *     &lt;enumeration value="new"/>
+ *     &lt;enumeration value="copy"/>
+ *     &lt;enumeration value="remove"/>
+ *     &lt;enumeration value="user"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "SymbolColor")
+@XmlType(name = "Flag")
 @XmlEnum
-public enum SymbolColor {
+public enum Flag {
 
-    @XmlEnumValue("black")
-    BLACK("black"),
-    @XmlEnumValue("white")
-    WHITE("white");
+    @XmlEnumValue("new")
+    NEW("new"),
+    @XmlEnumValue("copy")
+    COPY("copy"),
+    @XmlEnumValue("remove")
+    REMOVE("remove"),
+    @XmlEnumValue("user")
+    USER("user");
     private final String value;
 
-    SymbolColor(String v) {
+    Flag(String v) {
         value = v;
     }
 
@@ -39,8 +45,8 @@ public enum SymbolColor {
         return value;
     }
 
-    public static SymbolColor fromValue(String v) {
-        for (SymbolColor c: SymbolColor.values()) {
+    public static Flag fromValue(String v) {
+        for (Flag c: Flag.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.List;
 
 /**
  * Created by Mario on 29/10/2014.
@@ -147,6 +148,11 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return null;
     }
 
     public String getName() {

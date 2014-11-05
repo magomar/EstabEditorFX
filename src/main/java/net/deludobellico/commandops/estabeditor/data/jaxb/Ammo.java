@@ -1,13 +1,18 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Ammo complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for Ammo complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="Ammo">
  *   &lt;complexContent>
@@ -17,19 +22,23 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="min-order-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="min-order-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Ammo", propOrder = {
-        "name",
-        "description",
-        "minOrderQty",
-        "minOrderWeight"
+    "name",
+    "description",
+    "minOrderQty",
+    "minOrderWeight",
+    "flags"
 })
 public class Ammo {
 
@@ -41,86 +50,126 @@ public class Ammo {
     protected int minOrderQty;
     @XmlElement(name = "min-order-weight")
     protected double minOrderWeight;
+    @XmlElement(required = true)
+    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define el valor de la propiedad name.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Define el valor de la propiedad description.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderQty.
+     * Gets the value of the minOrderQty property.
+     * 
      */
     public int getMinOrderQty() {
         return minOrderQty;
     }
 
     /**
-     * Define el valor de la propiedad minOrderQty.
+     * Sets the value of the minOrderQty property.
+     * 
      */
     public void setMinOrderQty(int value) {
         this.minOrderQty = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderWeight.
+     * Gets the value of the minOrderWeight property.
+     * 
      */
     public double getMinOrderWeight() {
         return minOrderWeight;
     }
 
     /**
-     * Define el valor de la propiedad minOrderWeight.
+     * Sets the value of the minOrderWeight property.
+     * 
      */
     public void setMinOrderWeight(double value) {
         this.minOrderWeight = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the flags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlagList }
+     *     
+     */
+    public FlagList getFlags() {
+        return flags;
+    }
+
+    /**
+     * Sets the value of the flags property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlagList }
+     *     
+     */
+    public void setFlags(FlagList value) {
+        this.flags = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
+     * 
      */
     public void setId(int value) {
         this.id = value;

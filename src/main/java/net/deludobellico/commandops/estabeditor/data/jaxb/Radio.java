@@ -1,13 +1,19 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Radio complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for Radio complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="Radio">
  *   &lt;complexContent>
@@ -25,27 +31,31 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="freq-type" type="{}FreqType"/>
  *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Radio", propOrder = {
-        "name",
-        "description",
-        "picture",
-        "pictureFilename",
-        "size",
-        "crew",
-        "reliability",
-        "armaments",
-        "netType",
-        "freqType",
-        "maxRange",
-        "gain"
+    "name",
+    "description",
+    "picture",
+    "pictureFilename",
+    "size",
+    "crew",
+    "reliability",
+    "armaments",
+    "netType",
+    "freqType",
+    "maxRange",
+    "gain",
+    "flags"
 })
 public class Radio {
 
@@ -73,240 +83,310 @@ public class Radio {
     @XmlElement(name = "max-range")
     protected int maxRange;
     protected double gain;
+    @XmlElement(required = true)
+    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define el valor de la propiedad name.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Define el valor de la propiedad description.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad picture.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the picture property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPicture() {
         return picture;
     }
 
     /**
-     * Define el valor de la propiedad picture.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the picture property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPicture(String value) {
         this.picture = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureFilename.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the pictureFilename property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPictureFilename() {
         return pictureFilename;
     }
 
     /**
-     * Define el valor de la propiedad pictureFilename.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the pictureFilename property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPictureFilename(String value) {
         this.pictureFilename = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
-     *
-     * @return possible object is
-     * {@link RadioSize }
+     * Gets the value of the size property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RadioSize }
+     *     
      */
     public RadioSize getSize() {
         return size;
     }
 
     /**
-     * Define el valor de la propiedad size.
-     *
-     * @param value allowed object is
-     *              {@link RadioSize }
+     * Sets the value of the size property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RadioSize }
+     *     
      */
     public void setSize(RadioSize value) {
         this.size = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad crew.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the crew property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getCrew() {
         return crew;
     }
 
     /**
-     * Define el valor de la propiedad crew.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the crew property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setCrew(String value) {
         this.crew = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad reliability.
+     * Gets the value of the reliability property.
+     * 
      */
     public double getReliability() {
         return reliability;
     }
 
     /**
-     * Define el valor de la propiedad reliability.
+     * Sets the value of the reliability property.
+     * 
      */
     public void setReliability(double value) {
         this.reliability = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad armaments.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the armaments property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getArmaments() {
         return armaments;
     }
 
     /**
-     * Define el valor de la propiedad armaments.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the armaments property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setArmaments(String value) {
         this.armaments = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad netType.
-     *
-     * @return possible object is
-     * {@link NetType }
+     * Gets the value of the netType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NetType }
+     *     
      */
     public NetType getNetType() {
         return netType;
     }
 
     /**
-     * Define el valor de la propiedad netType.
-     *
-     * @param value allowed object is
-     *              {@link NetType }
+     * Sets the value of the netType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NetType }
+     *     
      */
     public void setNetType(NetType value) {
         this.netType = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad freqType.
-     *
-     * @return possible object is
-     * {@link FreqType }
+     * Gets the value of the freqType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FreqType }
+     *     
      */
     public FreqType getFreqType() {
         return freqType;
     }
 
     /**
-     * Define el valor de la propiedad freqType.
-     *
-     * @param value allowed object is
-     *              {@link FreqType }
+     * Sets the value of the freqType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FreqType }
+     *     
      */
     public void setFreqType(FreqType value) {
         this.freqType = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad maxRange.
+     * Gets the value of the maxRange property.
+     * 
      */
     public int getMaxRange() {
         return maxRange;
     }
 
     /**
-     * Define el valor de la propiedad maxRange.
+     * Sets the value of the maxRange property.
+     * 
      */
     public void setMaxRange(int value) {
         this.maxRange = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad gain.
+     * Gets the value of the gain property.
+     * 
      */
     public double getGain() {
         return gain;
     }
 
     /**
-     * Define el valor de la propiedad gain.
+     * Sets the value of the gain property.
+     * 
      */
     public void setGain(double value) {
         this.gain = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the flags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlagList }
+     *     
+     */
+    public FlagList getFlags() {
+        return flags;
+    }
+
+    /**
+     * Sets the value of the flags property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlagList }
+     *     
+     */
+    public void setFlags(FlagList value) {
+        this.flags = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
+     * 
      */
     public void setId(int value) {
         this.id = value;

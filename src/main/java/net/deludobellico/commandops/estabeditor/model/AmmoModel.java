@@ -1,7 +1,13 @@
 package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Ammo;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
+import net.deludobellico.commandops.estabeditor.data.jaxb.FlagList;
+
+import java.util.List;
 
 /**
  * Created by Mario on 28/10/2014.
@@ -12,6 +18,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
     private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty minOrderQty = new SimpleIntegerProperty();
     private final DoubleProperty minOrderWeight = new SimpleDoubleProperty();
+    private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public AmmoModel(Ammo ammo) {
         setPojo(ammo);
@@ -25,6 +32,8 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         ammo.setDescription(description.get());
         ammo.setMinOrderQty(minOrderQty.get());
         ammo.setMinOrderWeight(minOrderWeight.get());
+        ammo.setFlags(new FlagList());
+        flags.stream().forEach(f -> ammo.getFlags().getFlag().add(f));
         return ammo;
     }
 
@@ -35,6 +44,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         description.set(pojo.getDescription());
         minOrderQty.set(pojo.getMinOrderQty());
         minOrderWeight.set(pojo.getMinOrderWeight());
+        if (pojo.getFlags() != null) pojo.getFlags().getFlag().stream().forEach(flag -> flags.add(flag));
     }
 
     public int getId() {
@@ -47,6 +57,11 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return flags;
     }
 
     public String getName() {

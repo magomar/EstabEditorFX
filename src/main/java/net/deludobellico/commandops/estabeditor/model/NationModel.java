@@ -6,8 +6,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Insignia;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Nation;
+
+import java.util.List;
 
 /**
  * Created by Mario on 29/10/2014.
@@ -64,6 +67,11 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return null;
     }
 
     public String getName() {

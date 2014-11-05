@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +28,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
     private final IntegerProperty muzzleVelocity = new SimpleIntegerProperty();
     private final BooleanProperty mustDeployToFire = new SimpleBooleanProperty();
     private final ObservableList<PerformanceModel> performances = FXCollections.observableArrayList();
+    private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public WeaponModel(Weapon weapon) {
         setPojo(weapon);
@@ -67,6 +69,8 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         weapon.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
         weapon.setPerformanceList(new PerformanceList());
         performances.stream().map(PerformanceModel::getPojo).forEach(pp -> weapon.getPerformanceList().getPerformance().add(pp));
+        weapon.setFlags(new FlagList());
+        flags.stream().forEach(f -> weapon.getFlags().getFlag().add(f));
         return weapon;
     }
 
@@ -87,6 +91,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
+        if (pojo.getFlags() != null) pojo.getFlags().getFlag().stream().forEach(flag -> flags.add(flag));
     }
 
     public int getId() {
@@ -99,6 +104,11 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return flags;
     }
 
     public String getName() {

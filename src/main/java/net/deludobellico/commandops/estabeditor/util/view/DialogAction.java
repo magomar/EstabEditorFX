@@ -8,7 +8,7 @@ public enum DialogAction {
     SKIP_REPEATED("Skip repeated"),
     COPY_SELECTION("Copy selection"),
     REMOVE_SELECTION("Remove selection"),
-    CANCEL("Cancel"), OK("OK");
+    CANCEL("Cancel"), OK("OK"), MARK_SELECTION("Mark selection");
 
     private final String action;
 

@@ -33,6 +33,7 @@
         <has-open-top>no</has-open-top>
         <battle-weight>45158.0</battle-weight>
         <armour front="80.0" side="40.0" rear="20.0" top="15.0"/>
+        <flags/>
     </vehicle>
     <vehicle id="1027">
         <name>Motorcycle</name>
@@ -62,6 +63,9 @@
         <has-open-top>yes</has-open-top>
         <battle-weight>0.0</battle-weight>
         <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+        <flags>
+            <flag>copy</flag>
+        </flags>
     </vehicle>
     <vehicle id="2308">
         <name>Bicycle</name>
@@ -94,6 +98,9 @@
         <has-open-top>no</has-open-top>
         <battle-weight>10.0</battle-weight>
         <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+        <flags>
+            <flag>remove</flag>
+        </flags>
     </vehicle>
     <vehicle id="2309">
         <name>SdKfz 260 Radio AC</name>
@@ -126,6 +133,7 @@
         <has-open-top>yes</has-open-top>
         <battle-weight>4300.0</battle-weight>
         <armour front="8.0" side="8.0" rear="6.0" top="0.0"/>
+        <flags/>
     </vehicle>
     <weapon id="517">
         <name>4.2in mortar (BR)</name>
@@ -170,6 +178,7 @@
                 </range-table>
             </performance>
         </performance-list>
+        <flags/>
     </weapon>
     <weapon id="1822">
         <name>7.92mm MG 34 AFV</name>
@@ -204,6 +213,7 @@
                 </range-table>
             </performance>
         </performance-list>
+        <flags/>
     </weapon>
     <weapon id="1799">
         <name>8.8cm PaK 43/3 L71 AT gun</name>
@@ -252,6 +262,7 @@
                 </range-table>
             </performance>
         </performance-list>
+        <flags/>
     </weapon>
     <ammo id="1">
         <name>7.92mm</name>
@@ -259,6 +270,7 @@
         </description>
         <min-order-qty>100</min-order-qty>
         <min-order-weight>3.0</min-order-weight>
+        <flags/>
     </ammo>
     <ammo id="4">
         <name>9mm</name>
@@ -266,6 +278,7 @@
         </description>
         <min-order-qty>100</min-order-qty>
         <min-order-weight>3.0</min-order-weight>
+        <flags/>
     </ammo>
     <ammo id="1797">
         <name>8.8cm PaK 43 AP</name>
@@ -273,6 +286,7 @@
         </description>
         <min-order-qty>2</min-order-qty>
         <min-order-weight>49.0</min-order-weight>
+        <flags/>
     </ammo>
     <ammo id="1798">
         <name>8.8cm PaK 43 HE</name>
@@ -280,6 +294,7 @@
         </description>
         <min-order-qty>2</min-order-qty>
         <min-order-weight>49.0</min-order-weight>
+        <flags/>
     </ammo>
     <ammo id="310">
         <name>4.2in HE</name>
@@ -287,6 +302,7 @@
         </description>
         <min-order-qty>10</min-order-qty>
         <min-order-weight>237.0</min-order-weight>
+        <flags/>
     </ammo>
     <formation-effects id="1600" type="left-echelon">
         <moving-cohesion-level>0.600098</moving-cohesion-level>

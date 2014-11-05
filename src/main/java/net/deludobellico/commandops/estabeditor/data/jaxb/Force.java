@@ -1,13 +1,19 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Force complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for Force complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="Force">
  *   &lt;complexContent>
@@ -39,41 +45,45 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="equipment-list" type="{}EquipmentList"/>
  *         &lt;element name="ammo-list" type="{}AmmoList"/>
  *         &lt;element name="can-bombard" type="{}YesNo"/>
+ *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Force", propOrder = {
-        "name",
-        "description",
-        "icon",
-        "type",
-        "subType",
-        "size",
-        "combatClass",
-        "targetClass",
-        "infantryValue",
-        "reconValue",
-        "engineeringValue",
-        "moveType",
-        "persQty",
-        "staffCapacity",
-        "basicsQty",
-        "basicsConsumptionRateModifier",
-        "commanderRank",
-        "fuelQty",
-        "fuelLoad",
-        "speed",
-        "deploymentDuration",
-        "readyToFireDuration",
-        "readyToBombardDuration",
-        "equipmentList",
-        "ammoList",
-        "canBombard"
+    "name",
+    "description",
+    "icon",
+    "type",
+    "subType",
+    "size",
+    "combatClass",
+    "targetClass",
+    "infantryValue",
+    "reconValue",
+    "engineeringValue",
+    "moveType",
+    "persQty",
+    "staffCapacity",
+    "basicsQty",
+    "basicsConsumptionRateModifier",
+    "commanderRank",
+    "fuelQty",
+    "fuelLoad",
+    "speed",
+    "deploymentDuration",
+    "readyToFireDuration",
+    "readyToBombardDuration",
+    "equipmentList",
+    "ammoList",
+    "canBombard",
+    "flags"
 })
 public class Force {
 
@@ -136,478 +146,590 @@ public class Force {
     @XmlElement(name = "can-bombard", required = true)
     @XmlSchemaType(name = "string")
     protected YesNo canBombard;
+    @XmlElement(required = true)
+    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define el valor de la propiedad name.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Define el valor de la propiedad description.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad icon.
-     *
-     * @return possible object is
-     * {@link Icon }
+     * Gets the value of the icon property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Icon }
+     *     
      */
     public Icon getIcon() {
         return icon;
     }
 
     /**
-     * Define el valor de la propiedad icon.
-     *
-     * @param value allowed object is
-     *              {@link Icon }
+     * Sets the value of the icon property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Icon }
+     *     
      */
     public void setIcon(Icon value) {
         this.icon = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
-     *
-     * @return possible object is
-     * {@link ForceType }
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ForceType }
+     *     
      */
     public ForceType getType() {
         return type;
     }
 
     /**
-     * Define el valor de la propiedad type.
-     *
-     * @param value allowed object is
-     *              {@link ForceType }
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ForceType }
+     *     
      */
     public void setType(ForceType value) {
         this.type = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad subType.
-     *
-     * @return possible object is
-     * {@link ForceSubtype }
+     * Gets the value of the subType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ForceSubtype }
+     *     
      */
     public ForceSubtype getSubType() {
         return subType;
     }
 
     /**
-     * Define el valor de la propiedad subType.
-     *
-     * @param value allowed object is
-     *              {@link ForceSubtype }
+     * Sets the value of the subType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ForceSubtype }
+     *     
      */
     public void setSubType(ForceSubtype value) {
         this.subType = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
-     *
-     * @return possible object is
-     * {@link ForceSize }
+     * Gets the value of the size property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ForceSize }
+     *     
      */
     public ForceSize getSize() {
         return size;
     }
 
     /**
-     * Define el valor de la propiedad size.
-     *
-     * @param value allowed object is
-     *              {@link ForceSize }
+     * Sets the value of the size property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ForceSize }
+     *     
      */
     public void setSize(ForceSize value) {
         this.size = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad combatClass.
-     *
-     * @return possible object is
-     * {@link CombatClass }
+     * Gets the value of the combatClass property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CombatClass }
+     *     
      */
     public CombatClass getCombatClass() {
         return combatClass;
     }
 
     /**
-     * Define el valor de la propiedad combatClass.
-     *
-     * @param value allowed object is
-     *              {@link CombatClass }
+     * Sets the value of the combatClass property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CombatClass }
+     *     
      */
     public void setCombatClass(CombatClass value) {
         this.combatClass = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad targetClass.
-     *
-     * @return possible object is
-     * {@link TargetClass }
+     * Gets the value of the targetClass property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TargetClass }
+     *     
      */
     public TargetClass getTargetClass() {
         return targetClass;
     }
 
     /**
-     * Define el valor de la propiedad targetClass.
-     *
-     * @param value allowed object is
-     *              {@link TargetClass }
+     * Sets the value of the targetClass property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TargetClass }
+     *     
      */
     public void setTargetClass(TargetClass value) {
         this.targetClass = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad infantryValue.
+     * Gets the value of the infantryValue property.
+     * 
      */
     public int getInfantryValue() {
         return infantryValue;
     }
 
     /**
-     * Define el valor de la propiedad infantryValue.
+     * Sets the value of the infantryValue property.
+     * 
      */
     public void setInfantryValue(int value) {
         this.infantryValue = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad reconValue.
+     * Gets the value of the reconValue property.
+     * 
      */
     public int getReconValue() {
         return reconValue;
     }
 
     /**
-     * Define el valor de la propiedad reconValue.
+     * Sets the value of the reconValue property.
+     * 
      */
     public void setReconValue(int value) {
         this.reconValue = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad engineeringValue.
+     * Gets the value of the engineeringValue property.
+     * 
      */
     public int getEngineeringValue() {
         return engineeringValue;
     }
 
     /**
-     * Define el valor de la propiedad engineeringValue.
+     * Sets the value of the engineeringValue property.
+     * 
      */
     public void setEngineeringValue(int value) {
         this.engineeringValue = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad moveType.
-     *
-     * @return possible object is
-     * {@link MoveType }
+     * Gets the value of the moveType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MoveType }
+     *     
      */
     public MoveType getMoveType() {
         return moveType;
     }
 
     /**
-     * Define el valor de la propiedad moveType.
-     *
-     * @param value allowed object is
-     *              {@link MoveType }
+     * Sets the value of the moveType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MoveType }
+     *     
      */
     public void setMoveType(MoveType value) {
         this.moveType = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad persQty.
+     * Gets the value of the persQty property.
+     * 
      */
     public int getPersQty() {
         return persQty;
     }
 
     /**
-     * Define el valor de la propiedad persQty.
+     * Sets the value of the persQty property.
+     * 
      */
     public void setPersQty(int value) {
         this.persQty = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad staffCapacity.
+     * Gets the value of the staffCapacity property.
+     * 
      */
     public int getStaffCapacity() {
         return staffCapacity;
     }
 
     /**
-     * Define el valor de la propiedad staffCapacity.
+     * Sets the value of the staffCapacity property.
+     * 
      */
     public void setStaffCapacity(int value) {
         this.staffCapacity = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad basicsQty.
+     * Gets the value of the basicsQty property.
+     * 
      */
     public double getBasicsQty() {
         return basicsQty;
     }
 
     /**
-     * Define el valor de la propiedad basicsQty.
+     * Sets the value of the basicsQty property.
+     * 
      */
     public void setBasicsQty(double value) {
         this.basicsQty = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad basicsConsumptionRateModifier.
+     * Gets the value of the basicsConsumptionRateModifier property.
+     * 
      */
     public double getBasicsConsumptionRateModifier() {
         return basicsConsumptionRateModifier;
     }
 
     /**
-     * Define el valor de la propiedad basicsConsumptionRateModifier.
+     * Sets the value of the basicsConsumptionRateModifier property.
+     * 
      */
     public void setBasicsConsumptionRateModifier(double value) {
         this.basicsConsumptionRateModifier = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad commanderRank.
+     * Gets the value of the commanderRank property.
+     * 
      */
     public int getCommanderRank() {
         return commanderRank;
     }
 
     /**
-     * Define el valor de la propiedad commanderRank.
+     * Sets the value of the commanderRank property.
+     * 
      */
     public void setCommanderRank(int value) {
         this.commanderRank = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelQty.
+     * Gets the value of the fuelQty property.
+     * 
      */
     public double getFuelQty() {
         return fuelQty;
     }
 
     /**
-     * Define el valor de la propiedad fuelQty.
+     * Sets the value of the fuelQty property.
+     * 
      */
     public void setFuelQty(double value) {
         this.fuelQty = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelLoad.
+     * Gets the value of the fuelLoad property.
+     * 
      */
     public double getFuelLoad() {
         return fuelLoad;
     }
 
     /**
-     * Define el valor de la propiedad fuelLoad.
+     * Sets the value of the fuelLoad property.
+     * 
      */
     public void setFuelLoad(double value) {
         this.fuelLoad = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad speed.
-     *
-     * @return possible object is
-     * {@link SpeedData }
+     * Gets the value of the speed property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SpeedData }
+     *     
      */
     public SpeedData getSpeed() {
         return speed;
     }
 
     /**
-     * Define el valor de la propiedad speed.
-     *
-     * @param value allowed object is
-     *              {@link SpeedData }
+     * Sets the value of the speed property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SpeedData }
+     *     
      */
     public void setSpeed(SpeedData value) {
         this.speed = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad deploymentDuration.
-     *
-     * @return possible object is
-     * {@link DeploymentDuration }
+     * Gets the value of the deploymentDuration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DeploymentDuration }
+     *     
      */
     public DeploymentDuration getDeploymentDuration() {
         return deploymentDuration;
     }
 
     /**
-     * Define el valor de la propiedad deploymentDuration.
-     *
-     * @param value allowed object is
-     *              {@link DeploymentDuration }
+     * Sets the value of the deploymentDuration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DeploymentDuration }
+     *     
      */
     public void setDeploymentDuration(DeploymentDuration value) {
         this.deploymentDuration = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad readyToFireDuration.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the readyToFireDuration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getReadyToFireDuration() {
         return readyToFireDuration;
     }
 
     /**
-     * Define el valor de la propiedad readyToFireDuration.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the readyToFireDuration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setReadyToFireDuration(String value) {
         this.readyToFireDuration = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad readyToBombardDuration.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the readyToBombardDuration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getReadyToBombardDuration() {
         return readyToBombardDuration;
     }
 
     /**
-     * Define el valor de la propiedad readyToBombardDuration.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the readyToBombardDuration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setReadyToBombardDuration(String value) {
         this.readyToBombardDuration = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad equipmentList.
-     *
-     * @return possible object is
-     * {@link EquipmentList }
+     * Gets the value of the equipmentList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EquipmentList }
+     *     
      */
     public EquipmentList getEquipmentList() {
         return equipmentList;
     }
 
     /**
-     * Define el valor de la propiedad equipmentList.
-     *
-     * @param value allowed object is
-     *              {@link EquipmentList }
+     * Sets the value of the equipmentList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EquipmentList }
+     *     
      */
     public void setEquipmentList(EquipmentList value) {
         this.equipmentList = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad ammoList.
-     *
-     * @return possible object is
-     * {@link AmmoList }
+     * Gets the value of the ammoList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AmmoList }
+     *     
      */
     public AmmoList getAmmoList() {
         return ammoList;
     }
 
     /**
-     * Define el valor de la propiedad ammoList.
-     *
-     * @param value allowed object is
-     *              {@link AmmoList }
+     * Sets the value of the ammoList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AmmoList }
+     *     
      */
     public void setAmmoList(AmmoList value) {
         this.ammoList = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad canBombard.
-     *
-     * @return possible object is
-     * {@link YesNo }
+     * Gets the value of the canBombard property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link YesNo }
+     *     
      */
     public YesNo getCanBombard() {
         return canBombard;
     }
 
     /**
-     * Define el valor de la propiedad canBombard.
-     *
-     * @param value allowed object is
-     *              {@link YesNo }
+     * Sets the value of the canBombard property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link YesNo }
+     *     
      */
     public void setCanBombard(YesNo value) {
         this.canBombard = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the flags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlagList }
+     *     
+     */
+    public FlagList getFlags() {
+        return flags;
+    }
+
+    /**
+     * Sets the value of the flags property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlagList }
+     *     
+     */
+    public void setFlags(FlagList value) {
+        this.flags = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
+     * 
      */
     public void setId(int value) {
         this.id = value;

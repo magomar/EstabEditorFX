@@ -1,15 +1,20 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Nation complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for Nation complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="Nation">
  *   &lt;complexContent>
@@ -21,21 +26,25 @@ import java.util.List;
  *         &lt;element name="large-insignia" type="{}Insignia"/>
  *         &lt;element name="small-insignia" type="{}Insignia"/>
  *         &lt;element name="service" type="{}Service" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Nation", propOrder = {
-        "name",
-        "description",
-        "nationality",
-        "largeInsignia",
-        "smallInsignia",
-        "service"
+    "name",
+    "description",
+    "nationality",
+    "largeInsignia",
+    "smallInsignia",
+    "service",
+    "flags"
 })
 public class Nation {
 
@@ -50,104 +59,126 @@ public class Nation {
     @XmlElement(name = "small-insignia", required = true)
     protected Insignia smallInsignia;
     protected List<Service> service;
+    @XmlElement(required = true)
+    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
 
     /**
-     * Obtiene el valor de la propiedad name.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define el valor de la propiedad name.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Define el valor de la propiedad description.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad nationality.
-     *
-     * @return possible object is
-     * {@link String }
+     * Gets the value of the nationality property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getNationality() {
         return nationality;
     }
 
     /**
-     * Define el valor de la propiedad nationality.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Sets the value of the nationality property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setNationality(String value) {
         this.nationality = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad largeInsignia.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Gets the value of the largeInsignia property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getLargeInsignia() {
         return largeInsignia;
     }
 
     /**
-     * Define el valor de la propiedad largeInsignia.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Sets the value of the largeInsignia property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setLargeInsignia(Insignia value) {
         this.largeInsignia = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad smallInsignia.
-     *
-     * @return possible object is
-     * {@link Insignia }
+     * Gets the value of the smallInsignia property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Insignia }
+     *     
      */
     public Insignia getSmallInsignia() {
         return smallInsignia;
     }
 
     /**
-     * Define el valor de la propiedad smallInsignia.
-     *
-     * @param value allowed object is
-     *              {@link Insignia }
+     * Sets the value of the smallInsignia property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Insignia }
+     *     
      */
     public void setSmallInsignia(Insignia value) {
         this.smallInsignia = value;
@@ -155,23 +186,25 @@ public class Nation {
 
     /**
      * Gets the value of the service property.
-     * <p>
+     * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the service property.
-     * <p>
+     * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getService().add(newItem);
      * </pre>
-     * <p>
-     * <p>
+     * 
+     * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Service }
+     * 
+     * 
      */
     public List<Service> getService() {
         if (service == null) {
@@ -181,14 +214,40 @@ public class Nation {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the flags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlagList }
+     *     
+     */
+    public FlagList getFlags() {
+        return flags;
+    }
+
+    /**
+     * Sets the value of the flags property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlagList }
+     *     
+     */
+    public void setFlags(FlagList value) {
+        this.flags = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
+     * 
      */
     public void setId(int value) {
         this.id = value;

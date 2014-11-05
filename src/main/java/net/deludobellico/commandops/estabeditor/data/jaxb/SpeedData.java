@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para SpeedData complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for SpeedData complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="SpeedData">
  *   &lt;complexContent>
@@ -21,6 +22,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SpeedData")
@@ -32,28 +35,32 @@ public class SpeedData {
     protected double normal;
 
     /**
-     * Obtiene el valor de la propiedad max.
+     * Gets the value of the max property.
+     * 
      */
     public double getMax() {
         return max;
     }
 
     /**
-     * Define el valor de la propiedad max.
+     * Sets the value of the max property.
+     * 
      */
     public void setMax(double value) {
         this.max = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad normal.
+     * Gets the value of the normal property.
+     * 
      */
     public double getNormal() {
         return normal;
     }
 
     /**
-     * Define el valor de la propiedad normal.
+     * Sets the value of the normal property.
+     * 
      */
     public void setNormal(double value) {
         this.normal = value;

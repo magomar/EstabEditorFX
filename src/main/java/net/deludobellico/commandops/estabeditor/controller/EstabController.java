@@ -15,6 +15,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.SavedSearchList;
@@ -298,6 +299,7 @@ public class EstabController implements Initializable {
         DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemoveList, selectedItems);
         boolean successRemoving;
         if (answer == DialogAction.OK) {
+            // Remove all elements
             // In case the removed element is active in the editor
             // TODO: decide if this condition should be checked in the model
             for (ElementModel e : elementsToRemoveList)
@@ -307,6 +309,7 @@ public class EstabController implements Initializable {
                 }
             successRemoving = estabModel.remove(relatedElements);
         } else if (answer == DialogAction.REMOVE_SELECTION) {
+            // Remove only selected elements by the user
             // In case the removed element is active in the editor
             for (ElementModel e : elementsToRemoveList)
                 if (e.getId() == activeElement.getId()) {
@@ -314,6 +317,12 @@ public class EstabController implements Initializable {
                     break;
                 }
             successRemoving = estabModel.remove(selectedItems);
+        } else if (answer == DialogAction.MARK_SELECTION) {
+            // Mark the items with the REMOVE flag instead of removing the elements
+            LOG.log(Level.INFO, "Remove canceled, elements were marked for removal");
+            selectedItems.stream().forEach(i -> ((ElementModel) i).setFlag(Flag.REMOVE));
+            successRemoving = false;
+            update();
         } else {
             LOG.log(Level.INFO, "Remove canceled");
             return false;

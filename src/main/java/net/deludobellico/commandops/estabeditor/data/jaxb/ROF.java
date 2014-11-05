@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ROF complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for ROF complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="ROF">
  *   &lt;complexContent>
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ROF")
@@ -35,42 +38,48 @@ public class ROF {
     protected double rapid;
 
     /**
-     * Obtiene el valor de la propiedad slow.
+     * Gets the value of the slow property.
+     * 
      */
     public double getSlow() {
         return slow;
     }
 
     /**
-     * Define el valor de la propiedad slow.
+     * Sets the value of the slow property.
+     * 
      */
     public void setSlow(double value) {
         this.slow = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad normal.
+     * Gets the value of the normal property.
+     * 
      */
     public double getNormal() {
         return normal;
     }
 
     /**
-     * Define el valor de la propiedad normal.
+     * Sets the value of the normal property.
+     * 
      */
     public void setNormal(double value) {
         this.normal = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad rapid.
+     * Gets the value of the rapid property.
+     * 
      */
     public double getRapid() {
         return rapid;
     }
 
     /**
-     * Define el valor de la propiedad rapid.
+     * Sets the value of the rapid property.
+     * 
      */
     public void setRapid(double value) {
         this.rapid = value;

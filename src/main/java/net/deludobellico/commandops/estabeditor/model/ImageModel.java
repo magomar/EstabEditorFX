@@ -4,7 +4,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
+
+import java.util.List;
 
 /**
  * Created by Mario on 03/11/2014.
@@ -46,6 +49,11 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     @Override
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return null;
     }
 
     public String getFileId() {

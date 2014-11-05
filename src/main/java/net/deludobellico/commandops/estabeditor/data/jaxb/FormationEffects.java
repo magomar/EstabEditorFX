@@ -1,13 +1,18 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FormationEffects complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for FormationEffects complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="FormationEffects">
  *   &lt;complexContent>
@@ -19,6 +24,7 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="firing-percentages" type="{}FiringPercentages"/>
  *         &lt;element name="target-percentages" type="{}TargetPercentages"/>
  *         &lt;element name="security" type="{}FormationSecurity"/>
+ *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="type" use="required" type="{}FormationType" />
@@ -26,15 +32,18 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FormationEffects", propOrder = {
-        "movingCohesionLevel",
-        "frontagePerMan",
-        "depthPerMan",
-        "firingPercentages",
-        "targetPercentages",
-        "security"
+    "movingCohesionLevel",
+    "frontagePerMan",
+    "depthPerMan",
+    "firingPercentages",
+    "targetPercentages",
+    "security",
+    "flags"
 })
 public class FormationEffects {
 
@@ -50,142 +59,192 @@ public class FormationEffects {
     protected TargetPercentages targetPercentages;
     @XmlElement(required = true)
     protected FormationSecurity security;
+    @XmlElement(required = true)
+    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
     @XmlAttribute(name = "type", required = true)
     protected FormationType type;
 
     /**
-     * Obtiene el valor de la propiedad movingCohesionLevel.
+     * Gets the value of the movingCohesionLevel property.
+     * 
      */
     public double getMovingCohesionLevel() {
         return movingCohesionLevel;
     }
 
     /**
-     * Define el valor de la propiedad movingCohesionLevel.
+     * Sets the value of the movingCohesionLevel property.
+     * 
      */
     public void setMovingCohesionLevel(double value) {
         this.movingCohesionLevel = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad frontagePerMan.
+     * Gets the value of the frontagePerMan property.
+     * 
      */
     public double getFrontagePerMan() {
         return frontagePerMan;
     }
 
     /**
-     * Define el valor de la propiedad frontagePerMan.
+     * Sets the value of the frontagePerMan property.
+     * 
      */
     public void setFrontagePerMan(double value) {
         this.frontagePerMan = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad depthPerMan.
+     * Gets the value of the depthPerMan property.
+     * 
      */
     public double getDepthPerMan() {
         return depthPerMan;
     }
 
     /**
-     * Define el valor de la propiedad depthPerMan.
+     * Sets the value of the depthPerMan property.
+     * 
      */
     public void setDepthPerMan(double value) {
         this.depthPerMan = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad firingPercentages.
-     *
-     * @return possible object is
-     * {@link FiringPercentages }
+     * Gets the value of the firingPercentages property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FiringPercentages }
+     *     
      */
     public FiringPercentages getFiringPercentages() {
         return firingPercentages;
     }
 
     /**
-     * Define el valor de la propiedad firingPercentages.
-     *
-     * @param value allowed object is
-     *              {@link FiringPercentages }
+     * Sets the value of the firingPercentages property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FiringPercentages }
+     *     
      */
     public void setFiringPercentages(FiringPercentages value) {
         this.firingPercentages = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad targetPercentages.
-     *
-     * @return possible object is
-     * {@link TargetPercentages }
+     * Gets the value of the targetPercentages property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TargetPercentages }
+     *     
      */
     public TargetPercentages getTargetPercentages() {
         return targetPercentages;
     }
 
     /**
-     * Define el valor de la propiedad targetPercentages.
-     *
-     * @param value allowed object is
-     *              {@link TargetPercentages }
+     * Sets the value of the targetPercentages property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TargetPercentages }
+     *     
      */
     public void setTargetPercentages(TargetPercentages value) {
         this.targetPercentages = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad security.
-     *
-     * @return possible object is
-     * {@link FormationSecurity }
+     * Gets the value of the security property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FormationSecurity }
+     *     
      */
     public FormationSecurity getSecurity() {
         return security;
     }
 
     /**
-     * Define el valor de la propiedad security.
-     *
-     * @param value allowed object is
-     *              {@link FormationSecurity }
+     * Sets the value of the security property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FormationSecurity }
+     *     
      */
     public void setSecurity(FormationSecurity value) {
         this.security = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the flags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FlagList }
+     *     
+     */
+    public FlagList getFlags() {
+        return flags;
+    }
+
+    /**
+     * Sets the value of the flags property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FlagList }
+     *     
+     */
+    public void setFlags(FlagList value) {
+        this.flags = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
+     * 
      */
     public void setId(int value) {
         this.id = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
-     *
-     * @return possible object is
-     * {@link FormationType }
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FormationType }
+     *     
      */
     public FormationType getType() {
         return type;
     }
 
     /**
-     * Define el valor de la propiedad type.
-     *
-     * @param value allowed object is
-     *              {@link FormationType }
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FormationType }
+     *     
      */
     public void setType(FormationType value) {
         this.type = value;

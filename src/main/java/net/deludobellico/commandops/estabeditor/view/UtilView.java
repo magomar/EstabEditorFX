@@ -1,9 +1,13 @@
 package net.deludobellico.commandops.estabeditor.view;
 
 import javafx.stage.Stage;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -15,6 +19,15 @@ public class UtilView {
     public static final double MIN_WINDOW_WIDTH = 920.0;
     public static final double MIN_WINDOW_HEIGHT = 640.0;
     public static final String newline = System.getProperty("line.separator");
+    public static final String TEXT_STYLE_COPY = "-fx-text-fill: blue;";
+    public static final String TEXT_STYLE_REMOVE = "-fx-text-fill: red;";
+    public static final String TEXT_STYLE_USER = "-fx-text-fill: green;";
+    public static final Map<Flag, String> FLAG_STYLE_MAP = Collections.unmodifiableMap(new HashMap<Flag, String>() {{
+        put(Flag.COPY, TEXT_STYLE_COPY);
+        put(Flag.REMOVE, TEXT_STYLE_REMOVE);
+        put(Flag.USER, TEXT_STYLE_USER);
+    }});
+    public static final String TEXT_STYLE_DEFAULT = "-fx-text-fill: black;";
     public static Stage ROOT_STAGE;
 
     public static Object showSearchDialog(String title, Collection items) {
@@ -41,7 +54,7 @@ public class UtilView {
                 .setTitle("Warning - Deleting elements")
                 .setHeadText("Are you sure you want to remove the following items?")
                 .setItems(tableItems)
-                .setActions(DialogAction.CANCEL, DialogAction.REMOVE_SELECTION, DialogAction.OK)
+                .setActions(DialogAction.CANCEL, DialogAction.REMOVE_SELECTION, DialogAction.MARK_SELECTION, DialogAction.OK)
                 .show(selectedItems);
     }
 

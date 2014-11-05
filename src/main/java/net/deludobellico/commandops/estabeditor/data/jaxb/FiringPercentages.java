@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,10 +7,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FiringPercentages complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for FiringPercentages complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="FiringPercentages">
  *   &lt;complexContent>
@@ -24,13 +25,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FiringPercentages", propOrder = {
-        "front",
-        "left",
-        "right",
-        "rear"
+    "front",
+    "left",
+    "right",
+    "rear"
 })
 public class FiringPercentages {
 
@@ -40,56 +43,64 @@ public class FiringPercentages {
     protected double rear;
 
     /**
-     * Obtiene el valor de la propiedad front.
+     * Gets the value of the front property.
+     * 
      */
     public double getFront() {
         return front;
     }
 
     /**
-     * Define el valor de la propiedad front.
+     * Sets the value of the front property.
+     * 
      */
     public void setFront(double value) {
         this.front = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad left.
+     * Gets the value of the left property.
+     * 
      */
     public double getLeft() {
         return left;
     }
 
     /**
-     * Define el valor de la propiedad left.
+     * Sets the value of the left property.
+     * 
      */
     public void setLeft(double value) {
         this.left = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad right.
+     * Gets the value of the right property.
+     * 
      */
     public double getRight() {
         return right;
     }
 
     /**
-     * Define el valor de la propiedad right.
+     * Sets the value of the right property.
+     * 
      */
     public void setRight(double value) {
         this.right = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad rear.
+     * Gets the value of the rear property.
+     * 
      */
     public double getRear() {
         return rear;
     }
 
     /**
-     * Define el valor de la propiedad rear.
+     * Sets the value of the rear property.
+     * 
      */
     public void setRear(double value) {
         this.rear = value;

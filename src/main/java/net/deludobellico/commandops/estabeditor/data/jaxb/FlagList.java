@@ -5,20 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ArmamentList complex type.
+ * <p>Java class for FlagList complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ArmamentList">
+ * &lt;complexType name="FlagList">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="armament" type="{}Armament" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="flag" type="{}Flag" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,40 +29,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ArmamentList", propOrder = {
-    "armament"
+@XmlType(name = "FlagList", propOrder = {
+    "flag"
 })
-public class ArmamentList {
+public class FlagList {
 
-    protected List<Armament> armament;
+    @XmlSchemaType(name = "string")
+    protected List<Flag> flag;
 
     /**
-     * Gets the value of the armament property.
+     * Gets the value of the flag property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the armament property.
+     * This is why there is not a <CODE>set</CODE> method for the flag property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getArmament().add(newItem);
+     *    getFlag().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Armament }
+     * {@link Flag }
      * 
      * 
      */
-    public List<Armament> getArmament() {
-        if (armament == null) {
-            armament = new ArrayList<Armament>();
+    public List<Flag> getFlag() {
+        if (flag == null) {
+            flag = new ArrayList<Flag>();
         }
-        return this.armament;
+        return this.flag;
     }
 
 }

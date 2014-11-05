@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RangeItem complex type.
- * <p>
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * <p>
+ * <p>Java class for RangeItem complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="RangeItem">
  *   &lt;complexContent>
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RangeItem")
@@ -35,42 +38,48 @@ public class RangeItem {
     protected double armourPenetration;
 
     /**
-     * Obtiene el valor de la propiedad range.
+     * Gets the value of the range property.
+     * 
      */
     public int getRange() {
         return range;
     }
 
     /**
-     * Define el valor de la propiedad range.
+     * Sets the value of the range property.
+     * 
      */
     public void setRange(int value) {
         this.range = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad accuracy.
+     * Gets the value of the accuracy property.
+     * 
      */
     public double getAccuracy() {
         return accuracy;
     }
 
     /**
-     * Define el valor de la propiedad accuracy.
+     * Sets the value of the accuracy property.
+     * 
      */
     public void setAccuracy(double value) {
         this.accuracy = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad armourPenetration.
+     * Gets the value of the armourPenetration property.
+     * 
      */
     public double getArmourPenetration() {
         return armourPenetration;
     }
 
     /**
-     * Define el valor de la propiedad armourPenetration.
+     * Sets the value of the armourPenetration property.
+     * 
      */
     public void setArmourPenetration(double value) {
         this.armourPenetration = value;

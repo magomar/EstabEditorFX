@@ -4,7 +4,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Radio;
+
+import java.util.List;
 
 /**
  * Created by Mario on 04/11/2014.
@@ -44,6 +47,11 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     @Override
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return null;
     }
 
     @Override

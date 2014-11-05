@@ -4,8 +4,11 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationEffects;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationType;
+
+import java.util.List;
 
 /**
  * Created by Mario on 04/11/2014.
@@ -45,6 +48,11 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
     @Override
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public List<Flag> getFlags() {
+        return null;
     }
 
     @Override
