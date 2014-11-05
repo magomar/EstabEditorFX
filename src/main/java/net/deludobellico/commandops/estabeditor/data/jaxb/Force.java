@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Force complex type.
+ * <p>Java class for Force complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Force">
@@ -45,9 +47,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="equipment-list" type="{}EquipmentList"/>
  *         &lt;element name="ammo-list" type="{}AmmoList"/>
  *         &lt;element name="can-bombard" type="{}YesNo"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -82,8 +84,7 @@ import javax.xml.bind.annotation.XmlType;
     "readyToBombardDuration",
     "equipmentList",
     "ammoList",
-    "canBombard",
-    "flags"
+    "canBombard"
 })
 public class Force {
 
@@ -146,13 +147,13 @@ public class Force {
     @XmlElement(name = "can-bombard", required = true)
     @XmlSchemaType(name = "string")
     protected YesNo canBombard;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -164,7 +165,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -176,7 +177,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -188,7 +189,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -200,7 +201,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad icon.
+     * Gets the value of the icon property.
      * 
      * @return
      *     possible object is
@@ -212,7 +213,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad icon.
+     * Sets the value of the icon property.
      * 
      * @param value
      *     allowed object is
@@ -224,7 +225,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
@@ -236,7 +237,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad type.
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
@@ -248,7 +249,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad subType.
+     * Gets the value of the subType property.
      * 
      * @return
      *     possible object is
@@ -260,7 +261,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad subType.
+     * Sets the value of the subType property.
      * 
      * @param value
      *     allowed object is
@@ -272,7 +273,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
+     * Gets the value of the size property.
      * 
      * @return
      *     possible object is
@@ -284,7 +285,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad size.
+     * Sets the value of the size property.
      * 
      * @param value
      *     allowed object is
@@ -296,7 +297,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad combatClass.
+     * Gets the value of the combatClass property.
      * 
      * @return
      *     possible object is
@@ -308,7 +309,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad combatClass.
+     * Sets the value of the combatClass property.
      * 
      * @param value
      *     allowed object is
@@ -320,7 +321,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad targetClass.
+     * Gets the value of the targetClass property.
      * 
      * @return
      *     possible object is
@@ -332,7 +333,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad targetClass.
+     * Sets the value of the targetClass property.
      * 
      * @param value
      *     allowed object is
@@ -344,7 +345,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad infantryValue.
+     * Gets the value of the infantryValue property.
      * 
      */
     public int getInfantryValue() {
@@ -352,7 +353,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad infantryValue.
+     * Sets the value of the infantryValue property.
      * 
      */
     public void setInfantryValue(int value) {
@@ -360,7 +361,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad reconValue.
+     * Gets the value of the reconValue property.
      * 
      */
     public int getReconValue() {
@@ -368,7 +369,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad reconValue.
+     * Sets the value of the reconValue property.
      * 
      */
     public void setReconValue(int value) {
@@ -376,7 +377,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad engineeringValue.
+     * Gets the value of the engineeringValue property.
      * 
      */
     public int getEngineeringValue() {
@@ -384,7 +385,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad engineeringValue.
+     * Sets the value of the engineeringValue property.
      * 
      */
     public void setEngineeringValue(int value) {
@@ -392,7 +393,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad moveType.
+     * Gets the value of the moveType property.
      * 
      * @return
      *     possible object is
@@ -404,7 +405,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad moveType.
+     * Sets the value of the moveType property.
      * 
      * @param value
      *     allowed object is
@@ -416,7 +417,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad persQty.
+     * Gets the value of the persQty property.
      * 
      */
     public int getPersQty() {
@@ -424,7 +425,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad persQty.
+     * Sets the value of the persQty property.
      * 
      */
     public void setPersQty(int value) {
@@ -432,7 +433,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad staffCapacity.
+     * Gets the value of the staffCapacity property.
      * 
      */
     public int getStaffCapacity() {
@@ -440,7 +441,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad staffCapacity.
+     * Sets the value of the staffCapacity property.
      * 
      */
     public void setStaffCapacity(int value) {
@@ -448,7 +449,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad basicsQty.
+     * Gets the value of the basicsQty property.
      * 
      */
     public double getBasicsQty() {
@@ -456,7 +457,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad basicsQty.
+     * Sets the value of the basicsQty property.
      * 
      */
     public void setBasicsQty(double value) {
@@ -464,7 +465,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad basicsConsumptionRateModifier.
+     * Gets the value of the basicsConsumptionRateModifier property.
      * 
      */
     public double getBasicsConsumptionRateModifier() {
@@ -472,7 +473,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad basicsConsumptionRateModifier.
+     * Sets the value of the basicsConsumptionRateModifier property.
      * 
      */
     public void setBasicsConsumptionRateModifier(double value) {
@@ -480,7 +481,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad commanderRank.
+     * Gets the value of the commanderRank property.
      * 
      */
     public int getCommanderRank() {
@@ -488,7 +489,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad commanderRank.
+     * Sets the value of the commanderRank property.
      * 
      */
     public void setCommanderRank(int value) {
@@ -496,7 +497,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelQty.
+     * Gets the value of the fuelQty property.
      * 
      */
     public double getFuelQty() {
@@ -504,7 +505,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad fuelQty.
+     * Sets the value of the fuelQty property.
      * 
      */
     public void setFuelQty(double value) {
@@ -512,7 +513,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelLoad.
+     * Gets the value of the fuelLoad property.
      * 
      */
     public double getFuelLoad() {
@@ -520,7 +521,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad fuelLoad.
+     * Sets the value of the fuelLoad property.
      * 
      */
     public void setFuelLoad(double value) {
@@ -528,7 +529,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad speed.
+     * Gets the value of the speed property.
      * 
      * @return
      *     possible object is
@@ -540,7 +541,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad speed.
+     * Sets the value of the speed property.
      * 
      * @param value
      *     allowed object is
@@ -552,7 +553,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad deploymentDuration.
+     * Gets the value of the deploymentDuration property.
      * 
      * @return
      *     possible object is
@@ -564,7 +565,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad deploymentDuration.
+     * Sets the value of the deploymentDuration property.
      * 
      * @param value
      *     allowed object is
@@ -576,7 +577,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad readyToFireDuration.
+     * Gets the value of the readyToFireDuration property.
      * 
      * @return
      *     possible object is
@@ -588,7 +589,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad readyToFireDuration.
+     * Sets the value of the readyToFireDuration property.
      * 
      * @param value
      *     allowed object is
@@ -600,7 +601,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad readyToBombardDuration.
+     * Gets the value of the readyToBombardDuration property.
      * 
      * @return
      *     possible object is
@@ -612,7 +613,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad readyToBombardDuration.
+     * Sets the value of the readyToBombardDuration property.
      * 
      * @param value
      *     allowed object is
@@ -624,7 +625,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad equipmentList.
+     * Gets the value of the equipmentList property.
      * 
      * @return
      *     possible object is
@@ -636,7 +637,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad equipmentList.
+     * Sets the value of the equipmentList property.
      * 
      * @param value
      *     allowed object is
@@ -648,7 +649,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad ammoList.
+     * Gets the value of the ammoList property.
      * 
      * @return
      *     possible object is
@@ -660,7 +661,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad ammoList.
+     * Sets the value of the ammoList property.
      * 
      * @param value
      *     allowed object is
@@ -672,7 +673,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad canBombard.
+     * Gets the value of the canBombard property.
      * 
      * @return
      *     possible object is
@@ -684,7 +685,7 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad canBombard.
+     * Sets the value of the canBombard property.
      * 
      * @param value
      *     allowed object is
@@ -696,31 +697,7 @@ public class Force {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -728,11 +705,40 @@ public class Force {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

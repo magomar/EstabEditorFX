@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RGBColor complex type.
+ * <p>Java class for RGBColor complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RGBColor">
@@ -38,7 +38,7 @@ public class RGBColor {
     protected int blue;
 
     /**
-     * Obtiene el valor de la propiedad red.
+     * Gets the value of the red property.
      * 
      */
     public int getRed() {
@@ -46,7 +46,7 @@ public class RGBColor {
     }
 
     /**
-     * Define el valor de la propiedad red.
+     * Sets the value of the red property.
      * 
      */
     public void setRed(int value) {
@@ -54,7 +54,7 @@ public class RGBColor {
     }
 
     /**
-     * Obtiene el valor de la propiedad green.
+     * Gets the value of the green property.
      * 
      */
     public int getGreen() {
@@ -62,7 +62,7 @@ public class RGBColor {
     }
 
     /**
-     * Define el valor de la propiedad green.
+     * Sets the value of the green property.
      * 
      */
     public void setGreen(int value) {
@@ -70,7 +70,7 @@ public class RGBColor {
     }
 
     /**
-     * Obtiene el valor de la propiedad blue.
+     * Gets the value of the blue property.
      * 
      */
     public int getBlue() {
@@ -78,7 +78,7 @@ public class RGBColor {
     }
 
     /**
-     * Define el valor de la propiedad blue.
+     * Sets the value of the blue property.
      * 
      */
     public void setBlue(int value) {

@@ -20,6 +20,9 @@ public class RelatedElementLists {
     private List<WeaponModel> repeatedWeapons;
     private List<AmmoModel> repeatedAmmo;
 
+    // Might be not be updated
+    List<ElementModel> allElements;
+
     private boolean sorted;
 
     public RelatedElementLists() {
@@ -32,6 +35,7 @@ public class RelatedElementLists {
         this.allVehicles = new ArrayList<>();
         this.allWeapons = new ArrayList<>();
         this.allAmmo = new ArrayList<>();
+        this.allElements = new ArrayList<>();
     }
 
     public boolean hasRepeatedElements() {
@@ -137,10 +141,12 @@ public class RelatedElementLists {
     }
 
     public List<ElementModel> getAllElements() {
-        List allElements = new ArrayList<>();
-        allElements.addAll(allVehicles);
-        allElements.addAll(allWeapons);
-        allElements.addAll(allAmmo);
+        if(allElements.size() != allVehicles.size() + allWeapons.size() + allAmmo.size()) {
+            allElements.clear();
+            allElements.addAll(allVehicles);
+            allElements.addAll(allWeapons);
+            allElements.addAll(allAmmo);
+        }
         return allElements;
     }
 }

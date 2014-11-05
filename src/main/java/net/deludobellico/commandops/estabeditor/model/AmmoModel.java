@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Ammo;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
-import net.deludobellico.commandops.estabeditor.data.jaxb.FlagList;
 
 import java.util.List;
 
@@ -26,15 +25,14 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
 
     @Override
     public Ammo getPojo() {
-        Ammo ammo = new Ammo();
-        ammo.setId(id.get());
-        ammo.setName(name.get());
-        ammo.setDescription(description.get());
-        ammo.setMinOrderQty(minOrderQty.get());
-        ammo.setMinOrderWeight(minOrderWeight.get());
-        ammo.setFlags(new FlagList());
-        flags.stream().forEach(f -> ammo.getFlags().getFlag().add(f));
-        return ammo;
+        Ammo pojo = new Ammo();
+        pojo.setId(id.get());
+        pojo.setName(name.get());
+        pojo.setDescription(description.get());
+        pojo.setMinOrderQty(minOrderQty.get());
+        pojo.setMinOrderWeight(minOrderWeight.get());
+        flags.stream().forEach(f -> pojo.getFlags().add(f));
+        return pojo;
     }
 
     @Override
@@ -44,7 +42,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         description.set(pojo.getDescription());
         minOrderQty.set(pojo.getMinOrderQty());
         minOrderWeight.set(pojo.getMinOrderWeight());
-        if (pojo.getFlags() != null) pojo.getFlags().getFlag().stream().forEach(flag -> flags.add(flag));
+        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
     }
 
     public int getId() {

@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Vehicle complex type.
+ * <p>Java class for Vehicle complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Vehicle">
@@ -44,9 +46,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="has-open-top" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="battle-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="armour" type="{}Armor"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -80,8 +82,7 @@ import javax.xml.bind.annotation.XmlType;
     "hasTurret",
     "hasOpenTop",
     "battleWeight",
-    "armour",
-    "flags"
+    "armour"
 })
 public class Vehicle {
 
@@ -133,13 +134,13 @@ public class Vehicle {
     protected double battleWeight;
     @XmlElement(required = true)
     protected Armor armour;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -151,7 +152,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +164,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -175,7 +176,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +188,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad picture.
+     * Gets the value of the picture property.
      * 
      * @return
      *     possible object is
@@ -199,7 +200,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad picture.
+     * Sets the value of the picture property.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +212,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureFilename.
+     * Gets the value of the pictureFilename property.
      * 
      * @return
      *     possible object is
@@ -223,7 +224,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad pictureFilename.
+     * Sets the value of the pictureFilename property.
      * 
      * @param value
      *     allowed object is
@@ -235,7 +236,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
+     * Gets the value of the size property.
      * 
      * @return
      *     possible object is
@@ -247,7 +248,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad size.
+     * Sets the value of the size property.
      * 
      * @param value
      *     allowed object is
@@ -259,7 +260,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad crew.
+     * Gets the value of the crew property.
      * 
      */
     public int getCrew() {
@@ -267,7 +268,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad crew.
+     * Sets the value of the crew property.
      * 
      */
     public void setCrew(int value) {
@@ -275,7 +276,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad reliability.
+     * Gets the value of the reliability property.
      * 
      */
     public double getReliability() {
@@ -283,7 +284,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad reliability.
+     * Sets the value of the reliability property.
      * 
      */
     public void setReliability(double value) {
@@ -291,7 +292,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad armaments.
+     * Gets the value of the armaments property.
      * 
      * @return
      *     possible object is
@@ -303,7 +304,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad armaments.
+     * Sets the value of the armaments property.
      * 
      * @param value
      *     allowed object is
@@ -315,7 +316,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
@@ -327,7 +328,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad type.
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
@@ -339,7 +340,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelCapacity.
+     * Gets the value of the fuelCapacity property.
      * 
      */
     public double getFuelCapacity() {
@@ -347,7 +348,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad fuelCapacity.
+     * Sets the value of the fuelCapacity property.
      * 
      */
     public void setFuelCapacity(double value) {
@@ -355,7 +356,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad speed.
+     * Gets the value of the speed property.
      * 
      * @return
      *     possible object is
@@ -367,7 +368,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad speed.
+     * Sets the value of the speed property.
      * 
      * @param value
      *     allowed object is
@@ -379,7 +380,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad fuelConsumption.
+     * Gets the value of the fuelConsumption property.
      * 
      * @return
      *     possible object is
@@ -391,7 +392,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad fuelConsumption.
+     * Sets the value of the fuelConsumption property.
      * 
      * @param value
      *     allowed object is
@@ -403,7 +404,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad ronsonability.
+     * Gets the value of the ronsonability property.
      * 
      */
     public double getRonsonability() {
@@ -411,7 +412,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad ronsonability.
+     * Sets the value of the ronsonability property.
      * 
      */
     public void setRonsonability(double value) {
@@ -419,7 +420,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxGradient.
+     * Gets the value of the maxGradient property.
      * 
      */
     public int getMaxGradient() {
@@ -427,7 +428,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad maxGradient.
+     * Sets the value of the maxGradient property.
      * 
      */
     public void setMaxGradient(int value) {
@@ -435,7 +436,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxFordingDepth.
+     * Gets the value of the maxFordingDepth property.
      * 
      */
     public int getMaxFordingDepth() {
@@ -443,7 +444,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad maxFordingDepth.
+     * Sets the value of the maxFordingDepth property.
      * 
      */
     public void setMaxFordingDepth(int value) {
@@ -451,7 +452,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxTrenchWidth.
+     * Gets the value of the maxTrenchWidth property.
      * 
      */
     public int getMaxTrenchWidth() {
@@ -459,7 +460,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad maxTrenchWidth.
+     * Sets the value of the maxTrenchWidth property.
      * 
      */
     public void setMaxTrenchWidth(int value) {
@@ -467,7 +468,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad towingCapacity.
+     * Gets the value of the towingCapacity property.
      * 
      */
     public double getTowingCapacity() {
@@ -475,7 +476,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad towingCapacity.
+     * Sets the value of the towingCapacity property.
      * 
      */
     public void setTowingCapacity(double value) {
@@ -483,7 +484,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad personnelCapacity.
+     * Gets the value of the personnelCapacity property.
      * 
      */
     public int getPersonnelCapacity() {
@@ -491,7 +492,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad personnelCapacity.
+     * Sets the value of the personnelCapacity property.
      * 
      */
     public void setPersonnelCapacity(int value) {
@@ -499,7 +500,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad bulkFuelCapacity.
+     * Gets the value of the bulkFuelCapacity property.
      * 
      */
     public double getBulkFuelCapacity() {
@@ -507,7 +508,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad bulkFuelCapacity.
+     * Sets the value of the bulkFuelCapacity property.
      * 
      */
     public void setBulkFuelCapacity(double value) {
@@ -515,7 +516,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad payloadCapacity.
+     * Gets the value of the payloadCapacity property.
      * 
      */
     public double getPayloadCapacity() {
@@ -523,7 +524,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad payloadCapacity.
+     * Sets the value of the payloadCapacity property.
      * 
      */
     public void setPayloadCapacity(double value) {
@@ -531,7 +532,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad takeCoverMod.
+     * Gets the value of the takeCoverMod property.
      * 
      */
     public double getTakeCoverMod() {
@@ -539,7 +540,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad takeCoverMod.
+     * Sets the value of the takeCoverMod property.
      * 
      */
     public void setTakeCoverMod(double value) {
@@ -547,7 +548,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad hasTurret.
+     * Gets the value of the hasTurret property.
      * 
      * @return
      *     possible object is
@@ -559,7 +560,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad hasTurret.
+     * Sets the value of the hasTurret property.
      * 
      * @param value
      *     allowed object is
@@ -571,7 +572,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad hasOpenTop.
+     * Gets the value of the hasOpenTop property.
      * 
      * @return
      *     possible object is
@@ -583,7 +584,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad hasOpenTop.
+     * Sets the value of the hasOpenTop property.
      * 
      * @param value
      *     allowed object is
@@ -595,7 +596,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad battleWeight.
+     * Gets the value of the battleWeight property.
      * 
      */
     public double getBattleWeight() {
@@ -603,7 +604,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad battleWeight.
+     * Sets the value of the battleWeight property.
      * 
      */
     public void setBattleWeight(double value) {
@@ -611,7 +612,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad armour.
+     * Gets the value of the armour property.
      * 
      * @return
      *     possible object is
@@ -623,7 +624,7 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad armour.
+     * Sets the value of the armour property.
      * 
      * @param value
      *     allowed object is
@@ -635,31 +636,7 @@ public class Vehicle {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -667,11 +644,40 @@ public class Vehicle {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

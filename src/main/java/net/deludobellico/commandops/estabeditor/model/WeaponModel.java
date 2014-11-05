@@ -45,33 +45,32 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
 
     @Override
     public Weapon getPojo() {
-        Weapon weapon = new Weapon();
-        weapon.setId(id.get());
-        weapon.setName(name.get());
-        weapon.setDescription(description.get());
+        Weapon pojo = new Weapon();
+        pojo.setId(id.get());
+        pojo.setName(name.get());
+        pojo.setDescription(description.get());
         Picture p = new Picture();
         p.setId(pictureId.get());
-        weapon.setPicture(p);
-        weapon.setPictureFilename(pictureFilename.get());
+        pojo.setPicture(p);
+        pojo.setPictureFilename(pictureFilename.get());
         WeaponSize weaponSize = new WeaponSize();
         weaponSize.setWidth((double) 1.0);
         weaponSize.setHeight((double) 1.0);
         weaponSize.setLength((double) 1.0);
         weaponSize.setWeight(weight.get());
-        weapon.setSize(weaponSize);
-        weapon.setCrew(crew.get());
-        weapon.setReliability(reliability.get());
-        weapon.setType(type.get());
-        weapon.setSingleShot(PojoJFXModel.booleanToYesNo(singleShot.get()));
-        weapon.setPrimaryRole(primaryRole.get());
-        weapon.setCalibre(calibre.get());
-        weapon.setMuzzleVelocity(muzzleVelocity.get());
-        weapon.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
-        weapon.setPerformanceList(new PerformanceList());
-        performances.stream().map(PerformanceModel::getPojo).forEach(pp -> weapon.getPerformanceList().getPerformance().add(pp));
-        weapon.setFlags(new FlagList());
-        flags.stream().forEach(f -> weapon.getFlags().getFlag().add(f));
-        return weapon;
+        pojo.setSize(weaponSize);
+        pojo.setCrew(crew.get());
+        pojo.setReliability(reliability.get());
+        pojo.setType(type.get());
+        pojo.setSingleShot(PojoJFXModel.booleanToYesNo(singleShot.get()));
+        pojo.setPrimaryRole(primaryRole.get());
+        pojo.setCalibre(calibre.get());
+        pojo.setMuzzleVelocity(muzzleVelocity.get());
+        pojo.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
+        pojo.setPerformanceList(new PerformanceList());
+        performances.stream().map(PerformanceModel::getPojo).forEach(pp -> pojo.getPerformanceList().getPerformance().add(pp));
+        flags.stream().forEach(f -> pojo.getFlags().add(f));
+        return pojo;
     }
 
     @Override
@@ -91,7 +90,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
-        if (pojo.getFlags() != null) pojo.getFlags().getFlag().stream().forEach(flag -> flags.add(flag));
+        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
     }
 
     public int getId() {

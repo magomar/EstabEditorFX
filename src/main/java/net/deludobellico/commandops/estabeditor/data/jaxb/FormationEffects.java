@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -9,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FormationEffects complex type.
+ * <p>Java class for FormationEffects complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="FormationEffects">
@@ -24,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="firing-percentages" type="{}FiringPercentages"/>
  *         &lt;element name="target-percentages" type="{}TargetPercentages"/>
  *         &lt;element name="security" type="{}FormationSecurity"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="type" use="required" type="{}FormationType" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -42,8 +44,7 @@ import javax.xml.bind.annotation.XmlType;
     "depthPerMan",
     "firingPercentages",
     "targetPercentages",
-    "security",
-    "flags"
+    "security"
 })
 public class FormationEffects {
 
@@ -59,15 +60,15 @@ public class FormationEffects {
     protected TargetPercentages targetPercentages;
     @XmlElement(required = true)
     protected FormationSecurity security;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
     @XmlAttribute(name = "type", required = true)
     protected FormationType type;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad movingCohesionLevel.
+     * Gets the value of the movingCohesionLevel property.
      * 
      */
     public double getMovingCohesionLevel() {
@@ -75,7 +76,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad movingCohesionLevel.
+     * Sets the value of the movingCohesionLevel property.
      * 
      */
     public void setMovingCohesionLevel(double value) {
@@ -83,7 +84,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad frontagePerMan.
+     * Gets the value of the frontagePerMan property.
      * 
      */
     public double getFrontagePerMan() {
@@ -91,7 +92,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad frontagePerMan.
+     * Sets the value of the frontagePerMan property.
      * 
      */
     public void setFrontagePerMan(double value) {
@@ -99,7 +100,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad depthPerMan.
+     * Gets the value of the depthPerMan property.
      * 
      */
     public double getDepthPerMan() {
@@ -107,7 +108,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad depthPerMan.
+     * Sets the value of the depthPerMan property.
      * 
      */
     public void setDepthPerMan(double value) {
@@ -115,7 +116,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad firingPercentages.
+     * Gets the value of the firingPercentages property.
      * 
      * @return
      *     possible object is
@@ -127,7 +128,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad firingPercentages.
+     * Sets the value of the firingPercentages property.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +140,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad targetPercentages.
+     * Gets the value of the targetPercentages property.
      * 
      * @return
      *     possible object is
@@ -151,7 +152,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad targetPercentages.
+     * Sets the value of the targetPercentages property.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +164,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad security.
+     * Gets the value of the security property.
      * 
      * @return
      *     possible object is
@@ -175,7 +176,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad security.
+     * Sets the value of the security property.
      * 
      * @param value
      *     allowed object is
@@ -187,31 +188,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -219,7 +196,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -227,7 +204,7 @@ public class FormationEffects {
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
@@ -239,7 +216,7 @@ public class FormationEffects {
     }
 
     /**
-     * Define el valor de la propiedad type.
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
@@ -248,6 +225,35 @@ public class FormationEffects {
      */
     public void setType(FormationType value) {
         this.type = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

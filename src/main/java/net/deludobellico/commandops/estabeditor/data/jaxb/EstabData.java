@@ -14,9 +14,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -32,6 +32,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}formation-effects" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}int" default="4" />
+ *       &lt;attribute name="dlb-version" type="{http://www.w3.org/2001/XMLSchema}int" default="1" />
  *       &lt;attribute name="edited" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" />
  *       &lt;attribute name="last-edit" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
  *     &lt;/restriction>
@@ -67,6 +68,8 @@ public class EstabData {
     protected List<FormationEffects> formationEffects;
     @XmlAttribute(name = "version")
     protected Integer version;
+    @XmlAttribute(name = "dlb-version")
+    protected Integer dlbVersion;
     @XmlAttribute(name = "edited")
     protected Boolean edited;
     @XmlAttribute(name = "last-edit")
@@ -277,7 +280,7 @@ public class EstabData {
     }
 
     /**
-     * Obtiene el valor de la propiedad version.
+     * Gets the value of the version property.
      * 
      * @return
      *     possible object is
@@ -293,7 +296,7 @@ public class EstabData {
     }
 
     /**
-     * Define el valor de la propiedad version.
+     * Sets the value of the version property.
      * 
      * @param value
      *     allowed object is
@@ -305,7 +308,35 @@ public class EstabData {
     }
 
     /**
-     * Obtiene el valor de la propiedad edited.
+     * Gets the value of the dlbVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public int getDlbVersion() {
+        if (dlbVersion == null) {
+            return  1;
+        } else {
+            return dlbVersion;
+        }
+    }
+
+    /**
+     * Sets the value of the dlbVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setDlbVersion(Integer value) {
+        this.dlbVersion = value;
+    }
+
+    /**
+     * Gets the value of the edited property.
      * 
      * @return
      *     possible object is
@@ -321,7 +352,7 @@ public class EstabData {
     }
 
     /**
-     * Define el valor de la propiedad edited.
+     * Sets the value of the edited property.
      * 
      * @param value
      *     allowed object is
@@ -333,7 +364,7 @@ public class EstabData {
     }
 
     /**
-     * Obtiene el valor de la propiedad lastEdit.
+     * Gets the value of the lastEdit property.
      * 
      * @return
      *     possible object is
@@ -345,7 +376,7 @@ public class EstabData {
     }
 
     /**
-     * Define el valor de la propiedad lastEdit.
+     * Sets the value of the lastEdit property.
      * 
      * @param value
      *     allowed object is

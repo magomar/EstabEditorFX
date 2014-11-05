@@ -109,8 +109,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         a.setRear(rearArmor.get());
         a.setTop(topArmor.get());
         vehicle.setArmour(a);
-        vehicle.setFlags(new FlagList());
-        flags.stream().forEach(f -> vehicle.getFlags().getFlag().add(f));
+        flags.stream().forEach(f -> vehicle.getFlags().add(f));
         return vehicle;
     }
 
@@ -150,7 +149,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         sideArmor.set(pojo.getArmour().getSide());
         rearArmor.set(pojo.getArmour().getRear());
         topArmor.set(pojo.getArmour().getTop());
-        if (pojo.getFlags() != null) pojo.getFlags().getFlag().stream().forEach(flag -> flags.add(flag));
+        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
     }
 
     public int getId() {

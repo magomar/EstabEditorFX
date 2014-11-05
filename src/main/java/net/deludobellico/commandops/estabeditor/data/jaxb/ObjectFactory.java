@@ -216,14 +216,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FlagList }
-     * 
-     */
-    public FlagList createFlagList() {
-        return new FlagList();
-    }
-
-    /**
      * Create an instance of {@link Force }
      * 
      */

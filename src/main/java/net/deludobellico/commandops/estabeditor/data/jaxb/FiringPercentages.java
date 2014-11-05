@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para FiringPercentages complex type.
+ * <p>Java class for FiringPercentages complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="FiringPercentages">
@@ -43,7 +43,7 @@ public class FiringPercentages {
     protected double rear;
 
     /**
-     * Obtiene el valor de la propiedad front.
+     * Gets the value of the front property.
      * 
      */
     public double getFront() {
@@ -51,7 +51,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Define el valor de la propiedad front.
+     * Sets the value of the front property.
      * 
      */
     public void setFront(double value) {
@@ -59,7 +59,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Obtiene el valor de la propiedad left.
+     * Gets the value of the left property.
      * 
      */
     public double getLeft() {
@@ -67,7 +67,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Define el valor de la propiedad left.
+     * Sets the value of the left property.
      * 
      */
     public void setLeft(double value) {
@@ -75,7 +75,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Obtiene el valor de la propiedad right.
+     * Gets the value of the right property.
      * 
      */
     public double getRight() {
@@ -83,7 +83,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Define el valor de la propiedad right.
+     * Sets the value of the right property.
      * 
      */
     public void setRight(double value) {
@@ -91,7 +91,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Obtiene el valor de la propiedad rear.
+     * Gets the value of the rear property.
      * 
      */
     public double getRear() {
@@ -99,7 +99,7 @@ public class FiringPercentages {
     }
 
     /**
-     * Define el valor de la propiedad rear.
+     * Sets the value of the rear property.
      * 
      */
     public void setRear(double value) {

@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -9,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Ammo complex type.
+ * <p>Java class for Ammo complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Ammo">
@@ -22,9 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="min-order-qty" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="min-order-weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -37,8 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "description",
     "minOrderQty",
-    "minOrderWeight",
-    "flags"
+    "minOrderWeight"
 })
 public class Ammo {
 
@@ -50,13 +51,13 @@ public class Ammo {
     protected int minOrderQty;
     @XmlElement(name = "min-order-weight")
     protected double minOrderWeight;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -68,7 +69,7 @@ public class Ammo {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +81,7 @@ public class Ammo {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -92,7 +93,7 @@ public class Ammo {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +105,7 @@ public class Ammo {
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderQty.
+     * Gets the value of the minOrderQty property.
      * 
      */
     public int getMinOrderQty() {
@@ -112,7 +113,7 @@ public class Ammo {
     }
 
     /**
-     * Define el valor de la propiedad minOrderQty.
+     * Sets the value of the minOrderQty property.
      * 
      */
     public void setMinOrderQty(int value) {
@@ -120,7 +121,7 @@ public class Ammo {
     }
 
     /**
-     * Obtiene el valor de la propiedad minOrderWeight.
+     * Gets the value of the minOrderWeight property.
      * 
      */
     public double getMinOrderWeight() {
@@ -128,7 +129,7 @@ public class Ammo {
     }
 
     /**
-     * Define el valor de la propiedad minOrderWeight.
+     * Sets the value of the minOrderWeight property.
      * 
      */
     public void setMinOrderWeight(double value) {
@@ -136,31 +137,7 @@ public class Ammo {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -168,11 +145,40 @@ public class Ammo {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

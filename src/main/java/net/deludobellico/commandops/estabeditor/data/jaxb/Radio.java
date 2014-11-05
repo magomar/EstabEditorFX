@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Radio complex type.
+ * <p>Java class for Radio complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Radio">
@@ -31,9 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="freq-type" type="{}FreqType"/>
  *         &lt;element name="max-range" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="gain" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -54,8 +56,7 @@ import javax.xml.bind.annotation.XmlType;
     "netType",
     "freqType",
     "maxRange",
-    "gain",
-    "flags"
+    "gain"
 })
 public class Radio {
 
@@ -83,13 +84,13 @@ public class Radio {
     @XmlElement(name = "max-range")
     protected int maxRange;
     protected double gain;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -101,7 +102,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +114,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -125,7 +126,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -137,7 +138,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad picture.
+     * Gets the value of the picture property.
      * 
      * @return
      *     possible object is
@@ -149,7 +150,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad picture.
+     * Sets the value of the picture property.
      * 
      * @param value
      *     allowed object is
@@ -161,7 +162,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureFilename.
+     * Gets the value of the pictureFilename property.
      * 
      * @return
      *     possible object is
@@ -173,7 +174,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad pictureFilename.
+     * Sets the value of the pictureFilename property.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +186,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
+     * Gets the value of the size property.
      * 
      * @return
      *     possible object is
@@ -197,7 +198,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad size.
+     * Sets the value of the size property.
      * 
      * @param value
      *     allowed object is
@@ -209,7 +210,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad crew.
+     * Gets the value of the crew property.
      * 
      * @return
      *     possible object is
@@ -221,7 +222,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad crew.
+     * Sets the value of the crew property.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +234,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad reliability.
+     * Gets the value of the reliability property.
      * 
      */
     public double getReliability() {
@@ -241,7 +242,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad reliability.
+     * Sets the value of the reliability property.
      * 
      */
     public void setReliability(double value) {
@@ -249,7 +250,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad armaments.
+     * Gets the value of the armaments property.
      * 
      * @return
      *     possible object is
@@ -261,7 +262,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad armaments.
+     * Sets the value of the armaments property.
      * 
      * @param value
      *     allowed object is
@@ -273,7 +274,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad netType.
+     * Gets the value of the netType property.
      * 
      * @return
      *     possible object is
@@ -285,7 +286,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad netType.
+     * Sets the value of the netType property.
      * 
      * @param value
      *     allowed object is
@@ -297,7 +298,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad freqType.
+     * Gets the value of the freqType property.
      * 
      * @return
      *     possible object is
@@ -309,7 +310,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad freqType.
+     * Sets the value of the freqType property.
      * 
      * @param value
      *     allowed object is
@@ -321,7 +322,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad maxRange.
+     * Gets the value of the maxRange property.
      * 
      */
     public int getMaxRange() {
@@ -329,7 +330,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad maxRange.
+     * Sets the value of the maxRange property.
      * 
      */
     public void setMaxRange(int value) {
@@ -337,7 +338,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad gain.
+     * Gets the value of the gain property.
      * 
      */
     public double getGain() {
@@ -345,7 +346,7 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad gain.
+     * Sets the value of the gain property.
      * 
      */
     public void setGain(double value) {
@@ -353,31 +354,7 @@ public class Radio {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -385,11 +362,40 @@ public class Radio {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para WeaponSize complex type.
+ * <p>Java class for WeaponSize complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="WeaponSize">
@@ -41,7 +41,7 @@ public class WeaponSize {
     protected double weight;
 
     /**
-     * Obtiene el valor de la propiedad width.
+     * Gets the value of the width property.
      * 
      */
     public double getWidth() {
@@ -49,7 +49,7 @@ public class WeaponSize {
     }
 
     /**
-     * Define el valor de la propiedad width.
+     * Sets the value of the width property.
      * 
      */
     public void setWidth(double value) {
@@ -57,7 +57,7 @@ public class WeaponSize {
     }
 
     /**
-     * Obtiene el valor de la propiedad height.
+     * Gets the value of the height property.
      * 
      */
     public double getHeight() {
@@ -65,7 +65,7 @@ public class WeaponSize {
     }
 
     /**
-     * Define el valor de la propiedad height.
+     * Sets the value of the height property.
      * 
      */
     public void setHeight(double value) {
@@ -73,7 +73,7 @@ public class WeaponSize {
     }
 
     /**
-     * Obtiene el valor de la propiedad length.
+     * Gets the value of the length property.
      * 
      */
     public double getLength() {
@@ -81,7 +81,7 @@ public class WeaponSize {
     }
 
     /**
-     * Define el valor de la propiedad length.
+     * Sets the value of the length property.
      * 
      */
     public void setLength(double value) {
@@ -89,7 +89,7 @@ public class WeaponSize {
     }
 
     /**
-     * Obtiene el valor de la propiedad weight.
+     * Gets the value of the weight property.
      * 
      */
     public double getWeight() {
@@ -97,7 +97,7 @@ public class WeaponSize {
     }
 
     /**
-     * Define el valor de la propiedad weight.
+     * Sets the value of the weight property.
      * 
      */
     public void setWeight(double value) {

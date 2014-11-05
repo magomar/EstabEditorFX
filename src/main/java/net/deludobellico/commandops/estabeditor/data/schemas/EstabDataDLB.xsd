@@ -34,7 +34,7 @@ Changes in version 1.0
                 <xs:element ref="formation-effects" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="version" type="xs:int" default="4"/>
-            <xs:attribute name="dlb-version" type="xs:int" default="1.0"/>
+            <xs:attribute name="dlb-version" type="xs:double" default="1.0"/>
             <xs:attribute name="edited" type="xs:boolean" default="false"/>
             <xs:attribute name="last-edit" type="xs:dateTime"/>
         </xs:complexType>
@@ -51,11 +51,9 @@ Changes in version 1.0
     <!-- Images -->
 
     <xs:complexType name="Image">
-        <xs:sequence>
-            <xs:element name="flags" type="FlagList"/>
-        </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="file-id" type="xs:string" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <!-- Sides -->
@@ -70,9 +68,9 @@ Changes in version 1.0
             <xs:element name="default-enemy-aper-fp" type="xs:int"/>
             <xs:element name="default-enemy-aarm-fp" type="xs:int"/>
             <xs:element name="nation" type="Nation" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="Nation">
@@ -83,9 +81,9 @@ Changes in version 1.0
             <xs:element name="large-insignia" type="Insignia"/>
             <xs:element name="small-insignia" type="Insignia"/>
             <xs:element name="service" type="Service" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="Service">
@@ -97,9 +95,9 @@ Changes in version 1.0
             <xs:element name="rank-list" type="RankList"/>
             <xs:element name="default-icon-colors" type="DefaultIconColors"/>
             <xs:element name="force" type="Force" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute type="xs:int" name="id" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
 
@@ -152,9 +150,9 @@ Changes in version 1.0
             <xs:element name="equipment-list" type="EquipmentList"/>
             <xs:element name="ammo-list" type="AmmoList"/>
             <xs:element name="can-bombard" type="YesNo"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="Icon">
@@ -237,9 +235,9 @@ Changes in version 1.0
             <xs:element name="has-open-top" type="xs:string"/>
             <xs:element name="battle-weight" type="xs:double"/>
             <xs:element name="armour" type="Armor"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="Picture">
@@ -298,9 +296,9 @@ Changes in version 1.0
             <xs:element name="muzzle-velocity" type="xs:int"/>
             <xs:element name="must-deploy-to-fire" type="YesNo"/>
             <xs:element name="performance-list" type="PerformanceList"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="WeaponSize">
@@ -369,9 +367,9 @@ Changes in version 1.0
             <xs:element name="freq-type" type="FreqType"/>
             <xs:element name="max-range" type="xs:int"/>
             <xs:element name="gain" type="xs:double"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="RadioSize"> <!-- weight OK, but the rest?  -->
@@ -389,9 +387,9 @@ Changes in version 1.0
             <xs:element name="description" type="xs:string"/>
             <xs:element name="min-order-qty" type="xs:int"/>
             <xs:element name="min-order-weight" type="xs:double"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <!-- Formation effects -->
@@ -404,10 +402,10 @@ Changes in version 1.0
             <xs:element name="firing-percentages" type="FiringPercentages"/>
             <xs:element name="target-percentages" type="TargetPercentages"/>
             <xs:element name="security" type="FormationSecurity"/>
-            <xs:element name="flags" type="FlagList"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="type" type="FormationType" use="required"/>
+        <xs:attribute name="flags" type="FlagList"/>
     </xs:complexType>
 
     <xs:complexType name="FiringPercentages">
@@ -721,11 +719,9 @@ Changes in version 1.0
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:complexType name="FlagList">
-        <xs:sequence>
-            <xs:element name="flag" type="Flag" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:simpleType name="FlagList">
+        <xs:list itemType="Flag"/>
+    </xs:simpleType>
 
     <xs:simpleType name="Flag">
         <xs:restriction base="xs:string">

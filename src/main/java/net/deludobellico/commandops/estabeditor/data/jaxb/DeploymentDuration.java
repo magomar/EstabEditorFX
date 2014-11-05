@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para DeploymentDuration complex type.
+ * <p>Java class for DeploymentDuration complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DeploymentDuration">
@@ -54,7 +54,7 @@ public class DeploymentDuration {
     protected XMLGregorianCalendar fortified;
 
     /**
-     * Obtiene el valor de la propiedad deployed.
+     * Gets the value of the deployed property.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Define el valor de la propiedad deployed.
+     * Sets the value of the deployed property.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Obtiene el valor de la propiedad dugIn.
+     * Gets the value of the dugIn property.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Define el valor de la propiedad dugIn.
+     * Sets the value of the dugIn property.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Obtiene el valor de la propiedad entrenched.
+     * Gets the value of the entrenched property.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Define el valor de la propiedad entrenched.
+     * Sets the value of the entrenched property.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Obtiene el valor de la propiedad fortified.
+     * Gets the value of the fortified property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class DeploymentDuration {
     }
 
     /**
-     * Define el valor de la propiedad fortified.
+     * Sets the value of the fortified property.
      * 
      * @param value
      *     allowed object is

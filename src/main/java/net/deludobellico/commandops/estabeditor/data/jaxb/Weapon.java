@@ -1,6 +1,8 @@
 
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Weapon complex type.
+ * <p>Java class for Weapon complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Weapon">
@@ -34,9 +36,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="muzzle-velocity" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="must-deploy-to-fire" type="{}YesNo"/>
  *         &lt;element name="performance-list" type="{}PerformanceList"/>
- *         &lt;element name="flags" type="{}FlagList"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="flags" type="{}FlagList" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -60,8 +62,7 @@ import javax.xml.bind.annotation.XmlType;
     "calibre",
     "muzzleVelocity",
     "mustDeployToFire",
-    "performanceList",
-    "flags"
+    "performanceList"
 })
 public class Weapon {
 
@@ -96,13 +97,13 @@ public class Weapon {
     protected YesNo mustDeployToFire;
     @XmlElement(name = "performance-list", required = true)
     protected PerformanceList performanceList;
-    @XmlElement(required = true)
-    protected FlagList flags;
     @XmlAttribute(name = "id", required = true)
     protected int id;
+    @XmlAttribute(name = "flags")
+    protected List<Flag> flags;
 
     /**
-     * Obtiene el valor de la propiedad name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -114,7 +115,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +127,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad description.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
@@ -138,7 +139,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad description.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +151,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad picture.
+     * Gets the value of the picture property.
      * 
      * @return
      *     possible object is
@@ -162,7 +163,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad picture.
+     * Sets the value of the picture property.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +175,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad pictureFilename.
+     * Gets the value of the pictureFilename property.
      * 
      * @return
      *     possible object is
@@ -186,7 +187,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad pictureFilename.
+     * Sets the value of the pictureFilename property.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +199,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad size.
+     * Gets the value of the size property.
      * 
      * @return
      *     possible object is
@@ -210,7 +211,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad size.
+     * Sets the value of the size property.
      * 
      * @param value
      *     allowed object is
@@ -222,7 +223,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad crew.
+     * Gets the value of the crew property.
      * 
      */
     public int getCrew() {
@@ -230,7 +231,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad crew.
+     * Sets the value of the crew property.
      * 
      */
     public void setCrew(int value) {
@@ -238,7 +239,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad reliability.
+     * Gets the value of the reliability property.
      * 
      */
     public double getReliability() {
@@ -246,7 +247,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad reliability.
+     * Sets the value of the reliability property.
      * 
      */
     public void setReliability(double value) {
@@ -254,7 +255,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad armaments.
+     * Gets the value of the armaments property.
      * 
      * @return
      *     possible object is
@@ -266,7 +267,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad armaments.
+     * Sets the value of the armaments property.
      * 
      * @param value
      *     allowed object is
@@ -278,7 +279,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad type.
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
@@ -290,7 +291,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad type.
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
@@ -302,7 +303,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad singleShot.
+     * Gets the value of the singleShot property.
      * 
      * @return
      *     possible object is
@@ -314,7 +315,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad singleShot.
+     * Sets the value of the singleShot property.
      * 
      * @param value
      *     allowed object is
@@ -326,7 +327,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad primaryRole.
+     * Gets the value of the primaryRole property.
      * 
      * @return
      *     possible object is
@@ -338,7 +339,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad primaryRole.
+     * Sets the value of the primaryRole property.
      * 
      * @param value
      *     allowed object is
@@ -350,7 +351,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad calibre.
+     * Gets the value of the calibre property.
      * 
      */
     public double getCalibre() {
@@ -358,7 +359,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad calibre.
+     * Sets the value of the calibre property.
      * 
      */
     public void setCalibre(double value) {
@@ -366,7 +367,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad muzzleVelocity.
+     * Gets the value of the muzzleVelocity property.
      * 
      */
     public int getMuzzleVelocity() {
@@ -374,7 +375,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad muzzleVelocity.
+     * Sets the value of the muzzleVelocity property.
      * 
      */
     public void setMuzzleVelocity(int value) {
@@ -382,7 +383,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad mustDeployToFire.
+     * Gets the value of the mustDeployToFire property.
      * 
      * @return
      *     possible object is
@@ -394,7 +395,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad mustDeployToFire.
+     * Sets the value of the mustDeployToFire property.
      * 
      * @param value
      *     allowed object is
@@ -406,7 +407,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad performanceList.
+     * Gets the value of the performanceList property.
      * 
      * @return
      *     possible object is
@@ -418,7 +419,7 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad performanceList.
+     * Sets the value of the performanceList property.
      * 
      * @param value
      *     allowed object is
@@ -430,31 +431,7 @@ public class Weapon {
     }
 
     /**
-     * Obtiene el valor de la propiedad flags.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FlagList }
-     *     
-     */
-    public FlagList getFlags() {
-        return flags;
-    }
-
-    /**
-     * Define el valor de la propiedad flags.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FlagList }
-     *     
-     */
-    public void setFlags(FlagList value) {
-        this.flags = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -462,11 +439,40 @@ public class Weapon {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the flags property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the flags property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFlags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Flag }
+     * 
+     * 
+     */
+    public List<Flag> getFlags() {
+        if (flags == null) {
+            flags = new ArrayList<Flag>();
+        }
+        return this.flags;
     }
 
 }

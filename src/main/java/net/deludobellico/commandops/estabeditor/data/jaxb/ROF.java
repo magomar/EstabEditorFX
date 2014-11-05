@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ROF complex type.
+ * <p>Java class for ROF complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ROF">
@@ -38,7 +38,7 @@ public class ROF {
     protected double rapid;
 
     /**
-     * Obtiene el valor de la propiedad slow.
+     * Gets the value of the slow property.
      * 
      */
     public double getSlow() {
@@ -46,7 +46,7 @@ public class ROF {
     }
 
     /**
-     * Define el valor de la propiedad slow.
+     * Sets the value of the slow property.
      * 
      */
     public void setSlow(double value) {
@@ -54,7 +54,7 @@ public class ROF {
     }
 
     /**
-     * Obtiene el valor de la propiedad normal.
+     * Gets the value of the normal property.
      * 
      */
     public double getNormal() {
@@ -62,7 +62,7 @@ public class ROF {
     }
 
     /**
-     * Define el valor de la propiedad normal.
+     * Sets the value of the normal property.
      * 
      */
     public void setNormal(double value) {
@@ -70,7 +70,7 @@ public class ROF {
     }
 
     /**
-     * Obtiene el valor de la propiedad rapid.
+     * Gets the value of the rapid property.
      * 
      */
     public double getRapid() {
@@ -78,7 +78,7 @@ public class ROF {
     }
 
     /**
-     * Define el valor de la propiedad rapid.
+     * Sets the value of the rapid property.
      * 
      */
     public void setRapid(double value) {
