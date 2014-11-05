@@ -8,6 +8,7 @@ package net.deludobellico.commandops.estabeditor.model;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Ammo;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Vehicle;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Weapon;
+import net.deludobellico.commandops.estabeditor.data.jaxb.YesNo;
 
 /**
  * @author Mario
@@ -27,6 +28,14 @@ public interface PojoJFXModel<T> {
             }
         }
         return null;
+    }
+
+    public static YesNo booleanToYesNo(boolean cond) {
+        return cond ? YesNo.YES : YesNo.NO;
+    }
+
+    public static boolean yesNoToBoolean(YesNo cond) {
+        return cond.equals(YesNo.YES);
     }
 
     T getPojo();

@@ -25,7 +25,6 @@ public class Settings {
     private static Boolean expandedTargetPane;
 
 
-
     private Settings() {
     }
 

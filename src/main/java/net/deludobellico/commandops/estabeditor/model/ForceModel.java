@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.util.JFXModelUtil;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -99,7 +98,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         force.setReadyToBombardDuration(readyToBombardDuration.get());
         equipmentList.stream().map(EquipmentModel::getPojo).forEach(e -> force.getEquipmentList().getEquipment().add(e));
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(a -> force.getAmmoList().getAmmo().add(a));
-        force.setCanBombard(JFXModelUtil.booleanToYesNo(canBombard.get()));
+        force.setCanBombard(PojoJFXModel.booleanToYesNo(canBombard.get()));
         return force;
     }
 
@@ -135,7 +134,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         readyToFireDuration.set(pojo.getReadyToFireDuration());
         pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentModel -> equipmentList.add(equipmentModel));
         pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoQtyModel -> ammoList.add(ammoQtyModel));
-        canBombard.set(JFXModelUtil.yesNoToBoolean(pojo.getCanBombard()));
+        canBombard.set(PojoJFXModel.yesNoToBoolean(pojo.getCanBombard()));
     }
 
     public Integer getId() {

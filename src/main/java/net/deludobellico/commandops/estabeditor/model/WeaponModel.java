@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.util.JFXModelUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,11 +60,11 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         weapon.setCrew(crew.get());
         weapon.setReliability(reliability.get());
         weapon.setType(type.get());
-        weapon.setSingleShot(JFXModelUtil.booleanToYesNo(singleShot.get()));
+        weapon.setSingleShot(PojoJFXModel.booleanToYesNo(singleShot.get()));
         weapon.setPrimaryRole(primaryRole.get());
         weapon.setCalibre(calibre.get());
         weapon.setMuzzleVelocity(muzzleVelocity.get());
-        weapon.setMustDeployToFire(JFXModelUtil.booleanToYesNo(mustDeployToFire.get()));
+        weapon.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
         weapon.setPerformanceList(new PerformanceList());
         performances.stream().map(PerformanceModel::getPojo).forEach(pp -> weapon.getPerformanceList().getPerformance().add(pp));
         return weapon;
@@ -82,11 +81,11 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
         type.set(pojo.getType());
-        singleShot.set(JFXModelUtil.yesNoToBoolean(pojo.getSingleShot()));
+        singleShot.set(PojoJFXModel.yesNoToBoolean(pojo.getSingleShot()));
         primaryRole.set(pojo.getPrimaryRole());
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
-        mustDeployToFire.set(JFXModelUtil.yesNoToBoolean(pojo.getMustDeployToFire()));
+        mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
     }
 

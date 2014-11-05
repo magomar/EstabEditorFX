@@ -7,7 +7,6 @@ package net.deludobellico.commandops.estabeditor.view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,6 +24,7 @@ import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 //TODO: make prettier the view
 public class InfoDialog implements Initializable {
 
@@ -67,7 +67,7 @@ public class InfoDialog implements Initializable {
         dialog = new Stage(StageStyle.DECORATED);
         dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
-        buttonBox.getChildren().stream().forEach(b -> ((Button)b).setOnAction(event -> dialog.close()));
+        buttonBox.getChildren().stream().forEach(b -> ((Button) b).setOnAction(event -> dialog.close()));
 
     }
 

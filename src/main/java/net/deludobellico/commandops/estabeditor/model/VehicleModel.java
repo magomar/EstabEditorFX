@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.util.JFXModelUtil;
 
 /**
  * Created by Mario on 26/10/2014.
@@ -98,8 +97,8 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         vehicle.setBulkFuelCapacity(bulkFuelCapacity.get());
         vehicle.setPayloadCapacity(payloadCapacity.get());
         vehicle.setTakeCoverMod(takeCoverMod.get());
-        vehicle.setHasOpenTop(JFXModelUtil.booleanToYesNo(hasOpenTop.get()).value());
-        vehicle.setHasTurret(JFXModelUtil.booleanToYesNo(hasTurret.get()).value());
+        vehicle.setHasOpenTop(PojoJFXModel.booleanToYesNo(hasOpenTop.get()).value());
+        vehicle.setHasTurret(PojoJFXModel.booleanToYesNo(hasTurret.get()).value());
         vehicle.setBattleWeight(battleWeight.get());
         Armor a = new Armor();
         a.setFront(frontArmor.get());

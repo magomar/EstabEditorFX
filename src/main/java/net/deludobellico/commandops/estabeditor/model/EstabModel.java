@@ -25,7 +25,7 @@ public class EstabModel {
     private Map<Class, Map> allElements;
 
     public EstabModel(File estabFile) {
-        this((EstabData) FileIO.unmarshallXML(estabFile));
+        this((EstabData) FileIO.loadEstab(estabFile));
     }
 
     public EstabModel(EstabData estabData) {
@@ -319,6 +319,6 @@ public class EstabModel {
         data.getFormationEffects().addAll(formationEffects.values());
         data.getSide().addAll(sides.values());
         data.getWeapon().addAll(weapons.values().stream().map(WeaponModel::getPojo).collect(Collectors.toList()));
-        FileIO.marshallXML(data, file);
+        FileIO.saveEstab(data, file);
     }
 }
