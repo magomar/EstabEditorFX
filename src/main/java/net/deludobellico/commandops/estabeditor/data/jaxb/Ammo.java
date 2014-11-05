@@ -1,13 +1,18 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Ammo complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Ammo complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Ammo">
  *   &lt;complexContent>
@@ -23,13 +28,15 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Ammo", propOrder = {
-        "name",
-        "description",
-        "minOrderQty",
-        "minOrderWeight"
+    "name",
+    "description",
+    "minOrderQty",
+    "minOrderWeight"
 })
 public class Ammo {
 
@@ -45,82 +52,96 @@ public class Ammo {
     protected int id;
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the description property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad description.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Sets the value of the description property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad description.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setDescription(String value) {
         this.description = value;
     }
 
     /**
-     * Gets the value of the minOrderQty property.
+     * Obtiene el valor de la propiedad minOrderQty.
+     * 
      */
     public int getMinOrderQty() {
         return minOrderQty;
     }
 
     /**
-     * Sets the value of the minOrderQty property.
+     * Define el valor de la propiedad minOrderQty.
+     * 
      */
     public void setMinOrderQty(int value) {
         this.minOrderQty = value;
     }
 
     /**
-     * Gets the value of the minOrderWeight property.
+     * Obtiene el valor de la propiedad minOrderWeight.
+     * 
      */
     public double getMinOrderWeight() {
         return minOrderWeight;
     }
 
     /**
-     * Sets the value of the minOrderWeight property.
+     * Define el valor de la propiedad minOrderWeight.
+     * 
      */
     public void setMinOrderWeight(double value) {
         this.minOrderWeight = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(int value) {
         this.id = value;

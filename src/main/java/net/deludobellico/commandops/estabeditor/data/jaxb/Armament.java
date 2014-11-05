@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Armament complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Armament complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Armament">
  *   &lt;complexContent>
@@ -22,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Armament")
@@ -35,48 +38,56 @@ public class Armament {
     protected int qty;
 
     /**
-     * Gets the value of the equipmentObjectId property.
+     * Obtiene el valor de la propiedad equipmentObjectId.
+     * 
      */
     public int getEquipmentObjectId() {
         return equipmentObjectId;
     }
 
     /**
-     * Sets the value of the equipmentObjectId property.
+     * Define el valor de la propiedad equipmentObjectId.
+     * 
      */
     public void setEquipmentObjectId(int value) {
         this.equipmentObjectId = value;
     }
 
     /**
-     * Gets the value of the equipmentName property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad equipmentName.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getEquipmentName() {
         return equipmentName;
     }
 
     /**
-     * Sets the value of the equipmentName property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad equipmentName.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setEquipmentName(String value) {
         this.equipmentName = value;
     }
 
     /**
-     * Gets the value of the qty property.
+     * Obtiene el valor de la propiedad qty.
+     * 
      */
     public int getQty() {
         return qty;
     }
 
     /**
-     * Sets the value of the qty property.
+     * Define el valor de la propiedad qty.
+     * 
      */
     public void setQty(int value) {
         this.qty = value;

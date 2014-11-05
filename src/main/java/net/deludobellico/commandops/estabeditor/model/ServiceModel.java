@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 /**
  * Created by Mario on 29/10/2014.
  */
-public class ServiceModel implements PojoJFXModel<Service> {
+public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

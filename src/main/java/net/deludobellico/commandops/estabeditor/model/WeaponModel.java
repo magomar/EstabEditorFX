@@ -89,7 +89,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
     }
 
-    public Integer getId() {
+    public int getId() {
         return id.get();
     }
 

@@ -147,7 +147,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         topArmor.set(pojo.getArmour().getTop());
     }
 
-    public Integer getId() {
+    public int getId() {
         return id.get();
     }
 

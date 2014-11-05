@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -6,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FireType.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Clase Java para FireType.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
  * &lt;simpleType name="FireType">
@@ -21,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
+ * 
  */
 @XmlType(name = "FireType")
 @XmlEnum
@@ -42,17 +44,17 @@ public enum FireType {
         value = v;
     }
 
+    public String value() {
+        return value;
+    }
+
     public static FireType fromValue(String v) {
-        for (FireType c : FireType.values()) {
+        for (FireType c: FireType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
-    }
-
-    public String value() {
-        return value;
     }
 
 }

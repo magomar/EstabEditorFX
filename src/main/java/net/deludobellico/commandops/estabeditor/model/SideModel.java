@@ -9,7 +9,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 /**
  * Created by Mario on 29/10/2014.
  */
-public class SideModel implements PojoJFXModel<Side> {
+public class SideModel implements ElementModel, PojoJFXModel<Side> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

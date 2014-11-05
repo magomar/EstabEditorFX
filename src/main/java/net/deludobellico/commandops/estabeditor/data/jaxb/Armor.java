@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,113 +8,99 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Armor complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Armor complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Armor">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="front" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="side" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="rear" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="top" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="front" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="side" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="rear" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="top" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Armor")
 public class Armor {
 
-    @XmlAttribute(name = "front")
-    protected Double front;
-    @XmlAttribute(name = "side")
-    protected Double side;
-    @XmlAttribute(name = "rear")
-    protected Double rear;
-    @XmlAttribute(name = "top")
-    protected Double top;
+    @XmlAttribute(name = "front", required = true)
+    protected double front;
+    @XmlAttribute(name = "side", required = true)
+    protected double side;
+    @XmlAttribute(name = "rear", required = true)
+    protected double rear;
+    @XmlAttribute(name = "top", required = true)
+    protected double top;
 
     /**
-     * Gets the value of the front property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad front.
+     * 
      */
-    public Double getFront() {
+    public double getFront() {
         return front;
     }
 
     /**
-     * Sets the value of the front property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad front.
+     * 
      */
-    public void setFront(Double value) {
+    public void setFront(double value) {
         this.front = value;
     }
 
     /**
-     * Gets the value of the side property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad side.
+     * 
      */
-    public Double getSide() {
+    public double getSide() {
         return side;
     }
 
     /**
-     * Sets the value of the side property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad side.
+     * 
      */
-    public void setSide(Double value) {
+    public void setSide(double value) {
         this.side = value;
     }
 
     /**
-     * Gets the value of the rear property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad rear.
+     * 
      */
-    public Double getRear() {
+    public double getRear() {
         return rear;
     }
 
     /**
-     * Sets the value of the rear property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad rear.
+     * 
      */
-    public void setRear(Double value) {
+    public void setRear(double value) {
         this.rear = value;
     }
 
     /**
-     * Gets the value of the top property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad top.
+     * 
      */
-    public Double getTop() {
+    public double getTop() {
         return top;
     }
 
     /**
-     * Sets the value of the top property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad top.
+     * 
      */
-    public void setTop(Double value) {
+    public void setTop(double value) {
         this.top = value;
     }
 

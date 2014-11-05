@@ -1,6 +1,5 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
-import com.sun.istack.internal.NotNull;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -220,7 +219,7 @@ public class MainController implements Initializable {
 
 //  Careful, no file == null check on both openSource and openTarget
 
-    private void openSource(@NotNull File file) {
+    private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
         sourceIsClosed.setValue(false);

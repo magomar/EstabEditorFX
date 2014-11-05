@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.estabeditor.model;
+package net.deludobellico.commandops.estabeditor.deprecated;
 
 import javax.xml.bind.JAXBElement;
 
@@ -45,8 +45,22 @@ public class EstabReference<T> {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EstabReference that = (EstabReference) o;
+
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
+        return true;
+    }
+
+    @Override
     public int hashCode() {
-        // TODO hasCode based on the wrapped element
-        return super.hashCode();
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

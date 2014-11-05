@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,10 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Insignia complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Insignia complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Insignia">
  *   &lt;complexContent>
@@ -20,6 +21,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Insignia")
@@ -29,14 +32,16 @@ public class Insignia {
     protected int id;
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
+     * 
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
+     * 
      */
     public void setId(int value) {
         this.id = value;

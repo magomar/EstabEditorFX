@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,90 +8,88 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Equipment complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para Equipment complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="Equipment">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="equipment-object-id" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="qty" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="equipment-object-id" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="qty" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Equipment")
 public class Equipment {
 
-    @XmlAttribute(name = "equipment-object-id")
-    protected Integer equipmentObjectId;
-    @XmlAttribute(name = "name")
+    @XmlAttribute(name = "equipment-object-id", required = true)
+    protected int equipmentObjectId;
+    @XmlAttribute(name = "name", required = true)
     protected String name;
-    @XmlAttribute(name = "qty")
-    protected Integer qty;
+    @XmlAttribute(name = "qty", required = true)
+    protected int qty;
 
     /**
-     * Gets the value of the equipmentObjectId property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * Obtiene el valor de la propiedad equipmentObjectId.
+     * 
      */
-    public Integer getEquipmentObjectId() {
+    public int getEquipmentObjectId() {
         return equipmentObjectId;
     }
 
     /**
-     * Sets the value of the equipmentObjectId property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * Define el valor de la propiedad equipmentObjectId.
+     * 
      */
-    public void setEquipmentObjectId(Integer value) {
+    public void setEquipmentObjectId(int value) {
         this.equipmentObjectId = value;
     }
 
     /**
-     * Gets the value of the name property.
-     *
-     * @return possible object is
-     * {@link String }
+     * Obtiene el valor de la propiedad name.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * Define el valor de la propiedad name.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setName(String value) {
         this.name = value;
     }
 
     /**
-     * Gets the value of the qty property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * Obtiene el valor de la propiedad qty.
+     * 
      */
-    public Integer getQty() {
+    public int getQty() {
         return qty;
     }
 
     /**
-     * Sets the value of the qty property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * Define el valor de la propiedad qty.
+     * 
      */
-    public void setQty(Integer value) {
+    public void setQty(int value) {
         this.qty = value;
     }
 

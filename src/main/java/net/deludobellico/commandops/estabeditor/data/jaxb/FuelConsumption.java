@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,67 +8,61 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FuelConsumption complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para FuelConsumption complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="FuelConsumption">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="max" type="{http://www.w3.org/2001/XMLSchema}double" />
- *       &lt;attribute name="normal" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="max" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
+ *       &lt;attribute name="normal" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FuelConsumption")
 public class FuelConsumption {
 
-    @XmlAttribute(name = "max")
-    protected Double max;
-    @XmlAttribute(name = "normal")
-    protected Double normal;
+    @XmlAttribute(name = "max", required = true)
+    protected double max;
+    @XmlAttribute(name = "normal", required = true)
+    protected double normal;
 
     /**
-     * Gets the value of the max property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad max.
+     * 
      */
-    public Double getMax() {
+    public double getMax() {
         return max;
     }
 
     /**
-     * Sets the value of the max property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad max.
+     * 
      */
-    public void setMax(Double value) {
+    public void setMax(double value) {
         this.max = value;
     }
 
     /**
-     * Gets the value of the normal property.
-     *
-     * @return possible object is
-     * {@link Double }
+     * Obtiene el valor de la propiedad normal.
+     * 
      */
-    public Double getNormal() {
+    public double getNormal() {
         return normal;
     }
 
     /**
-     * Sets the value of the normal property.
-     *
-     * @param value allowed object is
-     *              {@link Double }
+     * Define el valor de la propiedad normal.
+     * 
      */
-    public void setNormal(Double value) {
+    public void setNormal(double value) {
         this.normal = value;
     }
 

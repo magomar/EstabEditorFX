@@ -1,3 +1,4 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,90 +8,80 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RGBColor complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para RGBColor complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="RGBColor">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="red" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="green" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="blue" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="red" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="green" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="blue" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RGBColor")
 public class RGBColor {
 
-    @XmlAttribute(name = "red")
-    protected Integer red;
-    @XmlAttribute(name = "green")
-    protected Integer green;
-    @XmlAttribute(name = "blue")
-    protected Integer blue;
+    @XmlAttribute(name = "red", required = true)
+    protected int red;
+    @XmlAttribute(name = "green", required = true)
+    protected int green;
+    @XmlAttribute(name = "blue", required = true)
+    protected int blue;
 
     /**
-     * Gets the value of the red property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * Obtiene el valor de la propiedad red.
+     * 
      */
-    public Integer getRed() {
+    public int getRed() {
         return red;
     }
 
     /**
-     * Sets the value of the red property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * Define el valor de la propiedad red.
+     * 
      */
-    public void setRed(Integer value) {
+    public void setRed(int value) {
         this.red = value;
     }
 
     /**
-     * Gets the value of the green property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * Obtiene el valor de la propiedad green.
+     * 
      */
-    public Integer getGreen() {
+    public int getGreen() {
         return green;
     }
 
     /**
-     * Sets the value of the green property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * Define el valor de la propiedad green.
+     * 
      */
-    public void setGreen(Integer value) {
+    public void setGreen(int value) {
         this.green = value;
     }
 
     /**
-     * Gets the value of the blue property.
-     *
-     * @return possible object is
-     * {@link Integer }
+     * Obtiene el valor de la propiedad blue.
+     * 
      */
-    public Integer getBlue() {
+    public int getBlue() {
         return blue;
     }
 
     /**
-     * Sets the value of the blue property.
-     *
-     * @param value allowed object is
-     *              {@link Integer }
+     * Define el valor de la propiedad blue.
+     * 
      */
-    public void setBlue(Integer value) {
+    public void setBlue(int value) {
         this.blue = value;
     }
 

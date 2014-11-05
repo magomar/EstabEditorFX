@@ -1,13 +1,18 @@
+
 package net.deludobellico.commandops.estabeditor.data.jaxb;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for FormationSecurity complex type.
- * <p>
- * <p>The following schema fragment specifies the expected content contained within this class.
- * <p>
+ * <p>Clase Java para FormationSecurity complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
  * <pre>
  * &lt;complexType name="FormationSecurity">
  *   &lt;complexContent>
@@ -22,13 +27,15 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FormationSecurity", propOrder = {
-        "front",
-        "left",
-        "right",
-        "rear"
+    "front",
+    "left",
+    "right",
+    "rear"
 })
 public class FormationSecurity {
 
@@ -46,80 +53,96 @@ public class FormationSecurity {
     protected Security rear;
 
     /**
-     * Gets the value of the front property.
-     *
-     * @return possible object is
-     * {@link Security }
+     * Obtiene el valor de la propiedad front.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Security }
+     *     
      */
     public Security getFront() {
         return front;
     }
 
     /**
-     * Sets the value of the front property.
-     *
-     * @param value allowed object is
-     *              {@link Security }
+     * Define el valor de la propiedad front.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Security }
+     *     
      */
     public void setFront(Security value) {
         this.front = value;
     }
 
     /**
-     * Gets the value of the left property.
-     *
-     * @return possible object is
-     * {@link Security }
+     * Obtiene el valor de la propiedad left.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Security }
+     *     
      */
     public Security getLeft() {
         return left;
     }
 
     /**
-     * Sets the value of the left property.
-     *
-     * @param value allowed object is
-     *              {@link Security }
+     * Define el valor de la propiedad left.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Security }
+     *     
      */
     public void setLeft(Security value) {
         this.left = value;
     }
 
     /**
-     * Gets the value of the right property.
-     *
-     * @return possible object is
-     * {@link Security }
+     * Obtiene el valor de la propiedad right.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Security }
+     *     
      */
     public Security getRight() {
         return right;
     }
 
     /**
-     * Sets the value of the right property.
-     *
-     * @param value allowed object is
-     *              {@link Security }
+     * Define el valor de la propiedad right.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Security }
+     *     
      */
     public void setRight(Security value) {
         this.right = value;
     }
 
     /**
-     * Gets the value of the rear property.
-     *
-     * @return possible object is
-     * {@link Security }
+     * Obtiene el valor de la propiedad rear.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Security }
+     *     
      */
     public Security getRear() {
         return rear;
     }
 
     /**
-     * Sets the value of the rear property.
-     *
-     * @param value allowed object is
-     *              {@link Security }
+     * Define el valor de la propiedad rear.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Security }
+     *     
      */
     public void setRear(Security value) {
         this.rear = value;
