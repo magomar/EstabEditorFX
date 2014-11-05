@@ -103,7 +103,7 @@ public class FileIO {
     }
 
     public static void saveSettings() {
-        JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(SETTINGS_XML_FILE));
+        JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(getSettingsPath().toAbsolutePath().toString()));
     }
 
     /**
@@ -194,7 +194,7 @@ public class FileIO {
     }
 
     public static Path getSettingsPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), SETTINGS_XML_FILE);
+        return FileSystems.getDefault().getPath(System.getProperty("user.home"), SETTINGS_XML_FILE);
     }
 
     public static File installDataset(String datasetName, File targetFolder) {

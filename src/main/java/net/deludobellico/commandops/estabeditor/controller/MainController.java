@@ -192,11 +192,14 @@ public class MainController implements Initializable {
 
     private File openFileChooser(boolean isSaving) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Opening ESTAB File");
-        if (Settings.getInstance().getLastOpenedFolder() != null) {
-            File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if (lastOpenedFolder.exists()) fileChooser.setInitialDirectory(lastOpenedFolder);
-        }
+        fileChooser.setTitle("Select ESTAB");
+
+        File initialDirectory = null;
+        if (Settings.getInstance().getLastOpenedFolder() != null)
+            initialDirectory = new File(Settings.getInstance().getLastOpenedFolder());
+        if (initialDirectory != null && initialDirectory.exists()) fileChooser.setInitialDirectory(initialDirectory);
+        else fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+
         fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
         File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
         if (selectedFile != null)
@@ -206,14 +209,13 @@ public class MainController implements Initializable {
 
     private File openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Select a folder");
-        if (Settings.getInstance().getLastOpenedFolder() != null) {
-            File lastOpenedFolder = new File(Settings.getInstance().getLastOpenedFolder());
-            if (lastOpenedFolder.exists()) directoryChooser.setInitialDirectory(lastOpenedFolder);
-        }
-
+        directoryChooser.setTitle("Select folder");
+        File initialDirectory = null;
+        if (Settings.getInstance().getLastOpenedFolder() != null)
+            initialDirectory = new File(Settings.getInstance().getLastOpenedFolder());
+        if (initialDirectory != null && initialDirectory.exists()) directoryChooser.setInitialDirectory(initialDirectory);
+        else directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         return directoryChooser.showDialog(UtilView.ROOT_STAGE);
-
     }
 
 
