@@ -259,6 +259,27 @@ public class EstabController implements Initializable {
     }
 
     /**
+     *
+     * @param elementClass
+     */
+    public void createNewElement(Class elementClass) {
+        ElementModel newElement;
+        if (elementClass == VehicleModel.class) {
+            newElement = ElementModelFactory.createVehicle();
+            estabModel.getVehicles().put(newElement.getId(), (VehicleModel) newElement);
+        } else if (elementClass == WeaponModel.class) {
+            newElement = ElementModelFactory.createWeapon();
+            estabModel.getWeapons().put(newElement.getId(), (WeaponModel) newElement);
+        } else if (elementClass == AmmoModel.class) {
+            newElement = ElementModelFactory.createAmmo();
+            estabModel.getAmmo().put(newElement.getId(), (AmmoModel) newElement);
+        } else {
+            return;
+        }
+        setActiveElement(newElement);
+        update();
+    }
+    /**
      * Copies elements into the model if possible.
      * If there are repated elements, promt the user for an action.
      *
@@ -358,7 +379,7 @@ public class EstabController implements Initializable {
             int sides = estabModel.getSides().size();
             int images = estabModel.getImages().size();
             int vehicles = estabModel.getVehicles().size();
-            int weapons = estabModel.getVehicles().size();
+            int weapons = estabModel.getWeapons().size();
             int ammo = estabModel.getAmmo().size();
             String filename = activeFile == null ? "" : activeFile.getName();
             title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
@@ -474,6 +495,7 @@ public class EstabController implements Initializable {
     public void setSearchDisableProperty(boolean b) {
         this.searchDisable.set(b);
     }
+
 }
 
 

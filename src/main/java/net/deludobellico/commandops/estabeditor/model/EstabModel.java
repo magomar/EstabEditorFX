@@ -30,7 +30,7 @@ public class EstabModel {
 
     public EstabModel(EstabData estabData) {
 
-        List<Image> estabImage = estabData.getImage();
+        List<Image> estabImages = estabData.getImage();
         List<Side> estabSides = estabData.getSide();
         List<Vehicle> estabVehicles = estabData.getVehicle();
         List<Weapon> estabWeapons = estabData.getWeapon();
@@ -38,7 +38,7 @@ public class EstabModel {
         List<FormationEffects> estabFormationEffects = estabData.getFormationEffects();
 
         // Initial size to avoid resizing
-        images = new HashMap<>(estabImage.size());
+        images = new HashMap<>(estabImages.size());
         sides = new HashMap<>(estabSides.size());
         vehicles = new HashMap<>(estabVehicles.size());
         weapons = new HashMap<>(estabWeapons.size());
@@ -53,21 +53,38 @@ public class EstabModel {
         allElements.put(AmmoModel.class, ammos);
         allElements.put(FormationEffects.class, formationEffects);
 
-        estabImage.stream().forEach(image -> images.put(Integer.valueOf(image.getId()), image));
-        estabSides.stream().forEach(side -> sides.put(Integer.valueOf(side.getId()), side));
-        estabFormationEffects.stream().forEach(effects -> formationEffects.put(Integer.valueOf(effects.getId()), effects));
-
-        estabVehicles.stream()
-                .map(VehicleModel::new)
-                .forEach(vehicleModel -> vehicles.put(vehicleModel.getId(), vehicleModel));
-
-        estabData.getWeapon().stream()
-                .map(WeaponModel::new)
-                .forEach(weaponModel -> weapons.put(weaponModel.getId(), weaponModel));
-
-        estabData.getAmmo().stream()
-                .map(AmmoModel::new)
-                .forEach(ammoModel -> ammos.put(ammoModel.getId(), ammoModel));
+        int maxID = 0;
+        for (Image e : estabImages) {
+            int id = Integer.valueOf(e.getId());
+            if (id > maxID) maxID = id;
+            images.put(id, e);
+        }
+        for (Side e : estabSides) {
+            int id = Integer.valueOf(e.getId());
+            if (id > maxID) maxID = id;
+            sides.put(id, e);
+        }
+        for (FormationEffects e : estabFormationEffects) {
+            int id = Integer.valueOf(e.getId());
+            if (id > maxID) maxID = id;
+            formationEffects.put(id, e);
+        }
+        for (Vehicle e : estabVehicles) {
+            VehicleModel em = new VehicleModel(e);
+            if(em.getId() > maxID) maxID = em.getId();
+            vehicles.put(em.getId(), em);
+        }
+        for (Weapon e : estabWeapons) {
+            WeaponModel em = new WeaponModel(e);
+            if(em.getId() > maxID) maxID = em.getId();
+            weapons.put(em.getId(), em);
+        }
+        for (Ammo e : estabAmmo) {
+            AmmoModel em = new AmmoModel(e);
+            if(em.getId() > maxID) maxID = em.getId();
+            ammos.put(em.getId(), em);
+        }
+        ElementModelFactory.setMaxID(maxID);
     }
 
     public Map<Integer, Image> getImages() {
@@ -92,17 +109,13 @@ public class EstabModel {
 
     public List<ElementModel> searchElement(String name, Class elementModelClass) {
         String lowerCase = name.toLowerCase();
-        return (List<ElementModel>) allElements.get(elementModelClass).values().parallelStream()
+        return (List<ElementModel >) allElements.get(elementModelClass).values().parallelStream()
                 .filter(element -> ((ElementModel) element).getName().toLowerCase().contains(lowerCase))
                 .collect(Collectors.<ElementModel>toList());
     }
 
     private List<WeaponModel> getWeaponListFromVehicle(VehicleModel vehicle) {
         List<WeaponModel> weaponList = new ArrayList<>();
-//        Not this time, lambda
-//        vehicle.getArmaments().stream()
-//                .filter(armament -> weapons.get(armament.getEquipmentObjectId()) != null)
-//                .forEach(armament -> weaponList.add(weapons.get(armament.getEquipmentObjectId())));
         for (ArmamentModel armament : vehicle.getArmaments()) {
             WeaponModel weapon = weapons.get(armament.getEquipmentObjectId());
             if (weapon != null) {
@@ -330,4 +343,5 @@ public class EstabModel {
         data.getWeapon().addAll(weapons.values().stream().map(WeaponModel::getPojo).collect(Collectors.toList()));
         FileIO.saveEstab(data, file);
     }
+
 }

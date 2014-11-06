@@ -23,6 +23,10 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         setPojo(ammo);
     }
 
+    public AmmoModel() {
+
+    }
+
     @Override
     public Ammo getPojo() {
         Ammo pojo = new Ammo();

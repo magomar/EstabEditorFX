@@ -400,8 +400,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void clear() {
-        unbindProperties(activeWeapon);
-        unbindPerformanceProperties(activePerformance);
+        if(activeWeapon != null) unbindProperties(activeWeapon);
+        if(activePerformance != null) unbindPerformanceProperties(activePerformance);
 
         weight.setText("");
         name.setText("");

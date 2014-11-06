@@ -14,9 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.model.EstabModel;
-import net.deludobellico.commandops.estabeditor.model.RelatedElementLists;
+import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -101,6 +99,12 @@ public class MainController implements Initializable {
     private Button createNewVehicleButton;
 
     @FXML
+    private Button createNewWeaponButton;
+
+    @FXML
+    private Button createNewAmmoButton;
+
+    @FXML
     private EstabController sourcePaneController;
 
     @FXML
@@ -165,6 +169,8 @@ public class MainController implements Initializable {
         targetPaneController.searchDisableProperty().bind(targetIsClosed);
         saveDataButton.disableProperty().bind(targetIsClosed);
         createNewVehicleButton.disableProperty().bind(targetIsClosed);
+        createNewWeaponButton.disableProperty().bind(targetIsClosed);
+        createNewAmmoButton.disableProperty().bind(targetIsClosed);
 
         populateOpenRecentSourceMenu();
         populateOpenRecentTargetMenu();
@@ -449,6 +455,14 @@ public class MainController implements Initializable {
     }
 
     public void createNewVehicleButtonAction(ActionEvent actionEvent) {
+        targetPaneController.createNewElement(VehicleModel.class);
+    }
 
+    public void createNewWeaponButtonAction(ActionEvent actionEvent) {
+        targetPaneController.createNewElement(WeaponModel.class);
+    }
+
+    public void createNewAmmoButtonAction(ActionEvent actionEvent) {
+        targetPaneController.createNewElement(AmmoModel.class);
     }
 }

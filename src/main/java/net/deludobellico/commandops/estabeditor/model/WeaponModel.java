@@ -34,6 +34,10 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         setPojo(weapon);
     }
 
+    public WeaponModel() {
+
+    }
+
     public static Map<FireType, PerformanceModel> getFireTypeMap(WeaponModel weapon) {
         Map<FireType, PerformanceModel> fireTypeMap = new HashMap<>(FireType.values().length);
         if (fireTypeMap.isEmpty()) {

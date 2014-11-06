@@ -40,10 +40,10 @@ public class ElementListCell extends HBox {
                 flag = Flag.REMOVE;
                 break;
             }
-//            if (f.equals(Flag.USER)) {
-//                style = UtilView.TEXT_STYLE_USER;
-//                break;
-//            }
+            if (f.equals(Flag.NEW)) {
+                label.setStyle(UtilView.TEXT_STYLE_NEW);
+                break;
+            }
         }
         label.textProperty().bind(elementModel.nameProperty());
 

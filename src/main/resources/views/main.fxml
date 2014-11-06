@@ -93,8 +93,12 @@
                                 <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
                                         onAction="#saveTargetAction" text="Save Target File" maxHeight="Infinity"/>
                                 <Button fx:id="createNewVehicleButton" disable="true" mnemonicParsing="false"
-                                        onAction="#createNewVehicleButtonAction" text="New Vehicle" maxHeight="Infinity">
-                                </Button>
+                                        onAction="#createNewVehicleButtonAction" text="New Vehicle" maxHeight="Infinity"/>
+                                <Button fx:id="createNewWeaponButton" disable="true" mnemonicParsing="false"
+                                        onAction="#createNewWeaponButtonAction" text="New Weapon" maxHeight="Infinity"/>
+                                <Button fx:id="createNewAmmoButton" disable="true" mnemonicParsing="false"
+                                        onAction="#createNewAmmoButtonAction" text="New Ammo" maxHeight="Infinity"/>
+
                             </items>
                         </ToolBar>
                     </children>

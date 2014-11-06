@@ -56,6 +56,10 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         setPojo(vehicle);
     }
 
+    public VehicleModel() {
+
+    }
+
     @Override
     public Vehicle getPojo() {
         Vehicle vehicle = new Vehicle();

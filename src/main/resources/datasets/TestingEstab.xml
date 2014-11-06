@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <estab-data>
-    <vehicle id="1027" flags="copy">
-        <name>Motorcycle</name>
-        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
-        <picture id="3594"/>
-        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
-        <crew>1</crew>
-        <reliability>0.954834</reliability>
-        <armaments/>
-        <type>motor-cycle</type>
-        <fuel-capacity>10.0</fuel-capacity>
-        <speed>
-            <road max="100.0" normal="70.0"/>
-            <cross-country max="30.0" normal="21.0"/>
-        </speed>
-        <fuel-consumption max="1.5" normal="1.0"/>
-        <ronsonability>0.10498</ronsonability>
-        <max-gradient>20</max-gradient>
-        <max-fording-depth>0</max-fording-depth>
-        <max-trench-width>0</max-trench-width>
-        <towing-capacity>200.0</towing-capacity>
-        <personnel-capacity>0</personnel-capacity>
-        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
-        <payload-capacity>100.0</payload-capacity>
-        <take-cover-mod>1.004883</take-cover-mod>
-        <has-turret>no</has-turret>
-        <has-open-top>yes</has-open-top>
-        <battle-weight>0.0</battle-weight>
-        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
-    </vehicle>
     <vehicle id="613" flags="copy">
         <name>Pz IV L/70 (V)</name>
         <description>The Panzer IV L/70, originally known as the Jagdpanzer IV Lang (long), but later renamed, combined the proven Pz IV chassis with the JagdPanzer IV superstructure and the 7.5cm L/70 gun of the Panther.  Together with its low silhouette, this made for a very dangerous tank destroyer. Between May 1944 and March 1945 some 930 were built. The Pz IV/70 entered combat service in August 1944, within the Panzerjaeger-companies of the then newly created Panzer brigades, and then started replacing the Jagdpanzer IV within the Panzer divisions.</description>
@@ -60,6 +31,64 @@
         <has-open-top>no</has-open-top>
         <battle-weight>25800.0</battle-weight>
         <armour front="161.0" side="50.0" rear="20.0" top="20.0"/>
+    </vehicle>
+    <vehicle id="2266" flags="new">
+        <name>New Vehicle</name>
+        <description></description>
+        <picture id="0"/>
+        <size width="0.0" height="0.0" length="0.0" weight="0.0"/>
+        <crew>0</crew>
+        <reliability>0.0</reliability>
+        <armaments/>
+        <type>car</type>
+        <fuel-capacity>0.0</fuel-capacity>
+        <speed>
+            <road max="0.0" normal="0.0"/>
+            <cross-country max="0.0" normal="0.0"/>
+        </speed>
+        <fuel-consumption max="0.0" normal="0.0"/>
+        <ronsonability>0.0</ronsonability>
+        <max-gradient>0</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>0.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>0.0</payload-capacity>
+        <take-cover-mod>0.0</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>no</has-open-top>
+        <battle-weight>0.0</battle-weight>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
+    </vehicle>
+    <vehicle id="1027" flags="copy">
+        <name>Motorcycle</name>
+        <description>All parties in WWII used motorcycles for liaison and recon missions.</description>
+        <picture id="3594"/>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.954834</reliability>
+        <armaments/>
+        <type>motor-cycle</type>
+        <fuel-capacity>10.0</fuel-capacity>
+        <speed>
+            <road max="100.0" normal="70.0"/>
+            <cross-country max="30.0" normal="21.0"/>
+        </speed>
+        <fuel-consumption max="1.5" normal="1.0"/>
+        <ronsonability>0.10498</ronsonability>
+        <max-gradient>20</max-gradient>
+        <max-fording-depth>0</max-fording-depth>
+        <max-trench-width>0</max-trench-width>
+        <towing-capacity>200.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>100.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>no</has-turret>
+        <has-open-top>yes</has-open-top>
+        <battle-weight>0.0</battle-weight>
+        <armour front="0.0" side="0.0" rear="0.0" top="0.0"/>
     </vehicle>
     <weapon id="2266" flags="copy">
         <name>7.5cm PjK 42 L/70</name>
@@ -149,19 +178,19 @@
         <min-order-qty>100</min-order-qty>
         <min-order-weight>3.0</min-order-weight>
     </ammo>
-    <ammo id="163" flags="copy">
-        <name>7.5cm KwK AP</name>
-        <description>
-    </description>
-        <min-order-qty>5</min-order-qty>
-        <min-order-weight>57.0</min-order-weight>
-    </ammo>
     <ammo id="166" flags="copy new">
         <name>7.5cm KwK HE</name>
         <description>
     </description>
         <min-order-qty>10</min-order-qty>
         <min-order-weight>114.0</min-order-weight>
+    </ammo>
+    <ammo id="163" flags="copy">
+        <name>7.5cm KwK AP</name>
+        <description>
+    </description>
+        <min-order-qty>5</min-order-qty>
+        <min-order-weight>57.0</min-order-weight>
     </ammo>
     <formation-effects id="1600" type="left-echelon">
         <moving-cohesion-level>0.600098</moving-cohesion-level>
