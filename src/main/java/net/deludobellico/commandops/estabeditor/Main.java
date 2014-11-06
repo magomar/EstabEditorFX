@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
+import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
@@ -40,11 +41,23 @@ public class Main extends Application {
         } catch (NullPointerException e) {
 
         }
+        primaryStage.setOnCloseRequest(event -> {
+            if (Settings.getInstance().isNewFileCreated() && !Settings.getInstance().isNewFileSaved()) {
+                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
+                if (answer != DialogAction.OK) {
+                    event.consume();
+                } else {
+                    FileIO.getOrCreateNewEstabFile().delete();
+                }
+            }
+        });
         primaryStage.show();
     }
 
     @Override
     public void stop() {
+        // assert new file is saved
+        if(Settings.isNewFileCreated())FileIO.getOrCreateNewEstabFile().delete();
         Settings.getInstance().setWindowWidth(primaryStage.getWidth());
         Settings.getInstance().setWindowHeight(primaryStage.getHeight());
         Settings.save();

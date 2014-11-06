@@ -14,8 +14,8 @@
                             <menus>
                                 <Menu mnemonicParsing="false" text="ESTAB">
                                     <items>
-                                        <MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
-                                                  onAction="#exitApplication" text="Exit"/>
+                                        <!--MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
+                                                  onAction="#exitApplication" text="Exit"/-->
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Source">
@@ -87,11 +87,14 @@
                         <ToolBar fx:id="toolBar">
                             <items>
                                 <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
-                                        onAction="#copyToolbarButtonAction" text="Copy Source Element"/>
+                                        onAction="#copyToolbarButtonAction" text="Copy Source Element" maxHeight="Infinity"/>
                                 <Button fx:id="removeElementButton" disable="true" mnemonicParsing="false"
-                                        onAction="#removeToolbarButtonAction" text="Remove Target Element"/>
+                                        onAction="#removeToolbarButtonAction" text="Remove Target Element" maxHeight="Infinity"/>
                                 <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
-                                        onAction="#saveTargetAction" text="Save Target File"/>
+                                        onAction="#saveTargetAction" text="Save Target File" maxHeight="Infinity"/>
+                                <Button fx:id="createNewVehicleButton" disable="true" mnemonicParsing="false"
+                                        onAction="#createNewVehicleButtonAction" text="New Vehicle" maxHeight="Infinity">
+                                </Button>
                             </items>
                         </ToolBar>
                     </children>

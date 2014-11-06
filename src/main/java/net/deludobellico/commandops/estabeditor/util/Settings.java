@@ -11,8 +11,8 @@ import java.util.List;
 public class Settings {
 
     private static final Integer MAX_RECENT_FILES = 4;
-    private static List<String> sourceRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
-    private static List<String> targetRecentFiles = new LimitedLinkedList<>(MAX_RECENT_FILES);
+    private static List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private static List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private static Settings settings;
     private static String lastOpenedFolder;
     private static Double windowWidth;
@@ -23,7 +23,8 @@ public class Settings {
     private static Boolean verticalPanes;
     private static Boolean expandedSourcePane;
     private static Boolean expandedTargetPane;
-
+    private static boolean newFileCreated;
+    private static boolean newFileSaved;
 
     private Settings() {
     }
@@ -39,6 +40,22 @@ public class Settings {
 
     public static void load() {
         FileIO.loadSettings();
+    }
+
+    public static boolean isNewFileSaved() {
+        return newFileSaved;
+    }
+
+    public static void setNewFileSaved(boolean newFileSaved) {
+        Settings.newFileSaved = newFileSaved;
+    }
+
+    public static boolean isNewFileCreated() {
+        return newFileCreated;
+    }
+
+    public static void setNewFileCreated(boolean newFileCreated) {
+        Settings.newFileCreated = newFileCreated;
     }
 
     @XmlElement(name = "source-recent-files")

@@ -130,7 +130,7 @@ public class FileIO {
         return f;
     }
 
-    public static File getNewEstabFile() {
+    public static File getOrCreateNewEstabFile() {
         File f = null;
         try {
             f = getFileOrCreateNew(getNewEstabPath().toString());
@@ -247,6 +247,7 @@ public class FileIO {
      * @param imageFileName
      * @return
      */
+    //TODO: create progress bar? maybe for loading new estabs?
     public static Image getDatasetImage(File datasetFile, String imageFileName) {
         String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
         File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);

@@ -98,6 +98,9 @@ public class MainController implements Initializable {
     private Button saveDataButton;
 
     @FXML
+    private Button createNewVehicleButton;
+
+    @FXML
     private EstabController sourcePaneController;
 
     @FXML
@@ -118,10 +121,10 @@ public class MainController implements Initializable {
 
         copyElementButton.disableProperty().bindBidirectional(disableCopy);
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            // Only enable the paste button if there's a target file and a selected element
-            if (targetPaneController.getEstabModel() != null && newValue != null)
-                copyElementButton.setDisable(false);
-            else copyElementButton.setDisable(true);
+            // Enable copy if there's a target file and a selected element
+            if (!targetIsClosed.get() && newValue != null)
+                disableCopy.set(false);
+            else disableCopy.set(true);
         });
 
         targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -161,6 +164,7 @@ public class MainController implements Initializable {
         targetCloseMenuItem.disableProperty().bind(targetIsClosed);
         targetPaneController.searchDisableProperty().bind(targetIsClosed);
         saveDataButton.disableProperty().bind(targetIsClosed);
+        createNewVehicleButton.disableProperty().bind(targetIsClosed);
 
         populateOpenRecentSourceMenu();
         populateOpenRecentTargetMenu();
@@ -225,25 +229,26 @@ public class MainController implements Initializable {
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         sourceEstabFile = file;
-        sourceIsClosed.setValue(false);
+        sourceIsClosed.set(false);
         sourcePaneController.setEstabModel(sourceEstabFile);
 
+        if (targetPaneController.getActiveElement() != null) disableCopy.set(false);
+        else disableCopy.set(true);
+
+        sourcePane.expandedProperty().set(true);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
-        sourcePane.expandedProperty().set(true);
-        if (targetPaneController.getEstabModel() != null && targetPaneController.getActiveElement() != null)
-            disableCopy.set(false);
     }
 
     // TODO: check target has correct xml syntax
     private void openTarget(File file) {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
         targetEstabFile = file;
-        targetPaneController.setEstabModel(targetEstabFile);
         targetIsClosed.set(false);
-        disableCopy.set(true);
-        if (targetPaneController.getEstabModel() != null && sourcePaneController.getActiveElement() != null)
-            disableCopy.set(false);
+        targetPaneController.setEstabModel(targetEstabFile);
+
+        if (sourcePaneController.getActiveElement() != null) disableCopy.set(false);
+        else disableCopy.set(true);
 
         targetPane.expandedProperty().set(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
@@ -272,13 +277,15 @@ public class MainController implements Initializable {
 
     @FXML
     public void openNewTarget(ActionEvent actionEvent) {
-        openTarget(FileIO.getNewEstabFile());
+        Settings.setNewFileCreated(true);
+        openTarget(FileIO.getOrCreateNewEstabFile());
     }
 
     @FXML
     public void saveTargetAction(ActionEvent actionEvent) {
         if (targetEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
             saveTargetAsAction(actionEvent);
+            Settings.setNewFileSaved(true);
         } else {
             LOG.log(Level.INFO, "Saving target file: " + targetEstabFile.getName());
         }
@@ -439,5 +446,9 @@ public class MainController implements Initializable {
 
     public BooleanProperty getDisableRemoveProperty() {
         return removeElementButton.disableProperty();
+    }
+
+    public void createNewVehicleButtonAction(ActionEvent actionEvent) {
+
     }
 }
