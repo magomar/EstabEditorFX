@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class RankModelTest {
     RankModel ours;
@@ -32,5 +33,21 @@ public class RankModelTest {
         other.setFullName(fullName);
         other.setShortName(shortName);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        RankModel other = new RankModel();
+        other.setFullName(null);
+        other.setShortName(null);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        RankModel other = new RankModel();
+        other.setFullName(null);
+        other.setShortName(null);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

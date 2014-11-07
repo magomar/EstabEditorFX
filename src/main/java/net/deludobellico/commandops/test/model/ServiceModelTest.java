@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class ServiceModelTest {
     ServiceModel ours;
@@ -87,5 +88,88 @@ public class ServiceModelTest {
         force.clear();
         force.add(new ForceModel());
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        ServiceModel other = new ServiceModel();
+        other.setId(id+2);
+        other.setName(name);
+        other.setDescription(description);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setBackgroundLightColor(backgroundLightColor);
+        other.setBackgroundColor(backgroundColor);
+        other.setBackgroundDarkColor(backgroundDarkColor);
+        other.setDesignationColor(designationColor);
+        other.setSymbolColor(symbolColor);
+        other.setFlag(flags);
+        rankList.clear();
+        rankList.add(new RankModel());
+        force.clear();
+        force.add(new ForceModel());
+        assertEquals(true, other.equals(ours));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        ServiceModel other = new ServiceModel();
+        other.setId(id+6);
+        other.setName(name);
+        other.setDescription(description);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setBackgroundLightColor(backgroundLightColor);
+        other.setBackgroundColor(backgroundColor);
+        other.setBackgroundDarkColor(backgroundDarkColor);
+        other.setDesignationColor(designationColor);
+        other.setSymbolColor(symbolColor);
+        other.setFlag(flags);
+        rankList.clear();
+        rankList.add(new RankModel());
+        force.clear();
+        force.add(new ForceModel());
+        assertEquals(other.hashCode(), ours.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        ServiceModel other = new ServiceModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setBackgroundLightColor(null);
+        other.setBackgroundColor(null);
+        other.setBackgroundDarkColor(null);
+        other.setDesignationColor(null);
+        other.setSymbolColor(null);
+        other.setFlag(null);
+        rankList.clear();
+        rankList.add(new RankModel());
+        force.clear();
+        force.add(new ForceModel());
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        ServiceModel other = new ServiceModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setBackgroundLightColor(null);
+        other.setBackgroundColor(null);
+        other.setBackgroundDarkColor(null);
+        other.setDesignationColor(null);
+        other.setSymbolColor(null);
+        other.setFlag(null);
+        rankList.clear();
+        rankList.add(new RankModel());
+        force.clear();
+        force.add(new ForceModel());
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

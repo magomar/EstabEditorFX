@@ -537,7 +537,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         if (getFuelLoad() != that.getFuelLoad()) return false;
         if (getFuelQty() != that.getFuelQty()) return false;
         if (getIcon() != null ? !getIcon().equals(that.getIcon()) : that.getIcon() != null) return false;
-        if (getId() != (that.getId())) return false;
+//        if (getId() != (that.getId())) return false;
         if (getInfantryValue() != (that.getInfantryValue())) return false;
         if (getMaxSpeed() != (that.getMaxSpeed())) return false;
         if (getMoveType() != null ? !getMoveType().equals(that.getMoveType()) : that.getMoveType() != null)

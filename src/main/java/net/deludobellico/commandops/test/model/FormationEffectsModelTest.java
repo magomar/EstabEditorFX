@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class FormationEffectsModelTest {
 
@@ -38,5 +39,40 @@ public class FormationEffectsModelTest {
         other.setName(name);
         other.setFlag(flags);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id+2);
+        other.setName(name);
+        other.setFlag(flags);
+        assertEquals(true, other.equals(ours));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id+2);
+        other.setName(name);
+        other.setFlag(flags);
+        assertEquals(other.hashCode(), ours.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id);
+        other.setName(null);
+        other.setFlag(null);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id);
+        other.setName(null);
+        other.setFlag(null);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

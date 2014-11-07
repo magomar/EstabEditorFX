@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class AmmoLoadModelTest {
     AmmoLoadModel ours;
@@ -25,7 +26,6 @@ public class AmmoLoadModelTest {
     public void testEquals() throws Exception {
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
-        //other.setId(id+1);
         other.setName(name);
         other.setLoad(load);
         assertEquals(true, ours.equals(other));
@@ -35,9 +35,45 @@ public class AmmoLoadModelTest {
     public void testHashCode() throws Exception {
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
-        other.setId(id + 1);
         other.setName(name);
         other.setLoad(load);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        AmmoLoadModel other = new AmmoLoadModel();
+        other.setId(id+1);
+        other.setName(name);
+        other.setLoad(load);
+        assertEquals(true, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        AmmoLoadModel other = new AmmoLoadModel();
+        other.setId(id+1);
+        other.setName(name);
+        other.setLoad(load);
+        assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+
+        AmmoLoadModel other = new AmmoLoadModel();
+        other.setId(id);
+        other.setName(null);
+        other.setLoad(load);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        AmmoLoadModel other = new AmmoLoadModel();
+        other.setId(id);
+        other.setName(null);
+        other.setLoad(load);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

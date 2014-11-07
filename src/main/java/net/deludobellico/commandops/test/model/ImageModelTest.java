@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class ImageModelTest {
     ImageModel ours;
@@ -38,5 +39,22 @@ public class ImageModelTest {
         other.setFlag(flags);
         assertEquals(true, ours.equals(other));
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        ImageModel other = new ImageModel();
+        other.setName(null);
+        other.setFileId(null);
+        other.setFlag(null);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        ImageModel other = new ImageModel();
+        other.setName(null);
+        other.setFileId(null);
+        other.setFlag(null);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

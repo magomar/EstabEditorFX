@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class NationModelTest {
     NationModel ours;
@@ -66,5 +67,68 @@ public class NationModelTest {
         services.add(new ServiceModel());
         other.getService().addAll(services);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        NationModel other = new NationModel();
+        other.setName(name);
+        other.setId(id+2);
+        other.setDescription(description);
+        other.setNationality(nationality);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setFlag(flags);
+        services.clear();
+        services.add(new ServiceModel());
+        other.getService().addAll(services);
+        assertEquals(true, other.equals(ours));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        NationModel other = new NationModel();
+        other.setName(name);
+        other.setId(id+3);
+        other.setDescription(description);
+        other.setNationality(nationality);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setFlag(flags);
+        services.clear();
+        services.add(new ServiceModel());
+        other.getService().addAll(services);
+        assertEquals(other.hashCode(), ours.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        NationModel other = new NationModel();
+        other.setName(null);
+        other.setId(id);
+        other.setDescription(null);
+        other.setNationality(null);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setFlag(null);
+        services.clear();
+        services.add(new ServiceModel());
+        other.getService().addAll(services);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        NationModel other = new NationModel();
+        other.setName(null);
+        other.setId(id);
+        other.setDescription(null);
+        other.setNationality(null);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setFlag(null);
+        services.clear();
+        services.add(new ServiceModel());
+        other.getService().addAll(services);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

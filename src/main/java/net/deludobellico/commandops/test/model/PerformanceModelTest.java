@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class PerformanceModelTest {
     PerformanceModel ours;
@@ -74,5 +75,41 @@ public class PerformanceModelTest {
         ranges.add(new RangeItemModel());
         other.getRanges().addAll(ranges);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        PerformanceModel other = new PerformanceModel();
+        other.setAmmoLoad(null);
+        other.setMinRange(minRange);
+        other.setSlowROF(slowROF);
+        other.setNormalROF(normalROF);
+        other.setRapidROF(rapidROF);
+        other.setBurstRadius(burstRadius);
+        other.setShellWeight(shellWeight);
+        other.setShellWeight(shellWeight);
+        other.setFireType(null);
+        ranges.clear();
+        ranges.add(new RangeItemModel());
+        other.getRanges().addAll(ranges);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        PerformanceModel other = new PerformanceModel();
+        other.setAmmoLoad(null);
+        other.setMinRange(minRange);
+        other.setSlowROF(slowROF);
+        other.setNormalROF(normalROF);
+        other.setRapidROF(rapidROF);
+        other.setBurstRadius(burstRadius);
+        other.setShellWeight(shellWeight);
+        other.setShellWeight(shellWeight);
+        other.setFireType(null);
+        ranges.clear();
+        ranges.add(new RangeItemModel());
+        other.getRanges().addAll(ranges);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

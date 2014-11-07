@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class IconModelTest {
 
@@ -65,5 +66,36 @@ public class IconModelTest {
         other.setPictureSymbol(pictureSymbol);
         other.setSymbolColor(symbolColor);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        IconModel other = new IconModel();
+        other.setBackgroundColor(null);
+        other.setBackgroundDarkColor(null);
+        other.setBackgroundLightColor(null);
+        other.setDesignationColor(null);
+        other.setForceSizeIcon(null);
+        other.setIsHq(hq);
+        other.setMilitarySymbol(militarySymbol);
+        other.setPictureSymbol(null);
+        other.setSymbolColor(null);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        IconModel other = new IconModel();
+        other.setBackgroundColor(null);
+        other.setBackgroundDarkColor(null);
+        other.setBackgroundLightColor(null);
+        other.setDesignationColor(null);
+        other.setForceSizeIcon(null);
+        other.setIsHq(hq);
+        other.setMilitarySymbol(militarySymbol);
+        other.setPictureSymbol(null);
+        other.setSymbolColor(null);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

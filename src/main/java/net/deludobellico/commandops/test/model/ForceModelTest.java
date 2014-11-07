@@ -15,6 +15,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class ForceModelTest {
     ForceModel ours;
@@ -174,5 +175,168 @@ public class ForceModelTest {
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        ForceModel other = new ForceModel();
+        other.setId(id+2);
+        other.setName(name);
+        other.setDescription(description);
+        other.setIcon(icon);
+        other.setType(type);
+        other.setSubType(subType);
+        other.setSize(size);
+        other.setCombatClass(combatClass);
+        other.setTargetClass(targetClass);
+        other.setInfantryValue(infantryValue);
+        other.setReconValue(reconValue);
+        other.setEngineeringValue(engineeringValue);
+        other.setMoveType(moveType);
+        other.setPersQty(persQty);
+        other.setStaffCapacity(staffCapacity);
+        other.setBasicsQty(basicsQty);
+        other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        other.setCommanderRank(commanderRank);
+        other.setFuelQty(fuelQty);
+        other.setFuelLoad(fuelLoad);
+        other.setMaxSpeed(maxSpeed);
+        other.setNormalSpeed(normalSpeed);
+        other.setCanBombard(canBombard);
+        other.setDeployed(deployed);
+        other.setDugIn(dugIn);
+        other.setEntrenched(entrenched);
+        other.setFortified(fortified);
+        other.setReadyToFireDuration(readyToFireDuration);
+        other.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        other.getEquipmentList().addAll(equipmentList);
+        other.getAmmoList().addAll(ammoList);
+        assertEquals(true, other.equals(ours));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        ForceModel other = new ForceModel();
+        other.setId(id+2);
+        other.setName(name);
+        other.setDescription(description);
+        other.setIcon(icon);
+        other.setType(type);
+        other.setSubType(subType);
+        other.setSize(size);
+        other.setCombatClass(combatClass);
+        other.setTargetClass(targetClass);
+        other.setInfantryValue(infantryValue);
+        other.setReconValue(reconValue);
+        other.setEngineeringValue(engineeringValue);
+        other.setMoveType(moveType);
+        other.setPersQty(persQty);
+        other.setStaffCapacity(staffCapacity);
+        other.setBasicsQty(basicsQty);
+        other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        other.setCommanderRank(commanderRank);
+        other.setFuelQty(fuelQty);
+        other.setFuelLoad(fuelLoad);
+        other.setMaxSpeed(maxSpeed);
+        other.setNormalSpeed(normalSpeed);
+        other.setCanBombard(canBombard);
+        other.setDeployed(deployed);
+        other.setDugIn(dugIn);
+        other.setEntrenched(entrenched);
+        other.setFortified(fortified);
+        other.setReadyToFireDuration(readyToFireDuration);
+        other.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        other.getEquipmentList().addAll(equipmentList);
+        other.getAmmoList().addAll(ammoList);
+        assertEquals(other.hashCode(), ours.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        ForceModel other = new ForceModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setIcon(null);
+        other.setType(null);
+        other.setSubType(null);
+        other.setSize(null);
+        other.setCombatClass(null);
+        other.setTargetClass(null);
+        other.setInfantryValue(infantryValue);
+        other.setReconValue(reconValue);
+        other.setEngineeringValue(engineeringValue);
+        other.setMoveType(null);
+        other.setPersQty(persQty);
+        other.setStaffCapacity(staffCapacity);
+        other.setBasicsQty(basicsQty);
+        other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        other.setCommanderRank(commanderRank);
+        other.setFuelQty(fuelQty);
+        other.setFuelLoad(fuelLoad);
+        other.setMaxSpeed(maxSpeed);
+        other.setNormalSpeed(normalSpeed);
+        other.setCanBombard(canBombard);
+        other.setDeployed(null);
+        other.setDugIn(null);
+        other.setEntrenched(null);
+        other.setFortified(null);
+        other.setReadyToFireDuration(null);
+        other.setReadyToBombardDuration(null);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        other.getEquipmentList().addAll(equipmentList);
+        other.getAmmoList().addAll(ammoList);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        ForceModel other = new ForceModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setIcon(null);
+        other.setType(null);
+        other.setSubType(null);
+        other.setSize(null);
+        other.setCombatClass(null);
+        other.setTargetClass(null);
+        other.setInfantryValue(infantryValue);
+        other.setReconValue(reconValue);
+        other.setEngineeringValue(engineeringValue);
+        other.setMoveType(null);
+        other.setPersQty(persQty);
+        other.setStaffCapacity(staffCapacity);
+        other.setBasicsQty(basicsQty);
+        other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        other.setCommanderRank(commanderRank);
+        other.setFuelQty(fuelQty);
+        other.setFuelLoad(fuelLoad);
+        other.setMaxSpeed(maxSpeed);
+        other.setNormalSpeed(normalSpeed);
+        other.setCanBombard(canBombard);
+        other.setDeployed(null);
+        other.setDugIn(null);
+        other.setEntrenched(null);
+        other.setFortified(null);
+        other.setReadyToFireDuration(null);
+        other.setReadyToBombardDuration(null);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        other.getEquipmentList().addAll(equipmentList);
+        other.getAmmoList().addAll(ammoList);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

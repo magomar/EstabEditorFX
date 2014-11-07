@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class VehicleModelTest {
     VehicleModel ours = new VehicleModel();
@@ -186,5 +187,185 @@ public class VehicleModelTest {
         other.setRearArmor(rearArmor);
         other.setTopArmor(topArmor);
         assertEquals(ours.hashCode(), other.hashCode());
+    }
+
+    @Test
+    public void testEqualsDifferentIDs() throws Exception {
+        VehicleModel other = new VehicleModel();
+        other.setId(id+3);
+        other.setName(name);
+        other.setDescription(description);
+        other.setPictureId(pictureId);
+        other.setPictureFilename(pictureFilename);
+        other.setWidth(width);
+        other.setHeight(height);
+        other.setLength(length);
+        other.setWeight(weight);
+        other.setCrew(crew);
+        other.setReliability(reliability);
+        armaments.clear();
+        armaments.add(new ArmamentModel());
+        other.getArmaments().addAll(armaments);
+        other.setType(type);
+        other.setFuelCapacity(fuelCapacity);
+        other.setMaxRoadSpeed(maxRoadSpeed);
+        other.setNormalRoadSpeed(normalRoadSpeed);
+        other.setMaxCrossCountrySpeed(maxCrossCountrySpeed);
+        other.setNormalCrossCountrySpeed(normalCrossCountrySpeed);
+        other.setMaxFuelConsumption(maxFuelConsumption);
+        other.setNormalFuelConsumption(normalFuelConsumption);
+        other.setRonsonability(ronsonability);
+        other.setMaxGradient(maxGradient);
+        other.setMaxFordingDepth(maxFordingDepth);
+        other.setMaxTrenchWidth(maxTrenchWidth);
+        other.setTowingCapacity(towingCapacity);
+        other.setPersonnelCapacity(personnelCapacity);
+        other.setBulkFuelCapacity(bulkFuelCapacity);
+        other.setPayloadCapacity(payloadCapacity);
+        other.setTakeCoverMod(takeCoverMod);
+        other.setHasTurret(hasTurret);
+        other.setHasOpenTop(hasOpenTop);
+        other.setBattleWeight(battleWeight);
+        other.setFrontArmor(frontArmor);
+        other.setSideArmor(sideArmor);
+        other.setFlag(flags);
+        other.setRearArmor(rearArmor);
+        other.setTopArmor(topArmor);
+        assertEquals(true, other.equals(ours));
+    }
+
+    @Test
+    public void testHashCodeDifferentIDs() throws Exception {
+        VehicleModel other = new VehicleModel();
+        other.setId(id+6);
+        other.setName(name);
+        other.setDescription(description);
+        other.setPictureId(pictureId);
+        other.setPictureFilename(pictureFilename);
+        other.setWidth(width);
+        other.setHeight(height);
+        other.setLength(length);
+        other.setWeight(weight);
+        other.setCrew(crew);
+        other.setReliability(reliability);
+        armaments.clear();
+        armaments.add(new ArmamentModel());
+        other.getArmaments().addAll(armaments);
+        other.setType(type);
+        other.setFuelCapacity(fuelCapacity);
+        other.setMaxRoadSpeed(maxRoadSpeed);
+        other.setNormalRoadSpeed(normalRoadSpeed);
+        other.setMaxCrossCountrySpeed(maxCrossCountrySpeed);
+        other.setNormalCrossCountrySpeed(normalCrossCountrySpeed);
+        other.setMaxFuelConsumption(maxFuelConsumption);
+        other.setNormalFuelConsumption(normalFuelConsumption);
+        other.setRonsonability(ronsonability);
+        other.setMaxGradient(maxGradient);
+        other.setMaxFordingDepth(maxFordingDepth);
+        other.setMaxTrenchWidth(maxTrenchWidth);
+        other.setTowingCapacity(towingCapacity);
+        other.setPersonnelCapacity(personnelCapacity);
+        other.setBulkFuelCapacity(bulkFuelCapacity);
+        other.setPayloadCapacity(payloadCapacity);
+        other.setTakeCoverMod(takeCoverMod);
+        other.setHasTurret(hasTurret);
+        other.setHasOpenTop(hasOpenTop);
+        other.setBattleWeight(battleWeight);
+        other.setFrontArmor(frontArmor);
+        other.setSideArmor(sideArmor);
+        other.setFlag(flags);
+        other.setRearArmor(rearArmor);
+        other.setTopArmor(topArmor);
+        assertEquals(other.hashCode(), ours.hashCode());
+    }
+
+    @Test
+    public void testEqualsNullableFieldsAreNull() throws Exception {
+        VehicleModel other = new VehicleModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setPictureId(pictureId);
+        other.setPictureFilename(null);
+        other.setWidth(width);
+        other.setHeight(height);
+        other.setLength(length);
+        other.setWeight(weight);
+        other.setCrew(crew);
+        other.setReliability(reliability);
+        armaments.clear();
+        armaments.add(new ArmamentModel());
+        other.getArmaments().addAll(armaments);
+        other.setType(null);
+        other.setFuelCapacity(fuelCapacity);
+        other.setMaxRoadSpeed(maxRoadSpeed);
+        other.setNormalRoadSpeed(normalRoadSpeed);
+        other.setMaxCrossCountrySpeed(maxCrossCountrySpeed);
+        other.setNormalCrossCountrySpeed(normalCrossCountrySpeed);
+        other.setMaxFuelConsumption(maxFuelConsumption);
+        other.setNormalFuelConsumption(normalFuelConsumption);
+        other.setRonsonability(ronsonability);
+        other.setMaxGradient(maxGradient);
+        other.setMaxFordingDepth(maxFordingDepth);
+        other.setMaxTrenchWidth(maxTrenchWidth);
+        other.setTowingCapacity(towingCapacity);
+        other.setPersonnelCapacity(personnelCapacity);
+        other.setBulkFuelCapacity(bulkFuelCapacity);
+        other.setPayloadCapacity(payloadCapacity);
+        other.setTakeCoverMod(takeCoverMod);
+        other.setHasTurret(hasTurret);
+        other.setHasOpenTop(hasOpenTop);
+        other.setBattleWeight(battleWeight);
+        other.setFrontArmor(frontArmor);
+        other.setSideArmor(sideArmor);
+        other.setFlag(null);
+        other.setRearArmor(rearArmor);
+        other.setTopArmor(topArmor);
+        assertEquals(false, ours.equals(other));
+    }
+
+    @Test
+    public void testHashCodeNullableFieldsAreNull() throws Exception {
+        VehicleModel other = new VehicleModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setPictureId(pictureId);
+        other.setPictureFilename(null);
+        other.setWidth(width);
+        other.setHeight(height);
+        other.setLength(length);
+        other.setWeight(weight);
+        other.setCrew(crew);
+        other.setReliability(reliability);
+        armaments.clear();
+        armaments.add(new ArmamentModel());
+        other.getArmaments().addAll(armaments);
+        other.setType(null);
+        other.setFuelCapacity(fuelCapacity);
+        other.setMaxRoadSpeed(maxRoadSpeed);
+        other.setNormalRoadSpeed(normalRoadSpeed);
+        other.setMaxCrossCountrySpeed(maxCrossCountrySpeed);
+        other.setNormalCrossCountrySpeed(normalCrossCountrySpeed);
+        other.setMaxFuelConsumption(maxFuelConsumption);
+        other.setNormalFuelConsumption(normalFuelConsumption);
+        other.setRonsonability(ronsonability);
+        other.setMaxGradient(maxGradient);
+        other.setMaxFordingDepth(maxFordingDepth);
+        other.setMaxTrenchWidth(maxTrenchWidth);
+        other.setTowingCapacity(towingCapacity);
+        other.setPersonnelCapacity(personnelCapacity);
+        other.setBulkFuelCapacity(bulkFuelCapacity);
+        other.setPayloadCapacity(payloadCapacity);
+        other.setTakeCoverMod(takeCoverMod);
+        other.setHasTurret(hasTurret);
+        other.setHasOpenTop(hasOpenTop);
+        other.setBattleWeight(battleWeight);
+        other.setFrontArmor(frontArmor);
+        other.setSideArmor(sideArmor);
+        other.setFlag(null);
+        other.setRearArmor(rearArmor);
+        other.setTopArmor(topArmor);
+        assertNotEquals(ours.hashCode(), other.hashCode());
     }
 }

@@ -26,6 +26,7 @@ public interface ElementModel {
     List<Flag> getFlags();
 
     default public void setFlag(Flag... f) {
+        if(f == null) return;
         for (Flag aF : f) {
             if (!getFlags().contains(aF)) {
                 getFlags().add(aF);
@@ -34,6 +35,7 @@ public interface ElementModel {
     }
 
     default public void unsetFlag(Flag... f) {
+        if(f == null) return;
         for (Flag aF : f) {
             if (getFlags().contains(aF)) {
                 getFlags().remove(aF);
@@ -42,6 +44,7 @@ public interface ElementModel {
     }
 
     default public void switchFlag(Flag... f) {
+        if(f == null) return;
         for (Flag aF : f) {
             if (!getFlags().contains(aF)) {
                 getFlags().add(aF);
