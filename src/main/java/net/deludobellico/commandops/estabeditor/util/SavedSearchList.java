@@ -29,14 +29,6 @@ public class SavedSearchList<T> {
         return observableList;
     }
 
-    public ObservableList<T> getObservableList() {
-        return observableList;
-    }
-
-    public void setObservableList(ObservableList<T> observableList) {
-        this.observableList = observableList;
-    }
-
     public boolean isForceSearch() {
         return forceSearch;
     }

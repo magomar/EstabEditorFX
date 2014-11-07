@@ -44,9 +44,14 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final BooleanProperty canBombard = new SimpleBooleanProperty();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public ForceModel(Force force) {
         setPojo(force);
+    }
+
+    public ForceModel() {
+
     }
 
     /**
@@ -100,6 +105,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         equipmentList.stream().map(EquipmentModel::getPojo).forEach(e -> force.getEquipmentList().getEquipment().add(e));
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(a -> force.getAmmoList().getAmmo().add(a));
         force.setCanBombard(PojoJFXModel.booleanToYesNo(canBombard.get()));
+        force.getFlags().addAll(flags);
         return force;
     }
 
@@ -133,8 +139,9 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         fortified.set(pojo.getDeploymentDuration().getFortified());
         readyToBombardDuration.set(pojo.getReadyToBombardDuration());
         readyToFireDuration.set(pojo.getReadyToFireDuration());
-        pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentModel -> equipmentList.add(equipmentModel));
-        pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoQtyModel -> ammoList.add(ammoQtyModel));
+        pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentList::add);
+        pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoList::add);
+        flags.addAll(pojo.getFlags());
         canBombard.set(PojoJFXModel.yesNoToBoolean(pojo.getCanBombard()));
     }
 
@@ -152,7 +159,7 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     public String getName() {
@@ -502,86 +509,92 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ForceModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         ForceModel that = (ForceModel) o;
 
-        if (ammoList != null ? !ammoList.equals(that.ammoList) : that.ammoList != null) return false;
-        if (basicsConsumptionRateModifier != null ? !basicsConsumptionRateModifier.equals(that.basicsConsumptionRateModifier) : that.basicsConsumptionRateModifier != null)
+        if (that.getAmmoList().size() != ammoList.size() || !ammoList.containsAll(that.getAmmoList()))
             return false;
-        if (basicsQty != null ? !basicsQty.equals(that.basicsQty) : that.basicsQty != null) return false;
-        if (canBombard != null ? !canBombard.equals(that.canBombard) : that.canBombard != null) return false;
-        if (combatClass != null ? !combatClass.equals(that.combatClass) : that.combatClass != null) return false;
-        if (commanderRank != null ? !commanderRank.equals(that.commanderRank) : that.commanderRank != null)
-            return false;
-        if (deployed != null ? !deployed.equals(that.deployed) : that.deployed != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (dugIn != null ? !dugIn.equals(that.dugIn) : that.dugIn != null) return false;
-        if (engineeringValue != null ? !engineeringValue.equals(that.engineeringValue) : that.engineeringValue != null)
-            return false;
-        if (entrenched != null ? !entrenched.equals(that.entrenched) : that.entrenched != null) return false;
-        if (equipmentList != null ? !equipmentList.equals(that.equipmentList) : that.equipmentList != null)
-            return false;
-        if (fortified != null ? !fortified.equals(that.fortified) : that.fortified != null) return false;
-        if (fuelLoad != null ? !fuelLoad.equals(that.fuelLoad) : that.fuelLoad != null) return false;
-        if (fuelQty != null ? !fuelQty.equals(that.fuelQty) : that.fuelQty != null) return false;
-        if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (infantryValue != null ? !infantryValue.equals(that.infantryValue) : that.infantryValue != null)
-            return false;
-        if (maxSpeed != null ? !maxSpeed.equals(that.maxSpeed) : that.maxSpeed != null) return false;
-        if (moveType != null ? !moveType.equals(that.moveType) : that.moveType != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (normalSpeed != null ? !normalSpeed.equals(that.normalSpeed) : that.normalSpeed != null) return false;
-        if (persQty != null ? !persQty.equals(that.persQty) : that.persQty != null) return false;
-        if (readyToBombardDuration != null ? !readyToBombardDuration.equals(that.readyToBombardDuration) : that.readyToBombardDuration != null)
-            return false;
-        if (readyToFireDuration != null ? !readyToFireDuration.equals(that.readyToFireDuration) : that.readyToFireDuration != null)
-            return false;
-        if (reconValue != null ? !reconValue.equals(that.reconValue) : that.reconValue != null) return false;
-        if (size != null ? !size.equals(that.size) : that.size != null) return false;
-        if (staffCapacity != null ? !staffCapacity.equals(that.staffCapacity) : that.staffCapacity != null)
-            return false;
-        if (subType != null ? !subType.equals(that.subType) : that.subType != null) return false;
-        if (targetClass != null ? !targetClass.equals(that.targetClass) : that.targetClass != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
 
+        if (getBasicsConsumptionRateModifier() != that.getBasicsConsumptionRateModifier()) return false;
+        if (getBasicsQty() != that.getBasicsQty()) return false;
+        if (getCanBombard() != that.getCanBombard()) return false;
+        if (getCombatClass() != null ? !getCombatClass().equals(that.getCombatClass()) : that.getCombatClass() != null)
+            return false;
+        if (getCommanderRank() != that.getCommanderRank()) return false;
+        if (getDeployed() != null ? (getDeployed().toGregorianCalendar().compareTo(that.getDeployed().toGregorianCalendar()) != 0) : that.getDeployed() != null)
+            return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
+            return false;
+        if (getDugIn() != null ? !getDugIn().equals(that.getDugIn()) : that.getDugIn() != null) return false;
+        if (getEngineeringValue() != that.getEngineeringValue()) return false;
+        if (getEntrenched() != null ? !getEntrenched().equals(that.getEntrenched()) : that.getEntrenched() != null)
+            return false;
+        if (that.getEquipmentList().size() != equipmentList.size() || !equipmentList.containsAll(that.getEquipmentList()))
+            return false;
+        if (getFortified() != null ? !getFortified().equals(that.getFortified()) : that.getFortified() != null)
+            return false;
+        if (getFuelLoad() != that.getFuelLoad()) return false;
+        if (getFuelQty() != that.getFuelQty()) return false;
+        if (getIcon() != null ? !getIcon().equals(that.getIcon()) : that.getIcon() != null) return false;
+        if (getId() != (that.getId())) return false;
+        if (getInfantryValue() != (that.getInfantryValue())) return false;
+        if (getMaxSpeed() != (that.getMaxSpeed())) return false;
+        if (getMoveType() != null ? !getMoveType().equals(that.getMoveType()) : that.getMoveType() != null)
+            return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getNormalSpeed() != (that.getNormalSpeed())) return false;
+        if (getPersQty() != (that.getPersQty())) return false;
+        if (getReadyToBombardDuration() != null ? !getReadyToBombardDuration().equals(that.getReadyToBombardDuration()) : that.getReadyToBombardDuration() != null)
+            return false;
+        if (getReadyToFireDuration() != null ? !getReadyToFireDuration().equals(that.getReadyToFireDuration()) : that.getReadyToFireDuration() != null)
+            return false;
+        if (getReconValue() != (that.getReconValue())) return false;
+        if (getSize() != null ? !getSize().equals(that.getSize()) : that.getSize() != null) return false;
+        if (getStaffCapacity() != (that.getStaffCapacity())) return false;
+        if (getSubType() != null ? !getSubType().equals(that.getSubType()) : that.getSubType() != null) return false;
+        if (getTargetClass() != null ? !getTargetClass().equals(that.getTargetClass()) : that.getTargetClass() != null)
+            return false;
+        if (getType() != null ? !getType().equals(that.getType()) : that.getType() != null) return false;
+        if (that.getFlags().size() != getFlags().size() || !getFlags().containsAll(that.getFlags()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (icon != null ? icon.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (subType != null ? subType.hashCode() : 0);
-        result = 31 * result + (size != null ? size.hashCode() : 0);
-        result = 31 * result + (combatClass != null ? combatClass.hashCode() : 0);
-        result = 31 * result + (targetClass != null ? targetClass.hashCode() : 0);
-        result = 31 * result + (infantryValue != null ? infantryValue.hashCode() : 0);
-        result = 31 * result + (reconValue != null ? reconValue.hashCode() : 0);
-        result = 31 * result + (engineeringValue != null ? engineeringValue.hashCode() : 0);
-        result = 31 * result + (moveType != null ? moveType.hashCode() : 0);
-        result = 31 * result + (persQty != null ? persQty.hashCode() : 0);
-        result = 31 * result + (staffCapacity != null ? staffCapacity.hashCode() : 0);
-        result = 31 * result + (basicsQty != null ? basicsQty.hashCode() : 0);
-        result = 31 * result + (basicsConsumptionRateModifier != null ? basicsConsumptionRateModifier.hashCode() : 0);
-        result = 31 * result + (commanderRank != null ? commanderRank.hashCode() : 0);
-        result = 31 * result + (fuelQty != null ? fuelQty.hashCode() : 0);
-        result = 31 * result + (fuelLoad != null ? fuelLoad.hashCode() : 0);
-        result = 31 * result + (maxSpeed != null ? maxSpeed.hashCode() : 0);
-        result = 31 * result + (normalSpeed != null ? normalSpeed.hashCode() : 0);
-        result = 31 * result + (deployed != null ? deployed.hashCode() : 0);
-        result = 31 * result + (dugIn != null ? dugIn.hashCode() : 0);
-        result = 31 * result + (entrenched != null ? entrenched.hashCode() : 0);
-        result = 31 * result + (fortified != null ? fortified.hashCode() : 0);
-        result = 31 * result + (readyToFireDuration != null ? readyToFireDuration.hashCode() : 0);
-        result = 31 * result + (readyToBombardDuration != null ? readyToBombardDuration.hashCode() : 0);
-        result = 31 * result + (equipmentList != null ? equipmentList.hashCode() : 0);
-        result = 31 * result + (ammoList != null ? ammoList.hashCode() : 0);
-        result = 31 * result + (canBombard != null ? canBombard.hashCode() : 0);
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        //result = result * 31 + getId();
+        result = (int) (31 * result + equipmentList.stream().map(EquipmentModel::hashCode).count());
+        result = (int) (31 * result + ammoList.stream().map(AmmoQtyModel::hashCode).count());
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getIcon() != null ? getIcon().hashCode() : 0);
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        result = 31 * result + (getSubType() != null ? getSubType().hashCode() : 0);
+        result = 31 * result + (getSize() != null ? getSize().hashCode() : 0);
+        result = 31 * result + (getCombatClass() != null ? getCombatClass().hashCode() : 0);
+        result = 31 * result + (getTargetClass() != null ? getTargetClass().hashCode() : 0);
+        result = 31 * result + getInfantryValue();
+        result = 31 * result + getReconValue();
+        result = 31 * result + getEngineeringValue();
+        result = 31 * result + (getMoveType() != null ? getMoveType().hashCode() : 0);
+        result = 31 * result + getPersQty();
+        result = 31 * result + getStaffCapacity();
+        result = (int) (31 * result + getBasicsQty());
+        result = (int) (31 * result + getBasicsConsumptionRateModifier());
+        result = 31 * result + getCommanderRank();
+        result = (int) (31 * result + getFuelQty());
+        result = (int) (31 * result + getFuelLoad());
+        result = (int) (31 * result + getMaxSpeed());
+        result = (int) (31 * result + getNormalSpeed());
+        result = 31 * result + (getDeployed() != null ? getDeployed().hashCode() : 0);
+        result = 31 * result + (getDugIn() != null ? getDugIn().hashCode() : 0);
+        result = 31 * result + (getEntrenched() != null ? getEntrenched().hashCode() : 0);
+        result = 31 * result + (getFortified() != null ? getFortified().hashCode() : 0);
+        result = 31 * result + (getReadyToFireDuration() != null ? getReadyToFireDuration().hashCode() : 0);
+        result = 31 * result + (getReadyToBombardDuration() != null ? getReadyToBombardDuration().hashCode() : 0);
+        result = 31 * result + (getCanBombard() ? 1 : 0);
         return result;
     }
 }

@@ -55,36 +55,40 @@ public class EstabModel {
 
         int maxID = 0;
         for (Image e : estabImages) {
-            int id = Integer.valueOf(e.getId());
+            int id = e.getId();
             if (id > maxID) maxID = id;
             images.put(id, e);
         }
         for (Side e : estabSides) {
-            int id = Integer.valueOf(e.getId());
+            int id = e.getId();
             if (id > maxID) maxID = id;
             sides.put(id, e);
         }
         for (FormationEffects e : estabFormationEffects) {
-            int id = Integer.valueOf(e.getId());
+            int id = e.getId();
             if (id > maxID) maxID = id;
             formationEffects.put(id, e);
         }
         for (Vehicle e : estabVehicles) {
             VehicleModel em = new VehicleModel(e);
-            if(em.getId() > maxID) maxID = em.getId();
+            if (em.getId() > maxID) maxID = em.getId();
             vehicles.put(em.getId(), em);
         }
         for (Weapon e : estabWeapons) {
             WeaponModel em = new WeaponModel(e);
-            if(em.getId() > maxID) maxID = em.getId();
+            if (em.getId() > maxID) maxID = em.getId();
             weapons.put(em.getId(), em);
         }
         for (Ammo e : estabAmmo) {
             AmmoModel em = new AmmoModel(e);
-            if(em.getId() > maxID) maxID = em.getId();
+            if (em.getId() > maxID) maxID = em.getId();
             ammos.put(em.getId(), em);
         }
         ElementModelFactory.setMaxID(maxID);
+    }
+
+    public EstabModel() {
+        allElements = new HashMap<>();
     }
 
     public Map<Integer, Image> getImages() {
@@ -99,8 +103,23 @@ public class EstabModel {
         return vehicles;
     }
 
+    public void setVehicles(Map<Integer, VehicleModel> vmap) {
+        this.vehicles = vmap;
+        allElements.put(VehicleModel.class, vmap);
+    }
+
     public Map<Integer, WeaponModel> getWeapons() {
         return weapons;
+    }
+
+    public void setWeapons(Map<Integer, WeaponModel> wmap) {
+        this.weapons = wmap;
+        allElements.put(WeaponModel.class, wmap);
+    }
+
+    public void setAmmos(Map<Integer, AmmoModel> amap) {
+        this.ammos = amap;
+        allElements.put(AmmoModel.class, amap);
     }
 
     public Map<Integer, AmmoModel> getAmmo() {
@@ -109,7 +128,7 @@ public class EstabModel {
 
     public List<ElementModel> searchElement(String name, Class elementModelClass) {
         String lowerCase = name.toLowerCase();
-        return (List<ElementModel >) allElements.get(elementModelClass).values().parallelStream()
+        return (List<ElementModel>) allElements.get(elementModelClass).values().parallelStream()
                 .filter(element -> ((ElementModel) element).getName().toLowerCase().contains(lowerCase))
                 .collect(Collectors.<ElementModel>toList());
     }
@@ -138,10 +157,10 @@ public class EstabModel {
     }
 
     /**
-     * {@sortRepeatedElements} has to be invoked in order to clean NonRepeated lists
+     * {@link #sortRelatedElements} has to be invoked in order to clean NonRepeated lists
      *
-     * @param
-     * @return
+     * @param elementModel
+     * @return all the related elements
      */
     public RelatedElementLists getRelatedElements(ElementModel elementModel) {
         return getRelatedElements(elementModel, null);
@@ -225,15 +244,15 @@ public class EstabModel {
             if (selectedItem instanceof AmmoModel) {
                 AmmoModel a = (AmmoModel) selectedItem;
                 ammos.remove(a.getId());
-                logMessage.append("-- " + a.print() + newLine);
+                logMessage.append("-- ").append(a.print()).append(newLine);
             } else if (selectedItem instanceof WeaponModel) {
                 WeaponModel w = (WeaponModel) selectedItem;
                 weapons.remove(w.getId());
-                logMessage.append("-- " + w.print() + newLine);
+                logMessage.append("-- ").append(w.print()).append(newLine);
             } else if (selectedItem instanceof VehicleModel) {
                 VehicleModel v = (VehicleModel) selectedItem;
                 vehicles.remove(v.getId());
-                logMessage.append("-- " + v.print() + newLine);
+                logMessage.append("-- ").append(v.print()).append(newLine);
             }
         }
         LOG.log(Level.INFO, logMessage.toString());
@@ -246,15 +265,15 @@ public class EstabModel {
         StringBuilder logMessage = new StringBuilder("Removing elements:" + newLine);
 
         relatedElementLists.getAllVehicles().stream().forEach(v -> {
-            logMessage.append("-- " + v.print() + newLine);
+            logMessage.append("-- ").append(v.print()).append(newLine);
             vehicles.remove(v.getId());
         });
         relatedElementLists.getAllWeapons().stream().forEach(w -> {
-            logMessage.append("-- " + w.print() + newLine);
+            logMessage.append("-- ").append(w.print()).append(newLine);
             weapons.remove(w.getId());
         });
         relatedElementLists.getAllAmmo().stream().forEach(a -> {
-            logMessage.append("-- " + a.print() + newLine);
+            logMessage.append("-- ").append(a.print()).append(newLine);
             ammos.remove(a.getId());
         });
 
@@ -272,17 +291,17 @@ public class EstabModel {
             for (VehicleModel v : relatedElementLists.getAllVehicles()) {
                 v.setFlag(Flag.COPY);
                 vehicles.put(v.getId(), v);
-                logMessage.append("-- " + v.print() + newLine);
+                logMessage.append("-- ").append(v.print()).append(newLine);
             }
             for (WeaponModel w : relatedElementLists.getAllWeapons()) {
                 w.setFlag(Flag.COPY);
                 weapons.put(w.getId(), w);
-                logMessage.append("-- " + w.print() + newLine);
+                logMessage.append("-- ").append(w.print()).append(newLine);
             }
             for (AmmoModel a : relatedElementLists.getAllAmmo()) {
                 a.setFlag(Flag.COPY);
                 ammos.put(a.getId(), a);
-                logMessage.append("-- " + a.print() + newLine);
+                logMessage.append("-- ").append(a.print()).append(newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else if (answer.equals(DialogAction.SKIP_REPEATED)) {
@@ -291,17 +310,17 @@ public class EstabModel {
             for (VehicleModel v : relatedElementLists.getNonRepeatedVehicles()) {
                 v.setFlag(Flag.COPY);
                 vehicles.put(v.getId(), v);
-                logMessage.append("-- " + v.print() + newLine);
+                logMessage.append("-- ").append(v.print()).append(newLine);
             }
             for (WeaponModel w : relatedElementLists.getNonRepeatedWeapons()) {
                 w.setFlag(Flag.COPY);
                 weapons.put(w.getId(), w);
-                logMessage.append("-- " + w.print() + newLine);
+                logMessage.append("-- ").append(w.print()).append(newLine);
             }
             for (AmmoModel a : relatedElementLists.getNonRepeatedAmmo()) {
                 a.setFlag(Flag.COPY);
                 ammos.put(a.getId(), a);
-                logMessage.append("-- " + a.print() + newLine);
+                logMessage.append("-- ").append(a.print()).append(newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else if (answer.equals(DialogAction.COPY_SELECTION)) {
@@ -311,17 +330,17 @@ public class EstabModel {
                     AmmoModel a = (AmmoModel) selectedItem;
                     a.setFlag(Flag.COPY);
                     ammos.put(a.getId(), a);
-                    logMessage.append("-- " + a.print() + newLine);
+                    logMessage.append("-- ").append(a.print()).append(newLine);
                 } else if (selectedItem instanceof WeaponModel) {
                     WeaponModel w = (WeaponModel) selectedItem;
                     w.setFlag(Flag.COPY);
                     weapons.put(w.getId(), w);
-                    logMessage.append("-- " + w.print() + newLine);
+                    logMessage.append("-- ").append(w.print()).append(newLine);
                 } else if (selectedItem instanceof VehicleModel) {
                     VehicleModel v = (VehicleModel) selectedItem;
                     v.setFlag(Flag.COPY);
                     vehicles.put(v.getId(), v);
-                    logMessage.append("-- " + v.print() + newLine);
+                    logMessage.append("-- ").append(v.print()).append(newLine);
                 }
             }
             LOG.log(Level.INFO, logMessage.toString());

@@ -23,9 +23,14 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
     private final transient ObjectProperty<RGBColorModel> designationColor = new SimpleObjectProperty<>();
     private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public ServiceModel(Service service) {
         setPojo(service);
+    }
+
+    public ServiceModel() {
+
     }
 
     @Override
@@ -49,6 +54,7 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
         iconColors.setSymbolColor(symbolColor.get());
         service.setDefaultIconColors(iconColors);
         force.stream().forEach((forceModel) -> service.getForce().add(forceModel.getPojo()));
+        service.getFlags().addAll(flags);
         return service;
     }
 
@@ -59,13 +65,14 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
         description.set(pojo.getDescription());
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
-        pojo.getRankList().getRank().stream().map(RankModel::new).forEach((rankModel) -> rankList.add(rankModel));
+        pojo.getRankList().getRank().stream().map(RankModel::new).forEach(rankList::add);
         DefaultIconColors iconColors = pojo.getDefaultIconColors();
         backgroundColor.set(new RGBColorModel(iconColors.getBackgroundColor()));
         backgroundDarkColor.set(new RGBColorModel(iconColors.getBackgroundDarkColor()));
         backgroundLightColor.set(new RGBColorModel(iconColors.getBackgroundLightColor()));
         symbolColor.set(iconColors.getSymbolColor());
-        pojo.getForce().stream().map(ForceModel::new).forEach((forceModel) -> force.add(forceModel));
+        pojo.getForce().stream().map(ForceModel::new).forEach(force::add);
+        flags.addAll(pojo.getFlags());
     }
 
     public int getId() {
@@ -82,7 +89,7 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     public String getName() {
@@ -208,42 +215,45 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
 
         ServiceModel that = (ServiceModel) o;
 
-        if (backgroundColor != null ? !backgroundColor.equals(that.backgroundColor) : that.backgroundColor != null)
+        if (getBackgroundColor() != null ? !getBackgroundColor().equals(that.getBackgroundColor()) : that.getBackgroundColor() != null)
             return false;
-        if (backgroundDarkColor != null ? !backgroundDarkColor.equals(that.backgroundDarkColor) : that.backgroundDarkColor != null)
+        if (getBackgroundDarkColor() != null ? !getBackgroundDarkColor().equals(that.getBackgroundDarkColor()) : that.getBackgroundDarkColor() != null)
             return false;
-        if (backgroundLightColor != null ? !backgroundLightColor.equals(that.backgroundLightColor) : that.backgroundLightColor != null)
+        if (getBackgroundLightColor() != null ? !getBackgroundLightColor().equals(that.getBackgroundLightColor()) : that.getBackgroundLightColor() != null)
             return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (designationColor != null ? !designationColor.equals(that.designationColor) : that.designationColor != null)
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;
-        if (force != null ? !force.equals(that.force) : that.force != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (largeInsignia != null ? !largeInsignia.equals(that.largeInsignia) : that.largeInsignia != null)
+        if (getDesignationColor() != null ? !getDesignationColor().equals(that.getDesignationColor()) : that.getDesignationColor() != null)
             return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (rankList != null ? !rankList.equals(that.rankList) : that.rankList != null) return false;
-        if (smallInsignia != null ? !smallInsignia.equals(that.smallInsignia) : that.smallInsignia != null)
+//        if (getId() != that.getId()) return false;
+        if (getLargeInsignia() != that.getLargeInsignia()) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getSmallInsignia() != that.getSmallInsignia()) return false;
+        if (getSymbolColor() != null ? !getSymbolColor().equals(that.getSymbolColor()) : that.getSymbolColor() != null)
             return false;
-        if (symbolColor != null ? !symbolColor.equals(that.symbolColor) : that.symbolColor != null) return false;
-
+        if (that.getForce().size() != force.size() || !force.containsAll(that.getForce()))
+            return false;
+        if (that.getRankList().size() != rankList.size() || !rankList.containsAll(that.getRankList()))
+            return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
-        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
-        result = 31 * result + (rankList != null ? rankList.hashCode() : 0);
-        result = 31 * result + (backgroundColor != null ? backgroundColor.hashCode() : 0);
-        result = 31 * result + (backgroundDarkColor != null ? backgroundDarkColor.hashCode() : 0);
-        result = 31 * result + (backgroundLightColor != null ? backgroundLightColor.hashCode() : 0);
-        result = 31 * result + (designationColor != null ? designationColor.hashCode() : 0);
-        result = 31 * result + (symbolColor != null ? symbolColor.hashCode() : 0);
-        result = 31 * result + (force != null ? force.hashCode() : 0);
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + rankList.stream().map(RankModel::hashCode).count());
+        result = (int) (31 * result + force.stream().map(ForceModel::hashCode).count());
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + getLargeInsignia();
+        result = 31 * result + getSmallInsignia();
+        result = 31 * result + (getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0);
+        result = 31 * result + (getBackgroundDarkColor() != null ? getBackgroundDarkColor().hashCode() : 0);
+        result = 31 * result + (getBackgroundLightColor() != null ? getBackgroundLightColor().hashCode() : 0);
+        result = 31 * result + (getDesignationColor() != null ? getDesignationColor().hashCode() : 0);
+        result = 31 * result + (getSymbolColor() != null ? getSymbolColor().hashCode() : 0);
         return result;
     }
 }

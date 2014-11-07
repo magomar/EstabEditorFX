@@ -22,9 +22,14 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
     private final IntegerProperty defaultEnemyAperFp = new SimpleIntegerProperty();
     private final IntegerProperty defaultEnemyAarmFp = new SimpleIntegerProperty();
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public SideModel(Side side) {
         setPojo(side);
+    }
+
+    public SideModel() {
+
     }
 
     @Override
@@ -42,9 +47,8 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
         side.setBasicsConsumptionRate(basicsConsumptionRate.get());
         side.setDefaultEnemyAperFp(defaultEnemyAperFp.get());
         side.setDefaultEnemyAarmFp(defaultEnemyAarmFp.get());
-        nation.stream().forEach((nationModel) -> {
-            side.getNation().add(nationModel.getPojo());
-        });
+        nation.stream().forEach((nationModel) -> side.getNation().add(nationModel.getPojo()));
+        side.getFlags().addAll(flags);
         return side;
     }
 
@@ -58,12 +62,10 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
         basicsConsumptionRate.set(pojo.getBasicsConsumptionRate());
         defaultEnemyAperFp.set(pojo.getDefaultEnemyAperFp());
         defaultEnemyAarmFp.set(pojo.getDefaultEnemyAarmFp());
-        nation.clear();
+        flags.addAll(pojo.getFlags());
         pojo.getNation().stream()
                 .map(NationModel::new)
-                .forEach((nationModel) -> {
-                    nation.add(nationModel);
-                });
+                .forEach(nation::add);
     }
 
     public int getId() {
@@ -80,7 +82,7 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     public String getName() {
@@ -174,40 +176,37 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SideModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        SideModel sideModel = (SideModel) o;
-
-        if (basicsConsumptionRate != null ? !basicsConsumptionRate.equals(sideModel.basicsConsumptionRate) : sideModel.basicsConsumptionRate != null)
+        SideModel that = (SideModel) o;
+//        if (!id.equals(that.id)) return false;
+        if (getBasicsConsumptionRate() != (that.getBasicsConsumptionRate())) return false;
+        if (getDefaultEnemyAarmFp() != (that.getDefaultEnemyAarmFp())) return false;
+        if (getDefaultEnemyAperFp() != (that.getDefaultEnemyAperFp())) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;
-        if (defaultEnemyAarmFp != null ? !defaultEnemyAarmFp.equals(sideModel.defaultEnemyAarmFp) : sideModel.defaultEnemyAarmFp != null)
+        if (getLargeInsignia() != (that.getLargeInsignia())) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getSmallInsignia() != (that.getSmallInsignia())) return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
             return false;
-        if (defaultEnemyAperFp != null ? !defaultEnemyAperFp.equals(sideModel.defaultEnemyAperFp) : sideModel.defaultEnemyAperFp != null)
+        if (that.getNation().size() != nation.size() || !nation.containsAll(that.getNation()))
             return false;
-        if (description != null ? !description.equals(sideModel.description) : sideModel.description != null)
-            return false;
-        if (id != null ? !id.equals(sideModel.id) : sideModel.id != null) return false;
-        if (largeInsignia != null ? !largeInsignia.equals(sideModel.largeInsignia) : sideModel.largeInsignia != null)
-            return false;
-        if (name != null ? !name.equals(sideModel.name) : sideModel.name != null) return false;
-        if (nation != null ? !nation.equals(sideModel.nation) : sideModel.nation != null) return false;
-        if (smallInsignia != null ? !smallInsignia.equals(sideModel.smallInsignia) : sideModel.smallInsignia != null)
-            return false;
-
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
-        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
-        result = 31 * result + (basicsConsumptionRate != null ? basicsConsumptionRate.hashCode() : 0);
-        result = 31 * result + (defaultEnemyAperFp != null ? defaultEnemyAperFp.hashCode() : 0);
-        result = 31 * result + (defaultEnemyAarmFp != null ? defaultEnemyAarmFp.hashCode() : 0);
-        result = 31 * result + (nation != null ? nation.hashCode() : 0);
+        // id
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + nation.stream().map(NationModel::hashCode).count());
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + getLargeInsignia();
+        result = 31 * result + getSmallInsignia();
+        result = (int) (31 * result + getBasicsConsumptionRate());
+        result = 31 * result + getDefaultEnemyAperFp();
+        result = 31 * result + getDefaultEnemyAarmFp();
         return result;
     }
 }

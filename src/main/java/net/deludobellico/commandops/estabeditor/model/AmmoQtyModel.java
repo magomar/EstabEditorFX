@@ -19,6 +19,9 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
         setPojo(pojo);
     }
 
+    public AmmoQtyModel() {
+    }
+
     @Override
     public AmmoQty getPojo() {
         return null;
@@ -71,19 +74,17 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
         if (!(o instanceof AmmoQtyModel)) return false;
 
         AmmoQtyModel that = (AmmoQtyModel) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (qty != null ? !qty.equals(that.qty) : that.qty != null) return false;
-
+        //if (getId() != that.getId()) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getQty() != that.getQty()) return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (qty != null ? qty.hashCode() : 0);
+        int result = 62 * (getName() != null ? getName().hashCode() : 0);
+//        result = 31 * result + getId();
+        result = 31 * result + getQty();
         return result;
     }
 }

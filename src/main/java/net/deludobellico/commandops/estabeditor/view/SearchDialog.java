@@ -38,8 +38,6 @@ public class SearchDialog implements Initializable {
 
     private Stage dialog;
 
-    private FXMLLoader fxmlLoader;
-
     private Parent parent;
 
     private boolean closeWithAdd = false;
@@ -55,9 +53,7 @@ public class SearchDialog implements Initializable {
             Parent parent = fxmlLoader.load();
             searchDialog = fxmlLoader.getController();
             searchDialog.setParent(parent);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
         return searchDialog;
@@ -137,8 +133,7 @@ public class SearchDialog implements Initializable {
     private void searchAction(ActionEvent actionEvent) {
         String textToSearch = searchTextField.getText().toLowerCase();
         searchListView.getItems().clear();
-        for (int i = 0; i < items.size(); i++) {
-            Object o = items.get(i);
+        for (Object o : items) {
             if (o.toString().toLowerCase().contains(textToSearch)) {
                 searchListView.getItems().add(o);
             }

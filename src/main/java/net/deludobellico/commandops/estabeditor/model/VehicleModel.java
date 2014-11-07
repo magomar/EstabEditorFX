@@ -113,7 +113,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         a.setRear(rearArmor.get());
         a.setTop(topArmor.get());
         vehicle.setArmour(a);
-        flags.stream().forEach(f -> vehicle.getFlags().add(f));
+        vehicle.getFlags().addAll(flags);
         return vehicle;
     }
 
@@ -129,7 +129,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         width.set(pojo.getSize().getWeight());
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
-        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(armamentModel -> armaments.add(armamentModel));
+        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(armaments::add);
         type.set(pojo.getType());
         fuelCapacity.set(pojo.getFuelCapacity());
         maxCrossCountrySpeed.set(pojo.getSpeed().getCrossCountry().getMax());
@@ -153,7 +153,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         sideArmor.set(pojo.getArmour().getSide());
         rearArmor.set(pojo.getArmour().getRear());
         topArmor.set(pojo.getArmour().getTop());
-        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
+        flags.addAll(pojo.getFlags());
     }
 
     public int getId() {
@@ -596,86 +596,89 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
 
         VehicleModel that = (VehicleModel) o;
 
-        if (!armaments.equals(that.armaments)) return false;
-        if (!battleWeight.equals(that.battleWeight)) return false;
-        if (!bulkFuelCapacity.equals(that.bulkFuelCapacity)) return false;
-        if (!crew.equals(that.crew)) return false;
-        if (!description.equals(that.description)) return false;
-        if (!flags.equals(that.flags)) return false;
-        if (!frontArmor.equals(that.frontArmor)) return false;
-        if (!fuelCapacity.equals(that.fuelCapacity)) return false;
-        if (!hasOpenTop.equals(that.hasOpenTop)) return false;
-        if (!hasTurret.equals(that.hasTurret)) return false;
-        if (!height.equals(that.height)) return false;
-        if (!id.equals(that.id)) return false;
-        if (!length.equals(that.length)) return false;
-        if (!maxCrossCountrySpeed.equals(that.maxCrossCountrySpeed)) return false;
-        if (!maxFordingDepth.equals(that.maxFordingDepth)) return false;
-        if (!maxFuelConsumption.equals(that.maxFuelConsumption)) return false;
-        if (!maxGradient.equals(that.maxGradient)) return false;
-        if (!maxRoadSpeed.equals(that.maxRoadSpeed)) return false;
-        if (!maxTrenchWidth.equals(that.maxTrenchWidth)) return false;
-        if (!name.equals(that.name)) return false;
-        if (!normalCrossCountrySpeed.equals(that.normalCrossCountrySpeed)) return false;
-        if (!normalFuelConsumption.equals(that.normalFuelConsumption)) return false;
-        if (!normalRoadSpeed.equals(that.normalRoadSpeed)) return false;
-        if (!payloadCapacity.equals(that.payloadCapacity)) return false;
-        if (!personnelCapacity.equals(that.personnelCapacity)) return false;
-        if (!pictureFilename.equals(that.pictureFilename)) return false;
-        if (!pictureId.equals(that.pictureId)) return false;
-        if (!rearArmor.equals(that.rearArmor)) return false;
-        if (!reliability.equals(that.reliability)) return false;
-        if (!ronsonability.equals(that.ronsonability)) return false;
-        if (!sideArmor.equals(that.sideArmor)) return false;
-        if (!takeCoverMod.equals(that.takeCoverMod)) return false;
-        if (!topArmor.equals(that.topArmor)) return false;
-        if (!towingCapacity.equals(that.towingCapacity)) return false;
-        if (!type.equals(that.type)) return false;
-        if (!weight.equals(that.weight)) return false;
-        if (!width.equals(that.width)) return false;
+        if (!getDescription().equals(that.getDescription())) return false;
+        if (!getName().equals(that.getName())) return false;
+        if (!getPictureFilename().equals(that.getPictureFilename())) return false;
+        if (!getType().equals(that.getType())) return false;
 
+        if (getBattleWeight() != (that.getBattleWeight())) return false;
+        if (getBulkFuelCapacity() != (that.getBulkFuelCapacity())) return false;
+        if (getCrew() != (that.getCrew())) return false;
+        if (getFrontArmor() != (that.getFrontArmor())) return false;
+        if (getFuelCapacity() != (that.getFuelCapacity())) return false;
+        if (getHasOpenTop() != (that.getHasOpenTop())) return false;
+        if (getHasTurret() != (that.getHasTurret())) return false;
+        if (getHeight() != (that.getHeight())) return false;
+//        if (getId()!=(that.getgetId()())) return false;
+        if (getLength() != (that.getLength())) return false;
+        if (getMaxCrossCountrySpeed() != (that.getMaxCrossCountrySpeed())) return false;
+        if (getMaxFordingDepth() != (that.getMaxFordingDepth())) return false;
+        if (getMaxFuelConsumption() != (that.getMaxFuelConsumption())) return false;
+        if (getMaxGradient() != (that.getMaxGradient())) return false;
+        if (getMaxRoadSpeed() != (that.getMaxRoadSpeed())) return false;
+        if (getMaxTrenchWidth() != (that.getMaxTrenchWidth())) return false;
+        if (getNormalCrossCountrySpeed() != (that.getNormalCrossCountrySpeed())) return false;
+        if (getNormalFuelConsumption() != (that.getNormalFuelConsumption())) return false;
+        if (getNormalRoadSpeed() != (that.getNormalRoadSpeed())) return false;
+        if (getPayloadCapacity() != (that.getPayloadCapacity())) return false;
+        if (getPersonnelCapacity() != (that.getPersonnelCapacity())) return false;
+        if (getPictureId() != (that.getPictureId())) return false;
+        if (getRearArmor() != (that.getRearArmor())) return false;
+        if (getReliability() != (that.getReliability())) return false;
+        if (getRonsonability() != (that.getRonsonability())) return false;
+        if (getSideArmor() != (that.getSideArmor())) return false;
+        if (getTakeCoverMod() != (that.getTakeCoverMod())) return false;
+        if (getTopArmor() != (that.getTopArmor())) return false;
+        if (getTowingCapacity() != (that.getTowingCapacity())) return false;
+        if (getWeight() != (that.getWeight())) return false;
+        if (getWidth() != (that.getWidth())) return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
+        if (that.getArmaments().size() != armaments.size() || !armaments.containsAll(that.getArmaments()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + pictureId.hashCode();
-        result = 31 * result + pictureFilename.hashCode();
-        result = 31 * result + width.hashCode();
-        result = 31 * result + height.hashCode();
-        result = 31 * result + length.hashCode();
-        result = 31 * result + weight.hashCode();
-        result = 31 * result + crew.hashCode();
-        result = 31 * result + reliability.hashCode();
-        result = 31 * result + armaments.hashCode();
-        result = 31 * result + type.hashCode();
-        result = 31 * result + fuelCapacity.hashCode();
-        result = 31 * result + maxRoadSpeed.hashCode();
-        result = 31 * result + normalRoadSpeed.hashCode();
-        result = 31 * result + maxCrossCountrySpeed.hashCode();
-        result = 31 * result + normalCrossCountrySpeed.hashCode();
-        result = 31 * result + maxFuelConsumption.hashCode();
-        result = 31 * result + normalFuelConsumption.hashCode();
-        result = 31 * result + ronsonability.hashCode();
-        result = 31 * result + maxGradient.hashCode();
-        result = 31 * result + maxFordingDepth.hashCode();
-        result = 31 * result + maxTrenchWidth.hashCode();
-        result = 31 * result + towingCapacity.hashCode();
-        result = 31 * result + personnelCapacity.hashCode();
-        result = 31 * result + bulkFuelCapacity.hashCode();
-        result = 31 * result + payloadCapacity.hashCode();
-        result = 31 * result + takeCoverMod.hashCode();
-        result = 31 * result + hasTurret.hashCode();
-        result = 31 * result + hasOpenTop.hashCode();
-        result = 31 * result + battleWeight.hashCode();
-        result = 31 * result + frontArmor.hashCode();
-        result = 31 * result + sideArmor.hashCode();
-        result = 31 * result + rearArmor.hashCode();
-        result = 31 * result + topArmor.hashCode();
-        result = 31 * result + flags.hashCode();
+        // id
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + armaments.stream().map(ArmamentModel::hashCode).count());
+        result = 31 * result + getDescription().hashCode();
+        result = 31 * result + getPictureFilename().hashCode();
+        result = 31 * result + getType().hashCode();
+
+        result = 31 * result + getPictureId();
+        result = (int) (31 * result + getWidth());
+        result = (int) (31 * result + getHeight());
+        result = (int) (31 * result + getLength());
+        result = (int) (31 * result + getWeight());
+        result = (31 * result) + getCrew();
+        result = (int) (31 * result + getReliability());
+        result = (int) (31 * result + getFuelCapacity());
+        result = (int) (31 * result + getMaxRoadSpeed());
+        result = (int) (31 * result + getNormalRoadSpeed());
+        result = (int) (31 * result + getMaxCrossCountrySpeed());
+        result = (int) (31 * result + getNormalCrossCountrySpeed());
+        result = (int) (31 * result + getMaxFuelConsumption());
+        result = (int) (31 * result + getNormalFuelConsumption());
+        result = (int) (31 * result + getRonsonability());
+        result = 31 * result + getMaxGradient();
+        result = 31 * result + getMaxFordingDepth();
+        result = 31 * result + getMaxTrenchWidth();
+        result = (int) (31 * result + getTowingCapacity());
+        result = 31 * result + getPersonnelCapacity();
+        result = (int) (31 * result + getBulkFuelCapacity());
+        result = (int) (31 * result + getPayloadCapacity());
+        result = (int) (31 * result + getTakeCoverMod());
+        result = result * 31 + (getHasTurret() ? 13 : 0);
+        result = result * 31 + (getHasOpenTop() ? 7 : 0);
+        result = (int) (31 * result + getBattleWeight());
+        result = (int) (31 * result + getFrontArmor());
+        result = (int) (31 * result + getSideArmor());
+        result = (int) (31 * result + getRearArmor());
+        result = (int) (31 * result + getTopArmor());
         return result;
     }
 }

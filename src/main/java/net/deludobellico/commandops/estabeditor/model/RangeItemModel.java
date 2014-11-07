@@ -77,23 +77,22 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RangeItemModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         RangeItemModel that = (RangeItemModel) o;
 
-        if (accuracy != null ? !accuracy.equals(that.accuracy) : that.accuracy != null) return false;
-        if (armourPenetration != null ? !armourPenetration.equals(that.armourPenetration) : that.armourPenetration != null)
-            return false;
-        if (range != null ? !range.equals(that.range) : that.range != null) return false;
+        if (getAccuracy() != (that.getAccuracy())) return false;
+        if (getArmourPenetration() != (that.getArmourPenetration())) return false;
+        if (getRange() != (that.getRange())) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = range != null ? range.hashCode() : 0;
-        result = 31 * result + (accuracy != null ? accuracy.hashCode() : 0);
-        result = 31 * result + (armourPenetration != null ? armourPenetration.hashCode() : 0);
+        int result = getRange();
+        result = (int) (31 * result + getAccuracy());
+        result = (int) (31 * result + getArmourPenetration());
         return result;
     }
 }

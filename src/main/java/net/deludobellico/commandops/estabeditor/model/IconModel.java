@@ -24,6 +24,10 @@ public class IconModel implements PojoJFXModel<Icon> {
         setPojo(pojo);
     }
 
+    public IconModel() {
+
+    }
+
     @Override
     public Icon getPojo() {
         Icon icon = new Icon();
@@ -151,26 +155,25 @@ public class IconModel implements PojoJFXModel<Icon> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof IconModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         IconModel iconModel = (IconModel) o;
 
-        if (backgroundColor != null ? !backgroundColor.equals(iconModel.backgroundColor) : iconModel.backgroundColor != null)
+        if (getBackgroundColor() != null ? !getBackgroundColor().equals(iconModel.getBackgroundColor()) : iconModel.getBackgroundColor() != null)
             return false;
-        if (backgroundDarkColor != null ? !backgroundDarkColor.equals(iconModel.backgroundDarkColor) : iconModel.backgroundDarkColor != null)
+        if (getBackgroundDarkColor() != null ? !getBackgroundDarkColor().equals(iconModel.getBackgroundDarkColor()) : iconModel.getBackgroundDarkColor() != null)
             return false;
-        if (backgroundLightColor != null ? !backgroundLightColor.equals(iconModel.backgroundLightColor) : iconModel.backgroundLightColor != null)
+        if (getBackgroundLightColor() != null ? !getBackgroundLightColor().equals(iconModel.getBackgroundLightColor()) : iconModel.getBackgroundLightColor() != null)
             return false;
-        if (designationColor != null ? !designationColor.equals(iconModel.designationColor) : iconModel.designationColor != null)
+        if (getDesignationColor() != null ? !getDesignationColor().equals(iconModel.getDesignationColor()) : iconModel.getDesignationColor() != null)
             return false;
-        if (forceSizeIcon != null ? !forceSizeIcon.equals(iconModel.forceSizeIcon) : iconModel.forceSizeIcon != null)
+        if (getForceSizeIcon() != null ? !getForceSizeIcon().equals(iconModel.getForceSizeIcon()) : iconModel.getForceSizeIcon() != null)
             return false;
-        if (isHq != null ? !isHq.equals(iconModel.isHq) : iconModel.isHq != null) return false;
-        if (militarySymbol != null ? !militarySymbol.equals(iconModel.militarySymbol) : iconModel.militarySymbol != null)
+        if (getIsHq() != iconModel.getIsHq()) return false;
+        if (getMilitarySymbol() != iconModel.getMilitarySymbol()) return false;
+        if (getPictureSymbol() != null ? !getPictureSymbol().equals(iconModel.getPictureSymbol()) : iconModel.getPictureSymbol() != null)
             return false;
-        if (pictureSymbol != null ? !pictureSymbol.equals(iconModel.pictureSymbol) : iconModel.pictureSymbol != null)
-            return false;
-        if (symbolColor != null ? !symbolColor.equals(iconModel.symbolColor) : iconModel.symbolColor != null)
+        if (getSymbolColor() != null ? !getSymbolColor().equals(iconModel.getSymbolColor()) : iconModel.getSymbolColor() != null)
             return false;
 
         return true;
@@ -178,15 +181,15 @@ public class IconModel implements PojoJFXModel<Icon> {
 
     @Override
     public int hashCode() {
-        int result = backgroundColor != null ? backgroundColor.hashCode() : 0;
-        result = 31 * result + (backgroundDarkColor != null ? backgroundDarkColor.hashCode() : 0);
-        result = 31 * result + (backgroundLightColor != null ? backgroundLightColor.hashCode() : 0);
-        result = 31 * result + (designationColor != null ? designationColor.hashCode() : 0);
-        result = 31 * result + (symbolColor != null ? symbolColor.hashCode() : 0);
-        result = 31 * result + (militarySymbol != null ? militarySymbol.hashCode() : 0);
-        result = 31 * result + (pictureSymbol != null ? pictureSymbol.hashCode() : 0);
-        result = 31 * result + (forceSizeIcon != null ? forceSizeIcon.hashCode() : 0);
-        result = 31 * result + (isHq != null ? isHq.hashCode() : 0);
+        int result = getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0;
+        result = 31 * result + (getBackgroundDarkColor() != null ? getBackgroundDarkColor().hashCode() : 0);
+        result = 31 * result + (getBackgroundLightColor() != null ? getBackgroundLightColor().hashCode() : 0);
+        result = 31 * result + (getDesignationColor() != null ? getDesignationColor().hashCode() : 0);
+        result = 31 * result + (getSymbolColor() != null ? getSymbolColor().hashCode() : 0);
+        result = 31 * result + getMilitarySymbol();
+        result = 31 * result + (getPictureSymbol() != null ? getPictureSymbol().hashCode() : 0);
+        result = 31 * result + (getForceSizeIcon() != null ? getForceSizeIcon().hashCode() : 0);
+        result = 31 * result + ((getIsHq()) ? 1 : 0);
         return result;
     }
 }

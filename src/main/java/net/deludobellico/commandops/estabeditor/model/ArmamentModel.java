@@ -25,6 +25,10 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
         setPojo(armament);
     }
 
+    public ArmamentModel() {
+
+    }
+
     @Override
     public Armament getPojo() {
         Armament armament = new Armament();
@@ -84,20 +88,19 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
 
         ArmamentModel that = (ArmamentModel) o;
 
-        if (equipmentName != null ? !equipmentName.equals(that.equipmentName) : that.equipmentName != null)
+        if (getEquipmentName() != null ? !getEquipmentName().equals(that.getEquipmentName()) : that.getEquipmentName() != null)
             return false;
-        if (equipmentObjectId != null ? !equipmentObjectId.equals(that.equipmentObjectId) : that.equipmentObjectId != null)
-            return false;
-        if (qty != null ? !qty.equals(that.qty) : that.qty != null) return false;
+//        if (getEquipmentObjectId() != that.getEquipmentObjectId()) return false;
+        return getQty() == that.getQty();
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = equipmentObjectId != null ? equipmentObjectId.hashCode() : 0;
-        result = 31 * result + (equipmentName != null ? equipmentName.hashCode() : 0);
-        result = 31 * result + (qty != null ? qty.hashCode() : 0);
+        int result = 1;
+//        result = 31 * getEquipmentObjectId();
+        result = 31 * result + (getEquipmentName() != null ? getEquipmentName().hashCode() : 0);
+        result = 31 * result + getQty();
         return result;
     }
 }

@@ -53,9 +53,7 @@ public class InfoDialog implements Initializable {
             Parent parent = fxmlLoader.load();
             infoDialog = fxmlLoader.getController();
             infoDialog.setParent(parent);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
         return infoDialog;
@@ -100,8 +98,7 @@ public class InfoDialog implements Initializable {
     public InfoDialog setActions(DialogAction... actions) {
         if (actions.length > 1) {
             buttonBox.getChildren().clear();
-            for (int i = 0; i < actions.length; i++) {
-                DialogAction dialogAction = actions[i];
+            for (DialogAction dialogAction : actions) {
                 Button b = new Button(dialogAction.getAction());
                 b.setOnAction(event -> {
                     this.selectedAction = dialogAction;

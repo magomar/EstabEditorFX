@@ -23,9 +23,14 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<ServiceModel> service = FXCollections.observableArrayList();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public NationModel(Nation nation) {
         setPojo(nation);
+    }
+
+    public NationModel() {
+
     }
 
     @Override
@@ -54,7 +59,7 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
-        pojo.getService().stream().map(ServiceModel::new).forEach((serviceModel) -> service.add(serviceModel));
+        pojo.getService().stream().map(ServiceModel::new).forEach(service::add);
     }
 
     public int getId() {
@@ -71,7 +76,7 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     public String getName() {
@@ -145,14 +150,17 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
 
         NationModel that = (NationModel) o;
 
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (largeInsignia != null ? !largeInsignia.equals(that.largeInsignia) : that.largeInsignia != null)
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (nationality != null ? !nationality.equals(that.nationality) : that.nationality != null) return false;
-        if (service != null ? !service.equals(that.service) : that.service != null) return false;
-        if (smallInsignia != null ? !smallInsignia.equals(that.smallInsignia) : that.smallInsignia != null)
+//        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (getLargeInsignia() != that.getLargeInsignia()) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getNationality() != null ? !getNationality().equals(that.getNationality()) : that.getNationality() != null)
+            return false;
+        if (getSmallInsignia() != that.getSmallInsignia()) return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
+        if (that.getService().size() != service.size() || !service.containsAll(that.getService()))
             return false;
 
         return true;
@@ -160,13 +168,15 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (nationality != null ? nationality.hashCode() : 0);
-        result = 31 * result + (largeInsignia != null ? largeInsignia.hashCode() : 0);
-        result = 31 * result + (smallInsignia != null ? smallInsignia.hashCode() : 0);
-        result = 31 * result + (service != null ? service.hashCode() : 0);
+//        int result = id != null ? id.hashCode() : 0;
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + service.stream().map(ServiceModel::hashCode).count());
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getNationality() != null ? getNationality().hashCode() : 0);
+        result = 31 * result + getLargeInsignia();
+        result = 31 * result + getSmallInsignia();
         return result;
     }
 }

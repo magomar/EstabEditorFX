@@ -57,18 +57,20 @@ public class ElementModelFactory {
         weaponModel.getFlags().add(Flag.NEW);
         return weaponModel;
     }
-    public static ElementModel createAmmo() {
+
+    public static AmmoModel createAmmo() {
         AmmoModel ammoModel = new AmmoModel();
         ammoModel.setId(maxID++);
         ammoModel.setName("New Ammo");
         ammoModel.getFlags().add(Flag.NEW);
         return ammoModel;
     }
-    public static void setMaxID(int maxID) {
-        ElementModelFactory.maxID = maxID+1;
-    }
 
     public static int getMaxID() {
         return maxID;
+    }
+
+    public static void setMaxID(int maxID) {
+        ElementModelFactory.maxID = maxID + 1;
     }
 }

@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Radio;
 
@@ -15,9 +16,14 @@ import java.util.List;
 public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public RadioModel(Radio radio) {
         setPojo(radio);
+    }
+
+    public RadioModel() {
+
     }
 
     @Override
@@ -51,7 +57,7 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     @Override
@@ -76,16 +82,17 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
 
         RadioModel that = (RadioModel) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
+//        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
         return result;
     }
 }

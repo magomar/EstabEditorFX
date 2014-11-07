@@ -13,7 +13,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
@@ -113,7 +112,6 @@ public class MainController implements Initializable {
     private File sourceEstabFile;
     private File targetEstabFile;
 
-    private Stage stage;
     private BooleanProperty disableCopy = new SimpleBooleanProperty(true);
     private BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
     private BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
@@ -156,7 +154,7 @@ public class MainController implements Initializable {
             targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
 
             if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer(null);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException ignored) {
         }
 
         sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
@@ -259,14 +257,6 @@ public class MainController implements Initializable {
         targetPane.expandedProperty().set(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentTargetMenu();
-    }
-
-    public void openSourceBFTBE(ActionEvent actionEvent) {
-
-    }
-
-    public void openSourceCOTA(ActionEvent actionEvent) {
-
     }
 
     @FXML
@@ -405,7 +395,7 @@ public class MainController implements Initializable {
         targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(elementModel));
     }
 
-    public void installDatasetBFTB(ActionEvent actionEvent) {
+    public void installDatasetBFTB() {
         File folder = openDirectoryChooser();
         if (folder != null) {
             File installedDataset = FileIO.installDataset("BFTB", folder);
@@ -417,7 +407,7 @@ public class MainController implements Initializable {
         }
     }
 
-    public void installDatasetCOTA(ActionEvent actionEvent) {
+    public void installDatasetCOTA() {
         File folder = openDirectoryChooser();
         if (folder != null) {
             File installedDataset = FileIO.installDataset("COTA", folder);
@@ -434,18 +424,6 @@ public class MainController implements Initializable {
         Platform.exit();
     }
 
-    public Button getCopyElementButton() {
-        return copyElementButton;
-    }
-
-    public Button getRemoveElementButton() {
-        return removeElementButton;
-    }
-
-    public EstabController getSourceEditor() {
-        return sourcePaneController;
-    }
-
     public BooleanProperty getDisableCopyProperty() {
         return disableCopy;
     }
@@ -454,15 +432,15 @@ public class MainController implements Initializable {
         return removeElementButton.disableProperty();
     }
 
-    public void createNewVehicleButtonAction(ActionEvent actionEvent) {
+    public void createNewVehicleButtonAction() {
         targetPaneController.createNewElement(VehicleModel.class);
     }
 
-    public void createNewWeaponButtonAction(ActionEvent actionEvent) {
+    public void createNewWeaponButtonAction() {
         targetPaneController.createNewElement(WeaponModel.class);
     }
 
-    public void createNewAmmoButtonAction(ActionEvent actionEvent) {
+    public void createNewAmmoButtonAction() {
         targetPaneController.createNewElement(AmmoModel.class);
     }
 }

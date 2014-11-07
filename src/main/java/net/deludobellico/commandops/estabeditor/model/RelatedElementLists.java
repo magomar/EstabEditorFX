@@ -8,21 +8,17 @@ import java.util.List;
  */
 public class RelatedElementLists {
 
+    // Might be not be updated
+    List<ElementModel> allElements;
     private List<VehicleModel> allVehicles;
     private List<WeaponModel> allWeapons;
     private List<AmmoModel> allAmmo;
-
     private List<VehicleModel> nonRepeatedVehicles;
     private List<WeaponModel> nonRepeatedWeapons;
     private List<AmmoModel> nonRepeatedAmmo;
-
     private List<VehicleModel> repeatedVehicles;
     private List<WeaponModel> repeatedWeapons;
     private List<AmmoModel> repeatedAmmo;
-
-    // Might be not be updated
-    List<ElementModel> allElements;
-
     private boolean sorted;
 
     public RelatedElementLists() {
@@ -124,7 +120,7 @@ public class RelatedElementLists {
 
     public List<ElementModel> getRepeatedElements() {
         if (!sorted) return null;
-        List repeatedElements = new ArrayList<>();
+        List<ElementModel> repeatedElements = new ArrayList<>();
         repeatedElements.addAll(repeatedAmmo);
         repeatedElements.addAll(repeatedWeapons);
         repeatedElements.addAll(repeatedVehicles);
@@ -133,7 +129,7 @@ public class RelatedElementLists {
 
     public List<ElementModel> getNonRepeatedElements() {
         if (!sorted) return null;
-        List nonRepeatedElements = new ArrayList<>();
+        List<ElementModel> nonRepeatedElements = new ArrayList<>();
         nonRepeatedElements.addAll(nonRepeatedAmmo);
         nonRepeatedElements.addAll(nonRepeatedWeapons);
         nonRepeatedElements.addAll(nonRepeatedVehicles);
@@ -141,7 +137,7 @@ public class RelatedElementLists {
     }
 
     public List<ElementModel> getAllElements() {
-        if(allElements.size() != allVehicles.size() + allWeapons.size() + allAmmo.size()) {
+        if (allElements.size() != allVehicles.size() + allWeapons.size() + allAmmo.size()) {
             allElements.clear();
             allElements.addAll(allVehicles);
             allElements.addAll(allWeapons);

@@ -91,9 +91,8 @@ public class JAXBFactory {
             object = unmarshaller.unmarshal(source);
         } catch (JAXBException ex) {
             LOG.log(Level.SEVERE, "Exception unmarshalling XML", ex);
-        } finally {
-            return object;
         }
+        return object;
     }
 
     /**

@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationEffects;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationType;
@@ -16,9 +17,14 @@ import java.util.List;
 public class FormationEffectsModel implements ElementModel, PojoJFXModel<FormationEffects> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
+    private List<Flag> flags = FXCollections.observableArrayList();
 
     public FormationEffectsModel(FormationEffects formationEffects) {
         setPojo(formationEffects);
+    }
+
+    public FormationEffectsModel() {
+
     }
 
     @Override
@@ -52,7 +58,7 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
 
     @Override
     public List<Flag> getFlags() {
-        return null;
+        return flags;
     }
 
     @Override
@@ -70,4 +76,27 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
         return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FormationEffectsModel that = (FormationEffectsModel) o;
+
+//        if (!id.equals(that.id)) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+//        int result = id.hashCode();
+        return result;
+
+
+    }
 }

@@ -126,18 +126,14 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     /**
      * Other
      */
-    // Last binded weapon
+    // Last bind weapon
     private WeaponModel activeWeapon;
-    // Last binded weapon performance
+    // Last bind weapon performance
     private PerformanceModel activePerformance;
     // Weapon performance by fire type map
     private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
     // Parent controller
     private EstabController estabController;
-    /**
-     * @see {@link #setEditable(boolean)}
-     */
-    private boolean isEditable;
 
     /**
      * Adds listeners to components and sets the initial item collections.
@@ -189,7 +185,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
             // If one text field is empty, show dialog and abort
             UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
         } else {
-            // Prepare the new RanteItemModel
+            // Prepare the new RangeItemModel
             RangeItemModel rangeItem = new RangeItemModel();
             // Set its attributes with the text fields value
             rangeItem.setRange(Integer.valueOf(tableNewRangeValue.getText()));
@@ -273,7 +269,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     /**
      * Removes a performance from the weapon.
-     * This method should be called when the {@link #performanceRemoveFireType} button is pressed.
+     * This method should be called when the {@link #performanceFireTypeRemoveButton} button is pressed.
      * It removes the performance associated with the selected fire type in the {@link #performanceFireTypeList} list
      * from said list and the {@link #activeWeapon} performances collection.
      *
@@ -283,7 +279,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     protected void performanceRemoveFireType(ActionEvent actionEvent) {
         if (!performanceFireTypeList.getSelectionModel().getSelectedItems().isEmpty()) {
             //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
-            activeWeapon.getPerformances().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
+            activeWeapon.getPerformances().remove(activePerformance);
             performanceFireTypeList.getItems().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
         }
     }
@@ -343,7 +339,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void setEditable(boolean isEditable) {
-        this.isEditable = isEditable;
         weight.setEditable(isEditable);
         name.setEditable(isEditable);
         description.setEditable(isEditable);
@@ -400,8 +395,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void clear() {
-        if(activeWeapon != null) unbindProperties(activeWeapon);
-        if(activePerformance != null) unbindPerformanceProperties(activePerformance);
+        if (activeWeapon != null) unbindProperties(activeWeapon);
+        if (activePerformance != null) unbindPerformanceProperties(activePerformance);
 
         weight.setText("");
         name.setText("");

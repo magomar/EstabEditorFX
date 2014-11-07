@@ -38,11 +38,11 @@ public class Main extends Application {
         try {
             primaryStage.setHeight(Settings.getInstance().getWindowHeight());
             primaryStage.setWidth(Settings.getInstance().getWindowWidth());
-        } catch (NullPointerException e) {
+        } catch (NullPointerException ignored) {
 
         }
         primaryStage.setOnCloseRequest(event -> {
-            if (Settings.getInstance().isNewFileCreated() && !Settings.getInstance().isNewFileSaved()) {
+            if (Settings.isNewFileCreated() && !Settings.isNewFileSaved()) {
                 DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
                 if (answer != DialogAction.OK) {
                     event.consume();
@@ -57,7 +57,7 @@ public class Main extends Application {
     @Override
     public void stop() {
         // assert new file is saved
-        if(Settings.isNewFileCreated())FileIO.getOrCreateNewEstabFile().delete();
+        if (Settings.isNewFileCreated()) FileIO.getOrCreateNewEstabFile().delete();
         Settings.getInstance().setWindowWidth(primaryStage.getWidth());
         Settings.getInstance().setWindowHeight(primaryStage.getHeight());
         Settings.save();

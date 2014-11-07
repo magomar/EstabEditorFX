@@ -37,7 +37,7 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     /**
      * Other
      */
-    // Last binded ammo
+    // Last bind ammo
     private AmmoModel activeAmmo;
     private EstabController estabController;
 
@@ -65,7 +65,7 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     }
 
     /**
-     * @param element The {@link AmmoModel} to be binded
+     * @param element The {@link AmmoModel} to bind
      */
     @Override
     public void bindProperties(AmmoModel element) {
@@ -76,7 +76,7 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     }
 
     /**
-     * @param element The {@link AmmoModel} to be unbinded
+     * @param element The {@link AmmoModel} to unbind
      */
     @Override
     public void unbindProperties(AmmoModel element) {

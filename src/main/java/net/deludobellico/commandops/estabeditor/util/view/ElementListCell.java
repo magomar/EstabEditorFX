@@ -22,8 +22,6 @@ public class ElementListCell extends HBox {
 
     private ElementModel elementModel;
     private Label label = new Label();
-    private Pane pane = new Pane();
-    private Button button = new Button();
     private Flag flag;
 
     public ElementListCell(ElementModel elementModel, Consumer<ElementModel> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
@@ -47,7 +45,9 @@ public class ElementListCell extends HBox {
         }
         label.textProperty().bind(elementModel.nameProperty());
 
+        Pane pane = new Pane();
         pane.setMinWidth(5.0);
+        Button button = new Button();
         button.setGraphic(removeIcon ?
                 new ImageView(new Image(ElementListCell.class.getResourceAsStream(FileIO.REMOVE_ICON_RESOURCE)))
                 :
@@ -80,9 +80,4 @@ public class ElementListCell extends HBox {
     public ElementModel getElementModel() {
         return elementModel;
     }
-
-    public Label getLabel() {
-        return label;
-    }
-
 }

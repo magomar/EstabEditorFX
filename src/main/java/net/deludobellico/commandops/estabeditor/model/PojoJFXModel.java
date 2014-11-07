@@ -30,12 +30,12 @@ public interface PojoJFXModel<T> {
         return null;
     }
 
-    public static YesNo booleanToYesNo(boolean cond) {
-        return cond ? YesNo.YES : YesNo.NO;
+    public static YesNo booleanToYesNo(boolean b) {
+        return b ? YesNo.YES : YesNo.NO;
     }
 
-    public static boolean yesNoToBoolean(YesNo cond) {
-        return cond.equals(YesNo.YES);
+    public static boolean yesNoToBoolean(YesNo b) {
+        return b.equals(YesNo.YES);
     }
 
     T getPojo();

@@ -61,7 +61,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         burstRadius.set(pojo.getBurstRadius());
         shellWeight.set(pojo.getShellWeight());
         ranges.clear();
-        pojo.getRangeTable().getRangeItem().stream().map(RangeItemModel::new).forEach(r -> ranges.add(r));
+        pojo.getRangeTable().getRangeItem().stream().map(RangeItemModel::new).forEach(ranges::add);
         fireType.set(pojo.getFireType());
     }
 
@@ -168,34 +168,35 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PerformanceModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         PerformanceModel that = (PerformanceModel) o;
 
-        if (ammoLoad != null ? !ammoLoad.equals(that.ammoLoad) : that.ammoLoad != null) return false;
-        if (burstRadius != null ? !burstRadius.equals(that.burstRadius) : that.burstRadius != null) return false;
-        if (fireType != null ? !fireType.equals(that.fireType) : that.fireType != null) return false;
-        if (minRange != null ? !minRange.equals(that.minRange) : that.minRange != null) return false;
-        if (normalROF != null ? !normalROF.equals(that.normalROF) : that.normalROF != null) return false;
-        if (ranges != null ? !ranges.equals(that.ranges) : that.ranges != null) return false;
-        if (rapidROF != null ? !rapidROF.equals(that.rapidROF) : that.rapidROF != null) return false;
-        if (shellWeight != null ? !shellWeight.equals(that.shellWeight) : that.shellWeight != null) return false;
-        if (slowROF != null ? !slowROF.equals(that.slowROF) : that.slowROF != null) return false;
-
+        if (getAmmoLoad() != (that.getAmmoLoad())) return false;
+        if (getBurstRadius() != (that.getBurstRadius())) return false;
+        if ((getFireType() != null ? !getFireType().equals(that.getFireType()) : that.getFireType() != null))
+            return false;
+        if (getMinRange() != (that.getMinRange())) return false;
+        if (getNormalROF() != (that.getNormalROF())) return false;
+        if (getRapidROF() != (that.getRapidROF())) return false;
+        if (getShellWeight() != (that.getShellWeight())) return false;
+        if (getSlowROF() != (that.getSlowROF())) return false;
+        if (that.getRanges().size() != ranges.size() || !ranges.containsAll(that.getRanges()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = ammoLoad != null ? ammoLoad.hashCode() : 0;
-        result = 31 * result + (minRange != null ? minRange.hashCode() : 0);
-        result = 31 * result + (slowROF != null ? slowROF.hashCode() : 0);
-        result = 31 * result + (normalROF != null ? normalROF.hashCode() : 0);
-        result = 31 * result + (rapidROF != null ? rapidROF.hashCode() : 0);
-        result = 31 * result + (burstRadius != null ? burstRadius.hashCode() : 0);
-        result = 31 * result + (shellWeight != null ? shellWeight.hashCode() : 0);
-        result = 31 * result + (ranges != null ? ranges.hashCode() : 0);
-        result = 31 * result + (fireType != null ? fireType.hashCode() : 0);
+        int result = getAmmoLoad() != null ? getAmmoLoad().hashCode() : 0;
+        result = 31 * result + getMinRange();
+        result = (int) (31 * result + getSlowROF());
+        result = (int) (31 * result + getNormalROF());
+        result = (int) (31 * result + getRapidROF());
+        result = 31 * result + getBurstRadius();
+        result = (int) (31 * result + getShellWeight());
+        result = (int) (31 * result + ranges.stream().map(RangeItemModel::hashCode).count());
+        result = 31 * result + (getFireType() != null ? getFireType().hashCode() : 0);
         return result;
     }
 }

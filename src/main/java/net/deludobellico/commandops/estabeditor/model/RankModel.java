@@ -15,6 +15,10 @@ public class RankModel implements PojoJFXModel<Rank> {
         setPojo(rank);
     }
 
+    public RankModel() {
+
+    }
+
     @Override
     public Rank getPojo() {
         Rank rank = new Rank();
@@ -60,16 +64,18 @@ public class RankModel implements PojoJFXModel<Rank> {
 
         RankModel rankModel = (RankModel) o;
 
-        if (fullName != null ? !fullName.equals(rankModel.fullName) : rankModel.fullName != null) return false;
-        if (shortName != null ? !shortName.equals(rankModel.shortName) : rankModel.shortName != null) return false;
+        if (getFullName() != null ? !getFullName().equals(rankModel.getFullName()) : rankModel.getFullName() != null)
+            return false;
+        if (getShortName() != null ? !getShortName().equals(rankModel.getShortName()) : rankModel.getShortName() != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = shortName != null ? shortName.hashCode() : 0;
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
+        int result = getShortName() != null ? getShortName().hashCode() : 0;
+        result = 31 * result + (getFullName() != null ? getFullName().hashCode() : 0);
         return result;
     }
 }

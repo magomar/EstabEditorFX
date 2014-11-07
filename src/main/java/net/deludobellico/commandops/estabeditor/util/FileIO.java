@@ -11,8 +11,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,26 +74,6 @@ public class FileIO {
     }
 
 
-    public static List<File> listFiles(File directory, FilenameFilter filter, boolean recursively) {
-        List<File> files = new ArrayList<>();
-        File[] entries = directory.listFiles();
-        for (File entry : entries) {
-            if (filter == null || filter.accept(directory, entry.getName())) {
-                files.add(entry);
-            }
-            if (recursively && entry.isDirectory()) {
-                files.addAll(listFiles(entry, filter, recursively));
-            }
-        }
-
-        return files;
-    }
-
-
-    public static Settings loadProperties() {
-        return null;
-    }
-
     public static void loadSettings() {
         File file = new File(FileIO.getSettingsPath().toString());
         if (!file.exists()) file = getNewSettingsFile();
@@ -109,8 +87,8 @@ public class FileIO {
     /**
      * Tries to create a new file in @path, if it exists then returns the file
      *
-     * @param path
-     * @return
+     * @param path of the file we want to retrieve
+     * @return null if the file could not be created or retrieved
      */
     public static File getFileOrCreateNew(String path) {
         File f = null;
@@ -137,8 +115,6 @@ public class FileIO {
             FileOutputStream fos = new FileOutputStream(f, false);
             fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><estab-data></estab-data>".getBytes());
             fos.close();
-        } catch (FileNotFoundException e) {
-            LOG.log(Level.SEVERE, "Error creating new estab file: " + f.getPath(), e);
         } catch (IOException e) {
             LOG.log(Level.SEVERE, "Error creating new estab file: " + f.getPath(), e);
         }
@@ -166,21 +142,6 @@ public class FileIO {
         }
     }
 
-    /**
-     * File.createNewFile() proxy
-     *
-     * @param file
-     * @return
-     */
-    public static File createNewFile(File file) {
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
-
     public static void copy(InputStream resourceAsStream, Path path) {
         try {
             Files.copy(resourceAsStream, path);
@@ -200,7 +161,7 @@ public class FileIO {
     public static File installDataset(String datasetName, File targetFolder) {
         LOG.log(Level.INFO, String.format("Installing %s dataset in folder: %s ", datasetName, targetFolder.getName()));
         File targetFile = new File(targetFolder.getPath(), datasetName + DATASET_FILE_SUFFIX);
-        if (targetFile != null && targetFile.exists()) {
+        if (targetFile.exists()) {
             LOG.log(Level.SEVERE, String.format("Aborting installation. %s dataset already exists in folder: %s", datasetName, targetFolder.getName()));
             targetFile = null;
         } else {
@@ -210,7 +171,13 @@ public class FileIO {
             // Installing all dataset images included in the index
             // Preparing the image folder on disk
             File targetImageFolder = new File(targetFolder, datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
-            targetImageFolder.mkdirs();
+            try {
+                if (!targetImageFolder.mkdirs())
+                    throw new IOException("Could not create folder: " + targetImageFolder.getName());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
             String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
             String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
@@ -233,6 +200,7 @@ public class FileIO {
             }
 
         }
+
         return targetFile;
     }
 
@@ -243,9 +211,9 @@ public class FileIO {
      * <p>Dataset file: COTAEstab.xml</p>
      * <p>Dataset image folder: COTAimage</p>
      *
-     * @param datasetFile
-     * @param imageFileName
-     * @return
+     * @param datasetFile   where the dataset is stored on disk
+     * @param imageFileName file name of the image the method will load
+     * @return the image if it was correctly loaded, null otherwise
      */
     //TODO: create progress bar? maybe for loading new estabs?
     public static Image getDatasetImage(File datasetFile, String imageFileName) {

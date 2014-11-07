@@ -35,7 +35,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         pojo.setDescription(description.get());
         pojo.setMinOrderQty(minOrderQty.get());
         pojo.setMinOrderWeight(minOrderWeight.get());
-        flags.stream().forEach(f -> pojo.getFlags().add(f));
+        pojo.getFlags().addAll(flags);
         return pojo;
     }
 
@@ -46,7 +46,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         description.set(pojo.getDescription());
         minOrderQty.set(pojo.getMinOrderQty());
         minOrderWeight.set(pojo.getMinOrderWeight());
-        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
+        flags.addAll(pojo.getFlags());
     }
 
     public int getId() {
@@ -124,25 +124,23 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AmmoModel ammoModel = (AmmoModel) o;
-
-        if (description != null ? !description.equals(ammoModel.description) : ammoModel.description != null)
-            return false;
-        if (minOrderQty != null ? !minOrderQty.equals(ammoModel.minOrderQty) : ammoModel.minOrderQty != null)
-            return false;
-        if (minOrderWeight != null ? !minOrderWeight.equals(ammoModel.minOrderWeight) : ammoModel.minOrderWeight != null)
-            return false;
-        if (name != null ? !name.equals(ammoModel.name) : ammoModel.name != null) return false;
-
-        return true;
+        AmmoModel that = (AmmoModel) o;
+        //if(getId() != that.getId()) return false;
+        if (!getName().equals(that.getName())) return false;
+        if (!getDescription().equals(that.getDescription())) return false;
+        if (getMinOrderQty() != that.getMinOrderQty()) return false;
+        if (getMinOrderWeight() != that.getMinOrderWeight()) return false;
+        return !(that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()));
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (minOrderQty != null ? minOrderQty.hashCode() : 0);
-        result = 31 * result + (minOrderWeight != null ? minOrderWeight.hashCode() : 0);
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + getMinOrderQty();
+        result = (int) (31 * result + getMinOrderWeight());
+        // result = 31 * result * getId();
         return result;
     }
 }

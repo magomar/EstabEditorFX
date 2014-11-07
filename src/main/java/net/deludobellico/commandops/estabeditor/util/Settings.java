@@ -13,7 +13,7 @@ public class Settings {
     private static final Integer MAX_RECENT_FILES = 4;
     private static List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private static List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static Settings settings;
+    private static Settings settings = new Settings();
     private static String lastOpenedFolder;
     private static Double windowWidth;
     private static Double windowHeight;
@@ -30,7 +30,6 @@ public class Settings {
     }
 
     public static Settings getInstance() {
-        if (settings == null) settings = new Settings();
         return settings;
     }
 
@@ -82,7 +81,7 @@ public class Settings {
     }
 
     public void setWindowWidth(Double windowWidth) {
-        this.windowWidth = windowWidth;
+        Settings.windowWidth = windowWidth;
     }
 
     @XmlElement(name = "window-height", required = true)
@@ -91,7 +90,7 @@ public class Settings {
     }
 
     public void setWindowHeight(Double windowHeight) {
-        this.windowHeight = windowHeight;
+        Settings.windowHeight = windowHeight;
     }
 
     @XmlElement(name = "visible-toolbar")

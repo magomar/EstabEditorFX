@@ -64,9 +64,7 @@ public class SelectionListDialog implements Initializable {
             Parent parent = fxmlLoader.load();
             selectionListDialog = fxmlLoader.getController();
             selectionListDialog.setParent(parent);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
         return selectionListDialog;
@@ -141,8 +139,7 @@ public class SelectionListDialog implements Initializable {
 
     public SelectionListDialog setActions(DialogAction... dialogActions) {
         buttonBox.getChildren().clear();
-        for (int i = 0; i < dialogActions.length; i++) {
-            DialogAction dialogAction = dialogActions[i];
+        for (DialogAction dialogAction : dialogActions) {
             Button b = new Button(dialogAction.getAction());
             b.setOnAction(event -> {
                 this.selectedDialogAction = dialogAction;

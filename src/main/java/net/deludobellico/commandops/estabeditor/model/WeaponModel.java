@@ -58,9 +58,9 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         pojo.setPicture(p);
         pojo.setPictureFilename(pictureFilename.get());
         WeaponSize weaponSize = new WeaponSize();
-        weaponSize.setWidth((double) 1.0);
-        weaponSize.setHeight((double) 1.0);
-        weaponSize.setLength((double) 1.0);
+        weaponSize.setWidth(1.0);
+        weaponSize.setHeight(1.0);
+        weaponSize.setLength(1.0);
         weaponSize.setWeight(weight.get());
         pojo.setSize(weaponSize);
         pojo.setCrew(crew.get());
@@ -73,7 +73,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         pojo.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
         pojo.setPerformanceList(new PerformanceList());
         performances.stream().map(PerformanceModel::getPojo).forEach(pp -> pojo.getPerformanceList().getPerformance().add(pp));
-        flags.stream().forEach(f -> pojo.getFlags().add(f));
+        pojo.getFlags().addAll(flags);
         return pojo;
     }
 
@@ -93,8 +93,8 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
         mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
-        pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(p -> performances.add(p));
-        if (pojo.getFlags() != null) pojo.getFlags().stream().forEach(flag -> flags.add(flag));
+        pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(performances::add);
+        flags.addAll(pojo.getFlags());
     }
 
     public int getId() {
@@ -286,43 +286,52 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
 
         WeaponModel that = (WeaponModel) o;
 
-        if (calibre != null ? !calibre.equals(that.calibre) : that.calibre != null) return false;
-        if (crew != null ? !crew.equals(that.crew) : that.crew != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (mustDeployToFire != null ? !mustDeployToFire.equals(that.mustDeployToFire) : that.mustDeployToFire != null)
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;
-        if (muzzleVelocity != null ? !muzzleVelocity.equals(that.muzzleVelocity) : that.muzzleVelocity != null)
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getPictureFilename() != null ? !getPictureFilename().equals(that.getPictureFilename()) : that.getPictureFilename() != null)
             return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (performances != null ? !performances.equals(that.performances) : that.performances != null) return false;
-        if (pictureFilename != null ? !pictureFilename.equals(that.pictureFilename) : that.pictureFilename != null)
+        if (getPrimaryRole() != null ? !getPrimaryRole().equals(that.getPrimaryRole()) : that.getPrimaryRole() != null)
             return false;
-        if (pictureId != null ? !pictureId.equals(that.pictureId) : that.pictureId != null) return false;
-        if (primaryRole != null ? !primaryRole.equals(that.primaryRole) : that.primaryRole != null) return false;
-        if (reliability != null ? !reliability.equals(that.reliability) : that.reliability != null) return false;
-        if (singleShot != null ? !singleShot.equals(that.singleShot) : that.singleShot != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (weight != null ? !weight.equals(that.weight) : that.weight != null) return false;
+        if (getType() != null ? !getType().equals(that.getType()) : that.getType() != null) return false;
 
+
+        if (getCalibre() != that.getCalibre()) return false;
+        if (getCrew() != that.getCrew()) return false;
+        if (getMustDeployToFire() != that.getMustDeployToFire()) return false;
+        if (getMuzzleVelocity() != that.getMuzzleVelocity()) return false;
+
+        if (getPictureId() != that.getPictureId()) return false;
+        if (getReliability() != that.getReliability()) return false;
+        if (getSingleShot() != that.getSingleShot()) return false;
+        if (getWeight() != that.getWeight()) return false;
+
+        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
+            return false;
+        if (that.getPerformances().size() != performances.size() || !performances.containsAll(that.getPerformances()))
+            return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (pictureId != null ? pictureId.hashCode() : 0);
-        result = 31 * result + (pictureFilename != null ? pictureFilename.hashCode() : 0);
-        result = 31 * result + (weight != null ? weight.hashCode() : 0);
-        result = 31 * result + (crew != null ? crew.hashCode() : 0);
-        result = 31 * result + (reliability != null ? reliability.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (singleShot != null ? singleShot.hashCode() : 0);
-        result = 31 * result + (primaryRole != null ? primaryRole.hashCode() : 0);
-        result = 31 * result + (calibre != null ? calibre.hashCode() : 0);
-        result = 31 * result + (muzzleVelocity != null ? muzzleVelocity.hashCode() : 0);
-        result = 31 * result + (mustDeployToFire != null ? mustDeployToFire.hashCode() : 0);
-        result = 31 * result + (performances != null ? performances.hashCode() : 0);
+        // id
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + performances.stream().map(PerformanceModel::hashCode).count());
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        result = 31 * result + (getPrimaryRole() != null ? getPrimaryRole().hashCode() : 0);
+
+        result = 31 * result + getPictureId();
+        result = (int) (31 * result + getWeight());
+        result = 31 * result + getCrew();
+        result = (int) (31 * result + getReliability());
+        result = 31 * result + (getSingleShot() ? 7 : 0);
+        result = (int) (31 * result + getCalibre());
+        result = 31 * result + getMuzzleVelocity();
+        result = 31 * result + (getMustDeployToFire() ? 9 : 0);
         return result;
     }
 }

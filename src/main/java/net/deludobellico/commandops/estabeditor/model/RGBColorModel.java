@@ -16,6 +16,12 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
         setPojo(rgbColor);
     }
 
+    public RGBColorModel(int r, int g, int b) {
+        red.set(r);
+        green.set(g);
+        blue.set(b);
+    }
+
     @Override
     public RGBColor getPojo() {
         RGBColor rgbColor = new RGBColor();
@@ -68,4 +74,25 @@ public class RGBColorModel implements PojoJFXModel<RGBColor> {
         return blue;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RGBColorModel that = (RGBColorModel) o;
+
+        if (getBlue() != that.getBlue()) return false;
+        if (getGreen() != that.getGreen()) return false;
+        if (getRed() != that.getRed()) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getRed();
+        result = 31 * result + getGreen();
+        result = 31 * result + getBlue();
+        return result;
+    }
 }

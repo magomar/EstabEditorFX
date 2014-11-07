@@ -93,12 +93,12 @@ public class EstabController implements Initializable {
     }};
 
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
-    private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
+//    private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, AnchorPane> elementEditorPanes = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
 
     // Main controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
     private MainController mainController = null;
-    private ElementEditorController elementEditorController = null;
+    private ElementEditorController<ElementModel> elementEditorController = null;
     private EstabModel estabModel;
 
     // Source estab data isn't editable, target estab data is editable
@@ -118,7 +118,7 @@ public class EstabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Listen to changes in the search text and search matching elements name
-        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement(null));
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement());
 
         // Each cell has a button (to copy or remove), and are associated to an element
         searchResultsListView.setItems(elementListCells);
@@ -156,7 +156,7 @@ public class EstabController implements Initializable {
     public void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         setTitle();
-        if (estabModel != null) searchElement(null);
+        if (estabModel != null) searchElement();
     }
 
     /**
@@ -180,7 +180,7 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(true);
         weaponButton.setSelected(false);
         ammoButton.setSelected(false);
-        searchElement(null);
+        searchElement();
     }
 
     /**
@@ -195,7 +195,7 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(false);
         weaponButton.setSelected(true);
         ammoButton.setSelected(false);
-        searchElement(null);
+        searchElement();
     }
 
     /**
@@ -210,15 +210,13 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(false);
         weaponButton.setSelected(false);
         ammoButton.setSelected(true);
-        searchElement(null);
+        searchElement();
     }
 
     /**
      * Searches for elements from the active class matching the name pattern.
-     *
-     * @param actionEvent is not used
      */
-    private void searchElement(ActionEvent actionEvent) {
+    private void searchElement() {
         SavedSearchList<ElementListCell> savedList = searchLists.get(activeSearchListClass);
         String textToSearch = searchTextField.getText();
 
@@ -259,8 +257,7 @@ public class EstabController implements Initializable {
     }
 
     /**
-     *
-     * @param elementClass
+     * @param elementClass the class of the new element
      */
     public void createNewElement(Class elementClass) {
         ElementModel newElement;
@@ -279,6 +276,7 @@ public class EstabController implements Initializable {
         setActiveElement(newElement);
         update();
     }
+
     /**
      * Copies elements into the model if possible.
      * If there are repated elements, promt the user for an action.
@@ -316,7 +314,7 @@ public class EstabController implements Initializable {
         List<ElementModel> elementsToRemoveList = relatedElements.getAllElements();
 
         // In case the user only wants to select some items, pass this empty collection to save them
-        Collection selectedItems = new ArrayList<>();
+        Collection<ElementModel> selectedItems = new ArrayList<>();
         DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemoveList, selectedItems);
         boolean successRemoving;
         if (answer == DialogAction.OK) {
@@ -324,7 +322,7 @@ public class EstabController implements Initializable {
             // In case the removed element is active in the editor
             // TODO: decide if this condition should be checked in the model
             for (ElementModel e : elementsToRemoveList)
-                if (activeElement !=null && e.getId() == activeElement.getId()) {
+                if (activeElement != null && e.getId() == activeElement.getId()) {
                     clear();
                     break;
                 }
@@ -333,7 +331,7 @@ public class EstabController implements Initializable {
             // Remove only selected elements by the user
             // In case the removed element is active in the editor
             for (ElementModel e : elementsToRemoveList)
-                if (activeElement !=null && e.getId() == activeElement.getId()) {
+                if (activeElement != null && e.getId() == activeElement.getId()) {
                     clear();
                     break;
                 }
@@ -341,7 +339,7 @@ public class EstabController implements Initializable {
         } else if (answer == DialogAction.MARK_SELECTION) {
             // Mark the items with the REMOVE flag instead of removing the elements
             LOG.log(Level.INFO, "Remove canceled, elements were marked for removal");
-            selectedItems.stream().forEach(i -> ((ElementModel) i).setFlag(Flag.REMOVE));
+            selectedItems.stream().forEach(i -> i.setFlag(Flag.REMOVE));
             successRemoving = false;
             update();
         } else {
@@ -419,10 +417,6 @@ public class EstabController implements Initializable {
         setEstabModel(new EstabModel(file));
     }
 
-    public MainController getMainController() {
-        return mainController;
-    }
-
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
@@ -439,16 +433,16 @@ public class EstabController implements Initializable {
     public void setActiveElement(ElementModel elementModel) {
         if (null != elementModel) {
             Class elementClass = elementModel.getClass();
-            AnchorPane editorNode = null;
+            AnchorPane editorNode;
             // If the current element isn't set (null) or it's from other class than the one we want to display
             // then update the editor
             if (activeElement == null || !activeElement.getClass().equals(elementClass)) {
                 editorPane.getChildren().clear();
                 // if we have saved the controller and editorPane, use them; else load them
-                if (elementEditorPanes.containsKey(elementClass) && elementEditorControllers.containsKey(elementClass)) {
+                if (elementEditorPanes.containsKey(elementClass)) {// && elementEditorControllers.containsKey(elementClass)) {
                     //TODO: this actually never worked before, because of next TODO down here
                     editorPane = elementEditorPanes.get(elementClass);
-                    elementEditorController = elementEditorControllers.get(elementClass);
+//                    elementEditorController = elementEditorControllers.get(elementClass);
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ELEMENT_EDITOR_VIEWS.get(elementClass)));
                     try {
@@ -462,9 +456,7 @@ public class EstabController implements Initializable {
                         elementEditorController.setEstabController(this);
                         // TODO: this line was missing, so only the else block was executing
                         // elementEditorControllers.put(elementClass, elementEditorController);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (NullPointerException e) {
+                    } catch (IOException | NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
@@ -490,10 +482,6 @@ public class EstabController implements Initializable {
 
     public BooleanProperty searchDisableProperty() {
         return searchDisable;
-    }
-
-    public void setSearchDisableProperty(boolean b) {
-        this.searchDisable.set(b);
     }
 
 }

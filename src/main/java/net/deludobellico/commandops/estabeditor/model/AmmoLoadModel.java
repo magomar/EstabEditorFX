@@ -81,18 +81,17 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
 
         AmmoLoadModel that = (AmmoLoadModel) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (load != null ? !load.equals(that.load) : that.load != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        //if (getId() != that.getId()) return false;
+        return getLoad() == that.getLoad() && getName().equals(that.getName());
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (load != null ? load.hashCode() : 0);
+        //int result = getId();
+        int result = 1;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + getLoad();
         return result;
     }
 }

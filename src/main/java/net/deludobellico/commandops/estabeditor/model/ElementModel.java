@@ -25,36 +25,29 @@ public interface ElementModel {
 
     List<Flag> getFlags();
 
-    default public void setFlags(Flag... f) {
-        for (int i = 0; i < f.length; i++) {
-            setFlag(f[i]);
+    default public void setFlag(Flag... f) {
+        for (Flag aF : f) {
+            if (!getFlags().contains(aF)) {
+                getFlags().add(aF);
+            }
         }
     }
 
-    default public void setFlag(Flag f) {
-        if (!getFlags().contains(f)) {
-            getFlags().add(f);
+    default public void unsetFlag(Flag... f) {
+        for (Flag aF : f) {
+            if (getFlags().contains(aF)) {
+                getFlags().remove(aF);
+            }
         }
     }
 
-    default public void unsetFlag(Flag f) {
-        if (getFlags().contains(f)) {
-            getFlags().remove(f);
-        }
-    }
-
-    default public void unsetFlags(Flag... f) {
-        for (int i = 0; i < f.length; i++) {
-            unsetFlag(f[i]);
-
-        }
-    }
-
-    default public void switchFlag(Flag f) {
-        if (!getFlags().contains(f)) {
-            getFlags().add(f);
-        } else {
-            getFlags().remove(f);
+    default public void switchFlag(Flag... f) {
+        for (Flag aF : f) {
+            if (!getFlags().contains(aF)) {
+                getFlags().add(aF);
+            } else {
+                getFlags().remove(aF);
+            }
         }
     }
 
