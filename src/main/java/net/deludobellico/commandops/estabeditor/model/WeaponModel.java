@@ -72,7 +72,7 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         pojo.setMuzzleVelocity(muzzleVelocity.get());
         pojo.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
         pojo.setPerformanceList(new PerformanceList());
-        performances.stream().map(PerformanceModel::getPojo).forEach(pp -> pojo.getPerformanceList().getPerformance().add(pp));
+        performances.stream().map(PerformanceModel::getPojo).forEach(pojo.getPerformanceList().getPerformance()::add);
         pojo.getFlags().addAll(flags);
         return pojo;
     }

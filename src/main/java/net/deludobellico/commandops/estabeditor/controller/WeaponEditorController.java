@@ -11,10 +11,7 @@ import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.model.AmmoModel;
-import net.deludobellico.commandops.estabeditor.model.PerformanceModel;
-import net.deludobellico.commandops.estabeditor.model.RangeItemModel;
-import net.deludobellico.commandops.estabeditor.model.WeaponModel;
+import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -452,8 +449,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         }
         performanceFireTypeList.getSelectionModel().clearSelection();
 
-        // Careful, this is our pojo Image class, not the javafx Image class
-        Image image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
+        ImageModel image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
         if (image != null) {
             weaponImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
         }

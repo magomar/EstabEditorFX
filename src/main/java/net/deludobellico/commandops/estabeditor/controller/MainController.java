@@ -20,6 +20,8 @@ import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -372,27 +374,21 @@ public class MainController implements Initializable {
 
     @FXML
     private void copyToolbarButtonAction(ActionEvent actionEvent) {
-        copyEstabElementFromCellList(sourcePaneController.getActiveElement());
+        copyElementsToTarget(Collections.singleton(sourcePaneController.getActiveElement()));
+    }
+
+
+    public void copyElementsToTarget(Collection<ElementModel> elements) {
+        RelatedElementLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements, targetPaneController.getEstabModel());
+        if (!targetPaneController.copyRelatedElements(relatedElements)) {
+//            targetPaneController.setActiveElement(elementModel);
+            LOG.log(Level.WARNING, "Could not copy all elements");
+        }
     }
 
     @FXML
     private void removeToolbarButtonAction(ActionEvent actionEvent) {
-        LOG.log(Level.INFO, "Removing estab element " + targetPaneController.getActiveElement().getName());
-        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(targetPaneController.getActiveElement()));
-    }
-
-    public void copyEstabElementFromCellList(ElementModel elementModel) {
-        LOG.log(Level.INFO, "Copying estab element " + elementModel.getName());
-        RelatedElementLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elementModel);
-        targetPaneController.getEstabModel().sortRelatedElements(relatedElements);
-        if (targetPaneController.copyRelatedElements(relatedElements)) {
-            targetPaneController.setActiveElement(elementModel);
-        }
-    }
-
-    public void removeEstabElementFromCellList(ElementModel elementModel) {
-        LOG.log(Level.INFO, "Removing estab element " + elementModel.getName());
-        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(elementModel));
+        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(Collections.singleton(targetPaneController.getActiveElement())));
     }
 
     public void installDatasetBFTB() {
