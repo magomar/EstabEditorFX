@@ -1,6 +1,8 @@
 package net.deludobellico.commandops.test;
 
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Mario on 24/07/2014.

@@ -3,16 +3,24 @@ package net.deludobellico.commandops.estabeditor.model;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Heine on 11/6/2014.
  */
-public class ElementModelFactory {
-    private static int maxID;
+public final class ElementModelFactory {
+    private static int maxId;
+    private static boolean lock;
+
+    private ElementModelFactory() {
+
+    }
 
     public static VehicleModel createVehicle() {
         VehicleModel vehicleModel = new VehicleModel();
-        vehicleModel.setId(maxID++);
-        vehicleModel.setName(String.format("New Vehicle (%d)", maxID));
+        vehicleModel.setId(++maxId);
+        vehicleModel.setName(String.format("New Vehicle (%d)", vehicleModel.getId()));
         vehicleModel.setDescription("");
         vehicleModel.setPictureId(0);
         vehicleModel.setPictureFilename("");
@@ -52,25 +60,33 @@ public class ElementModelFactory {
 
     public static WeaponModel createWeapon() {
         WeaponModel weaponModel = new WeaponModel();
-        weaponModel.setId(maxID++);
-        weaponModel.setName(String.format("New Weapon (%d)", maxID));
+        weaponModel.setId(++maxId);
+        weaponModel.setName(String.format("New Weapon (%d)", weaponModel.getId()));
         weaponModel.getFlags().add(Flag.NEW);
         return weaponModel;
     }
 
     public static AmmoModel createAmmo() {
         AmmoModel ammoModel = new AmmoModel();
-        ammoModel.setId(maxID++);
-        ammoModel.setName(String.format("New Ammo (%d)", maxID));
+        ammoModel.setId(++maxId);
+        ammoModel.setName(String.format("New Ammo (%d)", ammoModel.getId()));
         ammoModel.getFlags().add(Flag.NEW);
         return ammoModel;
     }
 
-    public static int getMaxID() {
-        return maxID;
+    public static synchronized int incrementMaxId() {
+        return ++maxId;
     }
 
-    public static void setMaxID(int maxID) {
-        ElementModelFactory.maxID = maxID + 1;
+    public static synchronized void setMaxId(int maxId) {
+        ElementModelFactory.maxId = ++maxId;
+    }
+
+    public static String formatName(String name, int newId) {
+        Pattern p = Pattern.compile("(\\(\\d+\\))");
+        Matcher m = p.matcher(name);
+        String oldId = "";
+        while (m.find()) oldId = m.group();
+        return String.format("%s (%d)", name.replace(oldId, ""), newId);
     }
 }

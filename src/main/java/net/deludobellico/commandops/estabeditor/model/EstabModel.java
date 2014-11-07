@@ -22,6 +22,7 @@ public class EstabModel {
     private Map<Integer, AmmoModel> ammos;
     private Map<Integer, FormationEffectsModel> formationEffects;
     //TODO radios
+    // shouldn't this map work? it says: capture in ? extends ElementModel cannot be applied to ElementModel
     private Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
     public EstabModel(File estabFile) {
@@ -84,7 +85,7 @@ public class EstabModel {
             if (em.getId() > maxID) maxID = em.getId();
             ammos.put(em.getId(), em);
         }
-        ElementModelFactory.setMaxID(maxID);
+        ElementModelFactory.setMaxId(maxID);
     }
 
     public EstabModel() {
@@ -349,6 +350,39 @@ public class EstabModel {
             return false;
         }
         return true;
+    }
+
+    // TODO: implement hard copy
+    public void duplicate(Collection<ElementModel> selectedItems) {
+        for (ElementModel original : selectedItems) {
+            if (original instanceof AmmoModel) {
+                Ammo copy = ((AmmoModel) original).getPojo();
+                copy.setId(ElementModelFactory.incrementMaxId());
+                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+                copy.getFlags().add(Flag.NEW);
+                ammos.put(copy.getId(), new AmmoModel(copy));
+            } else if (original instanceof WeaponModel) {
+                Weapon copy = ((WeaponModel) original).getPojo();
+                copy.setId(ElementModelFactory.incrementMaxId());
+                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+                copy.getFlags().add(Flag.NEW);
+                weapons.put(copy.getId(), new WeaponModel(copy));
+            } else if (original instanceof VehicleModel) {
+                Vehicle copy = ((VehicleModel) original).getPojo();
+                copy.setId(ElementModelFactory.incrementMaxId());
+                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+                copy.getFlags().add(Flag.NEW);
+                vehicles.put(copy.getId(), new VehicleModel(copy));
+            } else {
+                // throw
+                return;
+            }
+            ElementModel copy = PojoJFXModel.wrapper(((PojoJFXModel) original).getPojo());
+            copy.setId(ElementModelFactory.incrementMaxId());
+            copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+            copy.getFlags().add(Flag.NEW);
+
+        }
     }
 
     public void saveToFile(File file) {

@@ -386,17 +386,9 @@ public class MainController implements Initializable {
         }
     }
 
-    public void duplicateElementsInTarget(Collection<ElementModel> elementModel) {
-
-    }
-
     @FXML
     private void removeToolbarButtonAction(ActionEvent actionEvent) {
         targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(Collections.singleton(targetPaneController.getActiveElement())));
-    }
-
-    public void removeElementsFromTarget(Collection<ElementModel> elements) {
-        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(elements));
     }
 
     public void installDatasetBFTB() {

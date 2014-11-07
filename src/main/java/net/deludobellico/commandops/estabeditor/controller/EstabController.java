@@ -376,9 +376,20 @@ public class EstabController implements Initializable {
      * @param actionEvent is not used
      */
     public void removeSelectedItems(ActionEvent actionEvent) {
-
+        removeRelatedElements(estabModel.getRelatedElements(selectedElementsSet));
     }
 
+    /**
+     * Duplicates all the elements received in a collection
+     * @param selectedItems the collection containing the items to duplicate
+     * @return true if succes, false otherwise
+     */
+    public boolean duplicateSelectedElements(Collection<ElementModel> selectedItems) {
+        if(!isEditable) return false;
+        estabModel.duplicate(selectedItems);
+        update();
+        return true;
+    }
     /**
      * Copy elements with selected check boxes, or duplicates them if this is the target estab
      *
@@ -387,11 +398,12 @@ public class EstabController implements Initializable {
     public void copySelectedItems(ActionEvent actionEvent) {
         if (isEditable) {
             // Target, duplicate
-            mainController.duplicateElementsInTarget(selectedElementsSet);
+            duplicateSelectedElements(selectedElementsSet);
         } else {
             // Source, copy
             mainController.copyElementsToTarget(selectedElementsSet);
         }
+        selectedElementsSet.clear();
     }
 
     /**
@@ -529,6 +541,7 @@ public class EstabController implements Initializable {
     public BooleanProperty searchDisableProperty() {
         return searchDisable;
     }
+
 
 }
 
