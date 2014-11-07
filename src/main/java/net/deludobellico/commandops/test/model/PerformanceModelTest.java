@@ -11,10 +11,9 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class PerformanceModelTest {
-    PerformanceModel ours;
+
     AmmoLoadModel ammoLoad = new AmmoLoadModel();
     int minRange = 10;
     double slowROF = 2.0;
@@ -25,9 +24,10 @@ public class PerformanceModelTest {
     List<RangeItemModel> ranges = FXCollections.observableArrayList();
     FireType fireType = FireType.AAIR;
 
-    @Before
-    public void setUp() throws Exception {
-        ours = new PerformanceModel();
+
+    @Test
+    public void testEquals() throws Exception {
+        PerformanceModel ours = new PerformanceModel();
         ours.setAmmoLoad(ammoLoad);
         ours.setMinRange(minRange);
         ours.setSlowROF(slowROF);
@@ -37,12 +37,10 @@ public class PerformanceModelTest {
         ours.setShellWeight(shellWeight);
         ours.setShellWeight(shellWeight);
         ours.setFireType(fireType);
+        ranges.clear();
         ranges.add(new RangeItemModel());
         ours.getRanges().addAll(ranges);
-    }
 
-    @Test
-    public void testEquals() throws Exception {
         PerformanceModel other = new PerformanceModel();
         other.setAmmoLoad(ammoLoad);
         other.setMinRange(minRange);
@@ -61,6 +59,20 @@ public class PerformanceModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        PerformanceModel ours = new PerformanceModel();
+        ours.setAmmoLoad(ammoLoad);
+        ours.setMinRange(minRange);
+        ours.setSlowROF(slowROF);
+        ours.setNormalROF(normalROF);
+        ours.setRapidROF(rapidROF);
+        ours.setBurstRadius(burstRadius);
+        ours.setShellWeight(shellWeight);
+        ours.setShellWeight(shellWeight);
+        ours.setFireType(fireType);
+        ranges.clear();
+        ranges.add(new RangeItemModel());
+        ours.getRanges().addAll(ranges);
+
         PerformanceModel other = new PerformanceModel();
         other.setAmmoLoad(ammoLoad);
         other.setMinRange(minRange);
@@ -79,6 +91,20 @@ public class PerformanceModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        PerformanceModel ours = new PerformanceModel();
+        ours.setAmmoLoad(null);
+        ours.setMinRange(minRange);
+        ours.setSlowROF(slowROF);
+        ours.setNormalROF(normalROF);
+        ours.setRapidROF(rapidROF);
+        ours.setBurstRadius(burstRadius);
+        ours.setShellWeight(shellWeight);
+        ours.setShellWeight(shellWeight);
+        ours.setFireType(null);
+        ranges.clear();
+        ranges.add(new RangeItemModel());
+        ours.getRanges().addAll(ranges);
+
         PerformanceModel other = new PerformanceModel();
         other.setAmmoLoad(null);
         other.setMinRange(minRange);
@@ -92,11 +118,25 @@ public class PerformanceModelTest {
         ranges.clear();
         ranges.add(new RangeItemModel());
         other.getRanges().addAll(ranges);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        PerformanceModel ours = new PerformanceModel();
+        ours.setAmmoLoad(null);
+        ours.setMinRange(minRange);
+        ours.setSlowROF(slowROF);
+        ours.setNormalROF(normalROF);
+        ours.setRapidROF(rapidROF);
+        ours.setBurstRadius(burstRadius);
+        ours.setShellWeight(shellWeight);
+        ours.setShellWeight(shellWeight);
+        ours.setFireType(null);
+        ranges.clear();
+        ranges.add(new RangeItemModel());
+        ours.getRanges().addAll(ranges);
+
         PerformanceModel other = new PerformanceModel();
         other.setAmmoLoad(null);
         other.setMinRange(minRange);
@@ -110,6 +150,6 @@ public class PerformanceModelTest {
         ranges.clear();
         ranges.add(new RangeItemModel());
         other.getRanges().addAll(ranges);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }

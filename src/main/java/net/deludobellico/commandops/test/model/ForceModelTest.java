@@ -15,10 +15,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class ForceModelTest {
-    ForceModel ours;
+
     int id = 10;
     String name = "ForceModel Text";
     String description = "ForceModel Desc";
@@ -53,7 +52,7 @@ public class ForceModelTest {
 
     @Before
     public void setUp() throws Exception {
-        ours = new ForceModel();
+        ForceModel ours = new ForceModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
@@ -97,6 +96,43 @@ public class ForceModelTest {
 
     @Test
     public void testEquals() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setIcon(icon);
+        ours.setType(type);
+        ours.setSubType(subType);
+        ours.setSize(size);
+        ours.setCombatClass(combatClass);
+        ours.setTargetClass(targetClass);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(moveType);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(deployed);
+        ours.setDugIn(dugIn);
+        ours.setEntrenched(entrenched);
+        ours.setFortified(fortified);
+        ours.setReadyToFireDuration(readyToFireDuration);
+        ours.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
         other.setId(id);
         other.setName(name);
@@ -138,6 +174,43 @@ public class ForceModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setIcon(icon);
+        ours.setType(type);
+        ours.setSubType(subType);
+        ours.setSize(size);
+        ours.setCombatClass(combatClass);
+        ours.setTargetClass(targetClass);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(moveType);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(deployed);
+        ours.setDugIn(dugIn);
+        ours.setEntrenched(entrenched);
+        ours.setFortified(fortified);
+        ours.setReadyToFireDuration(readyToFireDuration);
+        ours.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
         other.setId(id);
         other.setName(name);
@@ -176,10 +249,48 @@ public class ForceModelTest {
         other.getAmmoList().addAll(ammoList);
         assertEquals(ours.hashCode(), other.hashCode());
     }
+
     @Test
     public void testEqualsDifferentIDs() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setIcon(icon);
+        ours.setType(type);
+        ours.setSubType(subType);
+        ours.setSize(size);
+        ours.setCombatClass(combatClass);
+        ours.setTargetClass(targetClass);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(moveType);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(deployed);
+        ours.setDugIn(dugIn);
+        ours.setEntrenched(entrenched);
+        ours.setFortified(fortified);
+        ours.setReadyToFireDuration(readyToFireDuration);
+        ours.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
-        other.setId(id+2);
+        other.setId(id + 2);
         other.setName(name);
         other.setDescription(description);
         other.setIcon(icon);
@@ -219,8 +330,45 @@ public class ForceModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setIcon(icon);
+        ours.setType(type);
+        ours.setSubType(subType);
+        ours.setSize(size);
+        ours.setCombatClass(combatClass);
+        ours.setTargetClass(targetClass);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(moveType);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(deployed);
+        ours.setDugIn(dugIn);
+        ours.setEntrenched(entrenched);
+        ours.setFortified(fortified);
+        ours.setReadyToFireDuration(readyToFireDuration);
+        ours.setReadyToBombardDuration(readyToBombardDuration);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
-        other.setId(id+2);
+        other.setId(id + 2);
         other.setName(name);
         other.setDescription(description);
         other.setIcon(icon);
@@ -260,6 +408,43 @@ public class ForceModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setIcon(null);
+        ours.setType(null);
+        ours.setSubType(null);
+        ours.setSize(null);
+        ours.setCombatClass(null);
+        ours.setTargetClass(null);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(null);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(null);
+        ours.setDugIn(null);
+        ours.setEntrenched(null);
+        ours.setFortified(null);
+        ours.setReadyToFireDuration(null);
+        ours.setReadyToBombardDuration(null);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
         other.setId(id);
         other.setName(null);
@@ -296,11 +481,48 @@ public class ForceModelTest {
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        ForceModel ours = new ForceModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setIcon(null);
+        ours.setType(null);
+        ours.setSubType(null);
+        ours.setSize(null);
+        ours.setCombatClass(null);
+        ours.setTargetClass(null);
+        ours.setInfantryValue(infantryValue);
+        ours.setReconValue(reconValue);
+        ours.setEngineeringValue(engineeringValue);
+        ours.setMoveType(null);
+        ours.setPersQty(persQty);
+        ours.setStaffCapacity(staffCapacity);
+        ours.setBasicsQty(basicsQty);
+        ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
+        ours.setCommanderRank(commanderRank);
+        ours.setFuelQty(fuelQty);
+        ours.setFuelLoad(fuelLoad);
+        ours.setMaxSpeed(maxSpeed);
+        ours.setNormalSpeed(normalSpeed);
+        ours.setCanBombard(canBombard);
+        ours.setDeployed(null);
+        ours.setDugIn(null);
+        ours.setEntrenched(null);
+        ours.setFortified(null);
+        ours.setReadyToFireDuration(null);
+        ours.setReadyToBombardDuration(null);
+        equipmentList.clear();
+        ammoList.clear();
+        equipmentList.add(new EquipmentModel());
+        ammoList.add(new AmmoQtyModel());
+        ours.getEquipmentList().addAll(equipmentList);
+        ours.getAmmoList().addAll(ammoList);
+
         ForceModel other = new ForceModel();
         other.setId(id);
         other.setName(null);
@@ -337,6 +559,6 @@ public class ForceModelTest {
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }

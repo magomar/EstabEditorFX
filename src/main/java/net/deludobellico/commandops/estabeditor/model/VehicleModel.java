@@ -596,10 +596,10 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
 
         VehicleModel that = (VehicleModel) o;
 
-        if (!getDescription().equals(that.getDescription())) return false;
-        if (!getName().equals(that.getName())) return false;
-        if (!getPictureFilename().equals(that.getPictureFilename())) return false;
-        if (!getType().equals(that.getType())) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null) return false;
+        if (getName() != null ? !getName().equals(that.getName()): that.getName() != null) return false;
+        if (getPictureFilename() != null ? !getPictureFilename().equals(that.getPictureFilename()): that.getPictureFilename() != null) return false;
+        if (getType() != null ? !getType().equals(that.getType()) : that.getType() != null) return false;
 
         if (getBattleWeight() != (that.getBattleWeight())) return false;
         if (getBulkFuelCapacity() != (that.getBulkFuelCapacity())) return false;

@@ -2,15 +2,12 @@ package net.deludobellico.commandops.test.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.AmmoModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class AmmoModelTest {
 
-    private AmmoModel ours;
     private int id = 10;
     private String name = "Ammo Model Test";
     private String description = "Ammo Model Desc";
@@ -18,19 +15,16 @@ public class AmmoModelTest {
     private int minOrderWeight = 2;
     private Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
 
-    @Before
-    public void setUp() throws Exception {
-        ours = new AmmoModel();
+    @Test
+    public void testEquals() throws Exception {
+        AmmoModel ours = new AmmoModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
         ours.setMinOrderQty(minOrderQty);
         ours.setMinOrderWeight(minOrderWeight);
         ours.setFlag(flags);
-    }
 
-    @Test
-    public void testEquals() throws Exception {
         AmmoModel other = new AmmoModel();
         other.setId(id);
         other.setName(name);
@@ -43,6 +37,14 @@ public class AmmoModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag(flags);
+
         AmmoModel other = new AmmoModel();
         other.setId(id);
         other.setName(name);
@@ -55,6 +57,14 @@ public class AmmoModelTest {
 
     @Test
     public void testEqualsDifferentIDs() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag(flags);
+
         AmmoModel other = new AmmoModel();
         other.setId(id + 1);
         other.setName(name);
@@ -67,6 +77,14 @@ public class AmmoModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setDescription(description);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag(flags);
+
         AmmoModel other = new AmmoModel();
         other.setId(id + 1);
         other.setName(name);
@@ -79,6 +97,13 @@ public class AmmoModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag(null);
 
         AmmoModel other = new AmmoModel();
         other.setId(id);
@@ -87,11 +112,19 @@ public class AmmoModelTest {
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
         other.setFlag(null);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag(null);
+
         AmmoModel other = new AmmoModel();
         other.setId(id);
         other.setName(null);
@@ -99,6 +132,6 @@ public class AmmoModelTest {
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
         other.setFlag(null);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }

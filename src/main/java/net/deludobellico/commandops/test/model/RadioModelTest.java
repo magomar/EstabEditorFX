@@ -6,25 +6,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class RadioModelTest {
 
-    RadioModel ours;
+
     int id = 10;
     String name = "RadioModel Test";
     Flag[] flags = new Flag[]{Flag.COPY, Flag.USER};
 
-    @Before
-    public void setUp() throws Exception {
-        ours = new RadioModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setFlag(flags);
-    }
 
     @Test
     public void testEquals() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setFlag(flags);
+
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(name);
@@ -34,16 +31,27 @@ public class RadioModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setFlag(flags);
+
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(name);
         other.setFlag(flags);
         assertEquals(ours.hashCode(), other.hashCode());
     }
+
     @Test
     public void testEqualsDifferentIDs() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setFlag(flags);
+
         RadioModel other = new RadioModel();
-        other.setId(id+2);
+        other.setId(id + 2);
         other.setName(name);
         other.setFlag(flags);
         assertEquals(true, other.equals(ours));
@@ -51,8 +59,13 @@ public class RadioModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(name);
+        ours.setFlag(flags);
+
         RadioModel other = new RadioModel();
-        other.setId(id+3);
+        other.setId(id + 3);
         other.setName(name);
         other.setFlag(flags);
         assertEquals(other.hashCode(), ours.hashCode());
@@ -60,19 +73,29 @@ public class RadioModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setFlag(null);
+
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(null);
         other.setFlag(null);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setFlag(null);
+
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(null);
         other.setFlag(null);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }

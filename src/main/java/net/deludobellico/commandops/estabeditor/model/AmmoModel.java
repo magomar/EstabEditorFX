@@ -126,8 +126,8 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
 
         AmmoModel that = (AmmoModel) o;
         //if(getId() != that.getId()) return false;
-        if (!getName().equals(that.getName())) return false;
-        if (!getDescription().equals(that.getDescription())) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() !=null ) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() !=null ) return false;
         if (getMinOrderQty() != that.getMinOrderQty()) return false;
         if (getMinOrderWeight() != that.getMinOrderWeight()) return false;
         return !(that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()));

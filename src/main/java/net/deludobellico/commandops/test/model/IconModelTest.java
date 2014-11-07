@@ -9,11 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class IconModelTest {
 
-    IconModel ours;
+
     RGBColorModel backgroundColor = new RGBColorModel(255, 255, 255);
     RGBColorModel backgroundDarkColor = new RGBColorModel(255, 255, 255);
     RGBColorModel backgroundLightColor = new RGBColorModel(255, 255, 255);
@@ -24,9 +23,9 @@ public class IconModelTest {
     boolean hq = false;
     int militarySymbol = 10;
 
-    @Before
-    public void setUp() throws Exception {
-        ours = new IconModel();
+    @Test
+    public void testEquals() throws Exception {
+        IconModel ours = new IconModel();
         ours.setBackgroundColor(backgroundColor);
         ours.setBackgroundDarkColor(backgroundDarkColor);
         ours.setBackgroundLightColor(backgroundLightColor);
@@ -36,10 +35,7 @@ public class IconModelTest {
         ours.setMilitarySymbol(militarySymbol);
         ours.setPictureSymbol(pictureSymbol);
         ours.setSymbolColor(symbolColor);
-    }
 
-    @Test
-    public void testEquals() throws Exception {
         IconModel other = new IconModel();
         other.setBackgroundColor(backgroundColor);
         other.setBackgroundDarkColor(backgroundDarkColor);
@@ -55,6 +51,17 @@ public class IconModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        IconModel ours = new IconModel();
+        ours.setBackgroundColor(backgroundColor);
+        ours.setBackgroundDarkColor(backgroundDarkColor);
+        ours.setBackgroundLightColor(backgroundLightColor);
+        ours.setDesignationColor(designationColor);
+        ours.setForceSizeIcon(forceSize);
+        ours.setIsHq(hq);
+        ours.setMilitarySymbol(militarySymbol);
+        ours.setPictureSymbol(pictureSymbol);
+        ours.setSymbolColor(symbolColor);
+
         IconModel other = new IconModel();
         other.setBackgroundColor(backgroundColor);
         other.setBackgroundDarkColor(backgroundDarkColor);
@@ -71,6 +78,17 @@ public class IconModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        IconModel ours = new IconModel();
+        ours.setBackgroundColor(null);
+        ours.setBackgroundDarkColor(null);
+        ours.setBackgroundLightColor(null);
+        ours.setDesignationColor(null);
+        ours.setForceSizeIcon(null);
+        ours.setIsHq(hq);
+        ours.setMilitarySymbol(militarySymbol);
+        ours.setPictureSymbol(null);
+        ours.setSymbolColor(null);
+
         IconModel other = new IconModel();
         other.setBackgroundColor(null);
         other.setBackgroundDarkColor(null);
@@ -81,11 +99,22 @@ public class IconModelTest {
         other.setMilitarySymbol(militarySymbol);
         other.setPictureSymbol(null);
         other.setSymbolColor(null);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        IconModel ours = new IconModel();
+        ours.setBackgroundColor(null);
+        ours.setBackgroundDarkColor(null);
+        ours.setBackgroundLightColor(null);
+        ours.setDesignationColor(null);
+        ours.setForceSizeIcon(null);
+        ours.setIsHq(hq);
+        ours.setMilitarySymbol(militarySymbol);
+        ours.setPictureSymbol(null);
+        ours.setSymbolColor(null);
+
         IconModel other = new IconModel();
         other.setBackgroundColor(null);
         other.setBackgroundDarkColor(null);
@@ -96,6 +125,6 @@ public class IconModelTest {
         other.setMilitarySymbol(militarySymbol);
         other.setPictureSymbol(null);
         other.setSymbolColor(null);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }

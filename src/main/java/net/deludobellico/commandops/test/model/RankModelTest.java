@@ -5,22 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class RankModelTest {
-    RankModel ours;
     String shortName = "RankModel Short Test";
     String fullName = "RankModel Full Test";
 
-    @Before
-    public void setUp() throws Exception {
-        ours = new RankModel();
-        ours.setFullName(fullName);
-        ours.setShortName(shortName);
-    }
 
     @Test
     public void testEquals() throws Exception {
+        RankModel ours = new RankModel();
+        ours.setFullName(fullName);
+        ours.setShortName(shortName);
+
         RankModel other = new RankModel();
         other.setFullName(fullName);
         other.setShortName(shortName);
@@ -29,6 +25,10 @@ public class RankModelTest {
 
     @Test
     public void testHashCode() throws Exception {
+        RankModel ours = new RankModel();
+        ours.setFullName(fullName);
+        ours.setShortName(shortName);
+
         RankModel other = new RankModel();
         other.setFullName(fullName);
         other.setShortName(shortName);
@@ -37,17 +37,25 @@ public class RankModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
+        RankModel ours = new RankModel();
+        ours.setFullName(null);
+        ours.setShortName(null);
+
         RankModel other = new RankModel();
         other.setFullName(null);
         other.setShortName(null);
-        assertEquals(false, ours.equals(other));
+        assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
+        RankModel ours = new RankModel();
+        ours.setFullName(null);
+        ours.setShortName(null);
+
         RankModel other = new RankModel();
         other.setFullName(null);
         other.setShortName(null);
-        assertNotEquals(ours.hashCode(), other.hashCode());
+        assertEquals(ours.hashCode(), other.hashCode());
     }
 }
