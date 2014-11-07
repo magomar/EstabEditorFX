@@ -93,8 +93,8 @@ public class EstabController implements Initializable {
     }};
 
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
-//    private Map<Class, ElementEditorController> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
-    private Map<Class, AnchorPane> elementEditorPanes = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
+    private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
+    private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
 
     // Main controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
     private MainController mainController = null;
@@ -140,9 +140,9 @@ public class EstabController implements Initializable {
     /**
      * Easy way to set a few parameters
      *
-     * @param title
-     * @param isEditable
-     * @param controller
+     * @param title      title of the estab pane
+     * @param isEditable true if the estab is editable, false otherwise
+     * @param controller the parent controller
      */
     public void init(String title, boolean isEditable, MainController controller) {
         setTitle(title);
@@ -399,7 +399,7 @@ public class EstabController implements Initializable {
     }
 
     /**
-     * @param isEditable
+     * @param isEditable true true if the estab is editable, false otherwise
      * @see ElementEditorController#setEditable(boolean)
      */
     public void setEditable(boolean isEditable) {
@@ -433,29 +433,32 @@ public class EstabController implements Initializable {
     public void setActiveElement(ElementModel elementModel) {
         if (null != elementModel) {
             Class elementClass = elementModel.getClass();
-            AnchorPane editorNode;
             // If the current element isn't set (null) or it's from other class than the one we want to display
             // then update the editor
             if (activeElement == null || !activeElement.getClass().equals(elementClass)) {
-                editorPane.getChildren().clear();
+                if (!editorPane.getChildren().isEmpty()) {
+                    // Hide the active editor, if present
+                    // assert activeElement isn't null inside this if block
+                    editorPane.getChildren().get(editorPaneChildrenIndex.get(activeElement.getClass())).setVisible(false);
+                }
                 // if we have saved the controller and editorPane, use them; else load them
-                if (elementEditorPanes.containsKey(elementClass)) {// && elementEditorControllers.containsKey(elementClass)) {
-                    //TODO: this actually never worked before, because of next TODO down here
-                    editorPane = elementEditorPanes.get(elementClass);
-//                    elementEditorController = elementEditorControllers.get(elementClass);
+                if (elementEditorControllers.containsKey(elementClass)) {
+                    // Set visible the new element editor
+                    editorPane.getChildren().get(editorPaneChildrenIndex.get(elementClass)).setVisible(true);
+                    elementEditorController = elementEditorControllers.get(elementClass);
                 } else {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ELEMENT_EDITOR_VIEWS.get(elementClass)));
                     try {
                         // Load the editor pane from the fxml and copy the contents
-                        editorNode = fxmlLoader.load();
+                        AnchorPane editorNode = fxmlLoader.load();
+                        // Save the index of the editor pane children list
+                        editorPaneChildrenIndex.put(elementClass, editorPane.getChildren().size());
                         editorPane.getChildren().addAll(editorNode.getChildren());
-
-                        elementEditorPanes.put(elementClass, editorNode);
+                        // Load and save the controller
                         elementEditorController = fxmlLoader.getController();
                         elementEditorController.setEditable(isEditable);
                         elementEditorController.setEstabController(this);
-                        // TODO: this line was missing, so only the else block was executing
-                        // elementEditorControllers.put(elementClass, elementEditorController);
+                        elementEditorControllers.put(elementClass, elementEditorController);
                     } catch (IOException | NullPointerException e) {
                         e.printStackTrace();
                     }

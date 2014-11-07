@@ -12,7 +12,7 @@ public class ElementModelFactory {
     public static VehicleModel createVehicle() {
         VehicleModel vehicleModel = new VehicleModel();
         vehicleModel.setId(maxID++);
-        vehicleModel.setName("New Vehicle");
+        vehicleModel.setName(String.format("New Vehicle (%d)", maxID));
         vehicleModel.setDescription("");
         vehicleModel.setPictureId(0);
         vehicleModel.setPictureFilename("");
@@ -53,7 +53,7 @@ public class ElementModelFactory {
     public static WeaponModel createWeapon() {
         WeaponModel weaponModel = new WeaponModel();
         weaponModel.setId(maxID++);
-        weaponModel.setName("New Weapon");
+        weaponModel.setName(String.format("New Weapon (%d)", maxID));
         weaponModel.getFlags().add(Flag.NEW);
         return weaponModel;
     }
@@ -61,7 +61,7 @@ public class ElementModelFactory {
     public static AmmoModel createAmmo() {
         AmmoModel ammoModel = new AmmoModel();
         ammoModel.setId(maxID++);
-        ammoModel.setName("New Ammo");
+        ammoModel.setName(String.format("New Ammo (%d)", maxID));
         ammoModel.getFlags().add(Flag.NEW);
         return ammoModel;
     }
