@@ -47,7 +47,7 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
         side.setBasicsConsumptionRate(basicsConsumptionRate.get());
         side.setDefaultEnemyAperFp(defaultEnemyAperFp.get());
         side.setDefaultEnemyAarmFp(defaultEnemyAarmFp.get());
-        nation.stream().forEach((nationModel) -> side.getNation().add(nationModel.getPojo()));
+        nation.stream().map(NationModel::getPojo).forEach(side.getNation()::add);
         side.getFlags().addAll(flags);
         return side;
     }

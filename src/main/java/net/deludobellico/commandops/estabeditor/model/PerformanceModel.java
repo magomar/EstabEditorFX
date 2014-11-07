@@ -43,7 +43,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         performance.setShellWeight(shellWeight.get());
         RangeTable rangeTable = new RangeTable();
 
-        ranges.stream().map(RangeItemModel::getPojo).forEach(r -> rangeTable.getRangeItem().add(r));
+        ranges.stream().map(RangeItemModel::getPojo).forEach(rangeTable.getRangeItem()::add);
         performance.setRangeTable(rangeTable);
         performance.setFireType(fireType.get());
         return performance;

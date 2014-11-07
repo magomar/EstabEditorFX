@@ -4,14 +4,13 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
+import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +26,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,23 +61,25 @@ public class EstabController implements Initializable {
     private ToggleButton weaponButton;
     @FXML
     private ToggleButton ammoButton;
-    @FXML
-    private ImageView vehicleButtonImageView;
-    @FXML
-    private ImageView weaponButtonImageView;
-    @FXML
-    private ImageView ammoButtonImageView;
 
     /**
      * Where part or all of the element name is typed to search
      */
     @FXML
     private TextField searchTextField;
-
+    @FXML
+    private CheckBox selectAllListCheckBox;
+    @FXML
+    private CheckBox selectNoneListCheckBox;
+    @FXML
+    private Button removeSelectedButton;
+    @FXML
+    private Button copySelectedButton;
     @FXML
     private ListView<ElementListCell> searchResultsListView;
 
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
+    private ObservableSet<ElementModel> selectedElementsSet = FXCollections.observableSet(new HashSet<>());
 
     // Controls when search is enabled
     private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
@@ -120,7 +120,27 @@ public class EstabController implements Initializable {
         // Listen to changes in the search text and search matching elements name
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement());
 
-        // Each cell has a button (to copy or remove), and are associated to an element
+        // Disable copy and remove buttons if there are no selected items
+        selectedElementsSet.addListener((SetChangeListener<ElementModel>) change -> {
+            if (selectedElementsSet.isEmpty()) {
+                copySelectedButton.setDisable(true);
+                removeSelectedButton.setDisable(true);
+            } else {
+                copySelectedButton.setDisable(false);
+                removeSelectedButton.setDisable(false);
+            }
+        });
+
+        // Select all items or discard all the selection
+        selectAllListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::select);
+
+        });
+        selectNoneListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::unselect);
+        });
+
+        // Each cell is associated to an element model
         searchResultsListView.setItems(elementListCells);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // If we select and item, display it
@@ -131,10 +151,15 @@ public class EstabController implements Initializable {
         vehicleButton.disableProperty().bind(searchDisable);
         weaponButton.disableProperty().bind(searchDisable);
         ammoButton.disableProperty().bind(searchDisable);
+        searchTextField.disableProperty().bind(searchDisable);
+        selectAllListCheckBox.disableProperty().bind(searchDisable);
+        selectNoneListCheckBox.disableProperty().bind(searchDisable);
 
-        vehicleButtonImageView.setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
-        weaponButtonImageView.setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
-        ammoButtonImageView.setImage(new Image(FileIO.AMMO_ICON_RESOURCE));
+        ((ImageView) vehicleButton.getGraphic()).setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
+        ((ImageView) weaponButton.getGraphic()).setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
+        ((ImageView) ammoButton.getGraphic()).setImage(new Image(FileIO.AMMO_ICON_RESOURCE));
+        ((ImageView) copySelectedButton.getGraphic()).setImage(new Image(FileIO.COPY_ICON_RESOURCE));
+        ((ImageView) removeSelectedButton.getGraphic()).setImage(new Image(FileIO.REMOVE_ICON_RESOURCE));
     }
 
     /**
@@ -148,6 +173,9 @@ public class EstabController implements Initializable {
         setTitle(title);
         setEditable(isEditable);
         setMainController(controller);
+        if (!isEditable) {
+            removeSelectedButton.setVisible(false);
+        }
     }
 
     /**
@@ -180,6 +208,8 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(true);
         weaponButton.setSelected(false);
         ammoButton.setSelected(false);
+        selectAllListCheckBox.setSelected(false);
+        selectNoneListCheckBox.setSelected(false);
         searchElement();
     }
 
@@ -195,6 +225,8 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(false);
         weaponButton.setSelected(true);
         ammoButton.setSelected(false);
+        selectAllListCheckBox.setSelected(false);
+        selectNoneListCheckBox.setSelected(false);
         searchElement();
     }
 
@@ -210,6 +242,8 @@ public class EstabController implements Initializable {
         vehicleButton.setSelected(false);
         weaponButton.setSelected(false);
         ammoButton.setSelected(true);
+        selectAllListCheckBox.setSelected(false);
+        selectNoneListCheckBox.setSelected(false);
         searchElement();
     }
 
@@ -231,25 +265,11 @@ public class EstabController implements Initializable {
             savedList.setForceSearch(false);
             savedList.setLastSearch(textToSearch);
 
-            // This passes the method to invoke when pressing a button from the search list
-            Consumer<ElementModel> buttonAction;
-            // This property handles when buttons should be disabled
-            BooleanProperty buttonDisableProperty;
-
-            if (isEditable) {
-                // if it's the target pane, buttons will call the remove method and they'll be always enabled
-                buttonAction = mainController::removeEstabElementFromCellList;
-                buttonDisableProperty = new SimpleBooleanProperty(false);
-            } else {
-                // if it's the source pane, buttons will call the copy method and they are enabled when the main controllers says so
-                buttonAction = mainController::copyEstabElementFromCellList;
-                buttonDisableProperty = mainController.getDisableCopyProperty();
-            }
             // Get all elements with names matching our texts
             List<ElementModel> elements = estabModel.searchElement(textToSearch, activeSearchListClass);
             for (ElementModel element : elements) {
                 ElementListCell cell;
-                cell = new ElementListCell(element, buttonAction, buttonDisableProperty, isEditable);
+                cell = new ElementListCell(element, selectedElementsSet);
                 elementListCells.add(cell);
                 savedList.getList().add(cell);
             }
@@ -348,6 +368,30 @@ public class EstabController implements Initializable {
         }
         if (successRemoving) update();
         return successRemoving;
+    }
+
+    /**
+     * Removes elements with selected check boxes
+     *
+     * @param actionEvent is not used
+     */
+    public void removeSelectedItems(ActionEvent actionEvent) {
+
+    }
+
+    /**
+     * Copy elements with selected check boxes, or duplicates them if this is the target estab
+     *
+     * @param actionEvent is not used
+     */
+    public void copySelectedItems(ActionEvent actionEvent) {
+        if (isEditable) {
+            // Target, duplicate
+            mainController.duplicateElementsInTarget(selectedElementsSet);
+        } else {
+            // Source, copy
+            mainController.copyElementsToTarget(selectedElementsSet);
+        }
     }
 
     /**
@@ -475,7 +519,6 @@ public class EstabController implements Initializable {
 
     public void setEstabModel(EstabModel estabModel) {
         this.estabModel = estabModel;
-        searchTextField.setDisable(false);
         update();
     }
 

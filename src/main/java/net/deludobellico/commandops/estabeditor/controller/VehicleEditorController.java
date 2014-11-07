@@ -10,9 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
+import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.model.VehicleModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
@@ -423,8 +423,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         this.activeVehicle = element;
         bindProperties(activeVehicle);
 
-        // Careful, this is our pojo Image class, not the javafx Image class
-        Image image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
+        ImageModel image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
         if (image != null) {
             vehicleImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
         }

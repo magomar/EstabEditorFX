@@ -78,7 +78,7 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         vehicle.setCrew(crew.get());
         vehicle.setReliability(reliability.get());
         vehicle.setArmaments(new ArmamentList());
-        armaments.stream().map(ArmamentModel::getPojo).forEach(a -> vehicle.getArmaments().getArmament().add(a));
+        armaments.stream().map(ArmamentModel::getPojo).forEach(vehicle.getArmaments().getArmament()::add);
         vehicle.setType(type.get());
         vehicle.setFuelCapacity(fuelCapacity.get());
         SpeedData rs = new SpeedData();
@@ -645,9 +645,9 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         int result = getName() != null ? getName().hashCode() : 0;
         result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
         result = (int) (31 * result + armaments.stream().map(ArmamentModel::hashCode).count());
-        result = 31 * result + getDescription().hashCode();
-        result = 31 * result + getPictureFilename().hashCode();
-        result = 31 * result + getType().hashCode();
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
 
         result = 31 * result + getPictureId();
         result = (int) (31 * result + getWidth());

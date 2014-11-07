@@ -1,19 +1,15 @@
 package net.deludobellico.commandops.estabeditor.util.view;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.util.function.Consumer;
+import java.util.Set;
 
 /**
  * Created by Heine on 10/30/2014.
@@ -21,12 +17,16 @@ import java.util.function.Consumer;
 public class ElementListCell extends HBox {
 
     private ElementModel elementModel;
-    private Label label = new Label();
+    private Label label;
     private Flag flag;
+    private CheckBox checkBox;
 
-    public ElementListCell(ElementModel elementModel, Consumer<ElementModel> cellButtonAction, BooleanProperty disableButtonProperty, Boolean removeIcon) {
+    public ElementListCell(ElementModel elementModel, Set<ElementModel> selectedElements) {
         super();
         this.elementModel = elementModel;
+        label = new Label();
+        checkBox = new CheckBox();
+
         for (Flag f : elementModel.getFlags()) {
             if (f.equals(Flag.COPY)) {
                 label.setStyle(UtilView.TEXT_STYLE_COPY);
@@ -47,15 +47,11 @@ public class ElementListCell extends HBox {
 
         Pane pane = new Pane();
         pane.setMinWidth(5.0);
-        Button button = new Button();
-        button.setGraphic(removeIcon ?
-                new ImageView(new Image(ElementListCell.class.getResourceAsStream(FileIO.REMOVE_ICON_RESOURCE)))
-                :
-                new ImageView(new Image(ElementListCell.class.getResourceAsStream(FileIO.COPY_ICON_RESOURCE))));
-        button.disableProperty().bind(disableButtonProperty);
-        button.setOnAction(event -> cellButtonAction.accept(elementModel));
 
-        this.getChildren().addAll(button, pane, label);
+        checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            Object ignore = newValue ? selectedElements.add(elementModel) : selectedElements.remove(elementModel);
+        });
+        this.getChildren().addAll(checkBox, pane, label);
 
         setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.SECONDARY) {
@@ -77,7 +73,19 @@ public class ElementListCell extends HBox {
         });
     }
 
+    public static void select(ElementListCell elementListCell) {
+        elementListCell.setSelected(true);
+    }
+
+    public static void unselect(ElementListCell elementListCell) {
+        elementListCell.setSelected(false);
+    }
+
     public ElementModel getElementModel() {
         return elementModel;
+    }
+
+    public void setSelected(boolean b) {
+        checkBox.setSelected(b);
     }
 }
