@@ -1,7 +1,11 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
@@ -126,6 +130,7 @@ public class EstabController implements Initializable {
                 copySelectedButton.setDisable(true);
                 removeSelectedButton.setDisable(true);
             } else {
+                selectNoneListCheckBox.setSelected(false);
                 copySelectedButton.setDisable(false);
                 removeSelectedButton.setDisable(false);
             }
@@ -134,10 +139,12 @@ public class EstabController implements Initializable {
         // Select all items or discard all the selection
         selectAllListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::select);
+            selectNoneListCheckBox.setSelected(!newValue);
 
         });
         selectNoneListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::unselect);
+            if (newValue) selectAllListCheckBox.setSelected(false);
         });
 
         // Each cell is associated to an element model
@@ -148,12 +155,15 @@ public class EstabController implements Initializable {
         });
 
         // Disable buttons when search is disabled
-        vehicleButton.disableProperty().bind(searchDisable);
-        weaponButton.disableProperty().bind(searchDisable);
-        ammoButton.disableProperty().bind(searchDisable);
-        searchTextField.disableProperty().bind(searchDisable);
-        selectAllListCheckBox.disableProperty().bind(searchDisable);
-        selectNoneListCheckBox.disableProperty().bind(searchDisable);
+        searchDisable.addListener((observable, oldValue, newValue) -> {
+                vehicleButton.setDisable(newValue);
+                weaponButton.setDisable(newValue);
+                ammoButton.setDisable(newValue);
+                searchTextField.setDisable(newValue);
+                selectAllListCheckBox.setDisable(newValue);
+                selectNoneListCheckBox.setDisable(newValue);
+        });
+
 
         ((ImageView) vehicleButton.getGraphic()).setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
         ((ImageView) weaponButton.getGraphic()).setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
@@ -395,7 +405,7 @@ public class EstabController implements Initializable {
      *
      * @param actionEvent is not used
      */
-    public void copySelectedItems(ActionEvent actionEvent) {
+    public void copySelectedElements(ActionEvent actionEvent) {
         if (isEditable) {
             // Target, duplicate
             duplicateSelectedElements(selectedElementsSet);
@@ -476,6 +486,7 @@ public class EstabController implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
 
     public ElementModel getActiveElement() {
         return activeElement;

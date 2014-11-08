@@ -109,6 +109,11 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return name.get();
+    }
+
     public int getLargeInsignia() {
         return largeInsignia.get();
     }

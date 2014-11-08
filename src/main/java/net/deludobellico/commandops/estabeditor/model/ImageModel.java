@@ -90,6 +90,11 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     }
 
     @Override
+    public String toString() {
+        return name.get();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ImageModel)) return false;

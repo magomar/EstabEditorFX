@@ -106,6 +106,9 @@ public class MainController implements Initializable {
     private Button createNewAmmoButton;
 
     @FXML
+    private Button compareElementButton;
+
+    @FXML
     private EstabController sourcePaneController;
 
     @FXML
@@ -129,6 +132,9 @@ public class MainController implements Initializable {
             if (!targetIsClosed.get() && newValue != null)
                 disableCopy.set(false);
             else disableCopy.set(true);
+            if (!targetIsClosed.get() && newValue != null && targetPaneController.getActiveElement() != null) {
+                compareElementButton.setDisable(false);
+            }
         });
 
         targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -238,6 +244,7 @@ public class MainController implements Initializable {
         sourceIsClosed.set(false);
         sourcePaneController.setEstabModel(sourceEstabFile);
 
+        // TODO: simplify, add listener to active element to disable or enable copy
         if (targetPaneController.getActiveElement() != null) disableCopy.set(false);
         else disableCopy.set(true);
 
@@ -253,6 +260,8 @@ public class MainController implements Initializable {
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetEstabFile);
 
+
+        // TODO: simplify, add listener to active element to disable or enable copy
         if (sourcePaneController.getActiveElement() != null) disableCopy.set(false);
         else disableCopy.set(true);
 
@@ -438,5 +447,16 @@ public class MainController implements Initializable {
 
     public void createNewAmmoButtonAction() {
         targetPaneController.createNewElement(AmmoModel.class);
+    }
+
+    public void compareElementButtonAction() {
+        if(targetPaneController.getActiveElement() != null && sourcePaneController.getActiveElement() != null) {
+            UtilView.showInfoDialog("Element comparison",
+                    String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
+                            sourcePaneController.getActiveElement().getId(),
+                            targetPaneController.getActiveElement().getId(),
+                            sourcePaneController.getActiveElement().equals(targetPaneController.getActiveElement()) ? "" : "NOT "));
+
+        }
     }
 }

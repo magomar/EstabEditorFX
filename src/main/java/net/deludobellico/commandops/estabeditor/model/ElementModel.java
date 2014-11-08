@@ -3,6 +3,7 @@ package net.deludobellico.commandops.estabeditor.model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
+import net.deludobellico.commandops.estabeditor.util.Util;
 
 import java.util.List;
 
@@ -55,10 +56,8 @@ public interface ElementModel {
     }
 
     default public String print() {
-        return this.getClass().getSimpleName()
-                + " | ID: "
-                + getId()
-                + " | Name: "
-                + getName();
+        return String.format(" %s | ID: %d | Name: %s",
+                Util.CLASS_MAP_MODEL_TO_POJO.get(getClass()).getSimpleName(),
+                getId(), getName());
     }
 }

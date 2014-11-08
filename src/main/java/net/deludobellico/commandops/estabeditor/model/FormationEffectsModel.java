@@ -77,6 +77,11 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
     }
 
     @Override
+    public String toString() {
+        return name.get();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

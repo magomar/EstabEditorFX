@@ -76,6 +76,11 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     }
 
     @Override
+    public String toString() {
+        return name.get();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof RadioModel)) return false;

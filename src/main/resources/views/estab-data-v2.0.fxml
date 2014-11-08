@@ -64,7 +64,7 @@
                               <Insets right="30.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedItems" prefWidth="28.0" GridPane.columnIndex="2">
+                        <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements" prefWidth="28.0" GridPane.columnIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                               </ImageView>

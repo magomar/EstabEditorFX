@@ -103,6 +103,11 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return name.get();
+    }
+
     public String getNationality() {
         return nationality.get();
     }

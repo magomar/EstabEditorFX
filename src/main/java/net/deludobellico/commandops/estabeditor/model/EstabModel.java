@@ -328,20 +328,23 @@ public class EstabModel {
             StringBuilder logMessage = new StringBuilder("Copying elements (Selected only): " + newLine);
             for (Object selectedItem : selectedItems) {
                 if (selectedItem instanceof AmmoModel) {
-                    AmmoModel a = (AmmoModel) selectedItem;
-                    a.setFlag(Flag.COPY);
-                    ammos.put(a.getId(), a);
-                    logMessage.append("-- ").append(a.print()).append(newLine);
+                    Ammo a = ((AmmoModel) selectedItem).getPojo();
+                    a.getFlags().add((Flag.COPY));
+                    AmmoModel am = new AmmoModel(a);
+                    ammos.put(am.getId(), am);
+                    logMessage.append("-- ").append(am.print()).append(newLine);
                 } else if (selectedItem instanceof WeaponModel) {
-                    WeaponModel w = (WeaponModel) selectedItem;
-                    w.setFlag(Flag.COPY);
-                    weapons.put(w.getId(), w);
-                    logMessage.append("-- ").append(w.print()).append(newLine);
+                    Weapon w = ((WeaponModel) selectedItem).getPojo();
+                    w.getFlags().add(Flag.COPY);
+                    WeaponModel wm = new WeaponModel(w);
+                    weapons.put(wm.getId(), wm);
+                    logMessage.append("-- ").append(wm.print()).append(newLine);
                 } else if (selectedItem instanceof VehicleModel) {
-                    VehicleModel v = (VehicleModel) selectedItem;
-                    v.setFlag(Flag.COPY);
-                    vehicles.put(v.getId(), v);
-                    logMessage.append("-- ").append(v.print()).append(newLine);
+                    Vehicle v = ((VehicleModel) selectedItem).getPojo();
+                    v.getFlags().add(Flag.COPY);
+                    VehicleModel vm = new VehicleModel(v);
+                    vehicles.put(vm.getId(), vm);
+                    logMessage.append("-- ").append(vm.print()).append(newLine);
                 }
             }
             LOG.log(Level.INFO, logMessage.toString());

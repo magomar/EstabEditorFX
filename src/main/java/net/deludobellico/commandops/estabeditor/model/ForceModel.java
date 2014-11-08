@@ -186,6 +186,11 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return name.get();
+    }
+
     public IconModel getIcon() {
         return icon.get();
     }
