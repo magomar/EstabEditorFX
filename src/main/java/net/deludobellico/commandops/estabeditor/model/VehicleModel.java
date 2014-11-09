@@ -185,10 +185,15 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
     }
 
     @Override
-    public VehicleModel createNewInMap(Map<Integer, VehicleModel> modelMap) {
+    public VehicleModel createNewInMap(Map<Integer, VehicleModel> map) {
         VehicleModel newElement = ElementModelFactory.createVehicle();
-        modelMap.put(newElement.getId(), newElement);
+        map.put(newElement.getId(), newElement);
         return newElement;
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, VehicleModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

@@ -14,6 +14,7 @@ import net.deludobellico.commandops.estabeditor.Main;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
+import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
@@ -202,7 +203,10 @@ public class MainController implements Initializable {
             File file = new File(targetFile);
             if (file.exists()) {
                 MenuItem recentTargetMenuItem = new MenuItem(file.getName());
-                recentTargetMenuItem.setOnAction(event -> openTarget(file));
+                recentTargetMenuItem.setOnAction(event -> {
+                    if (file.exists()) openTarget(file);
+                    else targetOpenRecentMenuList.getItems().remove(recentTargetMenuItem);
+                });
                 targetOpenRecentMenuList.getItems().add(recentTargetMenuItem);
             }
         }
@@ -217,7 +221,10 @@ public class MainController implements Initializable {
             File file = new File(sourceFile);
             if (file.exists()) {
                 MenuItem recentSourceMenuItem = new MenuItem(file.getName());
-                recentSourceMenuItem.setOnAction(event -> openSource(file));
+                recentSourceMenuItem.setOnAction(event -> {
+                    if (file.exists()) openSource(file);
+                    else sourceOpenRecentMenuList.getItems().remove(recentSourceMenuItem);
+                });
                 sourceOpenRecentMenuList.getItems().add(recentSourceMenuItem);
             }
         }
@@ -232,6 +239,7 @@ public class MainController implements Initializable {
      * @return the selected file, otherwise null
      * @see System#getProperty(String)
      */
+
     private File openFileChooser(boolean isSaving) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select ESTAB");
@@ -326,8 +334,13 @@ public class MainController implements Initializable {
         boolean isSource = ((MenuItem) actionEvent.getSource()).getParentMenu().getText().toLowerCase().contains("source");
         boolean isNew = ((MenuItem) actionEvent.getSource()).getText().toLowerCase().contains("new");
         if (isNew) {
-            Settings.setNewFileCreated(true);
-            openTarget(FileIO.getOrCreateNewEstabFile());
+            DialogAction answer = DialogAction.OK;
+            if (Settings.getNewFileCreated())
+                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", DialogAction.CANCEL, DialogAction.OK);
+            if (answer == DialogAction.OK) {
+                Settings.setNewFileCreated(true);
+                openTarget(FileIO.getOrCreateNewEstabFile());
+            }
         } else {
             File file = openFileChooser(false);
             if (null != file) {

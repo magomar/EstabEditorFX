@@ -97,8 +97,13 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     }
 
     @Override
-    public SideModel createNewInMap(Map<Integer, SideModel> modelMap) {
+    public SideModel createNewInMap(Map<Integer, SideModel> map) {
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, SideModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

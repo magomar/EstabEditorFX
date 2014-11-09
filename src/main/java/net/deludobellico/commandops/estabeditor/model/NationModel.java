@@ -91,8 +91,13 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
     }
 
     @Override
-    public NationModel createNewInMap(Map<Integer, NationModel> modelMap) {
+    public NationModel createNewInMap(Map<Integer, NationModel> map) {
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, NationModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

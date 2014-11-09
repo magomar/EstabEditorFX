@@ -69,8 +69,13 @@ public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio>
     }
 
     @Override
-    public RadioModel createNewInMap(Map<Integer, RadioModel> modelMap) {
+    public RadioModel createNewInMap(Map<Integer, RadioModel> map) {
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, RadioModel> map) {
+        map.remove(getId());
     }
 
     @Override

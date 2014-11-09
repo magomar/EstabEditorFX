@@ -1,0 +1,34 @@
+Index: src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Ammo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Ammo.java	(revision )
++++ src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Ammo.java	(revision )
+@@ -1,5 +1,8 @@
+ package net.deludobellico.commandops.estabeditor.data.jaxb;
+ 
++import net.deludobellico.commandops.estabeditor.model.AmmoModel;
++import net.deludobellico.commandops.estabeditor.model.Element;
++
+ import javax.xml.bind.annotation.*;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -34,7 +37,7 @@
+         "minOrderQty",
+         "minOrderWeight"
+ })
+-public class Ammo {
++public class Ammo implements Element<AmmoModel>{
+ 
+     @XmlElement(required = true)
+     protected String name;
+@@ -158,4 +161,8 @@
+         return this.flags;
+     }
+ 
++    @Override
++    public AmmoModel getModel() {
++        return new AmmoModel(this);
++    }
+ }

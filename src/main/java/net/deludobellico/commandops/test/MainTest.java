@@ -94,7 +94,7 @@ public class MainTest {
 
 
     private static void addModelObjects(Collection collection) {
-        for (Object m : ESTAB_MODEL.getAllElements().values()) {
+        for (Object m : ESTAB_MODEL.getAll().values()) {
             for (Object o : ((Map) m).values()) {
                 collection.add(o);
             }
@@ -117,7 +117,7 @@ public class MainTest {
     }
 
     private static void removeModelObjects(Collection collection) {
-        for (Object m : ESTAB_MODEL.getAllElements().values()) {
+        for (Object m : ESTAB_MODEL.getAll().values()) {
             for (Object o : ((Map) m).values()) {
                 collection.remove(o);
             }

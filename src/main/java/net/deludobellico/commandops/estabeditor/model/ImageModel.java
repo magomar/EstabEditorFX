@@ -69,8 +69,13 @@ public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image>
     }
 
     @Override
-    public ImageModel createNewInMap(Map<Integer, ImageModel> modelMap) {
+    public ImageModel createNewInMap(Map<Integer, ImageModel> map) {
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, ImageModel> map) {
+        map.remove(getId());
     }
 
     @Override

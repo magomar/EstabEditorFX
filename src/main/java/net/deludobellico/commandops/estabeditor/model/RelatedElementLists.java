@@ -7,19 +7,19 @@ import java.util.*;
  */
 public class RelatedElementLists {
 
-    private Map<Class, List<ElementModel>> allElementsListMap;
-    private Map<Class, List<ElementModel>> repeatedElementsListMap;
+    private Map<Class, List<ElementModel>> allElementsListsMap;
+    private Map<Class, List<ElementModel>> repeatedElementsListsMap;
     private Map<Class, List<ElementModel>> nonRepeatedElementsListsMap;
     private boolean sorted;
 
     public RelatedElementLists() {
-        allElementsListMap = new HashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
-        repeatedElementsListMap = new HashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
-        nonRepeatedElementsListsMap = new HashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
+        allElementsListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
+        repeatedElementsListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
+        nonRepeatedElementsListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
 
         for (int i = 0; i < ElementModel.ELEMENT_MODEL_CLASSES.length; i++) {
-            allElementsListMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
-            repeatedElementsListMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
+            allElementsListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
+            repeatedElementsListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
             nonRepeatedElementsListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
         }
     }
@@ -28,14 +28,14 @@ public class RelatedElementLists {
         boolean hasRepeated = false;
         int i = 0;
         while (!hasRepeated && i < ElementModel.ELEMENT_MODEL_CLASSES.length) {
-            hasRepeated = !repeatedElementsListMap.get(ElementModel.ELEMENT_MODEL_CLASSES[i]).isEmpty();
+            hasRepeated = !repeatedElementsListsMap.get(ElementModel.ELEMENT_MODEL_CLASSES[i]).isEmpty();
             i++;
         }
         return hasRepeated;
     }
 
     public List<ElementModel> getAll(Class elementModelClass) {
-        return allElementsListMap.get(elementModelClass);
+        return allElementsListsMap.get(elementModelClass);
     }
 
     public List<ElementModel> getNonRepeated(Class elementModelClass) {
@@ -43,19 +43,25 @@ public class RelatedElementLists {
     }
 
     public List<ElementModel> getRepeated(Class elementModelClass) {
-        return repeatedElementsListMap.get(elementModelClass);
-    }
-
-    public List<ElementModel> getRepeatedElements() {
-        List<ElementModel> repeatedElements = new ArrayList<>((int) repeatedElementsListMap.values().stream().mapToInt(List::size).sum());
-        repeatedElementsListMap.values().forEach(repeatedElements::addAll);
-        return repeatedElements;
+        return repeatedElementsListsMap.get(elementModelClass);
     }
 
     public List<ElementModel> getAllElements() {
-        List<ElementModel> allElements = new LinkedList<>();
-        allElementsListMap.values().forEach(allElements::addAll);
+        List<ElementModel> allElements = new ArrayList<>(allElementsListsMap.values().stream().mapToInt(List::size).sum());
+        allElementsListsMap.values().forEach(allElements::addAll);
         return allElements;
+    }
+
+    public List<ElementModel> getRepeatedElements() {
+        List<ElementModel> repeatedElements = new ArrayList<>((int) repeatedElementsListsMap.values().stream().mapToInt(List::size).sum());
+        repeatedElementsListsMap.values().forEach(repeatedElements::addAll);
+        return repeatedElements;
+    }
+
+    public List<ElementModel> getNonRepeatedElements() {
+        List<ElementModel> nonRepeatedElements = new ArrayList<>((int) nonRepeatedElementsListsMap.values().stream().mapToInt(List::size).sum());
+        nonRepeatedElementsListsMap.values().forEach(nonRepeatedElements::addAll);
+        return nonRepeatedElements;
     }
 
     public boolean isSorted() {

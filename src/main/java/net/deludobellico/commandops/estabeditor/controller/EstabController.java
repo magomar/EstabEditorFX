@@ -194,6 +194,7 @@ public class EstabController implements Initializable {
      * Clears the active editor, empties the search list and refreshes the title
      */
     public void clear() {
+        selectedElements.clear();
         searchResultsListView.getItems().clear();
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
@@ -283,7 +284,7 @@ public class EstabController implements Initializable {
      * @param newElement
      */
     public void createNewElement(ElementModel newElement) {
-        newElement = (ElementModel) newElement.createNewInMap(estabModel.getAllElements().get(newElement.getClass()));
+        newElement = (ElementModel) newElement.createNewInMap(estabModel.getAll().get(newElement.getClass()));
         setActiveElement(newElement);
         update();
     }
@@ -403,7 +404,11 @@ public class EstabController implements Initializable {
      * @param file where the estab will be saved
      */
     public void saveModel(File file) {
-        estabModel.saveToFile(file);
+        if(!file.exists()){
+            UtilView.showInfoDialog("File not found", file.getName() + " doesn't exists");
+            LOG.log(Level.WARNING, "Abort save. File not found " + file.getName());
+        }
+        else estabModel.saveToFile(file);
     }
 
     /**

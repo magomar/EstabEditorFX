@@ -1,0 +1,34 @@
+Index: src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/FormationEffects.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/FormationEffects.java	(revision )
++++ src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/FormationEffects.java	(revision )
+@@ -1,5 +1,8 @@
+ package net.deludobellico.commandops.estabeditor.data.jaxb;
+ 
++import net.deludobellico.commandops.estabeditor.model.Element;
++import net.deludobellico.commandops.estabeditor.model.FormationEffectsModel;
++
+ import javax.xml.bind.annotation.*;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -39,7 +42,7 @@
+         "targetPercentages",
+         "security"
+ })
+-public class FormationEffects {
++public class FormationEffects implements Element<FormationEffectsModel>{
+ 
+     @XmlElement(name = "moving-cohesion-level")
+     protected double movingCohesionLevel;
+@@ -223,4 +226,8 @@
+         return this.flags;
+     }
+ 
++    @Override
++    public FormationEffectsModel getModel() {
++        return new FormationEffectsModel(this);
++    }
+ }

@@ -104,8 +104,13 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
     }
 
     @Override
-    public ServiceModel createNewInMap(Map<Integer, ServiceModel> modelMap) {
+    public ServiceModel createNewInMap(Map<Integer, ServiceModel> map) {
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, ServiceModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

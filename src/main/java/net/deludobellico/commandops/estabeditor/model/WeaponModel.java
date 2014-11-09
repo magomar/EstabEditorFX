@@ -125,10 +125,15 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
     }
 
     @Override
-    public WeaponModel createNewInMap(Map<Integer, WeaponModel> modelMap) {
+    public WeaponModel createNewInMap(Map<Integer, WeaponModel> map) {
         WeaponModel newElement = ElementModelFactory.createWeapon();
-        modelMap.put(newElement.getId(), newElement);
+        map.put(newElement.getId(), newElement);
         return newElement;
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, WeaponModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

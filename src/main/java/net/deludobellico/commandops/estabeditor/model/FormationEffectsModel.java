@@ -69,9 +69,14 @@ public class FormationEffectsModel implements ElementModel<FormationEffectsModel
     }
 
     @Override
-    public FormationEffectsModel createNewInMap(Map<Integer, FormationEffectsModel> modelMap) {
+    public FormationEffectsModel createNewInMap(Map<Integer, FormationEffectsModel> map) {
 //        FormationEffectsModel newElement = ElementModelFactory.create()
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, FormationEffectsModel> map) {
+        map.remove(getId());
     }
 
     @Override

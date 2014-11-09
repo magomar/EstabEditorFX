@@ -81,10 +81,15 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     }
 
     @Override
-    public AmmoModel createNewInMap(Map<Integer, AmmoModel> modelMap) {
+    public AmmoModel createNewInMap(Map<Integer, AmmoModel> map) {
         AmmoModel newElement = ElementModelFactory.createAmmo();
-        modelMap.put(newElement.getId(), newElement);
+        map.put(newElement.getId(), newElement);
         return newElement;
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, AmmoModel> map) {
+        map.remove(getId());
     }
 
     public int getId() {

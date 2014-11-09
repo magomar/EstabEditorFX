@@ -182,9 +182,14 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     }
 
     @Override
-    public ForceModel createNewInMap(Map<Integer, ForceModel> modelMap) {
+    public ForceModel createNewInMap(Map<Integer, ForceModel> map) {
         // ElementModelFactory.create()
         throw new UnsupportedOperationException("Method not implemented");
+    }
+
+    @Override
+    public void removeFromMap(Map<Integer, ForceModel> map) {
+        map.remove(getId());
     }
 
     public IntegerProperty idProperty() {

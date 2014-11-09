@@ -2,10 +2,7 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Ammo;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Vehicle;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Weapon;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import java.util.*;
 
@@ -25,9 +22,19 @@ public interface ElementModel<T> {
     // Needless to say it's important both arrays have the same order and the same length
     public static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class};
     public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class};
+    public static final Class[] ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED = {ImageModel.class, SideModel.class, FormationEffectsModel.class};
+    public static final Class[] ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED = {Image.class, Side.class, FormationEffects.class};
     public static final Map<Class, Class> CLASS_MAP = Collections.unmodifiableMap(new HashMap<Class, Class>(ELEMENT_MODEL_CLASSES.length) {{
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) put(ELEMENT_MODEL_CLASSES[i], ELEMENT_POJO_CLASSES[i]);
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) put(ELEMENT_POJO_CLASSES[i], ELEMENT_MODEL_CLASSES[i]);
+        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) {
+            put(ELEMENT_MODEL_CLASSES[i], ELEMENT_POJO_CLASSES[i]);
+            put(ELEMENT_POJO_CLASSES[i], ELEMENT_MODEL_CLASSES[i]);
+        }
+        // --
+        for (int i = 0; i < ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED.length; i++) {
+            put(ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i]);
+            put(ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i]);
+
+        }
     }});
 
     int getId();
@@ -43,37 +50,48 @@ public interface ElementModel<T> {
     IntegerProperty idProperty();
 
     /**
-     * Put a hard copy in a map with a new Id
+     * Puts a hard copy in a map with a new Id
+     *
      * @param newId new element id
-     * @param map target map
+     * @param map   target map
      */
     void cloneToMap(int newId, Map<Integer, T> map);
 
     /**
-     * Put a hard copy in a the map
+     * Puts a hard copy in a the map
+     *
      * @param map target map
      */
     void copyToMap(Map<Integer, T> map);
 
     /**
-     * Put a shallow copy in the map
+     * Puts a shallow copy in the map
+     *
      * @param map target map
      */
     void insertInToMap(Map<Integer, T> map);
 
     /**
-     * Put a shallow copy in the collection
+     * Puts a shallow copy in the collection
+     *
      * @param collection target collection
      */
     void insertInToCollection(Collection<T> collection);
 
     /**
-     * Put a new element in the map
-     * @param modelMap target map
+     * Puts a new element in the map
+     *
+     * @param map target map
      * @return the newly created element
      * @see ElementModelFactory
      */
-    T createNewInMap(Map<Integer, T> modelMap);
+    T createNewInMap(Map<Integer, T> map);
+
+    /**
+     * Removes this element from the map
+     * @param map target map
+     */
+    void removeFromMap(Map<Integer, T> map);
 
     /**
      * Equivalent to a set. Flags are true if they are included in the list, false otherwise.
@@ -98,6 +116,7 @@ public interface ElementModel<T> {
 
     /**
      * Sets flags to false (i.e. remove flags from the list), ignores repeated flags
+     *
      * @param f flag array to unset
      */
     default void unsetFlag(Flag... f) {
@@ -111,6 +130,7 @@ public interface ElementModel<T> {
 
     /**
      * Flips flags state, like doing {@code xor true}
+     *
      * @param f flag array to switch
      */
     default void switchFlag(Flag... f) {
