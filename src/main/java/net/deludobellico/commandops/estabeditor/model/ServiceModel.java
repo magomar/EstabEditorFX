@@ -5,12 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 29/10/2014.
  */
-public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
+public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Service> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -73,6 +75,37 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
         symbolColor.set(iconColors.getSymbolColor());
         pojo.getForce().stream().map(ForceModel::new).forEach(force::add);
         flags.addAll(pojo.getFlags());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, ServiceModel> map) {
+        Service copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new ServiceModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, ServiceModel> map) {
+        Service copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new ServiceModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, ServiceModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<ServiceModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public ServiceModel createNewInMap(Map<Integer, ServiceModel> modelMap) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     public int getId() {
@@ -248,9 +281,9 @@ public class ServiceModel implements ElementModel, PojoJFXModel<Service> {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
-        result = (int) (31 * result + rankList.stream().map(RankModel::hashCode).count());
-        result = (int) (31 * result + force.stream().map(ForceModel::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
+        result = 31 * result + rankList.stream().mapToInt(RankModel::hashCode).sum();
+        result = 31 * result + force.stream().mapToInt(ForceModel::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + getLargeInsignia();
         result = 31 * result + getSmallInsignia();

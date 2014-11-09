@@ -11,12 +11,13 @@ public class Stopwatch {
      *
      */
     public void start() {
-        start = System.currentTimeMillis(); // start timing
+        start = System.nanoTime(); // start timing
         stop = start;
     }
 
-    public void stop() {
-        stop = System.currentTimeMillis();
+    public long stop() {
+        stop = System.nanoTime();
+        return stop;
     }
 
 
@@ -25,7 +26,7 @@ public class Stopwatch {
     }
 
     public long getTimeFromLastStop() {
-        return System.currentTimeMillis() - stop;
+        return System.nanoTime() - stop;
     }
 
     @Override

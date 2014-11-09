@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Mario on 28/10/2014.
  */
-public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
+public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -95,6 +96,39 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
         mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(performances::add);
         flags.addAll(pojo.getFlags());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, WeaponModel> map) {
+        Weapon copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new WeaponModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, WeaponModel> map) {
+        Weapon copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new WeaponModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, WeaponModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<WeaponModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public WeaponModel createNewInMap(Map<Integer, WeaponModel> modelMap) {
+        WeaponModel newElement = ElementModelFactory.createWeapon();
+        modelMap.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     public int getId() {
@@ -317,8 +351,8 @@ public class WeaponModel implements ElementModel, PojoJFXModel<Weapon> {
     public int hashCode() {
         // id
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
-        result = (int) (31 * result + performances.stream().map(PerformanceModel::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
+        result = 31 * result + performances.stream().mapToInt(PerformanceModel::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
         result = 31 * result + (getType() != null ? getType().hashCode() : 0);

@@ -73,12 +73,12 @@ public class FormationEffectsModelTest {
         FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
@@ -87,12 +87,12 @@ public class FormationEffectsModelTest {
         FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

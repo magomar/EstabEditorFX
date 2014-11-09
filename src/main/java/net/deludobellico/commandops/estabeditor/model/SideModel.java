@@ -7,12 +7,14 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Insignia;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 29/10/2014.
  */
-public class SideModel implements ElementModel, PojoJFXModel<Side> {
+public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -66,6 +68,37 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
         pojo.getNation().stream()
                 .map(NationModel::new)
                 .forEach(nation::add);
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, SideModel> map) {
+        Side copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new SideModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, SideModel> map) {
+        Side copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new SideModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, SideModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<SideModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public SideModel createNewInMap(Map<Integer, SideModel> modelMap) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     public int getId() {
@@ -204,8 +237,8 @@ public class SideModel implements ElementModel, PojoJFXModel<Side> {
     public int hashCode() {
         // id
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
-        result = (int) (31 * result + nation.stream().map(NationModel::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
+        result = 31 * result + nation.stream().mapToInt(NationModel::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + getLargeInsignia();
         result = 31 * result + getSmallInsignia();

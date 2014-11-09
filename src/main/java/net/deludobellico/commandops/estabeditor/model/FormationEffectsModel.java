@@ -9,12 +9,14 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationEffects;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FormationType;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 04/11/2014.
  */
-public class FormationEffectsModel implements ElementModel, PojoJFXModel<FormationEffects> {
+public class FormationEffectsModel implements ElementModel<FormationEffectsModel>, PojoJFXModel<FormationEffects> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private List<Flag> flags = FXCollections.observableArrayList();
@@ -39,6 +41,37 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
     public void setPojo(FormationEffects pojo) {
         id.set(pojo.getId());
         name.set(pojo.getType().value());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, FormationEffectsModel> map) {
+        FormationEffects copy = getPojo();
+        copy.setId(newId);
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new FormationEffectsModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, FormationEffectsModel> map) {
+        FormationEffects copy = getPojo();
+        copy.getFlags().add((Flag.COPY));
+        map.put(copy.getId(), new FormationEffectsModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, FormationEffectsModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<FormationEffectsModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public FormationEffectsModel createNewInMap(Map<Integer, FormationEffectsModel> modelMap) {
+//        FormationEffectsModel newElement = ElementModelFactory.create()
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     @Override
@@ -98,7 +131,7 @@ public class FormationEffectsModel implements ElementModel, PojoJFXModel<Formati
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
 //        int result = id.hashCode();
         return result;
 

@@ -7,7 +7,10 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoLoad;
 
 /**
- * Created by Mario on 28/10/2014.
+ * Model wrapper for the AmmoLoad class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -82,7 +85,7 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
         AmmoLoadModel that = (AmmoLoadModel) o;
 
         //if (getId() != that.getId()) return false;
-        if (getName() != null ? !getName().equals(that.getName()) : that.getName() !=null ) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         return getLoad() == that.getLoad();
 
     }

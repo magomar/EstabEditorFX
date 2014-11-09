@@ -1,7 +1,6 @@
 package net.deludobellico.commandops.test.model;
 
 import net.deludobellico.commandops.estabeditor.model.RankModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -6,7 +6,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
 
-
+/**
+ * Model wrapper for the Equipment class
+ *
+ * @author Mario
+ * @author Heine
+ */
 public class EquipmentModel implements PojoJFXModel<Equipment> {
 
     private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();

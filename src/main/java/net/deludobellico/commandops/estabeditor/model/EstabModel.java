@@ -11,7 +11,10 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * Created by mario on 30-Jul-14.
+ * Manages all elements in the Estab.
+ *
+ * @author Mario
+ * @author Heine
  */
 public class EstabModel {
     private static final Logger LOG = Logger.getLogger(EstabModel.class.getName());
@@ -22,7 +25,6 @@ public class EstabModel {
     private Map<Integer, AmmoModel> ammos;
     private Map<Integer, FormationEffectsModel> formationEffects;
     //TODO radios
-    // shouldn't this map work? it says: capture in ? extends ElementModel cannot be applied to ElementModel
     private Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
     public EstabModel(File estabFile) {
@@ -127,26 +129,27 @@ public class EstabModel {
         return ammos;
     }
 
+    public Map<Class, Map<Integer, ? extends ElementModel>> getAllElements() {
+        return allElements;
+    }
+
     public List<ElementModel> searchElement(String name, Class elementModelClass) {
-        String lowerCase = name.toLowerCase();
         return allElements.get(elementModelClass).values().parallelStream()
-                .filter(element -> element.getName().toLowerCase().contains(lowerCase))
+                .filter(element -> element.getName().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.<ElementModel>toList());
     }
 
     private List<WeaponModel> getWeaponListFromVehicle(VehicleModel vehicle) {
-        List<WeaponModel> weaponList = new ArrayList<>();
+        List<WeaponModel> weaponList = new ArrayList<>(vehicle.getArmaments().size());
         for (ArmamentModel armament : vehicle.getArmaments()) {
             WeaponModel weapon = weapons.get(armament.getEquipmentObjectId());
-            if (weapon != null) {
-                weaponList.add(weapon);
-            }
+            if (weapon != null) weaponList.add(weapon);
         }
         return weaponList;
     }
 
     private List<AmmoModel> getAmmoListFromWeapon(WeaponModel weapon) {
-        List<AmmoModel> ammoList = new ArrayList<>();
+        List<AmmoModel> ammoList = new ArrayList<>(weapon.getPerformances().size());
 
         for (PerformanceModel performance : weapon.getPerformances()) {
             AmmoModel ammo = ammos.get(performance.getAmmoLoad().getId());
@@ -158,6 +161,9 @@ public class EstabModel {
     }
 
     /**
+     * Searches for all the related elements. For example, all weapons used by a vehicle,
+     * or all ammo used by a collection of weapons.
+     *
      * {@link #sortRelatedElements} has to be invoked in order to clean NonRepeated lists
      *
      * @param elements
@@ -167,27 +173,20 @@ public class EstabModel {
         return getRelatedElements(elements, null);
     }
 
-    //TODO: change ElementModel to Collection<ElementModel>
     public RelatedElementLists getRelatedElements(Collection<ElementModel> elements, EstabModel targetModel) {
 
         RelatedElementLists relatedElementLists = new RelatedElementLists();
-        for (ElementModel elementModel : elements) {
-            if (elementModel.getClass() == VehicleModel.class) {
-                relatedElementLists.getAllVehicles().add((VehicleModel) elementModel);
-            } else if (elementModel.getClass() == WeaponModel.class) {
-                relatedElementLists.getAllWeapons().add((WeaponModel) elementModel);
-            } else {
-                relatedElementLists.getAllAmmo().add((AmmoModel) elementModel);
-            }
-        }
-        for (VehicleModel v : relatedElementLists.getAllVehicles()) {
-            List<WeaponModel> weapons = getWeaponListFromVehicle(v);
-            relatedElementLists.getAllWeapons().addAll(weapons);
+        for (ElementModel elementModel : elements)
+            elementModel.insertInToCollection(relatedElementLists.getAll(elementModel.getClass()));
+
+        for (ElementModel v : relatedElementLists.getAll(VehicleModel.class)) {
+            List<WeaponModel> weapons = getWeaponListFromVehicle((VehicleModel) v);
+            relatedElementLists.getAll(WeaponModel.class).addAll(weapons);
         }
 
-        for (WeaponModel w : relatedElementLists.getAllWeapons()) {
-            List<AmmoModel> ammo = getAmmoListFromWeapon(w);
-            relatedElementLists.getAllAmmo().addAll(ammo);
+        for (ElementModel w : relatedElementLists.getAll(WeaponModel.class)) {
+            List<AmmoModel> ammo = getAmmoListFromWeapon((WeaponModel) w);
+            relatedElementLists.getAll(AmmoModel.class).addAll(ammo);
         }
 
         if (targetModel != null) {
@@ -203,38 +202,14 @@ public class EstabModel {
      */
     public void sortRelatedElements(RelatedElementLists relatedElementLists, EstabModel targetModel) {
 
+        for (Class modelClass : ElementModel.ELEMENT_MODEL_CLASSES) {
+            for (ElementModel e : relatedElementLists.getAll(modelClass)) {
+                if (targetModel.getAllElements().get(modelClass).containsKey(e.getId()))
+                     relatedElementLists.getRepeated(modelClass).add(e);
+                else relatedElementLists.getNonRepeated(modelClass).add(e);
+            }
+        }
         relatedElementLists.setSorted(true);
-        relatedElementLists.getNonRepeatedVehicles().addAll(relatedElementLists.getAllVehicles());
-        relatedElementLists.getNonRepeatedWeapons().addAll(relatedElementLists.getAllWeapons());
-        relatedElementLists.getNonRepeatedAmmo().addAll(relatedElementLists.getAllAmmo());
-
-        //Iterators are the only way to safe delete while iterating
-        Iterator<VehicleModel> itV = relatedElementLists.getNonRepeatedVehicles().iterator();
-        while (itV.hasNext()) {
-            VehicleModel v = itV.next();
-            if (targetModel.getVehicles().containsKey(v.getId())) {
-                relatedElementLists.getRepeatedVehicles().add(v);
-                itV.remove();
-            }
-        }
-
-        Iterator<WeaponModel> itW = relatedElementLists.getNonRepeatedWeapons().iterator();
-        while (itW.hasNext()) {
-            WeaponModel w = itW.next();
-            if (targetModel.getWeapons().containsKey(w.getId())) {
-                relatedElementLists.getRepeatedWeapons().add(w);
-                itW.remove();
-            }
-        }
-
-        Iterator<AmmoModel> itA = relatedElementLists.getNonRepeatedAmmo().iterator();
-        while (itA.hasNext()) {
-            AmmoModel a = itA.next();
-            if (targetModel.getAmmo().containsKey(a.getId())) {
-                relatedElementLists.getRepeatedAmmo().add(a);
-                itA.remove();
-            }
-        }
     }
 
     public boolean remove(Collection selectedItems) {
@@ -265,15 +240,15 @@ public class EstabModel {
         String newLine = System.getProperty("line.separator");
         StringBuilder logMessage = new StringBuilder("Removing elements:" + newLine);
 
-        relatedElementLists.getAllVehicles().stream().forEach(v -> {
+        relatedElementLists.getAll(VehicleModel.class).stream().forEach(v -> {
             logMessage.append("-- ").append(v.print()).append(newLine);
             vehicles.remove(v.getId());
         });
-        relatedElementLists.getAllWeapons().stream().forEach(w -> {
+        relatedElementLists.getAll(WeaponModel.class).stream().forEach(w -> {
             logMessage.append("-- ").append(w.print()).append(newLine);
             weapons.remove(w.getId());
         });
-        relatedElementLists.getAllAmmo().stream().forEach(a -> {
+        relatedElementLists.getAll(AmmoModel.class).stream().forEach(a -> {
             logMessage.append("-- ").append(a.print()).append(newLine);
             ammos.remove(a.getId());
         });
@@ -283,69 +258,52 @@ public class EstabModel {
 
     }
 
-    public boolean paste(RelatedElementLists relatedElementLists, DialogAction answer, Collection selectedItems) {
+    public boolean paste(RelatedElementLists relatedElementLists, DialogAction answer, Collection<ElementModel> selectedItems) {
 
         String newLine = System.getProperty("line.separator");
         if (answer.equals(DialogAction.OVERWRITE)) {
             StringBuilder logMessage = new StringBuilder("Copying elements (Overwriting repeated): " + newLine);
 
-            for (VehicleModel v : relatedElementLists.getAllVehicles()) {
+            for (ElementModel v : relatedElementLists.getAll(VehicleModel.class)) {
                 v.setFlag(Flag.COPY);
-                vehicles.put(v.getId(), v);
+                vehicles.put(v.getId(), (VehicleModel) v);
                 logMessage.append("-- ").append(v.print()).append(newLine);
             }
-            for (WeaponModel w : relatedElementLists.getAllWeapons()) {
+            for (ElementModel w : relatedElementLists.getAll(WeaponModel.class)) {
                 w.setFlag(Flag.COPY);
-                weapons.put(w.getId(), w);
+                weapons.put(w.getId(), (WeaponModel) w);
                 logMessage.append("-- ").append(w.print()).append(newLine);
             }
-            for (AmmoModel a : relatedElementLists.getAllAmmo()) {
+            for (ElementModel a : relatedElementLists.getAll(AmmoModel.class)) {
                 a.setFlag(Flag.COPY);
-                ammos.put(a.getId(), a);
+                ammos.put(a.getId(), (AmmoModel) a);
                 logMessage.append("-- ").append(a.print()).append(newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else if (answer.equals(DialogAction.SKIP_REPEATED)) {
             StringBuilder logMessage = new StringBuilder("Copying elements (Skipping repeated): " + newLine);
 
-            for (VehicleModel v : relatedElementLists.getNonRepeatedVehicles()) {
+            for (ElementModel v : relatedElementLists.getNonRepeated(VehicleModel.class)) {
                 v.setFlag(Flag.COPY);
-                vehicles.put(v.getId(), v);
+                vehicles.put(v.getId(), (VehicleModel) v);
                 logMessage.append("-- ").append(v.print()).append(newLine);
             }
-            for (WeaponModel w : relatedElementLists.getNonRepeatedWeapons()) {
+            for (ElementModel w : relatedElementLists.getNonRepeated(WeaponModel.class)) {
                 w.setFlag(Flag.COPY);
-                weapons.put(w.getId(), w);
+                weapons.put(w.getId(), (WeaponModel) w);
                 logMessage.append("-- ").append(w.print()).append(newLine);
             }
-            for (AmmoModel a : relatedElementLists.getNonRepeatedAmmo()) {
+            for (ElementModel a : relatedElementLists.getNonRepeated(AmmoModel.class)) {
                 a.setFlag(Flag.COPY);
-                ammos.put(a.getId(), a);
+                ammos.put(a.getId(), (AmmoModel) a);
                 logMessage.append("-- ").append(a.print()).append(newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else if (answer.equals(DialogAction.COPY_SELECTION)) {
             StringBuilder logMessage = new StringBuilder("Copying elements (Selected only): " + newLine);
-            for (Object selectedItem : selectedItems) {
-                if (selectedItem instanceof AmmoModel) {
-                    Ammo a = ((AmmoModel) selectedItem).getPojo();
-                    a.getFlags().add((Flag.COPY));
-                    AmmoModel am = new AmmoModel(a);
-                    ammos.put(am.getId(), am);
-                    logMessage.append("-- ").append(am.print()).append(newLine);
-                } else if (selectedItem instanceof WeaponModel) {
-                    Weapon w = ((WeaponModel) selectedItem).getPojo();
-                    w.getFlags().add(Flag.COPY);
-                    WeaponModel wm = new WeaponModel(w);
-                    weapons.put(wm.getId(), wm);
-                    logMessage.append("-- ").append(wm.print()).append(newLine);
-                } else if (selectedItem instanceof VehicleModel) {
-                    Vehicle v = ((VehicleModel) selectedItem).getPojo();
-                    v.getFlags().add(Flag.COPY);
-                    VehicleModel vm = new VehicleModel(v);
-                    vehicles.put(vm.getId(), vm);
-                    logMessage.append("-- ").append(vm.print()).append(newLine);
-                }
+            for (ElementModel selectedItem : selectedItems) {
+                selectedItem.copyToMap(allElements.get(selectedItem.getClass()));
+                logMessage.append("-- ").append(selectedItem.print()).append(newLine);
             }
             LOG.log(Level.INFO, logMessage.toString());
         } else {
@@ -356,46 +314,19 @@ public class EstabModel {
     }
 
     // TODO: implement hard copy
+    @SuppressWarnings("unchecked")
     public void duplicate(Collection<ElementModel> selectedItems) {
-        for (ElementModel original : selectedItems) {
-            if (original instanceof AmmoModel) {
-                Ammo copy = ((AmmoModel) original).getPojo();
-                copy.setId(ElementModelFactory.incrementMaxId());
-                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
-                copy.getFlags().add(Flag.NEW);
-                ammos.put(copy.getId(), new AmmoModel(copy));
-            } else if (original instanceof WeaponModel) {
-                Weapon copy = ((WeaponModel) original).getPojo();
-                copy.setId(ElementModelFactory.incrementMaxId());
-                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
-                copy.getFlags().add(Flag.NEW);
-                weapons.put(copy.getId(), new WeaponModel(copy));
-            } else if (original instanceof VehicleModel) {
-                Vehicle copy = ((VehicleModel) original).getPojo();
-                copy.setId(ElementModelFactory.incrementMaxId());
-                copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
-                copy.getFlags().add(Flag.NEW);
-                vehicles.put(copy.getId(), new VehicleModel(copy));
-            } else {
-                // throw
-                return;
-            }
-            ElementModel copy = PojoJFXModel.wrapper(((PojoJFXModel) original).getPojo());
-            copy.setId(ElementModelFactory.incrementMaxId());
-            copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
-            copy.getFlags().add(Flag.NEW);
-
-        }
+        for (ElementModel selectedItem : selectedItems)
+            selectedItem.cloneToMap(ElementModelFactory.incrementMaxId(), allElements.get(selectedItem.getClass()));
     }
 
     public void saveToFile(File file) {
         EstabData data = new EstabData();
-        // lambdas are beautiful
-        images.values().stream().map(ImageModel::getPojo).forEach(data.getImage()::add);
-        vehicles.values().stream().map(VehicleModel::getPojo).forEach(data.getVehicle()::add);
-        weapons.values().stream().map(WeaponModel::getPojo).forEach(data.getWeapon()::add);
-        ammos.values().stream().map(AmmoModel::getPojo).forEach(data.getAmmo()::add);
-        formationEffects.values().stream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
+        images.values().parallelStream().map(ImageModel::getPojo).forEach(data.getImage()::add);
+        vehicles.values().parallelStream().map(VehicleModel::getPojo).forEach(data.getVehicle()::add);
+        weapons.values().parallelStream().map(WeaponModel::getPojo).forEach(data.getWeapon()::add);
+        ammos.values().parallelStream().map(AmmoModel::getPojo).forEach(data.getAmmo()::add);
+        formationEffects.values().parallelStream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
         FileIO.saveEstab(data, file);
     }
 

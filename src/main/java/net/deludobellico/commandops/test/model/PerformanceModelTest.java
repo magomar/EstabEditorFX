@@ -5,7 +5,6 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.FireType;
 import net.deludobellico.commandops.estabeditor.model.AmmoLoadModel;
 import net.deludobellico.commandops.estabeditor.model.PerformanceModel;
 import net.deludobellico.commandops.estabeditor.model.RangeItemModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;

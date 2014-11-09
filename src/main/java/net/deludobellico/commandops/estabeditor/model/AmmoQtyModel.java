@@ -7,7 +7,10 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoQty;
 
 /**
- * Created by Heine on 10/31/2014.
+ * Model wrapper for the AmmoQty class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
 

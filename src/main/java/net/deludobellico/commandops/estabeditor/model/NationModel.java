@@ -10,12 +10,14 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Insignia;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Nation;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 29/10/2014.
  */
-public class NationModel implements ElementModel, PojoJFXModel<Nation> {
+public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nation> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -60,6 +62,37 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
         pojo.getService().stream().map(ServiceModel::new).forEach(service::add);
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, NationModel> map) {
+        Nation copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new NationModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, NationModel> map) {
+        Nation copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new NationModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, NationModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<NationModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public NationModel createNewInMap(Map<Integer, NationModel> modelMap) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     public int getId() {
@@ -175,8 +208,8 @@ public class NationModel implements ElementModel, PojoJFXModel<Nation> {
     public int hashCode() {
 //        int result = id != null ? id.hashCode() : 0;
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
-        result = (int) (31 * result + service.stream().map(ServiceModel::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
+        result = 31 * result + service.stream().mapToInt(ServiceModel::hashCode).sum();
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + (getNationality() != null ? getNationality().hashCode() : 0);

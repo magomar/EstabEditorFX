@@ -103,7 +103,7 @@ public class AmmoModelTest {
         ours.setDescription(null);
         ours.setMinOrderQty(minOrderQty);
         ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         AmmoModel other = new AmmoModel();
         other.setId(id);
@@ -111,7 +111,7 @@ public class AmmoModelTest {
         other.setDescription(null);
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
@@ -123,7 +123,7 @@ public class AmmoModelTest {
         ours.setDescription(null);
         ours.setMinOrderQty(minOrderQty);
         ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         AmmoModel other = new AmmoModel();
         other.setId(id);
@@ -131,7 +131,7 @@ public class AmmoModelTest {
         other.setDescription(null);
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

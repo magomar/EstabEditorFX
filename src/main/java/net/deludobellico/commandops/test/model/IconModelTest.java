@@ -5,7 +5,6 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 import net.deludobellico.commandops.estabeditor.model.IconModel;
 import net.deludobellico.commandops.estabeditor.model.RGBColorModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

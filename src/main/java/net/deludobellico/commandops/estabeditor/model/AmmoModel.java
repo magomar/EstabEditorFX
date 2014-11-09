@@ -6,12 +6,17 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Ammo;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by Mario on 28/10/2014.
+ * Model wrapper for the Ammo class
+ *
+ * @author Mario
+ * @author Heine
  */
-public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
+public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -47,6 +52,39 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
         minOrderQty.set(pojo.getMinOrderQty());
         minOrderWeight.set(pojo.getMinOrderWeight());
         flags.addAll(pojo.getFlags());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, AmmoModel> map) {
+        Ammo copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new AmmoModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, AmmoModel> map) {
+        Ammo copy = getPojo();
+        copy.getFlags().add((Flag.COPY));
+        map.put(copy.getId(), new AmmoModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, AmmoModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<AmmoModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public AmmoModel createNewInMap(Map<Integer, AmmoModel> modelMap) {
+        AmmoModel newElement = ElementModelFactory.createAmmo();
+        modelMap.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     public int getId() {
@@ -126,8 +164,9 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
 
         AmmoModel that = (AmmoModel) o;
         //if(getId() != that.getId()) return false;
-        if (getName() != null ? !getName().equals(that.getName()) : that.getName() !=null ) return false;
-        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() !=null ) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
+            return false;
         if (getMinOrderQty() != that.getMinOrderQty()) return false;
         if (getMinOrderWeight() != that.getMinOrderWeight()) return false;
         return !(that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()));
@@ -136,7 +175,7 @@ public class AmmoModel implements ElementModel, PojoJFXModel<Ammo> {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = (int) (31 * result + flags.stream().mapToInt(Flag::hashCode).sum());
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + getMinOrderQty();
         result = (int) (31 * result + getMinOrderWeight());

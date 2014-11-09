@@ -195,7 +195,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         result = (int) (31 * result + getRapidROF());
         result = 31 * result + getBurstRadius();
         result = (int) (31 * result + getShellWeight());
-        result = (int) (31 * result + ranges.stream().map(RangeItemModel::hashCode).count());
+        result = 31 * result + ranges.stream().mapToInt(RangeItemModel::hashCode).sum();
         result = 31 * result + (getFireType() != null ? getFireType().hashCode() : 0);
         return result;
     }

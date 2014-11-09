@@ -4,12 +4,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
-import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +44,8 @@ public class EstabController implements Initializable {
         put(WeaponModel.class, FileIO.WEAPON_VIEW);
         put(AmmoModel.class, FileIO.AMMO_VIEW);
     }});
-
+    // Active element = element currently displayed
+    private final ObjectProperty<ElementModel> activeElement = new SimpleObjectProperty<>();
     @FXML
     private TitledPane estabPane;
     /**
@@ -55,7 +53,6 @@ public class EstabController implements Initializable {
      */
     @FXML
     private AnchorPane editorPane;
-
     /**
      * Buttons filter searches by element
      */
@@ -65,7 +62,6 @@ public class EstabController implements Initializable {
     private ToggleButton weaponButton;
     @FXML
     private ToggleButton ammoButton;
-
     /**
      * Where part or all of the element name is typed to search
      */
@@ -81,10 +77,8 @@ public class EstabController implements Initializable {
     private Button copySelectedButton;
     @FXML
     private ListView<ElementListCell> searchResultsListView;
-
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
-    private ObservableSet<ElementModel> selectedElementsSet = FXCollections.observableSet(new HashSet<>());
-
+    private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
     // Controls when search is enabled
     private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
     // Current search list elements class, Vehicle is the default
@@ -95,21 +89,15 @@ public class EstabController implements Initializable {
             put(elementModelClass, new SavedSearchList<>());
         }
     }};
-
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
     private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
-
     // Main controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
     private MainController mainController = null;
     private ElementEditorController<ElementModel> elementEditorController = null;
     private EstabModel estabModel;
-
     // Source estab data isn't editable, target estab data is editable
     private boolean isEditable = false;
-
-    // Active element = element currently displayed
-    private ElementModel activeElement = null;
     private File activeFile = null;
 
     /**
@@ -125,14 +113,15 @@ public class EstabController implements Initializable {
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement());
 
         // Disable copy and remove buttons if there are no selected items
-        selectedElementsSet.addListener((SetChangeListener<ElementModel>) change -> {
-            if (selectedElementsSet.isEmpty()) {
+        selectedElements.addListener((ListChangeListener<ElementModel>) change -> {
+            // TODO: enable copy only when the target is opened
+            if (selectedElements.isEmpty()) {
                 copySelectedButton.setDisable(true);
                 removeSelectedButton.setDisable(true);
             } else {
                 selectNoneListCheckBox.setSelected(false);
-                copySelectedButton.setDisable(false);
                 removeSelectedButton.setDisable(false);
+                copySelectedButton.setDisable(false);
             }
         });
 
@@ -143,8 +132,12 @@ public class EstabController implements Initializable {
 
         });
         selectNoneListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::unselect);
-            if (newValue) selectAllListCheckBox.setSelected(false);
+            if (newValue) {
+                // It's important to clear the collection first in order to optimize the removal
+                selectedElements.clear();
+                searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
+                selectAllListCheckBox.setSelected(false);
+            }
         });
 
         // Each cell is associated to an element model
@@ -156,12 +149,12 @@ public class EstabController implements Initializable {
 
         // Disable buttons when search is disabled
         searchDisable.addListener((observable, oldValue, newValue) -> {
-                vehicleButton.setDisable(newValue);
-                weaponButton.setDisable(newValue);
-                ammoButton.setDisable(newValue);
-                searchTextField.setDisable(newValue);
-                selectAllListCheckBox.setDisable(newValue);
-                selectNoneListCheckBox.setDisable(newValue);
+            vehicleButton.setDisable(newValue);
+            weaponButton.setDisable(newValue);
+            ammoButton.setDisable(newValue);
+            searchTextField.setDisable(newValue);
+            selectAllListCheckBox.setDisable(newValue);
+            selectNoneListCheckBox.setDisable(newValue);
         });
 
 
@@ -279,7 +272,7 @@ public class EstabController implements Initializable {
             List<ElementModel> elements = estabModel.searchElement(textToSearch, activeSearchListClass);
             for (ElementModel element : elements) {
                 ElementListCell cell;
-                cell = new ElementListCell(element, selectedElementsSet);
+                cell = new ElementListCell(element, selectedElements);
                 elementListCells.add(cell);
                 savedList.getList().add(cell);
             }
@@ -287,29 +280,17 @@ public class EstabController implements Initializable {
     }
 
     /**
-     * @param elementClass the class of the new element
+     * @param newElement
      */
-    public void createNewElement(Class elementClass) {
-        ElementModel newElement;
-        if (elementClass == VehicleModel.class) {
-            newElement = ElementModelFactory.createVehicle();
-            estabModel.getVehicles().put(newElement.getId(), (VehicleModel) newElement);
-        } else if (elementClass == WeaponModel.class) {
-            newElement = ElementModelFactory.createWeapon();
-            estabModel.getWeapons().put(newElement.getId(), (WeaponModel) newElement);
-        } else if (elementClass == AmmoModel.class) {
-            newElement = ElementModelFactory.createAmmo();
-            estabModel.getAmmo().put(newElement.getId(), (AmmoModel) newElement);
-        } else {
-            return;
-        }
+    public void createNewElement(ElementModel newElement) {
+        newElement = (ElementModel) newElement.createNewInMap(estabModel.getAllElements().get(newElement.getClass()));
         setActiveElement(newElement);
         update();
     }
 
     /**
      * Copies elements into the model if possible.
-     * If there are repated elements, promt the user for an action.
+     * If there are repeated elements, prompt the user for an action.
      *
      * @param relatedElementLists the lists containing the elements to copy.
      * @return true if elements were copied, false otherwise.
@@ -334,7 +315,7 @@ public class EstabController implements Initializable {
 
     /**
      * Removes elements from the model if possible.
-     * If there are repated elements, promt the user for an action.
+     * If there are repeated elements, prompt the user for an action.
      *
      * @param relatedElements this lists containing the elements to remove.
      * @return true if elements were removed, false otherwise.
@@ -342,7 +323,6 @@ public class EstabController implements Initializable {
      */
     public boolean removeRelatedElements(RelatedElementLists relatedElements) {
         List<ElementModel> elementsToRemoveList = relatedElements.getAllElements();
-
         // In case the user only wants to select some items, pass this empty collection to save them
         Collection<ElementModel> selectedItems = new ArrayList<>();
         DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemoveList, selectedItems);
@@ -352,7 +332,7 @@ public class EstabController implements Initializable {
             // In case the removed element is active in the editor
             // TODO: decide if this condition should be checked in the model
             for (ElementModel e : elementsToRemoveList)
-                if (activeElement != null && e.getId() == activeElement.getId()) {
+                if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
                     clear();
                     break;
                 }
@@ -361,7 +341,7 @@ public class EstabController implements Initializable {
             // Remove only selected elements by the user
             // In case the removed element is active in the editor
             for (ElementModel e : elementsToRemoveList)
-                if (activeElement != null && e.getId() == activeElement.getId()) {
+                if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
                     clear();
                     break;
                 }
@@ -382,38 +362,39 @@ public class EstabController implements Initializable {
 
     /**
      * Removes elements with selected check boxes
-     *
-     * @param actionEvent is not used
      */
-    public void removeSelectedItems(ActionEvent actionEvent) {
-        removeRelatedElements(estabModel.getRelatedElements(selectedElementsSet));
+    public void removeSelectedItems() {
+        removeRelatedElements(estabModel.getRelatedElements(selectedElements));
+        selectedElements.clear();
+        searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
     }
 
     /**
      * Duplicates all the elements received in a collection
+     *
      * @param selectedItems the collection containing the items to duplicate
-     * @return true if succes, false otherwise
+     * @return true if success, false otherwise
      */
     public boolean duplicateSelectedElements(Collection<ElementModel> selectedItems) {
-        if(!isEditable) return false;
+        if (!isEditable) return false;
         estabModel.duplicate(selectedItems);
         update();
         return true;
     }
+
     /**
      * Copy elements with selected check boxes, or duplicates them if this is the target estab
-     *
-     * @param actionEvent is not used
      */
-    public void copySelectedElements(ActionEvent actionEvent) {
+    public void copySelectedElements() {
         if (isEditable) {
             // Target, duplicate
-            duplicateSelectedElements(selectedElementsSet);
+            duplicateSelectedElements(selectedElements);
         } else {
             // Source, copy
-            mainController.copyElementsToTarget(selectedElementsSet);
+            mainController.copyElementsToTarget(selectedElements);
         }
-        selectedElementsSet.clear();
+        selectedElements.clear();
+        searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
     }
 
     /**
@@ -487,8 +468,7 @@ public class EstabController implements Initializable {
         this.mainController = mainController;
     }
 
-
-    public ElementModel getActiveElement() {
+    public ObjectProperty<ElementModel> getActiveElement() {
         return activeElement;
     }
 
@@ -502,11 +482,10 @@ public class EstabController implements Initializable {
             Class elementClass = elementModel.getClass();
             // If the current element isn't set (null) or it's from other class than the one we want to display
             // then update the editor
-            if (activeElement == null || !activeElement.getClass().equals(elementClass)) {
-                if (!editorPane.getChildren().isEmpty()) {
+            if (activeElement.get() == null || !activeElement.get().getClass().equals(elementClass)) {
+                if (!editorPane.getChildren().isEmpty() && activeElement.get() != null) {
                     // Hide the active editor, if present
-                    // assert activeElement isn't null inside this if block
-                    editorPane.getChildren().get(editorPaneChildrenIndex.get(activeElement.getClass())).setVisible(false);
+                    editorPane.getChildren().get(editorPaneChildrenIndex.get(activeElement.get().getClass())).setVisible(false);
                 }
                 // if we have saved the controller and editorPane, use them; else load them
                 if (elementEditorControllers.containsKey(elementClass)) {
@@ -532,7 +511,7 @@ public class EstabController implements Initializable {
                 }
             }
             elementEditorController.setActiveElement(elementModel);
-            activeElement = elementModel;
+            activeElement.set(elementModel);
         }
     }
 

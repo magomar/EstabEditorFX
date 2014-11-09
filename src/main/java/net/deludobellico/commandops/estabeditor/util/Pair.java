@@ -14,6 +14,12 @@ public class Pair<K, V> {
         this.printKey = printKey;
     }
 
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+        this.printKey = false;
+    }
+
     public K getKey() {
         return key;
     }
@@ -24,5 +30,25 @@ public class Pair<K, V> {
 
     public String toString() {
         return printKey ? key.toString() : value.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pair pair = (Pair) o;
+
+        if (!key.equals(pair.key)) return false;
+        if (!value.equals(pair.value)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = key.hashCode();
+        result = 31 * result + value.hashCode();
+        return result;
     }
 }

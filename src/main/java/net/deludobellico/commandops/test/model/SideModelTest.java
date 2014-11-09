@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.NationModel;
 import net.deludobellico.commandops.estabeditor.model.SideModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class SideModelTest {
 
     @Test
     public void testEquals() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
@@ -58,7 +57,7 @@ public class SideModelTest {
 
     @Test
     public void testHashCode() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
@@ -90,7 +89,7 @@ public class SideModelTest {
 
     @Test
     public void testEqualsDifferentIDs() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
@@ -122,7 +121,7 @@ public class SideModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(name);
         ours.setDescription(description);
@@ -154,7 +153,7 @@ public class SideModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(null);
         ours.setDescription(null);
@@ -166,7 +165,7 @@ public class SideModelTest {
         nation.clear();
         nation.add(new NationModel());
         ours.getNation().addAll(nation);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         SideModel other = new SideModel();
         other.setId(id);
@@ -180,13 +179,13 @@ public class SideModelTest {
         nation.clear();
         nation.add(new NationModel());
         other.getNation().addAll(nation);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
-        SideModel  ours = new SideModel();
+        SideModel ours = new SideModel();
         ours.setId(id);
         ours.setName(null);
         ours.setDescription(null);
@@ -198,7 +197,7 @@ public class SideModelTest {
         nation.clear();
         nation.add(new NationModel());
         ours.getNation().addAll(nation);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         SideModel other = new SideModel();
         other.setId(id);
@@ -212,7 +211,7 @@ public class SideModelTest {
         nation.clear();
         nation.add(new NationModel());
         other.getNation().addAll(nation);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

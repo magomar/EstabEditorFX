@@ -8,7 +8,6 @@ import net.deludobellico.commandops.estabeditor.model.ForceModel;
 import net.deludobellico.commandops.estabeditor.model.RGBColorModel;
 import net.deludobellico.commandops.estabeditor.model.RankModel;
 import net.deludobellico.commandops.estabeditor.model.ServiceModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -195,7 +194,7 @@ public class ServiceModelTest {
         ours.setBackgroundDarkColor(null);
         ours.setDesignationColor(null);
         ours.setSymbolColor(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
         rankList.clear();
         force.clear();
         rankList.add(new RankModel());
@@ -212,7 +211,7 @@ public class ServiceModelTest {
         other.setBackgroundDarkColor(null);
         other.setDesignationColor(null);
         other.setSymbolColor(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         rankList.clear();
         rankList.add(new RankModel());
         force.clear();
@@ -233,7 +232,7 @@ public class ServiceModelTest {
         ours.setBackgroundDarkColor(null);
         ours.setDesignationColor(null);
         ours.setSymbolColor(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
         rankList.clear();
         force.clear();
         rankList.add(new RankModel());
@@ -251,7 +250,7 @@ public class ServiceModelTest {
         other.setBackgroundDarkColor(null);
         other.setDesignationColor(null);
         other.setSymbolColor(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         rankList.clear();
         rankList.add(new RankModel());
         force.clear();

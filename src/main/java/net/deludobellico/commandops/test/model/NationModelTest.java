@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.NationModel;
 import net.deludobellico.commandops.estabeditor.model.ServiceModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -144,7 +143,7 @@ public class NationModelTest {
         ours.setNationality(null);
         ours.setLargeInsignia(largeInsignia);
         ours.setSmallInsignia(smallInsignia);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
         services.clear();
         services.add(new ServiceModel());
         ours.getService().addAll(services);
@@ -156,7 +155,7 @@ public class NationModelTest {
         other.setNationality(null);
         other.setLargeInsignia(largeInsignia);
         other.setSmallInsignia(smallInsignia);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         services.clear();
         services.add(new ServiceModel());
         other.getService().addAll(services);
@@ -172,7 +171,7 @@ public class NationModelTest {
         ours.setNationality(null);
         ours.setLargeInsignia(largeInsignia);
         ours.setSmallInsignia(smallInsignia);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
         services.clear();
         services.add(new ServiceModel());
         ours.getService().addAll(services);
@@ -184,7 +183,7 @@ public class NationModelTest {
         other.setNationality(null);
         other.setLargeInsignia(largeInsignia);
         other.setSmallInsignia(smallInsignia);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         services.clear();
         services.add(new ServiceModel());
         other.getService().addAll(services);

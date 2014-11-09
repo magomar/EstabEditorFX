@@ -5,7 +5,6 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
 import net.deludobellico.commandops.estabeditor.model.VehicleModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -439,7 +438,7 @@ public class VehicleModelTest {
         ours.setSideArmor(sideArmor);
         ours.setRearArmor(rearArmor);
         ours.setTopArmor(topArmor);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         VehicleModel other = new VehicleModel();
         other.setId(id);
@@ -478,7 +477,7 @@ public class VehicleModelTest {
         other.setBattleWeight(battleWeight);
         other.setFrontArmor(frontArmor);
         other.setSideArmor(sideArmor);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         other.setRearArmor(rearArmor);
         other.setTopArmor(topArmor);
         assertEquals(true, ours.equals(other));
@@ -525,7 +524,7 @@ public class VehicleModelTest {
         ours.setSideArmor(sideArmor);
         ours.setRearArmor(rearArmor);
         ours.setTopArmor(topArmor);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         VehicleModel other = new VehicleModel();
         other.setId(id);
@@ -564,7 +563,7 @@ public class VehicleModelTest {
         other.setBattleWeight(battleWeight);
         other.setFrontArmor(frontArmor);
         other.setSideArmor(sideArmor);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         other.setRearArmor(rearArmor);
         other.setTopArmor(topArmor);
         assertEquals(ours.hashCode(), other.hashCode());

@@ -14,7 +14,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 
-
+/**
+ * Model wrapper for the Armament class
+ *
+ * @author Mario
+ * @author Heine
+ */
 public class ArmamentModel implements PojoJFXModel<Armament> {
 
     private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();

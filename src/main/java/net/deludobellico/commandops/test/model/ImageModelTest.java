@@ -2,7 +2,6 @@ package net.deludobellico.commandops.test.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -48,12 +47,12 @@ public class ImageModelTest {
         ImageModel ours = new ImageModel();
         ours.setName(null);
         ours.setFileId(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         ImageModel other = new ImageModel();
         other.setName(null);
         other.setFileId(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
@@ -62,12 +61,12 @@ public class ImageModelTest {
         ImageModel ours = new ImageModel();
         ours.setName(null);
         ours.setFileId(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         ImageModel other = new ImageModel();
         other.setName(null);
         other.setFileId(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

@@ -8,12 +8,14 @@ import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 03/11/2014.
  */
-public class ImageModel implements ElementModel, PojoJFXModel<Image> {
+public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty fileId = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
@@ -40,6 +42,35 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
         id.set(pojo.getId());
         fileId.set(pojo.getFileId());
         name.set(pojo.getFileId());
+    }
+
+    @Override
+    public void cloneToMap(int i, Map<Integer, ImageModel> map) {
+        Image copy = getPojo();
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new ImageModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, ImageModel> map) {
+        Image copy = getPojo();
+        copy.getFlags().add((Flag.COPY));
+        map.put(copy.getId(), new ImageModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, ImageModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<ImageModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public ImageModel createNewInMap(Map<Integer, ImageModel> modelMap) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     @Override
@@ -113,7 +144,7 @@ public class ImageModel implements ElementModel, PojoJFXModel<Image> {
     public int hashCode() {
 //        int result = id != null ? id.hashCode() : 0;
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
         result = 31 * result + (getFileId() != null ? getFileId().hashCode() : 0);
         return result;
     }

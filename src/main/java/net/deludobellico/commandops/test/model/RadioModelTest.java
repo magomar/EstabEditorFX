@@ -2,7 +2,6 @@ package net.deludobellico.commandops.test.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.RadioModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -76,12 +75,12 @@ public class RadioModelTest {
         RadioModel ours = new RadioModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
@@ -90,12 +89,12 @@ public class RadioModelTest {
         RadioModel ours = new RadioModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         RadioModel other = new RadioModel();
         other.setId(id);
         other.setName(null);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

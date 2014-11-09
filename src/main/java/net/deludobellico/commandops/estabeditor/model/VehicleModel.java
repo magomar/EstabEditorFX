@@ -5,12 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 26/10/2014.
  */
-public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
+public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -154,6 +156,39 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
         rearArmor.set(pojo.getArmour().getRear());
         topArmor.set(pojo.getArmour().getTop());
         flags.addAll(pojo.getFlags());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, VehicleModel> map) {
+        Vehicle copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new VehicleModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, VehicleModel> map) {
+        Vehicle copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new VehicleModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, VehicleModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<VehicleModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public VehicleModel createNewInMap(Map<Integer, VehicleModel> modelMap) {
+        VehicleModel newElement = ElementModelFactory.createVehicle();
+        modelMap.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     public int getId() {
@@ -596,9 +631,11 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
 
         VehicleModel that = (VehicleModel) o;
 
-        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null) return false;
-        if (getName() != null ? !getName().equals(that.getName()): that.getName() != null) return false;
-        if (getPictureFilename() != null ? !getPictureFilename().equals(that.getPictureFilename()): that.getPictureFilename() != null) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
+            return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getPictureFilename() != null ? !getPictureFilename().equals(that.getPictureFilename()) : that.getPictureFilename() != null)
+            return false;
         if (getType() != null ? !getType().equals(that.getType()) : that.getType() != null) return false;
 
         if (getBattleWeight() != (that.getBattleWeight())) return false;
@@ -643,8 +680,8 @@ public class VehicleModel implements ElementModel, PojoJFXModel<Vehicle> {
     public int hashCode() {
         // id
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
-        result = (int) (31 * result + armaments.stream().map(ArmamentModel::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
+        result = 31 * result + armaments.stream().mapToInt(ArmamentModel::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
         result = 31 * result + (getType() != null ? getType().hashCode() : 0);

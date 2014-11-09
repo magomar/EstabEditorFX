@@ -17,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.Util;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.io.IOException;
@@ -28,6 +27,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Heine on 11/3/2014.
  */
+@SuppressWarnings("unchecked")
 public class SelectionListDialog implements Initializable {
 
     @FXML
@@ -80,7 +80,7 @@ public class SelectionListDialog implements Initializable {
         dialog.setMinWidth(600);
 
         tableView.getColumns().clear();
-        tableViewTypeColumn.setCellValueFactory(param -> new SimpleStringProperty(Util.CLASS_MAP_MODEL_TO_POJO.get(param.getValue().getClass()).getSimpleName()));
+        tableViewTypeColumn.setCellValueFactory(param -> new SimpleStringProperty(ElementModel.CLASS_MAP.get(param.getValue().getClass()).getSimpleName()));
         tableViewNameColumn.setCellValueFactory(param -> param.getValue().nameProperty());
         tableView.getColumns().add(tableViewTypeColumn);
         tableView.getColumns().add(tableViewNameColumn);

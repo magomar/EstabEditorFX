@@ -6,25 +6,27 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 29/10/2014.
  */
-public class ForceModel implements ElementModel, PojoJFXModel<Force> {
+public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<>();
-    private final ObjectProperty<ForceSize> size = new SimpleObjectProperty<ForceSize>();
-    private final ObjectProperty<CombatClass> combatClass = new SimpleObjectProperty<CombatClass>();
-    private final ObjectProperty<TargetClass> targetClass = new SimpleObjectProperty<TargetClass>();
+    private final ObjectProperty<ForceSize> size = new SimpleObjectProperty<>();
+    private final ObjectProperty<CombatClass> combatClass = new SimpleObjectProperty<>();
+    private final ObjectProperty<TargetClass> targetClass = new SimpleObjectProperty<>();
     private final IntegerProperty infantryValue = new SimpleIntegerProperty();
     private final IntegerProperty reconValue = new SimpleIntegerProperty();
     private final IntegerProperty engineeringValue = new SimpleIntegerProperty();
-    private final ObjectProperty<MoveType> moveType = new SimpleObjectProperty<MoveType>();
+    private final ObjectProperty<MoveType> moveType = new SimpleObjectProperty<>();
     private final IntegerProperty persQty = new SimpleIntegerProperty();
     private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
     private final DoubleProperty basicsQty = new SimpleDoubleProperty();
@@ -35,10 +37,10 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
     private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
     private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
-    private final ObjectProperty<XMLGregorianCalendar> deployed = new SimpleObjectProperty<XMLGregorianCalendar>();
-    private final ObjectProperty<XMLGregorianCalendar> dugIn = new SimpleObjectProperty<XMLGregorianCalendar>();
-    private final ObjectProperty<XMLGregorianCalendar> entrenched = new SimpleObjectProperty<XMLGregorianCalendar>();
-    private final ObjectProperty<XMLGregorianCalendar> fortified = new SimpleObjectProperty<XMLGregorianCalendar>();
+    private final ObjectProperty<XMLGregorianCalendar> deployed = new SimpleObjectProperty<>();
+    private final ObjectProperty<XMLGregorianCalendar> dugIn = new SimpleObjectProperty<>();
+    private final ObjectProperty<XMLGregorianCalendar> entrenched = new SimpleObjectProperty<>();
+    private final ObjectProperty<XMLGregorianCalendar> fortified = new SimpleObjectProperty<>();
     private final StringProperty readyToFireDuration = new SimpleStringProperty();
     private final StringProperty readyToBombardDuration = new SimpleStringProperty();
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
@@ -151,6 +153,38 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
 
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, ForceModel> map) {
+        Force copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new ForceModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, ForceModel> map) {
+        Force copy = getPojo();
+        copy.getFlags().add((Flag.COPY));
+        map.put(copy.getId(), new ForceModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, ForceModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<ForceModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public ForceModel createNewInMap(Map<Integer, ForceModel> modelMap) {
+        // ElementModelFactory.create()
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     public IntegerProperty idProperty() {
@@ -569,10 +603,10 @@ public class ForceModel implements ElementModel, PojoJFXModel<Force> {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
         //result = result * 31 + getId();
-        result = (int) (31 * result + equipmentList.stream().map(EquipmentModel::hashCode).count());
-        result = (int) (31 * result + ammoList.stream().map(AmmoQtyModel::hashCode).count());
+        result = 31 * result + equipmentList.stream().mapToInt(EquipmentModel::hashCode).sum();
+        result = 31 * result + ammoList.stream().mapToInt(AmmoQtyModel::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + (getIcon() != null ? getIcon().hashCode() : 0);
         result = 31 * result + (getType() != null ? getType().hashCode() : 0);

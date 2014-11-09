@@ -8,12 +8,14 @@ import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Radio;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mario on 04/11/2014.
  */
-public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
+public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private List<Flag> flags = FXCollections.observableArrayList();
@@ -38,6 +40,37 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     public void setPojo(Radio pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
+    }
+
+    @Override
+    public void cloneToMap(int newId, Map<Integer, RadioModel> map) {
+        Radio copy = getPojo();
+        copy.setId(newId);
+        copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
+        copy.getFlags().add(Flag.NEW);
+        map.put(copy.getId(), new RadioModel(copy));
+    }
+
+    @Override
+    public void copyToMap(Map<Integer, RadioModel> map) {
+        Radio copy = getPojo();
+        copy.getFlags().add(Flag.COPY);
+        map.put(copy.getId(), new RadioModel(copy));
+    }
+
+    @Override
+    public void insertInToMap(Map<Integer, RadioModel> map) {
+        map.put(getId(), this);
+    }
+
+    @Override
+    public void insertInToCollection(Collection<RadioModel> collection) {
+        collection.add(this);
+    }
+
+    @Override
+    public RadioModel createNewInMap(Map<Integer, RadioModel> modelMap) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     @Override
@@ -97,7 +130,7 @@ public class RadioModel implements ElementModel, PojoJFXModel<Radio> {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().map(Flag::hashCode).count());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
         return result;
     }
 }

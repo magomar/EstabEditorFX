@@ -6,7 +6,6 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.PrimaryRole;
 import net.deludobellico.commandops.estabeditor.data.jaxb.WeaponType;
 import net.deludobellico.commandops.estabeditor.model.PerformanceModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -228,7 +227,7 @@ public class WeaponModelTest {
         performances.clear();
         performances.add(new PerformanceModel());
         ours.getPerformances().addAll(performances);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         WeaponModel other = new WeaponModel();
         other.setId(id);
@@ -248,7 +247,7 @@ public class WeaponModelTest {
         performances.clear();
         performances.add(new PerformanceModel());
         other.getPerformances().addAll(performances);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(true, ours.equals(other));
     }
 
@@ -272,7 +271,7 @@ public class WeaponModelTest {
         performances.clear();
         performances.add(new PerformanceModel());
         ours.getPerformances().addAll(performances);
-        ours.setFlag(null);
+        ours.setFlag((Flag[]) null);
 
         WeaponModel other = new WeaponModel();
         other.setId(id);
@@ -292,7 +291,7 @@ public class WeaponModelTest {
         performances.clear();
         performances.add(new PerformanceModel());
         other.getPerformances().addAll(performances);
-        other.setFlag(null);
+        other.setFlag((Flag[]) null);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

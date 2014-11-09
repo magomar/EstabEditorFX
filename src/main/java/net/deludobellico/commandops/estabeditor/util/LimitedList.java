@@ -16,13 +16,11 @@ import java.util.*;
 
 public class LimitedList<H> extends AbstractSequentialList<H> implements List<H> {
     int maxSize;
-    int size;
     HashMap<H, Node<H>> nodeMap;
     private Node<H> first;
     private Node<H> last;
 
     public LimitedList(int maxSize) {
-        this.size = 0;
         this.maxSize = maxSize;
         this.nodeMap = new HashMap<>(maxSize);
     }
@@ -93,7 +91,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     @Override
     public void clear() {
         nodeMap.clear();
-        size = nodeMap.size();
         last = first = null;
     }
 
@@ -148,7 +145,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
             first = n;
         }
         nodeMap.put(n.value, n);
-        size++;
     }
 
     private H unlink(Node<H> n) {
@@ -163,7 +159,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
             n.next.prev = n.prev;
         }
         nodeMap.remove(n.value);
-        size--;
         return n.value;
     }
 
@@ -187,7 +182,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     }
 
     public int size() {
-        return size;
+        return nodeMap.size();
     }
 
     @Override
@@ -229,7 +224,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
      * Tells if the argument is the index of an existing element.
      */
     private boolean isElementIndex(int index) {
-        return index >= 0 && index < size;
+        return index >= 0 && index < size();
     }
 
     /**
@@ -237,7 +232,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
      * iterator or an add operation.
      */
     private boolean isPositionIndex(int index) {
-        return index >= 0 && index <= size;
+        return index >= 0 && index <= size();
     }
 
     //// From the LinkedList class
@@ -248,7 +243,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
      * this "outlining" performs best with both server and client VMs.
      */
     private String outOfBoundsMsg(int index) {
-        return "Index: " + index + ", Size: " + size;
+        return "Index: " + index + ", Size: " + size();
     }
 
     private void checkElementIndex(int index) {
@@ -267,14 +262,14 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     Node<H> node(int index) {
         // assert isElementIndex(index);
 
-        if (index < (size >> 1)) {
+        if (index < (size() >> 1)) {
             Node<H> n = first;
             for (int i = 0; i < index; i++)
                 n = n.next;
             return n;
         } else {
             Node<H> n = last;
-            for (int i = size - 1; i > index; i--)
+            for (int i = size() - 1; i > index; i--)
                 n = n.prev;
             return n;
         }
@@ -315,13 +310,13 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
         private int nextIndex;
 
         ListItr(int index) {
-            next = (index == size) ? null : node(index);
+            next = (index == size()) ? null : node(index);
             nextIndex = index;
         }
 
         @Override
         public boolean hasNext() {
-            return nextIndex < size;
+            return nextIndex < size();
         }
 
         @Override
