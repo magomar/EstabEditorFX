@@ -53,12 +53,12 @@ public class Settings {
         return newFileCreated;
     }
 
-    public static void setNewFileCreated(boolean newFileCreated) {
-        Settings.newFileCreated = newFileCreated;
-    }
-
     public static boolean getNewFileCreated() {
         return newFileCreated;
+    }
+
+    public static void setNewFileCreated(boolean newFileCreated) {
+        Settings.newFileCreated = newFileCreated;
     }
 
     @XmlElement(name = "source-recent-files")

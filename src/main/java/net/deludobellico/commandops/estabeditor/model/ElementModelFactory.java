@@ -21,6 +21,7 @@ public final class ElementModelFactory {
     /**
      * Auto-increment of the maximum ID in use.
      * This method is synchronized to prevent inconsistencies.
+     *
      * @return the maximum id in use
      */
     public static synchronized int incrementMaxId() {
@@ -30,6 +31,7 @@ public final class ElementModelFactory {
     /**
      * Sets the maximum ID in use.
      * This method is synchronized to prevent inconsistencies.
+     *
      * @param maxId id to set if it's greater than the current max ID.
      */
     public static synchronized void setMaxId(int maxId) {
@@ -40,7 +42,8 @@ public final class ElementModelFactory {
     /**
      * New created elements append their ID inside parentheses to their name.
      * In order to avoid having multiple IDs in the name, this method strips the last ID and appends the new one.
-     * @param name string to format
+     *
+     * @param name  string to format
      * @param newId to append
      * @return formatted name with the id inside parentheses
      */
@@ -54,6 +57,7 @@ public final class ElementModelFactory {
 
     /**
      * Creates a new VehicleModel instance.
+     *
      * @return new vehicle model
      */
     public static VehicleModel createVehicle() {
@@ -69,6 +73,7 @@ public final class ElementModelFactory {
 
     /**
      * Creates a new WeaponModel instance.
+     *
      * @return new weapon model
      */
     public static WeaponModel createWeapon() {
@@ -81,6 +86,7 @@ public final class ElementModelFactory {
 
     /**
      * Creates a new AmmoModel instance.
+     *
      * @return new ammo model
      */
     public static AmmoModel createAmmo() {

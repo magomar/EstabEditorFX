@@ -13,21 +13,50 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * Manages all elements in the Estab.
+ * Manages all elements in the Estab using a map for each class implementing {@code Element Model}.
  *
  * @author Mario
  * @author Heine
+ * @see ElementModel
  */
+@SuppressWarnings("unchecked")
 public class EstabModel {
     private static final Logger LOG = Logger.getLogger(EstabModel.class.getName());
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
+    /**
+     * Empty model instance
+     */
+    public EstabModel() {
+        allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
+        allElements.put(ImageModel.class, new HashMap<>());
+        allElements.put(SideModel.class, new HashMap<>());
+        allElements.put(VehicleModel.class, new HashMap<>());
+        allElements.put(WeaponModel.class, new HashMap<>());
+        allElements.put(AmmoModel.class, new HashMap<>());
+        allElements.put(FormationEffectsModel.class, new HashMap<>());
+    }
+
+    /**
+     * Loads the model from a estab file
+     *
+     * @param estabFile estab file with the {@code EstabData}
+     * @see EstabData
+     */
     public EstabModel(File estabFile) {
         this((EstabData) FileIO.loadEstab(estabFile));
     }
 
+    /**
+     * Loads the model from a {@code EstabData} instance
+     *
+     * @param estabData estab data
+     * @see EstabData
+     */
     public EstabModel(EstabData estabData) {
-        Collection<List<? extends Element>> estabLists = new ArrayList<>();
+
+        // Collect the Estab element lists
+        Collection<List<? extends Element>> estabLists = new ArrayList<>(ElementModel.CLASS_MAP.size() / 2);
         estabLists.add(estabData.getImage());
         estabLists.add(estabData.getSide());
         estabLists.add(estabData.getVehicle());
@@ -35,7 +64,8 @@ public class EstabModel {
         estabLists.add(estabData.getAmmo());
         estabLists.add(estabData.getFormationEffects());
 
-        allElements = new HashMap<>(ElementModel.CLASS_MAP.size()/2);
+        // Create all the element maps
+        allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
         allElements.put(ImageModel.class, new HashMap<>(estabData.getImage().size()));
         allElements.put(SideModel.class, new HashMap<>(estabData.getSide().size()));
         allElements.put(VehicleModel.class, new HashMap<>(estabData.getVehicle().size()));
@@ -43,18 +73,9 @@ public class EstabModel {
         allElements.put(AmmoModel.class, new HashMap<>(estabData.getAmmo().size()));
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
+        // Wrap all the elements to their element model and saves them to their corresponding map
         for (List<? extends Element> elements : estabLists)
             elements.stream().map(Element::getModel).forEach(e -> ((ElementModel) e).insertInToMap(allElements.get(e.getClass())));
-    }
-
-    public EstabModel() {
-        allElements = new HashMap<>(ElementModel.CLASS_MAP.size()/2);
-        allElements.put(ImageModel.class, new HashMap<>());
-        allElements.put(SideModel.class, new HashMap<>());
-        allElements.put(VehicleModel.class, new HashMap<>());
-        allElements.put(WeaponModel.class, new HashMap<>());
-        allElements.put(AmmoModel.class, new HashMap<>());
-        allElements.put(FormationEffectsModel.class, new HashMap<>());
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -81,13 +102,27 @@ public class EstabModel {
         return allElements;
     }
 
+    /**
+     * Loops though all map values looking for elements names that match our search text.
+     *
+     * @param name              text to search
+     * @param elementModelClass used to load the corresponding map
+     * @return collection with all matching elements
+     */
     public List<ElementModel> searchElement(String name, Class elementModelClass) {
         return allElements.get(elementModelClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.<ElementModel>toList());
+                .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
     }
 
+    /**
+     * Gets all weapons used by a vehicle
+     *
+     * @param vehicle VehicleModel to search
+     * @return collection with all the weapons
+     */
     private List<WeaponModel> getWeaponListFromVehicle(VehicleModel vehicle) {
+        // Weapons are stored in vehicle armaments
         List<WeaponModel> weaponList = new ArrayList<>(vehicle.getArmaments().size());
         for (ArmamentModel armament : vehicle.getArmaments()) {
             WeaponModel weapon = getWeapons().get(armament.getEquipmentObjectId());
@@ -96,111 +131,86 @@ public class EstabModel {
         return weaponList;
     }
 
+    /**
+     * Gets all ammo used by a weapon
+     *
+     * @param weapon WeaponModel to search
+     * @return collection with all the ammo
+     */
     private List<AmmoModel> getAmmoListFromWeapon(WeaponModel weapon) {
-        List<AmmoModel> ammoList = new ArrayList<>(weapon.getPerformances().size());
+        // Ammo are stored in weapon performances
 
+        List<AmmoModel> ammoList = new ArrayList<>(weapon.getPerformances().size());
         for (PerformanceModel performance : weapon.getPerformances()) {
             AmmoModel ammo = getAmmo().get(performance.getAmmoLoad().getId());
-            if (ammo != null) {
-                ammoList.add(ammo);
-            }
+            if (ammo != null) ammoList.add(ammo);
         }
         return ammoList;
     }
 
+    public RelatedElementsLists getRelatedElements(ElementModel elementModel) {
+        List<ElementModel> singleElement = new ArrayList<>();
+        singleElement.add(elementModel);
+        return getRelatedElements(singleElement);
+    }
+
     /**
-     * Searches for all the related elements. For example, all weapons used by a vehicle,
+     * Searches for all the related elements in the elements maps. For example, all weapons used by a vehicle,
      * or all ammo used by a collection of weapons.
      * <p>
-     * {@link #sortRelatedElements} has to be invoked in order to clean NonRepeated lists
+     * This is a recursive search, meaning a vehicle will return both its weapons and ammo.
+     * It's presupposed that an element is related to itself, so it'll be included in the returned collection.
      *
-     * @param elements
-     * @return all the related elements
+     * @param elements collection of elements to look for related items
+     * @return {@link RelatedElementsLists} containing all the related elements in this model
+     * @see RelatedElementsLists#findRepeatedElementsInTargetModel
      */
-    public RelatedElementLists getRelatedElements(Collection<ElementModel> elements) {
-        return getRelatedElements(elements, null);
-    }
+    public RelatedElementsLists getRelatedElements(Collection<ElementModel> elements) {
 
-    public RelatedElementLists getRelatedElements(Collection<ElementModel> elements, EstabModel targetModel) {
-
-        RelatedElementLists relatedElementLists = new RelatedElementLists();
+        RelatedElementsLists relatedElementsLists = new RelatedElementsLists();
         for (ElementModel elementModel : elements)
-            elementModel.insertInToCollection(relatedElementLists.getAll(elementModel.getClass()));
+            elementModel.insertInToCollection(relatedElementsLists.getAll(elementModel.getClass()));
 
-        for (ElementModel v : relatedElementLists.getAll(VehicleModel.class)) {
+        for (ElementModel v : relatedElementsLists.getAll(VehicleModel.class)) {
             List<WeaponModel> weapons = getWeaponListFromVehicle((VehicleModel) v);
-            relatedElementLists.getAll(WeaponModel.class).addAll(weapons);
+            relatedElementsLists.getAll(WeaponModel.class).addAll(weapons);
         }
 
-        for (ElementModel w : relatedElementLists.getAll(WeaponModel.class)) {
+        for (ElementModel w : relatedElementsLists.getAll(WeaponModel.class)) {
             List<AmmoModel> ammo = getAmmoListFromWeapon((WeaponModel) w);
-            relatedElementLists.getAll(AmmoModel.class).addAll(ammo);
+            relatedElementsLists.getAll(AmmoModel.class).addAll(ammo);
         }
 
-        if (targetModel != null) {
-            sortRelatedElements(relatedElementLists, targetModel);
-        }
-        return relatedElementLists;
+        return relatedElementsLists;
     }
 
     /**
-     * Move all repeated elements from NonRepeated to Repeated
+     * Remove elements from
      *
-     * @param relatedElementLists
+     * @param elements
+     * @return
      */
-    public void sortRelatedElements(RelatedElementLists relatedElementLists, EstabModel targetModel) {
-        assert !relatedElementLists.isSorted();
-        for (Class modelClass : ElementModel.ELEMENT_MODEL_CLASSES) {
-            for (ElementModel e : relatedElementLists.getAll(modelClass)) {
-                if (targetModel.getAll().get(modelClass).containsKey(e.getId()))
-                    relatedElementLists.getRepeated(modelClass).add(e);
-                else relatedElementLists.getNonRepeated(modelClass).add(e);
-            }
-        }
-        relatedElementLists.setSorted(true);
-    }
-
-    public boolean remove(Collection<ElementModel> selectedItems) {
-
-        String newLine = System.getProperty("line.separator");
-        StringBuilder logMessage = new StringBuilder("Removing elements (Selected only): " + newLine);
-        for (ElementModel selectedItem : selectedItems) {
-            logMessage.append("-- ").append(selectedItem.print()).append(newLine);
+    public boolean remove(Collection<ElementModel> elements) {
+        for (ElementModel selectedItem : elements)
             selectedItem.removeFromMap(allElements.get(selectedItem.getClass()));
-        }
-        LOG.log(Level.INFO, logMessage.toString());
         return true;
     }
 
-    public boolean remove(RelatedElementLists relatedElementLists) {
-
-        String newLine = System.getProperty("line.separator");
-        StringBuilder logMessage = new StringBuilder("Removing elements:" + newLine);
-
-        for (ElementModel elementModel : relatedElementLists.getAllElements()) {
-            logMessage.append("-- ").append(elementModel.print()).append(newLine);
-            elementModel.removeFromMap(allElements.get(elementModel.getClass()));
-        }
-        LOG.log(Level.INFO, logMessage.toString());
-        return true;
-
-    }
-
-    public boolean paste(RelatedElementLists relatedElementLists, DialogAction answer, Collection<ElementModel> selectedItems) {
+    public boolean paste(RelatedElementsLists relatedElementsLists, DialogAction answer, Collection<ElementModel> selectedItems) {
 
         String newLine = System.getProperty("line.separator");
         StringBuilder logMessage = new StringBuilder();
         if (answer.equals(DialogAction.OVERWRITE)) {
-             logMessage = new StringBuilder("Copying all elements (Overwriting repeated): " + newLine);
-            for (ElementModel elementModel : relatedElementLists.getAllElements()) {
+            logMessage = new StringBuilder("Copying all elements (Overwriting repeated): " + newLine);
+            for (ElementModel elementModel : relatedElementsLists.getAllElements()) {
                 logMessage.append("-- ").append(elementModel.print()).append(newLine);
                 elementModel.setFlag(Flag.COPY);
                 elementModel.insertInToMap(allElements.get(elementModel.getClass()));
             }
         } else if (answer.equals(DialogAction.SKIP_REPEATED)) {
-            assert relatedElementLists.isSorted();
+            assert relatedElementsLists.isDistributed();
             logMessage = new StringBuilder("Copying elements (Skipping repeated): " + newLine);
-            for (ElementModel elementModel : relatedElementLists.getNonRepeatedElements()) {
+            for (ElementModel elementModel : relatedElementsLists.getNonRepeatedElements()) {
                 logMessage.append("-- ").append(elementModel.print()).append(newLine);
                 elementModel.setFlag(Flag.COPY);
                 elementModel.insertInToMap(allElements.get(elementModel.getClass()));

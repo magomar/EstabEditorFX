@@ -293,22 +293,22 @@ public class EstabController implements Initializable {
      * Copies elements into the model if possible.
      * If there are repeated elements, prompt the user for an action.
      *
-     * @param relatedElementLists the lists containing the elements to copy.
+     * @param relatedElementsLists the lists containing the elements to copy.
      * @return true if elements were copied, false otherwise.
-     * @see RelatedElementLists
+     * @see RelatedElementsLists
      */
-    public boolean copyRelatedElements(RelatedElementLists relatedElementLists) {
+    public boolean copyRelatedElements(RelatedElementsLists relatedElementsLists) {
         if (!isEditable) return false;
         boolean successPasting;
-        if (relatedElementLists.hasRepeatedElements()) {
+        if (relatedElementsLists.hasRepeatedElements()) {
             // if there are repeated elements, ask the user for what to do
             // In case the user only wants to select some items, pass this empty collection to save them
             Collection selectedItems = new ArrayList<>();
-            DialogAction answer = UtilView.showWarningRepeatedElements(relatedElementLists.getRepeatedElements(), selectedItems);
-            successPasting = this.estabModel.paste(relatedElementLists, answer, selectedItems);
+            DialogAction answer = UtilView.showWarningRepeatedElements(relatedElementsLists.getRepeatedElements(), selectedItems);
+            successPasting = this.estabModel.paste(relatedElementsLists, answer, selectedItems);
         } else {
             // if there are no repeated elements, proceed as if overwriting
-            successPasting = this.estabModel.paste(relatedElementLists, DialogAction.OVERWRITE, null);
+            successPasting = this.estabModel.paste(relatedElementsLists, DialogAction.OVERWRITE, null);
         }
         if (successPasting) update();
         return successPasting;
@@ -318,54 +318,75 @@ public class EstabController implements Initializable {
      * Removes elements from the model if possible.
      * If there are repeated elements, prompt the user for an action.
      *
-     * @param relatedElements this lists containing the elements to remove.
+     * @param elementsToRemove this lists containing the elements to remove.
      * @return true if elements were removed, false otherwise.
-     * @see RelatedElementLists
+     * @see RelatedElementsLists
      */
-    public boolean removeRelatedElements(RelatedElementLists relatedElements) {
-        List<ElementModel> elementsToRemoveList = relatedElements.getAllElements();
+    public boolean removeRelatedElements(List<ElementModel> elementsToRemove) {
+        String newLine = System.getProperty("line.separator");
+        StringBuilder logMessage = new StringBuilder();
+        boolean successRemoving;
+
         // In case the user only wants to select some items, pass this empty collection to save them
         Collection<ElementModel> selectedItems = new ArrayList<>();
-        DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemoveList, selectedItems);
-        boolean successRemoving;
-        if (answer == DialogAction.OK) {
-            // Remove all elements
-            // In case the removed element is active in the editor
-            // TODO: decide if this condition should be checked in the model
-            for (ElementModel e : elementsToRemoveList)
-                if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
-                    clear();
-                    break;
+        // Prompt the user for an action
+        DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemove, selectedItems);
+
+        switch (answer) {
+            case OK:
+                // Remove all elements
+                logMessage.append("Removing all elements: " + newLine);
+                for (ElementModel e : elementsToRemove) {
+                    logMessage.append("-- ").append(e.print()).append(newLine);
+                    if (isActiveElement(e)) clear();
                 }
-            successRemoving = estabModel.remove(relatedElements);
-        } else if (answer == DialogAction.REMOVE_SELECTION) {
-            // Remove only selected elements by the user
-            // In case the removed element is active in the editor
-            for (ElementModel e : elementsToRemoveList)
-                if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
-                    clear();
-                    break;
+                successRemoving = estabModel.remove(elementsToRemove);
+                break;
+
+            case REMOVE_SELECTION:
+                // Remove only selected elements by the user
+                logMessage = new StringBuilder("Removing selected elements: " + newLine);
+                for (ElementModel e : selectedItems) {
+                    logMessage.append("-- ").append(e.print()).append(newLine);
+                    if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
+                        clear();
+                    }
                 }
-            successRemoving = estabModel.remove(selectedItems);
-        } else if (answer == DialogAction.MARK_SELECTION) {
-            // Mark the items with the REMOVE flag instead of removing the elements
-            LOG.log(Level.INFO, "Remove canceled, elements were marked for removal");
-            selectedItems.stream().forEach(i -> i.setFlag(Flag.REMOVE));
-            successRemoving = false;
-            update();
-        } else {
-            LOG.log(Level.INFO, "Remove canceled");
-            return false;
+                successRemoving = estabModel.remove(selectedItems);
+                break;
+
+            case MARK_SELECTION:
+                // Mark the items with the REMOVE flag instead of removing the elements
+                logMessage.append("Remove canceled, elements were marked for removal");
+                selectedItems.stream().forEach(i -> i.setFlag(Flag.REMOVE));
+                successRemoving = false;
+                update();
+                break;
+            default:
+                logMessage.append("Remove canceled");
+                successRemoving = false;
+                break;
         }
+        LOG.log(Level.INFO, logMessage.toString());
         if (successRemoving) update();
         return successRemoving;
+    }
+
+    /**
+     * Checks if the element is the active element
+     *
+     * @param e element to check
+     * @return true if the element is the active element, false otherwise
+     */
+    private boolean isActiveElement(ElementModel e) {
+        return activeElement.get() != null && e.getId() == activeElement.get().getId();
     }
 
     /**
      * Removes elements with selected check boxes
      */
     public void removeSelectedItems() {
-        removeRelatedElements(estabModel.getRelatedElements(selectedElements));
+        removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
         selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
     }
@@ -404,11 +425,10 @@ public class EstabController implements Initializable {
      * @param file where the estab will be saved
      */
     public void saveModel(File file) {
-        if(!file.exists()){
+        if (!file.exists()) {
             UtilView.showInfoDialog("File not found", file.getName() + " doesn't exists");
             LOG.log(Level.WARNING, "Abort save. File not found " + file.getName());
-        }
-        else estabModel.saveToFile(file);
+        } else estabModel.saveToFile(file);
     }
 
     /**

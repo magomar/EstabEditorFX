@@ -11,7 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the Force class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force> {
     private final IntegerProperty id = new SimpleIntegerProperty();

@@ -1,7 +1,11 @@
 package net.deludobellico.commandops.estabeditor.model;
 
 /**
- * Created by Heine on 11/9/2014.
+ * Counter part of ElementModel. All classes wrapped by ElementModel implements this interface
+ *
+ * @param <T> element model class
+ * @author Mario
+ * @author Heine
  */
 public interface Element<T extends ElementModel> {
     T getModel();

@@ -21,6 +21,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -489,8 +490,8 @@ public class MainController implements Initializable {
      * @param elements collection with the elements to copy
      */
     public void copyElementsToTarget(Collection<ElementModel> elements) {
-        RelatedElementLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements, targetPaneController.getEstabModel());
-        assert relatedElements.isSorted();
+        RelatedElementsLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements);
+        assert relatedElements.isDistributed();
         if (!targetPaneController.copyRelatedElements(relatedElements))
             LOG.log(Level.WARNING, "Could not copy all elements");
     }
@@ -502,8 +503,9 @@ public class MainController implements Initializable {
 
     @FXML
     private void removeToolbarButtonAction() {
-        Collection<ElementModel> elementToRemove = Collections.singleton(targetPaneController.getActiveElement().get());
-        targetPaneController.removeRelatedElements(targetPaneController.getEstabModel().getRelatedElements(elementToRemove));
+        List<ElementModel> elementsToRemove = targetPaneController.getEstabModel().getRelatedElements(
+                targetPaneController.getActiveElement().get()).getAllElements();
+        targetPaneController.removeRelatedElements(elementsToRemove);
     }
 
     public void createNewVehicleButtonAction() {

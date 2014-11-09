@@ -17,13 +17,21 @@ import java.util.*;
 public interface ElementModel<T> {
 
     /**
-     * Map to convert from pojo classes to model classes and vice versa (Vehicle -> VehicleModel, WeaponModel -> Weapon...)
+     * Array with classes that have editors.
+     * It's important both arrays have the same order and the same length.
      */
-    // Needless to say it's important both arrays have the same order and the same length
     public static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class};
     public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class};
+    /**
+     * Array with classes that don't have implemented editors.
+     * It's important both arrays have the same order and the same length.
+     */
     public static final Class[] ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED = {ImageModel.class, SideModel.class, FormationEffectsModel.class};
     public static final Class[] ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED = {Image.class, Side.class, FormationEffects.class};
+
+    /**
+     * Map to convert from pojo classes to model classes and vice versa (Vehicle -> VehicleModel, WeaponModel -> Weapon...)
+     */
     public static final Map<Class, Class> CLASS_MAP = Collections.unmodifiableMap(new HashMap<Class, Class>(ELEMENT_MODEL_CLASSES.length) {{
         for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) {
             put(ELEMENT_MODEL_CLASSES[i], ELEMENT_POJO_CLASSES[i]);
@@ -89,6 +97,7 @@ public interface ElementModel<T> {
 
     /**
      * Removes this element from the map
+     *
      * @param map target map
      */
     void removeFromMap(Map<Integer, T> map);
@@ -144,6 +153,11 @@ public interface ElementModel<T> {
         }
     }
 
+    /**
+     * Creates a string with the element info
+     *
+     * @return string with the element info
+     */
     default String print() {
         return String.format(" %s | ID: %d | Name: %s",
                 CLASS_MAP.get(getClass()).getSimpleName(),
