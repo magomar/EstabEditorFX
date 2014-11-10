@@ -158,6 +158,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         // Set the activeWeapon primary role with the one selected in the combobox
+
+        description.setWrapText(true);
     }
 
     /**

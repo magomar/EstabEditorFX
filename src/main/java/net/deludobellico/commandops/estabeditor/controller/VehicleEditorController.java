@@ -153,6 +153,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vehicleType.getItems().addAll(VehicleType.values());
+        description.setWrapText(true);
     }
 
     /**

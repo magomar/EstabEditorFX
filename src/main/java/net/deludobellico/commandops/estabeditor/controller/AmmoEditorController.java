@@ -43,6 +43,7 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        description.setWrapText(true);
     }
 
     /**
