@@ -26,15 +26,15 @@ public class FileIO {
      * Resources paths
      */
     //Settings
-    public static final String SETTINGS_XML_FILE = "estab-settings.xml";
+    private static final String SETTINGS_XML_FILE = "estab-settings.xml";
     //Datasets
     public static final String DATASETS_FOLDER = "/datasets";
-    public static final String NEW_ESTAB_PATH = "newestab.xml";
-    public static final String DATASET_FILE_SUFFIX = "Estab.xml";
-    public static final String DATASET_IMAGE_FOLDER_SUFFIX = "Estab_Images";
-    public static final String DATASET_IMAGE_FOLDER_INDEX = "index";
+    private static final String NEW_ESTAB_PATH = "newestab.xml";
+    private static final String DATASET_FILE_SUFFIX = "Estab.xml";
+    private static final String DATASET_IMAGE_FOLDER_SUFFIX = "Estab_Images";
+    private static final String DATASET_IMAGE_FOLDER_INDEX = "index";
     //Views
-    public static final String VIEWS_FOLDER = "/views";
+    private static final String VIEWS_FOLDER = "/views";
     public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
     public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor-v2.0.fxml";
     public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor-v2.0.fxml";
@@ -44,7 +44,7 @@ public class FileIO {
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
     // Images
-    public static final String IMAGES_FOLDER = "/images";
+    private static final String IMAGES_FOLDER = "/images";
     public static final String REMOVE_ICON_RESOURCE = IMAGES_FOLDER + "/removeicon.png";
     public static final String COPY_ICON_RESOURCE = IMAGES_FOLDER + "/copyicon.png";
     public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
@@ -162,7 +162,7 @@ public class FileIO {
      *
      * @return the created file, null if there was an error
      */
-    public static File getNewSettingsFile() {
+    private static File getNewSettingsFile() {
         File f = null;
         try {
             f = getFileOrCreateNew(getSettingsPath().toString());

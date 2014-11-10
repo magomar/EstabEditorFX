@@ -15,9 +15,8 @@ public class Stopwatch {
         stop = start;
     }
 
-    public long stop() {
+    public void stop() {
         stop = System.nanoTime();
-        return stop;
     }
 
 

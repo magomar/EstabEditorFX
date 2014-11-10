@@ -17,9 +17,9 @@ import java.util.Map;
  */
 public class RelatedElementsLists {
 
-    private Map<Class, List<ElementModel>> relatedElementsListsMap;
-    private Map<Class, List<ElementModel>> repeatedElementsInTargetModelListsMap;
-    private Map<Class, List<ElementModel>> nonRepeatedElementsInTargetModelListsMap;
+    private final Map<Class, List<ElementModel>> relatedElementsListsMap;
+    private final Map<Class, List<ElementModel>> repeatedElementsInTargetModelListsMap;
+    private final Map<Class, List<ElementModel>> nonRepeatedElementsInTargetModelListsMap;
     private boolean distributed;
 
     /**

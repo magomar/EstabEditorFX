@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.RankModel;
 import org.junit.Test;
@@ -6,8 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class RankModelTest {
-    String shortName = "RankModel Short Test";
-    String fullName = "RankModel Full Test";
+    private final String shortName = "RankModel Short Test";
+    private final String fullName = "RankModel Full Test";
 
 
     @Test

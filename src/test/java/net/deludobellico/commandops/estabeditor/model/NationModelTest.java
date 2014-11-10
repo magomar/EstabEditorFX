@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
@@ -12,14 +12,14 @@ import static org.junit.Assert.assertEquals;
 
 public class NationModelTest {
 
-    String name;
-    String description;
-    String nationality;
-    int id;
-    int largeInsignia;
-    int smallInsignia;
-    List<ServiceModel> services = FXCollections.observableArrayList();
-    Flag[] flags = new Flag[]{Flag.REMOVE, Flag.COPY};
+    private String name;
+    private String description;
+    private String nationality;
+    private int id;
+    private int largeInsignia;
+    private int smallInsignia;
+    private final List<ServiceModel> services = FXCollections.observableArrayList();
+    private final Flag[] flags = new Flag[]{Flag.REMOVE, Flag.COPY};
 
 
     @Test

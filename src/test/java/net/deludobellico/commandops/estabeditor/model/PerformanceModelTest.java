@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.FireType;
@@ -13,15 +13,15 @@ import static org.junit.Assert.assertEquals;
 
 public class PerformanceModelTest {
 
-    AmmoLoadModel ammoLoad = new AmmoLoadModel();
-    int minRange = 10;
-    double slowROF = 2.0;
-    double normalROF = 3.0;
-    double rapidROF = 4.0;
-    int burstRadius = 5;
-    double shellWeight = 6.0;
-    List<RangeItemModel> ranges = FXCollections.observableArrayList();
-    FireType fireType = FireType.AAIR;
+    private final AmmoLoadModel ammoLoad = new AmmoLoadModel();
+    private final int minRange = 10;
+    private final double slowROF = 2.0;
+    private final double normalROF = 3.0;
+    private final double rapidROF = 4.0;
+    private final int burstRadius = 5;
+    private final double shellWeight = 6.0;
+    private final List<RangeItemModel> ranges = FXCollections.observableArrayList();
+    private final FireType fireType = FireType.AAIR;
 
 
     @Test

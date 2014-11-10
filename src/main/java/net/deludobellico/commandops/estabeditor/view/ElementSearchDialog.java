@@ -113,7 +113,7 @@ public class ElementSearchDialog implements Initializable {
         return selectedItem;
     }
 
-    public ElementSearchDialog setItems(Collection<ElementModel> items) {
+    public ElementSearchDialog setItems(Collection<? extends ElementModel> items) {
         this.items = new ArrayList(items);
         searchTableView.getItems().clear();
         searchTableView.getItems().addAll(items);
@@ -130,9 +130,8 @@ public class ElementSearchDialog implements Initializable {
         return this;
     }
 
-    public ElementSearchDialog setParent(Parent parent) {
+    void setParent(Parent parent) {
         this.parent = parent;
-        return this;
     }
 
     @FXML

@@ -28,7 +28,7 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<ServiceModel> service = FXCollections.observableArrayList();
-    private List<Flag> flags = FXCollections.observableArrayList();
+    private final List<Flag> flags = FXCollections.observableArrayList();
 
     public NationModel(Nation nation) {
         setPojo(nation);

@@ -71,7 +71,7 @@ public class EstabModel {
         final int[] maxId = {0};
         for (Side side : estabData.getSide())
             for (Nation nation : side.getNation())
-                for (Service service : nation.getService()) estabLists.add(service.getForce());
+                estabLists.addAll(nation.getService().stream().map(Service::getForce).collect(Collectors.toList()));
 
         // Wrap all the elements to their element model and saves them to their corresponding map
         for (List<? extends Element> elements : estabLists)

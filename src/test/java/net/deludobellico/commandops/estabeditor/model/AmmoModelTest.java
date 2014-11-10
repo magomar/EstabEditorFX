@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.AmmoModel;
@@ -8,12 +8,12 @@ import static org.junit.Assert.assertEquals;
 
 public class AmmoModelTest {
 
-    private int id = 10;
-    private String name = "Ammo Model Test";
-    private String description = "Ammo Model Desc";
-    private int minOrderQty = 1;
-    private int minOrderWeight = 2;
-    private Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
+    private final int id = 10;
+    private final String name = "Ammo Model Test";
+    private final String description = "Ammo Model Desc";
+    private final int minOrderQty = 1;
+    private final int minOrderWeight = 2;
+    private final Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
 
     @Test
     public void testEquals() throws Exception {

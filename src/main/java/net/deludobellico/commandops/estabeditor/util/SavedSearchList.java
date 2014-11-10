@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
  */
 public class SavedSearchList<T> {
     private String lastSearch;
-    private ObservableList<T> observableList;
+    private final ObservableList<T> observableList;
     private boolean forceSearch;
 
 

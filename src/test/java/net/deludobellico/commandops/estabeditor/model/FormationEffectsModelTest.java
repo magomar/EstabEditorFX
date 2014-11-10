@@ -1,27 +1,25 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
-import net.deludobellico.commandops.estabeditor.model.RadioModel;
+import net.deludobellico.commandops.estabeditor.model.FormationEffectsModel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class RadioModelTest {
+public class FormationEffectsModelTest {
 
-
-    int id = 10;
-    String name = "RadioModel Test";
-    Flag[] flags = new Flag[]{Flag.COPY, Flag.USER};
-
+    private final int id = 10;
+    private final String name = "FormationEffectsModel Test";
+    private final Flag[] flags = new Flag[]{Flag.COPY, Flag.USER};
 
     @Test
     public void testEquals() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
         ours.setFlag(flags);
 
-        RadioModel other = new RadioModel();
+        FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(name);
         other.setFlag(flags);
@@ -30,12 +28,12 @@ public class RadioModelTest {
 
     @Test
     public void testHashCode() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
         ours.setFlag(flags);
 
-        RadioModel other = new RadioModel();
+        FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(name);
         other.setFlag(flags);
@@ -44,12 +42,12 @@ public class RadioModelTest {
 
     @Test
     public void testEqualsDifferentIDs() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
         ours.setFlag(flags);
 
-        RadioModel other = new RadioModel();
+        FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id + 2);
         other.setName(name);
         other.setFlag(flags);
@@ -58,13 +56,13 @@ public class RadioModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
         ours.setFlag(flags);
 
-        RadioModel other = new RadioModel();
-        other.setId(id + 3);
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id + 2);
         other.setName(name);
         other.setFlag(flags);
         assertEquals(other.hashCode(), ours.hashCode());
@@ -72,12 +70,12 @@ public class RadioModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(null);
         ours.setFlag((Flag[]) null);
 
-        RadioModel other = new RadioModel();
+        FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(null);
         other.setFlag((Flag[]) null);
@@ -86,12 +84,12 @@ public class RadioModelTest {
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
-        RadioModel ours = new RadioModel();
+        FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(null);
         ours.setFlag((Flag[]) null);
 
-        RadioModel other = new RadioModel();
+        FormationEffectsModel other = new FormationEffectsModel();
         other.setId(id);
         other.setName(null);
         other.setFlag((Flag[]) null);

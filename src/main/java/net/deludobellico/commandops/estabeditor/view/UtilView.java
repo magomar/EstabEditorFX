@@ -1,6 +1,7 @@
 package net.deludobellico.commandops.estabeditor.view;
 
 import javafx.stage.Stage;
+import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.util.Collection;
@@ -20,7 +21,7 @@ public class UtilView {
     public static final String TEXT_STYLE_DEFAULT = "-fx-text-fill: black;";
     public static Stage ROOT_STAGE;
 
-    public static Object showSearchDialog(String title, Collection items) {
+    public static Object showSearchDialog(String title, Collection<? extends ElementModel> items) {
         return ElementSearchDialog.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle(title)
@@ -48,10 +49,10 @@ public class UtilView {
                 .show(selectedItems);
     }
 
-    public static DialogAction showInfoDialog(String headText, String bodyText, DialogAction... actions) {
+    public static DialogAction showInfoDialog(String title, String headText, String bodyText, DialogAction... actions) {
         return InfoDialog.init()
                 .setOwner(ROOT_STAGE)
-                .setTitle("")
+                .setTitle(title)
                 .setHeadText(headText)
                 .setBodyText(bodyText)
                 .setActions(actions)

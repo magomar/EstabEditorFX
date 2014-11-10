@@ -1,9 +1,10 @@
-package net.deludobellico.commandops.estabeditor.util;
+package net.deludobellico.commandops.estabeditor.deprecated;
 
 /**
  * Created by Mario on 04/08/2014.
  */
-public class Util {
+@Deprecated
+class Util {
     /**
      * Check if provided string is an Integer
      *
@@ -12,6 +13,7 @@ public class Util {
      */
     public static boolean isInteger(String s) {
         try {
+            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(s);
         } catch (NumberFormatException e) {
             return false;

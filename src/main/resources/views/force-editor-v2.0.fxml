@@ -1,265 +1,383 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.ForceEditorController">
-    <children>
-        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <GridPane VBox.vgrow="NEVER">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="420.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label alignment="CENTER" text="Name">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
-                    </children>
-                    <VBox.margin>
-                        <Insets right="10.0" />
-                    </VBox.margin>
-                </GridPane>
-                <TabPane minWidth="470.0" style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
-                    <tabs>
-                        <Tab text="General">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox layoutX="73.0" layoutY="43.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-                                            <children>
-                                                <GridPane>
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
-                                                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="4.0" prefWidth="78.0" />
-                                                        <ColumnConstraints hgrow="NEVER" maxWidth="235.0" minWidth="10.0" prefWidth="130.0" />
-                                                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
-                                                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Force Type" />
-                                                        <Label text="Sub Force Type" GridPane.rowIndex="1" />
-                                                        <Label text="Combat Class" GridPane.rowIndex="2" />
-                                                        <Label text="Target Class" GridPane.rowIndex="3" />
-                                                        <Label text="Move class" GridPane.rowIndex="4" />
-                                                        <Label text="Force Size" GridPane.rowIndex="5" />
-                                                        <Label text="Personnel" GridPane.columnIndex="3" />
-                                                        <Label text="Staff Capacity" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                        <Label text="Infantry Value" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                        <Label text="Recon Value" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                        <Label text="Engineer Value" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                                        <TextField fx:id="personnel" GridPane.columnIndex="4" />
-                                                        <TextField fx:id="staffCapacity" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                                        <TextField fx:id="infantryValue" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                                        <TextField GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                                        <TextField fx:id="reconValue" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                                        <TextField fx:id="engineerValue" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                                                        <Label text="Commander Rank" GridPane.rowIndex="6" />
-                                                        <CheckBox fx:id="canBombard" mnemonicParsing="false" text="Can Bombard / On-Call Support" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
-                                                        <ComboBox fx:id="forceType" prefWidth="150.0" GridPane.columnIndex="1" />
-                                                        <ComboBox fx:id="subForceType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <ComboBox fx:id="combatClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                        <ComboBox fx:id="targetClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                        <ComboBox fx:id="moveClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                        <ComboBox fx:id="forceSize" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                        <ComboBox fx:id="commanderRank" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                        <Label text="Deployment" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
-                                                            <font>
-                                                                <Font name="System Bold" size="12.0" />
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </GridPane>
-                                                <GridPane hgap="5.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="100.0" />
-                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="20.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Max" GridPane.rowIndex="2" />
-                                                        <Label text="Normal" GridPane.rowIndex="1" />
-                                                        <TextField fx:id="deployed" GridPane.columnIndex="5" />
-                                                        <TextField fx:id="normalSpeed" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <TextField fx:id="maxSpeed" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                        <TextField fx:id="dugIn" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                                        <TextField fx:id="entrenched" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                                                        <TextField fx:id="fortified" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                                                        <Label text="Speed" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
-                                                            <font>
-                                                                <Font name="System Bold" size="12.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <Label text="Deployed" GridPane.columnIndex="4" />
-                                                        <Label text="Dug In" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                                        <Label text="Entrenched" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                                        <Label text="Fortified" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                                        <Label text="kph" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                        <Label text="kph" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                    </children>
-                                                </GridPane>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="Equipment/Supply">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox layoutX="122.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
-                                            <children>
-                                                <GridPane hgap="5.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Type" GridPane.rowIndex="1" />
-                                                        <Label text="Equipment Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <Label text="Quantity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                        <TextField fx:id="equipmentType" GridPane.rowIndex="2" />
-                                                        <TextField fx:id="equipmentName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                            <GridPane.margin>
-                                                                <Insets right="30.0" />
-                                                            </GridPane.margin>
-                                                        </TextField>
-                                                        <TextField fx:id="equipmentQty" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                        <Button fx:id="equipmentAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentAddAction" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                                            <GridPane.margin>
-                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
-                                                            </GridPane.margin>
-                                                        </Button>
-                                                        <Button fx:id="equipmentRemoveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentRemoveAction" text="-" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                                            <GridPane.margin>
-                                                                <Insets left="2.0" right="2.0" top="2.0" />
-                                                            </GridPane.margin>
-                                                        </Button>
-                                                        <Button fx:id="equipmentSelectButton" maxWidth="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#equipmentSelectAction" prefWidth="25.0" text="..." GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                            <children>
-                                                                <Label ellipsisString="-" minWidth="-Infinity" text="Basic Consumption Rate" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
-                                                                <TextField fx:id="basicConsumptionRate" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" HBox.hgrow="NEVER">
-                                                                    <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                    </HBox.margin>
-                                                                </TextField>
-                                                                <Label alignment="CENTER" ellipsisString="-" minWidth="-Infinity" text="Fuel Load" textOverrun="CLIP" HBox.hgrow="ALWAYS">
-                                                                    <HBox.margin>
-                                                                        <Insets left="20.0" />
-                                                                    </HBox.margin>
-                                                                </Label>
-                                                                <TextField fx:id="fuelLoad" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" HBox.hgrow="NEVER">
-                                                                    <HBox.margin>
-                                                                        <Insets left="5.0" />
-                                                                    </HBox.margin>
-                                                                </TextField>
-                                                            </children>
-                                                        </HBox>
-                                                    </children>
-                                                    <opaqueInsets>
-                                                        <Insets />
-                                                    </opaqueInsets>
-                                                </GridPane>
-                                                <TableView fx:id="equipmentTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                    <columns>
-                                                        <TableColumn fx:id="equipmentTypeColumn" maxWidth="80.0" minWidth="80.0" text="Type" />
-                                                        <TableColumn fx:id="equipmentNameColumn" maxWidth="1.7976931348623157E308" prefWidth="-1.0" text="Name" />
-                                                        <TableColumn fx:id="equipmentQtyColumn" maxWidth="80.0" minWidth="80.0" text="Quantity" />
-                                                    </columns>
-                                                    <columnResizePolicy>
-                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                    </columnResizePolicy>
-                                                </TableView>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="Icon">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <GridPane hgap="5.0" layoutX="115.0" layoutY="125.0" vgap="5.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <Label text="Symbol Color" />
-                                                <Label text="Designation Color" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                <Label text="Background Main Color" GridPane.columnIndex="3" />
-                                                <Label text="Force Size Icon" GridPane.rowIndex="3" />
-                                                <Label text="Picture Symbol" GridPane.rowIndex="2" />
-                                                <Label text="Military Symbol" GridPane.rowIndex="1" />
-                                                <Label text="Background Light Color" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                                <Label text="Background Dark Color" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                <ComboBox fx:id="pictureSymbol" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <ComboBox fx:id="forceSizeIcon" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="4" />
-                                                <ComboBox fx:id="symbolColor" GridPane.columnIndex="1" />
-                                                <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                                <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                                <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                    <ComboBox fx:id="militarySymbol" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                    </tabs>
-                </TabPane>
-            </children>
-        </VBox>
-    </children>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.deludobellico.commandops.estabeditor.controller.ForceEditorController">
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <children>
+            <GridPane VBox.vgrow="NEVER">
+                <columnConstraints>
+                    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="50.0" minWidth="50.0"
+                                       prefWidth="50.0"/>
+                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="420.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Label alignment="CENTER" text="Name">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+                </children>
+                <VBox.margin>
+                    <Insets right="10.0"/>
+                </VBox.margin>
+            </GridPane>
+            <TabPane minWidth="470.0"
+                     style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;"
+                     tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                <tabs>
+                    <Tab text="General">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <VBox layoutX="73.0" layoutY="43.0" prefHeight="200.0" prefWidth="100.0"
+                                          AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
+                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                        <children>
+                                            <GridPane>
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0"
+                                                                       minWidth="10.0" prefWidth="130.0"/>
+                                                    <ColumnConstraints hgrow="NEVER" minWidth="10.0"
+                                                                       prefWidth="150.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0"
+                                                                       minWidth="4.0" prefWidth="78.0"/>
+                                                    <ColumnConstraints hgrow="NEVER" maxWidth="235.0"
+                                                                       minWidth="10.0" prefWidth="130.0"/>
+                                                    <ColumnConstraints hgrow="NEVER" minWidth="10.0"
+                                                                       prefWidth="150.0"/>
+                                                    <ColumnConstraints hgrow="ALWAYS" minWidth="10.0"
+                                                                       prefWidth="100.0"/>
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="Force Type"/>
+                                                    <Label text="Sub Force Type" GridPane.rowIndex="1"/>
+                                                    <Label text="Combat Class" GridPane.rowIndex="2"/>
+                                                    <Label text="Target Class" GridPane.rowIndex="3"/>
+                                                    <Label text="Move class" GridPane.rowIndex="4"/>
+                                                    <Label text="Force Size" GridPane.rowIndex="5"/>
+                                                    <Label text="Personnel" GridPane.columnIndex="3"/>
+                                                    <Label text="Staff Capacity" GridPane.columnIndex="3"
+                                                           GridPane.rowIndex="1"/>
+                                                    <Label text="Infantry Value" GridPane.columnIndex="3"
+                                                           GridPane.rowIndex="2"/>
+                                                    <Label text="Recon Value" GridPane.columnIndex="3"
+                                                           GridPane.rowIndex="3"/>
+                                                    <Label text="Engineer Value" GridPane.columnIndex="3"
+                                                           GridPane.rowIndex="4"/>
+                                                    <TextField fx:id="personnel" GridPane.columnIndex="4"/>
+                                                    <TextField fx:id="staffCapacity" GridPane.columnIndex="4"
+                                                               GridPane.rowIndex="1"/>
+                                                    <TextField fx:id="infantryValue" GridPane.columnIndex="4"
+                                                               GridPane.rowIndex="2"/>
+                                                    <TextField GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+                                                    <TextField fx:id="reconValue" GridPane.columnIndex="4"
+                                                               GridPane.rowIndex="3"/>
+                                                    <TextField fx:id="engineerValue" GridPane.columnIndex="4"
+                                                               GridPane.rowIndex="4"/>
+                                                    <Label text="Commander Rank" GridPane.rowIndex="6"/>
+                                                    <CheckBox fx:id="canBombard" mnemonicParsing="false"
+                                                              text="Can Bombard / On-Call Support"
+                                                              GridPane.columnIndex="3"
+                                                              GridPane.columnSpan="2147483647"
+                                                              GridPane.rowIndex="5"/>
+                                                    <ComboBox fx:id="forceType" prefWidth="150.0"
+                                                              GridPane.columnIndex="1"/>
+                                                    <ComboBox fx:id="subForceType" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                    <ComboBox fx:id="combatClass" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                    <ComboBox fx:id="targetClass" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                                    <ComboBox fx:id="moveClass" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                                    <ComboBox fx:id="forceSize" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                                    <ComboBox fx:id="commanderRank" prefWidth="150.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                                                    <Label text="Deployment" GridPane.columnIndex="3"
+                                                           GridPane.halignment="CENTER" GridPane.rowIndex="6"
+                                                           GridPane.valignment="BOTTOM">
+                                                        <font>
+                                                            <Font name="System Bold" size="12.0"/>
+                                                        </font>
+                                                    </Label>
+                                                </children>
+                                            </GridPane>
+                                            <GridPane hgap="5.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity"
+                                                                       prefWidth="100.0"/>
+                                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+                                                                       minWidth="-Infinity" prefWidth="20.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                       prefWidth="100.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity"
+                                                                       prefWidth="100.0"/>
+                                                    <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity"
+                                                                       minWidth="-Infinity" prefWidth="100.0"/>
+                                                    <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity"/>
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="Max" GridPane.rowIndex="2"/>
+                                                    <Label text="Normal" GridPane.rowIndex="1"/>
+                                                    <TextField fx:id="deployed" GridPane.columnIndex="5"/>
+                                                    <TextField fx:id="normalSpeed" GridPane.columnIndex="1"
+                                                               GridPane.rowIndex="1"/>
+                                                    <TextField fx:id="maxSpeed" GridPane.columnIndex="1"
+                                                               GridPane.rowIndex="2"/>
+                                                    <TextField fx:id="dugIn" GridPane.columnIndex="5"
+                                                               GridPane.rowIndex="1"/>
+                                                    <TextField fx:id="entrenched" GridPane.columnIndex="5"
+                                                               GridPane.rowIndex="2"/>
+                                                    <TextField fx:id="fortified" GridPane.columnIndex="5"
+                                                               GridPane.rowIndex="3"/>
+                                                    <Label text="Speed" GridPane.columnIndex="1"
+                                                           GridPane.valignment="BOTTOM">
+                                                        <font>
+                                                            <Font name="System Bold" size="12.0"/>
+                                                        </font>
+                                                    </Label>
+                                                    <Label text="Deployed" GridPane.columnIndex="4"/>
+                                                    <Label text="Dug In" GridPane.columnIndex="4"
+                                                           GridPane.rowIndex="1"/>
+                                                    <Label text="Entrenched" GridPane.columnIndex="4"
+                                                           GridPane.rowIndex="2"/>
+                                                    <Label text="Fortified" GridPane.columnIndex="4"
+                                                           GridPane.rowIndex="3"/>
+                                                    <Label text="kph" GridPane.columnIndex="2"
+                                                           GridPane.rowIndex="2"/>
+                                                    <Label text="kph" GridPane.columnIndex="2"
+                                                           GridPane.rowIndex="1"/>
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Equipment/Supply">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <VBox layoutX="122.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0"
+                                          spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0"
+                                          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                                        <children>
+                                            <GridPane hgap="5.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity"
+                                                                       minWidth="-Infinity" prefWidth="60.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                       prefWidth="100.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity"
+                                                                       minWidth="-Infinity" prefWidth="50.0"/>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0"
+                                                                       minWidth="40.0" prefWidth="40.0"/>
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                    vgrow="SOMETIMES"/>
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="Type" GridPane.rowIndex="1"/>
+                                                    <Label text="Equipment Name" GridPane.columnIndex="1"
+                                                           GridPane.rowIndex="1"/>
+                                                    <Label text="Quantity" GridPane.columnIndex="2"
+                                                           GridPane.rowIndex="1"/>
+                                                    <TextField fx:id="equipmentType" GridPane.rowIndex="2"/>
+                                                    <TextField fx:id="equipmentName" editable="false"
+                                                               GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                        <GridPane.margin>
+                                                            <Insets right="30.0"/>
+                                                        </GridPane.margin>
+                                                    </TextField>
+                                                    <TextField fx:id="equipmentQty" text="0"
+                                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                                    <Button fx:id="equipmentAddButton"
+                                                            maxHeight="1.7976931348623157E308"
+                                                            maxWidth="1.7976931348623157E308"
+                                                            mnemonicParsing="false" onAction="#equipmentAddAction"
+                                                            text="+" GridPane.columnIndex="3"
+                                                            GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                            GridPane.rowIndex="1" GridPane.valignment="BOTTOM"
+                                                            GridPane.vgrow="ALWAYS">
+                                                        <GridPane.margin>
+                                                            <Insets bottom="2.0" left="2.0" right="2.0" top="1.0"/>
+                                                        </GridPane.margin>
+                                                    </Button>
+                                                    <Button fx:id="equipmentRemoveButton"
+                                                            maxHeight="1.7976931348623157E308"
+                                                            maxWidth="1.7976931348623157E308"
+                                                            mnemonicParsing="false"
+                                                            onAction="#equipmentRemoveAction" text="-"
+                                                            GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                                                            GridPane.hgrow="ALWAYS" GridPane.rowIndex="2"
+                                                            GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                                        <GridPane.margin>
+                                                            <Insets left="2.0" right="2.0" top="2.0"/>
+                                                        </GridPane.margin>
+                                                    </Button>
+                                                    <Button fx:id="equipmentSelectButton" maxWidth="25.0"
+                                                            minWidth="25.0" mnemonicParsing="false"
+                                                            onAction="#equipmentSelectAction" prefWidth="25.0"
+                                                            text="..." GridPane.columnIndex="1"
+                                                            GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
+                                                    <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1"
+                                                          GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <children>
+                                                            <Label ellipsisString="-" minWidth="-Infinity"
+                                                                   text="Basic Consumption Rate" textOverrun="CLIP"
+                                                                   HBox.hgrow="ALWAYS"/>
+                                                            <TextField fx:id="basicConsumptionRate"
+                                                                       maxWidth="-Infinity" minWidth="-Infinity"
+                                                                       prefWidth="50.0" HBox.hgrow="NEVER">
+                                                                <HBox.margin>
+                                                                    <Insets left="5.0"/>
+                                                                </HBox.margin>
+                                                            </TextField>
+                                                            <Label alignment="CENTER" ellipsisString="-"
+                                                                   minWidth="-Infinity" text="Fuel Load"
+                                                                   textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                                                                <HBox.margin>
+                                                                    <Insets left="20.0"/>
+                                                                </HBox.margin>
+                                                            </Label>
+                                                            <TextField fx:id="fuelLoad" alignment="CENTER"
+                                                                       maxWidth="-Infinity" minWidth="-Infinity"
+                                                                       prefWidth="50.0" HBox.hgrow="NEVER">
+                                                                <HBox.margin>
+                                                                    <Insets left="5.0"/>
+                                                                </HBox.margin>
+                                                            </TextField>
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                                <opaqueInsets>
+                                                    <Insets/>
+                                                </opaqueInsets>
+                                            </GridPane>
+                                            <TableView fx:id="equipmentTableView" prefHeight="200.0"
+                                                       prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                <columns>
+                                                    <TableColumn fx:id="equipmentTypeColumn" maxWidth="80.0"
+                                                                 minWidth="80.0" text="Type"/>
+                                                    <TableColumn fx:id="equipmentNameColumn"
+                                                                 maxWidth="1.7976931348623157E308" prefWidth="-1.0"
+                                                                 text="Name"/>
+                                                    <TableColumn fx:id="equipmentQtyColumn" maxWidth="80.0"
+                                                                 minWidth="80.0" text="Quantity"/>
+                                                </columns>
+                                                <columnResizePolicy>
+                                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                                </columnResizePolicy>
+                                            </TableView>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Icon">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <GridPane hgap="5.0" layoutX="115.0" layoutY="125.0" vgap="5.0"
+                                              AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"
+                                              AnchorPane.topAnchor="20.0">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="-Infinity" prefHeight="25.0"
+                                                            vgrow="SOMETIMES"/>
+                                            <RowConstraints minHeight="-Infinity" prefHeight="25.0"
+                                                            vgrow="SOMETIMES"/>
+                                            <RowConstraints minHeight="-Infinity" prefHeight="25.0"
+                                                            vgrow="SOMETIMES"/>
+                                            <RowConstraints minHeight="-Infinity" prefHeight="25.0"
+                                                            vgrow="SOMETIMES"/>
+                                        </rowConstraints>
+                                        <children>
+                                            <Label text="Symbol Color"/>
+                                            <Label text="Designation Color" GridPane.columnIndex="3"
+                                                   GridPane.rowIndex="3"/>
+                                            <Label text="Background Main Color" GridPane.columnIndex="3"/>
+                                            <Label text="Force Size Icon" GridPane.rowIndex="3"/>
+                                            <Label text="Picture Symbol" GridPane.rowIndex="2"/>
+                                            <Label text="Military Symbol" GridPane.rowIndex="1"/>
+                                            <Label text="Background Light Color" GridPane.columnIndex="3"
+                                                   GridPane.rowIndex="2"/>
+                                            <Label text="Background Dark Color" GridPane.columnIndex="3"
+                                                   GridPane.rowIndex="1"/>
+                                            <ComboBox fx:id="pictureSymbol" prefWidth="150.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                            <ComboBox fx:id="forceSizeIcon" prefWidth="150.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                            <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="4"/>
+                                            <ComboBox fx:id="symbolColor" GridPane.columnIndex="1"/>
+                                            <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="4"
+                                                         GridPane.rowIndex="1"/>
+                                            <ColorPicker fx:id="backgroundLightColorChooser"
+                                                         GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+                                            <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="4"
+                                                         GridPane.rowIndex="3"/>
+                                            <ComboBox fx:id="militarySymbol" prefWidth="150.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        </children>
+                                    </GridPane>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </children>
+    </VBox>
 </AnchorPane>

@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
@@ -12,46 +12,46 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class VehicleModelTest {
-    int id = 10;
-    String name = "VehicleModel Test";
-    String description = "VehicleModel Desc";
-    int pictureId = 100;
-    String pictureFilename = "VehiclePicture";
+    private final int id = 10;
+    private final String name = "VehicleModel Test";
+    private final String description = "VehicleModel Desc";
+    private final int pictureId = 100;
+    private final String pictureFilename = "VehiclePicture";
     /* */
-    double width = 100.1;
-    double height = 100.2;
-    double length = 100.3;
-    double weight = 100.4;
+    private final double width = 100.1;
+    private final double height = 100.2;
+    private final double length = 100.3;
+    private final double weight = 100.4;
     /* end VehicleSize */
-    int crew = 5;
-    double reliability = 11.2;
-    List<ArmamentModel> armaments = FXCollections.observableArrayList();
-    VehicleType type = VehicleType.ARMOURED_CAR;
-    double fuelCapacity = 12.2;
-    double maxRoadSpeed = 12.5;
-    double normalRoadSpeed = 346.3;
-    double maxCrossCountrySpeed = 34.2;
-    double normalCrossCountrySpeed = 345.2;
-    double maxFuelConsumption = 7.4;
-    double normalFuelConsumption = 32.2;
+    private final int crew = 5;
+    private final double reliability = 11.2;
+    private final List<ArmamentModel> armaments = FXCollections.observableArrayList();
+    private final VehicleType type = VehicleType.ARMOURED_CAR;
+    private final double fuelCapacity = 12.2;
+    private final double maxRoadSpeed = 12.5;
+    private final double normalRoadSpeed = 346.3;
+    private final double maxCrossCountrySpeed = 34.2;
+    private final double normalCrossCountrySpeed = 345.2;
+    private final double maxFuelConsumption = 7.4;
+    private final double normalFuelConsumption = 32.2;
     // end VehicleSpeeds
-    double ronsonability = 6.3;
-    int maxGradient = 6;
-    int maxFordingDepth = 9;
-    int maxTrenchWidth = 8;
-    double towingCapacity = 321.2;
-    int personnelCapacity = 5;
-    double bulkFuelCapacity = 23.;
-    double payloadCapacity = 5.2;
-    double takeCoverMod = 6.3;
-    boolean hasTurret = false;
-    boolean hasOpenTop = false;
-    double battleWeight = 35.2;
-    double frontArmor = 34.2;
-    double sideArmor = 65.2;
-    double rearArmor = 46.3;
-    double topArmor = 654.2;
-    Flag[] flags = new Flag[]{Flag.NEW, Flag.COPY};
+    private final double ronsonability = 6.3;
+    private final int maxGradient = 6;
+    private final int maxFordingDepth = 9;
+    private final int maxTrenchWidth = 8;
+    private final double towingCapacity = 321.2;
+    private final int personnelCapacity = 5;
+    private final double bulkFuelCapacity = 23.;
+    private final double payloadCapacity = 5.2;
+    private final double takeCoverMod = 6.3;
+    private final boolean hasTurret = false;
+    private final boolean hasOpenTop = false;
+    private final double battleWeight = 35.2;
+    private final double frontArmor = 34.2;
+    private final double sideArmor = 65.2;
+    private final double rearArmor = 46.3;
+    private final double topArmor = 654.2;
+    private final Flag[] flags = new Flag[]{Flag.NEW, Flag.COPY};
 
     @Test
     public void testEquals() throws Exception {

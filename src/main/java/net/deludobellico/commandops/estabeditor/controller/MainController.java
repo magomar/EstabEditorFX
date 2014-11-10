@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import net.deludobellico.commandops.estabeditor.Main;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
@@ -111,9 +110,9 @@ public class MainController implements Initializable {
     private File sourceActiveEstabFile;
     private File targetActiveEstabFile;
     // Buttons and other components are enabled/disabled based on these properties
-    private BooleanProperty disableCopy = new SimpleBooleanProperty(true);
-    private BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
-    private BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
+    private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
+    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
+    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
 
     /**
      * Sets listeners, binds properties and loads user settings
@@ -332,9 +331,10 @@ public class MainController implements Initializable {
         if (isNew) {
             DialogAction answer = DialogAction.OK;
             if (Settings.getNewFileCreated())
-                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", DialogAction.CANCEL, DialogAction.OK);
+                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?","", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
                 Settings.setNewFileCreated(true);
+                Settings.setNewFileSaved(false);
                 openTarget(FileIO.getOrCreateNewEstabFile());
             }
         } else {
@@ -350,13 +350,15 @@ public class MainController implements Initializable {
      * Saves the target to disk. If the file is our temp new file,
      * it calls {@link #saveTargetAsAction()} to change the path.
      *
-     * @see Main#stop()
      */
     @FXML
     public void saveTargetAction() {
         if (targetActiveEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
-            saveTargetAsAction();
-            Settings.setNewFileSaved(true);
+            if(saveTargetAsAction() != null) {
+                Settings.setNewFileSaved(true);
+                Settings.setNewFileCreated(false);
+            }
+
         } else {
             LOG.log(Level.INFO, "Saving target file: " + targetActiveEstabFile.getName());
         }
@@ -367,26 +369,28 @@ public class MainController implements Initializable {
      * Displays a file chooser and copies the current source file to the new destination.
      */
     @FXML
-    public void saveSourceAsAction() {
+    public File saveSourceAsAction() {
         File file = openFileChooser(true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + sourceActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(sourceActiveEstabFile, file);
             openSource(file);
         }
+        return file;
     }
 
     /**
      * Displays a file chooser and copies the current target file to the new destination.
      */
     @FXML
-    public void saveTargetAsAction() {
+    public File saveTargetAsAction() {
         File file = openFileChooser(true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving target file " + targetActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(targetActiveEstabFile, file);
             openTarget(file);
         }
+        return file;
     }
 
     /**
@@ -474,7 +478,7 @@ public class MainController implements Initializable {
             if (installedDataset != null) {
                 openSource(installedDataset);
             } else {
-                UtilView.showInfoDialog("Dataset already exists", "Aborting installation");
+                UtilView.showInfoDialog("Dataset already exists", "", "Aborting installation");
             }
         }
     }
@@ -486,12 +490,12 @@ public class MainController implements Initializable {
      */
     public void copyElementsToTarget(Collection<ElementModel> elements) {
         RelatedElementsLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements);
-        assert relatedElements.isDistributed();
+        relatedElements.findRepeatedElementsInTargetModel(targetPaneController.getEstabModel());
         if (!targetPaneController.copyRelatedElements(relatedElements))
             LOG.log(Level.WARNING, "Could not copy all elements");
     }
 
-    public void copyElementsToTarget(ElementModel element) {
+    void copyElementsToTarget(ElementModel element) {
         copyElementsToTarget(Arrays.asList(element));
     }
     @FXML
@@ -520,7 +524,7 @@ public class MainController implements Initializable {
 
     public void compareElementButtonAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
-            UtilView.showInfoDialog("Element comparison",
+            UtilView.showInfoDialog("Element comparison","",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
                             sourcePaneController.getActiveElement().get().getId(),
                             targetPaneController.getActiveElement().get().getId(),

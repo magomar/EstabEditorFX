@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.RGBColorModel;
 import org.junit.Before;
@@ -8,10 +8,10 @@ import static org.junit.Assert.assertEquals;
 
 public class RGBColorModelTest {
 
-    RGBColorModel ours;
-    int red = 255;
-    int blue = 1;
-    int green = 3;
+    private RGBColorModel ours;
+    private final int red = 255;
+    private final int blue = 1;
+    private final int green = 3;
 
     @Before
     public void setUp() throws Exception {

@@ -11,12 +11,9 @@ import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class Main extends Application {
 
-    Stage primaryStage;
+    private Stage primaryStage;
 
     public static void main(String[] args) {
         launch(args);
@@ -43,7 +40,7 @@ public class Main extends Application {
         }
         primaryStage.setOnCloseRequest(event -> {
             if (Settings.isNewFileCreated() && !Settings.isNewFileSaved()) {
-                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
+                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "","If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
                 if (answer != DialogAction.OK) {
                     event.consume();
                 }
@@ -55,9 +52,8 @@ public class Main extends Application {
     @Override
     public void stop() {
         // If a new file was created, delete it.
-        if (Settings.isNewFileCreated())
-            if (!FileIO.getOrCreateNewEstabFile().delete())
-                Logger.getLogger(getClass().getName()).log(Level.WARNING, "Created new file could not be deleted");
+        //noinspection ResultOfMethodCallIgnored
+        FileIO.getOrCreateNewEstabFile().delete();
         Settings.getInstance().setWindowWidth(primaryStage.getWidth());
         Settings.getInstance().setWindowHeight(primaryStage.getHeight());
         Settings.save();

@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.AmmoLoadModel;
 import org.junit.Test;
@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 
 public class AmmoLoadModelTest {
 
-    private int id = 10;
-    private String name = "Ammo Load Test";
-    private int load = 1;
+    private final int id = 10;
+    private final String name = "Ammo Load Test";
+    private final int load = 1;
 
     @Test
     public void testEquals() throws Exception {

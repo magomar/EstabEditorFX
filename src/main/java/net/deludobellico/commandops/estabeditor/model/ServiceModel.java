@@ -28,7 +28,7 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
     private final transient ObjectProperty<RGBColorModel> designationColor = new SimpleObjectProperty<>();
     private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
-    private List<Flag> flags = FXCollections.observableArrayList();
+    private final List<Flag> flags = FXCollections.observableArrayList();
 
     public ServiceModel(Service service) {
         setPojo(service);

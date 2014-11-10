@@ -5,6 +5,7 @@ import javax.xml.bind.JAXBElement;
 /**
  * Created by mario on 30-Jul-14.
  */
+@Deprecated
 public class EstabReference<T> {
     private int id;
     private String name;

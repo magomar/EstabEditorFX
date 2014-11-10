@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import javafx.collections.FXCollections;
@@ -18,37 +18,37 @@ import static org.junit.Assert.assertEquals;
 
 public class ForceModelTest {
 
-    int id = 10;
-    String name = "ForceModel Text";
-    String description = "ForceModel Desc";
-    IconModel icon = new IconModel();
-    ForceType type = ForceType.ARMOUR;
-    ForceSubtype subType = ForceSubtype.ABN_ARTY;
-    ForceSize size = ForceSize.ARMY;
-    CombatClass combatClass = CombatClass.BASE;
-    TargetClass targetClass = TargetClass.HARD;
-    int infantryValue = 10;
-    int reconValue = 20;
-    int engineeringValue = 30;
-    MoveType moveType = MoveType.AIR;
-    int persQty = 40;
-    int staffCapacity = 50;
-    double basicsQty = 60;
-    double basicsConsumptionRateModifier = 70;
-    int commanderRank = 80;
-    double fuelQty = 90;
-    double fuelLoad = 100;
-    double maxSpeed = 110;
-    double normalSpeed = 100;
-    XMLGregorianCalendar deployed = new XMLGregorianCalendarImpl();
-    XMLGregorianCalendar dugIn = new XMLGregorianCalendarImpl();
-    XMLGregorianCalendar entrenched = new XMLGregorianCalendarImpl();
-    XMLGregorianCalendar fortified = new XMLGregorianCalendarImpl();
-    String readyToFireDuration = "00:00:00";
-    String readyToBombardDuration = "00:00:00";
-    List<EquipmentModel> equipmentList = FXCollections.observableArrayList();
-    List<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
-    boolean canBombard = false;
+    private final int id = 10;
+    private final String name = "ForceModel Text";
+    private final String description = "ForceModel Desc";
+    private final IconModel icon = new IconModel();
+    private final ForceType type = ForceType.ARMOUR;
+    private final ForceSubtype subType = ForceSubtype.ABN_ARTY;
+    private final ForceSize size = ForceSize.ARMY;
+    private final CombatClass combatClass = CombatClass.BASE;
+    private final TargetClass targetClass = TargetClass.HARD;
+    private final int infantryValue = 10;
+    private final int reconValue = 20;
+    private final int engineeringValue = 30;
+    private final MoveType moveType = MoveType.AIR;
+    private final int persQty = 40;
+    private final int staffCapacity = 50;
+    private final double basicsQty = 60;
+    private final double basicsConsumptionRateModifier = 70;
+    private final int commanderRank = 80;
+    private final double fuelQty = 90;
+    private final double fuelLoad = 100;
+    private final double maxSpeed = 110;
+    private final double normalSpeed = 100;
+    private final XMLGregorianCalendar deployed = new XMLGregorianCalendarImpl();
+    private final XMLGregorianCalendar dugIn = new XMLGregorianCalendarImpl();
+    private final XMLGregorianCalendar entrenched = new XMLGregorianCalendarImpl();
+    private final XMLGregorianCalendar fortified = new XMLGregorianCalendarImpl();
+    private final String readyToFireDuration = "00:00:00";
+    private final String readyToBombardDuration = "00:00:00";
+    private final List<EquipmentModel> equipmentList = FXCollections.observableArrayList();
+    private final List<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
+    private final boolean canBombard = false;
 
     @Before
     public void setUp() throws Exception {

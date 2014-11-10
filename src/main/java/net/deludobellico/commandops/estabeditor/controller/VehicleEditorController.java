@@ -153,6 +153,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vehicleType.getItems().addAll(VehicleType.values());
+        description.setWrapText(true);
     }
 
     /**
@@ -169,7 +170,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
         if (armamentName.getText().isEmpty() || armamentQty.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
+            UtilView.showInfoDialog("Empty fields","", "Please, fill the empty fields", DialogAction.OK);
         } else {
             // Extract the WeaponModel we set when we selected the armament
             WeaponModel weapon = (WeaponModel) armamentName.getUserData();
@@ -192,7 +193,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                 armamentTableView.getItems().add(aModel);
                 activeVehicle.getArmaments().add(aModel);
             } else {
-                UtilView.showInfoDialog("Repeated weapon", "The selected weapon is already included. Please, select another one.");
+                UtilView.showInfoDialog("Repeated weapon","", "The selected weapon is already included. Please, select another one.");
             }
         }
     }

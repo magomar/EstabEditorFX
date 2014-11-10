@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
@@ -13,22 +13,22 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class WeaponModelTest {
-    int id = 234;
-    String name = "WeaponModel Test";
-    String description = "WeaponModel Desc";
-    int pictureId = 43;
-    String pictureFilename = "Weapon Picture";
-    double weight = 23.2;
-    int crew = 5;
-    double reliability = 23.1;
-    WeaponType type = WeaponType.OTHER;
-    boolean singleShot = false;
-    PrimaryRole primaryRole = PrimaryRole.ANTI_PERSONNEL;
-    double calibre = 64.2;
-    int muzzleVelocity = 34;
-    boolean mustDeployToFire = false;
-    List<PerformanceModel> performances = FXCollections.observableArrayList();
-    Flag[] flags = new Flag[]{Flag.NEW, Flag.REMOVE};
+    private final int id = 234;
+    private final String name = "WeaponModel Test";
+    private final String description = "WeaponModel Desc";
+    private final int pictureId = 43;
+    private final String pictureFilename = "Weapon Picture";
+    private final double weight = 23.2;
+    private final int crew = 5;
+    private final double reliability = 23.1;
+    private final WeaponType type = WeaponType.OTHER;
+    private final boolean singleShot = false;
+    private final PrimaryRole primaryRole = PrimaryRole.ANTI_PERSONNEL;
+    private final double calibre = 64.2;
+    private final int muzzleVelocity = 34;
+    private final boolean mustDeployToFire = false;
+    private final List<PerformanceModel> performances = FXCollections.observableArrayList();
+    private final Flag[] flags = new Flag[]{Flag.NEW, Flag.REMOVE};
 
     @Test
     public void testEquals() throws Exception {

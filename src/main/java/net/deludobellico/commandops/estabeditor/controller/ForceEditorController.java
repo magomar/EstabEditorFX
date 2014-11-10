@@ -158,7 +158,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     void equipmentAddAction() {
         if (equipmentName.getText().isEmpty() || equipmentQty.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields");
+            UtilView.showInfoDialog("Empty fields","", "Please, fill the empty fields");
         } else {
             ElementModel element = (ElementModel) equipmentName.getUserData();
             if (element == null) return;
@@ -180,12 +180,13 @@ public class ForceEditorController implements Initializable, ElementEditorContro
                 eModel.setEquipmentClass(element.getClass());
                 equipmentTableView.getItems().add(eModel);
             } else {
-                UtilView.showInfoDialog("Repeated equipment", "The selected equipment is already included. Please, select another one.");
+                UtilView.showInfoDialog("Repeated equipment", "","The selected equipment is already included. Please, select another one.");
             }
         }
     }
 
     @FXML
+    @SuppressWarnings("unchecked")
     void equipmentSelectAction() {
         List<ElementModel> vehiclesAndWeapons = new ArrayList(estabController.getEstabModel().getWeapons().values());
         vehiclesAndWeapons.addAll(estabController.getEstabModel().getVehicles().values());
@@ -264,7 +265,6 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         canBombard.selectedProperty().bindBidirectional(element.canBombardProperty());
         normalSpeed.textProperty().bindBidirectional(element.normalSpeedProperty(), new NumberStringConverter());
         maxSpeed.textProperty().bindBidirectional(element.maxSpeedProperty(), new NumberStringConverter());
-        ;
         // TODO: Choose between XMLCalendar or Date
 //        deployed.setEditable(isEditable);
 //        dugIn.setEditable(isEditable);

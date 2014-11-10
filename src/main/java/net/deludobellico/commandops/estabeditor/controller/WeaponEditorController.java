@@ -158,6 +158,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         // Set the activeWeapon primary role with the one selected in the combobox
+
+        description.setWrapText(true);
     }
 
     /**
@@ -175,7 +177,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         if (tableNewRangeValue.getText().isEmpty() || tableNewAccuracyValue.getText().isEmpty() || tableNewArmorPenetrationValue.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", DialogAction.OK);
+            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields","", DialogAction.OK);
         } else {
             // Prepare the new RangeItemModel
             RangeItemModel rangeItem = new RangeItemModel();
@@ -200,7 +202,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void removeRangeFromTable(ActionEvent actionEvent) {
         if (!rangeItemTableView.getSelectionModel().getSelectedItems().isEmpty()) {
-            DialogAction response = UtilView.showInfoDialog("Removing Range", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
+            DialogAction response = UtilView.showInfoDialog("Removing Range","", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
             if (response == DialogAction.OK) {
                 // Remove range from table and performance if the user said OK
                 RangeItemModel r = rangeItemTableView.getItems().remove(rangeItemTableView.getSelectionModel().getSelectedIndex());

@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test;
+package net.deludobellico.commandops.estabeditor;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
@@ -13,14 +13,14 @@ import java.nio.file.Path;
 /**
  * Created by Heine on 11/6/2014.
  */
-public class JAXBTest {
+class JAXBTest {
 
     public static void marshallTest() {
         Stopwatch sw = new Stopwatch();
 
         ClassLoader cl = JAXBTest.class.getClassLoader();
 //        ClassLoader cl = ClassLoader.getSystemClassLoader();
-        URL u1 = cl.getResource(FileIO.DATASETS_FOLDER + "/BFTBEstab.xml");
+//        URL u1 = cl.getResource(FileIO.DATASETS_FOLDER + "/BFTBEstab.xml");
         JAXBFactory jaxb = null;
         try {
             jaxb = new JAXBFactory("net.deludobellico.commandops.estabeditor.data.jaxb");
@@ -40,6 +40,7 @@ public class JAXBTest {
         sw.stop();
         System.out.println("Marshalling JSON completed -->" + sw);
         sw.start();
+        assert jaxb != null;
         jaxb.marshallXML(data, targetPathXML.toFile());
         sw.stop();
         System.out.println("Marshalling XML  completed -->" + sw);

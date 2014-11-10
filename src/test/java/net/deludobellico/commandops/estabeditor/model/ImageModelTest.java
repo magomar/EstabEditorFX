@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
@@ -8,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 
 public class ImageModelTest {
 
-    String name = "ImageModel Test";
-    String fileId = "ImageModel FileId";
-    Flag[] flags = new Flag[]{Flag.USER, Flag.COPY};
+    private final String name = "ImageModel Test";
+    private final String fileId = "ImageModel FileId";
+    private final Flag[] flags = new Flag[]{Flag.USER, Flag.COPY};
 
     @Test
     public void testEquals() throws Exception {

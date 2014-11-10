@@ -13,40 +13,38 @@
            minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0"
            prefWidth="300.0" xmlns="http://javafx.com/javafx/8"
            fx:controller="net.deludobellico.commandops.estabeditor.view.InfoDialog">
-    <items>
-        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0">
-            <children>
-                <ImageView fx:id="image" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
-                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
-                    <viewport>
-                        <Rectangle2D height="60.0" width="60.0"/>
-                    </viewport>
-                </ImageView>
-                <Label fx:id="headText" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="70.0"
-                       AnchorPane.topAnchor="5.0">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-        <AnchorPane>
-            <children>
-                <Text fx:id="bodyText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0"
-                      AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
-                    <font>
-                        <Font size="14.0"/>
-                    </font>
-                </Text>
-                <HBox fx:id="buttonBox" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT"
-                      prefHeight="30.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                      AnchorPane.rightAnchor="10.0">
-                    <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0"
-                                mnemonicParsing="false" prefWidth="100.0" text="OK"/>
-                    </children>
-                </HBox>
-            </children>
-        </AnchorPane>
-    </items>
+    <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0">
+        <children>
+            <ImageView fx:id="image" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+                <viewport>
+                    <Rectangle2D height="60.0" width="60.0"/>
+                </viewport>
+            </ImageView>
+            <Label fx:id="headText" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="70.0"
+                   AnchorPane.topAnchor="5.0">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
+    <AnchorPane>
+        <children>
+            <Text fx:id="bodyText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.0"
+                  AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Text>
+            <HBox fx:id="buttonBox" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT"
+                  prefHeight="30.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                  AnchorPane.rightAnchor="10.0">
+                <children>
+                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0"
+                            mnemonicParsing="false" prefWidth="100.0" text="OK"/>
+                </children>
+            </HBox>
+        </children>
+    </AnchorPane>
 </SplitPane>

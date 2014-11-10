@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
@@ -11,16 +11,16 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class SideModelTest {
-    int id = 10;
-    String name = "SideModel Test";
-    String description = "SideModel Desc";
-    int largeInsignia = 2;
-    int smallInsignia = 3;
-    double basicsConsumptionRate = 0.3;
-    int defaultEnemyAperFp = 2;
-    int defaultEnemyAarmFp = 5;
-    List<NationModel> nation = FXCollections.observableArrayList();
-    Flag[] flags = new Flag[]{Flag.COPY, Flag.REMOVE};
+    private final int id = 10;
+    private final String name = "SideModel Test";
+    private final String description = "SideModel Desc";
+    private final int largeInsignia = 2;
+    private final int smallInsignia = 3;
+    private final double basicsConsumptionRate = 0.3;
+    private final int defaultEnemyAperFp = 2;
+    private final int defaultEnemyAarmFp = 5;
+    private final List<NationModel> nation = FXCollections.observableArrayList();
+    private final Flag[] flags = new Flag[]{Flag.COPY, Flag.REMOVE};
 
 
     @Test

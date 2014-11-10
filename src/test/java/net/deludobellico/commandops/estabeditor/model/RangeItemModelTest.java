@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.RangeItemModel;
 import org.junit.Before;
@@ -7,10 +7,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class RangeItemModelTest {
-    RangeItemModel ours;
-    int range = 10;
-    double accuracy = 20.0;
-    double armourPenetrationProperty = 30.0;
+    private RangeItemModel ours;
+    private final int range = 10;
+    private final double accuracy = 20.0;
+    private final double armourPenetrationProperty = 30.0;
 
     @Before
     public void setUp() throws Exception {

@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -187,7 +186,7 @@ public class EstabController implements Initializable {
     /**
      * Updates the estab by refreshing the title and forcing searches.
      */
-    public void update() {
+    void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         setTitle();
         if (estabModel != null) searchElement();
@@ -332,6 +331,7 @@ public class EstabController implements Initializable {
                     estabModel.paste(relatedElementsLists.getAllElements());
                     break;
                 case SKIP_REPEATED:
+                    assert relatedElementsLists.isDistributed();
                     estabModel.paste(relatedElementsLists.getNonRepeatedElements());
                     break;
                 case COPY_SELECTION:
@@ -396,13 +396,11 @@ public class EstabController implements Initializable {
      * Duplicates all the elements received in a collection
      *
      * @param selectedItems the collection containing the items to duplicate
-     * @return true if success, false otherwise
      */
-    public boolean duplicateSelectedElements(Collection<ElementModel> selectedItems) {
-        if (!isEditable) return false;
+    void duplicateSelectedElements(Collection<ElementModel> selectedItems) {
+        if (!isEditable) return;
         estabModel.duplicate(selectedItems);
         update();
-        return true;
     }
 
     /**
@@ -427,7 +425,7 @@ public class EstabController implements Initializable {
      */
     public void saveModel(File file) {
         if (!file.exists()) {
-            UtilView.showInfoDialog("File not found", file.getName() + " doesn't exists");
+            UtilView.showInfoDialog("File not found","", file.getName() + " doesn't exist");
             LOG.log(Level.WARNING, "Abort save. File not found " + file.getName());
         } else estabModel.saveToFile(file);
     }
@@ -435,7 +433,7 @@ public class EstabController implements Initializable {
     /**
      * Sets the title depending if this is a source or target estab
      */
-    public void setTitle() {
+    void setTitle() {
         setTitle(isEditable ? "Target Estab" : "Source Estab");
     }
 
@@ -444,7 +442,7 @@ public class EstabController implements Initializable {
      *
      * @param title initial string which will have the info appended
      */
-    public void setTitle(String title) {
+    void setTitle(String title) {
         if (estabModel != null) {
             title = title.split("\\|")[0];
             int sides = estabModel.getSides().size();
@@ -463,7 +461,7 @@ public class EstabController implements Initializable {
      *
      * @param file estab file
      */
-    public void setFile(File file) {
+    void setFile(File file) {
         this.activeFile = file;
     }
 
@@ -475,7 +473,7 @@ public class EstabController implements Initializable {
      * @param isEditable true true if the estab is editable, false otherwise
      * @see ElementEditorController#setEditable(boolean)
      */
-    public void setEditable(boolean isEditable) {
+    void setEditable(boolean isEditable) {
         this.isEditable = isEditable;
     }
 
@@ -490,7 +488,7 @@ public class EstabController implements Initializable {
         setEstabModel(new EstabModel(file));
     }
 
-    public void setMainController(MainController mainController) {
+    void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
@@ -503,7 +501,7 @@ public class EstabController implements Initializable {
      *
      * @param element element to be displayed
      */
-    public void setActiveElement(ElementModel element) {
+    void setActiveElement(ElementModel element) {
         if (null == element) return;
 
         Class elementClass = element.getClass();

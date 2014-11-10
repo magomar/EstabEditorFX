@@ -654,7 +654,7 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
         if (getHasOpenTop() != (that.getHasOpenTop())) return false;
         if (getHasTurret() != (that.getHasTurret())) return false;
         if (getHeight() != (that.getHeight())) return false;
-//        if (getId()!=(that.getgetId()())) return false;
+//        if (getId()!=(that.getId()())) return false;
         if (getLength() != (that.getLength())) return false;
         if (getMaxCrossCountrySpeed() != (that.getMaxCrossCountrySpeed())) return false;
         if (getMaxFordingDepth() != (that.getMaxFordingDepth())) return false;

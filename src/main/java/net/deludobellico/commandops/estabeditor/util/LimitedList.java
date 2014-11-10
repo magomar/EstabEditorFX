@@ -8,15 +8,15 @@ import java.util.*;
  * <p>New items are added to the first position. Existing items will be moved to the front.
  * If the maximum size is reached, any new insertion will remove the oldest item.</p>
  * <p>
- * <p>This list uses a hashmap, so be sure to implement equals & hashCode if you're going to modify
+ * <p>This list uses a @{code HashMap}, so be sure to implement equals & hashCode if you're going to modify
  * the items inside the list.</p>
  * <p>
  * Created by Heine on 10/29/2014.
  */
 
 public class LimitedList<H> extends AbstractSequentialList<H> implements List<H> {
-    int maxSize;
-    HashMap<H, Node<H>> nodeMap;
+    private int maxSize;
+    private HashMap<H, Node<H>> nodeMap;
     private Node<H> first;
     private Node<H> last;
 
@@ -41,25 +41,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
-        for (Object o : c) {
-            if (nodeMap.get(o) == null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends H> c) {
-        if (c == null) return false;
-        for (H h : c) {
-            add(h);
-        }
-        return true;
-    }
-
-    @Override
     public boolean addAll(int index, Collection<? extends H> c) {
         if (c == null) return false;
         addAll(c);
@@ -74,6 +55,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
 
     @Override
     public boolean removeAll(Collection<?> c) {
+        Objects.requireNonNull(c);
         for (Object o : c) {
             if (!remove(o)) return false;
         }
@@ -81,29 +63,9 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
-        HashMap<H, Node<H>> m = new HashMap<>(nodeMap);
-        clear();
-        for (Object o : c) if (contains(o)) add((H) o);
-        return true;
-    }
-
-    @Override
     public void clear() {
         nodeMap.clear();
         last = first = null;
-    }
-
-    @Override
-    public H get(int index) throws IndexOutOfBoundsException {
-        checkElementIndex(index);
-        Node<H> n = first;
-        int i = 0;
-        while (i < index) {
-            ++i;
-            n = n.next;
-        }
-        return n.value;
     }
 
     @Override
@@ -127,11 +89,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
     @Override
     public int lastIndexOf(Object o) {
         return indexOf(o);
-    }
-
-    @Override
-    public List<H> subList(int fromIndex, int toIndex) {
-        return new LimitedList<>(maxSize);
     }
 
     private void linkFirst(Node<H> n) {
@@ -191,7 +148,7 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
 
     @Override
     public boolean contains(Object o) {
-        return nodeMap.get(o) != null;
+        return nodeMap.containsKey(o);
     }
 
     @Override

@@ -54,7 +54,7 @@ public class CopyRemoveDialog implements Initializable {
     private Stage dialog;
     private Parent parent;
     private DialogAction selectedDialogAction = DialogAction.CANCEL;
-    private Collection selectedItems = FXCollections.observableArrayList();
+    private final Collection selectedItems = FXCollections.observableArrayList();
 
     public static CopyRemoveDialog init() {
         FXMLLoader fxmlLoader = new FXMLLoader(CopyRemoveDialog.class.getResource(FileIO.SELECTION_DIALOG_VIEW));
@@ -110,9 +110,8 @@ public class CopyRemoveDialog implements Initializable {
         return this;
     }
 
-    public CopyRemoveDialog setParent(Parent parent) {
+    void setParent(Parent parent) {
         this.parent = parent;
-        return this;
     }
 
     public CopyRemoveDialog setHeadText(String text) {

@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test;
+package net.deludobellico.commandops.estabeditor;
 
 import net.deludobellico.commandops.estabeditor.model.EstabModel;
 import net.deludobellico.commandops.estabeditor.model.VehicleModel;
@@ -14,18 +14,18 @@ import java.util.logging.Logger;
 /**
  * Created by Mario on 24/07/2014.
  */
-public class MainTest {
+class MainTest {
     private static final Logger LOG = Logger.getLogger(MainTest.class.getName());
     private final static EstabModel ESTAB_MODEL = new EstabModel(new File(System.getProperty("user.dir") + "/src/main/resources/datasets/BFTBEstab.xml"));
     private final static int MAX_ADD_REPS = 100;
     private final static int TEST_REPS = 17;
 
     public static void main(String[] args) {
-        //JAXBTest.marshallTest();
+        //net.deludobellico.commandops.estabeditor.JAXBTest.marshallTest();
         listsTest();
     }
 
-    public static void listsTest() {
+    private static void listsTest() {
 
 
         Deque linkedList = new LinkedList<>();
@@ -35,22 +35,22 @@ public class MainTest {
         Deque arrayDequeInit = new ArrayDeque<>(MAX_ADD_REPS);
         Collection limitedList = new LimitedList<>(MAX_ADD_REPS);
 
-        List<Pair<String, Deque>> deques = new ArrayList<>();
+        List<Pair<String, Deque>> pairs = new ArrayList<>();
 //        collections.add(new Pair<>("arrayList", arrayList));
 //        collections.add(new Pair<>("arrayListInit", arrayListInit));
-        deques.add(new Pair<>("linkedList", linkedList));
+        pairs.add(new Pair<>("linkedList", linkedList));
 //        collections.add(new Pair<>("limitedList", limitedList));
-        deques.add(new Pair<>("arrayDeque", arrayDeque));
-        deques.add(new Pair<>("arrayDequeInit", arrayDequeInit));
+        pairs.add(new Pair<>("arrayDeque", arrayDeque));
+        pairs.add(new Pair<>("arrayDequeInit", arrayDequeInit));
 
         List<Pair<String, Consumer<Deque>>> methods = new ArrayList<>();
-//        methods.add(new Pair<>("addIterator", MainTest::addIterator));
+//        methods.add(new Pair<>("addIterator", net.deludobellico.commandops.estabeditor.MainTest::addIterator));
         methods.add(new Pair<>("addVehicles", MainTest::addVehicles));
 //        methods.add(new Pair<>("contains", (Consumer<Collection>) (t) -> t.contains("0")));
-//        methods.add(new Pair<>("listGet", MainTest::listGet));
-//        methods.add(new Pair<>("addModelObjects", MainTest::addModelObjects));
-//        methods.add(new Pair<>("removeModelObjects", MainTest::removeModelObjects));
-//        methods.add(new Pair<>("removeIterator", MainTest::removeIterator));
+//        methods.add(new Pair<>("listGet", net.deludobellico.commandops.estabeditor.MainTest::listGet));
+//        methods.add(new Pair<>("addModelObjects", net.deludobellico.commandops.estabeditor.MainTest::addModelObjects));
+//        methods.add(new Pair<>("removeModelObjects", net.deludobellico.commandops.estabeditor.MainTest::removeModelObjects));
+//        methods.add(new Pair<>("removeIterator", net.deludobellico.commandops.estabeditor.MainTest::removeIterator));
 //        methods.add(new Pair<>("clear", Collection::clear));
         methods.add(new Pair<>("pollFirst", MainTest::pollFirst));
         methods.add(new Pair<>("addVehicles", MainTest::addVehicles));
@@ -61,7 +61,7 @@ public class MainTest {
         Stopwatch s = new Stopwatch();
         for (int i = 0; i < TEST_REPS; ++i) {
             for (Pair<String, Consumer<Deque>> methodPair : methods) {
-                for (Pair<String, Deque> listPair : deques) {
+                for (Pair<String, Deque> listPair : pairs) {
                     s.start();
                     methodPair.getValue().accept(listPair.getValue());
                     s.stop();
@@ -95,9 +95,7 @@ public class MainTest {
 
     private static void addModelObjects(Collection collection) {
         for (Object m : ESTAB_MODEL.getAll().values()) {
-            for (Object o : ((Map) m).values()) {
-                collection.add(o);
-            }
+            ((Map)m).values().stream().forEach(collection::add);
         }
     }
 
@@ -118,9 +116,8 @@ public class MainTest {
 
     private static void removeModelObjects(Collection collection) {
         for (Object m : ESTAB_MODEL.getAll().values()) {
-            for (Object o : ((Map) m).values()) {
-                collection.remove(o);
-            }
+            ((Map) m).values().stream().forEach(collection::remove);
+
         }
     }
 

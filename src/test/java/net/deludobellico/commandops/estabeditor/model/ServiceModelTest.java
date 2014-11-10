@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,19 +14,19 @@ import static org.junit.Assert.assertEquals;
 
 public class ServiceModelTest {
 
-    Integer id = 10;
-    String name = "ServiceModel Test";
-    String description = "ServiceModel Desc";
-    Integer largeInsignia = 5;
-    Integer smallInsignia = 3;
-    ObservableList<RankModel> rankList = FXCollections.observableArrayList();
-    RGBColorModel backgroundColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel backgroundDarkColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel backgroundLightColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel designationColor = new RGBColorModel(255, 255, 255);
-    SymbolColor symbolColor = SymbolColor.BLACK;
-    ObservableList<ForceModel> force = FXCollections.observableArrayList();
-    Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
+    private final Integer id = 10;
+    private final String name = "ServiceModel Test";
+    private final String description = "ServiceModel Desc";
+    private final Integer largeInsignia = 5;
+    private final Integer smallInsignia = 3;
+    private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
+    private final RGBColorModel backgroundColor = new RGBColorModel(255, 255, 255);
+    private final RGBColorModel backgroundDarkColor = new RGBColorModel(255, 255, 255);
+    private final RGBColorModel backgroundLightColor = new RGBColorModel(255, 255, 255);
+    private final RGBColorModel designationColor = new RGBColorModel(255, 255, 255);
+    private final SymbolColor symbolColor = SymbolColor.BLACK;
+    private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
+    private final Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
 
 
     @Test

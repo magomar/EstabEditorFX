@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.*;
 import org.junit.Before;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("unchecked")
 public class EstabModelTest {
-    EstabModel estabModel;
+    private EstabModel estabModel;
 
     @Before
     public void setUp() throws Exception {

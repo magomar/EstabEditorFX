@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.scene.paint.Color;
 import net.deludobellico.commandops.estabeditor.data.jaxb.ForceSize;
@@ -13,15 +13,15 @@ import static org.junit.Assert.assertEquals;
 public class IconModelTest {
 
 
-    Color backgroundColor = RGBColorModel.getColor(255, 255, 255);
-    Color backgroundDarkColor = RGBColorModel.getColor(255, 255, 255);
-    Color backgroundLightColor = RGBColorModel.getColor(255, 255, 255);
-    Color designationColor = RGBColorModel.getColor(0, 0, 0);
-    ForceSize forceSize = ForceSize.ARMY;
-    PictureSymbol pictureSymbol = PictureSymbol.AMMO;
-    SymbolColor symbolColor = SymbolColor.BLACK;
-    boolean hq = false;
-    int militarySymbol = 10;
+    private final Color backgroundColor = RGBColorModel.getColor(255, 255, 255);
+    private final Color backgroundDarkColor = RGBColorModel.getColor(255, 255, 255);
+    private final Color backgroundLightColor = RGBColorModel.getColor(255, 255, 255);
+    private final Color designationColor = RGBColorModel.getColor(0, 0, 0);
+    private final ForceSize forceSize = ForceSize.ARMY;
+    private final PictureSymbol pictureSymbol = PictureSymbol.AMMO;
+    private final SymbolColor symbolColor = SymbolColor.BLACK;
+    private final boolean hq = false;
+    private final int militarySymbol = 10;
 
     @Test
     public void testEquals() throws Exception {

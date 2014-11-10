@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.test.model;
+package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
 import org.junit.Test;
@@ -6,9 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ArmamentModelTest {
-    private int id = 10;
-    private String name = "Armament Model Test";
-    private int qty = 5;
+    private final int id = 10;
+    private final String name = "Armament Model Test";
+    private final int qty = 5;
 
 
     @Test

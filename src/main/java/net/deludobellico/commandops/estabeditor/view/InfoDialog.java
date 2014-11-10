@@ -81,9 +81,8 @@ public class InfoDialog implements Initializable {
         return this;
     }
 
-    public InfoDialog setParent(Parent parent) {
+    void setParent(Parent parent) {
         this.parent = parent;
-        return this;
     }
 
 

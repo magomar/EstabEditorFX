@@ -27,7 +27,7 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     private final IntegerProperty defaultEnemyAperFp = new SimpleIntegerProperty();
     private final IntegerProperty defaultEnemyAarmFp = new SimpleIntegerProperty();
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();
-    private List<Flag> flags = FXCollections.observableArrayList();
+    private final List<Flag> flags = FXCollections.observableArrayList();
 
     public SideModel(Side side) {
         setPojo(side);

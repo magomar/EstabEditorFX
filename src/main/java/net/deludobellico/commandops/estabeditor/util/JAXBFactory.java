@@ -63,7 +63,7 @@ public class JAXBFactory {
      *
      * @param object object to be marshalled
      * @param file   file to save the marshalled object
-     * @return
+     * @return null
      */
     public static File marshallJson(Object object, File file) {
         ObjectMapper mapper = new ObjectMapper();

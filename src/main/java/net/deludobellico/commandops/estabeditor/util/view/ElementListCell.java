@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import net.deludobellico.commandops.estabeditor.controller.EstabController;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -19,7 +18,6 @@ import java.util.Iterator;
  * Each cell is composed of a {@link CheckBox} and a {@link Label}. Additionally, each cell references an {@link ElementModel}.
  * When the checkbox is selected the element model is added to a collection, and removed when deselected.
  *
- * @see EstabController#searchResultsListView
  */
 public class ElementListCell extends HBox {
 

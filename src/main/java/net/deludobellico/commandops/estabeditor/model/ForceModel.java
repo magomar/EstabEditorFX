@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +62,7 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     /**
      * NOTES
      * <p>
-     * the xsd defines ammoList as an objet of type AmmmoList, which is a list of AmmoQty,
+     * the xsd defines ammoList as an object of type AmmoList, which is a list of AmmoQty,
      * but the content of AmmoQty looks the same of AmmoLoad, so it seems a duplication
      * Have a look, but I think we can use a single model for both elements, the AmmoLoadModel
      * However, a conversion would be needed in the pojo methods

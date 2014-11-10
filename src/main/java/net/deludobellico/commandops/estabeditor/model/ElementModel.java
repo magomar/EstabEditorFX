@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Wrapper for all JAXB important POJOs (Forces, Nations, Vehicles, Weapons, Ammo, etc.)
- * <p>Model classes should override their {@code equals} and {@code hashcode}.
+ * <p>Model classes should override their {@code equals} and {@code hashCode}.
  * Even if IDs are unique, sometimes in-depth comparison is needed.
  *
  * @author Mario

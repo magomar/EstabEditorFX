@@ -21,7 +21,7 @@ import java.util.Map;
 public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
-    private List<Flag> flags = FXCollections.observableArrayList();
+    private final List<Flag> flags = FXCollections.observableArrayList();
 
     public RadioModel(Radio radio) {
         setPojo(radio);

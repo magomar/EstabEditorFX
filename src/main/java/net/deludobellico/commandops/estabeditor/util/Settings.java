@@ -11,9 +11,9 @@ import java.util.List;
 public class Settings {
 
     private static final Integer MAX_RECENT_FILES = 4;
-    private static List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static Settings settings = new Settings();
+    private static final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private static final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private static final Settings settings = new Settings();
     private static String lastOpenedFolder;
     private static Double windowWidth;
     private static Double windowHeight;
@@ -66,17 +66,9 @@ public class Settings {
         return sourceRecentFiles;
     }
 
-    public void setSourceRecentFiles(List<String> sourceRecentFiles) {
-        sourceRecentFiles.addAll(sourceRecentFiles);
-    }
-
     @XmlElement(name = "target-recent-files")
     public List<String> getTargetRecentFiles() {
         return targetRecentFiles;
-    }
-
-    public void setTargetRecentFiles(List<String> targetRecentFiles) {
-        Settings.targetRecentFiles.addAll(targetRecentFiles);
     }
 
     @XmlElement(name = "window-width", required = true)
