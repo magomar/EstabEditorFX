@@ -310,8 +310,6 @@ public class MainController implements Initializable {
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetActiveEstabFile);
 
-
-        // TODO: simplify, add listener to active element to disable or enable copy
         if (sourcePaneController.getActiveElement().get() != null) disableCopy.set(false);
         else disableCopy.set(true);
 

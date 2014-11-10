@@ -275,7 +275,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void performanceRemoveFireType(ActionEvent actionEvent) {
         if (!performanceFireTypeList.getSelectionModel().getSelectedItems().isEmpty()) {
-            //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
             activeWeapon.getPerformances().remove(activePerformance);
             performanceFireTypeList.getItems().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
         }

@@ -80,6 +80,7 @@ public class ElementListCell extends HBox {
      *
      * @return the new created label
      */
+    @SuppressWarnings("unchecked")
     private Label createLabel() {
         Label l = new Label();
         // Set up the name

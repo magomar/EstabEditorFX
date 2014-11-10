@@ -52,7 +52,6 @@ public class SelectionListDialog implements Initializable {
     private TableColumn<ElementModel, String> tableViewNameColumn;
 
     private Stage dialog;
-    private Collection items;
     private Parent parent;
     private DialogAction selectedDialogAction = DialogAction.CANCEL;
     private Collection selectedItems = FXCollections.observableArrayList();
@@ -101,7 +100,6 @@ public class SelectionListDialog implements Initializable {
     }
 
     public SelectionListDialog setItems(Collection items) {
-        this.items = items;
         tableView.getItems().clear();
         tableView.getItems().addAll(items);
         return this;

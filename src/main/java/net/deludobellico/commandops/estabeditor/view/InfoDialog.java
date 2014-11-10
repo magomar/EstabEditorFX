@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -66,6 +67,7 @@ public class InfoDialog implements Initializable {
         dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
         buttonBox.getChildren().stream().forEach(b -> ((Button) b).setOnAction(event -> dialog.close()));
+        image.setImage(new Image(InfoDialog.class.getResourceAsStream(FileIO.INFO_ICON_RESOURCE)));
 
     }
 

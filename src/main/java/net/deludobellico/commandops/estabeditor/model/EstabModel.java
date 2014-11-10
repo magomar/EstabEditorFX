@@ -1,15 +1,10 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -67,17 +62,22 @@ public class EstabModel {
         allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
         allElements.put(ImageModel.class, new HashMap<>(estabData.getImage().size()));
         allElements.put(SideModel.class, new HashMap<>(estabData.getSide().size()));
+        allElements.put(ForceModel.class, new HashMap<>(estabData.getSide().size()));
         allElements.put(VehicleModel.class, new HashMap<>(estabData.getVehicle().size()));
         allElements.put(WeaponModel.class, new HashMap<>(estabData.getWeapon().size()));
         allElements.put(AmmoModel.class, new HashMap<>(estabData.getAmmo().size()));
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
-        // Wrap all the elements to their element model and saves them to their corresponding map
         final int[] maxId = {0};
+        for (Side side : estabData.getSide())
+            for (Nation nation : side.getNation())
+                for (Service service : nation.getService()) estabLists.add(service.getForce());
+
+        // Wrap all the elements to their element model and saves them to their corresponding map
         for (List<? extends Element> elements : estabLists)
             elements.stream().map(Element::getModel).forEach(e -> {
                 ElementModel em = (ElementModel) e;
-                if(em.getId() > maxId[0]) maxId[0] = em.getId();
+                if (em.getId() > maxId[0]) maxId[0] = em.getId();
                 em.shallowCopyToMap(allElements.get(em.getClass()));
             });
         ElementModelFactory.setMaxId(maxId[0]);

@@ -191,7 +191,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                 newArmament.setQty(Integer.valueOf(armamentQty.getText()));
 
                 ArmamentModel aModel = new ArmamentModel(newArmament);
-                //TODO: don't add repeated weapons
                 armamentTableView.getItems().add(aModel);
                 activeVehicle.getArmaments().add(aModel);
             } else {
@@ -227,7 +226,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @FXML
     private void armamentRemoveAction(ActionEvent actionEvent) {
         if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
-            //TODO: set tableView items directly from the element (tableView.setItems(element.getItems()))
             activeVehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
             armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }

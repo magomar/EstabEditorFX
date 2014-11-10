@@ -36,6 +36,7 @@ public class FileIO {
     //Views
     public static final String VIEWS_FOLDER = "/views";
     public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
+    public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor-v2.0.fxml";
     public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor-v2.0.fxml";
     public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor-v2.0.fxml";
     public static final String AMMO_VIEW = VIEWS_FOLDER + "/ammo-editor-v2.0.fxml";
@@ -47,6 +48,8 @@ public class FileIO {
     public static final String REMOVE_ICON_RESOURCE = IMAGES_FOLDER + "/removeicon.png";
     public static final String COPY_ICON_RESOURCE = IMAGES_FOLDER + "/copyicon.png";
     public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
+    public static final String INFO_ICON_RESOURCE = IMAGES_FOLDER + "/info.png";
+    public static final String FORCE_ICON_RESOURCE = IMAGES_FOLDER + "/forceicon.png";
     public static final String VEHICLE_ICON_RESOURCE = IMAGES_FOLDER + "/vehicleicon.png";
     public static final String WEAPON_ICON_RESOURCE = IMAGES_FOLDER + "/weaponicon.png";
     public static final String AMMO_ICON_RESOURCE = IMAGES_FOLDER + "/ammoicon.png";

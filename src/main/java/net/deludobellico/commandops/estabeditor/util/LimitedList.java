@@ -129,7 +129,6 @@ public class LimitedList<H> extends AbstractSequentialList<H> implements List<H>
         return indexOf(o);
     }
 
-    //TODO
     @Override
     public List<H> subList(int fromIndex, int toIndex) {
         return new LimitedList<>(maxSize);

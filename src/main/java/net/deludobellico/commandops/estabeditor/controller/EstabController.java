@@ -40,6 +40,7 @@ import java.util.logging.Logger;
 public class EstabController implements Initializable {
     private static final Logger LOG = Logger.getLogger(EstabController.class.getName());
     private static final Map<Class, String> ELEMENT_EDITOR_VIEWS = Collections.unmodifiableMap(new HashMap<Class, String>() {{
+        put(ForceModel.class, FileIO.FORCE_VIEW);
         put(VehicleModel.class, FileIO.VEHICLE_VIEW);
         put(WeaponModel.class, FileIO.WEAPON_VIEW);
         put(AmmoModel.class, FileIO.AMMO_VIEW);
@@ -56,6 +57,8 @@ public class EstabController implements Initializable {
     /**
      * Buttons filter searches by element
      */
+    @FXML
+    private ToggleButton forceButton;
     @FXML
     private ToggleButton vehicleButton;
     @FXML
@@ -114,7 +117,6 @@ public class EstabController implements Initializable {
 
         // Disable copy and remove buttons if there are no selected items
         selectedElements.addListener((ListChangeListener<ElementModel>) change -> {
-            // TODO: enable copy only when the target is opened
             if (selectedElements.isEmpty()) {
                 copySelectedButton.setDisable(true);
                 removeSelectedButton.setDisable(true);
@@ -149,6 +151,7 @@ public class EstabController implements Initializable {
 
         // Disable buttons when search is disabled
         searchDisable.addListener((observable, oldValue, newValue) -> {
+            forceButton.setDisable(newValue);
             vehicleButton.setDisable(newValue);
             weaponButton.setDisable(newValue);
             ammoButton.setDisable(newValue);
@@ -157,7 +160,7 @@ public class EstabController implements Initializable {
             selectNoneListCheckBox.setDisable(newValue);
         });
 
-
+        ((ImageView) forceButton.getGraphic()).setImage(new Image(FileIO.FORCE_ICON_RESOURCE));
         ((ImageView) vehicleButton.getGraphic()).setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
         ((ImageView) weaponButton.getGraphic()).setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
         ((ImageView) ammoButton.getGraphic()).setImage(new Image(FileIO.AMMO_ICON_RESOURCE));
@@ -199,16 +202,31 @@ public class EstabController implements Initializable {
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
     }
-
+    /**
+     * Filters the search list with forces only
+     *
+     */
+    @FXML
+    private void searchForce() {
+        activeSearchListClass = ForceModel.class;
+        searchTextField.setPromptText("Search Force");
+        forceButton.setSelected(true);
+        vehicleButton.setSelected(false);
+        weaponButton.setSelected(false);
+        ammoButton.setSelected(false);
+        selectAllListCheckBox.setSelected(false);
+        selectNoneListCheckBox.setSelected(false);
+        searchElement();
+    }
     /**
      * Filters the search list with vehicles only
      *
-     * @param actionEvent is not used
      */
     @FXML
-    private void searchVehicle(ActionEvent actionEvent) {
+    private void searchVehicle() {
         activeSearchListClass = VehicleModel.class;
         searchTextField.setPromptText("Search vehicle");
+        forceButton.setSelected(false);
         vehicleButton.setSelected(true);
         weaponButton.setSelected(false);
         ammoButton.setSelected(false);
@@ -220,10 +238,9 @@ public class EstabController implements Initializable {
     /**
      * Filters the search list with weapons only
      *
-     * @param actionEvent is not used
      */
     @FXML
-    private void searchWeapon(ActionEvent actionEvent) {
+    private void searchWeapon() {
         activeSearchListClass = WeaponModel.class;
         searchTextField.setPromptText("Search weapon");
         vehicleButton.setSelected(false);
@@ -237,10 +254,9 @@ public class EstabController implements Initializable {
     /**
      * Filters the search list with ammo only
      *
-     * @param actionEvent is not used
      */
     @FXML
-    private void searchAmmo(ActionEvent actionEvent) {
+    private void searchAmmo() {
         activeSearchListClass = AmmoModel.class;
         searchTextField.setPromptText("Search ammo");
         vehicleButton.setSelected(false);
@@ -373,7 +389,7 @@ public class EstabController implements Initializable {
     public void removeSelectedItems() {
         removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
         selectedElements.clear();
-        searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
+        searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
     }
 
     /**
@@ -401,7 +417,7 @@ public class EstabController implements Initializable {
             mainController.copyElementsToTarget(selectedElements);
         }
         selectedElements.clear();
-        searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
+        searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
     }
 
     /**
