@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 03/11/2014.
+ * Model wrapper for the {@code Image} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -52,14 +55,14 @@ public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image>
     }
 
     @Override
-    public void copyToMap(Map<Integer, ImageModel> map) {
+    public void hardCopyToMap(Map<Integer, ImageModel> map) {
         Image copy = getPojo();
         copy.getFlags().add((Flag.COPY));
         map.put(copy.getId(), new ImageModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, ImageModel> map) {
+    public void shallowCopyToMap(Map<Integer, ImageModel> map) {
         map.put(getId(), this);
     }
 

@@ -7,7 +7,10 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code Icon} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class IconModel implements PojoJFXModel<Icon> {
     private final ObjectProperty<RGBColorModel> backgroundColor = new SimpleObjectProperty<>();

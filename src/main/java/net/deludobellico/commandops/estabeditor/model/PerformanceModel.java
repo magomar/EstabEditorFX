@@ -9,7 +9,10 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.ROF;
 import net.deludobellico.commandops.estabeditor.data.jaxb.RangeTable;
 
 /**
- * Created by Mario on 28/10/2014.
+ * Model wrapper for the {@code Performance} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class PerformanceModel implements PojoJFXModel<Performance> {
     private final ObjectProperty<AmmoLoadModel> ammoLoad = new SimpleObjectProperty<>();

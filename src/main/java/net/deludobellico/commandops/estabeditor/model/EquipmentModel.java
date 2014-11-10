@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
 
 /**
- * Model wrapper for the Equipment class
+ * Model wrapper for the {@code Equipment} class
  *
  * @author Mario
  * @author Heine

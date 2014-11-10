@@ -15,7 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code Nation} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nation> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -74,14 +77,14 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
     }
 
     @Override
-    public void copyToMap(Map<Integer, NationModel> map) {
+    public void hardCopyToMap(Map<Integer, NationModel> map) {
         Nation copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new NationModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, NationModel> map) {
+    public void shallowCopyToMap(Map<Integer, NationModel> map) {
         map.put(getId(), this);
     }
 

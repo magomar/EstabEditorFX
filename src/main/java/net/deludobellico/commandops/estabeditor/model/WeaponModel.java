@@ -11,7 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 28/10/2014.
+ * Model wrapper for the {@code Weapon} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -108,14 +111,14 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
     }
 
     @Override
-    public void copyToMap(Map<Integer, WeaponModel> map) {
+    public void hardCopyToMap(Map<Integer, WeaponModel> map) {
         Weapon copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new WeaponModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, WeaponModel> map) {
+    public void shallowCopyToMap(Map<Integer, WeaponModel> map) {
         map.put(getId(), this);
     }
 

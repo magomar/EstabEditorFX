@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 26/10/2014.
+ * Model wrapper for the {@code Vehicle} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -168,14 +171,14 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
     }
 
     @Override
-    public void copyToMap(Map<Integer, VehicleModel> map) {
+    public void hardCopyToMap(Map<Integer, VehicleModel> map) {
         Vehicle copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new VehicleModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, VehicleModel> map) {
+    public void shallowCopyToMap(Map<Integer, VehicleModel> map) {
         map.put(getId(), this);
     }
 

@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code Side} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -80,14 +83,14 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     }
 
     @Override
-    public void copyToMap(Map<Integer, SideModel> map) {
+    public void hardCopyToMap(Map<Integer, SideModel> map) {
         Side copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new SideModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, SideModel> map) {
+    public void shallowCopyToMap(Map<Integer, SideModel> map) {
         map.put(getId(), this);
     }
 

@@ -281,8 +281,11 @@ public class EstabController implements Initializable {
     }
 
     /**
-     * @param newElement
+     * Creates a new elements and displays it in the editor
+     *
+     * @param newElement instance of the element class to create
      */
+    @SuppressWarnings("unchecked")
     public void createNewElement(ElementModel newElement) {
         newElement = (ElementModel) newElement.createNewInMap(estabModel.getAll().get(newElement.getClass()));
         setActiveElement(newElement);
@@ -299,19 +302,32 @@ public class EstabController implements Initializable {
      */
     public boolean copyRelatedElements(RelatedElementsLists relatedElementsLists) {
         if (!isEditable) return false;
-        boolean successPasting;
-        if (relatedElementsLists.hasRepeatedElements()) {
-            // if there are repeated elements, ask the user for what to do
+        if (!relatedElementsLists.hasRepeatedElements()) {
+            // If there are no repeated elements, proceed with the copy
+            this.estabModel.paste(relatedElementsLists.getAllElements());
+
+        } else {
+            // If there are repeated elements, ask the user for what to do
             // In case the user only wants to select some items, pass this empty collection to save them
             Collection selectedItems = new ArrayList<>();
             DialogAction answer = UtilView.showWarningRepeatedElements(relatedElementsLists.getRepeatedElements(), selectedItems);
-            successPasting = this.estabModel.paste(relatedElementsLists, answer, selectedItems);
-        } else {
-            // if there are no repeated elements, proceed as if overwriting
-            successPasting = this.estabModel.paste(relatedElementsLists, DialogAction.OVERWRITE, null);
+            switch (answer) {
+                case OVERWRITE:
+                    estabModel.paste(relatedElementsLists.getAllElements());
+                    break;
+                case SKIP_REPEATED:
+                    estabModel.paste(relatedElementsLists.getNonRepeatedElements());
+                    break;
+                case COPY_SELECTION:
+                    estabModel.paste(selectedElements);
+                    break;
+                default:
+                    return false;
+            }
+
         }
-        if (successPasting) update();
-        return successPasting;
+        update();
+        return true;
     }
 
     /**
@@ -323,9 +339,6 @@ public class EstabController implements Initializable {
      * @see RelatedElementsLists
      */
     public boolean removeRelatedElements(List<ElementModel> elementsToRemove) {
-        String newLine = System.getProperty("line.separator");
-        StringBuilder logMessage = new StringBuilder();
-        boolean successRemoving;
 
         // In case the user only wants to select some items, pass this empty collection to save them
         Collection<ElementModel> selectedItems = new ArrayList<>();
@@ -335,51 +348,23 @@ public class EstabController implements Initializable {
         switch (answer) {
             case OK:
                 // Remove all elements
-                logMessage.append("Removing all elements: " + newLine);
-                for (ElementModel e : elementsToRemove) {
-                    logMessage.append("-- ").append(e.print()).append(newLine);
-                    if (isActiveElement(e)) clear();
-                }
-                successRemoving = estabModel.remove(elementsToRemove);
+                if (elementsToRemove.contains(activeElement.get())) clear();
+                estabModel.remove(elementsToRemove);
                 break;
-
             case REMOVE_SELECTION:
                 // Remove only selected elements by the user
-                logMessage = new StringBuilder("Removing selected elements: " + newLine);
-                for (ElementModel e : selectedItems) {
-                    logMessage.append("-- ").append(e.print()).append(newLine);
-                    if (activeElement.get() != null && e.getId() == activeElement.get().getId()) {
-                        clear();
-                    }
-                }
-                successRemoving = estabModel.remove(selectedItems);
+                if (elementsToRemove.contains(activeElement.get())) clear();
+                estabModel.remove(selectedItems);
                 break;
-
             case MARK_SELECTION:
                 // Mark the items with the REMOVE flag instead of removing the elements
-                logMessage.append("Remove canceled, elements were marked for removal");
                 selectedItems.stream().forEach(i -> i.setFlag(Flag.REMOVE));
-                successRemoving = false;
-                update();
                 break;
             default:
-                logMessage.append("Remove canceled");
-                successRemoving = false;
-                break;
+                return false;
         }
-        LOG.log(Level.INFO, logMessage.toString());
-        if (successRemoving) update();
-        return successRemoving;
-    }
-
-    /**
-     * Checks if the element is the active element
-     *
-     * @param e element to check
-     * @return true if the element is the active element, false otherwise
-     */
-    private boolean isActiveElement(ElementModel e) {
-        return activeElement.get() != null && e.getId() == activeElement.get().getId();
+        update();
+        return true;
     }
 
     /**
@@ -500,43 +485,69 @@ public class EstabController implements Initializable {
     /**
      * Displays an element in the editor pane.
      *
-     * @param elementModel element to be displayed
+     * @param element element to be displayed
      */
-    public void setActiveElement(ElementModel elementModel) {
-        if (null != elementModel) {
-            Class elementClass = elementModel.getClass();
-            // If the current element isn't set (null) or it's from other class than the one we want to display
-            // then update the editor
-            if (activeElement.get() == null || !activeElement.get().getClass().equals(elementClass)) {
-                if (!editorPane.getChildren().isEmpty() && activeElement.get() != null) {
-                    // Hide the active editor, if present
-                    editorPane.getChildren().get(editorPaneChildrenIndex.get(activeElement.get().getClass())).setVisible(false);
-                }
-                // if we have saved the controller and editorPane, use them; else load them
-                if (elementEditorControllers.containsKey(elementClass)) {
-                    // Set visible the new element editor
-                    editorPane.getChildren().get(editorPaneChildrenIndex.get(elementClass)).setVisible(true);
-                    elementEditorController = elementEditorControllers.get(elementClass);
-                } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ELEMENT_EDITOR_VIEWS.get(elementClass)));
-                    try {
-                        // Load the editor pane from the fxml and copy the contents
-                        AnchorPane editorNode = fxmlLoader.load();
-                        // Save the index of the editor pane children list
-                        editorPaneChildrenIndex.put(elementClass, editorPane.getChildren().size());
-                        editorPane.getChildren().addAll(editorNode.getChildren());
-                        // Load and save the controller
-                        elementEditorController = fxmlLoader.getController();
-                        elementEditorController.setEditable(isEditable);
-                        elementEditorController.setEstabController(this);
-                        elementEditorControllers.put(elementClass, elementEditorController);
-                    } catch (IOException | NullPointerException e) {
-                        e.printStackTrace();
-                    }
-                }
+    public void setActiveElement(ElementModel element) {
+        if (null == element) return;
+
+        Class elementClass = element.getClass();
+        // If there's no active element or it's a different element class,
+        if (activeElement.get() == null || !activeElement.get().getClass().equals(elementClass)) {
+            // Hide the current editor
+            hideActiveEditor();
+            // If we have already loaded the new editor, show it; else load it
+            if (elementEditorControllers.containsKey(elementClass)){
+                showEditor(elementClass);
+                elementEditorController = elementEditorControllers.get(elementClass);
             }
-            elementEditorController.setActiveElement(elementModel);
-            activeElement.set(elementModel);
+            else loadNewEditor(elementClass);
+        }
+        elementEditorController.setActiveElement(element);
+        activeElement.set(element);
+    }
+
+    /**
+     * Hides the active editor, if it isn't null
+     */
+    private void hideActiveEditor() {
+        if (!editorPane.getChildren().isEmpty() && activeElement.get() != null) {
+            int editorIndex = editorPaneChildrenIndex.get(activeElement.get().getClass());
+            assert editorIndex >= 0;
+            editorPane.getChildren().get(editorIndex).setVisible(false);
+        }
+    }
+
+    /**
+     * Sets visible an element editor
+     *
+     * @param elementClass element class of the editor
+     */
+    private void showEditor(Class elementClass) {
+        int editorIndex = editorPaneChildrenIndex.get(elementClass);
+        assert editorIndex >= 0;
+        editorPane.getChildren().get(editorIndex).setVisible(true);
+    }
+
+    /**
+     * Loads the element editor FXML view
+     *
+     * @param elementClass element class of the editor
+     */
+    private void loadNewEditor(Class elementClass) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ELEMENT_EDITOR_VIEWS.get(elementClass)));
+        try {
+            // Load the editor pane from the fxml and copy the contents
+            AnchorPane editorNode = fxmlLoader.load();
+            // Save the index of the editor pane children list
+            editorPaneChildrenIndex.put(elementClass, editorPane.getChildren().size());
+            editorPane.getChildren().addAll(editorNode.getChildren());
+            // Load and save the controller
+            elementEditorController = fxmlLoader.getController();
+            elementEditorController.setEditable(isEditable);
+            elementEditorController.setEstabController(this);
+            elementEditorControllers.put(elementClass, elementEditorController);
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
         }
     }
 

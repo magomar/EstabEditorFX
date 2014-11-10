@@ -66,18 +66,18 @@ public interface ElementModel<T> {
     void cloneToMap(int newId, Map<Integer, T> map);
 
     /**
-     * Puts a hard copy in a the map
+     * Puts a hard copy in a the map with the COPY flag
      *
      * @param map target map
      */
-    void copyToMap(Map<Integer, T> map);
+    void hardCopyToMap(Map<Integer, T> map);
 
     /**
-     * Puts a shallow copy in the map
+     * Puts a shallow copy in the map without flags
      *
      * @param map target map
      */
-    void insertInToMap(Map<Integer, T> map);
+    void shallowCopyToMap(Map<Integer, T> map);
 
     /**
      * Puts a shallow copy in the collection
@@ -132,22 +132,6 @@ public interface ElementModel<T> {
         if (f == null) return;
         for (Flag aF : f) {
             if (getFlags().contains(aF)) {
-                getFlags().remove(aF);
-            }
-        }
-    }
-
-    /**
-     * Flips flags state, like doing {@code xor true}
-     *
-     * @param f flag array to switch
-     */
-    default void switchFlag(Flag... f) {
-        if (f == null) return;
-        for (Flag aF : f) {
-            if (!getFlags().contains(aF)) {
-                getFlags().add(aF);
-            } else {
                 getFlags().remove(aF);
             }
         }

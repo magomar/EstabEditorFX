@@ -5,7 +5,10 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Rank;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code Rank} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class RankModel implements PojoJFXModel<Rank> {
     private final StringProperty shortName = new SimpleStringProperty();

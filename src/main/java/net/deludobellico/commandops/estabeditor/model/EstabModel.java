@@ -1,15 +1,15 @@
 package net.deludobellico.commandops.estabeditor.model;
 
 import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.Stopwatch;
-import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.io.File;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings("unchecked")
 public class EstabModel {
-    private static final Logger LOG = Logger.getLogger(EstabModel.class.getName());
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
     /**
@@ -74,8 +73,14 @@ public class EstabModel {
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
         // Wrap all the elements to their element model and saves them to their corresponding map
+        final int[] maxId = {0};
         for (List<? extends Element> elements : estabLists)
-            elements.stream().map(Element::getModel).forEach(e -> ((ElementModel) e).insertInToMap(allElements.get(e.getClass())));
+            elements.stream().map(Element::getModel).forEach(e -> {
+                ElementModel em = (ElementModel) e;
+                if(em.getId() > maxId[0]) maxId[0] = em.getId();
+                em.shallowCopyToMap(allElements.get(em.getClass()));
+            });
+        ElementModelFactory.setMaxId(maxId[0]);
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -148,12 +153,6 @@ public class EstabModel {
         return ammoList;
     }
 
-    public RelatedElementsLists getRelatedElements(ElementModel elementModel) {
-        List<ElementModel> singleElement = new ArrayList<>();
-        singleElement.add(elementModel);
-        return getRelatedElements(singleElement);
-    }
-
     /**
      * Searches for all the related elements in the elements maps. For example, all weapons used by a vehicle,
      * or all ammo used by a collection of weapons.
@@ -184,76 +183,65 @@ public class EstabModel {
         return relatedElementsLists;
     }
 
+    public RelatedElementsLists getRelatedElements(ElementModel elementModel) {
+        return getRelatedElements(Arrays.asList(elementModel));
+    }
+
+
     /**
-     * Remove elements from
+     * Remove elements from the model
      *
-     * @param elements
-     * @return
+     * @param elements collection of elements to remove
      */
-    public boolean remove(Collection<ElementModel> elements) {
-        for (ElementModel selectedItem : elements)
-            selectedItem.removeFromMap(allElements.get(selectedItem.getClass()));
-        return true;
+    public void remove(Collection<ElementModel> elements) {
+        for (ElementModel element : elements)
+            element.removeFromMap(allElements.get(element.getClass()));
     }
 
-    public boolean paste(RelatedElementsLists relatedElementsLists, DialogAction answer, Collection<ElementModel> selectedItems) {
+    /**
+     * Pastes elements into the model
+     *
+     * @param elements collection of elements to paste
+     */
+    public void paste(Collection<ElementModel> elements) {
 
-        String newLine = System.getProperty("line.separator");
-        StringBuilder logMessage = new StringBuilder();
-        if (answer.equals(DialogAction.OVERWRITE)) {
-            logMessage = new StringBuilder("Copying all elements (Overwriting repeated): " + newLine);
-            for (ElementModel elementModel : relatedElementsLists.getAllElements()) {
-                logMessage.append("-- ").append(elementModel.print()).append(newLine);
-                elementModel.setFlag(Flag.COPY);
-                elementModel.insertInToMap(allElements.get(elementModel.getClass()));
-            }
-        } else if (answer.equals(DialogAction.SKIP_REPEATED)) {
-            assert relatedElementsLists.isDistributed();
-            logMessage = new StringBuilder("Copying elements (Skipping repeated): " + newLine);
-            for (ElementModel elementModel : relatedElementsLists.getNonRepeatedElements()) {
-                logMessage.append("-- ").append(elementModel.print()).append(newLine);
-                elementModel.setFlag(Flag.COPY);
-                elementModel.insertInToMap(allElements.get(elementModel.getClass()));
-            }
-        } else if (answer.equals(DialogAction.COPY_SELECTION)) {
-            logMessage = new StringBuilder("Copying elements (Selected only): " + newLine);
-            for (ElementModel selectedItem : selectedItems) {
-                logMessage.append("-- ").append(selectedItem.print()).append(newLine);
-                selectedItem.setFlag(Flag.COPY);
-                selectedItem.copyToMap(allElements.get(selectedItem.getClass()));
-            }
-        } else {
-            LOG.log(Level.INFO, "Copy canceled");
-            return false;
+        for (ElementModel element : elements) {
+            element.hardCopyToMap(allElements.get(element.getClass()));
         }
-        LOG.log(Level.INFO, logMessage.toString());
-        return true;
     }
 
-    // TODO: implement hard copy
+    /**
+     * Duplicates elements into the model
+     *
+     * @param elements collection of elements to duplicate
+     */
     @SuppressWarnings("unchecked")
-    public void duplicate(Collection<ElementModel> selectedItems) {
-        for (ElementModel selectedItem : selectedItems)
+    public void duplicate(Collection<ElementModel> elements) {
+        for (ElementModel selectedItem : elements)
             selectedItem.cloneToMap(ElementModelFactory.incrementMaxId(), allElements.get(selectedItem.getClass()));
     }
 
+    /**
+     * Save the estab model to disk
+     *
+     * @param file file where the estab will be saved to
+     */
     public void saveToFile(File file) {
         EstabData data = new EstabData();
-        Stopwatch s = new Stopwatch();
-        s.start();
-        // TODO: poly this
+
+        // TODO: poly this?
         Map<Integer, ImageModel> images = (Map<Integer, ImageModel>) allElements.get(ImageModel.class);
         Map<Integer, VehicleModel> vehicles = (Map<Integer, VehicleModel>) allElements.get(VehicleModel.class);
         Map<Integer, WeaponModel> weapons = (Map<Integer, WeaponModel>) allElements.get(WeaponModel.class);
         Map<Integer, AmmoModel> ammos = (Map<Integer, AmmoModel>) allElements.get(AmmoModel.class);
         Map<Integer, FormationEffectsModel> formationEffects = (Map<Integer, FormationEffectsModel>) allElements.get(FormationEffectsModel.class);
+
         images.values().stream().map(ImageModel::getPojo).forEach(data.getImage()::add);
         vehicles.values().stream().map(VehicleModel::getPojo).forEach(data.getVehicle()::add);
         weapons.values().stream().map(WeaponModel::getPojo).forEach(data.getWeapon()::add);
         ammos.values().stream().map(AmmoModel::getPojo).forEach(data.getAmmo()::add);
         formationEffects.values().stream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
-        s.stop();
-        System.out.println("Saved: " + s.getTotalTime());
+
         FileIO.saveEstab(data, file);
     }
 

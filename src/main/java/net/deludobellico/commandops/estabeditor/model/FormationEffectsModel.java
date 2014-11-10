@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 04/11/2014.
+ * Model wrapper for the {@code FormationEffects} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class FormationEffectsModel implements ElementModel<FormationEffectsModel>, PojoJFXModel<FormationEffects> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -52,14 +55,14 @@ public class FormationEffectsModel implements ElementModel<FormationEffectsModel
     }
 
     @Override
-    public void copyToMap(Map<Integer, FormationEffectsModel> map) {
+    public void hardCopyToMap(Map<Integer, FormationEffectsModel> map) {
         FormationEffects copy = getPojo();
         copy.getFlags().add((Flag.COPY));
         map.put(copy.getId(), new FormationEffectsModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, FormationEffectsModel> map) {
+    public void shallowCopyToMap(Map<Integer, FormationEffectsModel> map) {
         map.put(getId(), this);
     }
 

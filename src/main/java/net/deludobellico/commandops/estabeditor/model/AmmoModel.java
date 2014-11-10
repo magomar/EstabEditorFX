@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Model wrapper for the Ammo class
+ * Model wrapper for the {@code Ammo} class
  *
  * @author Mario
  * @author Heine
@@ -64,14 +64,14 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     }
 
     @Override
-    public void copyToMap(Map<Integer, AmmoModel> map) {
+    public void hardCopyToMap(Map<Integer, AmmoModel> map) {
         Ammo copy = getPojo();
         copy.getFlags().add((Flag.COPY));
         map.put(copy.getId(), new AmmoModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, AmmoModel> map) {
+    public void shallowCopyToMap(Map<Integer, AmmoModel> map) {
         map.put(getId(), this);
     }
 
@@ -180,7 +180,7 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     @Override
     public int hashCode() {
         int result = getName() != null ? getName().hashCode() : 0;
-        result = (int) (31 * result + flags.stream().mapToInt(Flag::hashCode).sum());
+        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
         result = 31 * result + getMinOrderQty();
         result = (int) (31 * result + getMinOrderWeight());

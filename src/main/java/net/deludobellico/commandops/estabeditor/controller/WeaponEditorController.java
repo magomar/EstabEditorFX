@@ -455,8 +455,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         }
     }
 
-    @Override
-    public EstabController getEstabController() {
+    private EstabController getEstabController() {
         return estabController;
     }
 

@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code Service} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Service> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -87,14 +90,14 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
     }
 
     @Override
-    public void copyToMap(Map<Integer, ServiceModel> map) {
+    public void hardCopyToMap(Map<Integer, ServiceModel> map) {
         Service copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new ServiceModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, ServiceModel> map) {
+    public void shallowCopyToMap(Map<Integer, ServiceModel> map) {
         map.put(getId(), this);
     }
 

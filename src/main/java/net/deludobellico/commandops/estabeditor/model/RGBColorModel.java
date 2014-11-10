@@ -5,7 +5,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.RGBColor;
 
 /**
- * Created by Mario on 29/10/2014.
+ * Model wrapper for the {@code RGBColorModel} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class RGBColorModel implements PojoJFXModel<RGBColor> {
     private final IntegerProperty red = new SimpleIntegerProperty();

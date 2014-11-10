@@ -19,10 +19,7 @@ import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -496,9 +493,12 @@ public class MainController implements Initializable {
             LOG.log(Level.WARNING, "Could not copy all elements");
     }
 
+    public void copyElementsToTarget(ElementModel element) {
+        copyElementsToTarget(Arrays.asList(element));
+    }
     @FXML
     private void copyToolbarButtonAction() {
-        copyElementsToTarget(Collections.singleton(sourcePaneController.getActiveElement().get()));
+        copyElementsToTarget(sourcePaneController.getActiveElement().get());
     }
 
     @FXML

@@ -7,7 +7,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.RangeItem;
 
 /**
- * Created by Mario on 28/10/2014.
+ * Model wrapper for the {@code RangeItemModel} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class RangeItemModel implements PojoJFXModel<RangeItem> {
     private final IntegerProperty range = new SimpleIntegerProperty();

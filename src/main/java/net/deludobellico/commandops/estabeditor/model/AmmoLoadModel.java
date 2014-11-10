@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoLoad;
 
 /**
- * Model wrapper for the AmmoLoad class
+ * Model wrapper for the {@code AmmoLoad} class
  *
  * @author Mario
  * @author Heine

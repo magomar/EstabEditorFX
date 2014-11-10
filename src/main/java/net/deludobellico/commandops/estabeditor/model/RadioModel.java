@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Mario on 04/11/2014.
+ * Model wrapper for the {@code Radio} class
+ *
+ * @author Mario
+ * @author Heine
  */
 public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
@@ -52,14 +55,14 @@ public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio>
     }
 
     @Override
-    public void copyToMap(Map<Integer, RadioModel> map) {
+    public void hardCopyToMap(Map<Integer, RadioModel> map) {
         Radio copy = getPojo();
         copy.getFlags().add(Flag.COPY);
         map.put(copy.getId(), new RadioModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, RadioModel> map) {
+    public void shallowCopyToMap(Map<Integer, RadioModel> map) {
         map.put(getId(), this);
     }
 

@@ -41,7 +41,7 @@ public class RelatedElementsLists {
      * Returns true if elements in {@code relatedElementsList} have been distributed to
      * {@code repeatedElementsList} and {@code nonRepeatedElementsList}
      *
-     * @return true if elements have been distributed, false otherise
+     * @return true if elements have been distributed, false otherwise
      * @see #findRepeatedElementsInTargetModel
      */
     public boolean isDistributed() {

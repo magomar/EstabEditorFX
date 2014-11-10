@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Model wrapper for the Force class
+ * Model wrapper for the {@code Force} class
  *
  * @author Mario
  * @author Heine
@@ -168,14 +168,14 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     }
 
     @Override
-    public void copyToMap(Map<Integer, ForceModel> map) {
+    public void hardCopyToMap(Map<Integer, ForceModel> map) {
         Force copy = getPojo();
         copy.getFlags().add((Flag.COPY));
         map.put(copy.getId(), new ForceModel(copy));
     }
 
     @Override
-    public void insertInToMap(Map<Integer, ForceModel> map) {
+    public void shallowCopyToMap(Map<Integer, ForceModel> map) {
         map.put(getId(), this);
     }
 

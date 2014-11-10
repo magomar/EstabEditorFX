@@ -429,8 +429,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         }
     }
 
-    @Override
-    public EstabController getEstabController() {
+    private EstabController getEstabController() {
         return estabController;
     }
 

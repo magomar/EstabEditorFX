@@ -46,17 +46,12 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     }
 
     /**
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface uneditable
+     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
      */
     @Override
     public void setEditable(boolean isEditable) {
         quantity.setEditable(isEditable);
         weight.setEditable(isEditable);
-    }
-
-    @Override
-    public EstabController getEstabController() {
-        return estabController;
     }
 
     @Override

@@ -4,7 +4,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 
 /**
  * Interface for the base element editor controllers.
- * <p>Element editor controllers manage the view and model of the diferent {@link ElementModel} classes</p>
+ * <p>Element editor controllers manage the view and model of the different {@link ElementModel} classes</p>
  *
  * @author Mario
  * @author Heine
@@ -32,20 +32,13 @@ public interface ElementEditorController<T extends ElementModel> {
     void setActiveElement(T element);
 
     /**
-     * The controller sets the interface components uneditable when the editor is on read only mode.
+     * The controller sets the interface components as not editable when the editor is on read only mode.
      * {@code isEditable} is equivalent to "Source Estab" if true and "Target Estab" if false
      *
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface uneditable
+     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
      * @see EstabController#isEditable
      */
     void setEditable(boolean isEditable);
-
-    /**
-     * Returns the parent controller: either source or target {@code EstabController}
-     *
-     * @return the parent Source or Target {@link EstabController}
-     */
-    EstabController getEstabController();
 
     /**
      * Sets the parent controller: either source or target {@code EstabController}

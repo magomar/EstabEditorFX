@@ -8,7 +8,10 @@ package net.deludobellico.commandops.estabeditor.model;
 import net.deludobellico.commandops.estabeditor.data.jaxb.YesNo;
 
 /**
+ * Interface for all the jaxb package classes
+ *
  * @author Mario
+ * @author Heine
  */
 public interface PojoJFXModel<T> {
 

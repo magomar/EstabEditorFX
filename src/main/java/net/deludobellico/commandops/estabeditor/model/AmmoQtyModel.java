@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoQty;
 
 /**
- * Model wrapper for the AmmoQty class
+ * Model wrapper for the {@code AmmoQty} class
  *
  * @author Mario
  * @author Heine
@@ -27,7 +27,11 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
 
     @Override
     public AmmoQty getPojo() {
-        return null;
+        AmmoQty pojo = new AmmoQty();
+        pojo.setAmmoObjectId(id.get());
+        pojo.setName(name.get());
+        pojo.setQty(qty.get());
+        return pojo;
     }
 
     @Override

@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 
 /**
- * Model wrapper for the Armament class
+ * Model wrapper for the {@code Armament} class
  *
  * @author Mario
  * @author Heine

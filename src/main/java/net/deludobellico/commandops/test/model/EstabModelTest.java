@@ -8,6 +8,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("unchecked")
 public class EstabModelTest {
     EstabModel estabModel;
 
@@ -18,17 +19,17 @@ public class EstabModelTest {
         for (int i = 0; i < maxElements; ++i) {
             VehicleModel em = ElementModelFactory.createVehicle();
             em.setName("Test vehicles");
-            em.insertInToMap((Map<Integer, VehicleModel>) estabModel.getAll().get(VehicleModel.class));
+            em.shallowCopyToMap((Map<Integer, VehicleModel>) estabModel.getAll().get(VehicleModel.class));
         }
         for (int i = 0; i < maxElements; ++i) {
             WeaponModel em = ElementModelFactory.createWeapon();
             em.setName("Test weapons");
-            em.insertInToMap((Map<Integer, WeaponModel>) estabModel.getAll().get(WeaponModel.class));
+            em.shallowCopyToMap((Map<Integer, WeaponModel>) estabModel.getAll().get(WeaponModel.class));
         }
         for (int i = 0; i < maxElements; ++i) {
             AmmoModel em = ElementModelFactory.createAmmo();
             em.setName("Test ammo");
-            em.insertInToMap((Map<Integer, AmmoModel>) estabModel.getAll().get(AmmoModel.class));
+            em.shallowCopyToMap((Map<Integer, AmmoModel>) estabModel.getAll().get(AmmoModel.class));
         }
     }
 
