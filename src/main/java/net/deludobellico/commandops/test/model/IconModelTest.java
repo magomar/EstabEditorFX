@@ -1,5 +1,6 @@
 package net.deludobellico.commandops.test.model;
 
+import javafx.scene.paint.Color;
 import net.deludobellico.commandops.estabeditor.data.jaxb.ForceSize;
 import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
@@ -12,10 +13,10 @@ import static org.junit.Assert.assertEquals;
 public class IconModelTest {
 
 
-    RGBColorModel backgroundColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel backgroundDarkColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel backgroundLightColor = new RGBColorModel(255, 255, 255);
-    RGBColorModel designationColor = new RGBColorModel(0, 0, 0);
+    Color backgroundColor = RGBColorModel.getColor(255, 255, 255);
+    Color backgroundDarkColor = RGBColorModel.getColor(255, 255, 255);
+    Color backgroundLightColor = RGBColorModel.getColor(255, 255, 255);
+    Color designationColor = RGBColorModel.getColor(0, 0, 0);
     ForceSize forceSize = ForceSize.ARMY;
     PictureSymbol pictureSymbol = PictureSymbol.AMMO;
     SymbolColor symbolColor = SymbolColor.BLACK;

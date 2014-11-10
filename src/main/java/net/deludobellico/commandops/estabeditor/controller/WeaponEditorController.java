@@ -153,16 +153,11 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         // Populate the weaponType combobox with all the weapon types
         weaponType.setItems(FXCollections.observableArrayList(WeaponType.values()));
         // Set the activeWeapon type with the one selected in the combobox
-        weaponType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) activeWeapon.setType(newValue);
-        });
+
 
         // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         // Set the activeWeapon primary role with the one selected in the combobox
-        weaponPrimaryRole.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) activeWeapon.setPrimaryRole(newValue);
-        });
     }
 
     /**
@@ -371,8 +366,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         calibre.textProperty().bindBidirectional(element.calibreProperty(), new NumberStringConverter());
         muzzleVelocity.textProperty().bindBidirectional(element.muzzleVelocityProperty(), new NumberStringConverter());
 
-        weaponType.getSelectionModel().select(element.getType());
-        weaponPrimaryRole.getSelectionModel().select(element.getPrimaryRole());
+        weaponType.valueProperty().bindBidirectional(element.typeProperty());
+        weaponPrimaryRole.valueProperty().bindBidirectional(element.primaryRoleProperty());
 
         singleShot.selectedProperty().bindBidirectional(element.singleShotProperty());
         mustDeployToFire.selectedProperty().bindBidirectional(element.mustDeployToFireProperty());
@@ -387,6 +382,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
         calibre.textProperty().unbindBidirectional(element.calibreProperty());
         muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
+        weaponType.valueProperty().unbindBidirectional(element.typeProperty());
+        weaponPrimaryRole.valueProperty().unbindBidirectional(element.primaryRoleProperty());
     }
 
     @Override

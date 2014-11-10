@@ -20,8 +20,8 @@ public interface ElementModel<T> {
      * Array with classes that have editors.
      * It's important both arrays have the same order and the same length.
      */
-    public static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class};
-    public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class};
+    public static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class, ForceModel.class};
+    public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class, Force.class};
     /**
      * Array with classes that don't have implemented editors.
      * It's important both arrays have the same order and the same length.

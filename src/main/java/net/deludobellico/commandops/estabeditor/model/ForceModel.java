@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -107,8 +108,10 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         force.setDeploymentDuration(deploymentDuration);
         force.setReadyToFireDuration(readyToFireDuration.get());
         force.setReadyToBombardDuration(readyToBombardDuration.get());
-        equipmentList.stream().map(EquipmentModel::getPojo).forEach(e -> force.getEquipmentList().getEquipment().add(e));
-        ammoList.stream().map(AmmoQtyModel::getPojo).forEach(a -> force.getAmmoList().getAmmo().add(a));
+        force.setEquipmentList(new EquipmentList());
+        force.setAmmoList(new AmmoList());
+        equipmentList.stream().map(EquipmentModel::getPojo).forEach(force.getEquipmentList().getEquipment()::add);
+        ammoList.stream().map(AmmoQtyModel::getPojo).forEach(force.getAmmoList().getAmmo()::add);
         force.setCanBombard(PojoJFXModel.booleanToYesNo(canBombard.get()));
         force.getFlags().addAll(flags);
         return force;

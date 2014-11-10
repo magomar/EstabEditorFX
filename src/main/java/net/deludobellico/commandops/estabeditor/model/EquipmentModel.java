@@ -1,9 +1,6 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
 
 /**
@@ -17,6 +14,7 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
     private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
     private final transient StringProperty name = new SimpleStringProperty();
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
+    private final transient ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
 
     public EquipmentModel(Equipment pojo) {
         setPojo(pojo);
@@ -78,6 +76,18 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
         return qty;
     }
 
+    public Class getEquipmentClass() {
+        return equipmentClass.get();
+    }
+
+    public ObjectProperty<Class> equipmentClassProperty() {
+        return equipmentClass;
+    }
+
+    public void setEquipmentClass(Class equipmentClass) {
+        this.equipmentClass.set(equipmentClass);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,4 +110,5 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
         result = 31 * result + getQty();
         return result;
     }
+
 }

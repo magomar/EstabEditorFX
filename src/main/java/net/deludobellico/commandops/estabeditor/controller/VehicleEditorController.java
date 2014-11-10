@@ -17,7 +17,7 @@ import net.deludobellico.commandops.estabeditor.model.VehicleModel;
 import net.deludobellico.commandops.estabeditor.model.WeaponModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
-import net.deludobellico.commandops.estabeditor.view.SearchDialog;
+import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
@@ -152,10 +152,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (int i = 0; i < VehicleType.values().length; i++) vehicleType.getItems().add(VehicleType.values()[i]);
-        vehicleType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (null != newValue) activeVehicle.setType(newValue);
-        });
+        vehicleType.getItems().addAll(VehicleType.values());
     }
 
     /**
@@ -176,6 +173,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         } else {
             // Extract the WeaponModel we set when we selected the armament
             WeaponModel weapon = (WeaponModel) armamentName.getUserData();
+            if(weapon == null) return;
             // Search for repeated weapons
             boolean repeatedWeapon = false;
             for (ArmamentModel am : activeVehicle.getArmaments())
@@ -184,7 +182,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                     break;
                 }
             // If the weapon wasn't repeated, create a new armament and add it to the table and vehicle armaments collection
-            if (weapon != null && !repeatedWeapon) {
+            if (!repeatedWeapon) {
                 Armament newArmament = new Armament();
                 newArmament.setEquipmentObjectId(weapon.getId());
                 newArmament.setEquipmentName(weapon.getName());
@@ -204,11 +202,11 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      *
      * @param actionEvent is not used
      * @see ArmamentModel
-     * @see SearchDialog
+     * @see ElementSearchDialog
      */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
-        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabController().getEstabModel().getWeapons().values());
+        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", estabController.getEstabModel().getWeapons().values());
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
@@ -312,7 +310,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), new NumberStringConverter());
         weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
         width.textProperty().bindBidirectional(element.widthProperty(), new NumberStringConverter());
-        vehicleType.getSelectionModel().select(element.getType());
+        vehicleType.valueProperty().bindBidirectional(element.typeProperty());
 
         armamentTableView.getColumns().clear();
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
@@ -360,6 +358,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         towingCapacity.textProperty().unbindBidirectional(element.towingCapacityProperty());
         weight.textProperty().unbindBidirectional(element.weightProperty());
         width.textProperty().unbindBidirectional(element.widthProperty());
+        vehicleType.valueProperty().unbindBidirectional(element.typeProperty());
 
         armamentTableView.getItems().clear();
         vehicleImageView.setImage(null);
@@ -421,14 +420,9 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         this.activeVehicle = element;
         bindProperties(activeVehicle);
 
-        ImageModel image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
-        if (image != null) {
-            vehicleImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
-        }
-    }
-
-    private EstabController getEstabController() {
-        return estabController;
+        ImageModel image = estabController.getEstabModel().getImages().get(element.getPictureId());
+        if (image != null)
+            vehicleImageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), image.getFileId()));
     }
 
     @Override

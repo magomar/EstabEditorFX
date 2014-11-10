@@ -9,7 +9,7 @@
            maxWidth="-Infinity"
            minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="350.0"
            prefWidth="550.0" xmlns="http://javafx.com/javafx/8"
-           fx:controller="net.deludobellico.commandops.estabeditor.view.SelectionListDialog">
+           fx:controller="net.deludobellico.commandops.estabeditor.view.CopyRemoveDialog">
     <items>
         <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0">
             <children>

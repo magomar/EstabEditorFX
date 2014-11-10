@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * Created by Heine on 11/3/2014.
  */
 @SuppressWarnings("unchecked")
-public class SelectionListDialog implements Initializable {
+public class CopyRemoveDialog implements Initializable {
 
     @FXML
     private HBox buttonBox;
@@ -56,17 +56,17 @@ public class SelectionListDialog implements Initializable {
     private DialogAction selectedDialogAction = DialogAction.CANCEL;
     private Collection selectedItems = FXCollections.observableArrayList();
 
-    public static SelectionListDialog init() {
-        FXMLLoader fxmlLoader = new FXMLLoader(SelectionListDialog.class.getResource(FileIO.SELECTION_DIALOG_VIEW));
-        SelectionListDialog selectionListDialog = null;
+    public static CopyRemoveDialog init() {
+        FXMLLoader fxmlLoader = new FXMLLoader(CopyRemoveDialog.class.getResource(FileIO.SELECTION_DIALOG_VIEW));
+        CopyRemoveDialog copyRemoveDialog = null;
         try {
             Parent parent = fxmlLoader.load();
-            selectionListDialog = fxmlLoader.getController();
-            selectionListDialog.setParent(parent);
+            copyRemoveDialog = fxmlLoader.getController();
+            copyRemoveDialog.setParent(parent);
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
-        return selectionListDialog;
+        return copyRemoveDialog;
     }
 
     @Override
@@ -91,36 +91,36 @@ public class SelectionListDialog implements Initializable {
             selectedItems.addAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        image.setImage(new Image(SelectionListDialog.class.getResourceAsStream(FileIO.WARNING_ICON_RESOURCE)));
+        image.setImage(new Image(CopyRemoveDialog.class.getResourceAsStream(FileIO.WARNING_ICON_RESOURCE)));
     }
 
-    public SelectionListDialog setTitle(String title) {
+    public CopyRemoveDialog setTitle(String title) {
         dialog.setTitle(title);
         return this;
     }
 
-    public SelectionListDialog setItems(Collection items) {
+    public CopyRemoveDialog setItems(Collection items) {
         tableView.getItems().clear();
         tableView.getItems().addAll(items);
         return this;
     }
 
-    public SelectionListDialog setOwner(Stage owner) {
+    public CopyRemoveDialog setOwner(Stage owner) {
         dialog.initOwner(owner);
         return this;
     }
 
-    public SelectionListDialog setParent(Parent parent) {
+    public CopyRemoveDialog setParent(Parent parent) {
         this.parent = parent;
         return this;
     }
 
-    public SelectionListDialog setHeadText(String text) {
+    public CopyRemoveDialog setHeadText(String text) {
         this.headText.setText(text);
         return this;
     }
 
-    public SelectionListDialog setBodyText(String text) {
+    public CopyRemoveDialog setBodyText(String text) {
         this.bodyText.setText(text);
         return this;
     }
@@ -135,7 +135,7 @@ public class SelectionListDialog implements Initializable {
         return selectedDialogAction;
     }
 
-    public SelectionListDialog setActions(DialogAction... dialogActions) {
+    public CopyRemoveDialog setActions(DialogAction... dialogActions) {
         buttonBox.getChildren().clear();
         for (DialogAction dialogAction : dialogActions) {
             Button b = new Button(dialogAction.getAction());

@@ -21,7 +21,7 @@ public class UtilView {
     public static Stage ROOT_STAGE;
 
     public static Object showSearchDialog(String title, Collection items) {
-        return SearchDialog.init()
+        return ElementSearchDialog.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle(title)
                 .setItems(items)
@@ -29,7 +29,7 @@ public class UtilView {
     }
 
     public static DialogAction showWarningRepeatedElements(Collection tableItems, Collection selectedItems) {
-        return SelectionListDialog.init()
+        return CopyRemoveDialog.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Repeated elements found")
                 .setHeadText("The following elements already exist in the target file")
@@ -39,7 +39,7 @@ public class UtilView {
     }
 
     public static DialogAction showWarningRemoveElements(Collection tableItems, Collection selectedItems) {
-        return SelectionListDialog.init()
+        return CopyRemoveDialog.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Deleting elements")
                 .setHeadText("Are you sure you want to remove the following items?")
