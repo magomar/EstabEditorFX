@@ -231,7 +231,7 @@ public class MainController implements Initializable {
     /**
      * Displays a file chooser to open or save files. Sets the initial directory with the last opened folder if possible,
      * otherwise the initial directory is set to {@code user.dir}.
-     * Files are filtered with {@link FileIO#FILECHOOSER_FILTERS}
+     * Files are filtered with {@link FileIO#EXTENSION_FILTERS}
      *
      * @param isSaving true if the file chooser is open for saving, false if it's for opening
      * @return the selected file, otherwise null
@@ -250,7 +250,7 @@ public class MainController implements Initializable {
         fileChooser.setInitialDirectory(initialDirectory);
 
 
-        fileChooser.getExtensionFilters().addAll(FileIO.FILECHOOSER_FILTERS);
+        fileChooser.getExtensionFilters().addAll(FileIO.EXTENSION_FILTERS);
         File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
         if (selectedFile != null)
             Settings.getInstance().setLastOpenedFolder(selectedFile.getParentFile().getAbsolutePath());

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import net.deludobellico.commandops.estabeditor.controller.EstabController;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -15,40 +15,55 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Created by Heine on 10/30/2014.
+ * Cell factory for the search result lists in {@code EstabController}.
+ * Each cell is composed of a {@link CheckBox} and a {@link Label}. Additionally, each cell references an {@link ElementModel}.
+ * When the checkbox is selected the element model is added to a collection, and removed when deselected.
+ *
+ * @see EstabController#searchResultsListView
  */
 public class ElementListCell extends HBox {
 
     private ElementModel elementModel;
-    private Label label;
-    private Flag flag;
     private CheckBox checkBox;
+    // Cell text
+    private Label label;
+    // Used for setting the label style
+    private Flag flag;
 
     public ElementListCell(ElementModel elementModel, Collection<ElementModel> selectedElements) {
         super();
         this.elementModel = elementModel;
         label = createLabel();
         checkBox = createCheckBox(selectedElements);
-        Pane pane = createPane();
 
         this.setOnMouseClicked(createMouseClickedHandler());
-        this.getChildren().addAll(checkBox, pane, label);
+        this.getChildren().addAll(checkBox, label);
     }
 
-    public static void select(ElementListCell elementListCell) {
-        elementListCell.setSelected(true);
+    /**
+     * Selects or deselects the cell checkbox
+     *
+     * @param b if true, select the checkbox, otherwise deselect
+     */
+    public void setSelected(boolean b) {
+        checkBox.setSelected(b);
     }
 
-    public static void deselect(ElementListCell elementListCell) {
-        elementListCell.setSelected(false);
+    /**
+     * Returns the associated element model
+     *
+     * @return the associated element model
+     */
+    public ElementModel getElementModel() {
+        return elementModel;
     }
 
-    private Pane createPane() {
-        Pane pane = new Pane();
-        pane.setMinWidth(5.0);
-        return pane;
-    }
-
+    /**
+     * Creates a {@code CheckBox} with a listener to add or remove the {@code elementModel} from a collection
+     *
+     * @param selectedElements collection to add to or remove from
+     * @return the new checkbox
+     */
     private CheckBox createCheckBox(Collection<ElementModel> selectedElements) {
         CheckBox c = new CheckBox();
 
@@ -59,6 +74,12 @@ public class ElementListCell extends HBox {
         return c;
     }
 
+    /**
+     * Creates a {@code Label} with its text style depending on the {@code ElementModel} {@link Flag}.
+     * Since an element can contain multiple flags, the priority is New > Copy > Remove.
+     *
+     * @return the new created label
+     */
     private Label createLabel() {
         Label l = new Label();
         // Set up the name
@@ -83,46 +104,43 @@ public class ElementListCell extends HBox {
                     break;
             }
         }
-
         return l;
     }
 
+    /**
+     * Creates an EventHandler to cycle between tags when the user right clicks the cell
+     *
+     * @return EventHandler to capture mouse clicks
+     */
     private EventHandler<? super MouseEvent> createMouseClickedHandler() {
         return event -> {
             if (event.getButton() == MouseButton.SECONDARY) {
                 if (flag == Flag.COPY) {
+                    // Change flag from copy to remove
                     flag = Flag.REMOVE;
                     elementModel.unsetFlag(Flag.COPY);
                     elementModel.setFlag(Flag.REMOVE);
                     label.setStyle(UtilView.TEXT_STYLE_REMOVE);
 
                 } else if (flag == Flag.REMOVE) {
+                    // Change flag from remove to none
                     flag = null;
                     elementModel.unsetFlag(Flag.REMOVE);
                     label.setStyle(UtilView.TEXT_STYLE_DEFAULT);
 
                 } else if (flag == Flag.NEW) {
+                    // Change flag from new to none
                     flag = null;
                     elementModel.unsetFlag(Flag.NEW);
                     label.setStyle(UtilView.TEXT_STYLE_DEFAULT);
 
                 } else if (flag == null) {
+                    // Change flag from none to copy
                     flag = Flag.COPY;
                     elementModel.setFlag(Flag.COPY);
                     label.setStyle(UtilView.TEXT_STYLE_COPY);
-
                 }
             }
-
         };
     }
-
-    public ElementModel getElementModel() {
-        return elementModel;
-    }
-
-    public void setSelected(boolean b) {
-        checkBox.setSelected(b);
-    }
-
 }

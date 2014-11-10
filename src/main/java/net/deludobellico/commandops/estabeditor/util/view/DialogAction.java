@@ -1,7 +1,7 @@
 package net.deludobellico.commandops.estabeditor.util.view;
 
 /**
- * Created by Heine on 11/3/2014.
+ * Enum used for the Dialog buttons.
  */
 public enum DialogAction {
     OVERWRITE("Overwrite"),

@@ -127,7 +127,7 @@ public class EstabController implements Initializable {
 
         // Select all items or discard all the selection
         selectAllListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) searchResultsListView.getItems().stream().forEach(ElementListCell::select);
+            if (newValue) searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(true));
             selectNoneListCheckBox.setSelected(!newValue);
 
         });
@@ -135,7 +135,7 @@ public class EstabController implements Initializable {
             if (newValue) {
                 // It's important to clear the collection first in order to optimize the removal
                 selectedElements.clear();
-                searchResultsListView.getItems().stream().forEach(ElementListCell::deselect);
+                searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
                 selectAllListCheckBox.setSelected(false);
             }
         });

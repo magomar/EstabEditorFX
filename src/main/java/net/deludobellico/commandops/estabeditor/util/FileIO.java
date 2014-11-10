@@ -15,9 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by Mario on 24/07/2014.
+ * This class controls all access to disk and stores resources paths.
+ *
+ * @author Mario
+ * @author Heine
  */
 public class FileIO {
+    private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     /**
      * Resources paths
      */
@@ -50,13 +54,12 @@ public class FileIO {
     /**
      * File filters
      */
-    public static final FileChooser.ExtensionFilter[] FILECHOOSER_FILTERS = {
+    public static final FileChooser.ExtensionFilter[] EXTENSION_FILTERS = {
             new FileChooser.ExtensionFilter("XML (*.xml)", "*.xml"),
             new FileChooser.ExtensionFilter("All (*.*)", "*.*")
     };
-    private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     /**
-     * JAXB
+     * Saved JAXB contexts for POJO classes and the Settings file
      */
     private static JAXBFactory JAXB_POJO;
     private static JAXBFactory JAXB_SETTINGS;
@@ -70,29 +73,36 @@ public class FileIO {
         }
     }
 
+    /**
+     * Protect the class from being instantiated
+     */
     private FileIO() {
     }
 
-
+    /**
+     * Loads the settings file. Creates a new one if it doesn't exist.
+     */
     public static void loadSettings() {
         File file = new File(FileIO.getSettingsPath().toString());
         if (!file.exists()) file = getNewSettingsFile();
         JAXB_SETTINGS.unmarshallXML(file);
     }
 
+    /**
+     * Saves settings to disk. Creates a new settings file if it doesn't exist.
+     */
     public static void saveSettings() {
         JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(getSettingsPath().toAbsolutePath().toString()));
     }
 
     /**
-     * Tries to create a new file in @path, if it exists then returns the file
+     * Tries to create a new file in a given path, if it already exists then returns the file.
      *
      * @param path of the file we want to retrieve
      * @return null if the file could not be created or retrieved
      */
     public static File getFileOrCreateNew(String path) {
         File f = null;
-
         try {
             f = new File(path);
             boolean exists = f.exists();
@@ -108,6 +118,20 @@ public class FileIO {
         return f;
     }
 
+    /**
+     * Returns the path of the default empty Estab dataset.
+     *
+     * @return the path of the default empty Estab dataset
+     */
+    public static Path getNewEstabPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
+    }
+
+    /**
+     * Creates an empty Estab dataset.
+     *
+     * @return the created file, null if there was an error.
+     */
     public static File getOrCreateNewEstabFile() {
         File f = null;
         try {
@@ -121,6 +145,20 @@ public class FileIO {
         return f;
     }
 
+    /**
+     * Returns the path of the default settings file.
+     *
+     * @return the path of the default settings file
+     */
+    public static Path getSettingsPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.home"), SETTINGS_XML_FILE);
+    }
+
+    /**
+     * Creates a default settings file.
+     *
+     * @return the created file, null if there was an error
+     */
     public static File getNewSettingsFile() {
         File f = null;
         try {
@@ -134,6 +172,12 @@ public class FileIO {
         return f;
     }
 
+    /**
+     * Copies all contents from a source file to a target file.
+     *
+     * @param sourceFile source file with the contents to copy
+     * @param targetFile target file where the contents will be copied
+     */
     public static void copy(File sourceFile, File targetFile) {
         try {
             Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -142,80 +186,101 @@ public class FileIO {
         }
     }
 
-    public static void copy(InputStream resourceAsStream, Path path) {
+    /**
+     * Saves a stream to disk
+     *
+     * @param stream stream to save
+     * @param path   path where the stream is saved
+     */
+    public static void copy(InputStream stream, Path path) {
         try {
-            Files.copy(resourceAsStream, path);
+            Files.copy(stream, path);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static Path getNewEstabPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
-    }
-
-    public static Path getSettingsPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.home"), SETTINGS_XML_FILE);
-    }
-
+    /**
+     * Installs a Estab dataset from the jar to disk.
+     *
+     * @param datasetName  dataset name
+     * @param targetFolder target folder
+     * @return dataset file with the Estab contents
+     */
     public static File installDataset(String datasetName, File targetFolder) {
+
         LOG.log(Level.INFO, String.format("Installing %s dataset in folder: %s ", datasetName, targetFolder.getName()));
         File targetFile = new File(targetFolder.getPath(), datasetName + DATASET_FILE_SUFFIX);
+
         if (targetFile.exists()) {
             LOG.log(Level.SEVERE, String.format("Aborting installation. %s dataset already exists in folder: %s", datasetName, targetFolder.getName()));
             targetFile = null;
         } else {
             // Installing dataset from resources to file
-            FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + targetFile.getName()), targetFile.getAbsoluteFile().toPath());
+            installDatasetFile(FileIO.DATASETS_FOLDER + "/" + targetFile.getName(), targetFile.getAbsoluteFile().toPath());
 
             // Installing all dataset images included in the index
-            // Preparing the image folder on disk
-            File targetImageFolder = new File(targetFolder, datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
-            try {
-                if (!targetImageFolder.mkdirs())
-                    throw new IOException("Could not create folder: " + targetImageFolder.getName());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            installDatasetImages(datasetName, targetFolder);
+        }
+        return targetFile;
+    }
 
+    /**
+     * Installs the dataset file from the jar to disk
+     *
+     * @param datasetResourceLocation dataset location
+     * @param targetFilePath          target folder
+     */
+    private static void installDatasetFile(String datasetResourceLocation, Path targetFilePath) {
+        FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceLocation), targetFilePath);
+    }
 
-            String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
-            String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
-            InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String imageFileName;
-            try {
-                while ((imageFileName = reader.readLine()) != null) {
-                    FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName), new File(targetImageFolder, imageFileName).toPath());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    reader.close();
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    /**
+     * Installs the dataset images folder from the jar to disk
+     *
+     * @param datasetName  dataset name
+     * @param targetFolder target folder
+     */
+    private static void installDatasetImages(String datasetName, File targetFolder) {
 
+        // Preparing the image folder on disk
+        File targetImageFolder = new File(targetFolder, datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
+        try {
+            if (!targetImageFolder.mkdirs())
+                throw new IOException("Could not create folder: " + targetImageFolder.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        return targetFile;
+        // I love all this boiler plate
+        String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
+        String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
+        InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        String imageFileName;
+        try {
+            while ((imageFileName = reader.readLine()) != null)
+                FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName), new File(targetImageFolder, imageFileName).toPath());
+            reader.close();
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
      * Gets an image from the dataset image folder
      * Names are strict and have to match the following pattern:
-     * <p>Dataset name: COTAEstab_Images</p>
-     * <p>Dataset file: COTAEstab.xml</p>
-     * <p>Dataset image folder: COTAimage</p>
+     *
+     * Dataset name: COTA
+     * Dataset file: COTAEstab.xml
+     * Dataset image folder: COTAEstab_Images
      *
      * @param datasetFile   where the dataset is stored on disk
      * @param imageFileName file name of the image the method will load
      * @return the image if it was correctly loaded, null otherwise
      */
-    //TODO: create progress bar? maybe for loading new estabs?
     public static Image getDatasetImage(File datasetFile, String imageFileName) {
         String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
         File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
@@ -229,10 +294,20 @@ public class FileIO {
         return picture;
     }
 
+    /**
+     * Loads Estab from disk
+     * @param estabFile file to load
+     * @return loaded EstabData
+     */
     public static Object loadEstab(File estabFile) {
         return JAXB_POJO.unmarshallXML(estabFile);
     }
 
+    /**
+     * Saves Estabs to disk
+     * @param data EstabData to save
+     * @param file target file
+     */
     public static void saveEstab(EstabData data, File file) {
         JAXB_POJO.marshallXML(data, file);
     }
