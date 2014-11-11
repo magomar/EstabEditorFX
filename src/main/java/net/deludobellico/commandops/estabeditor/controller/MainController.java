@@ -2,6 +2,8 @@ package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +20,10 @@ import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.io.File;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -285,6 +290,8 @@ public class MainController implements Initializable {
      */
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
+        if (targetActiveEstabFile != null && targetActiveEstabFile.getPath().equals(file.getPath()))
+            UtilView.showInfoDialog("Warning", "This file is open for edition", file.getName() + " is being edited, inconsistencies may happen.");
         sourceActiveEstabFile = file;
         sourceIsClosed.set(false);
         sourcePaneController.setEstabModel(sourceActiveEstabFile);
@@ -306,6 +313,8 @@ public class MainController implements Initializable {
     private void openTarget(File file) {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
         targetActiveEstabFile = file;
+        if (sourceActiveEstabFile != null && sourceActiveEstabFile.getPath().equals(file.getPath()))
+            UtilView.showInfoDialog("Warning", "File is already open", "Changes in " + file.getName() + " might be lost.");
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetActiveEstabFile);
 
@@ -331,7 +340,7 @@ public class MainController implements Initializable {
         if (isNew) {
             DialogAction answer = DialogAction.OK;
             if (Settings.getNewFileCreated())
-                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?","", DialogAction.CANCEL, DialogAction.OK);
+                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
                 Settings.setNewFileCreated(true);
                 Settings.setNewFileSaved(false);
@@ -349,12 +358,11 @@ public class MainController implements Initializable {
     /**
      * Saves the target to disk. If the file is our temp new file,
      * it calls {@link #saveTargetAsAction()} to change the path.
-     *
      */
     @FXML
     public void saveTargetAction() {
         if (targetActiveEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
-            if(saveTargetAsAction() != null) {
+            if (saveTargetAsAction() != null) {
                 Settings.setNewFileSaved(true);
                 Settings.setNewFileCreated(false);
             }
@@ -369,6 +377,9 @@ public class MainController implements Initializable {
      * Displays a file chooser and copies the current source file to the new destination.
      */
     @FXML
+    public void saveSourceAsAction(ActionEvent actionEvent){
+        saveSourceAsAction();
+    }
     public File saveSourceAsAction() {
         File file = openFileChooser(true);
         if (file != null) {
@@ -383,6 +394,9 @@ public class MainController implements Initializable {
      * Displays a file chooser and copies the current target file to the new destination.
      */
     @FXML
+    public void saveTargetAsAction(ActionEvent actionEvent) {
+        saveTargetAsAction();
+    }
     public File saveTargetAsAction() {
         File file = openFileChooser(true);
         if (file != null) {
@@ -403,6 +417,7 @@ public class MainController implements Initializable {
         sourcePaneController.setEstabModel((EstabModel) null);
         sourcePaneController.getActiveElement().set(null);
         sourcePaneController.clear();
+        sourceActiveEstabFile = null;
 
         disableCopy.set(true);
         sourceIsClosed.set(true);
@@ -415,10 +430,11 @@ public class MainController implements Initializable {
     @FXML
     public void targetCloseAction() {
         LOG.log(Level.INFO, "Closing target file " + targetActiveEstabFile.getName());
-
         targetPaneController.setEstabModel((EstabModel) null);
         targetPaneController.getActiveElement().set(null);
         targetPaneController.clear();
+        targetActiveEstabFile = null;
+
 
         disableCopy.set(true);
         targetIsClosed.set(true);
@@ -498,6 +514,7 @@ public class MainController implements Initializable {
     void copyElementsToTarget(ElementModel element) {
         copyElementsToTarget(Arrays.asList(element));
     }
+
     @FXML
     private void copyToolbarButtonAction() {
         copyElementsToTarget(sourcePaneController.getActiveElement().get());
@@ -524,7 +541,7 @@ public class MainController implements Initializable {
 
     public void compareElementButtonAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
-            UtilView.showInfoDialog("Element comparison","",
+            UtilView.showInfoDialog("Element comparison", "",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
                             sourcePaneController.getActiveElement().get().getId(),
                             targetPaneController.getActiveElement().get().getId(),

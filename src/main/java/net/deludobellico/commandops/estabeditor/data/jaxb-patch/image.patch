@@ -5,7 +5,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 --- src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Image.java	(revision )
 +++ src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Image.java	(revision )
-@@ -1,5 +1,8 @@
+@@ -1,6 +1,9 @@
+ 
  package net.deludobellico.commandops.estabeditor.data.jaxb;
  
 +import net.deludobellico.commandops.estabeditor.model.Element;
@@ -23,8 +24,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
  
      @XmlAttribute(name = "id", required = true)
      protected int id;
-@@ -97,4 +100,8 @@
-         return this.flags;
+@@ -74,4 +77,8 @@
+         this.fileId = value;
      }
  
 +    @Override

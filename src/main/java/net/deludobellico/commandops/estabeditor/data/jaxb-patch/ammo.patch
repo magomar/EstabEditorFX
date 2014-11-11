@@ -5,26 +5,27 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 --- src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Ammo.java	(revision )
 +++ src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Ammo.java	(revision )
-@@ -1,5 +1,8 @@
+@@ -1,6 +1,9 @@
+ 
  package net.deludobellico.commandops.estabeditor.data.jaxb;
  
 +import net.deludobellico.commandops.estabeditor.model.AmmoModel;
 +import net.deludobellico.commandops.estabeditor.model.Element;
 +
- import javax.xml.bind.annotation.*;
- import java.util.ArrayList;
- import java.util.List;
-@@ -34,7 +37,7 @@
-         "minOrderQty",
-         "minOrderWeight"
+ import javax.xml.bind.annotation.XmlAccessType;
+ import javax.xml.bind.annotation.XmlAccessorType;
+ import javax.xml.bind.annotation.XmlAttribute;
+@@ -38,7 +41,7 @@
+     "minOrderQty",
+     "minOrderWeight"
  })
 -public class Ammo {
-+public class Ammo implements Element<AmmoModel>{
++public class Ammo implements Element<AmmoModel> {
  
      @XmlElement(required = true)
      protected String name;
-@@ -158,4 +161,8 @@
-         return this.flags;
+@@ -147,4 +150,8 @@
+         this.id = value;
      }
  
 +    @Override
