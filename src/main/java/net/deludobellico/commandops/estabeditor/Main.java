@@ -40,7 +40,7 @@ public class Main extends Application {
         }
         primaryStage.setOnCloseRequest(event -> {
             if (Settings.isNewFileCreated() && !Settings.isNewFileSaved()) {
-                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "","If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
+                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
                 if (answer != DialogAction.OK) {
                     event.consume();
                 }
@@ -53,7 +53,7 @@ public class Main extends Application {
     public void stop() {
         // If a new file was created, delete it.
         //noinspection ResultOfMethodCallIgnored
-        FileIO.getOrCreateNewEstabFile().delete();
+        FileIO.getNewEstabPath().toFile().delete();
         Settings.getInstance().setWindowWidth(primaryStage.getWidth());
         Settings.getInstance().setWindowHeight(primaryStage.getHeight());
         Settings.save();

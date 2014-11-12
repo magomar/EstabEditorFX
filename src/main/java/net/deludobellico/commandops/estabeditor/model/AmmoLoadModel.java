@@ -18,7 +18,6 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     private final IntegerProperty load = new SimpleIntegerProperty();
 
     public AmmoLoadModel() {
-
     }
 
     public AmmoLoadModel(AmmoLoad pojo) {
@@ -29,7 +28,7 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     public AmmoLoad getPojo() {
         AmmoLoad ammoLoad = new AmmoLoad();
         ammoLoad.setObjectId(id.get());
-        ammoLoad.setName(name.get());
+        ammoLoad.setName(name.get() != null ? name.get() : "");
         ammoLoad.setLoad(load.get());
         return ammoLoad;
     }

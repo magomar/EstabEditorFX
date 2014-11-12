@@ -2,13 +2,15 @@ package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -18,7 +20,9 @@ import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
@@ -344,7 +348,14 @@ public class MainController implements Initializable {
             if (answer == DialogAction.OK) {
                 Settings.setNewFileCreated(true);
                 Settings.setNewFileSaved(false);
-                openTarget(FileIO.getOrCreateNewEstabFile());
+                File f = FileIO.getOrCreateNewEstabFile();
+                Desktop d = Desktop.getDesktop();
+                try {
+                    d.open(f);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                openTarget(f);
             }
         } else {
             File file = openFileChooser(false);

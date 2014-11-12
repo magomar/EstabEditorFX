@@ -3,10 +3,7 @@ package net.deludobellico.commandops.estabeditor.model;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import net.deludobellico.commandops.estabeditor.data.jaxb.FireType;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Performance;
-import net.deludobellico.commandops.estabeditor.data.jaxb.ROF;
-import net.deludobellico.commandops.estabeditor.data.jaxb.RangeTable;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 /**
  * Model wrapper for the {@code Performance} class
@@ -35,7 +32,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     @Override
     public Performance getPojo() {
         Performance performance = new Performance();
-        performance.setAmmo(ammoLoad.get().getPojo());
+        performance.setAmmo(ammoLoad.get() != null ? ammoLoad.get().getPojo() : new AmmoLoadModel().getPojo());
         performance.setMinRange(minRange.get());
         ROF rof = new ROF();
         rof.setSlow(slowROF.get());
@@ -45,10 +42,10 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         performance.setBurstRadius(burstRadius.get());
         performance.setShellWeight(shellWeight.get());
         RangeTable rangeTable = new RangeTable();
-
-        ranges.stream().map(RangeItemModel::getPojo).forEach(rangeTable.getRangeItem()::add);
+        if(ranges.isEmpty()) rangeTable.getRangeItem().add(new RangeItem());
+        else ranges.stream().map(RangeItemModel::getPojo).forEach(rangeTable.getRangeItem()::add);
         performance.setRangeTable(rangeTable);
-        performance.setFireType(fireType.get());
+        performance.setFireType(fireType.get() != null ? fireType.get() : FireType.APER);
         return performance;
     }
 

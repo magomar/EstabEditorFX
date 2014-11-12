@@ -21,14 +21,22 @@ import java.util.logging.Logger;
  * @author Heine
  */
 public class FileIO {
+    /**
+     * File filters
+     */
+    public static final FileChooser.ExtensionFilter[] EXTENSION_FILTERS = {
+            new FileChooser.ExtensionFilter("XML (*.xml)", "*.xml"),
+            new FileChooser.ExtensionFilter("All (*.*)", "*.*")
+    };
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
     /**
      * Resources paths
      */
     //Settings
-    private static final String SETTINGS_XML_FILE = "estab-settings.xml";
+    private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml"; // settings on user's disk
+    private static final String DEFAULT_SETTINGS_FILE = "/DefaultSettings.xml"; // settings template on resources folder
     //Datasets
-    public static final String DATASETS_FOLDER = "/datasets";
+    private static final String DATASETS_FOLDER = "/datasets";
     private static final String NEW_ESTAB_PATH = "newestab.xml";
     private static final String DATASET_FILE_SUFFIX = "Estab.xml";
     private static final String DATASET_IMAGE_FOLDER_SUFFIX = "Estab_Images";
@@ -55,13 +63,6 @@ public class FileIO {
     public static final String AMMO_ICON_RESOURCE = IMAGES_FOLDER + "/ammoicon.png";
     public static final String APP_ICON = IMAGES_FOLDER + "/appicon.png";
     /**
-     * File filters
-     */
-    public static final FileChooser.ExtensionFilter[] EXTENSION_FILTERS = {
-            new FileChooser.ExtensionFilter("XML (*.xml)", "*.xml"),
-            new FileChooser.ExtensionFilter("All (*.*)", "*.*")
-    };
-    /**
      * Saved JAXB contexts for POJO classes and the Settings file
      */
     private static JAXBFactory JAXB_POJO;
@@ -80,22 +81,6 @@ public class FileIO {
      * Protect the class from being instantiated
      */
     private FileIO() {
-    }
-
-    /**
-     * Loads the settings file. Creates a new one if it doesn't exist.
-     */
-    public static void loadSettings() {
-        File file = new File(FileIO.getSettingsPath().toString());
-        if (!file.exists()) file = getNewSettingsFile();
-        JAXB_SETTINGS.unmarshallXML(file);
-    }
-
-    /**
-     * Saves settings to disk. Creates a new settings file if it doesn't exist.
-     */
-    public static void saveSettings() {
-        JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(getSettingsPath().toAbsolutePath().toString()));
     }
 
     /**
@@ -122,60 +107,6 @@ public class FileIO {
     }
 
     /**
-     * Returns the path of the default empty Estab dataset.
-     *
-     * @return the path of the default empty Estab dataset
-     */
-    public static Path getNewEstabPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
-    }
-
-    /**
-     * Creates an empty Estab dataset.
-     *
-     * @return the created file, null if there was an error.
-     */
-    public static File getOrCreateNewEstabFile() {
-        File f = null;
-        try {
-            f = getFileOrCreateNew(getNewEstabPath().toString());
-            FileOutputStream fos = new FileOutputStream(f, false);
-            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><estab-data></estab-data>".getBytes());
-            fos.close();
-        } catch (IOException e) {
-            LOG.log(Level.SEVERE, "Error creating new estab file: " + f.getPath(), e);
-        }
-        return f;
-    }
-
-    /**
-     * Returns the path of the default settings file.
-     *
-     * @return the path of the default settings file
-     */
-    public static Path getSettingsPath() {
-        return FileSystems.getDefault().getPath(System.getProperty("user.home"), SETTINGS_XML_FILE);
-    }
-
-    /**
-     * Creates a default settings file.
-     *
-     * @return the created file, null if there was an error
-     */
-    private static File getNewSettingsFile() {
-        File f = null;
-        try {
-            f = getFileOrCreateNew(getSettingsPath().toString());
-            FileOutputStream fos = new FileOutputStream(f, false);
-            fos.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><settings><vertical-panes>true</vertical-panes><visible-source-panel>true</visible-source-panel><visible-target-panel>true</visible-target-panel><visible-toolbar>true</visible-toolbar><window-height>800.0</window-height><window-width>1280.0</window-width><expanded-source-pane>true</expanded-source-pane><expanded-target-pane>false</expanded-target-pane></settings>".getBytes());
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return f;
-    }
-
-    /**
      * Copies all contents from a source file to a target file.
      *
      * @param sourceFile source file with the contents to copy
@@ -197,7 +128,7 @@ public class FileIO {
      */
     public static void copy(InputStream stream, Path path) {
         try {
-            Files.copy(stream, path);
+            Files.copy(stream, path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -220,7 +151,7 @@ public class FileIO {
             targetFile = null;
         } else {
             // Installing dataset from resources to file
-            installDatasetFile(FileIO.DATASETS_FOLDER + "/" + targetFile.getName(), targetFile.getAbsoluteFile().toPath());
+            installDatasetFile(targetFile.getName(), targetFile.getAbsoluteFile().toPath());
 
             // Installing all dataset images included in the index
             installDatasetImages(datasetName, targetFolder);
@@ -231,17 +162,17 @@ public class FileIO {
     /**
      * Installs the dataset file from the jar to disk
      *
-     * @param datasetResourceLocation dataset location
-     * @param targetFilePath          target folder
+     * @param datasetFile    dataset location
+     * @param targetFilePath target folder
      */
-    private static void installDatasetFile(String datasetResourceLocation, Path targetFilePath) {
-        FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceLocation), targetFilePath);
+    private static void installDatasetFile(String datasetFile, Path targetFilePath) {
+        FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + datasetFile), targetFilePath);
     }
 
     /**
      * Installs the dataset images folder from the jar to disk
      *
-     * @param datasetName  dataset name
+     * @param datasetName  dataset name ("BFTB", "COTA", etc.)
      * @param targetFolder target folder
      */
     private static void installDatasetImages(String datasetName, File targetFolder) {
@@ -258,14 +189,14 @@ public class FileIO {
         // I love all this boiler plate
         String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
         String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
-        InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        String imageFileName;
-        try {
-            while ((imageFileName = reader.readLine()) != null)
-                FileIO.copy(FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName), new File(targetImageFolder, imageFileName).toPath());
-            reader.close();
-            is.close();
+
+        try (InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            String imageFileName;
+            while ((imageFileName = reader.readLine()) != null) {
+                InputStream imageResource = FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName);
+                FileIO.copy(imageResource, new File(targetImageFolder, imageFileName).toPath());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -275,7 +206,7 @@ public class FileIO {
     /**
      * Gets an image from the dataset image folder
      * Names are strict and have to match the following pattern:
-     *
+     * <p>
      * Dataset name: COTA
      * Dataset file: COTAEstab.xml
      * Dataset image folder: COTAEstab_Images
@@ -298,7 +229,28 @@ public class FileIO {
     }
 
     /**
+     * Returns the path of the default empty Estab dataset on disk.
+     *
+     * @return the path of the default empty Estab dataset on disk.
+     */
+    public static Path getNewEstabPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.dir"), NEW_ESTAB_PATH);
+    }
+
+    /**
+     * Copies the default empty Estab dataset from resources to disk.
+     *
+     * @return the created file, null if there was an error.
+     */
+    public static File getOrCreateNewEstabFile() {
+        File f = getFileOrCreateNew(getNewEstabPath().toString());
+        installDatasetFile("Default" + DATASET_FILE_SUFFIX, getNewEstabPath());
+        return f;
+    }
+
+    /**
      * Loads Estab from disk
+     *
      * @param estabFile file to load
      * @return loaded EstabData
      */
@@ -308,10 +260,47 @@ public class FileIO {
 
     /**
      * Saves Estabs to disk
+     *
      * @param data EstabData to save
      * @param file target file
      */
     public static void saveEstab(EstabData data, File file) {
         JAXB_POJO.marshallXML(data, file);
+    }
+
+    /**
+     * Returns the path of the default settings file.
+     *
+     * @return the path of the default settings file
+     */
+    public static Path getClientSettingsPath() {
+        return FileSystems.getDefault().getPath(System.getProperty("user.home"), CLIENT_SETTINGS_FILE_PATH);
+    }
+
+    /**
+     * Creates a default settings file.
+     *
+     * @return the created file, null if there was an error
+     */
+    private static File getNewSettingsFile() {
+        File clientSettingsFile = getFileOrCreateNew(getClientSettingsPath().toString());
+        FileIO.copy(FileIO.class.getResourceAsStream(DEFAULT_SETTINGS_FILE), clientSettingsFile.toPath());
+        return clientSettingsFile;
+    }
+
+    /**
+     * Loads the settings file. Creates a new one if it doesn't exist.
+     */
+    public static void loadSettings() {
+        File file = new File(FileIO.getClientSettingsPath().toString());
+        if (!file.exists()) file = getNewSettingsFile();
+        JAXB_SETTINGS.unmarshallXML(file);
+    }
+
+    /**
+     * Saves settings to disk. Creates a new settings file if it doesn't exist.
+     */
+    public static void saveSettings() {
+        JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(getClientSettingsPath().toAbsolutePath().toString()));
     }
 }

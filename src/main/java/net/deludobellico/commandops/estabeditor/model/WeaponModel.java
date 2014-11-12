@@ -55,12 +55,12 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
     public Weapon getPojo() {
         Weapon pojo = new Weapon();
         pojo.setId(id.get());
-        pojo.setName(name.get());
-        pojo.setDescription(description.get());
+        pojo.setName(name.get() != null ? name.get() : "");
+        pojo.setDescription(description.get() != null ? description.get() : "");
         Picture p = new Picture();
         p.setId(pictureId.get());
         pojo.setPicture(p);
-        pojo.setPictureFilename(pictureFilename.get());
+        pojo.setPictureFilename(pictureFilename.get() != null ? pictureFilename.get() : "");
         WeaponSize weaponSize = new WeaponSize();
         weaponSize.setWidth(1.0);
         weaponSize.setHeight(1.0);
@@ -69,14 +69,17 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
         pojo.setSize(weaponSize);
         pojo.setCrew(crew.get());
         pojo.setReliability(reliability.get());
-        pojo.setType(type.get());
+        pojo.setType(type.get() != null ? type.get() : WeaponType.GUN);
         pojo.setSingleShot(PojoJFXModel.booleanToYesNo(singleShot.get()));
-        pojo.setPrimaryRole(primaryRole.get());
+        pojo.setPrimaryRole(primaryRole.get() != null ? primaryRole.get() : PrimaryRole.ANTI_PERSONNEL);
         pojo.setCalibre(calibre.get());
         pojo.setMuzzleVelocity(muzzleVelocity.get());
         pojo.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
+        pojo.setArmaments("");
         pojo.setPerformanceList(new PerformanceList());
-        performances.stream().map(PerformanceModel::getPojo).forEach(pojo.getPerformanceList().getPerformance()::add);
+        if (performances.isEmpty()) pojo.getPerformanceList().getPerformance().add(new PerformanceModel().getPojo());
+        else
+            performances.stream().map(PerformanceModel::getPojo).forEach(pojo.getPerformanceList().getPerformance()::add);
         pojo.getFlags().addAll(flags);
         return pojo;
     }

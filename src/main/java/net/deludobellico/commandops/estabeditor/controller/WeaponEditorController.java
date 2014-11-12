@@ -377,6 +377,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void unbindProperties(WeaponModel element) {
+        if(activePerformance != null) unbindPerformanceProperties(activePerformance);
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());

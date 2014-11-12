@@ -48,11 +48,11 @@ final class ElementModelFactory {
      * @return formatted name with the id inside parentheses
      */
     public static String formatName(String name, int newId) {
-        Pattern p = Pattern.compile("(\\(\\d+\\))");
+        Pattern p = Pattern.compile(" (\\#\\d+)");
         Matcher m = p.matcher(name);
         String oldId = "";
         while (m.find()) oldId = m.group();
-        return String.format("%s (%d)", name.replace(oldId, ""), newId);
+        return String.format("%s #%d", name.replace(oldId, ""), newId);
     }
 
     /**
