@@ -65,7 +65,7 @@ public class EstabModel {
     public EstabModel(EstabData estabData) {
 
         this.version = estabData.getVersion();
-        this.dlbVersion = estabData.getDlbVersion();
+        this.dlbVersion = estabData.getDlbVersion() != null ? estabData.getDlbVersion() : DLB_VERSION;
         this.edited = estabData.isEdited();
         this.lastEdit = (estabData.getLastEdit() != null ? estabData.getLastEdit().toGregorianCalendar() : null);
 
@@ -250,6 +250,8 @@ public class EstabModel {
         EstabData data = new EstabData();
         data.setLastEdit(new XMLGregorianCalendarImpl(new GregorianCalendar()));
         data.setEdited(true);
+        data.setVersion(version);
+        data.setDlbVersion(dlbVersion);
 
         // TODO: poly this?
         Map<Integer, ImageModel> images = (Map<Integer, ImageModel>) allElements.get(ImageModel.class);
