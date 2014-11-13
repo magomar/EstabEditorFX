@@ -33,8 +33,7 @@ public class FileIO {
      * Resources paths
      */
     //Settings
-    private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml"; // settings on user's disk
-    private static final String DEFAULT_SETTINGS_FILE = "/DefaultSettings.xml"; // settings template on resources folder
+    private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml";
     //Datasets
     private static final String DATASETS_FOLDER = "/datasets";
     private static final String NEW_ESTAB_PATH = "newestab.xml";
@@ -278,22 +277,11 @@ public class FileIO {
     }
 
     /**
-     * Creates a default settings file.
-     *
-     * @return the created file, null if there was an error
-     */
-    private static File getNewSettingsFile() {
-        File clientSettingsFile = getFileOrCreateNew(getClientSettingsPath().toString());
-        FileIO.copy(FileIO.class.getResourceAsStream(DEFAULT_SETTINGS_FILE), clientSettingsFile.toPath());
-        return clientSettingsFile;
-    }
-
-    /**
      * Loads the settings file. Creates a new one if it doesn't exist.
      */
     public static void loadSettings() {
         File file = new File(FileIO.getClientSettingsPath().toString());
-        if (!file.exists()) file = getNewSettingsFile();
+        if (!file.exists()) return; // Loading default settings
         JAXB_SETTINGS.unmarshallXML(file);
     }
 

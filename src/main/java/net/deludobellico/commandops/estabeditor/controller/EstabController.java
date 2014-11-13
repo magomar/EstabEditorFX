@@ -201,9 +201,9 @@ public class EstabController implements Initializable {
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
     }
+
     /**
      * Filters the search list with forces only
-     *
      */
     @FXML
     private void searchForce() {
@@ -217,9 +217,9 @@ public class EstabController implements Initializable {
         selectNoneListCheckBox.setSelected(false);
         searchElement();
     }
+
     /**
      * Filters the search list with vehicles only
-     *
      */
     @FXML
     private void searchVehicle() {
@@ -236,7 +236,6 @@ public class EstabController implements Initializable {
 
     /**
      * Filters the search list with weapons only
-     *
      */
     @FXML
     private void searchWeapon() {
@@ -252,7 +251,6 @@ public class EstabController implements Initializable {
 
     /**
      * Filters the search list with ammo only
-     *
      */
     @FXML
     private void searchAmmo() {
@@ -425,7 +423,7 @@ public class EstabController implements Initializable {
      */
     public void saveModel(File file) {
         if (!file.exists()) {
-            UtilView.showInfoDialog("File not found","", file.getName() + " doesn't exist");
+            UtilView.showInfoDialog("File not found", "", file.getName() + " doesn't exist");
             LOG.log(Level.WARNING, "Abort save. File not found " + file.getName());
         } else estabModel.saveToFile(file);
     }
@@ -510,11 +508,10 @@ public class EstabController implements Initializable {
             // Hide the current editor
             hideActiveEditor();
             // If we have already loaded the new editor, show it; else load it
-            if (elementEditorControllers.containsKey(elementClass)){
+            if (elementEditorControllers.containsKey(elementClass)) {
                 showEditor(elementClass);
                 elementEditorController = elementEditorControllers.get(elementClass);
-            }
-            else loadNewEditor(elementClass);
+            } else loadNewEditor(elementClass);
         }
         elementEditorController.setActiveElement(element);
         activeElement.set(element);

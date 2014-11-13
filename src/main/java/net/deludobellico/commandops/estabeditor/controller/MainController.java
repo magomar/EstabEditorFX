@@ -6,11 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -39,18 +42,23 @@ import java.util.logging.Logger;
  */
 public class MainController implements Initializable {
     private static final Logger LOG = Logger.getLogger(MainController.class.getName());
+    // Buttons and other components are enabled/disabled based on these properties
+    private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
+    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
+    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
 
     /**
      * Top region: Menu bar
      */
     // Source menu
     @FXML
+    public MenuItem sourceOpenMenuItem;
+    @FXML
     private Menu sourceOpenRecentMenuList;
     @FXML
     private MenuItem sourceSaveAsMenuItem;
     @FXML
     private MenuItem sourceCloseMenuItem;
-
     // Target menu
     @FXML
     private MenuItem targetOpenNewMenuItem;
@@ -64,7 +72,20 @@ public class MainController implements Initializable {
     private MenuItem targetSaveAsMenuItem;
     @FXML
     private MenuItem targetCloseMenuItem;
-
+    // Edit menu
+    @FXML
+    private MenuItem copyMenuItem;
+    @FXML
+    private MenuItem duplicateMenuItem;
+    @FXML
+    private MenuItem removeMenuItem;
+    // New menu
+    @FXML
+    private MenuItem createNewVehicleMenuItem;
+    @FXML
+    private MenuItem createNewWeaponMenuItem;
+    @FXML
+    private MenuItem createNewAmmoMenuItem;
     // View
     @FXML
     private RadioMenuItem toolbarRadioItem;
@@ -72,12 +93,10 @@ public class MainController implements Initializable {
     private RadioMenuItem sourceRadioItem;
     @FXML
     private RadioMenuItem targetRadioItem;
-
     // About
     // TODO: Create about info
     @FXML
     private MenuItem aboutMenuItem;
-
     /**
      * Top region: tool bar
      */
@@ -97,7 +116,6 @@ public class MainController implements Initializable {
     private Button createNewAmmoButton;
     @FXML
     private Button compareElementButton;
-
     /**
      * Center region
      */
@@ -111,17 +129,12 @@ public class MainController implements Initializable {
     private EstabController sourcePaneController;
     @FXML
     private EstabController targetPaneController;
-
     /**
      * Other
      */
     // Opened files by estab editors
     private File sourceActiveEstabFile;
     private File targetActiveEstabFile;
-    // Buttons and other components are enabled/disabled based on these properties
-    private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
-    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
-    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
 
     /**
      * Sets listeners, binds properties and loads user settings
@@ -131,9 +144,24 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        // The scroll pane will fit all the rootPane
+        estabsContainer.setFitToWidth(true);
+
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);
         sourcePaneController.init("Source Estab", false, this);
+
+        addListeners();
+        loadSettings();
+        bindProperties();
+        setAccelerators();
+        // Populate recent opened files
+        populateOpenRecentSourceMenu();
+        populateOpenRecentTargetMenu();
+    }
+
+    private void addListeners() {
 
         // Enable copy if there's a target file and a selected element on the source search list
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty()
@@ -154,34 +182,33 @@ public class MainController implements Initializable {
         sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
-        // Hide components if they are set invisible
-        toolBar.managedProperty().bind(toolBar.visibleProperty());
-        sourcePane.managedProperty().bind(sourcePane.visibleProperty());
-        targetPane.managedProperty().bind(targetPane.visibleProperty());
         // Save the panes status in the settings
         sourcePane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedSourcePane(sourcePane.isExpanded()));
         targetPane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedTargetPane(targetPane.isExpanded()));
 
-        // The scroll pane will fit all the rootPane
-        estabsContainer.setFitToWidth(true);
-        try {
-            // If settings were loaded, set them
-            toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
-            sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
-            targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
 
-            toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
-            sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
-            targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
-            sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
-            targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
-            if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
-        } catch (NullPointerException ignored) {
-            // It's ok if settings had some null pointers. The settings file will be overwritten on exit.
-        }
+    }
 
-        // Bind properties
+    private void loadSettings() {
+        // If settings were loaded, set them
+        toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
+        sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
+        targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
+
+        toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
+        sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
+        targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
+        sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
+        targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
+        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
+    }
+
+    private void bindProperties() {
+
         copyElementButton.disableProperty().bindBidirectional(disableCopy);
+        copyMenuItem.disableProperty().bindBidirectional(disableCopy);
+        removeMenuItem.disableProperty().bindBidirectional(removeElementButton.disableProperty());
+
         sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
         sourceCloseMenuItem.disableProperty().bind(sourceIsClosed);
         sourcePaneController.searchDisableProperty().bind(sourceIsClosed);
@@ -190,14 +217,39 @@ public class MainController implements Initializable {
         targetSaveAsMenuItem.disableProperty().bind(targetIsClosed);
         targetCloseMenuItem.disableProperty().bind(targetIsClosed);
         targetPaneController.searchDisableProperty().bind(targetIsClosed);
-        saveDataButton.disableProperty().bind(targetIsClosed);
-        createNewVehicleButton.disableProperty().bind(targetIsClosed);
-        createNewWeaponButton.disableProperty().bind(targetIsClosed);
-        createNewAmmoButton.disableProperty().bind(targetIsClosed);
 
-        // Populate recent opened files
-        populateOpenRecentSourceMenu();
-        populateOpenRecentTargetMenu();
+        createNewVehicleButton.disableProperty().bind(targetIsClosed);
+        createNewVehicleMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        createNewWeaponButton.disableProperty().bind(targetIsClosed);
+        createNewWeaponMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        createNewAmmoButton.disableProperty().bind(targetIsClosed);
+        createNewAmmoMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        saveDataButton.disableProperty().bind(targetIsClosed);
+
+        // Hide components if they are set invisible
+        toolBar.managedProperty().bind(toolBar.visibleProperty());
+        sourcePane.managedProperty().bind(sourcePane.visibleProperty());
+        targetPane.managedProperty().bind(targetPane.visibleProperty());
+
+    }
+
+    public void setAccelerators() {
+        sourceOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.ALT_DOWN));
+        sourceSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.ALT_DOWN));
+        sourceCloseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.ALT_DOWN));
+
+        targetOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
+        targetSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        targetSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        targetCloseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
+        targetOpenNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
+
+        copyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN));
+        removeMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE, KeyCombination.CONTROL_DOWN));
+
     }
 
     /**
@@ -242,13 +294,14 @@ public class MainController implements Initializable {
      * Files are filtered with {@link FileIO#EXTENSION_FILTERS}
      *
      * @param isSaving true if the file chooser is open for saving, false if it's for opening
+     * @param isSource
      * @return the selected file, otherwise null
      * @see System#getProperty(String)
      */
 
-    private File openFileChooser(boolean isSaving) {
+    private File openFileChooser(boolean isSaving, boolean isSource) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select ESTAB");
+        fileChooser.setTitle(String.format("Select %s ESTAB", isSource ? "Source" : "Target"));
 
         File initialDirectory = null;
         if (Settings.getInstance().getLastOpenedFolder() != null)
@@ -300,7 +353,9 @@ public class MainController implements Initializable {
         sourceIsClosed.set(false);
         sourcePaneController.setEstabModel(sourceActiveEstabFile);
 
-        if (targetPaneController.getActiveElement().get() != null) disableCopy.set(false);
+        if (targetPaneController.getActiveElement().get() != null
+                && !sourcePaneController.getSearchResultsListView().getSelectionModel().getSelectedItems().isEmpty())
+            disableCopy.set(false);
         else disableCopy.set(true);
 
         sourcePane.expandedProperty().set(true);
@@ -358,7 +413,7 @@ public class MainController implements Initializable {
                 openTarget(f);
             }
         } else {
-            File file = openFileChooser(false);
+            File file = openFileChooser(false, isSource);
             if (null != file) {
                 if (isSource) openSource(file);
                 else openTarget(file);
@@ -388,11 +443,12 @@ public class MainController implements Initializable {
      * Displays a file chooser and copies the current source file to the new destination.
      */
     @FXML
-    public void saveSourceAsAction(ActionEvent actionEvent){
+    public void saveSourceAsAction(ActionEvent actionEvent) {
         saveSourceAsAction();
     }
+
     public File saveSourceAsAction() {
-        File file = openFileChooser(true);
+        File file = openFileChooser(true, true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + sourceActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(sourceActiveEstabFile, file);
@@ -408,8 +464,9 @@ public class MainController implements Initializable {
     public void saveTargetAsAction(ActionEvent actionEvent) {
         saveTargetAsAction();
     }
+
     public File saveTargetAsAction() {
-        File file = openFileChooser(true);
+        File file = openFileChooser(true, true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving target file " + targetActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(targetActiveEstabFile, file);
@@ -527,26 +584,26 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void copyToolbarButtonAction() {
+    private void copyAction() {
         copyElementsToTarget(sourcePaneController.getActiveElement().get());
     }
 
     @FXML
-    private void removeToolbarButtonAction() {
+    private void removeAction() {
         List<ElementModel> elementsToRemove = targetPaneController.getEstabModel().getRelatedElements(
                 targetPaneController.getActiveElement().get()).getAllElements();
         targetPaneController.removeRelatedElements(elementsToRemove);
     }
 
-    public void createNewVehicleButtonAction() {
+    public void createNewVehicleAction() {
         targetPaneController.createNewElement(new VehicleModel());
     }
 
-    public void createNewWeaponButtonAction() {
+    public void createNewWeaponAction() {
         targetPaneController.createNewElement(new WeaponModel());
     }
 
-    public void createNewAmmoButtonAction() {
+    public void createNewAmmoAction() {
         targetPaneController.createNewElement(new AmmoModel());
     }
 

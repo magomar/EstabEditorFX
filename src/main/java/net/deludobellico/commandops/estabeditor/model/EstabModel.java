@@ -1,6 +1,10 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Nation;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Service;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.io.File;
@@ -16,12 +20,23 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings("unchecked")
 public class EstabModel {
+    public static final Integer DEFAULT_VERSION = 4;
+    public static final String DLB_VERSION = "0.1.2";
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
+
+    private Integer version;
+    private String dlbVersion;
+    private Boolean edited;
+    private GregorianCalendar lastEdit;
 
     /**
      * Empty model instance
      */
     public EstabModel() {
+        this.version = DEFAULT_VERSION;
+        this.dlbVersion = DLB_VERSION;
+        this.edited = true;
+        this.lastEdit = new GregorianCalendar();
         allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
         allElements.put(ImageModel.class, new HashMap<>());
         allElements.put(SideModel.class, new HashMap<>());
@@ -48,6 +63,11 @@ public class EstabModel {
      * @see EstabData
      */
     public EstabModel(EstabData estabData) {
+
+        this.version = estabData.getVersion();
+        this.dlbVersion = estabData.getDlbVersion();
+        this.edited = estabData.isEdited();
+        this.lastEdit = (estabData.getLastEdit() != null ? estabData.getLastEdit().toGregorianCalendar() : null);
 
         // Collect the Estab element lists
         Collection<List<? extends Element>> estabLists = new ArrayList<>(ElementModel.CLASS_MAP.size() / 2);
@@ -228,6 +248,8 @@ public class EstabModel {
      */
     public void saveToFile(File file) {
         EstabData data = new EstabData();
+        data.setLastEdit(new XMLGregorianCalendarImpl(new GregorianCalendar()));
+        data.setEdited(true);
 
         // TODO: poly this?
         Map<Integer, ImageModel> images = (Map<Integer, ImageModel>) allElements.get(ImageModel.class);

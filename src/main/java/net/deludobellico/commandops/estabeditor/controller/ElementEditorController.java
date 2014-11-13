@@ -10,7 +10,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
  * @author Heine
  * @see EstabController
  */
-interface  ElementEditorController<T extends ElementModel> {
+interface ElementEditorController<T extends ElementModel> {
 
     /**
      * Returns the active {@code ElementModel} set in the Controller

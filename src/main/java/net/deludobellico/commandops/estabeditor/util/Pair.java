@@ -38,8 +38,8 @@ public class Pair<K, V> {
         if (o == null || getClass() != o.getClass()) return false;
 
         Pair pair = (Pair) o;
-        if(key != null ? key.equals(pair.key) : pair.key != null) return false;
-        if(value != null ? value.equals(pair.value) : pair.value != null) return false;
+        if (key != null ? key.equals(pair.key) : pair.key != null) return false;
+        if (value != null ? value.equals(pair.value) : pair.value != null) return false;
         return true;
 
     }

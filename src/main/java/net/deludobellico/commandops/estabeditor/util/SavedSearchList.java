@@ -7,8 +7,8 @@ import javafx.collections.ObservableList;
  * Created by Heine on 10/27/2014.
  */
 public class SavedSearchList<T> {
-    private String lastSearch;
     private final ObservableList<T> observableList;
+    private String lastSearch;
     private boolean forceSearch;
 
 

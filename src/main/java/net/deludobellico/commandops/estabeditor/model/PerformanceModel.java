@@ -42,7 +42,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
         performance.setBurstRadius(burstRadius.get());
         performance.setShellWeight(shellWeight.get());
         RangeTable rangeTable = new RangeTable();
-        if(ranges.isEmpty()) rangeTable.getRangeItem().add(new RangeItem());
+        if (ranges.isEmpty()) rangeTable.getRangeItem().add(new RangeItem());
         else ranges.stream().map(RangeItemModel::getPojo).forEach(rangeTable.getRangeItem()::add);
         performance.setRangeTable(rangeTable);
         performance.setFireType(fireType.get() != null ? fireType.get() : FireType.APER);

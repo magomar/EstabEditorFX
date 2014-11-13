@@ -1,12 +1,13 @@
 package net.deludobellico.commandops.estabeditor.model;
 
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -40,10 +41,10 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
     private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
-    private final ObjectProperty<XMLGregorianCalendar> deployed = new SimpleObjectProperty<>();
-    private final ObjectProperty<XMLGregorianCalendar> dugIn = new SimpleObjectProperty<>();
-    private final ObjectProperty<XMLGregorianCalendar> entrenched = new SimpleObjectProperty<>();
-    private final ObjectProperty<XMLGregorianCalendar> fortified = new SimpleObjectProperty<>();
+    private final ObjectProperty<GregorianCalendar> deployed = new SimpleObjectProperty<>();
+    private final ObjectProperty<GregorianCalendar> dugIn = new SimpleObjectProperty<>();
+    private final ObjectProperty<GregorianCalendar> entrenched = new SimpleObjectProperty<>();
+    private final ObjectProperty<GregorianCalendar> fortified = new SimpleObjectProperty<>();
     private final StringProperty readyToFireDuration = new SimpleStringProperty();
     private final StringProperty readyToBombardDuration = new SimpleStringProperty();
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
@@ -100,10 +101,10 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         speedData.setNormal(normalSpeed.get());
         force.setSpeed(speedData);
         DeploymentDuration deploymentDuration = new DeploymentDuration();
-        deploymentDuration.setDeployed(deployed.get());
-        deploymentDuration.setDugIn(dugIn.get());
-        deploymentDuration.setEntrenched(entrenched.get());
-        deploymentDuration.setFortified(fortified.get());
+        deploymentDuration.setDeployed(new XMLGregorianCalendarImpl(deployed.get()));
+        deploymentDuration.setDugIn(new XMLGregorianCalendarImpl(dugIn.get()));
+        deploymentDuration.setEntrenched(new XMLGregorianCalendarImpl(entrenched.get()));
+        deploymentDuration.setFortified(new XMLGregorianCalendarImpl(fortified.get()));
         force.setDeploymentDuration(deploymentDuration);
         force.setReadyToFireDuration(readyToFireDuration.get());
         force.setReadyToBombardDuration(readyToBombardDuration.get());
@@ -140,10 +141,10 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         fuelLoad.set(pojo.getFuelLoad());
         maxSpeed.set(pojo.getSpeed().getMax());
         normalSpeed.set(pojo.getSpeed().getNormal());
-        deployed.set(pojo.getDeploymentDuration().getDeployed());
-        dugIn.set(pojo.getDeploymentDuration().getDugIn());
-        entrenched.set(pojo.getDeploymentDuration().getEntrenched());
-        fortified.set(pojo.getDeploymentDuration().getFortified());
+        deployed.set(pojo.getDeploymentDuration().getDeployed().toGregorianCalendar());
+        dugIn.set(pojo.getDeploymentDuration().getDugIn().toGregorianCalendar());
+        entrenched.set(pojo.getDeploymentDuration().getEntrenched().toGregorianCalendar());
+        fortified.set(pojo.getDeploymentDuration().getFortified().toGregorianCalendar());
         readyToBombardDuration.set(pojo.getReadyToBombardDuration());
         readyToFireDuration.set(pojo.getReadyToFireDuration());
         pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentList::add);
@@ -463,51 +464,51 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         return normalSpeed;
     }
 
-    public XMLGregorianCalendar getDeployed() {
+    public GregorianCalendar getDeployed() {
         return deployed.get();
     }
 
-    public void setDeployed(XMLGregorianCalendar deployed) {
+    public void setDeployed(GregorianCalendar deployed) {
         this.deployed.set(deployed);
     }
 
-    public ObjectProperty<XMLGregorianCalendar> deployedProperty() {
+    public ObjectProperty<GregorianCalendar> deployedProperty() {
         return deployed;
     }
 
-    public XMLGregorianCalendar getDugIn() {
+    public GregorianCalendar getDugIn() {
         return dugIn.get();
     }
 
-    public void setDugIn(XMLGregorianCalendar dugIn) {
+    public void setDugIn(GregorianCalendar dugIn) {
         this.dugIn.set(dugIn);
     }
 
-    public ObjectProperty<XMLGregorianCalendar> dugInProperty() {
+    public ObjectProperty<GregorianCalendar> dugInProperty() {
         return dugIn;
     }
 
-    public XMLGregorianCalendar getEntrenched() {
+    public GregorianCalendar getEntrenched() {
         return entrenched.get();
     }
 
-    public void setEntrenched(XMLGregorianCalendar entrenched) {
+    public void setEntrenched(GregorianCalendar entrenched) {
         this.entrenched.set(entrenched);
     }
 
-    public ObjectProperty<XMLGregorianCalendar> entrenchedProperty() {
+    public ObjectProperty<GregorianCalendar> entrenchedProperty() {
         return entrenched;
     }
 
-    public XMLGregorianCalendar getFortified() {
+    public GregorianCalendar getFortified() {
         return fortified.get();
     }
 
-    public void setFortified(XMLGregorianCalendar fortified) {
+    public void setFortified(GregorianCalendar fortified) {
         this.fortified.set(fortified);
     }
 
-    public ObjectProperty<XMLGregorianCalendar> fortifiedProperty() {
+    public ObjectProperty<GregorianCalendar> fortifiedProperty() {
         return fortified;
     }
 
@@ -571,7 +572,7 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         if (getCombatClass() != null ? !getCombatClass().equals(that.getCombatClass()) : that.getCombatClass() != null)
             return false;
         if (getCommanderRank() != that.getCommanderRank()) return false;
-        if (getDeployed() != null ? (getDeployed().toGregorianCalendar().compareTo(that.getDeployed().toGregorianCalendar()) != 0) : that.getDeployed() != null)
+        if (getDeployed() != null ? !getDeployed().equals(that.getDeployed()) : that.getDeployed() != null)
             return false;
         if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;

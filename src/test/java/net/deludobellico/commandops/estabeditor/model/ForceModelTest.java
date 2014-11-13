@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -40,10 +41,10 @@ public class ForceModelTest {
     private final double fuelLoad = 100;
     private final double maxSpeed = 110;
     private final double normalSpeed = 100;
-    private final XMLGregorianCalendar deployed = new XMLGregorianCalendarImpl();
-    private final XMLGregorianCalendar dugIn = new XMLGregorianCalendarImpl();
-    private final XMLGregorianCalendar entrenched = new XMLGregorianCalendarImpl();
-    private final XMLGregorianCalendar fortified = new XMLGregorianCalendarImpl();
+    private final GregorianCalendar deployed = new GregorianCalendar();
+    private final GregorianCalendar dugIn = new GregorianCalendar();
+    private final GregorianCalendar entrenched = new GregorianCalendar();
+    private final GregorianCalendar fortified = new GregorianCalendar();
     private final String readyToFireDuration = "00:00:00";
     private final String readyToBombardDuration = "00:00:00";
     private final List<EquipmentModel> equipmentList = FXCollections.observableArrayList();

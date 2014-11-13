@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.RGBColor;
  * @author Mario
  * @author Heine
  */
-public class RGBColorModel implements PojoJFXModel<RGBColor>  {
+public class RGBColorModel implements PojoJFXModel<RGBColor> {
     private final IntegerProperty red = new SimpleIntegerProperty();
     private final IntegerProperty green = new SimpleIntegerProperty();
     private final IntegerProperty blue = new SimpleIntegerProperty();
@@ -24,6 +24,22 @@ public class RGBColorModel implements PojoJFXModel<RGBColor>  {
         red.set(r);
         green.set(g);
         blue.set(b);
+    }
+
+    public static RGBColor getRGBColor(Color color) {
+        RGBColor rgbColor = new RGBColor();
+        rgbColor.setRed((int) (color.getRed() * 255));
+        rgbColor.setGreen((int) color.getGreen() * 255);
+        rgbColor.setBlue((int) color.getBlue() * 255);
+        return rgbColor;
+    }
+
+    public static Color getColor(RGBColor rgbColor) {
+        return Color.color(rgbColor.getRed() / 255.0, rgbColor.getGreen() / 255.0, rgbColor.getBlue() / 255.0);
+    }
+
+    public static Color getColor(int r, int g, int b) {
+        return Color.color(r / 255.0, g / 255.0, b / 255.0);
     }
 
     @Override
@@ -40,22 +56,6 @@ public class RGBColorModel implements PojoJFXModel<RGBColor>  {
         red.set(pojo.getRed());
         green.set(pojo.getGreen());
         blue.set(pojo.getBlue());
-    }
-
-    public static RGBColor getRGBColor(Color color) {
-        RGBColor rgbColor = new RGBColor();
-        rgbColor.setRed((int) (color.getRed()*255));
-        rgbColor.setGreen((int) color.getGreen()*255);
-        rgbColor.setBlue((int) color.getBlue()*255);
-        return rgbColor;
-    }
-
-    public static Color getColor(RGBColor rgbColor) {
-        return Color.color(rgbColor.getRed()/255.0, rgbColor.getGreen()/255.0, rgbColor.getBlue()/255.0);
-    }
-
-    public static Color getColor(int r, int g, int b) {
-        return Color.color(r/255.0, g/255.0, b/255.0);
     }
 
     public int getRed() {

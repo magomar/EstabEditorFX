@@ -2,7 +2,10 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
-import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import net.deludobellico.commandops.estabeditor.data.jaxb.ForceSize;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Icon;
+import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
+import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 
 /**
  * Model wrapper for the {@code Icon} class

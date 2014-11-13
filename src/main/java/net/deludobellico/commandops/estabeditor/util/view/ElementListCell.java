@@ -17,7 +17,6 @@ import java.util.Iterator;
  * Cell factory for the search result lists in {@code EstabController}.
  * Each cell is composed of a {@link CheckBox} and a {@link Label}. Additionally, each cell references an {@link ElementModel}.
  * When the checkbox is selected the element model is added to a collection, and removed when deselected.
- *
  */
 public class ElementListCell extends HBox {
 

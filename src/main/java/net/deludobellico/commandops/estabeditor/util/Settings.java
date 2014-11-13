@@ -15,16 +15,16 @@ public class Settings {
     private static final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private static final Settings settings = new Settings();
     private static String lastOpenedFolder;
-    private static Double windowWidth;
-    private static Double windowHeight;
-    private static Boolean visibleToolbar;
-    private static Boolean visibleSourcePanel;
-    private static Boolean visibleTargetPanel;
-    private static Boolean verticalPanes;
-    private static Boolean expandedSourcePane;
-    private static Boolean expandedTargetPane;
-    private static boolean newFileCreated;
-    private static boolean newFileSaved;
+    private static Double windowWidth = 1280.0;
+    private static Double windowHeight = 800.0;
+    private static Boolean visibleToolbar = true;
+    private static Boolean visibleSourcePanel = true;
+    private static Boolean visibleTargetPanel = true;
+    private static Boolean verticalPanes = true;
+    private static Boolean expandedSourcePane = true;
+    private static Boolean expandedTargetPane = true;
+    private static Boolean newFileCreated = false;
+    private static Boolean newFileSaved = false;
 
     private Settings() {
     }

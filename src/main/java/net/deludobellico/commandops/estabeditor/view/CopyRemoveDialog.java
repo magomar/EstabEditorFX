@@ -30,31 +30,24 @@ import java.util.ResourceBundle;
 @SuppressWarnings("unchecked")
 public class CopyRemoveDialog implements Initializable {
 
+    private final Collection selectedItems = FXCollections.observableArrayList();
     @FXML
     private HBox buttonBox;
-
     @FXML
     private Label headText;
-
     @FXML
     private Text bodyText;
-
     @FXML
     private ImageView image;
-
     @FXML
     private TableView<ElementModel> tableView;
-
     @FXML
     private TableColumn<ElementModel, String> tableViewTypeColumn;
-
     @FXML
     private TableColumn<ElementModel, String> tableViewNameColumn;
-
     private Stage dialog;
     private Parent parent;
     private DialogAction selectedDialogAction = DialogAction.CANCEL;
-    private final Collection selectedItems = FXCollections.observableArrayList();
 
     public static CopyRemoveDialog init() {
         FXMLLoader fxmlLoader = new FXMLLoader(CopyRemoveDialog.class.getResource(FileIO.SELECTION_DIALOG_VIEW));

@@ -80,12 +80,12 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
         return equipmentClass.get();
     }
 
-    public ObjectProperty<Class> equipmentClassProperty() {
-        return equipmentClass;
-    }
-
     public void setEquipmentClass(Class equipmentClass) {
         this.equipmentClass.set(equipmentClass);
+    }
+
+    public ObjectProperty<Class> equipmentClassProperty() {
+        return equipmentClass;
     }
 
     @Override

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
             fx:controller="net.deludobellico.commandops.estabeditor.controller.MainController">
     <BorderPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
@@ -13,10 +16,10 @@
                         <!--MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
                                               onAction="#exitApplication" text="Exit"/-->
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Source">
-                        <MenuItem mnemonicParsing="false"
+                    <Menu mnemonicParsing="true" text="_Source">
+                        <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="true"
                                   onAction="#openFileAction" text="Open"/>
-                        <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="false"
+                        <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="true"
                               text="Open recent">
 
                         </Menu>
@@ -27,13 +30,13 @@
                         <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false"
                                   onAction="#sourceCloseAction" text="Close"/>
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Target">
-                        <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="false"
+                    <Menu mnemonicParsing="true" text="_Target">
+                        <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="true"
                                   onAction="#openFileAction" text="New"/>
                         <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="false"
+                        <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="true"
                                   onAction="#openFileAction" text="Open"/>
-                        <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="false"
+                        <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="true"
                               text="Open recent">
 
                         </Menu>
@@ -46,6 +49,26 @@
                         <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false"
                                   onAction="#targetCloseAction" text="Close"/>
                     </Menu>
+                    <Menu mnemonicParsing="true" text="_Edit">
+                        <MenuItem fx:id="copyMenuItem" mnemonicParsing="true"
+                                  onAction="#copyAction" text="Copy (Source to target)"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem fx:id="duplicateMenuItem" mnemonicParsing="true"
+                                  disable="true" text="Duplicate (Target to target)"/>
+                        <MenuItem fx:id="removeMenuItem" mnemonicParsing="true"
+                                  onAction="#removeAction" text="Remove (Target)"/>
+
+                    </Menu>
+                    <Menu mnemonicParsing="true" text="_New">
+                        <MenuItem fx:id="createNewVehicleMenuItem" mnemonicParsing="true"
+                                  onAction="#createNewVehicleAction" text="Vehicle"/>
+                        <MenuItem fx:id="createNewWeaponMenuItem" mnemonicParsing="true"
+                                  onAction="#createNewWeaponAction" text="Weapon"/>
+                        <MenuItem fx:id="createNewAmmoMenuItem" mnemonicParsing="true"
+                                  onAction="#createNewAmmoAction" text="Ammo"/>
+
+                    </Menu>
+
                     <Menu mnemonicParsing="false" text="Install Dataset">
                         <MenuItem mnemonicParsing="false"
                                   onAction="#installDataset" text="BFTB"/>
@@ -53,15 +76,15 @@
                                   onAction="#installDataset" text="COTA"/>
                     </Menu>
 
-                    <Menu mnemonicParsing="false" text="View">
-                        <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="false" selected="true"
+                    <Menu mnemonicParsing="false" text="_View">
+                        <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" selected="true"
                                        onAction="#toggleToolBarVisibility" text="Toolbar"/>
-                        <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="false" selected="true"
+                        <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="true" selected="true"
                                        onAction="#toggleSourcePaneVisibility" text="Source"/>
-                        <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="false" selected="true"
+                        <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="true" selected="true"
                                        onAction="#toggleTargetPaneVisibility" text="Target"/>
                         <SeparatorMenuItem mnemonicParsing="false"/>
-                        <RadioMenuItem mnemonicParsing="false"
+                        <RadioMenuItem mnemonicParsing="true"
                                        onAction="#togglePanesContainer" text="Switch Panels"/>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Help">
@@ -70,20 +93,20 @@
                 </MenuBar>
                 <ToolBar fx:id="toolBar">
                     <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
-                            onAction="#copyToolbarButtonAction" text="Copy Source Element"
+                            onAction="#copyAction" text="Copy Source Element"
                             maxHeight="Infinity"/>
                     <Button fx:id="removeElementButton" disable="true" mnemonicParsing="false"
-                            onAction="#removeToolbarButtonAction" text="Remove Target Element"
+                            onAction="#removeAction" text="Remove Target Element"
                             maxHeight="Infinity"/>
                     <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
                             onAction="#saveTargetAction" text="Save Target File" maxHeight="Infinity"/>
-                    <Button fx:id="createNewVehicleButton" disable="true" mnemonicParsing="false"
-                            onAction="#createNewVehicleButtonAction" text="New Vehicle" maxHeight="Infinity"/>
-                    <Button fx:id="createNewWeaponButton" disable="true" mnemonicParsing="false"
-                            onAction="#createNewWeaponButtonAction" text="New Weapon" maxHeight="Infinity"/>
-                    <Button fx:id="createNewAmmoButton" disable="true" mnemonicParsing="false"
-                            onAction="#createNewAmmoButtonAction" text="New Ammo" maxHeight="Infinity"/>
-                    <Button fx:id="compareElementButton" disable="true" mnemonicParsing="false"
+                    <Button fx:id="createNewVehicleButton" disable="true" mnemonicParsing="true"
+                            onAction="#createNewVehicleAction" text="New Vehicle" maxHeight="Infinity"/>
+                    <Button fx:id="createNewWeaponButton" disable="true" mnemonicParsing="true"
+                            onAction="#createNewWeaponAction" text="New Weapon" maxHeight="Infinity"/>
+                    <Button fx:id="createNewAmmoButton" disable="true" mnemonicParsing="true"
+                            onAction="#createNewAmmoAction" text="New Ammo" maxHeight="Infinity"/>
+                    <Button fx:id="compareElementButton" disable="true" mnemonicParsing="true"
                             onAction="#compareElementButtonAction" text="Compare elements"
                             maxHeight="Infinity"/>
 
