@@ -26,14 +26,14 @@ public class RelatedElementsLists {
      * Stores lists for every element model class in maps.
      */
     public RelatedElementsLists() {
-        relatedElementsListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
-        repeatedElementsInTargetModelListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
-        nonRepeatedElementsInTargetModelListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_MODEL_CLASSES.length);
+        relatedElementsListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_EDITOR_CLASSES.length);
+        repeatedElementsInTargetModelListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_EDITOR_CLASSES.length);
+        nonRepeatedElementsInTargetModelListsMap = new LinkedHashMap<>(ElementModel.ELEMENT_EDITOR_CLASSES.length);
 
-        for (int i = 0; i < ElementModel.ELEMENT_MODEL_CLASSES.length; i++) {
-            relatedElementsListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
-            repeatedElementsInTargetModelListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
-            nonRepeatedElementsInTargetModelListsMap.put(ElementModel.ELEMENT_MODEL_CLASSES[i], new ArrayList<>());
+        for (int i = 0; i < ElementModel.ELEMENT_EDITOR_CLASSES.length; i++) {
+            relatedElementsListsMap.put(ElementModel.ELEMENT_EDITOR_CLASSES[i], new ArrayList<>());
+            repeatedElementsInTargetModelListsMap.put(ElementModel.ELEMENT_EDITOR_CLASSES[i], new ArrayList<>());
+            nonRepeatedElementsInTargetModelListsMap.put(ElementModel.ELEMENT_EDITOR_CLASSES[i], new ArrayList<>());
         }
     }
 
@@ -57,7 +57,7 @@ public class RelatedElementsLists {
      */
     public void findRepeatedElementsInTargetModel(EstabModel targetModel) {
         assert !distributed;
-        for (Class modelClass : ElementModel.ELEMENT_MODEL_CLASSES) {
+        for (Class modelClass : ElementModel.ELEMENT_EDITOR_CLASSES) {
             for (ElementModel e : getAll(modelClass)) {
                 if (targetModel.getAll().get(modelClass).containsKey(e.getId()))
                     getRepeated(modelClass).add(e);
@@ -75,8 +75,8 @@ public class RelatedElementsLists {
     public boolean hasRepeatedElements() {
         boolean hasRepeated = false;
         int i = 0;
-        while (!hasRepeated && i < ElementModel.ELEMENT_MODEL_CLASSES.length) {
-            hasRepeated = !repeatedElementsInTargetModelListsMap.get(ElementModel.ELEMENT_MODEL_CLASSES[i]).isEmpty();
+        while (!hasRepeated && i < ElementModel.ELEMENT_EDITOR_CLASSES.length) {
+            hasRepeated = !repeatedElementsInTargetModelListsMap.get(ElementModel.ELEMENT_EDITOR_CLASSES[i]).isEmpty();
             i++;
         }
         return hasRepeated;

@@ -72,7 +72,7 @@ public class CopyRemoveDialog implements Initializable {
         dialog.setMinWidth(600);
 
         tableView.getColumns().clear();
-        tableViewTypeColumn.setCellValueFactory(param -> new SimpleStringProperty(ElementModel.CLASS_MAP.get(param.getValue().getClass()).getSimpleName()));
+        tableViewTypeColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPojoClass().getSimpleName()));
         tableViewNameColumn.setCellValueFactory(param -> param.getValue().nameProperty());
         tableView.getColumns().add(tableViewTypeColumn);
         tableView.getColumns().add(tableViewNameColumn);

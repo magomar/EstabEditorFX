@@ -92,7 +92,7 @@ public class ElementSearchDialog implements Initializable {
         searchName.textProperty().addListener(event -> searchAction());
         searchType.textProperty().addListener(event -> searchAction());
 
-        typeColumn.setCellValueFactory(param -> new SimpleStringProperty(ElementModel.CLASS_MAP.get(param.getValue().getClass()).getSimpleName()));
+        typeColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPojoClass().getSimpleName()));
         nameColumn.setCellValueFactory(param -> param.getValue().nameProperty());
         searchTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             this.selectedItem = newValue;

@@ -211,6 +211,11 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
         return id;
     }
 
+    @Override
+    public Class getPojoClass() {
+        return Vehicle.class;
+    }
+
     public String getName() {
         return name.get();
     }

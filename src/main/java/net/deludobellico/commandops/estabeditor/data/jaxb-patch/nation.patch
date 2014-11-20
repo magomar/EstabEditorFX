@@ -1,0 +1,35 @@
+Index: src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Nation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Nation.java	(revision )
++++ src/main/java/net/deludobellico/commandops/estabeditor/data/jaxb/Nation.java	(revision )
+@@ -1,6 +1,9 @@
+ 
+ package net.deludobellico.commandops.estabeditor.data.jaxb;
+ 
++import net.deludobellico.commandops.estabeditor.model.Element;
++import net.deludobellico.commandops.estabeditor.model.NationModel;
++
+ import java.util.ArrayList;
+ import java.util.List;
+ import javax.xml.bind.annotation.XmlAccessType;
+@@ -45,7 +48,7 @@
+     "smallInsignia",
+     "service"
+ })
+-public class Nation {
++public class Nation implements Element<NationModel> {
+ 
+     @XmlElement(required = true)
+     protected String name;
+@@ -257,4 +260,8 @@
+         return this.flags;
+     }
+ 
++    @Override
++    public NationModel getModel() {
++        return new NationModel(this);
++    }
+ }

@@ -97,6 +97,11 @@ public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image>
     }
 
     @Override
+    public Class getPojoClass() {
+        return Image.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

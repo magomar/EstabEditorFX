@@ -155,6 +155,11 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
     }
 
     @Override
+    public Class getPojoClass() {
+        return Weapon.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

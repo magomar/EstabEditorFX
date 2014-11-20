@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * @author Heine
  */
 final class ElementModelFactory {
-    private static Integer maxId = 0;
+    private static Integer maxId = 3611;
 
     private ElementModelFactory() {
     }

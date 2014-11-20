@@ -20,30 +20,30 @@ public interface ElementModel<T> {
      * Array with classes that have editors.
      * It's important both arrays have the same order and the same length.
      */
-    public static final Class[] ELEMENT_MODEL_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class, ForceModel.class};
-    public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class, Force.class};
-    /**
-     * Array with classes that don't have implemented editors.
-     * It's important both arrays have the same order and the same length.
-     */
-    public static final Class[] ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED = {ImageModel.class, SideModel.class, FormationEffectsModel.class};
-    public static final Class[] ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED = {Image.class, Side.class, FormationEffects.class};
+    public static final Class[] ELEMENT_EDITOR_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class, ForceModel.class};
+//    public static final Class[] ELEMENT_POJO_CLASSES = {Vehicle.class, Weapon.class, Ammo.class, Force.class};
+//    /**
+//     * Array with classes that don't have implemented editors.
+//     * It's important both arrays have the same order and the same length.
+//     */
+//    public static final Class[] ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED = {ImageModel.class, SideModel.class, NationModel.class, ServiceModel.class, FormationEffectsModel.class};
+//    public static final Class[] ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED = {Image.class, Side.class, Nation.class, Service.class, FormationEffects.class};
 
-    /**
-     * Map to convert from pojo classes to model classes and vice versa (Vehicle -> VehicleModel, WeaponModel -> Weapon...)
-     */
-    public static final Map<Class, Class> CLASS_MAP = Collections.unmodifiableMap(new HashMap<Class, Class>(ELEMENT_MODEL_CLASSES.length) {{
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES.length; i++) {
-            put(ELEMENT_MODEL_CLASSES[i], ELEMENT_POJO_CLASSES[i]);
-            put(ELEMENT_POJO_CLASSES[i], ELEMENT_MODEL_CLASSES[i]);
-        }
-        // --
-        for (int i = 0; i < ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED.length; i++) {
-            put(ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i]);
-            put(ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i]);
-
-        }
-    }});
+//    /**
+//     * Map to convert from pojo classes to model classes and vice versa (Vehicle -> VehicleModel, WeaponModel -> Weapon...)
+//     */
+//    public static final Map<Class, Class> CLASS_MAP = Collections.unmodifiableMap(new HashMap<Class, Class>(ELEMENT_EDITOR_CLASSES.length) {{
+//        for (int i = 0; i < ELEMENT_EDITOR_CLASSES.length; i++) {
+//            put(ELEMENT_EDITOR_CLASSES[i], ELEMENT_POJO_CLASSES[i]);
+//            put(ELEMENT_POJO_CLASSES[i], ELEMENT_EDITOR_CLASSES[i]);
+//        }
+//        // --
+//        for (int i = 0; i < ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED.length; i++) {
+//            put(ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i]);
+//            put(ELEMENT_POJO_CLASSES_NOT_IMPLEMENTED[i], ELEMENT_MODEL_CLASSES_NOT_IMPLEMENTED[i]);
+//
+//        }
+//    }});
 
     int getId();
 
@@ -56,6 +56,8 @@ public interface ElementModel<T> {
     StringProperty nameProperty();
 
     IntegerProperty idProperty();
+
+    Class getPojoClass();
 
     /**
      * Puts a hard copy in a map with a new Id
@@ -144,7 +146,7 @@ public interface ElementModel<T> {
      */
     default String print() {
         return String.format(" %s | ID: %d | Name: %s",
-                CLASS_MAP.get(getClass()).getSimpleName(),
+                getPojoClass().getSimpleName(),
                 getId(), getName());
     }
 }

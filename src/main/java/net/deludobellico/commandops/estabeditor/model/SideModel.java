@@ -29,11 +29,15 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();
     private final List<Flag> flags = FXCollections.observableArrayList();
 
+    public SideModel() {
+
+    }
+
     public SideModel(Side side) {
         setPojo(side);
     }
 
-    public SideModel() {
+    public SideModel(Side side, Map<Integer, SideModel> sideModelMap) {
 
     }
 
@@ -119,6 +123,11 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    @Override
+    public Class getPojoClass() {
+        return Side.class;
     }
 
     @Override

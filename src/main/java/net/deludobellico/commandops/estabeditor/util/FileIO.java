@@ -124,12 +124,14 @@ public class FileIO {
      *
      * @param stream stream to save
      * @param path   path where the stream is saved
+     * @return the number of bytes read or written
      */
-    public static void copy(InputStream stream, Path path) {
+    public static long copy(InputStream stream, Path path) {
         try {
-            Files.copy(stream, path, StandardCopyOption.REPLACE_EXISTING);
+            return Files.copy(stream, path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
+            return -1;
         }
     }
 
@@ -163,9 +165,10 @@ public class FileIO {
      *
      * @param datasetFile    dataset location
      * @param targetFilePath target folder
+     * @return true if the file was copied, false otherwise
      */
-    private static void installDatasetFile(String datasetFile, Path targetFilePath) {
-        FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + datasetFile), targetFilePath);
+    private static boolean installDatasetFile(String datasetFile, Path targetFilePath) {
+        return 0 < FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + datasetFile), targetFilePath);
     }
 
     /**
@@ -243,7 +246,7 @@ public class FileIO {
      */
     public static File getOrCreateNewEstabFile() {
         File f = getFileOrCreateNew(getNewEstabPath().toString());
-        installDatasetFile("Default" + DATASET_FILE_SUFFIX, getNewEstabPath());
+        if(!installDatasetFile("Default" + DATASET_FILE_SUFFIX, getNewEstabPath())) f = null;
         return f;
     }
 

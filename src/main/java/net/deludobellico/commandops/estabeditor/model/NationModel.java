@@ -116,6 +116,11 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
     }
 
     @Override
+    public Class getPojoClass() {
+        return Nation.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

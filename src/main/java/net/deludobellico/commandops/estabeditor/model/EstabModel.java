@@ -2,8 +2,6 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Nation;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Service;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
@@ -37,7 +35,7 @@ public class EstabModel {
         this.dlbVersion = DLB_VERSION;
         this.edited = true;
         this.lastEdit = new GregorianCalendar();
-        allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
+        allElements = new HashMap<>();
         allElements.put(ImageModel.class, new HashMap<>());
         allElements.put(SideModel.class, new HashMap<>());
         allElements.put(VehicleModel.class, new HashMap<>());
@@ -70,7 +68,7 @@ public class EstabModel {
         this.lastEdit = (estabData.getLastEdit() != null ? estabData.getLastEdit().toGregorianCalendar() : null);
 
         // Collect the Estab element lists
-        Collection<List<? extends Element>> estabLists = new ArrayList<>(ElementModel.CLASS_MAP.size() / 2);
+        Collection<List<? extends Element>> estabLists = new ArrayList<>();
         estabLists.add(estabData.getImage());
         estabLists.add(estabData.getSide());
         estabLists.add(estabData.getVehicle());
@@ -79,7 +77,7 @@ public class EstabModel {
         estabLists.add(estabData.getFormationEffects());
 
         // Create all the element maps
-        allElements = new HashMap<>(ElementModel.CLASS_MAP.size() / 2);
+        allElements = new HashMap<>();
         allElements.put(ImageModel.class, new HashMap<>(estabData.getImage().size()));
         allElements.put(SideModel.class, new HashMap<>(estabData.getSide().size()));
         allElements.put(ForceModel.class, new HashMap<>(estabData.getSide().size()));
@@ -88,12 +86,9 @@ public class EstabModel {
         allElements.put(AmmoModel.class, new HashMap<>(estabData.getAmmo().size()));
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
-        final int[] maxId = {0};
-        for (Side side : estabData.getSide())
-            for (Nation nation : side.getNation())
-                estabLists.addAll(nation.getService().stream().map(Service::getForce).collect(Collectors.toList()));
 
         // Wrap all the elements to their element model and saves them to their corresponding map
+        final int[] maxId = {0};
         for (List<? extends Element> elements : estabLists)
             elements.stream().map(Element::getModel).forEach(e -> {
                 ElementModel em = (ElementModel) e;
@@ -101,6 +96,15 @@ public class EstabModel {
                 em.shallowCopyToMap(allElements.get(em.getClass()));
             });
         ElementModelFactory.setMaxId(maxId[0]);
+
+        // These expensive loops are done in order to have all forces in a separate map
+        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
+        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
+
+        for (SideModel side : sideModelMap.values())
+            for (NationModel nation : side.getNation())
+                for (ServiceModel service : nation.getService())
+                    for (ForceModel force : service.getForce()) forceModelMap.put(force.getId(), force);
     }
 
     public Map<Integer, ImageModel> getImages() {

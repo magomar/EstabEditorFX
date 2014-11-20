@@ -194,7 +194,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         if (element != null) {
             equipmentName.setUserData(element);
             equipmentName.setText(element.getName());
-            equipmentType.setText(ElementModel.CLASS_MAP.get(element.getClass()).getSimpleName());
+            equipmentType.setText(element.getPojoClass().getSimpleName());
         }
     }
 
@@ -289,7 +289,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
                 for (Map modelMap : estabController.getEstabModel().getAll().values()) {
                     ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getEquipmentObjectId());
                     if (elementModel != null) {
-                        param.getValue().setEquipmentClass(ElementModel.CLASS_MAP.get(elementModel.getClass()));
+                        param.getValue().setEquipmentClass(elementModel.getPojoClass());
                         type = param.getValue().getEquipmentClass().getSimpleName();
                         break;
                     }

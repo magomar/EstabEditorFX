@@ -203,6 +203,11 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     }
 
     @Override
+    public Class getPojoClass() {
+        return Force.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

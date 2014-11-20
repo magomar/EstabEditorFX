@@ -98,6 +98,11 @@ public class FormationEffectsModel implements ElementModel<FormationEffectsModel
     }
 
     @Override
+    public Class getPojoClass() {
+        return FormationEffects.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

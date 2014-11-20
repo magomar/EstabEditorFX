@@ -97,6 +97,11 @@ public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio>
     }
 
     @Override
+    public Class getPojoClass() {
+        return Radio.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

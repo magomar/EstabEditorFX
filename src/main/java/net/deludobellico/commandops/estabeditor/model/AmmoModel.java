@@ -105,6 +105,11 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     }
 
     @Override
+    public Class getPojoClass() {
+        return Ammo.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }

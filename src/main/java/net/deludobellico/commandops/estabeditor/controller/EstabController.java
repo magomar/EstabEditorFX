@@ -83,8 +83,8 @@ public class EstabController implements Initializable {
     private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
     // Controls when search is enabled
     private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
-    // Current search list elements class, Vehicle is the default
-    private Class activeSearchListClass = VehicleModel.class;
+    // Current search list elements class, Force is the default
+    private Class activeSearchListClass = ForceModel.class;
     // Save last search to avoid consuming unnecessary resources
     private Map<Class, SavedSearchList<ElementListCell>> searchLists = new HashMap<Class, SavedSearchList<ElementListCell>>() {{
         for (Class elementModelClass : ELEMENT_EDITOR_VIEWS.keySet()) {
@@ -134,7 +134,7 @@ public class EstabController implements Initializable {
         });
         selectNoneListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                // It's important to clear the collection first in order to optimize the removal
+                // It's important to clear the collection first in order to optimize deselecting cells.
                 selectedElements.clear();
                 searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
                 selectAllListCheckBox.setSelected(false);
@@ -208,7 +208,7 @@ public class EstabController implements Initializable {
     @FXML
     private void searchForce() {
         activeSearchListClass = ForceModel.class;
-        searchTextField.setPromptText("Search Force");
+        searchTextField.setPromptText("Search force");
         forceButton.setSelected(true);
         vehicleButton.setSelected(false);
         weaponButton.setSelected(false);

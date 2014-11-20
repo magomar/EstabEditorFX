@@ -6,11 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -23,9 +19,7 @@ import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
@@ -401,22 +395,18 @@ public class MainController implements Initializable {
             if (Settings.getNewFileCreated())
                 answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
-                Settings.setNewFileCreated(true);
-                Settings.setNewFileSaved(false);
                 File f = FileIO.getOrCreateNewEstabFile();
-                Desktop d = Desktop.getDesktop();
-                try {
-                    d.open(f);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (f != null) {
+                    openTarget(f);
+                    Settings.setNewFileCreated(true);
+                    Settings.setNewFileSaved(false);
                 }
-                openTarget(f);
             }
         } else {
-            File file = openFileChooser(false, isSource);
-            if (null != file) {
-                if (isSource) openSource(file);
-                else openTarget(file);
+            File f = openFileChooser(false, isSource);
+            if (f != null) {
+                if (isSource) openSource(f);
+                else openTarget(f);
             }
         }
     }

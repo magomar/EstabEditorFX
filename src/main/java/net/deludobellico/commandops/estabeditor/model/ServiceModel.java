@@ -129,6 +129,11 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
     }
 
     @Override
+    public Class getPojoClass() {
+        return Service.class;
+    }
+
+    @Override
     public List<Flag> getFlags() {
         return flags;
     }
