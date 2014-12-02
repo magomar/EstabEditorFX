@@ -16,7 +16,7 @@ public class AmmoModelTest {
     private final Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
 
     @Test
-    public void testEquals() throws Exception {
+    public void testCompareTo() throws Exception {
         AmmoModel ours = new AmmoModel();
         ours.setId(id);
         ours.setName(name);
@@ -32,31 +32,11 @@ public class AmmoModelTest {
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
         other.setFlag(flags);
-        assertEquals(true, other.equals(ours));
+        assertEquals(true, other.compareTo(ours));
     }
 
     @Test
-    public void testHashCode() throws Exception {
-        AmmoModel ours = new AmmoModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setMinOrderQty(minOrderQty);
-        ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag(flags);
-
-        AmmoModel other = new AmmoModel();
-        other.setId(id);
-        other.setName(name);
-        other.setDescription(description);
-        other.setMinOrderQty(minOrderQty);
-        other.setMinOrderWeight(minOrderWeight);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
-
-    @Test
-    public void testEqualsDifferentIDs() throws Exception {
+    public void testCompareToDifferentIDs() throws Exception {
         AmmoModel ours = new AmmoModel();
         ours.setId(id);
         ours.setName(name);
@@ -72,66 +52,47 @@ public class AmmoModelTest {
         other.setMinOrderQty(minOrderQty);
         other.setMinOrderWeight(minOrderWeight);
         other.setFlag(flags);
+        assertEquals(true, other.compareTo(ours));
+    }
+
+    @Test
+    public void testCompareToNullableFieldsAreNull() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setMinOrderQty(minOrderQty);
+        ours.setMinOrderWeight(minOrderWeight);
+        ours.setFlag((Flag[]) null);
+
+        AmmoModel other = new AmmoModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setMinOrderQty(minOrderQty);
+        other.setMinOrderWeight(minOrderWeight);
+        other.setFlag((Flag[]) null);
+        assertEquals(true, ours.compareTo(other));
+    }
+
+    @Test
+    public void testSameIdEqualsTrue() throws Exception {
+        AmmoModel ours = new AmmoModel();
+        ours.setId(id);
+
+        AmmoModel other = new AmmoModel();
+        other.setId(id);
         assertEquals(true, other.equals(ours));
     }
 
-    @Test
-    public void testHashCodeDifferentIDs() throws Exception {
-        AmmoModel ours = new AmmoModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setMinOrderQty(minOrderQty);
-        ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag(flags);
-
-        AmmoModel other = new AmmoModel();
-        other.setId(id + 1);
-        other.setName(name);
-        other.setDescription(description);
-        other.setMinOrderQty(minOrderQty);
-        other.setMinOrderWeight(minOrderWeight);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
 
     @Test
-    public void testEqualsNullableFieldsAreNull() throws Exception {
+    public void testDifferentIdEqualsFalse() throws Exception {
         AmmoModel ours = new AmmoModel();
         ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setMinOrderQty(minOrderQty);
-        ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag((Flag[]) null);
 
         AmmoModel other = new AmmoModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setMinOrderQty(minOrderQty);
-        other.setMinOrderWeight(minOrderWeight);
-        other.setFlag((Flag[]) null);
-        assertEquals(true, ours.equals(other));
-    }
-
-    @Test
-    public void testHashCodeNullableFieldsAreNull() throws Exception {
-        AmmoModel ours = new AmmoModel();
-        ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setMinOrderQty(minOrderQty);
-        ours.setMinOrderWeight(minOrderWeight);
-        ours.setFlag((Flag[]) null);
-
-        AmmoModel other = new AmmoModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setMinOrderQty(minOrderQty);
-        other.setMinOrderWeight(minOrderWeight);
-        other.setFlag((Flag[]) null);
-        assertEquals(ours.hashCode(), other.hashCode());
+        other.setId(id+1);
+        assertEquals(false, other.equals(ours));
     }
 }

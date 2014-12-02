@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
+public class AmmoModel extends AbstractElementModel<AmmoModel> implements PojoJFXModel<Ammo> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -163,12 +163,7 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
     }
 
     @Override
-    public String toString() {
-        return name.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -179,17 +174,6 @@ public class AmmoModel implements ElementModel<AmmoModel>, PojoJFXModel<Ammo> {
             return false;
         if (getMinOrderQty() != that.getMinOrderQty()) return false;
         if (getMinOrderWeight() != that.getMinOrderWeight()) return false;
-        return !(that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + getMinOrderQty();
-        result = (int) (31 * result + getMinOrderWeight());
-        // result = 31 * result * getId();
-        return result;
+        return true;
     }
 }

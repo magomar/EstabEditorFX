@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Vehicle> {
+public class VehicleModel extends AbstractElementModel<VehicleModel> implements PojoJFXModel<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -628,17 +628,12 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
         return topArmor;
     }
 
-    @Override
-    public String toString() {
-        return name.get();
-    }
-
     public List<Flag> getFlags() {
         return flags;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -659,7 +654,6 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
         if (getHasOpenTop() != (that.getHasOpenTop())) return false;
         if (getHasTurret() != (that.getHasTurret())) return false;
         if (getHeight() != (that.getHeight())) return false;
-//        if (getId()!=(that.getId()())) return false;
         if (getLength() != (that.getLength())) return false;
         if (getMaxCrossCountrySpeed() != (that.getMaxCrossCountrySpeed())) return false;
         if (getMaxFordingDepth() != (that.getMaxFordingDepth())) return false;
@@ -682,53 +676,8 @@ public class VehicleModel implements ElementModel<VehicleModel>, PojoJFXModel<Ve
         if (getTowingCapacity() != (that.getTowingCapacity())) return false;
         if (getWeight() != (that.getWeight())) return false;
         if (getWidth() != (that.getWidth())) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         if (that.getArmaments().size() != armaments.size() || !armaments.containsAll(that.getArmaments()))
             return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        // id
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + armaments.stream().mapToInt(ArmamentModel::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
-        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
-
-        result = 31 * result + getPictureId();
-        result = (int) (31 * result + getWidth());
-        result = (int) (31 * result + getHeight());
-        result = (int) (31 * result + getLength());
-        result = (int) (31 * result + getWeight());
-        result = (31 * result) + getCrew();
-        result = (int) (31 * result + getReliability());
-        result = (int) (31 * result + getFuelCapacity());
-        result = (int) (31 * result + getMaxRoadSpeed());
-        result = (int) (31 * result + getNormalRoadSpeed());
-        result = (int) (31 * result + getMaxCrossCountrySpeed());
-        result = (int) (31 * result + getNormalCrossCountrySpeed());
-        result = (int) (31 * result + getMaxFuelConsumption());
-        result = (int) (31 * result + getNormalFuelConsumption());
-        result = (int) (31 * result + getRonsonability());
-        result = 31 * result + getMaxGradient();
-        result = 31 * result + getMaxFordingDepth();
-        result = 31 * result + getMaxTrenchWidth();
-        result = (int) (31 * result + getTowingCapacity());
-        result = 31 * result + getPersonnelCapacity();
-        result = (int) (31 * result + getBulkFuelCapacity());
-        result = (int) (31 * result + getPayloadCapacity());
-        result = (int) (31 * result + getTakeCoverMod());
-        result = result * 31 + (getHasTurret() ? 13 : 0);
-        result = result * 31 + (getHasOpenTop() ? 7 : 0);
-        result = (int) (31 * result + getBattleWeight());
-        result = (int) (31 * result + getFrontArmor());
-        result = (int) (31 * result + getSideArmor());
-        result = (int) (31 * result + getRearArmor());
-        result = (int) (31 * result + getTopArmor());
-        return result;
     }
 }

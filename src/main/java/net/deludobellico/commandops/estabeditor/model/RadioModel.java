@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio> {
+public class RadioModel extends AbstractElementModel<RadioModel> implements PojoJFXModel<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final List<Flag> flags = FXCollections.observableArrayList();
@@ -122,28 +122,14 @@ public class RadioModel implements ElementModel<RadioModel>, PojoJFXModel<Radio>
     }
 
     @Override
-    public String toString() {
-        return name.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (!(o instanceof RadioModel)) return false;
 
         RadioModel that = (RadioModel) o;
 
-//        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        return result;
-    }
 }

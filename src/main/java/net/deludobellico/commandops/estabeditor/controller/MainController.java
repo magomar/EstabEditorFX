@@ -603,7 +603,7 @@ public class MainController implements Initializable {
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
                             sourcePaneController.getActiveElement().get().getId(),
                             targetPaneController.getActiveElement().get().getId(),
-                            sourcePaneController.getActiveElement().get().equals(targetPaneController.getActiveElement().get()) ? "" : "NOT "));
+                            sourcePaneController.getActiveElement().get().compareTo(targetPaneController.getActiveElement().get()) ? "" : "NOT "));
 
         }
     }

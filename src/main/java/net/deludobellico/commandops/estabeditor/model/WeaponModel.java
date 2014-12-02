@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weapon> {
+public class WeaponModel extends AbstractElementModel<WeaponModel> implements PojoJFXModel<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -325,12 +325,7 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
     }
 
     @Override
-    public String toString() {
-        return name.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -355,33 +350,8 @@ public class WeaponModel implements ElementModel<WeaponModel>, PojoJFXModel<Weap
         if (getReliability() != that.getReliability()) return false;
         if (getSingleShot() != that.getSingleShot()) return false;
         if (getWeight() != that.getWeight()) return false;
-
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         if (that.getPerformances().size() != performances.size() || !performances.containsAll(that.getPerformances()))
             return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        // id
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + performances.stream().mapToInt(PerformanceModel::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getPictureFilename() != null ? getPictureFilename().hashCode() : 0);
-        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
-        result = 31 * result + (getPrimaryRole() != null ? getPrimaryRole().hashCode() : 0);
-
-        result = 31 * result + getPictureId();
-        result = (int) (31 * result + getWeight());
-        result = 31 * result + getCrew();
-        result = (int) (31 * result + getReliability());
-        result = 31 * result + (getSingleShot() ? 7 : 0);
-        result = (int) (31 * result + getCalibre());
-        result = 31 * result + getMuzzleVelocity();
-        result = 31 * result + (getMustDeployToFire() ? 9 : 0);
-        return result;
     }
 }

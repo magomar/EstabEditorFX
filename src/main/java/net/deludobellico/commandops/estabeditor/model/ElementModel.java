@@ -59,6 +59,8 @@ public interface ElementModel<T> {
 
     Class getPojoClass();
 
+    boolean compareTo(Object o);
+
     /**
      * Puts a hard copy in a map with a new Id
      *

@@ -15,7 +15,7 @@ public class RadioModelTest {
 
 
     @Test
-    public void testEquals() throws Exception {
+    public void testCompareTo() throws Exception {
         RadioModel ours = new RadioModel();
         ours.setId(id);
         ours.setName(name);
@@ -25,25 +25,11 @@ public class RadioModelTest {
         other.setId(id);
         other.setName(name);
         other.setFlag(flags);
-        assertEquals(true, ours.equals(other));
+        assertEquals(true, ours.compareTo(other));
     }
 
     @Test
-    public void testHashCode() throws Exception {
-        RadioModel ours = new RadioModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setFlag(flags);
-
-        RadioModel other = new RadioModel();
-        other.setId(id);
-        other.setName(name);
-        other.setFlag(flags);
-        assertEquals(ours.hashCode(), other.hashCode());
-    }
-
-    @Test
-    public void testEqualsDifferentIDs() throws Exception {
+    public void testCompareToDifferentIDs() throws Exception {
         RadioModel ours = new RadioModel();
         ours.setId(id);
         ours.setName(name);
@@ -53,48 +39,41 @@ public class RadioModelTest {
         other.setId(id + 2);
         other.setName(name);
         other.setFlag(flags);
+        assertEquals(true, other.compareTo(ours));
+    }
+
+    @Test
+    public void testCompareToNullableFieldsAreNull() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setFlag((Flag[]) null);
+
+        RadioModel other = new RadioModel();
+        other.setId(id);
+        other.setName(null);
+        other.setFlag((Flag[]) null);
+        assertEquals(true, ours.compareTo(other));
+    }
+
+    @Test
+    public void testSameIdEqualsTrue() throws Exception {
+        RadioModel ours = new RadioModel();
+        ours.setId(id);
+
+        RadioModel other = new RadioModel();
+        other.setId(id);
         assertEquals(true, other.equals(ours));
     }
 
-    @Test
-    public void testHashCodeDifferentIDs() throws Exception {
-        RadioModel ours = new RadioModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setFlag(flags);
-
-        RadioModel other = new RadioModel();
-        other.setId(id + 3);
-        other.setName(name);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
 
     @Test
-    public void testEqualsNullableFieldsAreNull() throws Exception {
+    public void testDifferentIdEqualsFalse() throws Exception {
         RadioModel ours = new RadioModel();
         ours.setId(id);
-        ours.setName(null);
-        ours.setFlag((Flag[]) null);
 
         RadioModel other = new RadioModel();
-        other.setId(id);
-        other.setName(null);
-        other.setFlag((Flag[]) null);
-        assertEquals(true, ours.equals(other));
-    }
-
-    @Test
-    public void testHashCodeNullableFieldsAreNull() throws Exception {
-        RadioModel ours = new RadioModel();
-        ours.setId(id);
-        ours.setName(null);
-        ours.setFlag((Flag[]) null);
-
-        RadioModel other = new RadioModel();
-        other.setId(id);
-        other.setName(null);
-        other.setFlag((Flag[]) null);
-        assertEquals(ours.hashCode(), other.hashCode());
+        other.setId(id+1);
+        assertEquals(false, other.equals(ours));
     }
 }

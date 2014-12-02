@@ -19,7 +19,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class FormationEffectsModel implements ElementModel<FormationEffectsModel>, PojoJFXModel<FormationEffects> {
+public class FormationEffectsModel extends AbstractElementModel<FormationEffectsModel> implements PojoJFXModel<FormationEffects> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private List<Flag> flags = FXCollections.observableArrayList();
@@ -123,31 +123,12 @@ public class FormationEffectsModel implements ElementModel<FormationEffectsModel
     }
 
     @Override
-    public String toString() {
-        return name.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         FormationEffectsModel that = (FormationEffectsModel) o;
-
-//        if (!id.equals(that.id)) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-//        int result = id.hashCode();
-        return result;
-
-
     }
 }

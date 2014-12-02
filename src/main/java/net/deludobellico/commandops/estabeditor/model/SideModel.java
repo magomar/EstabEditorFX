@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
+public class SideModel extends AbstractElementModel<SideModel> implements PojoJFXModel<Side> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -159,11 +159,6 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
         return description;
     }
 
-    @Override
-    public String toString() {
-        return name.get();
-    }
-
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
@@ -229,12 +224,11 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         SideModel that = (SideModel) o;
-//        if (!id.equals(that.id)) return false;
         if (getBasicsConsumptionRate() != (that.getBasicsConsumptionRate())) return false;
         if (getDefaultEnemyAarmFp() != (that.getDefaultEnemyAarmFp())) return false;
         if (getDefaultEnemyAperFp() != (that.getDefaultEnemyAperFp())) return false;
@@ -243,25 +237,8 @@ public class SideModel implements ElementModel<SideModel>, PojoJFXModel<Side> {
         if (getLargeInsignia() != (that.getLargeInsignia())) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getSmallInsignia() != (that.getSmallInsignia())) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         if (that.getNation().size() != nation.size() || !nation.containsAll(that.getNation()))
             return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        // id
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + nation.stream().mapToInt(NationModel::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + getLargeInsignia();
-        result = 31 * result + getSmallInsignia();
-        result = (int) (31 * result + getBasicsConsumptionRate());
-        result = 31 * result + getDefaultEnemyAperFp();
-        result = 31 * result + getDefaultEnemyAarmFp();
-        return result;
     }
 }

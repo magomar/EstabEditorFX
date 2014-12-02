@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Service> {
+public class ServiceModel extends AbstractElementModel<ServiceModel> implements PojoJFXModel<Service> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -162,11 +162,6 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
         return description;
     }
 
-    @Override
-    public String toString() {
-        return name.get();
-    }
-
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
@@ -260,7 +255,7 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (!(o instanceof ServiceModel)) return false;
 
@@ -276,7 +271,6 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
             return false;
         if (getDesignationColor() != null ? !getDesignationColor().equals(that.getDesignationColor()) : that.getDesignationColor() != null)
             return false;
-//        if (getId() != that.getId()) return false;
         if (getLargeInsignia() != that.getLargeInsignia()) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getSmallInsignia() != that.getSmallInsignia()) return false;
@@ -286,25 +280,6 @@ public class ServiceModel implements ElementModel<ServiceModel>, PojoJFXModel<Se
             return false;
         if (that.getRankList().size() != rankList.size() || !rankList.containsAll(that.getRankList()))
             return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + rankList.stream().mapToInt(RankModel::hashCode).sum();
-        result = 31 * result + force.stream().mapToInt(ForceModel::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + getLargeInsignia();
-        result = 31 * result + getSmallInsignia();
-        result = 31 * result + (getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0);
-        result = 31 * result + (getBackgroundDarkColor() != null ? getBackgroundDarkColor().hashCode() : 0);
-        result = 31 * result + (getBackgroundLightColor() != null ? getBackgroundLightColor().hashCode() : 0);
-        result = 31 * result + (getDesignationColor() != null ? getDesignationColor().hashCode() : 0);
-        result = 31 * result + (getSymbolColor() != null ? getSymbolColor().hashCode() : 0);
-        return result;
     }
 }

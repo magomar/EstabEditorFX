@@ -13,7 +13,7 @@ public class FormationEffectsModelTest {
     private final Flag[] flags = new Flag[]{Flag.COPY, Flag.USER};
 
     @Test
-    public void testEquals() throws Exception {
+    public void testCompareTo() throws Exception {
         FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
@@ -23,25 +23,11 @@ public class FormationEffectsModelTest {
         other.setId(id);
         other.setName(name);
         other.setFlag(flags);
-        assertEquals(true, ours.equals(other));
+        assertEquals(true, ours.compareTo(other));
     }
 
     @Test
-    public void testHashCode() throws Exception {
-        FormationEffectsModel ours = new FormationEffectsModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setFlag(flags);
-
-        FormationEffectsModel other = new FormationEffectsModel();
-        other.setId(id);
-        other.setName(name);
-        other.setFlag(flags);
-        assertEquals(ours.hashCode(), other.hashCode());
-    }
-
-    @Test
-    public void testEqualsDifferentIDs() throws Exception {
+    public void testCompareToDifferentIDs() throws Exception {
         FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
         ours.setName(name);
@@ -51,48 +37,41 @@ public class FormationEffectsModelTest {
         other.setId(id + 2);
         other.setName(name);
         other.setFlag(flags);
+        assertEquals(true, other.compareTo(ours));
+    }
+
+    @Test
+    public void testCompareToNullableFieldsAreNull() throws Exception {
+        FormationEffectsModel ours = new FormationEffectsModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setFlag((Flag[]) null);
+
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id);
+        other.setName(null);
+        other.setFlag((Flag[]) null);
+        assertEquals(true, ours.compareTo(other));
+    }
+
+    @Test
+    public void testSameIdEqualsTrue() throws Exception {
+        FormationEffectsModel ours = new FormationEffectsModel();
+        ours.setId(id);
+
+        FormationEffectsModel other = new FormationEffectsModel();
+        other.setId(id);
         assertEquals(true, other.equals(ours));
     }
 
-    @Test
-    public void testHashCodeDifferentIDs() throws Exception {
-        FormationEffectsModel ours = new FormationEffectsModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setFlag(flags);
-
-        FormationEffectsModel other = new FormationEffectsModel();
-        other.setId(id + 2);
-        other.setName(name);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
 
     @Test
-    public void testEqualsNullableFieldsAreNull() throws Exception {
+    public void testDifferentIdEqualsFalse() throws Exception {
         FormationEffectsModel ours = new FormationEffectsModel();
         ours.setId(id);
-        ours.setName(null);
-        ours.setFlag((Flag[]) null);
 
         FormationEffectsModel other = new FormationEffectsModel();
-        other.setId(id);
-        other.setName(null);
-        other.setFlag((Flag[]) null);
-        assertEquals(true, ours.equals(other));
-    }
-
-    @Test
-    public void testHashCodeNullableFieldsAreNull() throws Exception {
-        FormationEffectsModel ours = new FormationEffectsModel();
-        ours.setId(id);
-        ours.setName(null);
-        ours.setFlag((Flag[]) null);
-
-        FormationEffectsModel other = new FormationEffectsModel();
-        other.setId(id);
-        other.setName(null);
-        other.setFlag((Flag[]) null);
-        assertEquals(ours.hashCode(), other.hashCode());
+        other.setId(id + 1);
+        assertEquals(false, other.equals(ours));
     }
 }

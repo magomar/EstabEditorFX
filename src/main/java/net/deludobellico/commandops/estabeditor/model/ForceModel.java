@@ -10,14 +10,13 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
-
 /**
  * Model wrapper for the {@code Force} class
  *
  * @author Mario
  * @author Heine
  */
-public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force> {
+public class ForceModel extends AbstractElementModel<ForceModel> implements  PojoJFXModel<Force> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -50,7 +49,12 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final BooleanProperty canBombard = new SimpleBooleanProperty();
+    private final ObjectProperty<SideModel> side = new SimpleObjectProperty();
+    private final ObjectProperty<NationModel> nation = new SimpleObjectProperty();
+    private final ObjectProperty<ServiceModel> service = new SimpleObjectProperty();
+
     private List<Flag> flags = FXCollections.observableArrayList();
+
 
     public ForceModel(Force force) {
         setPojo(force);
@@ -234,11 +238,6 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
 
     public StringProperty descriptionProperty() {
         return description;
-    }
-
-    @Override
-    public String toString() {
-        return name.get();
     }
 
     public IconModel getIcon() {
@@ -562,11 +561,12 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         ForceModel that = (ForceModel) o;
+
 
         if (that.getAmmoList().size() != ammoList.size() || !ammoList.containsAll(that.getAmmoList()))
             return false;
@@ -611,45 +611,6 @@ public class ForceModel implements ElementModel<ForceModel>, PojoJFXModel<Force>
         if (getTargetClass() != null ? !getTargetClass().equals(that.getTargetClass()) : that.getTargetClass() != null)
             return false;
         if (getType() != null ? !getType().equals(that.getType()) : that.getType() != null) return false;
-        if (that.getFlags().size() != getFlags().size() || !getFlags().containsAll(that.getFlags()))
-            return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        //result = result * 31 + getId();
-        result = 31 * result + equipmentList.stream().mapToInt(EquipmentModel::hashCode).sum();
-        result = 31 * result + ammoList.stream().mapToInt(AmmoQtyModel::hashCode).sum();
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getIcon() != null ? getIcon().hashCode() : 0);
-        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
-        result = 31 * result + (getSubType() != null ? getSubType().hashCode() : 0);
-        result = 31 * result + (getSize() != null ? getSize().hashCode() : 0);
-        result = 31 * result + (getCombatClass() != null ? getCombatClass().hashCode() : 0);
-        result = 31 * result + (getTargetClass() != null ? getTargetClass().hashCode() : 0);
-        result = 31 * result + getInfantryValue();
-        result = 31 * result + getReconValue();
-        result = 31 * result + getEngineeringValue();
-        result = 31 * result + (getMoveType() != null ? getMoveType().hashCode() : 0);
-        result = 31 * result + getPersQty();
-        result = 31 * result + getStaffCapacity();
-        result = (int) (31 * result + getBasicsQty());
-        result = (int) (31 * result + getBasicsConsumptionRateModifier());
-        result = 31 * result + getCommanderRank();
-        result = (int) (31 * result + getFuelQty());
-        result = (int) (31 * result + getFuelLoad());
-        result = (int) (31 * result + getMaxSpeed());
-        result = (int) (31 * result + getNormalSpeed());
-        result = 31 * result + (getDeployed() != null ? getDeployed().hashCode() : 0);
-        result = 31 * result + (getDugIn() != null ? getDugIn().hashCode() : 0);
-        result = 31 * result + (getEntrenched() != null ? getEntrenched().hashCode() : 0);
-        result = 31 * result + (getFortified() != null ? getFortified().hashCode() : 0);
-        result = 31 * result + (getReadyToFireDuration() != null ? getReadyToFireDuration().hashCode() : 0);
-        result = 31 * result + (getReadyToBombardDuration() != null ? getReadyToBombardDuration().hashCode() : 0);
-        result = 31 * result + (getCanBombard() ? 1 : 0);
-        return result;
     }
 }

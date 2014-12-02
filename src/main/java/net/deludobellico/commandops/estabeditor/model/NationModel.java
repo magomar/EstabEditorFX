@@ -20,7 +20,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nation> {
+public class NationModel extends AbstractElementModel<NationModel> implements PojoJFXModel<Nation> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -149,11 +149,6 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
         return description;
     }
 
-    @Override
-    public String toString() {
-        return name.get();
-    }
-
     public String getNationality() {
         return nationality.get();
     }
@@ -195,7 +190,7 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (!(o instanceof NationModel)) return false;
 
@@ -203,32 +198,15 @@ public class NationModel implements ElementModel<NationModel>, PojoJFXModel<Nati
 
         if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
             return false;
-//        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (getLargeInsignia() != that.getLargeInsignia()) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getNationality() != null ? !getNationality().equals(that.getNationality()) : that.getNationality() != null)
             return false;
         if (getSmallInsignia() != that.getSmallInsignia()) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         if (that.getService().size() != service.size() || !service.containsAll(that.getService()))
             return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-//        int result = id != null ? id.hashCode() : 0;
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + service.stream().mapToInt(ServiceModel::hashCode).sum();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getNationality() != null ? getNationality().hashCode() : 0);
-        result = 31 * result + getLargeInsignia();
-        result = 31 * result + getSmallInsignia();
-        return result;
     }
 }
 

@@ -31,7 +31,7 @@ public class WeaponModelTest {
     private final Flag[] flags = new Flag[]{Flag.NEW, Flag.REMOVE};
 
     @Test
-    public void testEquals() throws Exception {
+    public void testCompareTo() throws Exception {
         WeaponModel ours = new WeaponModel();
         ours.setId(id);
         ours.setName(name);
@@ -72,55 +72,11 @@ public class WeaponModelTest {
         performances.add(new PerformanceModel());
         other.getPerformances().addAll(performances);
         other.setFlag(flags);
-        assertEquals(true, other.equals(ours));
+        assertEquals(true, other.compareTo(ours));
     }
 
     @Test
-    public void testHashCode() throws Exception {
-        WeaponModel ours = new WeaponModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setPictureId(pictureId);
-        ours.setPictureFilename(pictureFilename);
-        ours.setWeight(weight);
-        ours.setCrew(crew);
-        ours.setReliability(reliability);
-        ours.setType(type);
-        ours.setSingleShot(singleShot);
-        ours.setPrimaryRole(primaryRole);
-        ours.setCalibre(calibre);
-        ours.setMuzzleVelocity(muzzleVelocity);
-        ours.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        ours.getPerformances().addAll(performances);
-        ours.setFlag(flags);
-
-        WeaponModel other = new WeaponModel();
-        other.setId(id);
-        other.setName(name);
-        other.setDescription(description);
-        other.setPictureId(pictureId);
-        other.setPictureFilename(pictureFilename);
-        other.setWeight(weight);
-        other.setCrew(crew);
-        other.setReliability(reliability);
-        other.setType(type);
-        other.setSingleShot(singleShot);
-        other.setPrimaryRole(primaryRole);
-        other.setCalibre(calibre);
-        other.setMuzzleVelocity(muzzleVelocity);
-        other.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        other.getPerformances().addAll(performances);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
-
-    @Test
-    public void testEqualsDifferentIDs() throws Exception {
+    public void testCompareToDifferentIDs() throws Exception {
         WeaponModel ours = new WeaponModel();
         ours.setId(id);
         ours.setName(name);
@@ -160,138 +116,71 @@ public class WeaponModelTest {
         performances.add(new PerformanceModel());
         other.getPerformances().addAll(performances);
         other.setFlag(flags);
+        assertEquals(true, other.compareTo(ours));
+    }
+
+    @Test
+    public void testCompareToNullableFieldsAreNull() throws Exception {
+        WeaponModel ours = new WeaponModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setPictureId(pictureId);
+        ours.setPictureFilename(null);
+        ours.setWeight(weight);
+        ours.setCrew(crew);
+        ours.setReliability(reliability);
+        ours.setType(null);
+        ours.setSingleShot(singleShot);
+        ours.setPrimaryRole(null);
+        ours.setCalibre(calibre);
+        ours.setMuzzleVelocity(muzzleVelocity);
+        ours.setMustDeployToFire(mustDeployToFire);
+        performances.clear();
+        performances.add(new PerformanceModel());
+        ours.getPerformances().addAll(performances);
+        ours.setFlag((Flag[]) null);
+
+        WeaponModel other = new WeaponModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setPictureId(pictureId);
+        other.setPictureFilename(null);
+        other.setWeight(weight);
+        other.setCrew(crew);
+        other.setReliability(reliability);
+        other.setType(null);
+        other.setSingleShot(singleShot);
+        other.setPrimaryRole(null);
+        other.setCalibre(calibre);
+        other.setMuzzleVelocity(muzzleVelocity);
+        other.setMustDeployToFire(mustDeployToFire);
+        performances.clear();
+        performances.add(new PerformanceModel());
+        other.getPerformances().addAll(performances);
+        other.setFlag((Flag[]) null);
+        assertEquals(true, ours.compareTo(other));
+    }
+
+    @Test
+    public void testSameIdEqualsTrue() throws Exception {
+        WeaponModel ours = new WeaponModel();
+        ours.setId(id);
+
+        WeaponModel other = new WeaponModel();
+        other.setId(id);
         assertEquals(true, other.equals(ours));
     }
 
-    @Test
-    public void testHashCodeDifferentIDs() throws Exception {
-        WeaponModel ours = new WeaponModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setPictureId(pictureId);
-        ours.setPictureFilename(pictureFilename);
-        ours.setWeight(weight);
-        ours.setCrew(crew);
-        ours.setReliability(reliability);
-        ours.setType(type);
-        ours.setSingleShot(singleShot);
-        ours.setPrimaryRole(primaryRole);
-        ours.setCalibre(calibre);
-        ours.setMuzzleVelocity(muzzleVelocity);
-        ours.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        ours.getPerformances().addAll(performances);
-        ours.setFlag(flags);
-
-        WeaponModel other = new WeaponModel();
-        other.setId(id + 3);
-        other.setName(name);
-        other.setDescription(description);
-        other.setPictureId(pictureId);
-        other.setPictureFilename(pictureFilename);
-        other.setWeight(weight);
-        other.setCrew(crew);
-        other.setReliability(reliability);
-        other.setType(type);
-        other.setSingleShot(singleShot);
-        other.setPrimaryRole(primaryRole);
-        other.setCalibre(calibre);
-        other.setMuzzleVelocity(muzzleVelocity);
-        other.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        other.getPerformances().addAll(performances);
-        other.setFlag(flags);
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
 
     @Test
-    public void testEqualsNullableFieldsAreNull() throws Exception {
+    public void testDifferentIdEqualsFalse() throws Exception {
         WeaponModel ours = new WeaponModel();
         ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setPictureId(pictureId);
-        ours.setPictureFilename(null);
-        ours.setWeight(weight);
-        ours.setCrew(crew);
-        ours.setReliability(reliability);
-        ours.setType(null);
-        ours.setSingleShot(singleShot);
-        ours.setPrimaryRole(null);
-        ours.setCalibre(calibre);
-        ours.setMuzzleVelocity(muzzleVelocity);
-        ours.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        ours.getPerformances().addAll(performances);
-        ours.setFlag((Flag[]) null);
 
         WeaponModel other = new WeaponModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setPictureId(pictureId);
-        other.setPictureFilename(null);
-        other.setWeight(weight);
-        other.setCrew(crew);
-        other.setReliability(reliability);
-        other.setType(null);
-        other.setSingleShot(singleShot);
-        other.setPrimaryRole(null);
-        other.setCalibre(calibre);
-        other.setMuzzleVelocity(muzzleVelocity);
-        other.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        other.getPerformances().addAll(performances);
-        other.setFlag((Flag[]) null);
-        assertEquals(true, ours.equals(other));
-    }
-
-    @Test
-    public void testHashCodeNullableFieldsAreNull() throws Exception {
-        WeaponModel ours = new WeaponModel();
-        ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setPictureId(pictureId);
-        ours.setPictureFilename(null);
-        ours.setWeight(weight);
-        ours.setCrew(crew);
-        ours.setReliability(reliability);
-        ours.setType(null);
-        ours.setSingleShot(singleShot);
-        ours.setPrimaryRole(null);
-        ours.setCalibre(calibre);
-        ours.setMuzzleVelocity(muzzleVelocity);
-        ours.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        ours.getPerformances().addAll(performances);
-        ours.setFlag((Flag[]) null);
-
-        WeaponModel other = new WeaponModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setPictureId(pictureId);
-        other.setPictureFilename(null);
-        other.setWeight(weight);
-        other.setCrew(crew);
-        other.setReliability(reliability);
-        other.setType(null);
-        other.setSingleShot(singleShot);
-        other.setPrimaryRole(null);
-        other.setCalibre(calibre);
-        other.setMuzzleVelocity(muzzleVelocity);
-        other.setMustDeployToFire(mustDeployToFire);
-        performances.clear();
-        performances.add(new PerformanceModel());
-        other.getPerformances().addAll(performances);
-        other.setFlag((Flag[]) null);
-        assertEquals(ours.hashCode(), other.hashCode());
+        other.setId(id+1);
+        assertEquals(false, other.equals(ours));
     }
 }

@@ -30,7 +30,7 @@ public class ServiceModelTest {
 
 
     @Test
-    public void testEquals() throws Exception {
+    public void testCompareTo() throws Exception {
         ServiceModel ours = new ServiceModel();
         ours.setId(id);
         ours.setName(name);
@@ -64,49 +64,11 @@ public class ServiceModelTest {
         rankList.add(new RankModel());
         force.clear();
         force.add(new ForceModel());
-        assertEquals(true, ours.equals(other));
+        assertEquals(true, ours.compareTo(other));
     }
 
     @Test
-    public void testHashCode() throws Exception {
-        ServiceModel ours = new ServiceModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setLargeInsignia(largeInsignia);
-        ours.setSmallInsignia(smallInsignia);
-        ours.setBackgroundLightColor(backgroundLightColor);
-        ours.setBackgroundColor(backgroundColor);
-        ours.setBackgroundDarkColor(backgroundDarkColor);
-        ours.setDesignationColor(designationColor);
-        ours.setSymbolColor(symbolColor);
-        ours.setFlag(flags);
-        rankList.clear();
-        force.clear();
-        rankList.add(new RankModel());
-        force.add(new ForceModel());
-
-        ServiceModel other = new ServiceModel();
-        other.setId(id);
-        other.setName(name);
-        other.setDescription(description);
-        other.setLargeInsignia(largeInsignia);
-        other.setSmallInsignia(smallInsignia);
-        other.setBackgroundLightColor(backgroundLightColor);
-        other.setBackgroundColor(backgroundColor);
-        other.setBackgroundDarkColor(backgroundDarkColor);
-        other.setDesignationColor(designationColor);
-        other.setSymbolColor(symbolColor);
-        other.setFlag(flags);
-        rankList.clear();
-        rankList.add(new RankModel());
-        force.clear();
-        force.add(new ForceModel());
-        assertEquals(ours.hashCode(), other.hashCode());
-    }
-
-    @Test
-    public void testEqualsDifferentIDs() throws Exception {
+    public void testCompareToDifferentIDs() throws Exception {
         ServiceModel ours = new ServiceModel();
         ours.setId(id);
         ours.setName(name);
@@ -140,121 +102,65 @@ public class ServiceModelTest {
         rankList.add(new RankModel());
         force.clear();
         force.add(new ForceModel());
+        assertEquals(true, other.compareTo(ours));
+    }
+
+    @Test
+    public void testCompareToNullableFieldsAreNull() throws Exception {
+        ServiceModel ours = new ServiceModel();
+        ours.setId(id);
+        ours.setName(null);
+        ours.setDescription(null);
+        ours.setLargeInsignia(largeInsignia);
+        ours.setSmallInsignia(smallInsignia);
+        ours.setBackgroundLightColor(null);
+        ours.setBackgroundColor(null);
+        ours.setBackgroundDarkColor(null);
+        ours.setDesignationColor(null);
+        ours.setSymbolColor(null);
+        ours.setFlag((Flag[]) null);
+        rankList.clear();
+        force.clear();
+        rankList.add(new RankModel());
+        force.add(new ForceModel());
+
+        ServiceModel other = new ServiceModel();
+        other.setId(id);
+        other.setName(null);
+        other.setDescription(null);
+        other.setLargeInsignia(largeInsignia);
+        other.setSmallInsignia(smallInsignia);
+        other.setBackgroundLightColor(null);
+        other.setBackgroundColor(null);
+        other.setBackgroundDarkColor(null);
+        other.setDesignationColor(null);
+        other.setSymbolColor(null);
+        other.setFlag((Flag[]) null);
+        rankList.clear();
+        rankList.add(new RankModel());
+        force.clear();
+        force.add(new ForceModel());
+        assertEquals(true, ours.compareTo(other));
+    }
+    
+    @Test
+    public void testSameIdEqualsTrue() throws Exception {
+        ServiceModel ours = new ServiceModel();
+        ours.setId(id);
+
+        ServiceModel other = new ServiceModel();
+        other.setId(id);
         assertEquals(true, other.equals(ours));
     }
 
-    @Test
-    public void testHashCodeDifferentIDs() throws Exception {
-        ServiceModel ours = new ServiceModel();
-        ours.setId(id);
-        ours.setName(name);
-        ours.setDescription(description);
-        ours.setLargeInsignia(largeInsignia);
-        ours.setSmallInsignia(smallInsignia);
-        ours.setBackgroundLightColor(backgroundLightColor);
-        ours.setBackgroundColor(backgroundColor);
-        ours.setBackgroundDarkColor(backgroundDarkColor);
-        ours.setDesignationColor(designationColor);
-        ours.setSymbolColor(symbolColor);
-        ours.setFlag(flags);
-        rankList.clear();
-        force.clear();
-        rankList.add(new RankModel());
-        force.add(new ForceModel());
-
-        ServiceModel other = new ServiceModel();
-        other.setId(id + 6);
-        other.setName(name);
-        other.setDescription(description);
-        other.setLargeInsignia(largeInsignia);
-        other.setSmallInsignia(smallInsignia);
-        other.setBackgroundLightColor(backgroundLightColor);
-        other.setBackgroundColor(backgroundColor);
-        other.setBackgroundDarkColor(backgroundDarkColor);
-        other.setDesignationColor(designationColor);
-        other.setSymbolColor(symbolColor);
-        other.setFlag(flags);
-        rankList.clear();
-        rankList.add(new RankModel());
-        force.clear();
-        force.add(new ForceModel());
-        assertEquals(other.hashCode(), ours.hashCode());
-    }
 
     @Test
-    public void testEqualsNullableFieldsAreNull() throws Exception {
+    public void testDifferentIdEqualsFalse() throws Exception {
         ServiceModel ours = new ServiceModel();
         ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setLargeInsignia(largeInsignia);
-        ours.setSmallInsignia(smallInsignia);
-        ours.setBackgroundLightColor(null);
-        ours.setBackgroundColor(null);
-        ours.setBackgroundDarkColor(null);
-        ours.setDesignationColor(null);
-        ours.setSymbolColor(null);
-        ours.setFlag((Flag[]) null);
-        rankList.clear();
-        force.clear();
-        rankList.add(new RankModel());
-        force.add(new ForceModel());
 
         ServiceModel other = new ServiceModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setLargeInsignia(largeInsignia);
-        other.setSmallInsignia(smallInsignia);
-        other.setBackgroundLightColor(null);
-        other.setBackgroundColor(null);
-        other.setBackgroundDarkColor(null);
-        other.setDesignationColor(null);
-        other.setSymbolColor(null);
-        other.setFlag((Flag[]) null);
-        rankList.clear();
-        rankList.add(new RankModel());
-        force.clear();
-        force.add(new ForceModel());
-        assertEquals(true, ours.equals(other));
-    }
-
-    @Test
-    public void testHashCodeNullableFieldsAreNull() throws Exception {
-        ServiceModel ours = new ServiceModel();
-        ours.setId(id);
-        ours.setName(null);
-        ours.setDescription(null);
-        ours.setLargeInsignia(largeInsignia);
-        ours.setSmallInsignia(smallInsignia);
-        ours.setBackgroundLightColor(null);
-        ours.setBackgroundColor(null);
-        ours.setBackgroundDarkColor(null);
-        ours.setDesignationColor(null);
-        ours.setSymbolColor(null);
-        ours.setFlag((Flag[]) null);
-        rankList.clear();
-        force.clear();
-        rankList.add(new RankModel());
-        force.add(new ForceModel());
-
-
-        ServiceModel other = new ServiceModel();
-        other.setId(id);
-        other.setName(null);
-        other.setDescription(null);
-        other.setLargeInsignia(largeInsignia);
-        other.setSmallInsignia(smallInsignia);
-        other.setBackgroundLightColor(null);
-        other.setBackgroundColor(null);
-        other.setBackgroundDarkColor(null);
-        other.setDesignationColor(null);
-        other.setSymbolColor(null);
-        other.setFlag((Flag[]) null);
-        rankList.clear();
-        rankList.add(new RankModel());
-        force.clear();
-        force.add(new ForceModel());
-        assertEquals(ours.hashCode(), other.hashCode());
+        other.setId(id+1);
+        assertEquals(false, other.equals(ours));
     }
 }

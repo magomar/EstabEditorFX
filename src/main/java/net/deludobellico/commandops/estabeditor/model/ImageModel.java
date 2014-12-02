@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image> {
+public class ImageModel extends AbstractElementModel<ImageModel> implements PojoJFXModel<Image> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty fileId = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
@@ -134,31 +134,13 @@ public class ImageModel implements ElementModel<ImageModel>, PojoJFXModel<Image>
     }
 
     @Override
-    public String toString() {
-        return name.get();
-    }
-
-    @Override
-    public boolean equals(Object o) {
+    public boolean compareTo(Object o) {
         if (this == o) return true;
         if (!(o instanceof ImageModel)) return false;
 
         ImageModel that = (ImageModel) o;
-
-//        if (getId() != that.getId()) return false;
         if (getFileId() != null ? !getFileId().equals(that.getFileId()) : that.getFileId() != null) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (that.getFlags().size() != flags.size() || !flags.containsAll(that.getFlags()))
-            return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-//        int result = id != null ? id.hashCode() : 0;
-        int result = getName() != null ? getName().hashCode() : 0;
-        result = 31 * result + flags.stream().mapToInt(Flag::hashCode).sum();
-        result = 31 * result + (getFileId() != null ? getFileId().hashCode() : 0);
-        return result;
     }
 }
