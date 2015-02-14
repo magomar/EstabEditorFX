@@ -1,6 +1,5 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import net.deludobellico.commandops.estabeditor.model.*;
 import org.junit.Before;
 import org.junit.Test;
 

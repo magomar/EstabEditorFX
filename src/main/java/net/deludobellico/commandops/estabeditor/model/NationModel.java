@@ -1,9 +1,6 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
@@ -29,6 +26,7 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<ServiceModel> service = FXCollections.observableArrayList();
     private final List<Flag> flags = FXCollections.observableArrayList();
+    private final ObjectProperty<SideModel> side = new SimpleObjectProperty<>();
 
     public NationModel(Nation nation) {
         setPojo(nation);
@@ -64,7 +62,12 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
-        pojo.getService().stream().map(ServiceModel::new).forEach(service::add);
+        pojo.getService().stream()
+                .map(ServiceModel::new)
+                .forEach(s -> {
+                    s.setNation(this);
+                    service.add(s);
+                });
     }
 
     @Override
@@ -187,6 +190,14 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
 
     public ObservableList<ServiceModel> getService() {
         return service;
+    }
+
+    public SideModel getSide() {
+        return side.get();
+    }
+
+    public void setSide(SideModel side) {
+        this.side.setValue(side);
     }
 
     @Override

@@ -74,7 +74,10 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoJF
         flags.addAll(pojo.getFlags());
         pojo.getNation().stream()
                 .map(NationModel::new)
-                .forEach(nation::add);
+                .forEach(n -> {
+                    n.setSide(this);
+                    nation.add(n);
+                });
     }
 
     @Override

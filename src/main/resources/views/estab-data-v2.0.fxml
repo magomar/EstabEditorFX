@@ -1,115 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<TitledPane fx:id="estabPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabController">
-    <AnchorPane minHeight="500" minWidth="900.0" prefHeight="500" prefWidth="900.0">
-        <children>
-            <VBox minWidth="250.0" prefWidth="250.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <children>
-                    <HBox maxHeight="40.0" prefHeight="40.0" spacing="20.0">
-                        <children>
-                            <ToggleButton fx:id="forceButton" disable="true" layoutX="10.0" layoutY="10.0"
-                                          maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                          mnemonicParsing="false" onAction="#searchForce">
-                                <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
-                                               preserveRatio="true"/>
-                                </graphic>
-                            </ToggleButton>
-                            <ToggleButton fx:id="vehicleButton" disable="true" maxHeight="1.7976931348623157E308"
-                                          maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                                          onAction="#searchVehicle" HBox.hgrow="ALWAYS">
-                                <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
-                                               preserveRatio="true">
+
+<TitledPane fx:id="estabPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabController">
+   <content>
+       <AnchorPane minHeight="500" minWidth="900.0" prefHeight="500" prefWidth="900.0">
+           <children>
+               <VBox minWidth="250.0" prefWidth="250.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                   <children>
+                       <HBox maxHeight="40.0" prefHeight="40.0" spacing="20.0">
+                           <children>
+                               <ToggleButton fx:id="forceButton" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchForce">
+                                   <graphic>
+                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                   </graphic>
+                               </ToggleButton>
+                               <ToggleButton fx:id="vehicleButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
+                                   <graphic>
+                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     </ImageView>
-                                </graphic>
-                            </ToggleButton>
-                            <ToggleButton fx:id="weaponButton" disable="true" maxHeight="1.7976931348623157E308"
-                                          maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                                          onAction="#searchWeapon" HBox.hgrow="ALWAYS">
-                                <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
-                                               preserveRatio="true">
+                                   </graphic>
+                               </ToggleButton>
+                               <ToggleButton fx:id="weaponButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
+                                   <graphic>
+                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     </ImageView>
-                                </graphic>
-                            </ToggleButton>
-                            <ToggleButton fx:id="ammoButton" disable="true" maxHeight="1.7976931348623157E308"
-                                          maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                                          onAction="#searchAmmo" HBox.hgrow="ALWAYS">
-                                <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
-                                               preserveRatio="true">
+                                   </graphic>
+                               </ToggleButton>
+                               <ToggleButton fx:id="ammoButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
+                                   <graphic>
+                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     </ImageView>
-                                </graphic>
-                            </ToggleButton>
-                        </children>
-                    </HBox>
-                    <HBox fillHeight="false" prefWidth="200.0">
-                        <children>
-                            <TextField fx:id="searchTextField" promptText="Search" HBox.hgrow="ALWAYS"/>
-                        </children>
-                        <VBox.margin>
-                            <Insets/>
-                        </VBox.margin>
-                    </HBox>
-                    <GridPane>
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="67.0" prefWidth="78.0"/>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="89.0"/>
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0"
-                                               prefWidth="85.0"/>
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        </rowConstraints>
-                        <children>
-                            <CheckBox fx:id="selectNoneListCheckBox" mnemonicParsing="false" prefHeight="17.0"
-                                      prefWidth="108.0" text="Select none" GridPane.columnIndex="1"/>
-                            <CheckBox fx:id="selectAllListCheckBox" mnemonicParsing="false" text="Select all"/>
-                            <Button fx:id="removeSelectedButton" disable="true" maxWidth="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" onAction="#removeSelectedItems"
-                                    prefWidth="30.0" GridPane.columnIndex="2">
-                                <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
-                                               preserveRatio="true">
+                                   </graphic>
+                               </ToggleButton>
+                           </children>
+                       </HBox>
+                       <HBox fillHeight="false" prefWidth="200.0">
+                           <children>
+                               <TextField fx:id="searchTextField" promptText="Search" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                               <Insets />
+                           </VBox.margin>
+                       </HBox>
+                       <GridPane>
+                           <columnConstraints>
+                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="67.0" prefWidth="78.0" />
+                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="89.0" />
+                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="85.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                               <CheckBox fx:id="selectAllListCheckBox" mnemonicParsing="false" text="Select all" />
+                               <Button fx:id="removeSelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeSelectedItems" prefWidth="30.0" GridPane.columnIndex="2">
+                                   <graphic>
+                                       <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     </ImageView>
-                                </graphic>
-                                <GridPane.margin>
-                                    <Insets right="30.0"/>
-                                </GridPane.margin>
-                            </Button>
-                            <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements"
-                                    prefWidth="28.0" GridPane.columnIndex="2">
-                                <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
-                                               preserveRatio="true">
+                                   </graphic>
+                                   <GridPane.margin>
+                                       <Insets right="30.0" />
+                                   </GridPane.margin>
+                               </Button>
+                               <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements" prefWidth="28.0" GridPane.columnIndex="2">
+                                   <graphic>
+                                       <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     </ImageView>
-                                </graphic>
-                                <GridPane.margin>
-                                    <Insets/>
-                                </GridPane.margin>
-                            </Button>
-                        </children>
-                    </GridPane>
-                    <ListView fx:id="searchResultsListView" prefHeight="200.0" prefWidth="200.0"
-                              style="-fx-border-color: grey;" VBox.vgrow="ALWAYS">
-                        <VBox.margin>
-                            <Insets/>
-                        </VBox.margin>
-                    </ListView>
-                </children>
-            </VBox>
-            <AnchorPane fx:id="editorPane" layoutX="269.6000061035156" layoutY="9.600000381469727"
-                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0"
-                        AnchorPane.topAnchor="0.0"/>
-        </children>
-    </AnchorPane>
+                                   </graphic>
+                                   <GridPane.margin>
+                                       <Insets />
+                                   </GridPane.margin>
+                               </Button>
+                           </children>
+                       </GridPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                             <ListView fx:id="searchResultsListView" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey;" />
+                        <TreeView fx:id="searchResultsTreeView" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </StackPane>
+                   </children>
+               </VBox>
+               <AnchorPane fx:id="editorPane" layoutX="269.6000061035156" layoutY="9.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+           </children>
+       </AnchorPane>
+   </content>
 </TitledPane>

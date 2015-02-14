@@ -2,7 +2,6 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.io.File;
@@ -97,14 +96,14 @@ public class EstabModel {
             });
         ElementModelFactory.setMaxId(maxId[0]);
 
-        // These expensive loops are done in order to have all forces in a separate map
-        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
-        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
-
-        for (SideModel side : sideModelMap.values())
-            for (NationModel nation : side.getNation())
-                for (ServiceModel service : nation.getService())
-                    for (ForceModel force : service.getForce()) forceModelMap.put(force.getId(), force);
+//        // These expensive loops are done in order to have all forces in a separate map
+//        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
+//        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
+//
+//        for (SideModel side : sideModelMap.values())
+//            for (NationModel nation : side.getNation())
+//                for (ServiceModel service : nation.getService())
+//                    for (ForceModel force : service.getForce()) forceModelMap.put(force.getId(), force);
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -132,16 +131,26 @@ public class EstabModel {
     }
 
     /**
-     * Loops though all map values looking for elements names that match our search text.
+     * Loops through all map values looking for names that match our query.
      *
-     * @param name              text to search
+     * @param query             text to search
      * @param elementModelClass used to load the corresponding map
      * @return collection with all matching elements
      */
-    public List<ElementModel> searchElement(String name, Class elementModelClass) {
-        return allElements.get(elementModelClass).values().parallelStream()
-                .filter(element -> element.getName().toLowerCase().contains(name.toLowerCase()))
+    public List<ElementModel> searchElement(String query, Class elementModelClass) {
+        List<ElementModel> elements = new ArrayList<>();
+        if (elementModelClass == ForceModel.class) {
+            Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
+            for (SideModel side : sideModelMap.values()) {
+                for (NationModel nation : side.getNation())
+                    for (ServiceModel service : nation.getService())
+                        for (ForceModel force : service.getForce())
+                            if (force.getName().toLowerCase().contains(query.toLowerCase())) elements.add(force);
+            }
+        } else elements = allElements.get(elementModelClass).values().parallelStream()
+                .filter(element -> element.getName().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
+        return elements;
     }
 
     /**

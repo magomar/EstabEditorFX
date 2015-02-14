@@ -72,15 +72,16 @@ public class EstabController implements Initializable {
     @FXML
     private CheckBox selectAllListCheckBox;
     @FXML
-    private CheckBox selectNoneListCheckBox;
-    @FXML
     private Button removeSelectedButton;
     @FXML
     private Button copySelectedButton;
     @FXML
+    private TreeView<ElementListCell> searchResultsTreeView;
+
+    @FXML
     private ListView<ElementListCell> searchResultsListView;
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
-    private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
+    private ObservableList<ElementModel> selectedListElements = FXCollections.observableArrayList();
     // Controls when search is enabled
     private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
     // Current search list elements class, Force is the default
@@ -115,32 +116,35 @@ public class EstabController implements Initializable {
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement());
 
         // Disable copy and remove buttons if there are no selected items
-        selectedElements.addListener((ListChangeListener<ElementModel>) change -> {
-            if (selectedElements.isEmpty()) {
+        selectedListElements.addListener((ListChangeListener<ElementModel>) change -> {
+            if (selectedListElements.isEmpty()) {
                 copySelectedButton.setDisable(true);
                 removeSelectedButton.setDisable(true);
             } else {
-                selectNoneListCheckBox.setSelected(false);
+                // if this is the source estab AND copy isn't disabled, enable copy. Do the same if this is the target estab.
+                if(!isEditable && !mainController.disableCopyProperty().get() || isEditable) copySelectedButton.setDisable(false);
+                // Since removeSelectedButton isn't visible in the source estab we don't need conditions
                 removeSelectedButton.setDisable(false);
-                copySelectedButton.setDisable(false);
             }
         });
 
         // Select all items or discard all the selection
         selectAllListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(true));
-            selectNoneListCheckBox.setSelected(!newValue);
-
-        });
-        selectNoneListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
+            else {
                 // It's important to clear the collection first in order to optimize deselecting cells.
-                selectedElements.clear();
+                selectedListElements.clear();
                 searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
                 selectAllListCheckBox.setSelected(false);
             }
+
         });
 
+        // Hide the root node
+        searchResultsTreeView.setShowRoot(false);
+        //Since Force is the default class, hide the ListVIew and display the TreeView
+        searchResultsTreeView.setVisible(true);
+        searchResultsListView.setVisible(false);
         // Each cell is associated to an element model
         searchResultsListView.setItems(elementListCells);
         searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -156,7 +160,6 @@ public class EstabController implements Initializable {
             ammoButton.setDisable(newValue);
             searchTextField.setDisable(newValue);
             selectAllListCheckBox.setDisable(newValue);
-            selectNoneListCheckBox.setDisable(newValue);
         });
 
         ((ImageView) forceButton.getGraphic()).setImage(new Image(FileIO.FORCE_ICON_RESOURCE));
@@ -168,7 +171,7 @@ public class EstabController implements Initializable {
     }
 
     /**
-     * Easy way to set a few parameters
+     * Easy way to set a few initial parameters
      *
      * @param title      title of the estab pane
      * @param isEditable true if the estab is editable, false otherwise
@@ -196,7 +199,7 @@ public class EstabController implements Initializable {
      * Clears the active editor, empties the search list and refreshes the title
      */
     public void clear() {
-        selectedElements.clear();
+        selectedListElements.clear();
         searchResultsListView.getItems().clear();
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
@@ -214,7 +217,8 @@ public class EstabController implements Initializable {
         weaponButton.setSelected(false);
         ammoButton.setSelected(false);
         selectAllListCheckBox.setSelected(false);
-        selectNoneListCheckBox.setSelected(false);
+        searchResultsTreeView.setVisible(true);
+        searchResultsListView.setVisible(false);
         searchElement();
     }
 
@@ -230,7 +234,8 @@ public class EstabController implements Initializable {
         weaponButton.setSelected(false);
         ammoButton.setSelected(false);
         selectAllListCheckBox.setSelected(false);
-        selectNoneListCheckBox.setSelected(false);
+        searchResultsTreeView.setVisible(false);
+        searchResultsListView.setVisible(true);
         searchElement();
     }
 
@@ -245,7 +250,8 @@ public class EstabController implements Initializable {
         weaponButton.setSelected(true);
         ammoButton.setSelected(false);
         selectAllListCheckBox.setSelected(false);
-        selectNoneListCheckBox.setSelected(false);
+        searchResultsTreeView.setVisible(false);
+        searchResultsListView.setVisible(true);
         searchElement();
     }
 
@@ -260,7 +266,8 @@ public class EstabController implements Initializable {
         weaponButton.setSelected(false);
         ammoButton.setSelected(true);
         selectAllListCheckBox.setSelected(false);
-        selectNoneListCheckBox.setSelected(false);
+        searchResultsTreeView.setVisible(false);
+        searchResultsListView.setVisible(true);
         searchElement();
     }
 
@@ -268,25 +275,91 @@ public class EstabController implements Initializable {
      * Searches for elements from the active class matching the name pattern.
      */
     private void searchElement() {
-        SavedSearchList<ElementListCell> savedList = searchLists.get(activeSearchListClass);
-        String textToSearch = searchTextField.getText();
+        String query = searchTextField.getText();
+        if (activeSearchListClass == ForceModel.class) {
+            treeSearch(query);
+        } else {
+            listSearch(query);
+        }
+    }
 
+    private void treeSearch(String query) {
+        List<ElementModel> elements = estabModel.searchElement(query, activeSearchListClass);
+        if (!elements.isEmpty()) {
+            Map<Integer, TreeItem<ElementListCell>> sides = new HashMap<>();
+            Map<Integer, TreeItem<ElementListCell>> nations = new HashMap<>();
+            Map<Integer, TreeItem<ElementListCell>> services = new HashMap<>();
+
+            TreeItem<ElementListCell> root = new TreeItem<ElementListCell>();
+            root.setExpanded(true);
+            searchResultsTreeView.setRoot(root);
+
+            for (ElementModel element : elements) {
+                ElementListCell forceCell = new ElementListCell(element, selectedListElements);
+                TreeItem<ElementListCell> forceTreeItem = new TreeItem<>(forceCell);
+                ForceModel force = (ForceModel) element;
+
+                // Check if the service node exists
+                if (!services.containsKey(force.getService().getId())) {
+                    // if it doesn't, check its nation
+                    if (!nations.containsKey(force.getService().getNation().getId())) {
+                        // same with its side
+                        if (!sides.containsKey(force.getService().getNation().getSide().getId())) {
+                            ElementModel sideElement = force.getService().getNation().getSide();
+                            ElementListCell sideCell = new ElementListCell(sideElement, selectedListElements);
+                            TreeItem<ElementListCell> sideTreeItem = new TreeItem<>(sideCell);
+                            sideTreeItem.setExpanded(true);
+                            
+                            // Add the side to the root node
+                            sides.put(sideElement.getId(), sideTreeItem);
+                            root.getChildren().add(sideTreeItem);
+                        }
+                        // assert sides.containsKey(force.getService().getNation().getSide().getId());
+                        ElementModel nationElement = force.getService().getNation();
+                        ElementListCell nationCell = new ElementListCell(nationElement, selectedListElements);
+                        TreeItem<ElementListCell> nationTreeItem = new TreeItem<>(nationCell);
+                        nationTreeItem.setExpanded(true);
+
+                        // Add the nation to its side
+                        nations.put(nationElement.getId(), nationTreeItem);
+                        sides.get(force.getService().getNation().getSide().getId()).getChildren().add(
+                                nations.get(force.getService().getNation().getId()));
+                    }
+                    // assert nations.containsKey(force.getService().getNation().getId());
+                    ElementModel serviceElement = force.getService();
+                    ElementListCell serviceCell = new ElementListCell(serviceElement, selectedListElements);
+                    TreeItem<ElementListCell> serviceTreeItem = new TreeItem<>(serviceCell);
+                    serviceTreeItem.setExpanded(true);
+
+                    // Add the service to its nation
+                    services.put(serviceElement.getId(), serviceTreeItem);
+                    nations.get(force.getService().getNation().getId()).getChildren().add(
+                            services.get(force.getService().getId())
+                    );
+                }
+                // assert services.containsKey(force.getService().getId());
+                services.get(force.getService().getId()).getChildren().add(forceTreeItem);
+                }
+            }
+        }
+
+    private void listSearch(String query) {
+        SavedSearchList<ElementListCell> savedList = searchLists.get(activeSearchListClass);
         // Empty the search list
         elementListCells.clear();
         // If the search isn't forced and we have already searched for this text, copy the contents from the saved list
-        if (!savedList.isForceSearch() && textToSearch.equals(savedList.getLastSearch())) {
+        if (!savedList.isForceSearch() && query.equals(savedList.getLastSearch())) {
             elementListCells.addAll(savedList.getList());
         } else {
             // This is a new search, prepare for it!
             savedList.getList().clear();
             savedList.setForceSearch(false);
-            savedList.setLastSearch(textToSearch);
+            savedList.setLastSearch(query);
 
             // Get all elements with names matching our texts
-            List<ElementModel> elements = estabModel.searchElement(textToSearch, activeSearchListClass);
+            List<ElementModel> elements = estabModel.searchElement(query, activeSearchListClass);
             for (ElementModel element : elements) {
-                ElementListCell cell;
-                cell = new ElementListCell(element, selectedElements);
+                ElementListCell cell = new ElementListCell(element, selectedListElements);
                 elementListCells.add(cell);
                 savedList.getList().add(cell);
             }
@@ -333,7 +406,7 @@ public class EstabController implements Initializable {
                     estabModel.paste(relatedElementsLists.getNonRepeatedElements());
                     break;
                 case COPY_SELECTION:
-                    estabModel.paste(selectedElements);
+                    estabModel.paste(selectedListElements);
                     break;
                 default:
                     return false;
@@ -385,8 +458,8 @@ public class EstabController implements Initializable {
      * Removes elements with selected check boxes
      */
     public void removeSelectedItems() {
-        removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
-        selectedElements.clear();
+        removeRelatedElements(estabModel.getRelatedElements(selectedListElements).getAllElements());
+        selectedListElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
     }
 
@@ -407,12 +480,12 @@ public class EstabController implements Initializable {
     public void copySelectedElements() {
         if (isEditable) {
             // Target, duplicate
-            duplicateSelectedElements(selectedElements);
+            duplicateSelectedElements(selectedListElements);
         } else {
             // Source, copy
-            mainController.copyElementsToTarget(selectedElements);
+            mainController.copyElementsToTarget(selectedListElements);
         }
-        selectedElements.clear();
+        selectedListElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
     }
 

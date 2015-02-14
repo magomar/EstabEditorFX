@@ -49,9 +49,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final BooleanProperty canBombard = new SimpleBooleanProperty();
-    private final ObjectProperty<SideModel> side = new SimpleObjectProperty();
-    private final ObjectProperty<NationModel> nation = new SimpleObjectProperty();
-    private final ObjectProperty<ServiceModel> service = new SimpleObjectProperty();
+    private final ObjectProperty<ServiceModel> service = new SimpleObjectProperty<>();
 
     private List<Flag> flags = FXCollections.observableArrayList();
 
@@ -558,6 +556,14 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
 
     public BooleanProperty canBombardProperty() {
         return canBombard;
+    }
+
+    public void setService(ServiceModel service) {
+        this.service.setValue(service);
+    }
+
+    public ServiceModel getService() {
+        return service.get();
     }
 
     @Override

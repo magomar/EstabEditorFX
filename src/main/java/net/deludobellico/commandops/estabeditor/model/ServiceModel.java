@@ -29,6 +29,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
     private final List<Flag> flags = FXCollections.observableArrayList();
+    private final ObjectProperty<NationModel> nation = new SimpleObjectProperty<>();
 
     public ServiceModel(Service service) {
         setPojo(service);
@@ -76,7 +77,12 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         backgroundDarkColor.set(new RGBColorModel(iconColors.getBackgroundDarkColor()));
         backgroundLightColor.set(new RGBColorModel(iconColors.getBackgroundLightColor()));
         symbolColor.set(iconColors.getSymbolColor());
-        pojo.getForce().stream().map(ForceModel::new).forEach(force::add);
+        pojo.getForce().stream()
+                .map(ForceModel::new)
+                .forEach(f -> {
+                    f.setService(this);
+                    force.add(f);
+                });
         flags.addAll(pojo.getFlags());
     }
 
@@ -252,6 +258,14 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
 
     public ObservableList<ForceModel> getForce() {
         return force;
+    }
+
+    public NationModel getNation() {
+        return nation.get();
+    }
+
+    public void setNation(NationModel nation) {
+        this.nation.setValue(nation);
     }
 
     @Override

@@ -607,4 +607,9 @@ public class MainController implements Initializable {
 
         }
     }
+
+    public BooleanProperty disableCopyProperty() {
+        return disableCopy;
+    }
+
 }
