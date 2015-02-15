@@ -2,6 +2,7 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.io.File;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class EstabModel {
     public static final Integer DEFAULT_VERSION = 4;
     public static final String DLB_VERSION = "0.1.2";
+    // TODO: use set<element> (sort by id) instead of map<int, element>
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
     private Integer version;
@@ -79,6 +81,8 @@ public class EstabModel {
         allElements = new HashMap<>();
         allElements.put(ImageModel.class, new HashMap<>(estabData.getImage().size()));
         allElements.put(SideModel.class, new HashMap<>(estabData.getSide().size()));
+        allElements.put(NationModel.class, new HashMap<>());
+        allElements.put(ServiceModel.class, new HashMap<>());
         allElements.put(ForceModel.class, new HashMap<>(estabData.getSide().size()));
         allElements.put(VehicleModel.class, new HashMap<>(estabData.getVehicle().size()));
         allElements.put(WeaponModel.class, new HashMap<>(estabData.getWeapon().size()));
@@ -94,16 +98,30 @@ public class EstabModel {
                 if (em.getId() > maxId[0]) maxId[0] = em.getId();
                 em.shallowCopyToMap(allElements.get(em.getClass()));
             });
-        ElementModelFactory.setMaxId(maxId[0]);
 
-//        // These expensive loops are done in order to have all forces in a separate map
-//        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
-//        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
-//
-//        for (SideModel side : sideModelMap.values())
-//            for (NationModel nation : side.getNation())
-//                for (ServiceModel service : nation.getService())
-//                    for (ForceModel force : service.getForce()) forceModelMap.put(force.getId(), force);
+        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
+        Map<Integer, NationModel> nationModelMap = (Map<Integer, NationModel>) allElements.get(NationModel.class);
+        Map<Integer, ServiceModel> serviceModelMap = (Map<Integer, ServiceModel>) allElements.get(ServiceModel.class);
+        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
+
+        for (SideModel side : sideModelMap.values()) {
+            // sides are already included
+            for (NationModel nation : side.getNation()) {
+                nationModelMap.put(nation.getId(), nation);
+                if (nation.getId() > maxId[0]) maxId[0] = nation.getId();
+
+                for (ServiceModel service : nation.getService()) {
+                    serviceModelMap.put(service.getId(), service);
+                    if (service.getId() > maxId[0]) maxId[0] = service.getId();
+
+                    for (ForceModel force : service.getForce()) {
+                        if (force.getId() > maxId[0]) maxId[0] = force.getId();
+                        forceModelMap.put(force.getId(), force);
+                    }
+                }
+            }
+        }
+        ElementModelFactory.setMaxId(maxId[0]);
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -112,6 +130,14 @@ public class EstabModel {
 
     public Map<Integer, SideModel> getSides() {
         return (Map<Integer, SideModel>) allElements.get(SideModel.class);
+    }
+
+    public Map<Integer, NationModel> getNations() {
+        return (Map<Integer, NationModel>) allElements.get(NationModel.class);
+    }
+
+    public Map<Integer, ServiceModel> getServices() {
+        return (Map<Integer, ServiceModel>) allElements.get(ServiceModel.class);
     }
 
     public Map<Integer, VehicleModel> getVehicles() {
@@ -138,19 +164,9 @@ public class EstabModel {
      * @return collection with all matching elements
      */
     public List<ElementModel> searchElement(String query, Class elementModelClass) {
-        List<ElementModel> elements = new ArrayList<>();
-        if (elementModelClass == ForceModel.class) {
-            Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
-            for (SideModel side : sideModelMap.values()) {
-                for (NationModel nation : side.getNation())
-                    for (ServiceModel service : nation.getService())
-                        for (ForceModel force : service.getForce())
-                            if (force.getName().toLowerCase().contains(query.toLowerCase())) elements.add(force);
-            }
-        } else elements = allElements.get(elementModelClass).values().parallelStream()
+        return allElements.get(elementModelClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
-        return elements;
     }
 
     /**
@@ -201,7 +217,8 @@ public class EstabModel {
 
         RelatedElementsLists relatedElementsLists = new RelatedElementsLists();
         for (ElementModel elementModel : elements)
-            elementModel.insertInToCollection(relatedElementsLists.getAll(elementModel.getClass()));
+            if (elementModel.getClass() != SideModel.class && elementModel.getClass() != NationModel.class && elementModel.getClass() != ServiceModel.class)
+                elementModel.insertInToCollection(relatedElementsLists.getAll(elementModel.getClass()));
 
         for (ElementModel v : relatedElementsLists.getAll(VehicleModel.class)) {
             List<WeaponModel> weapons = getWeaponListFromVehicle((VehicleModel) v);
@@ -227,8 +244,16 @@ public class EstabModel {
      * @param elements collection of elements to remove
      */
     public void remove(Collection<ElementModel> elements) {
-        for (ElementModel element : elements)
+        for (ElementModel element : elements) {
+            if(element.getClass() == ServiceModel.class) {
+                ((ServiceModel) element).getNation().getService().remove(element);
+            } else if (element.getClass() == NationModel.class) {
+                ((NationModel) element).getSide().getNation().remove(element);
+            } else if (element.getClass() == ForceModel.class) {
+                ((ForceModel) element).getService().getForce().remove(element);
+            }
             element.removeFromMap(allElements.get(element.getClass()));
+        }
     }
 
     /**
@@ -240,6 +265,51 @@ public class EstabModel {
 
         for (ElementModel element : elements) {
             element.hardCopyToMap(allElements.get(element.getClass()));
+
+            // Make sure all forces have the corresponding hierarchy
+            if (element.getClass() == ForceModel.class) {
+
+                ForceModel force = (ForceModel) element;
+                ServiceModel service = force.getService();
+                // Add this service to the target model if it doesn't exist
+                if (!allElements.get(ServiceModel.class).containsKey(service.getId())) {
+                    service.getForce().clear();
+                    ((ElementModel) service).hardCopyToMap(allElements.get(ServiceModel.class));
+
+                    NationModel nation = force.getService().getNation();
+                    // Add this nation to the target model if it doesn't exist
+                    if (!allElements.get(NationModel.class).containsKey(nation.getId())) {
+                        nation.getService().clear();
+                        ((ElementModel) nation).hardCopyToMap(allElements.get(NationModel.class));
+
+                        SideModel side = force.getService().getNation().getSide();
+                        // Add this side to the target model if it doesn't exist
+                        if (!allElements.get(SideModel.class).containsKey(side.getId())) {
+                            side.getNation().clear();
+                            ((ElementModel) side).hardCopyToMap(allElements.get(SideModel.class));
+                        }
+
+                        // Add this nation to the target side
+                        ((SideModel) allElements.get(SideModel.class).get(side.getId())).getNation().add(
+                                (NationModel) allElements.get(NationModel.class).get(nation.getId()));
+                        ((NationModel) allElements.get(NationModel.class).get(nation.getId())).setSide(
+                                (SideModel) allElements.get(SideModel.class).get(side.getId()));
+
+                    }
+
+                    // Add this service to the target nation
+                    ((NationModel) allElements.get(NationModel.class).get(nation.getId())).getService().add(
+                            (ServiceModel) allElements.get(ServiceModel.class).get(service.getId()));
+                    ((ServiceModel) allElements.get(ServiceModel.class).get(service.getId())).setNation(
+                            (NationModel) allElements.get(NationModel.class).get(nation.getId()));
+                }
+
+                // Add this force to the target service
+                ((ServiceModel) allElements.get(ServiceModel.class).get(service.getId())).getForce().add(
+                        (ForceModel) allElements.get(ForceModel.class).get(force.getId()));
+                ((ForceModel) allElements.get(ForceModel.class).get(force.getId())).setService(
+                        (ServiceModel) allElements.get(ServiceModel.class).get(service.getId()));
+            }
         }
     }
 
@@ -266,13 +336,14 @@ public class EstabModel {
         data.setVersion(version);
         data.setDlbVersion(dlbVersion);
 
-        // TODO: poly this?
+        Map<Integer, SideModel> sides = (Map<Integer, SideModel>) allElements.get(SideModel.class);
         Map<Integer, ImageModel> images = (Map<Integer, ImageModel>) allElements.get(ImageModel.class);
         Map<Integer, VehicleModel> vehicles = (Map<Integer, VehicleModel>) allElements.get(VehicleModel.class);
         Map<Integer, WeaponModel> weapons = (Map<Integer, WeaponModel>) allElements.get(WeaponModel.class);
         Map<Integer, AmmoModel> ammos = (Map<Integer, AmmoModel>) allElements.get(AmmoModel.class);
         Map<Integer, FormationEffectsModel> formationEffects = (Map<Integer, FormationEffectsModel>) allElements.get(FormationEffectsModel.class);
 
+        sides.values().stream().map(SideModel::getPojo).forEach(data.getSide()::add);
         images.values().stream().map(ImageModel::getPojo).forEach(data.getImage()::add);
         vehicles.values().stream().map(VehicleModel::getPojo).forEach(data.getVehicle()::add);
         weapons.values().stream().map(WeaponModel::getPojo).forEach(data.getWeapon()::add);

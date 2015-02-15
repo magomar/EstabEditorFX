@@ -51,6 +51,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
         service.setSmallInsignia(largeIns);
+        service.setRankList(new RankList());
         rankList.stream().forEach((rankModel) -> service.getRankList().getRank().add(rankModel.getPojo()));
         DefaultIconColors iconColors = new DefaultIconColors();
         iconColors.setBackgroundColor(backgroundColor.get().getPojo());
@@ -76,6 +77,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         backgroundColor.set(new RGBColorModel(iconColors.getBackgroundColor()));
         backgroundDarkColor.set(new RGBColorModel(iconColors.getBackgroundDarkColor()));
         backgroundLightColor.set(new RGBColorModel(iconColors.getBackgroundLightColor()));
+        designationColor.set(new RGBColorModel(iconColors.getDesignationColor()));
         symbolColor.set(iconColors.getSymbolColor());
         pojo.getForce().stream()
                 .map(ForceModel::new)

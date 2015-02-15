@@ -1,5 +1,6 @@
 package net.deludobellico.commandops.estabeditor.util.view;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -46,6 +47,14 @@ public class ElementListCell extends HBox {
         checkBox.setSelected(b);
     }
 
+    /**
+     * Returns the checkbox selected property
+     *
+     * @return the checkbox selected property
+     */
+    public BooleanProperty selectedProperty(){
+        return checkBox.selectedProperty();
+    }
     /**
      * Returns the associated element model
      *

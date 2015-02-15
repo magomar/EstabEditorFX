@@ -4,6 +4,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -81,11 +83,11 @@ public class EstabController implements Initializable {
     @FXML
     private ListView<ElementListCell> searchResultsListView;
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
-    private ObservableList<ElementModel> selectedListElements = FXCollections.observableArrayList();
+    private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
     // Controls when search is enabled
     private BooleanProperty searchDisable = new SimpleBooleanProperty(true);
     // Current search list elements class, Force is the default
-    private Class activeSearchListClass = ForceModel.class;
+    private Class activeSearchClass = ForceModel.class;
     // Save last search to avoid consuming unnecessary resources
     private Map<Class, SavedSearchList<ElementListCell>> searchLists = new HashMap<Class, SavedSearchList<ElementListCell>>() {{
         for (Class elementModelClass : ELEMENT_EDITOR_VIEWS.keySet()) {
@@ -116,13 +118,14 @@ public class EstabController implements Initializable {
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> searchElement());
 
         // Disable copy and remove buttons if there are no selected items
-        selectedListElements.addListener((ListChangeListener<ElementModel>) change -> {
-            if (selectedListElements.isEmpty()) {
+        selectedElements.addListener((ListChangeListener<ElementModel>) change -> {
+            if (selectedElements.isEmpty()) {
                 copySelectedButton.setDisable(true);
                 removeSelectedButton.setDisable(true);
             } else {
-                // if this is the source estab AND copy isn't disabled, enable copy. Do the same if this is the target estab.
-                if(!isEditable && !mainController.disableCopyProperty().get() || isEditable) copySelectedButton.setDisable(false);
+                // if this is the source estab AND there is an open target, enable copy. Do the same if this is the target estab.
+                if (!isEditable && !mainController.targetIsClosedProperty().get() || isEditable)
+                    copySelectedButton.setDisable(false);
                 // Since removeSelectedButton isn't visible in the source estab we don't need conditions
                 removeSelectedButton.setDisable(false);
             }
@@ -130,18 +133,35 @@ public class EstabController implements Initializable {
 
         // Select all items or discard all the selection
         selectAllListCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(true));
-            else {
+            if (newValue) {
+                // If it's the search list, select all the cells
+                if (activeSearchClass != ForceModel.class) {
+                    searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(true));
+                    // If it's the tree search, then select root children (and let the cascade selection begin)
+                } else if (!searchResultsTreeView.getRoot().getChildren().isEmpty())
+                    for (TreeItem<ElementListCell> treeItem : searchResultsTreeView.getRoot().getChildren())
+                        treeItem.getValue().selectedProperty().setValue(true);
+            } else {
                 // It's important to clear the collection first in order to optimize deselecting cells.
-                selectedListElements.clear();
-                searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
-                selectAllListCheckBox.setSelected(false);
+                selectedElements.clear();
+                if (activeSearchClass != ForceModel.class) {
+                    searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
+                } else if (!searchResultsTreeView.getRoot().getChildren().isEmpty())
+                    for (TreeItem<ElementListCell> treeItem : searchResultsTreeView.getRoot().getChildren())
+                        treeItem.getValue().selectedProperty().setValue(false);
             }
-
+//                selectAllListCheckBox.setSelected(false);
         });
 
-        // Hide the root node
+        // Hide the root tree node
         searchResultsTreeView.setShowRoot(false);
+        searchResultsTreeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<ElementListCell>>() {
+            @Override
+            public void changed(ObservableValue<? extends TreeItem<ElementListCell>> observable, TreeItem<ElementListCell> oldValue, TreeItem<ElementListCell> newValue) {
+                if(newValue != null && newValue.getValue().getElementModel().getClass() == ForceModel.class) setActiveElement(newValue.getValue().getElementModel());
+            }
+        });
+
         //Since Force is the default class, hide the ListVIew and display the TreeView
         searchResultsTreeView.setVisible(true);
         searchResultsListView.setVisible(false);
@@ -199,8 +219,9 @@ public class EstabController implements Initializable {
      * Clears the active editor, empties the search list and refreshes the title
      */
     public void clear() {
-        selectedListElements.clear();
+        selectedElements.clear();
         searchResultsListView.getItems().clear();
+        searchResultsTreeView.getRoot().getChildren().clear();
         setTitle();
         if (elementEditorController != null) elementEditorController.clear();
     }
@@ -210,7 +231,7 @@ public class EstabController implements Initializable {
      */
     @FXML
     private void searchForce() {
-        activeSearchListClass = ForceModel.class;
+        activeSearchClass = ForceModel.class;
         searchTextField.setPromptText("Search force");
         forceButton.setSelected(true);
         vehicleButton.setSelected(false);
@@ -227,7 +248,7 @@ public class EstabController implements Initializable {
      */
     @FXML
     private void searchVehicle() {
-        activeSearchListClass = VehicleModel.class;
+        activeSearchClass = VehicleModel.class;
         searchTextField.setPromptText("Search vehicle");
         forceButton.setSelected(false);
         vehicleButton.setSelected(true);
@@ -244,7 +265,7 @@ public class EstabController implements Initializable {
      */
     @FXML
     private void searchWeapon() {
-        activeSearchListClass = WeaponModel.class;
+        activeSearchClass = WeaponModel.class;
         searchTextField.setPromptText("Search weapon");
         vehicleButton.setSelected(false);
         weaponButton.setSelected(true);
@@ -260,7 +281,7 @@ public class EstabController implements Initializable {
      */
     @FXML
     private void searchAmmo() {
-        activeSearchListClass = AmmoModel.class;
+        activeSearchClass = AmmoModel.class;
         searchTextField.setPromptText("Search ammo");
         vehicleButton.setSelected(false);
         weaponButton.setSelected(false);
@@ -272,79 +293,25 @@ public class EstabController implements Initializable {
     }
 
     /**
-     * Searches for elements from the active class matching the name pattern.
+     * Searches for elements from the active class with names matching the user query
      */
     private void searchElement() {
         String query = searchTextField.getText();
-        if (activeSearchListClass == ForceModel.class) {
+        // If we're looking for forces, display the results in a tree view. Otherwise, use a list view
+        if (activeSearchClass == ForceModel.class) {
             treeSearch(query);
         } else {
             listSearch(query);
         }
     }
 
-    private void treeSearch(String query) {
-        List<ElementModel> elements = estabModel.searchElement(query, activeSearchListClass);
-        if (!elements.isEmpty()) {
-            Map<Integer, TreeItem<ElementListCell>> sides = new HashMap<>();
-            Map<Integer, TreeItem<ElementListCell>> nations = new HashMap<>();
-            Map<Integer, TreeItem<ElementListCell>> services = new HashMap<>();
-
-            TreeItem<ElementListCell> root = new TreeItem<ElementListCell>();
-            root.setExpanded(true);
-            searchResultsTreeView.setRoot(root);
-
-            for (ElementModel element : elements) {
-                ElementListCell forceCell = new ElementListCell(element, selectedListElements);
-                TreeItem<ElementListCell> forceTreeItem = new TreeItem<>(forceCell);
-                ForceModel force = (ForceModel) element;
-
-                // Check if the service node exists
-                if (!services.containsKey(force.getService().getId())) {
-                    // if it doesn't, check its nation
-                    if (!nations.containsKey(force.getService().getNation().getId())) {
-                        // same with its side
-                        if (!sides.containsKey(force.getService().getNation().getSide().getId())) {
-                            ElementModel sideElement = force.getService().getNation().getSide();
-                            ElementListCell sideCell = new ElementListCell(sideElement, selectedListElements);
-                            TreeItem<ElementListCell> sideTreeItem = new TreeItem<>(sideCell);
-                            sideTreeItem.setExpanded(true);
-                            
-                            // Add the side to the root node
-                            sides.put(sideElement.getId(), sideTreeItem);
-                            root.getChildren().add(sideTreeItem);
-                        }
-                        // assert sides.containsKey(force.getService().getNation().getSide().getId());
-                        ElementModel nationElement = force.getService().getNation();
-                        ElementListCell nationCell = new ElementListCell(nationElement, selectedListElements);
-                        TreeItem<ElementListCell> nationTreeItem = new TreeItem<>(nationCell);
-                        nationTreeItem.setExpanded(true);
-
-                        // Add the nation to its side
-                        nations.put(nationElement.getId(), nationTreeItem);
-                        sides.get(force.getService().getNation().getSide().getId()).getChildren().add(
-                                nations.get(force.getService().getNation().getId()));
-                    }
-                    // assert nations.containsKey(force.getService().getNation().getId());
-                    ElementModel serviceElement = force.getService();
-                    ElementListCell serviceCell = new ElementListCell(serviceElement, selectedListElements);
-                    TreeItem<ElementListCell> serviceTreeItem = new TreeItem<>(serviceCell);
-                    serviceTreeItem.setExpanded(true);
-
-                    // Add the service to its nation
-                    services.put(serviceElement.getId(), serviceTreeItem);
-                    nations.get(force.getService().getNation().getId()).getChildren().add(
-                            services.get(force.getService().getId())
-                    );
-                }
-                // assert services.containsKey(force.getService().getId());
-                services.get(force.getService().getId()).getChildren().add(forceTreeItem);
-                }
-            }
-        }
-
+    /**
+     * Display search results in a list view
+     *
+     * @param query string to look for in elements names
+     */
     private void listSearch(String query) {
-        SavedSearchList<ElementListCell> savedList = searchLists.get(activeSearchListClass);
+        SavedSearchList<ElementListCell> savedList = searchLists.get(activeSearchClass);
         // Empty the search list
         elementListCells.clear();
         // If the search isn't forced and we have already searched for this text, copy the contents from the saved list
@@ -356,16 +323,137 @@ public class EstabController implements Initializable {
             savedList.setForceSearch(false);
             savedList.setLastSearch(query);
 
-            // Get all elements with names matching our texts
-            List<ElementModel> elements = estabModel.searchElement(query, activeSearchListClass);
+            // Get all elements with names matching our query
+            List<ElementModel> elements = estabModel.searchElement(query, activeSearchClass);
             for (ElementModel element : elements) {
-                ElementListCell cell = new ElementListCell(element, selectedListElements);
+                ElementListCell cell = new ElementListCell(element, selectedElements);
                 elementListCells.add(cell);
                 savedList.getList().add(cell);
             }
         }
     }
 
+    /**
+     * Display search results in a tree view (Forces/Services/Nations/Sides)
+     *
+     * @param query string to look for in elements names
+     */
+    private void treeSearch(String query) {
+        List<ElementModel> matchedQueryElements = estabModel.searchElement(query, activeSearchClass);
+        TreeItem<ElementListCell> rootNode = new TreeItem<>();
+        rootNode.setExpanded(true);
+        searchResultsTreeView.setRoot(rootNode);
+        if (!matchedQueryElements.isEmpty()) {
+            Map<Integer, TreeItem<ElementListCell>> sidesMap = new HashMap<>(); // Could be all in the same map, since IDs are unique
+            Map<Integer, TreeItem<ElementListCell>> nationsMap = new HashMap<>();
+            Map<Integer, TreeItem<ElementListCell>> servicesMap = new HashMap<>();
+
+            for (ElementModel element : matchedQueryElements) {
+                ElementListCell forceCell = new ElementListCell(element, selectedElements);
+                TreeItem<ElementListCell> forceTreeItem = new TreeItem<>(forceCell);
+                ForceModel force = (ForceModel) element;
+
+                // make sure this force's side, nation and service exist
+                updateServicesMap(force, sidesMap, nationsMap, servicesMap, rootNode);
+                // assert services.containsKey(force.getService().getId());
+                servicesMap.get(force.getService().getId()).getChildren().add(forceTreeItem);
+            }
+        }
+    }
+
+    /**
+     * Adds a listener to a TreeItem<ElementListCell> which spreads the checkbox status to its children
+     *
+     * @param treeItem where we'll add the listener
+     */
+    private void cascadeBind(TreeItem<ElementListCell> treeItem){
+        treeItem.getValue().selectedProperty().addListener((observable, oldValue, newValue) -> {
+            for (TreeItem<ElementListCell> child : treeItem.getChildren()) {
+                child.getValue().selectedProperty().setValue(treeItem.getValue().selectedProperty().getValue());
+            }
+        });
+    }
+
+    /**
+     * Adds a TreeItem Side to a Map if it doesn't exist already
+     *
+     * @param force
+     * @param sidesMap
+     * @param root
+     */
+    private void updateSidesMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> sidesMap, TreeItem<ElementListCell> root) {
+        if (!sidesMap.containsKey(force.getService().getNation().getSide().getId())) {
+            ElementModel sideElement = force.getService().getNation().getSide();
+            ElementListCell sideCell = new ElementListCell(sideElement, selectedElements);
+            TreeItem<ElementListCell> sideTreeItem = new TreeItem<>(sideCell);
+            sideTreeItem.setExpanded(true);
+
+            // Add the side to the root node
+            sidesMap.put(sideElement.getId(), sideTreeItem);
+            root.getChildren().add(sideTreeItem);
+
+            // Bind the checkbox for cascade selection
+            cascadeBind(sideTreeItem);
+        }
+    }
+
+    /**
+     * Adds a TreeItem Nation to a Map if it doesn't exist already
+     *
+     * @param force
+     * @param nationsMap
+     * @param sidesMap
+     * @param rootNode
+     */
+    private void updateNationsMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> sidesMap, TreeItem<ElementListCell> rootNode){
+        if (!nationsMap.containsKey(force.getService().getNation().getId())) {
+            // make sure this nation's side exist
+            updateSidesMap(force, sidesMap, rootNode);
+            // assert sides.containsKey(force.getService().getNation().getSide().getId());
+
+            ElementModel nationElement = force.getService().getNation();
+            ElementListCell nationCell = new ElementListCell(nationElement, selectedElements);
+            TreeItem<ElementListCell> nationTreeItem = new TreeItem<>(nationCell);
+            nationTreeItem.setExpanded(true);
+
+            // Add the nation to its side
+            nationsMap.put(nationElement.getId(), nationTreeItem);
+            TreeItem<ElementListCell> sideTreeItem = sidesMap.get(force.getService().getNation().getSide().getId());
+            sideTreeItem.getChildren().add(nationsMap.get(force.getService().getNation().getId()));
+
+            // Bind the checkbox for cascade selection
+            cascadeBind(nationTreeItem);
+        }
+    }
+
+    /**
+     * Adds a TreeItem Service to a Map if it doesn't exist already
+     *
+     * @param force
+     * @param sidesMap
+     * @param nationsMap
+     * @param servicesMap
+     * @param rootNode
+     */
+    private void updateServicesMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> sidesMap, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> servicesMap, TreeItem<ElementListCell> rootNode){
+        if (!servicesMap.containsKey(force.getService().getId())) {
+            // if it doesn't, check its nation
+            updateNationsMap(force, nationsMap, sidesMap, rootNode);
+            // assert nations.containsKey(force.getService().getNation().getId());
+            ElementModel serviceElement = force.getService();
+            ElementListCell serviceCell = new ElementListCell(serviceElement, selectedElements);
+            TreeItem<ElementListCell> serviceTreeItem = new TreeItem<>(serviceCell);
+            serviceTreeItem.setExpanded(true);
+
+            // Add the service to its nation
+            servicesMap.put(serviceElement.getId(), serviceTreeItem);
+            TreeItem<ElementListCell> nationTreeItem = nationsMap.get(force.getService().getNation().getId());
+            nationTreeItem.getChildren().add(servicesMap.get(force.getService().getId()));
+
+            // Bind the checkbox for cascade selection
+            cascadeBind(serviceTreeItem);
+        }
+    }
     /**
      * Creates a new elements and displays it in the editor
      *
@@ -406,7 +494,7 @@ public class EstabController implements Initializable {
                     estabModel.paste(relatedElementsLists.getNonRepeatedElements());
                     break;
                 case COPY_SELECTION:
-                    estabModel.paste(selectedListElements);
+                    estabModel.paste(selectedElements);
                     break;
                 default:
                     return false;
@@ -458,20 +546,9 @@ public class EstabController implements Initializable {
      * Removes elements with selected check boxes
      */
     public void removeSelectedItems() {
-        removeRelatedElements(estabModel.getRelatedElements(selectedListElements).getAllElements());
-        selectedListElements.clear();
+        removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
+        selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
-    }
-
-    /**
-     * Duplicates all the elements received in a collection
-     *
-     * @param selectedItems the collection containing the items to duplicate
-     */
-    void duplicateSelectedElements(Collection<ElementModel> selectedItems) {
-        if (!isEditable) return;
-        estabModel.duplicate(selectedItems);
-        update();
     }
 
     /**
@@ -479,13 +556,14 @@ public class EstabController implements Initializable {
      */
     public void copySelectedElements() {
         if (isEditable) {
-            // Target, duplicate
-            duplicateSelectedElements(selectedListElements);
+            // Target -> duplicate
+            estabModel.duplicate(selectedElements);
+            update();
         } else {
-            // Source, copy
-            mainController.copyElementsToTarget(selectedListElements);
+            // Source -> copy
+            mainController.copyElementsToTarget(selectedElements);
         }
-        selectedListElements.clear();
+        selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
     }
 

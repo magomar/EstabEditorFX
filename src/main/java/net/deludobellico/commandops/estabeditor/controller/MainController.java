@@ -608,8 +608,8 @@ public class MainController implements Initializable {
         }
     }
 
-    public BooleanProperty disableCopyProperty() {
-        return disableCopy;
+    public BooleanProperty targetIsClosedProperty() {
+        return targetIsClosed;
     }
 
 }
