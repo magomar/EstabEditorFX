@@ -310,6 +310,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
 
     @Override
     public void unbindProperties(ForceModel element) {
+        name.textProperty().unbindBidirectional(element.nameProperty());
+
         forceType.valueProperty().unbindBidirectional(element.typeProperty());
         subForceType.valueProperty().unbindBidirectional(element.subTypeProperty());
         combatClass.valueProperty().unbindBidirectional(element.combatClassProperty());

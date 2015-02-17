@@ -169,7 +169,10 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
         copy.setId(newId);
         copy.setName(ElementModelFactory.formatName(copy.getName(), copy.getId()));
         copy.getFlags().add(Flag.NEW);
-        map.put(copy.getId(), new ForceModel(copy));
+        ForceModel copyModel = new ForceModel(copy);
+        copyModel.setService(getService());
+        getService().getForce().add(copyModel);
+        map.put(copy.getId(), copyModel);
     }
 
     @Override
