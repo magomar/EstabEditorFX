@@ -1,8 +1,9 @@
 package net.deludobellico.commandops.estabeditor.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
-import net.deludobellico.commandops.estabeditor.data.jaxb.EstabData;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Side;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import net.deludobellico.commandops.estabeditor.model.provider.ModelProvider;
+import net.deludobellico.commandops.estabeditor.model.provider.ModelProviderFactory;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.io.File;
@@ -69,13 +70,13 @@ public class EstabModel {
         this.lastEdit = (estabData.getLastEdit() != null ? estabData.getLastEdit().toGregorianCalendar() : null);
 
         // Collect the Estab element lists
-        Collection<List<? extends Element>> estabLists = new ArrayList<>();
-        estabLists.add(estabData.getImage());
-        estabLists.add(estabData.getSide());
-        estabLists.add(estabData.getVehicle());
-        estabLists.add(estabData.getWeapon());
-        estabLists.add(estabData.getAmmo());
-        estabLists.add(estabData.getFormationEffects());
+        Collection<List<? extends ModelProvider>> estabLists = new ArrayList<>();
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getImage(), Image.class));
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getSide(), Side.class));
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getVehicle(), Vehicle.class));
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getWeapon(), Weapon.class));
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getAmmo(), Ammo.class));
+        estabLists.add(ModelProviderFactory.getProviders(estabData.getFormationEffects(), FormationEffects.class));
 
         // Create all the element maps
         allElements = new HashMap<>();
@@ -92,8 +93,8 @@ public class EstabModel {
 
         // Wrap all the elements to their element model and saves them to their corresponding map
         final int[] maxId = {0};
-        for (List<? extends Element> elements : estabLists)
-            elements.stream().map(Element::getModel).forEach(e -> {
+        for (List<? extends ModelProvider> elements : estabLists)
+            elements.stream().map(ModelProvider::getModel).forEach(e -> {
                 ElementModel em = (ElementModel) e;
                 if (em.getId() > maxId[0]) maxId[0] = em.getId();
                 em.shallowCopyToMap(allElements.get(em.getClass()));

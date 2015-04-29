@@ -1,4 +1,6 @@
-package net.deludobellico.commandops.estabeditor.model;
+package net.deludobellico.commandops.estabeditor.model.provider;
+
+import net.deludobellico.commandops.estabeditor.model.ElementModel;
 
 /**
  * Counter part of ElementModel. All classes wrapped by ElementModel implements this interface
@@ -7,6 +9,6 @@ package net.deludobellico.commandops.estabeditor.model;
  * @author Mario
  * @author Heine
  */
-public interface Element<T extends ElementModel> {
+public interface ModelProvider<T extends ElementModel> {
     T getModel();
 }
