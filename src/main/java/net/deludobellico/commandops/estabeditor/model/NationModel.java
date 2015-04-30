@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class NationModel extends AbstractElementModel<NationModel> implements PojoJFXModel<Nation> {
+public class NationModel extends AbstractElementModel<NationModel> implements PojoAdapter<Nation> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

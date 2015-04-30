@@ -12,7 +12,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoLoad;
  * @author Mario
  * @author Heine
  */
-public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
+public class AmmoLoadModel implements PojoAdapter<AmmoLoad> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty load = new SimpleIntegerProperty();

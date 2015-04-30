@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.RGBColor;
  * @author Mario
  * @author Heine
  */
-public class RGBColorModel implements PojoJFXModel<RGBColor> {
+public class RGBColorModel implements PojoAdapter<RGBColor> {
     private final IntegerProperty red = new SimpleIntegerProperty();
     private final IntegerProperty green = new SimpleIntegerProperty();
     private final IntegerProperty blue = new SimpleIntegerProperty();

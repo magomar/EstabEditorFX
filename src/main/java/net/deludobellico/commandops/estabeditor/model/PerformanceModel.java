@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.*;
  * @author Mario
  * @author Heine
  */
-public class PerformanceModel implements PojoJFXModel<Performance> {
+public class PerformanceModel implements PojoAdapter<Performance> {
     private final ObjectProperty<AmmoLoadModel> ammoLoad = new SimpleObjectProperty<>();
     private final IntegerProperty minRange = new SimpleIntegerProperty();
     private final DoubleProperty slowROF = new SimpleDoubleProperty();

@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class SideModel extends AbstractElementModel<SideModel> implements PojoJFXModel<Side> {
+public class SideModel extends AbstractElementModel<SideModel> implements PojoAdapter<Side> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

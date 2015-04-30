@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class RadioModel extends AbstractElementModel<RadioModel> implements PojoJFXModel<Radio> {
+public class RadioModel extends AbstractElementModel<RadioModel> implements PojoAdapter<Radio> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final List<Flag> flags = FXCollections.observableArrayList();

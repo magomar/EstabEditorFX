@@ -13,7 +13,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
  * @author Mario
  * @author Heine
  */
-public class IconModel implements PojoJFXModel<Icon> {
+public class IconModel implements PojoAdapter<Icon> {
     private final ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
     private final ObjectProperty<Color> backgroundDarkColor = new SimpleObjectProperty<>();
     private final ObjectProperty<Color> backgroundLightColor = new SimpleObjectProperty<>();

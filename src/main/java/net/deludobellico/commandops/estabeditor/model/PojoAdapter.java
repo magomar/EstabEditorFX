@@ -13,7 +13,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.YesNo;
  * @author Mario
  * @author Heine
  */
-interface PojoJFXModel<T> {
+interface PojoAdapter<T> {
 
     public static YesNo booleanToYesNo(boolean b) {
         return b ? YesNo.YES : YesNo.NO;

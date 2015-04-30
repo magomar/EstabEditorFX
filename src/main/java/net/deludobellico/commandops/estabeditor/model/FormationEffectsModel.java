@@ -19,7 +19,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class FormationEffectsModel extends AbstractElementModel<FormationEffectsModel> implements PojoJFXModel<FormationEffects> {
+public class FormationEffectsModel extends AbstractElementModel<FormationEffectsModel> implements PojoAdapter<FormationEffects> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private List<Flag> flags = FXCollections.observableArrayList();

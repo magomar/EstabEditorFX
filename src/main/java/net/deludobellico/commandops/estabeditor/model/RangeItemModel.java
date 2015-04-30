@@ -12,7 +12,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.RangeItem;
  * @author Mario
  * @author Heine
  */
-public class RangeItemModel implements PojoJFXModel<RangeItem> {
+public class RangeItemModel implements PojoAdapter<RangeItem> {
     private final IntegerProperty range = new SimpleIntegerProperty();
     private final DoubleProperty accuracy = new SimpleDoubleProperty();
     private final DoubleProperty armourPenetration = new SimpleDoubleProperty();

@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class ServiceModel extends AbstractElementModel<ServiceModel> implements PojoJFXModel<Service> {
+public class ServiceModel extends AbstractElementModel<ServiceModel> implements PojoAdapter<Service> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

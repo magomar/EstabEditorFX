@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class WeaponModel extends AbstractElementModel<WeaponModel> implements PojoJFXModel<Weapon> {
+public class WeaponModel extends AbstractElementModel<WeaponModel> implements PojoAdapter<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -70,11 +70,11 @@ public class WeaponModel extends AbstractElementModel<WeaponModel> implements Po
         pojo.setCrew(crew.get());
         pojo.setReliability(reliability.get());
         pojo.setType(type.get() != null ? type.get() : WeaponType.GUN);
-        pojo.setSingleShot(PojoJFXModel.booleanToYesNo(singleShot.get()));
+        pojo.setSingleShot(PojoAdapter.booleanToYesNo(singleShot.get()));
         pojo.setPrimaryRole(primaryRole.get() != null ? primaryRole.get() : PrimaryRole.ANTI_PERSONNEL);
         pojo.setCalibre(calibre.get());
         pojo.setMuzzleVelocity(muzzleVelocity.get());
-        pojo.setMustDeployToFire(PojoJFXModel.booleanToYesNo(mustDeployToFire.get()));
+        pojo.setMustDeployToFire(PojoAdapter.booleanToYesNo(mustDeployToFire.get()));
         pojo.setArmaments("");
         pojo.setPerformanceList(new PerformanceList());
         if (performances.isEmpty()) pojo.getPerformanceList().getPerformance().add(new PerformanceModel().getPojo());
@@ -95,11 +95,11 @@ public class WeaponModel extends AbstractElementModel<WeaponModel> implements Po
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
         type.set(pojo.getType());
-        singleShot.set(PojoJFXModel.yesNoToBoolean(pojo.getSingleShot()));
+        singleShot.set(PojoAdapter.yesNoToBoolean(pojo.getSingleShot()));
         primaryRole.set(pojo.getPrimaryRole());
         calibre.set(pojo.getCalibre());
         muzzleVelocity.set(pojo.getMuzzleVelocity());
-        mustDeployToFire.set(PojoJFXModel.yesNoToBoolean(pojo.getMustDeployToFire()));
+        mustDeployToFire.set(PojoAdapter.yesNoToBoolean(pojo.getMustDeployToFire()));
         pojo.getPerformanceList().getPerformance().stream().map(PerformanceModel::new).forEach(performances::add);
         flags.addAll(pojo.getFlags());
     }

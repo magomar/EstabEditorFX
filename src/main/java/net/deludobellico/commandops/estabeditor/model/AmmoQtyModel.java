@@ -12,7 +12,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.AmmoQty;
  * @author Mario
  * @author Heine
  */
-public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
+public class AmmoQtyModel implements PojoAdapter<AmmoQty> {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();

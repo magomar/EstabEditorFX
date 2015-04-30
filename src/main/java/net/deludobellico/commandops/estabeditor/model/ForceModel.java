@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class ForceModel extends AbstractElementModel<ForceModel> implements  PojoJFXModel<Force> {
+public class ForceModel extends AbstractElementModel<ForceModel> implements PojoAdapter<Force> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -114,7 +114,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
         force.setAmmoList(new AmmoList());
         equipmentList.stream().map(EquipmentModel::getPojo).forEach(force.getEquipmentList().getEquipment()::add);
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(force.getAmmoList().getAmmo()::add);
-        force.setCanBombard(PojoJFXModel.booleanToYesNo(canBombard.get()));
+        force.setCanBombard(PojoAdapter.booleanToYesNo(canBombard.get()));
         force.getFlags().addAll(flags);
         return force;
     }
@@ -152,7 +152,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
         pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentList::add);
         pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoList::add);
         flags.addAll(pojo.getFlags());
-        canBombard.set(PojoJFXModel.yesNoToBoolean(pojo.getCanBombard()));
+        canBombard.set(PojoAdapter.yesNoToBoolean(pojo.getCanBombard()));
     }
 
     public int getId() {

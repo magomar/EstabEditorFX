@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class VehicleModel extends AbstractElementModel<VehicleModel> implements PojoJFXModel<Vehicle> {
+public class VehicleModel extends AbstractElementModel<VehicleModel> implements PojoAdapter<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
@@ -109,8 +109,8 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
         vehicle.setBulkFuelCapacity(bulkFuelCapacity.get());
         vehicle.setPayloadCapacity(payloadCapacity.get());
         vehicle.setTakeCoverMod(takeCoverMod.get());
-        vehicle.setHasOpenTop(PojoJFXModel.booleanToYesNo(hasOpenTop.get()).value());
-        vehicle.setHasTurret(PojoJFXModel.booleanToYesNo(hasTurret.get()).value());
+        vehicle.setHasOpenTop(PojoAdapter.booleanToYesNo(hasOpenTop.get()).value());
+        vehicle.setHasTurret(PojoAdapter.booleanToYesNo(hasTurret.get()).value());
         vehicle.setBattleWeight(battleWeight.get());
         Armor a = new Armor();
         a.setFront(frontArmor.get());

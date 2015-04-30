@@ -9,7 +9,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
  * @author Mario
  * @author Heine
  */
-public class EquipmentModel implements PojoJFXModel<Equipment> {
+public class EquipmentModel implements PojoAdapter<Equipment> {
 
     private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
     private final transient StringProperty name = new SimpleStringProperty();

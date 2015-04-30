@@ -10,7 +10,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Rank;
  * @author Mario
  * @author Heine
  */
-public class RankModel implements PojoJFXModel<Rank> {
+public class RankModel implements PojoAdapter<Rank> {
     private final StringProperty shortName = new SimpleStringProperty();
     private final StringProperty fullName = new SimpleStringProperty();
 

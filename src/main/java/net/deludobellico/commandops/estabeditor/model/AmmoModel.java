@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class AmmoModel extends AbstractElementModel<AmmoModel> implements PojoJFXModel<Ammo> {
+public class AmmoModel extends AbstractElementModel<AmmoModel> implements PojoAdapter<Ammo> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class ImageModel extends AbstractElementModel<ImageModel> implements PojoJFXModel<Image> {
+public class ImageModel extends AbstractElementModel<ImageModel> implements PojoAdapter<Image> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty fileId = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
