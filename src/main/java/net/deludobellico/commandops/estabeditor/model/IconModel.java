@@ -25,7 +25,7 @@ public class IconModel implements PojoJFXModel<Icon> {
     private final BooleanProperty isHq = new SimpleBooleanProperty();
 
     public IconModel(Icon pojo) {
-        setPojo(pojo);
+        initialize(pojo);
     }
 
     public IconModel() {
@@ -42,7 +42,7 @@ public class IconModel implements PojoJFXModel<Icon> {
     }
 
     @Override
-    public void setPojo(Icon pojo) {
+    public void initialize(Icon pojo) {
         backgroundColor.set(RGBColorModel.getColor(pojo.getBackgroundColor()));
         backgroundDarkColor.set(RGBColorModel.getColor(pojo.getBackgroundDarkColor()));
         backgroundLightColor.set(RGBColorModel.getColor(pojo.getBackgroundLightColor()));

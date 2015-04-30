@@ -35,7 +35,7 @@ public class WeaponModel extends AbstractElementModel<WeaponModel> implements Po
     private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public WeaponModel(Weapon weapon) {
-        setPojo(weapon);
+        initialize(weapon);
     }
 
     public WeaponModel() {
@@ -85,7 +85,7 @@ public class WeaponModel extends AbstractElementModel<WeaponModel> implements Po
     }
 
     @Override
-    public void setPojo(Weapon pojo) {
+    public void initialize(Weapon pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

@@ -25,7 +25,7 @@ public class FormationEffectsModel extends AbstractElementModel<FormationEffects
     private List<Flag> flags = FXCollections.observableArrayList();
 
     public FormationEffectsModel(FormationEffects formationEffects) {
-        setPojo(formationEffects);
+        initialize(formationEffects);
     }
 
     public FormationEffectsModel() {
@@ -41,7 +41,7 @@ public class FormationEffectsModel extends AbstractElementModel<FormationEffects
     }
 
     @Override
-    public void setPojo(FormationEffects pojo) {
+    public void initialize(FormationEffects pojo) {
         id.set(pojo.getId());
         name.set(pojo.getType().value());
     }

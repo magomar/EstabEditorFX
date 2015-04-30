@@ -26,7 +26,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     }
 
     public PerformanceModel(Performance performance) {
-        setPojo(performance);
+        initialize(performance);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PerformanceModel implements PojoJFXModel<Performance> {
     }
 
     @Override
-    public void setPojo(Performance pojo) {
+    public void initialize(Performance pojo) {
         AmmoLoadModel ammoLoadModel = new AmmoLoadModel(pojo.getAmmo());
         ammoLoad.set(ammoLoadModel);
         minRange.set(pojo.getMinRange());

@@ -25,7 +25,7 @@ public class AmmoModel extends AbstractElementModel<AmmoModel> implements PojoJF
     private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public AmmoModel(Ammo ammo) {
-        setPojo(ammo);
+        initialize(ammo);
     }
 
     public AmmoModel() {
@@ -45,7 +45,7 @@ public class AmmoModel extends AbstractElementModel<AmmoModel> implements PojoJF
     }
 
     @Override
-    public void setPojo(Ammo pojo) {
+    public void initialize(Ammo pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

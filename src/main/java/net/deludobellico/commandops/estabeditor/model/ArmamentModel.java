@@ -27,7 +27,7 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
 
     public ArmamentModel(Armament armament) {
-        setPojo(armament);
+        initialize(armament);
     }
 
     public ArmamentModel() {
@@ -44,7 +44,7 @@ public class ArmamentModel implements PojoJFXModel<Armament> {
     }
 
     @Override
-    public void setPojo(Armament pojo) {
+    public void initialize(Armament pojo) {
         equipmentObjectId.set(pojo.getEquipmentObjectId());
         equipmentName.set(pojo.getEquipmentName());
         qty.set(pojo.getQty());

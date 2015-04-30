@@ -25,5 +25,5 @@ interface PojoJFXModel<T> {
 
     T getPojo();
 
-    void setPojo(T pojo);
+    void initialize(T pojo);
 }

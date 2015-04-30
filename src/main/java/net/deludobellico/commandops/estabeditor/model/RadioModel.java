@@ -24,7 +24,7 @@ public class RadioModel extends AbstractElementModel<RadioModel> implements Pojo
     private final List<Flag> flags = FXCollections.observableArrayList();
 
     public RadioModel(Radio radio) {
-        setPojo(radio);
+        initialize(radio);
     }
 
     public RadioModel() {
@@ -40,7 +40,7 @@ public class RadioModel extends AbstractElementModel<RadioModel> implements Pojo
     }
 
     @Override
-    public void setPojo(Radio pojo) {
+    public void initialize(Radio pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
     }

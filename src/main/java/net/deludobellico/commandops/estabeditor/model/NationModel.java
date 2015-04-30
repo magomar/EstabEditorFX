@@ -29,7 +29,7 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
     private final ObjectProperty<SideModel> side = new SimpleObjectProperty<>();
 
     public NationModel(Nation nation) {
-        setPojo(nation);
+        initialize(nation);
     }
 
     public NationModel() {
@@ -54,7 +54,7 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
     }
 
     @Override
-    public void setPojo(Nation pojo) {
+    public void initialize(Nation pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

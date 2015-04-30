@@ -55,7 +55,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
 
 
     public ForceModel(Force force) {
-        setPojo(force);
+        initialize(force);
     }
 
     public ForceModel() {
@@ -120,7 +120,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements  Poj
     }
 
     @Override
-    public void setPojo(Force pojo) {
+    public void initialize(Force pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

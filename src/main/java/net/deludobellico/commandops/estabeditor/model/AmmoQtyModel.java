@@ -19,7 +19,7 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
     private final IntegerProperty qty = new SimpleIntegerProperty();
 
     public AmmoQtyModel(AmmoQty pojo) {
-        setPojo(pojo);
+        initialize(pojo);
     }
 
     public AmmoQtyModel() {
@@ -35,7 +35,7 @@ public class AmmoQtyModel implements PojoJFXModel<AmmoQty> {
     }
 
     @Override
-    public void setPojo(AmmoQty pojo) {
+    public void initialize(AmmoQty pojo) {
 
     }
 

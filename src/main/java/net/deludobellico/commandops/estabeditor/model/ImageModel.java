@@ -25,7 +25,7 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     private List<Flag> flags = FXCollections.observableArrayList();
 
     public ImageModel(Image image) {
-        setPojo(image);
+        initialize(image);
     }
 
     public ImageModel() {
@@ -41,7 +41,7 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     }
 
     @Override
-    public void setPojo(Image pojo) {
+    public void initialize(Image pojo) {
         id.set(pojo.getId());
         fileId.set(pojo.getFileId());
         name.set(pojo.getFileId());

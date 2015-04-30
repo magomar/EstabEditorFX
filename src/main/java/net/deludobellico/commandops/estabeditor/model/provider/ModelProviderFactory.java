@@ -17,6 +17,7 @@ public class ModelProviderFactory {
     public static ModelProvider<SideModel> getImageProvider(Side image) {
         return new SideProvider(image);
     }
+
     public static ModelProvider<VehicleModel> getImageProvider(Vehicle vehicle) {
         return new VehicleProvider(vehicle);
     }

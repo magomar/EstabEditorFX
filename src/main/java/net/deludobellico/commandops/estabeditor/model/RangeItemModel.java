@@ -22,7 +22,7 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
     }
 
     public RangeItemModel(RangeItem pojo) {
-        setPojo(pojo);
+        initialize(pojo);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class RangeItemModel implements PojoJFXModel<RangeItem> {
     }
 
     @Override
-    public void setPojo(RangeItem pojo) {
+    public void initialize(RangeItem pojo) {
         range.set(pojo.getRange());
         accuracy.set(pojo.getAccuracy());
         armourPenetration.set(pojo.getArmourPenetration());

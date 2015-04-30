@@ -58,7 +58,7 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
     private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public VehicleModel(Vehicle vehicle) {
-        setPojo(vehicle);
+        initialize(vehicle);
     }
 
     public VehicleModel() {
@@ -123,7 +123,7 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
     }
 
     @Override
-    public void setPojo(Vehicle pojo) {
+    public void initialize(Vehicle pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

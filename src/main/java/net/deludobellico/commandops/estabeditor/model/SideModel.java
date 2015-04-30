@@ -34,7 +34,7 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoJF
     }
 
     public SideModel(Side side) {
-        setPojo(side);
+        initialize(side);
     }
 
     public SideModel(Side side, Map<Integer, SideModel> sideModelMap) {
@@ -62,7 +62,7 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoJF
     }
 
     @Override
-    public void setPojo(Side pojo) {
+    public void initialize(Side pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

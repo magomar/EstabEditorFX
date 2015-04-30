@@ -32,7 +32,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     private final ObjectProperty<NationModel> nation = new SimpleObjectProperty<>();
 
     public ServiceModel(Service service) {
-        setPojo(service);
+        initialize(service);
     }
 
     public ServiceModel() {
@@ -66,7 +66,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     }
 
     @Override
-    public void setPojo(Service pojo) {
+    public void initialize(Service pojo) {
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());

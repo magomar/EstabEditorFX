@@ -17,7 +17,7 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
     private final transient ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
 
     public EquipmentModel(Equipment pojo) {
-        setPojo(pojo);
+        initialize(pojo);
     }
 
     public EquipmentModel() {
@@ -34,7 +34,7 @@ public class EquipmentModel implements PojoJFXModel<Equipment> {
     }
 
     @Override
-    public void setPojo(Equipment pojo) {
+    public void initialize(Equipment pojo) {
         equipmentObjectId.set(pojo.getEquipmentObjectId());
         name.set(pojo.getName());
         qty.set(pojo.getQty());

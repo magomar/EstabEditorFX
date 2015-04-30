@@ -21,7 +21,7 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     }
 
     public AmmoLoadModel(AmmoLoad pojo) {
-        setPojo(pojo);
+        initialize(pojo);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class AmmoLoadModel implements PojoJFXModel<AmmoLoad> {
     }
 
     @Override
-    public void setPojo(AmmoLoad pojo) {
+    public void initialize(AmmoLoad pojo) {
         id.set(pojo.getObjectId());
         name.set(pojo.getName());
         load.set(pojo.getLoad());
