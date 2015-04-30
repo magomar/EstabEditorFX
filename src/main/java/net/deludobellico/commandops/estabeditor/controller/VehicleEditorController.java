@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
@@ -31,6 +32,7 @@ import java.util.ResourceBundle;
  * @see EstabController
  */
 public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
+    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter();
 
     /**
      * Root node components
@@ -278,39 +280,39 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
     @Override
     public void bindProperties(VehicleModel element) {
-        battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), new NumberStringConverter());
-        bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), new NumberStringConverter());
-        crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
-        crossCountryMaxSpeed.textProperty().bindBidirectional(element.maxCrossCountrySpeedProperty(), new NumberStringConverter());
-        crossCountryNormalSpeed.textProperty().bindBidirectional(element.normalCrossCountrySpeedProperty(), new NumberStringConverter());
+        battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), NUMBER_STRING_CONVERTER);
+        bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), NUMBER_STRING_CONVERTER);
+        crew.textProperty().bindBidirectional(element.crewProperty(), NUMBER_STRING_CONVERTER);
+        crossCountryMaxSpeed.textProperty().bindBidirectional(element.maxCrossCountrySpeedProperty(), NUMBER_STRING_CONVERTER);
+        crossCountryNormalSpeed.textProperty().bindBidirectional(element.normalCrossCountrySpeedProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
-        frontArmor.textProperty().bindBidirectional(element.frontArmorProperty(), new NumberStringConverter());
-        fuelCapacity.textProperty().bindBidirectional(element.fuelCapacityProperty(), new NumberStringConverter());
-        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(element.maxFuelConsumptionProperty(), new NumberStringConverter());
-        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(element.normalFuelConsumptionProperty(), new NumberStringConverter());
+        frontArmor.textProperty().bindBidirectional(element.frontArmorProperty(), NUMBER_STRING_CONVERTER);
+        fuelCapacity.textProperty().bindBidirectional(element.fuelCapacityProperty(), NUMBER_STRING_CONVERTER);
+        fuelConsumptionMaxSpeed.textProperty().bindBidirectional(element.maxFuelConsumptionProperty(), NUMBER_STRING_CONVERTER);
+        fuelConsumptionNormalSpeed.textProperty().bindBidirectional(element.normalFuelConsumptionProperty(), NUMBER_STRING_CONVERTER);
 
         hasOpenTop.selectedProperty().bindBidirectional(element.hasOpenTopProperty());
         hasTurret.selectedProperty().bindBidirectional(element.hasTurretProperty());
 
-        height.textProperty().bindBidirectional(element.heightProperty(), new NumberStringConverter());
-        length.textProperty().bindBidirectional(element.lengthProperty(), new NumberStringConverter());
-        maxFordingDepth.textProperty().bindBidirectional(element.maxFordingDepthProperty(), new NumberStringConverter());
-        maxGradient.textProperty().bindBidirectional(element.maxGradientProperty(), new NumberStringConverter());
-        maxTrenchWidth.textProperty().bindBidirectional(element.maxTrenchWidthProperty(), new NumberStringConverter());
+        height.textProperty().bindBidirectional(element.heightProperty(), NUMBER_STRING_CONVERTER);
+        length.textProperty().bindBidirectional(element.lengthProperty(), NUMBER_STRING_CONVERTER);
+        maxFordingDepth.textProperty().bindBidirectional(element.maxFordingDepthProperty(), NUMBER_STRING_CONVERTER);
+        maxGradient.textProperty().bindBidirectional(element.maxGradientProperty(), NUMBER_STRING_CONVERTER);
+        maxTrenchWidth.textProperty().bindBidirectional(element.maxTrenchWidthProperty(), NUMBER_STRING_CONVERTER);
         name.textProperty().bindBidirectional(element.nameProperty());
-        payloadCapacity.textProperty().bindBidirectional(element.payloadCapacityProperty(), new NumberStringConverter());
-        personnelCapacity.textProperty().bindBidirectional(element.personnelCapacityProperty(), new NumberStringConverter());
-        rearArmor.textProperty().bindBidirectional(element.rearArmorProperty(), new NumberStringConverter());
-        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), new NumberStringConverter());
-        roadMaxSpeed.textProperty().bindBidirectional(element.maxRoadSpeedProperty(), new NumberStringConverter());
-        roadNormalSpeed.textProperty().bindBidirectional(element.normalRoadSpeedProperty(), new NumberStringConverter());
-        ronsonability.textProperty().bindBidirectional(element.ronsonabilityProperty(), new NumberStringConverter());
-        sideArmor.textProperty().bindBidirectional(element.sideArmorProperty(), new NumberStringConverter());
-        takeCoverMod.textProperty().bindBidirectional(element.takeCoverModProperty(), new NumberStringConverter());
-        topArmor.textProperty().bindBidirectional(element.topArmorProperty(), new NumberStringConverter());
-        towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), new NumberStringConverter());
-        weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
-        width.textProperty().bindBidirectional(element.widthProperty(), new NumberStringConverter());
+        payloadCapacity.textProperty().bindBidirectional(element.payloadCapacityProperty(), NUMBER_STRING_CONVERTER);
+        personnelCapacity.textProperty().bindBidirectional(element.personnelCapacityProperty(), NUMBER_STRING_CONVERTER);
+        rearArmor.textProperty().bindBidirectional(element.rearArmorProperty(), NUMBER_STRING_CONVERTER);
+        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), NUMBER_STRING_CONVERTER);
+        roadMaxSpeed.textProperty().bindBidirectional(element.maxRoadSpeedProperty(), NUMBER_STRING_CONVERTER);
+        roadNormalSpeed.textProperty().bindBidirectional(element.normalRoadSpeedProperty(), NUMBER_STRING_CONVERTER);
+        ronsonability.textProperty().bindBidirectional(element.ronsonabilityProperty(), NUMBER_STRING_CONVERTER);
+        sideArmor.textProperty().bindBidirectional(element.sideArmorProperty(), NUMBER_STRING_CONVERTER);
+        takeCoverMod.textProperty().bindBidirectional(element.takeCoverModProperty(), NUMBER_STRING_CONVERTER);
+        topArmor.textProperty().bindBidirectional(element.topArmorProperty(), NUMBER_STRING_CONVERTER);
+        towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), NUMBER_STRING_CONVERTER);
+        weight.textProperty().bindBidirectional(element.weightProperty(), NUMBER_STRING_CONVERTER);
+        width.textProperty().bindBidirectional(element.widthProperty(), NUMBER_STRING_CONVERTER);
         vehicleType.valueProperty().bindBidirectional(element.typeProperty());
 
         armamentTableView.getColumns().clear();

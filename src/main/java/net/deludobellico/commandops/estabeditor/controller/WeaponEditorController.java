@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -14,6 +15,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
@@ -30,6 +32,7 @@ import java.util.ResourceBundle;
  */
 public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
 
+    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter();
     /**
      * Root node
      */
@@ -154,7 +157,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         weaponType.setItems(FXCollections.observableArrayList(WeaponType.values()));
         // Set the activeWeapon type with the one selected in the combobox
 
-
         // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         // Set the activeWeapon primary role with the one selected in the combobox
@@ -173,8 +175,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
      */
     @FXML
     protected void addRangeToTable(ActionEvent actionEvent) {
-
-
         if (tableNewRangeValue.getText().isEmpty() || tableNewAccuracyValue.getText().isEmpty() || tableNewArmorPenetrationValue.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
             UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", "", DialogAction.OK);
@@ -223,7 +223,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabController().getEstabModel().getAmmo().values());
+            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", estabController.getEstabModel().getAmmo().values());
             // If the user didn't select any ammo, abort
             if (selectedAmmo != null) {
                 // Create new AmmoLoad with the ammo name and id
@@ -303,13 +303,13 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
      * @param p the {@link PerformanceModel} to unbind
      */
     private void bindPerformanceProperties(PerformanceModel p) {
-        minRange.textProperty().bindBidirectional(p.minRangeProperty(), new NumberStringConverter());
-        fireRateSlow.textProperty().bindBidirectional(p.slowROFProperty(), new NumberStringConverter());
-        fireRateNormal.textProperty().bindBidirectional(p.normalROFProperty(), new NumberStringConverter());
-        fireRateRapid.textProperty().bindBidirectional(p.rapidROFProperty(), new NumberStringConverter());
-        burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), new NumberStringConverter());
-        shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), new NumberStringConverter());
-        load.textProperty().bindBidirectional(p.getAmmoLoad().loadProperty(), new NumberStringConverter());
+        minRange.textProperty().bindBidirectional(p.minRangeProperty(), NUMBER_STRING_CONVERTER);
+        fireRateSlow.textProperty().bindBidirectional(p.slowROFProperty(), NUMBER_STRING_CONVERTER);
+        fireRateNormal.textProperty().bindBidirectional(p.normalROFProperty(), NUMBER_STRING_CONVERTER);
+        fireRateRapid.textProperty().bindBidirectional(p.rapidROFProperty(), NUMBER_STRING_CONVERTER);
+        burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), NUMBER_STRING_CONVERTER);
+        shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), NUMBER_STRING_CONVERTER);
+        load.textProperty().bindBidirectional(p.getAmmoLoad().loadProperty(), NUMBER_STRING_CONVERTER);
 
         ammoNameLabel.setText(p.getAmmoLoad().getName());
 
@@ -329,6 +329,26 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         rangeItemTableView.getColumns().add(rangeTableArmorColumn);
         rangeItemTableView.getItems().addAll(p.getRanges());
     }
+
+    /**
+     * Shows a dialog where the user can selects the desired ammo for the weapon.
+     *
+     * @param actionEvent is not used
+     * @see AmmoModel
+     * @see ElementSearchDialog
+     */
+    @FXML
+    private void ammoSelectAction(ActionEvent actionEvent) {
+        AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo",
+                estabController.getEstabModel().getAmmo().values());
+        if (ammo != null) {
+            AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();
+            ammoLoadModel.setId(ammo.getId());
+            ammoLoadModel.setName(ammo.getName());
+            ammoNameLabel.setText(ammo.getName());
+        }
+    }
+
 
     @Override
     public void setEditable(boolean isEditable) {
@@ -446,16 +466,12 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
                 performanceFireTypeComboBox.getItems().add(entry.getKey());
             }
         }
-        performanceFireTypeList.getSelectionModel().clearSelection();
+        performanceFireTypeList.getSelectionModel().selectFirst();
 
-        ImageModel image = getEstabController().getEstabModel().getImages().get(element.getPictureId());
+        ImageModel image = estabController.getEstabModel().getImages().get(element.getPictureId());
         if (image != null) {
-            weaponImageView.setImage(FileIO.getDatasetImage(getEstabController().getActiveFile(), image.getFileId()));
+            weaponImageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), image.getFileId()));
         }
-    }
-
-    private EstabController getEstabController() {
-        return estabController;
     }
 
     @Override
