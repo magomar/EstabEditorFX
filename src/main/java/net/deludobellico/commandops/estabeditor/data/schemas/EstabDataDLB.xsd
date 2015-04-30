@@ -172,13 +172,9 @@ Changes in version 1.0
     <xs:complexType name="DeploymentDuration">
         <xs:sequence>
             <xs:element name="deployed" type="xs:time"/>
-            <!--00:00-->
             <xs:element name="dug-in" type="xs:time"/>
-            <!--00:00-->
             <xs:element name="entrenched" type="xs:time"/>
-            <!--00:00:00-->
             <xs:element name="fortified" type="xs:time"/>
-            <!--00:00:00-->
         </xs:sequence>
     </xs:complexType>
 
