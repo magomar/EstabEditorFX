@@ -5,6 +5,9 @@ package net.deludobellico.commandops.estabeditor.controller;
  */
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,9 +15,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.model.EquipmentModel;
-import net.deludobellico.commandops.estabeditor.model.ForceModel;
+import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
@@ -48,7 +49,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     @FXML
     private ComboBox<ForceSize> forceSize;
     @FXML
-    private ComboBox<Integer> commanderRank;
+    private ComboBox<RankModel> commanderRank;
 
     // Right column
     @FXML
@@ -137,6 +138,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
      */
     private ForceModel activeForce;
     private EstabController estabController;
+    private CommanderRanks commanderRanks;
 
     /**
      * @param location
@@ -150,8 +152,6 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         targetClass.getItems().addAll(TargetClass.values());
         moveClass.getItems().addAll(MoveType.values());
         forceSize.getItems().addAll(ForceSize.values());
-
-
     }
 
     @FXML
@@ -257,6 +257,12 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         targetClass.valueProperty().bindBidirectional(element.targetClassProperty());
         moveClass.valueProperty().bindBidirectional(element.moveTypeProperty());
         forceSize.valueProperty().bindBidirectional(element.sizeProperty());
+        commanderRank.setItems(commanderRanks.getServiceRankList(element.getService()));
+        commanderRank.getSelectionModel().select(element.getCommanderRank());
+        commanderRank.valueProperty().addListener((observable, oldValue, newValue) -> {
+            element.setCommanderRank(newValue.getIndex());
+        });
+
         personnel.textProperty().bindBidirectional(element.persQtyProperty(), new NumberStringConverter());
         staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), new NumberStringConverter());
         infantryValue.textProperty().bindBidirectional(element.infantryValueProperty(), new NumberStringConverter());
@@ -275,7 +281,6 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
 //        militarySymbol.setEditable(isEditable);
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());
-        forceSize.valueProperty().bindBidirectional(element.sizeProperty());
         backgroundColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundColorProperty());
         backgroundLightColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundLightColorProperty());
         backgroundDarkColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundDarkColorProperty());
@@ -318,6 +323,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         targetClass.valueProperty().unbindBidirectional(element.targetClassProperty());
         moveClass.valueProperty().unbindBidirectional(element.moveTypeProperty());
         forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
+        // TODO perhaps remove the listener from commanderRank
         personnel.textProperty().unbindBidirectional(element.persQtyProperty());
         staffCapacity.textProperty().unbindBidirectional(element.staffCapacityProperty());
         infantryValue.textProperty().unbindBidirectional(element.infantryValueProperty());
@@ -354,6 +360,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     public void setActiveElement(ForceModel element) {
         if (activeForce != null) unbindProperties(activeForce);
         this.activeForce = element;
+        if (null==commanderRanks) commanderRanks=new CommanderRanks(estabController.getEstabModel());
         bindProperties(element);
     }
 

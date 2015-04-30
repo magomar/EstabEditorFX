@@ -1,5 +1,7 @@
 package net.deludobellico.commandops.estabeditor.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Rank;
@@ -13,6 +15,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Rank;
 public class RankModel implements PojoAdapter<Rank> {
     private final StringProperty shortName = new SimpleStringProperty();
     private final StringProperty fullName = new SimpleStringProperty();
+    private final IntegerProperty index = new SimpleIntegerProperty(0);
 
     public RankModel(Rank rank) {
         initialize(rank);
@@ -34,6 +37,18 @@ public class RankModel implements PojoAdapter<Rank> {
     public void initialize(Rank pojo) {
         shortName.set(pojo.getShortName());
         fullName.set(pojo.getFullName());
+    }
+
+    public int getIndex() {
+        return index.get();
+    }
+
+    public IntegerProperty indexProperty() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index.set(index);
     }
 
     public String getShortName() {
@@ -80,5 +95,10 @@ public class RankModel implements PojoAdapter<Rank> {
         int result = getShortName() != null ? getShortName().hashCode() : 0;
         result = 31 * result + (getFullName() != null ? getFullName().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return fullName.get();
     }
 }
