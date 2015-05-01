@@ -95,9 +95,8 @@ public class EstabModel {
         final int[] maxId = {0};
         for (List<? extends ModelProvider> elements : estabLists)
             elements.stream().map(ModelProvider::getModel).forEach(e -> {
-                ElementModel em = (ElementModel) e;
-                if (em.getId() > maxId[0]) maxId[0] = em.getId();
-                em.shallowCopyToMap(allElements.get(em.getClass()));
+                if (e.getId() > maxId[0]) maxId[0] = e.getId();
+                e.shallowCopyToMap(allElements.get(e.getClass()));
             });
 
         Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
