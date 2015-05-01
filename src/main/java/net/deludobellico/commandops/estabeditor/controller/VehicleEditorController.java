@@ -61,8 +61,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     private TextField battleWeight;
     @FXML
     private TextField weight;
-    @FXML
-    private ImageView vehicleImageView;
 
     /**
      * Performance tab components
@@ -145,6 +143,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      */
     private VehicleModel activeVehicle;
     private EstabController estabController;
+    @FXML
+    private ElementImageController imagePanelController;
 
     /**
      * Adds listeners to components and sets the initial item collections.
@@ -364,7 +364,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         vehicleType.valueProperty().unbindBidirectional(element.typeProperty());
 
         armamentTableView.getItems().clear();
-        vehicleImageView.setImage(null);
 
     }
 
@@ -418,18 +417,15 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     public void setActiveElement(VehicleModel element) {
         if (activeVehicle != null) {
             unbindProperties(activeVehicle);
-            vehicleImageView.setImage(null);
         }
         this.activeVehicle = element;
+        imagePanelController.setActiveElement(element);
         bindProperties(activeVehicle);
-
-        ImageModel image = estabController.getEstabModel().getImages().get(element.getPictureId());
-        if (image != null)
-            vehicleImageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), image.getFileId()));
     }
 
     @Override
     public void setEstabController(EstabController estabController) {
         this.estabController = estabController;
+        imagePanelController.setEstabController(estabController);
     }
 }

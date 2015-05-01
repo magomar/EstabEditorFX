@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.ElementImageController">
+   <children>
+      <GridPane prefHeight="190.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="imageFilename" editable="false" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER">
+               <GridPane.margin>
+                  <Insets right="55.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="openImageButton" maxWidth="50.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#selectImage" prefWidth="50.0" text="Open" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <ImageView fx:id="imageView" fitHeight="122.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+            <CheckBox fx:id="noImageCheckbox" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#removeImage" prefHeight="17.0" prefWidth="108.0" text="No Image" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.0" minWidth="72.99996948242188" prefWidth="236.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0000305175781" minWidth="0.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="508.0000305175781" minWidth="10.0" prefWidth="400.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="278.0" minHeight="32.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="278.0" minHeight="27.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="278.0" minHeight="80.0" prefHeight="132.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

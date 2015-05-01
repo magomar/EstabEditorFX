@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class VehicleModel extends AbstractElementModel<VehicleModel> implements PojoAdapter<Vehicle> {
+public class VehicleModel extends AbstractGraphicalElementModel<VehicleModel> implements PojoAdapter<Vehicle> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();

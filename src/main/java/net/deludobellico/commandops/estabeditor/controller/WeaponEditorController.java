@@ -13,7 +13,6 @@ import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
-import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -52,8 +51,6 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     private CheckBox singleShot;
     @FXML
     private CheckBox mustDeployToFire;
-    @FXML
-    private ImageView weaponImageView;
 
 
     /**
@@ -134,6 +131,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
     // Parent controller
     private EstabController estabController;
+    @FXML
+    private ElementImageController imagePanelController;
 
     /**
      * Adds listeners to components and sets the initial item collections.
@@ -162,6 +161,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         // Set the activeWeapon primary role with the one selected in the combobox
 
         description.setWrapText(true);
+
+
     }
 
     /**
@@ -449,9 +450,9 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     public void setActiveElement(WeaponModel element) {
         if (activeWeapon != null) {
             unbindProperties(activeWeapon);
-            weaponImageView.setImage(null);
         }
         this.activeWeapon = element;
+        imagePanelController.setActiveElement(element);
         bindProperties(activeWeapon);
 
         performanceFireTypeList.getItems().clear();
@@ -467,15 +468,11 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
             }
         }
         performanceFireTypeList.getSelectionModel().selectFirst();
-
-        ImageModel image = estabController.getEstabModel().getImages().get(element.getPictureId());
-        if (image != null) {
-            weaponImageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), image.getFileId()));
-        }
     }
 
     @Override
     public void setEstabController(EstabController estabController) {
         this.estabController = estabController;
+        imagePanelController.setEstabController(estabController);
     }
 }

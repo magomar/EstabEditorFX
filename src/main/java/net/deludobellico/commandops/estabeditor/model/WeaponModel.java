@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class WeaponModel extends AbstractElementModel<WeaponModel> implements PojoAdapter<Weapon> {
+public class WeaponModel extends AbstractGraphicalElementModel<WeaponModel> implements PojoAdapter<Weapon> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
