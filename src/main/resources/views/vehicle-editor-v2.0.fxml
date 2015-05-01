@@ -76,7 +76,7 @@
                                                        <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                                        </children>
                                     </GridPane>
-                                    <fx:include source="element-image.fxml" />
+                                    <fx:include  fx:id="imagePanel" source="element-image.fxml"/>
                                  </children>
                               </HBox>
                            </children>

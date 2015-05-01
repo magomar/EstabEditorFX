@@ -14,6 +14,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.GraphicalElementModel;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
+import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import javax.imageio.ImageIO;
@@ -64,12 +65,21 @@ public class ElementImageController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(String.format("Select image depicting %s", activeElement.getName()));
         FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter(
-                "Image files", ImageIO.getReaderFileSuffixes());
+                //"Image files", ImageIO.getReaderFileSuffixes());
+                "Image files", "*.bmp");
         fileChooser.getExtensionFilters().add(imageFilter);
+        File initialDirectory = null;
+        if (Settings.getInstance().getLastOpenedFolder() != null)
+            initialDirectory = new File(Settings.getInstance().getLastOpenedFolder());
+        if (initialDirectory == null || !initialDirectory.exists())
+            initialDirectory = new File(System.getProperty("user.dir"));
+        fileChooser.setInitialDirectory(initialDirectory);
         File imageFile = fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
-        imageFilename.setText(imageFile.getName());
-        Image image = new Image(imageFile.getPath());
-        imageView.setImage(image);
+        if (null != imageFile) {
+            imageFilename.setText(imageFile.getName());
+            Image image = new Image(imageFile.toURI().toString());
+            imageView.setImage(image);
+        }
     }
 
     @FXML
