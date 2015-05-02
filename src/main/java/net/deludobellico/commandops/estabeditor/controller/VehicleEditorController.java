@@ -1,6 +1,8 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,16 +14,16 @@ import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
-import net.deludobellico.commandops.estabeditor.model.ArmamentModel;
-import net.deludobellico.commandops.estabeditor.model.ImageModel;
-import net.deludobellico.commandops.estabeditor.model.VehicleModel;
-import net.deludobellico.commandops.estabeditor.model.WeaponModel;
+import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -156,6 +158,25 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     public void initialize(URL location, ResourceBundle resources) {
         vehicleType.getItems().addAll(VehicleType.values());
         description.setWrapText(true);
+        imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
+            EstabModel estabModel = estabController.getEstabModel();
+            if (!newValue.equals("")) {
+                for (ImageModel im : estabModel.getImages().values()) {
+                    if (im.getFileId().equals(newValue)) {
+                        activeVehicle.setPictureId(im.getId());
+                        activeVehicle.setPictureFilename(newValue);
+                        return;
+                    }
+                }
+                //(ElementModel) newElement.createNewInMap(estabModel.getAll().get(newElement.getClass()));
+                ImageModel newImageModel = new ImageModel();
+                ImageModel imageModel = newImageModel.createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(newImageModel.getClass()));
+                imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
+                imageModel.setFileId(newValue);
+                activeVehicle.setPictureId(imageModel.getId());
+                activeVehicle.setPictureFilename(newValue);
+            }
+        });
     }
 
     /**

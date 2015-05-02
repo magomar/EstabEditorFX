@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @author Mario
  * @author Heine
  */
-final class ElementModelFactory {
+public final class ElementModelFactory {
     private static Integer maxId = 3611;
 
     private ElementModelFactory() {
@@ -96,4 +96,19 @@ final class ElementModelFactory {
         ammoModel.getFlags().add(Flag.NEW);
         return ammoModel;
     }
+
+    /**
+     * Creates a new ImageModel instance.
+     *
+     * @return new image model
+     */
+    public static ImageModel createImage() {
+        ImageModel imageModel = new ImageModel();
+        imageModel.setId(++maxId);
+        imageModel.setName(ElementModelFactory.formatName("New Image", imageModel.getId()));
+        imageModel.getFlags().add(Flag.NEW);
+        return imageModel;
+    }
+
+    // TODO createForceModel()
 }

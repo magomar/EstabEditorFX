@@ -14,10 +14,8 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.GraphicalElementModel;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,6 +42,7 @@ public class ElementImageController implements Initializable {
 
     private EstabController estabController;
     private ElementModel activeElement;
+    private final static String NO_IMAGE_FILENAME = "no-image.bmp";
 
     /**
      * Adds listeners to components and sets the initial item collections.
@@ -61,18 +60,15 @@ public class ElementImageController implements Initializable {
     }
 
     @FXML
-    public void selectImage(ActionEvent event) {
+    private void selectImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(String.format("Select image depicting %s", activeElement.getName()));
         FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter(
                 //"Image files", ImageIO.getReaderFileSuffixes());
                 "Image files", "*.bmp");
         fileChooser.getExtensionFilters().add(imageFilter);
-        File initialDirectory = null;
-        if (Settings.getInstance().getLastOpenedFolder() != null)
-            initialDirectory = new File(Settings.getInstance().getLastOpenedFolder());
-        if (initialDirectory == null || !initialDirectory.exists())
-            initialDirectory = new File(System.getProperty("user.dir"));
+
+        File initialDirectory = FileIO.getDatasetImageFolder(estabController.getActiveFile());
         fileChooser.setInitialDirectory(initialDirectory);
         File imageFile = fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
         if (null != imageFile) {
@@ -83,8 +79,17 @@ public class ElementImageController implements Initializable {
     }
 
     @FXML
-    public void removeImage(ActionEvent event) {
+    private void removeImage(ActionEvent event) {
+        if (noImageCheckbox.isSelected()) {
+            setNoImage();
+        }
+    }
 
+    private void setNoImage() {
+        Image image = FileIO.getDatasetImage(estabController.getActiveFile(), NO_IMAGE_FILENAME);
+        imageView.setImage(image);
+        imageFilename.setText(NO_IMAGE_FILENAME);
+        noImageCheckbox.setSelected(true);
     }
 
     public void setEditable(boolean isEditable) {
@@ -96,9 +101,12 @@ public class ElementImageController implements Initializable {
             imageView.setImage(null);
         }
         this.activeElement = element;
-        ImageModel image = estabController.getEstabModel().getImages().get(element.getPictureId());
-        if (image != null) {
-            imageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), image.getFileId()));
+        ImageModel imageModel = estabController.getEstabModel().getImages().get(element.getPictureId());
+        if (imageModel != null) {
+            imageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), imageModel.getFileId()));
+            noImageCheckbox.setSelected(false);
+        } else {
+            setNoImage();
         }
     }
 

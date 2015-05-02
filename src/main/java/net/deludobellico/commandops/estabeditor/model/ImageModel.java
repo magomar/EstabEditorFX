@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Image;
+import net.deludobellico.commandops.estabeditor.util.FileIO;
 
 import java.util.Collection;
 import java.util.List;
@@ -43,8 +44,9 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     @Override
     public void initialize(Image pojo) {
         id.set(pojo.getId());
-        fileId.set(pojo.getFileId());
-        name.set(pojo.getFileId());
+        String imageFilename = pojo.getFileId();
+        fileId.set(imageFilename);
+        name.set(imageFilename.substring(0, imageFilename.lastIndexOf('.')));
     }
 
     @Override
@@ -73,7 +75,9 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
 
     @Override
     public ImageModel createNewInMap(Map<Integer, ImageModel> map) {
-        throw new UnsupportedOperationException("Method not implemented");
+        ImageModel newElement = ElementModelFactory.createImage();
+        map.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     @Override

@@ -585,19 +585,23 @@ public class MainController implements Initializable {
         targetPaneController.removeRelatedElements(elementsToRemove);
     }
 
-    public void createNewVehicleAction() {
+    @FXML
+    private void createNewVehicleAction() {
         targetPaneController.createNewElement(new VehicleModel());
     }
 
-    public void createNewWeaponAction() {
+    @FXML
+    private void createNewWeaponAction() {
         targetPaneController.createNewElement(new WeaponModel());
     }
 
-    public void createNewAmmoAction() {
+    @FXML
+    private void createNewAmmoAction() {
         targetPaneController.createNewElement(new AmmoModel());
     }
 
-    public void compareElementButtonAction() {
+    @FXML
+    private void compareElementButtonAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
             UtilView.showInfoDialog("Element comparison", "",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",

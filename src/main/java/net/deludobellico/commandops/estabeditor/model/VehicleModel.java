@@ -74,6 +74,7 @@ public class VehicleModel extends AbstractGraphicalElementModel<VehicleModel> im
         Picture p = new Picture();
         p.setId(pictureId.get());
         vehicle.setPicture(p);
+        vehicle.setPictureFilename(pictureFilename.get());
         VehicleSize vs = new VehicleSize();
         vs.setHeight(height.get());
         vs.setLength(length.get());

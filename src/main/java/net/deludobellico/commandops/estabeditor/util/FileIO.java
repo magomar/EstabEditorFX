@@ -230,6 +230,12 @@ public class FileIO {
         return picture;
     }
 
+    public static File getDatasetImageFolder(File datasetFile) {
+        String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
+        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
+        return datasetImageFolder;
+    }
+
     /**
      * Returns the path of the default empty Estab dataset on disk.
      *

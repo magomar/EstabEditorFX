@@ -1,5 +1,6 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -162,7 +163,24 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         description.setWrapText(true);
 
-
+        imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
+            EstabModel estabModel = estabController.getEstabModel();
+            if (!newValue.equals("")) {
+                for (ImageModel im : estabModel.getImages().values()) {
+                    if (im.getFileId().equals(newValue)) {
+                        activeWeapon.setPictureId(im.getId());
+                        activeWeapon.setPictureFilename(newValue);
+                        return;
+                    }
+                }
+                ImageModel newImageModel = new ImageModel();
+                ImageModel imageModel = newImageModel.createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(newImageModel.getClass()));
+                imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
+                imageModel.setFileId(newValue);
+                activeWeapon.setPictureId(imageModel.getId());
+                activeWeapon.setPictureFilename(newValue);
+            }
+        });
     }
 
     /**
