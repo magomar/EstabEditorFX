@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<estab-data version="4" dlb-version="0.1.2" edited="true" last-edit="2015-05-02T17:22:18.484+02:00">
+    <image id="9008" file-id="moisin_nagant-1895.bmp"/>
+    <image id="9012" file-id="winchester-1892-tigre.bmp"/>
+    <image id="9001" file-id="spanish-mauser-carabin-1895.bmp"/>
+    <image id="9002" file-id="moisin_nagant-1891.bmp"/>
+    <image id="9003" file-id="mosqueton-1916.bmp"/>
+    <image id="9019" file-id="valero-81mm.bmp"/>
+    <image id="9020" file-id="hotchkiss_1914.bmp"/>
+    <image id="9005" file-id="renault-FT-17.bmp"/>
+    <image id="9006" file-id="no-image.bmp"/>
+    <side id="7000" flags="new">
+        <name>Nationalists</name>
+        <description>Those supporting the military sublevation led by General Francisco Franco.</description>
+        <large-insignia id="0"/>
+        <small-insignia id="0"/>
+        <basics-consumption-rate>2.5</basics-consumption-rate>
+        <default-enemy-aper-fp>10</default-enemy-aper-fp>
+        <default-enemy-aarm-fp>2</default-enemy-aarm-fp>
+        <nation id="7001">
+            <name>Nationalist Spain</name>
+            <description>
+            </description>
+            <nationality>
+            </nationality>
+            <large-insignia id="0"/>
+            <small-insignia id="0"/>
+            <service id="7100" flags="">
+                <name>Nationalist Army</name>
+                <description>Regular army in the nationalist side</description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="157" green="172" blue="140"/>
+                    <background-dark-color red="89" green="98" blue="79"/>
+                    <background-light-color red="200" green="221" blue="193"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+                <force id="7101" flags="new">
+                    <name>Bn HQ</name>
+                    <description></description>
+                    <icon>
+                        <background-color red="157" green="0" blue="0"/>
+                        <background-dark-color red="89" green="0" blue="0"/>
+                        <background-light-color red="200" green="0" blue="0"/>
+                        <military-symbol>0</military-symbol>
+                    </icon>
+                    <type>infantry</type>
+                    <size>battalion</size>
+                    <combat-class>hq</combat-class>
+                    <target-class>mixed</target-class>
+                    <infantry-value>0</infantry-value>
+                    <recon-value>0</recon-value>
+                    <engineering-value>0</engineering-value>
+                    <move-type>wheeled</move-type>
+                    <pers-qty>85</pers-qty>
+                    <staff-capacity>4</staff-capacity>
+                    <basics-qty>448.0</basics-qty>
+                    <basics-consumption-rate-modifier>1.4</basics-consumption-rate-modifier>
+                    <commander-rank>3</commander-rank>
+                    <fuel-qty>0.0</fuel-qty>
+                    <fuel-load>10.0</fuel-load>
+                    <speed max="0.0" normal="0.0"/>
+                    <deployment-duration>
+                        <deployed>00:00:05.000+01:00</deployed>
+                        <dug-in>00:02:00.000+01:00</dug-in>
+                        <entrenched>02:00:00.000+01:00</entrenched>
+                        <fortified>01:00:00.000+01:00</fortified>
+                    </deployment-duration>
+                    <ready-to-fire-duration>00:00:00</ready-to-fire-duration>
+                    <ready-to-bombard-duration>00:00:00</ready-to-bombard-duration>
+                    <equipment-list>
+                        <equipment equipment-object-id="2051" name="SdKfz 247 Personnel AC" qty="2"/>
+                        <equipment equipment-object-id="23" name="Kuebelwagen" qty="15"/>
+                        <equipment equipment-object-id="1027" name="Motorcycle" qty="10"/>
+                        <equipment equipment-object-id="1937" name="Motorcycle with sidecar" qty="10"/>
+                        <equipment equipment-object-id="529" name="9mm MP 40 SMG" qty="5"/>
+                        <equipment equipment-object-id="43" name="7.92mm Mauser KAR 98 rifle" qty="60"/>
+                    </equipment-list>
+                    <ammo-list/>
+                    <can-bombard>no</can-bombard>
+                </force>
+            </service>
+            <service id="7200" flags="">
+                <name>Spanish Foreign Legion</name>
+                <description>The Spanish Legion' (Spanish: Legión Española, La Legión or colloquially El Tercio') is an
+                    elite unit of the Spanish Army and Spain's Rapid Reaction Force. It was raised in the 1920s to serve
+                    as part of Spain's Army of Africa. The unit, which was founded as the Spanish equivalent of the
+                    French Foreign Legion, was known as the Tercio de Extranjeros ("Foreigners Regiment"). However in
+                    practice it recruited almost exclusively Spaniards and Spanish expatriates from Spanish-speaking
+                    nations. The Legion served in the Rif War and the Spanish Civil War.
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="157" green="172" blue="140"/>
+                    <background-dark-color red="89" green="98" blue="79"/>
+                    <background-light-color red="200" green="221" blue="193"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+            </service>
+            <service id="7300" flags="">
+                <name>Regulares</name>
+                <description>The Fuerzas Regulares Indígenas ("Indigenous Regular Forces"), known simply as the
+                    Regulares (Regulars), were the volunteer infantry and cavalry units of the Spanish Army recruited in
+                    Spanish Morocco. They consisted of Moroccans officered by Spaniards. These Moroccan troops played a
+                    significant role in the Spanish Civil War (1936–39).
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="157" green="172" blue="140"/>
+                    <background-dark-color red="89" green="98" blue="79"/>
+                    <background-light-color red="200" green="221" blue="193"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+            </service>
+            <service id="7400" flags="">
+                <name>Carlists "Requetés"</name>
+                <description>The Requetés (from the French requêté, “hunting call”)[1] were the Carlist militia during
+                    the Spanish Civil War. Wearing red berets, they mostly came from Navarre and were highly religious
+                    with many regarding the war as a Crusade. They were often accompanied by priests as field chaplains,
+                    who were known for risking their lives to perform the Last Sacrament on the battlefield, and who
+                    also urged the men on. A Spanish encyclopedia of 1965 defines the Requetés as a “group of
+                    traditionalists whose object is to encourage amongst themselves the goals of the political party,
+                    valorous sentiments, physical prowess, initiative, spirit of resistance, and the acceptance of
+                    responsibility, and who during the civil wars of Spain, fought in corps (tercios) in defense of the
+                    religious and monarchical traditions.
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="157" green="172" blue="140"/>
+                    <background-dark-color red="89" green="98" blue="79"/>
+                    <background-light-color red="200" green="221" blue="193"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+            </service>
+            <service id="7500" flags="">
+                <name>Falange</name>
+                <description>Falange Española de las JONS (FE de las JONS), known simply as the Falange, is the name
+                    assigned to several Spanish political movements and parties originating in the late 1930s, a rough
+                    contemporary of the Estado Novo and German and Italian Fascism. The word Falange in Spanish refers
+                    to a phalanx formation. Members of the party were called
+                    Falangists (Spanish: Falangistas).
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="157" green="172" blue="140"/>
+                    <background-dark-color red="89" green="98" blue="79"/>
+                    <background-light-color red="200" green="221" blue="193"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+            </service>
+
+        </nation>
+        <nation id="7002">
+            <name>Germany</name>
+            <description>
+            </description>
+            <nationality>
+            </nationality>
+            <large-insignia id="0"/>
+            <small-insignia id="0"/>
+            <service id="7800" flags="">
+                <name>Condor Legion</name>
+                <description>The Condor Legion (German: Legion Condor) was a unit composed of volunteers from the German
+                    Air Force (Luftwaffe) and from the German Army (Wehrmacht Heer) which served with the Nationalists
+                    during the Spanish Civil War of July 1936 to March 1939. The Condor Legion developed methods of
+                    terror bombing which were used widely in the Second World War shortly afterwards. The bombing of
+                    Guernica was the most infamous operation carried out by the Condor Legion. Hugo Sperrle commanded
+                    the unit's aircraft formations and Wilhelm Ritter von Thoma commanded the ground element.
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Lt" full-name="Leutnant"/>
+                    <rank short-name="Ob Lt" full-name="Oberleutnant"/>
+                    <rank short-name="Hptmn" full-name="Hauptmann"/>
+                    <rank short-name="Maj" full-name="Major"/>
+                    <rank short-name="Obst Lt" full-name="Oberstleutnant"/>
+                    <rank short-name="Obst" full-name="Oberst"/>
+                    <rank short-name="Gen Maj" full-name="Generalmajor"/>
+                    <rank short-name="Gen Lt" full-name="Generalleutnant"/>
+                    <rank short-name="Gen" full-name="General"/>
+                    <rank short-name="Gen Obst" full-name="Generaloberst"/>
+                    <rank short-name="FM" full-name="Generalfeldmarschall"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="74" green="148" blue="189"/>
+                    <background-dark-color red="40" green="87" blue="112"/>
+                    <background-light-color red="143" green="189" blue="215"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+            </service>
+        </nation>
+        <nation id="7003">
+            <name>Italy</name>
+            <description>
+            </description>
+            <nationality>
+            </nationality>
+            <large-insignia id="0"/>
+            <small-insignia id="0"/>
+            <service id="7900" flags="">
+                <name>CTV</name>
+                <description>The Corps of Volunteer Troops (Italian: Corpo Truppe Volontarie, CTV) was an Fascist
+                    Italian expeditionary force which was sent to Spain to support the Nationalist forces under General
+                    Francisco Franco against the Spanish Republic during the Spanish Civil War, 1936-39.
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Ten" full-name="Tenente" />
+                    <rank short-name="Cap" full-name="Capitano" />
+                    <rank short-name="Mag" full-name="Maggiore" />
+                    <rank short-name="TenCol" full-name="Tenente Colonnello" />
+                    <rank short-name="Col" full-name="Colonnello" />
+                    <rank short-name="GenBrig" full-name="Generale di Brigata" />
+                    <rank short-name="GenDiv" full-name="Generale di Divisione" />
+                    <rank short-name="GenCor" full-name="Generale di Corpo d'Armata" />
+                    <rank short-name="GenArm" full-name="Generale d'Armata" />
+                    <rank short-name="Mar" full-name="Maresciallo d'Italia" />
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="0" green="100" blue="150" />
+                    <background-dark-color red="0" green="90" blue="120" />
+                    <background-light-color red="0" green="120" blue="180" />
+                    <designation-color red="255" green="255" blue="255" />
+                    <symbol-color>white</symbol-color>
+                </default-icon-colors>
+            </service>
+        </nation>
+    </side>
+    <side id="8000" flags="new">
+        <name>Republicans</name>
+        <description>Loyal to the democratically elected Spanish Republic</description>
+        <large-insignia id="0"/>
+        <small-insignia id="0"/>
+        <basics-consumption-rate>2.5</basics-consumption-rate>
+        <default-enemy-aper-fp>10</default-enemy-aper-fp>
+        <default-enemy-aarm-fp>2</default-enemy-aarm-fp>
+        <nation id="8100">
+            <name>Popular Front</name>
+            <description>Loyal to the democratically elected Spanish Republic</description>
+            <nationality>
+            </nationality>
+            <large-insignia id="0"/>
+            <small-insignia id="0"/>
+            <service id="8110" flags="copy">
+                <name>Republican Army</name>
+                <description>Republican army using the prewar organization schema (Before becoming the Popular Army)
+                </description>
+                <large-insignia id="0"/>
+                <small-insignia id="0"/>
+                <rank-list>
+                    <rank short-name="Alf" full-name="Alférez"/>
+                    <rank short-name="Ten" full-name="Teniente"/>
+                    <rank short-name="Cap" full-name="Capitán"/>
+                    <rank short-name="Com" full-name="Comandante"/>
+                    <rank short-name="Ten Cor" full-name="Teniente Coronel"/>
+                    <rank short-name="Cor" full-name="Coronel"/>
+                    <rank short-name="Gen Brig" full-name="General de Brigada"/>
+                    <rank short-name="Gen Div" full-name="General de Division"/>
+                    <rank short-name="Ten Gen" full-name="Teniente General"/>
+                    <rank short-name="Gen Ej" full-name="General de Ejército"/>
+                    <rank short-name="CG" full-name="Capitán General"/>
+                </rank-list>
+                <default-icon-colors>
+                    <background-color red="155" green="189" blue="227"/>
+                    <background-dark-color red="0" green="64" blue="128"/>
+                    <background-light-color red="220" green="235" blue="241"/>
+                    <designation-color red="0" green="0" blue="0"/>
+                    <symbol-color>black</symbol-color>
+                </default-icon-colors>
+                <force id="8111" flags="copy">
+                    <name>Infantry Bn HQ</name>
+                    <description></description>
+                    <icon>
+                        <background-color red="128" green="0" blue="0"/>
+                        <background-dark-color red="0" green="0" blue="0"/>
+                        <background-light-color red="220" green="0" blue="0"/>
+                        <military-symbol>0</military-symbol>
+                    </icon>
+                    <type>infantry</type>
+                    <sub-type>Infantry</sub-type>
+                    <size>battalion</size>
+                    <combat-class>hq</combat-class>
+                    <target-class>soft</target-class>
+                    <infantry-value>10</infantry-value>
+                    <recon-value>0</recon-value>
+                    <engineering-value>0</engineering-value>
+                    <move-type>foot</move-type>
+                    <pers-qty>26</pers-qty>
+                    <staff-capacity>10</staff-capacity>
+                    <basics-qty>448.0</basics-qty>
+                    <basics-consumption-rate-modifier>5.0</basics-consumption-rate-modifier>
+                    <commander-rank>1</commander-rank>
+                    <fuel-qty>0.0</fuel-qty>
+                    <fuel-load>0.0</fuel-load>
+                    <speed max="0.0" normal="0.0"/>
+                    <deployment-duration>
+                        <deployed>00:00:05.000+01:00</deployed>
+                        <dug-in>00:02:00.000+01:00</dug-in>
+                        <entrenched>02:00:00.000+01:00</entrenched>
+                        <fortified>01:00:00.000+01:00</fortified>
+                    </deployment-duration>
+                    <ready-to-fire-duration>00:00:00</ready-to-fire-duration>
+                    <ready-to-bombard-duration>00:00:00</ready-to-bombard-duration>
+                    <equipment-list>
+                        <equipment equipment-object-id="3099" name="Fusil 1889" qty="20"/>
+                    </equipment-list>
+                    <ammo-list/>
+                    <can-bombard>no</can-bombard>
+                </force>
+            </service>
+        </nation>
+    </side>
+    <vehicle id="3072" flags="remove">
+        <name>FT-17</name>
+        <description>El Renault FT es el carro de combate francés más conocido de la Gran Guerra (o Primera Guerra
+            Mundial), y que estuvo en servicio en el ejército francés hasta el comienzo de la Segunda Guerra Mundial, e
+            incluso fue usado hasta finales de la guerra por el ejército alemán como vehículo policial en París. Fue el
+            primer tanque con forma moderna, es decir, una torreta con el armamento principal sobre el casco acorazado y
+            movido por orugas.
+        </description>
+        <picture id="9005"/>
+        <size width="9600.0" height="2.15" length="4.22" weight="9600.0"/>
+        <crew>2</crew>
+        <reliability>0.804932</reliability>
+        <armaments>
+            <armament equipment-object-id="5005" equipment-name="37mm Puteaux SA 18 gun" qty="1"/>
+            <armament equipment-object-id="5006" equipment-name="Hotchkiss M1914" qty="1"/>
+        </armaments>
+        <type>tank</type>
+        <fuel-capacity>180.0</fuel-capacity>
+        <speed>
+            <road max="28.0" normal="24.0"/>
+            <cross-country max="15.0" normal="11.0"/>
+        </speed>
+        <fuel-consumption max="38.3" normal="28.8"/>
+        <ronsonability>0.404785</ronsonability>
+        <max-gradient>35</max-gradient>
+        <max-fording-depth>1</max-fording-depth>
+        <max-trench-width>2</max-trench-width>
+        <towing-capacity>9600.0</towing-capacity>
+        <personnel-capacity>0</personnel-capacity>
+        <bulk-fuel-capacity>0.0</bulk-fuel-capacity>
+        <payload-capacity>0.0</payload-capacity>
+        <take-cover-mod>1.004883</take-cover-mod>
+        <has-turret>yes</has-turret>
+        <has-open-top>no</has-open-top>
+        <battle-weight>9600.0</battle-weight>
+        <armour front="41.0" side="40.0" rear="44.0" top="24.0"/>
+    </vehicle>
+    <weapon id="9010" flags="new">
+        <name>Spanish Winchester M1892 "Tigre"</name>
+        <description>El fusil Tigre es una copia española del Winchester Modelo 1892, fabricada por la empresa eibarresa
+            Gárate, Anitua y Cía. entre 1915 y 1937.
+
+            Parece ser que las intensas actividades mercantiles del agente de la Winchester en España durante las
+            décadas de 1870 y 1880 popularizaron el fusil Tigre. Entre estas actividades figuraron la visita de Oliver
+            Winchester a España y otros países europeos. Tras exhaustivas pruebas y varios cambios de diseño, 230
+            carabinas Winchester Modelo 1873 (con cañones de 22 pulgadas, alzas graduadas en metros, baqueta entera y
+            culata tipo "full") fueron vendidas a las Fuerzas Armadas españolas para ser empleadas por la Caballería y
+            los Guardias Reales en la década de 1870. Estas son consideradas antecesoras evolucionadas de la carabina
+            Winchester Modelo 1876, más conocida por haber sido empleada por la Policía Montada Canadiense. Más de 2.500
+            fueron fabricados bajo licencia por la Fábrica Nacional de Armas de Oviedo durante la década de 1890, para
+            mantener activo al personal hasta la llegada de las modernas maquinarias necesarias para producir el fusil
+            Mauser Modelo 1893. Estas armas empleaban algunas mejoras del Winchester Modelo 1876, pero eran de calibre
+            11 mm (.44) y tenían un mecanismo más delgado. Las carabinas fueron fabricadas para la Caballería y el 14to
+            Regimiento de la Guardia Civil. Los fusiles fueron fabricados para otros usuarios, tales como Academias
+            Militares.1 Después de 1893, una cantidad desconocida de carabinas fueron producidas por diversas empresas
+            armeras eibarresas, pero estas, según Madis, eran de calidad inferior respecto a los modelos fabricados en
+            Oviedo.
+
+            Tipo de arma: Fusil de palanca
+            País de origen: Estados Unidos
+            Historia de servicio: Guerra del Pacífico, Primera Guerra Mundial, Revolución mexicana
+            Historia de producción
+            Diseñada 1873
+            Fabricante Winchester Repeating Arms Company
+            Especificaciones
+            Peso : 4,3 Kilogramos
+            Longitud: 1,25 metros
+            Longitud del cañón: 76,2 cm
+            Munición .44-40 Winchester (10,8 x 33 R)
+            Calibre 10,8 mm
+            Sistema de disparo Palanca accionada manualmente
+            Alcance efectivo ~ 200 m
+            Cargador depósito tubular, con capacidad de 15 balas
+        </description>
+        <picture id="9012"/>
+        <picture-filename>winchester-1892-tigre.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="0.0"/>
+        <crew>0</crew>
+        <reliability>0.0</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>0.0</calibre>
+        <muzzle-velocity>0</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="9011" name="10,8mm Winchester" load="0"/>
+                <min-range>0</min-range>
+                <rof slow="0.0" normal="0.0" rapid="0.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.0</shell-weight>
+                <range-table>
+                    <range-item range="50" accuracy="0.85" armour-penetration="0.0"/>
+                    <range-item range="100" accuracy="0.65" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.4" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.2" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.1" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.05" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="9015" flags="copy new">
+        <name>81mm Valero M1933</name>
+        <description>
+        </description>
+        <picture id="9019"/>
+        <picture-filename>valero-81mm.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="74.0"/>
+        <crew>4</crew>
+        <reliability>0.98</reliability>
+        <armaments></armaments>
+        <type>mortar</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>81.0</calibre>
+        <muzzle-velocity>227</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="9016" name="81mm Valero" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.25" normal="1.5" rapid="3.0"/>
+                <burst-radius>10</burst-radius>
+                <shell-weight>4.799805</shell-weight>
+                <range-table>
+                    <range-item range="500" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3010" accuracy="0.504883" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+            <performance fire-type="bombard">
+                <ammo object-id="9016" name="81mm Valero" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.25" normal="1.5" rapid="3.0"/>
+                <burst-radius>10</burst-radius>
+                <shell-weight>4.799805</shell-weight>
+                <range-table>
+                    <range-item range="500" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.504883" armour-penetration="0.0"/>
+                    <range-item range="3010" accuracy="0.504883" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5000" flags="new">
+        <name>Spanish Mauser M1893 "Chopo"</name>
+        <description>Carabina Mauser Modelo 1893 de 7mm. Versión española del Mauser 1892, con munición de 7mm. Fusil
+            reglamentario del ejército español al estallar la guerra civil.
+        </description>
+        <picture id="9006"/>
+        <picture-filename>no-image.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="3.2"/>
+        <crew>1</crew>
+        <reliability>0.98</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.0</calibre>
+        <muzzle-velocity>665</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="9011" name="10,8mm Winchester" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.5" normal="2.0" rapid="4.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.01</shell-weight>
+                <range-table>
+                    <range-item range="50" accuracy="0.9" armour-penetration="0.0"/>
+                    <range-item range="100" accuracy="0.75" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.6" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.25" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.1" armour-penetration="0.0"/>
+                    <range-item range="50" accuracy="0.85" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5001" flags="new">
+        <name>Spanish Mosqueton M1916</name>
+        <description>Carabina Mauser Modelo 1893 de 7mm. Versión española del Mauser 1892, con munición de 7mm. Fusil
+            reglamentario del ejército español al estallar la guerra civil.
+        </description>
+        <picture id="9003"/>
+        <picture-filename></picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="3.2"/>
+        <crew>1</crew>
+        <reliability>0.98</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.0</calibre>
+        <muzzle-velocity>665</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="9011" name="10,8mm Winchester" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.5" normal="2.0" rapid="4.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.01</shell-weight>
+                <range-table>
+                    <range-item range="200" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.25" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.1" armour-penetration="0.0"/>
+                    <range-item range="50" accuracy="0.85" armour-penetration="0.0"/>
+                    <range-item range="100" accuracy="0.65" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="9017" flags="copy new">
+        <name>50mm Valero M1932</name>
+        <description>
+        </description>
+        <picture id="9006"/>
+        <picture-filename>no-image.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>2</crew>
+        <reliability>0.99</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>50.0</calibre>
+        <muzzle-velocity>75</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="85" name="50mm mor HE" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.25" normal="3.0" rapid="6.0"/>
+                <burst-radius>6</burst-radius>
+                <shell-weight>0.9</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.5" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.4" armour-penetration="0.0"/>
+                    <range-item range="600" accuracy="0.4" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+            <performance fire-type="bombard">
+                <ammo object-id="85" name="50mm mor HE" load="0"/>
+                <min-range>0</min-range>
+                <rof slow="0.0" normal="0.0" rapid="0.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.0</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.5" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.4" armour-penetration="0.0"/>
+                    <range-item range="600" accuracy="0.4" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5002" flags="new">
+        <name>Spanish Mauser Carabin M1895 "Tercerola"</name>
+        <description>Carabina Mauser Modelo 1895. Es una carabina de repetición con un cargador de 5 balas "sin humo".
+            Esta carabina era una modificación del Mauser Modelo 1893. Era mas corto para poder ser utilizado por los
+            soldados de la caballería.
+        </description>
+        <picture id="9001"/>
+        <picture-filename></picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="3.2"/>
+        <crew>1</crew>
+        <reliability>0.98</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.0</calibre>
+        <muzzle-velocity>665</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="4001" name="7mm" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="0.5" normal="2.0" rapid="4.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.01</shell-weight>
+                <range-table>
+                    <range-item range="50" accuracy="0.85" armour-penetration="0.0"/>
+                    <range-item range="100" accuracy="0.65" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.25" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.1" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5003" flags="new">
+        <name>Moisin-Nagant M1891</name>
+        <description>The Mosin–Nagant is a bolt-action, internal magazine-fed, military rifle, developed by the Imperial
+            Russian Army in 1882–1891, and used by the armed forces of the Russian Empire, the Soviet Union and various
+            other nations. It is one of the most mass produced military bolt action rifles in history with over 37
+            million units produced since its inception in 1891, and much like the AK-47 it has shown up in various
+            conflicts around the world, despite its age and obsolescence.
+        </description>
+        <picture id="9008"/>
+        <picture-filename>moisin_nagant-1895.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="4.0"/>
+        <crew>1</crew>
+        <reliability>0.97</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>20.0</calibre>
+        <muzzle-velocity>615</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="4002" name="7.62mm" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="1.0" normal="3.0" rapid="6.0"/>
+                <burst-radius>4</burst-radius>
+                <shell-weight>0.299805</shell-weight>
+                <range-table>
+                    <range-item range="50" accuracy="0.9" armour-penetration="0.0"/>
+                    <range-item range="100" accuracy="0.75" armour-penetration="0.0"/>
+                    <range-item range="200" accuracy="0.6" armour-penetration="0.0"/>
+                    <range-item range="300" accuracy="0.45" armour-penetration="0.0"/>
+                    <range-item range="400" accuracy="0.25" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.1" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="523" flags="">
+        <name>60mm Valero M1926</name>
+        <description>
+        </description>
+        <picture id="9006"/>
+        <picture-filename>no-image.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="19.0"/>
+        <crew>2</crew>
+        <reliability>0.99</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>60.0</calibre>
+        <muzzle-velocity>89</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="298" name="60mm mor HE" load="0"/>
+                <min-range>50</min-range>
+                <rof slow="2.0" normal="4.0" rapid="6.0"/>
+                <burst-radius>6</burst-radius>
+                <shell-weight>1.399902</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.65" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.6" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.6" armour-penetration="0.0"/>
+                    <range-item range="1500" accuracy="0.5" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5004" flags="new">
+        <name>Spanish Hotchkiss M1914</name>
+        <description>El mismo modelo de ametralladora Hotchkiss en calibre 7 mm, con munición 7 x 57 fabricada bajo
+            licencia en la Fábrica de Armas de Oviedo, España y declarada reglamentaria en el ejécito español, fue
+            ampliamente empleado por ambos bandos (Nacionalistas y Republicanos) durante la Guerra Civil Española
+            (1936-1939).
+        </description>
+        <picture id="9020"/>
+        <picture-filename>hotchkiss_1914.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="24.4"/>
+        <crew>3</crew>
+        <reliability>0.9</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.0</calibre>
+        <muzzle-velocity>745</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="4001" name="7mm" load="0"/>
+                <min-range>10</min-range>
+                <rof slow="5.0" normal="10.0" rapid="20.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.01</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.9" armour-penetration="0.0"/>
+                    <range-item range="250" accuracy="0.88" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.85" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.75" armour-penetration="0.0"/>
+                    <range-item range="1500" accuracy="0.64" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.5" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5005" flags="new">
+        <name>37mm Puteaux SA 18 gun</name>
+        <description>The Puteaux SA 18 was a French single-shot, breech-loading cannon, used from World War I onward,
+            primarily mounted on combat vehicles.
+            It was a simple, reliable weapon with a high rate of fire made possible by a semi-automatic breech system .
+            It was primarily intended to be used against infantry and machine-gun nests, due to its low muzzle velocity
+            which proscribed anti-armour use. Though armour penetration was poor, even as late as 1939 it was sufficient
+            to combat light armoured vehicles. The gun was operated by one soldier, and found easy to use with a low
+            incidence of jamming. It was sighted on target with a separate scope attached to the left side of the
+            weapon.
+        </description>
+        <picture id="9006"/>
+        <picture-filename>no-image.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="1.0"/>
+        <crew>1</crew>
+        <reliability>0.95</reliability>
+        <armaments></armaments>
+        <type>gun</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>37.0</calibre>
+        <muzzle-velocity>600</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aarm">
+                <ammo object-id="9011" name="10,8mm Winchester" load="0"/>
+                <min-range>20</min-range>
+                <rof slow="1.6" normal="2.0" rapid="4.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.39</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.7125" armour-penetration="10.0"/>
+                    <range-item range="300" accuracy="0.6333" armour-penetration="8.0"/>
+                    <range-item range="400" accuracy="0.4342" armour-penetration="7.0"/>
+                    <range-item range="500" accuracy="0.3367" armour-penetration="6.25"/>
+                    <range-item range="1000" accuracy="0.2666" armour-penetration="3.0"/>
+                    <range-item range="50" accuracy="0.8" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+            <performance fire-type="aper">
+                <ammo object-id="286" name="37mm HE" load="500"/>
+                <min-range>50</min-range>
+                <rof slow="0.75" normal="1.0" rapid="2.0"/>
+                <burst-radius>3</burst-radius>
+                <shell-weight>1.669922</shell-weight>
+                <range-table>
+                    <range-item range="300" accuracy="0.6333" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.4828" armour-penetration="0.0"/>
+                    <range-item range="600" accuracy="0.4023" armour-penetration="0.0"/>
+                    <range-item range="750" accuracy="0.2414" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.181" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <weapon id="5006" flags="new">
+        <name>Hotchkiss M1914</name>
+        <description>The Mle 1914 Hotchkiss machine gun chambered for the 8mm Lebel cartridge became the standard
+            machine gun of the French Army during World War I. It was manufactured by the French arms company Hotchkiss
+            et Cie, which had been established in the 1860s by American industrialist Benjamin B. Hotchkiss. The
+            gas-actuated Hotchkiss system was first formulated in 1895 by Odkolek von Ujezda and improved into its final
+            form by Hotchkiss armament engineers Laurence Benet and Henri Mercie.
+        </description>
+        <picture id="9020"/>
+        <picture-filename>hotchkiss_1914.bmp</picture-filename>
+        <size width="1.0" height="1.0" length="1.0" weight="24.4"/>
+        <crew>3</crew>
+        <reliability>0.9</reliability>
+        <armaments></armaments>
+        <type>small-arm</type>
+        <single-shot>no</single-shot>
+        <primary-role>anti-personnel</primary-role>
+        <calibre>7.0</calibre>
+        <muzzle-velocity>745</muzzle-velocity>
+        <must-deploy-to-fire>yes</must-deploy-to-fire>
+        <performance-list>
+            <performance fire-type="aper">
+                <ammo object-id="2410" name="8mm Lebel" load="0"/>
+                <min-range>10</min-range>
+                <rof slow="5.0" normal="10.0" rapid="20.0"/>
+                <burst-radius>0</burst-radius>
+                <shell-weight>0.01</shell-weight>
+                <range-table>
+                    <range-item range="100" accuracy="0.9" armour-penetration="0.0"/>
+                    <range-item range="250" accuracy="0.88" armour-penetration="0.0"/>
+                    <range-item range="500" accuracy="0.85" armour-penetration="0.0"/>
+                    <range-item range="1000" accuracy="0.75" armour-penetration="0.0"/>
+                    <range-item range="1500" accuracy="0.64" armour-penetration="0.0"/>
+                    <range-item range="2000" accuracy="0.5" armour-penetration="0.0"/>
+                </range-table>
+            </performance>
+        </performance-list>
+    </weapon>
+    <ammo id="4001" flags="new">
+        <name>7mm</name>
+        <description>7 x 57 Mauser</description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>3.0</min-order-weight>
+    </ammo>
+    <ammo id="4002" flags="new">
+        <name>7.62mm</name>
+        <description>7.62 x 54R used mostly for Moisin-Nagant</description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>3.0</min-order-weight>
+    </ammo>
+    <ammo id="9011" flags="new">
+        <name>10,8mm Winchester</name>
+        <description>.44-40 Winchester (10,8 x 33 R)</description>
+        <min-order-qty>0</min-order-qty>
+        <min-order-weight>0.0</min-order-weight>
+    </ammo>
+    <ammo id="4" flags="copy">
+        <name>9mm</name>
+        <description>9 x 23 L</description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>2.0</min-order-weight>
+    </ammo>
+    <ammo id="85" flags="copy">
+        <name>50mm mor HE</name>
+        <description>
+        </description>
+        <min-order-qty>20</min-order-qty>
+        <min-order-weight>26.0</min-order-weight>
+    </ammo>
+    <ammo id="9016" flags="new">
+        <name>81mm mor HE</name>
+        <description></description>
+        <min-order-qty>10</min-order-qty>
+        <min-order-weight>42.0</min-order-weight>
+    </ammo>
+    <ammo id="2410" flags="copy">
+        <name>8mm Lebel</name>
+        <description>The 8×51mmR French (8mm Lebel) rifle cartridge was the first smokeless gunpowder cartridge to be
+            made and adopted by any country. It was introduced by France in 1886. Formed by necking down the 11mm Gras
+            black powder cartridge, the smokeless 8 mm Lebel cartridge started a revolution in military rifle
+            ammunition. Standard 8mm Lebel military ammunition was also the first rifle ammunition to feature a spitzer
+            boat tail bullet (Balle D), which was adopted in 1898.[2] The long-range ballistic performance of the 8mm
+            Lebel bullet itself was exceptional. However, the shape of its rimmed bottle-necked case, having been
+            designed for the Lebel rifle's tube magazine, also precluded truly efficient vertical stacking inside a
+            vertical magazine.
+        </description>
+        <min-order-qty>100</min-order-qty>
+        <min-order-weight>3.0</min-order-weight>
+    </ammo>
+    <ammo id="298" flags="copy">
+        <name>60mm mor HE</name>
+        <description>
+        </description>
+        <min-order-qty>10</min-order-qty>
+        <min-order-weight>18.0</min-order-weight>
+    </ammo>
+    <ammo id="283" flags="copy">
+        <name>37mm AP</name>
+        <description>
+        </description>
+        <min-order-qty>16</min-order-qty>
+        <min-order-weight>31.0</min-order-weight>
+    </ammo>
+    <ammo id="286" flags="copy">
+        <name>37mm HE</name>
+        <description>
+        </description>
+        <min-order-qty>16</min-order-qty>
+        <min-order-weight>31.0</min-order-weight>
+    </ammo>
+    <formation-effects id="1600" type="left-echelon">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1601" type="right-echelon">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1602" type="vee">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1603" type="all-round-defence">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1604" type="in-situ">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1605" type="unspecified">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1594" type="mob">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1595" type="road-column">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1596" type="line">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1597" type="successive-lines">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1598" type="square">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+    <formation-effects id="1599" type="arrow-head">
+        <moving-cohesion-level>0.0</moving-cohesion-level>
+        <frontage-per-man>0.0</frontage-per-man>
+        <depth-per-man>0.0</depth-per-man>
+    </formation-effects>
+</estab-data>
