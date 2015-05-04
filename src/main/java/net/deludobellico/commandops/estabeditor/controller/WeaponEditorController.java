@@ -20,6 +20,7 @@ import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -32,7 +33,7 @@ import java.util.ResourceBundle;
  */
 public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
 
-    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter();
+    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
     /**
      * Root node
      */

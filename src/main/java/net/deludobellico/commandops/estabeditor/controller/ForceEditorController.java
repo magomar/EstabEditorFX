@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
@@ -19,13 +20,10 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ForceEditorController implements Initializable, ElementEditorController<ForceModel> {
-
+    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
     /**
      * Root pane
      */
@@ -250,7 +248,6 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     @Override
     public void bindProperties(ForceModel element) {
         name.textProperty().bindBidirectional(element.nameProperty());
-
         forceType.valueProperty().bindBidirectional(element.typeProperty());
         subForceType.valueProperty().bindBidirectional(element.subTypeProperty());
         combatClass.valueProperty().bindBidirectional(element.combatClassProperty());
@@ -262,22 +259,21 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         commanderRank.valueProperty().addListener((observable, oldValue, newValue) -> {
             element.setCommanderRank(newValue.getIndex());
         });
-
-        personnel.textProperty().bindBidirectional(element.persQtyProperty(), new NumberStringConverter());
-        staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), new NumberStringConverter());
-        infantryValue.textProperty().bindBidirectional(element.infantryValueProperty(), new NumberStringConverter());
-        reconValue.textProperty().bindBidirectional(element.reconValueProperty(), new NumberStringConverter());
-        engineerValue.textProperty().bindBidirectional(element.engineeringValueProperty(), new NumberStringConverter());
+        personnel.textProperty().bindBidirectional(element.persQtyProperty(), NUMBER_STRING_CONVERTER);
+        staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), NUMBER_STRING_CONVERTER);
+        infantryValue.textProperty().bindBidirectional(element.infantryValueProperty(), NUMBER_STRING_CONVERTER);
+        reconValue.textProperty().bindBidirectional(element.reconValueProperty(), NUMBER_STRING_CONVERTER);
+        engineerValue.textProperty().bindBidirectional(element.engineeringValueProperty(), NUMBER_STRING_CONVERTER);
         canBombard.selectedProperty().bindBidirectional(element.canBombardProperty());
-        normalSpeed.textProperty().bindBidirectional(element.normalSpeedProperty(), new NumberStringConverter());
-        maxSpeed.textProperty().bindBidirectional(element.maxSpeedProperty(), new NumberStringConverter());
+        normalSpeed.textProperty().bindBidirectional(element.normalSpeedProperty(), NUMBER_STRING_CONVERTER);
+        maxSpeed.textProperty().bindBidirectional(element.maxSpeedProperty(), NUMBER_STRING_CONVERTER);
         // TODO: Choose between XMLCalendar or Date
 //        deployed.setEditable(isEditable);
 //        dugIn.setEditable(isEditable);
 //        entrenched.setEditable(isEditable);
 //        fortified.setEditable(isEditable);
-        basicConsumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateModifierProperty(), new NumberStringConverter());
-        fuelLoad.textProperty().bindBidirectional(element.fuelLoadProperty(), new NumberStringConverter());
+        basicConsumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateModifierProperty(), NUMBER_STRING_CONVERTER);
+        fuelLoad.textProperty().bindBidirectional(element.fuelLoadProperty(), NUMBER_STRING_CONVERTER);
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
 //        militarySymbol.setEditable(isEditable);
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());

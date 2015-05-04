@@ -21,10 +21,7 @@ import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * This controller manages the weapon editor view and model.
@@ -34,7 +31,8 @@ import java.util.ResourceBundle;
  * @see EstabController
  */
 public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
-    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter();
+
+    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
 
     /**
      * Root node components
