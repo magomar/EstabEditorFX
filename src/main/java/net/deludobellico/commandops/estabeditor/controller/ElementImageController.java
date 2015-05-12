@@ -88,6 +88,7 @@ public class ElementImageController implements Initializable {
     private void setNoImage() {
         Image image = FileIO.getDatasetImage(estabController.getActiveFile(), NO_IMAGE_FILENAME);
         imageView.setImage(image);
+        imageFilename.setText("");
         imageFilename.setText(NO_IMAGE_FILENAME);
         noImageCheckbox.setSelected(true);
     }
@@ -102,9 +103,9 @@ public class ElementImageController implements Initializable {
         }
         this.activeElement = element;
         ImageModel imageModel = estabController.getEstabModel().getImages().get(element.getPictureId());
-        if (imageModel != null) {
+        if (imageModel != null ) {
             imageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), imageModel.getFileId()));
-            noImageCheckbox.setSelected(false);
+            noImageCheckbox.setSelected(imageModel.getFileId().equals(NO_IMAGE_FILENAME) ? true : false);
         } else {
             setNoImage();
         }
