@@ -8,7 +8,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
  *
  * @author Mario
  * @author Heine
- * @see EstabController
+ * @see EstabEditorController
  */
 interface ElementEditorController<T extends ElementModel> {
 
@@ -36,16 +36,16 @@ interface ElementEditorController<T extends ElementModel> {
      * {@code isEditable} is equivalent to "Source Estab" if true and "Target Estab" if false
      *
      * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
-     * @see EstabController#isEditable
+     * @see EstabEditorController#isEditable
      */
     void setEditable(boolean isEditable);
 
     /**
-     * Sets the parent controller: either source or target {@code EstabController}
+     * Sets the parent controller: either source or target {@code EstabEditorController}
      *
-     * @param estabController source or target {@link EstabController} to be set
+     * @param estabEditorController source or target {@link EstabEditorController} to be set
      */
-    void setEstabController(EstabController estabController);
+    void setEstabEditorController(EstabEditorController estabEditorController);
 
     /**
      * Bind an {@code ElementModel} properties with the view properties

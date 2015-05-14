@@ -7,7 +7,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="estabPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabController">
+<TitledPane fx:id="estabPane" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabEditorController">
    <content>
        <AnchorPane minHeight="500" minWidth="900.0" prefHeight="500" prefWidth="900.0">
            <children>

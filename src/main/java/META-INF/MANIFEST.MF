@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: net.deludobellico.commandops.estabeditor.Main
+Main-Class: net.deludobellico.commandops.estabeditor.EstabEditorApp
 

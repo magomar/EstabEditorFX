@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
 
-public class Main extends Application {
+public class EstabEditorApp extends Application {
 
     private Stage primaryStage;
 

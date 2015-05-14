@@ -1,13 +1,11 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.ImageView;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -29,7 +27,7 @@ import java.util.ResourceBundle;
  *
  * @author Mario
  * @author Heine
- * @see EstabController
+ * @see EstabEditorController
  */
 public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
 
@@ -132,7 +130,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     // Weapon performance by fire type map
     private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
     // Parent controller
-    private EstabController estabController;
+    private EstabEditorController estabEditorController;
     @FXML
     private ElementImageController imagePanelController;
 
@@ -165,7 +163,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         description.setWrapText(true);
 
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabController.getEstabModel();
+            EstabModel estabModel = estabEditorController.getEstabModel();
             if (!newValue.equals("")) {
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
@@ -243,7 +241,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", estabController.getEstabModel().getAmmo().values());
+            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", estabEditorController.getEstabModel().getAmmo().values());
             // If the user didn't select any ammo, abort
             if (selectedAmmo != null) {
                 // Create new AmmoLoad with the ammo name and id
@@ -360,7 +358,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     private void ammoSelectAction(ActionEvent actionEvent) {
         AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo",
-                estabController.getEstabModel().getAmmo().values());
+                estabEditorController.getEstabModel().getAmmo().values());
         if (ammo != null) {
             AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();
             ammoLoadModel.setId(ammo.getId());
@@ -490,8 +488,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public void setEstabController(EstabController estabController) {
-        this.estabController = estabController;
-        imagePanelController.setEstabController(estabController);
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        this.estabEditorController = estabEditorController;
+        imagePanelController.setEstabEditorController(estabEditorController);
     }
 }

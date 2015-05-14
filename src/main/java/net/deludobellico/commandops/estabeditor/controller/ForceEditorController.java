@@ -5,9 +5,6 @@ package net.deludobellico.commandops.estabeditor.controller;
  */
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -135,7 +132,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
      * Other
      */
     private ForceModel activeForce;
-    private EstabController estabController;
+    private EstabEditorController estabEditorController;
     private CommanderRanks commanderRanks;
 
     /**
@@ -186,8 +183,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     @FXML
     @SuppressWarnings("unchecked")
     void equipmentSelectAction() {
-        List<ElementModel> vehiclesAndWeapons = new ArrayList(estabController.getEstabModel().getWeapons().values());
-        vehiclesAndWeapons.addAll(estabController.getEstabModel().getVehicles().values());
+        List<ElementModel> vehiclesAndWeapons = new ArrayList(estabEditorController.getEstabModel().getWeapons().values());
+        vehiclesAndWeapons.addAll(estabEditorController.getEstabModel().getVehicles().values());
         ElementModel element = (ElementModel) UtilView.showSearchDialog("Select element", vehiclesAndWeapons);
         if (element != null) {
             equipmentName.setUserData(element);
@@ -287,7 +284,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
             // This is so ugly
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
-                for (Map modelMap : estabController.getEstabModel().getAll().values()) {
+                for (Map modelMap : estabEditorController.getEstabModel().getAll().values()) {
                     ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getEquipmentObjectId());
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
@@ -356,13 +353,13 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     public void setActiveElement(ForceModel element) {
         if (activeForce != null) unbindProperties(activeForce);
         this.activeForce = element;
-        if (null==commanderRanks) commanderRanks=new CommanderRanks(estabController.getEstabModel());
+        if (null==commanderRanks) commanderRanks=new CommanderRanks(estabEditorController.getEstabModel());
         bindProperties(element);
     }
 
     @Override
-    public void setEstabController(EstabController estabController) {
-        this.estabController = estabController;
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        this.estabEditorController = estabEditorController;
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Cell factory for the search result lists in {@code EstabController}.
+ * Cell factory for the search result lists in {@code EstabEditorController}.
  * Each cell is composed of a {@link CheckBox} and a {@link Label}. Additionally, each cell references an {@link ElementModel}.
  * When the checkbox is selected the element model is added to a collection, and removed when deselected.
  */

@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  *
  * @author Mario
  * @author Heine
- * @see EstabController
+ * @see EstabEditorController
  */
 public class AmmoEditorController implements Initializable, ElementEditorController<AmmoModel> {
 
@@ -39,7 +39,7 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
      */
     // Last bind ammo
     private AmmoModel activeAmmo;
-    private EstabController estabController;
+    private EstabEditorController estabEditorController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,8 +56,8 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     }
 
     @Override
-    public void setEstabController(EstabController estabController) {
-        this.estabController = estabController;
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        this.estabEditorController = estabEditorController;
     }
 
     /**

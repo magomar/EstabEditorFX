@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * This controller manages the weapon editor view and model.
  *
  * @author Mario
- * @see EstabController
+ * @see EstabEditorController
  */
 public class ElementImageController implements Initializable {
 
@@ -40,7 +40,7 @@ public class ElementImageController implements Initializable {
     @FXML
     private CheckBox noImageCheckbox;
 
-    private EstabController estabController;
+    private EstabEditorController estabEditorController;
     private ElementModel activeElement;
     private final static String NO_IMAGE_FILENAME = "no-image.bmp";
 
@@ -68,7 +68,7 @@ public class ElementImageController implements Initializable {
                 "Image files", "*.bmp");
         fileChooser.getExtensionFilters().add(imageFilter);
 
-        File initialDirectory = FileIO.getDatasetImageFolder(estabController.getActiveFile());
+        File initialDirectory = FileIO.getDatasetImageFolder(estabEditorController.getActiveFile());
         fileChooser.setInitialDirectory(initialDirectory);
         File imageFile = fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
         if (null != imageFile) {
@@ -86,7 +86,7 @@ public class ElementImageController implements Initializable {
     }
 
     private void setNoImage() {
-        Image image = FileIO.getDatasetImage(estabController.getActiveFile(), NO_IMAGE_FILENAME);
+        Image image = FileIO.getDatasetImage(estabEditorController.getActiveFile(), NO_IMAGE_FILENAME);
         imageView.setImage(image);
         imageFilename.setText("");
         imageFilename.setText(NO_IMAGE_FILENAME);
@@ -102,16 +102,16 @@ public class ElementImageController implements Initializable {
             imageView.setImage(null);
         }
         this.activeElement = element;
-        ImageModel imageModel = estabController.getEstabModel().getImages().get(element.getPictureId());
+        ImageModel imageModel = estabEditorController.getEstabModel().getImages().get(element.getPictureId());
         if (imageModel != null ) {
-            imageView.setImage(FileIO.getDatasetImage(estabController.getActiveFile(), imageModel.getFileId()));
+            imageView.setImage(FileIO.getDatasetImage(estabEditorController.getActiveFile(), imageModel.getFileId()));
             noImageCheckbox.setSelected(imageModel.getFileId().equals(NO_IMAGE_FILENAME) ? true : false);
         } else {
             setNoImage();
         }
     }
 
-    public void setEstabController(EstabController estabController) {
-        this.estabController = estabController;
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        this.estabEditorController = estabEditorController;
     }
 }

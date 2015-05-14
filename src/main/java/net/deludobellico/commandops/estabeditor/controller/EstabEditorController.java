@@ -38,8 +38,8 @@ import java.util.logging.Logger;
  * @author Mario
  * @author Heine
  */
-public class EstabController implements Initializable {
-    private static final Logger LOG = Logger.getLogger(EstabController.class.getName());
+public class EstabEditorController implements Initializable {
+    private static final Logger LOG = Logger.getLogger(EstabEditorController.class.getName());
     private static final Map<Class, String> ELEMENT_EDITOR_VIEWS = Collections.unmodifiableMap(new HashMap<Class, String>() {{
         put(ForceModel.class, FileIO.FORCE_VIEW);
         put(VehicleModel.class, FileIO.VEHICLE_VIEW);
@@ -97,7 +97,7 @@ public class EstabController implements Initializable {
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
     private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
-    // Main controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
+    // EstabEditorApp controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
     private MainController mainController = null;
     private ElementEditorController<ElementModel> elementEditorController = null;
     private EstabModel estabModel;
@@ -706,7 +706,7 @@ public class EstabController implements Initializable {
             // Load and save the controller
             elementEditorController = fxmlLoader.getController();
             elementEditorController.setEditable(isEditable);
-            elementEditorController.setEstabController(this);
+            elementEditorController.setEstabEditorController(this);
             elementEditorControllers.put(elementClass, elementEditorController);
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();

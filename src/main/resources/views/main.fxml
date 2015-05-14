@@ -116,8 +116,8 @@
         <center>
             <ScrollPane fx:id="estabsContainer">
                 <FlowPane>
-                    <fx:include fx:id="sourcePane" source="estab-data-v2.0.fxml"/>
-                    <fx:include fx:id="targetPane" source="estab-data-v2.0.fxml"/>
+                    <fx:include fx:id="sourcePane" source="estab-editor.fxml"/>
+                    <fx:include fx:id="targetPane" source="estab-editor.fxml"/>
                 </FlowPane>
             </ScrollPane>
         </center>

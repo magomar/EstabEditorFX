@@ -1,21 +1,17 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.ImageView;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.*;
-import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
 import net.deludobellico.commandops.estabeditor.view.UtilView;
@@ -28,7 +24,7 @@ import java.util.*;
  *
  * @author Mario
  * @author Heine
- * @see EstabController
+ * @see EstabEditorController
  */
 public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
 
@@ -142,7 +138,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      * Other
      */
     private VehicleModel activeVehicle;
-    private EstabController estabController;
+    private EstabEditorController estabEditorController;
     @FXML
     private ElementImageController imagePanelController;
 
@@ -157,7 +153,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         vehicleType.getItems().addAll(VehicleType.values());
         description.setWrapText(true);
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabController.getEstabModel();
+            EstabModel estabModel = estabEditorController.getEstabModel();
             if (!newValue.equals("")) {
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
@@ -228,7 +224,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
-        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", estabController.getEstabModel().getWeapons().values());
+        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", estabEditorController.getEstabModel().getWeapons().values());
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
@@ -443,8 +439,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void setEstabController(EstabController estabController) {
-        this.estabController = estabController;
-        imagePanelController.setEstabController(estabController);
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        this.estabEditorController = estabEditorController;
+        imagePanelController.setEstabEditorController(estabEditorController);
     }
 }

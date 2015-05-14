@@ -43,10 +43,10 @@ public class FileIO {
     //Views
     private static final String VIEWS_FOLDER = "/views";
     public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
-    public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor-v2.0.fxml";
-    public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor-v2.0.fxml";
-    public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor-v2.0.fxml";
-    public static final String AMMO_VIEW = VIEWS_FOLDER + "/ammo-editor-v2.0.fxml";
+    public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor.fxml";
+    public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor.fxml";
+    public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor.fxml";
+    public static final String AMMO_VIEW = VIEWS_FOLDER + "/ammo-editor.fxml";
     public static final String SEARCH_DIALOG_VIEW = VIEWS_FOLDER + "/search-dialog.fxml";
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";

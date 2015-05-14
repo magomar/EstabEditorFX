@@ -29,7 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Main application controller. Manages both source and target Estabs, and components such as the menu bar and tool bar.
+ * EstabEditorApp application controller. Manages both source and target Estabs, and components such as the menu bar and tool bar.
  *
  * @author Mario
  * @author Heine
@@ -120,9 +120,9 @@ public class MainController implements Initializable {
     @FXML
     private TitledPane targetPane;
     @FXML
-    private EstabController sourcePaneController;
+    private EstabEditorController sourcePaneController;
     @FXML
-    private EstabController targetPaneController;
+    private EstabEditorController targetPaneController;
     /**
      * Other
      */
