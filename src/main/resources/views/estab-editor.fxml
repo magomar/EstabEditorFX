@@ -17,25 +17,34 @@
                            <children>
                                <ToggleButton fx:id="forceButton" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchForce">
                                    <graphic>
-                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                       <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/forceicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                </ToggleButton>
                                <ToggleButton fx:id="vehicleButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchVehicle" HBox.hgrow="ALWAYS">
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                 <image>
+                                    <Image url="@../images/vehicleicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                </ToggleButton>
                                <ToggleButton fx:id="weaponButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchWeapon" HBox.hgrow="ALWAYS">
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                 <image>
+                                    <Image url="@../images/weaponicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                </ToggleButton>
                                <ToggleButton fx:id="ammoButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchAmmo" HBox.hgrow="ALWAYS">
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                 <image>
+                                    <Image url="@../images/ammoicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                </ToggleButton>
                            </children>
@@ -62,7 +71,9 @@
                                <Button fx:id="removeSelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeSelectedItems" prefWidth="30.0" GridPane.columnIndex="2">
                                    <graphic>
                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                 <image>
+                                    <Image url="@../images/removeicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                    <GridPane.margin>
                                        <Insets right="30.0" />
@@ -71,7 +82,9 @@
                                <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements" prefWidth="28.0" GridPane.columnIndex="2">
                                    <graphic>
                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    </ImageView>
+                                 <image>
+                                    <Image url="@../images/copyicon.png" />
+                                 </image></ImageView>
                                    </graphic>
                                    <GridPane.margin>
                                        <Insets />

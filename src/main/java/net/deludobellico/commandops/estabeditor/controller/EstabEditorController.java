@@ -181,13 +181,6 @@ public class EstabEditorController implements Initializable {
             searchTextField.setDisable(newValue);
             selectAllListCheckBox.setDisable(newValue);
         });
-
-        ((ImageView) forceButton.getGraphic()).setImage(new Image(FileIO.FORCE_ICON_RESOURCE));
-        ((ImageView) vehicleButton.getGraphic()).setImage(new Image(FileIO.VEHICLE_ICON_RESOURCE));
-        ((ImageView) weaponButton.getGraphic()).setImage(new Image(FileIO.WEAPON_ICON_RESOURCE));
-        ((ImageView) ammoButton.getGraphic()).setImage(new Image(FileIO.AMMO_ICON_RESOURCE));
-        ((ImageView) copySelectedButton.getGraphic()).setImage(new Image(FileIO.COPY_ICON_RESOURCE));
-        ((ImageView) removeSelectedButton.getGraphic()).setImage(new Image(FileIO.REMOVE_ICON_RESOURCE));
     }
 
     /**
