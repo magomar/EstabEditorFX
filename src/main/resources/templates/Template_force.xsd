@@ -1,6 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
-           elementFormDefault="qualified">
-
-
-</xs:schema>
+<force id="?">
+    <name>New force #16</name>
+    <description />
+    <icon>
+        <background-color red="156" green="156" blue="156" />
+        <background-dark-color red="107" green="107" blue="107" />
+        <background-light-color red="207" green="207" blue="207" />
+        <designation-color red="0" green="0" blue="0" />
+        <symbol-color>black</symbol-color>
+        <military-symbol>22</military-symbol>
+        <picture-symbol>infantry</picture-symbol>
+        <force-size-icon>company</force-size-icon>
+        <is-hq>no</is-hq>
+    </icon>
+    <type>infantry</type>
+    <size>company</size>
+    <combat-class>line</combat-class>
+    <target-class>soft</target-class>
+    <infantry-value>0</infantry-value>
+    <recon-value>0</recon-value>
+    <engineering-value>0</engineering-value>
+    <move-type>foot</move-type>
+    <pers-qty>100</pers-qty>
+    <staff-capacity>0</staff-capacity>
+    <basics-qty>448.0</basics-qty>
+    <basics-consumption-rate-modifier>1.0</basics-consumption-rate-modifier>
+    <commander-rank>0</commander-rank>
+    <fuel-qty>0.0</fuel-qty>
+    <fuel-load>10.0</fuel-load>
+    <speed>
+        <max>6.5</max>
+        <normal>5.4</normal>
+    </speed>
+    <deployment-duration>
+        <deployed>00:05</deployed>
+        <dug-in>02:00</dug-in>
+        <entrenched>2:00:00</entrenched>
+        <fortified>1:00:00</fortified>
+    </deployment-duration>
+    <ready-to-fire-duration>00:00</ready-to-fire-duration>
+    <ready-to-bombard-duration>00:00</ready-to-bombard-duration>
+    <equipment-list />
+    <ammo-list />
+    <can-bombard>no</can-bombard>
+    <sub-type>Infantry</sub-type>
+</force>
