@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.estabeditor.view;
+package net.deludobellico.commandops.estabeditor.controller;
 
 /**
  * Created by Heine on 11/3/2014.
@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 @SuppressWarnings("unchecked")
-public class ElementSearchDialog implements Initializable {
+public class SearchDialogController implements Initializable {
 
     /**
      * Top
@@ -63,17 +64,17 @@ public class ElementSearchDialog implements Initializable {
     private boolean addButtonIsPressed = false;
     private List<ElementModel> items;
 
-    public static ElementSearchDialog init() {
-        FXMLLoader fxmlLoader = new FXMLLoader(ElementSearchDialog.class.getResource(FileIO.SEARCH_DIALOG_VIEW));
-        ElementSearchDialog elementSearchDialog = null;
+    public static SearchDialogController init() {
+        FXMLLoader fxmlLoader = new FXMLLoader(SearchDialogController.class.getResource(FileIO.SEARCH_DIALOG_VIEW));
+        SearchDialogController searchDialogController = null;
         try {
             Parent parent = fxmlLoader.load();
-            elementSearchDialog = fxmlLoader.getController();
-            elementSearchDialog.setParent(parent);
+            searchDialogController = fxmlLoader.getController();
+            searchDialogController.setParent(parent);
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
-        return elementSearchDialog;
+        return searchDialogController;
     }
 
     @Override
@@ -113,19 +114,19 @@ public class ElementSearchDialog implements Initializable {
         return selectedItem;
     }
 
-    public ElementSearchDialog setItems(Collection<? extends ElementModel> items) {
+    public SearchDialogController setItems(Collection<? extends ElementModel> items) {
         this.items = new ArrayList(items);
         searchTableView.getItems().clear();
         searchTableView.getItems().addAll(items);
         return this;
     }
 
-    public ElementSearchDialog setTitle(String title) {
+    public SearchDialogController setTitle(String title) {
         dialog.setTitle(title);
         return this;
     }
 
-    public ElementSearchDialog setOwner(Stage parent) {
+    public SearchDialogController setOwner(Stage parent) {
         dialog.initOwner(parent);
         return this;
     }

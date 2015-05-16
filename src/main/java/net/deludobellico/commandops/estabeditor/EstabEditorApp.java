@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 public class EstabEditorApp extends Application {
 

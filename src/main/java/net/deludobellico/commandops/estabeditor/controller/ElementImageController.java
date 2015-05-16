@@ -14,7 +14,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.GraphicalElementModel;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.io.File;
 import java.net.URL;

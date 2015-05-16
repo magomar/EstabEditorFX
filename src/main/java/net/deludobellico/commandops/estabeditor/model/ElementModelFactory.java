@@ -110,5 +110,14 @@ public final class ElementModelFactory {
         return imageModel;
     }
 
+    public static ForceModel createForce() {
+        ForceModel forceModel = new ForceModel();
+        forceModel.setId(++maxId);
+        forceModel.setName(ElementModelFactory.formatName("New Force", forceModel.getId()));
+        forceModel.setDescription("");
+        forceModel.getFlags().add(Flag.NEW);
+        return forceModel;
+    }
+
     // TODO createForceModel()
 }

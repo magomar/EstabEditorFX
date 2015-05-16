@@ -13,8 +13,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
-import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
 import java.util.*;
@@ -220,7 +219,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      *
      * @param actionEvent is not used
      * @see ArmamentModel
-     * @see ElementSearchDialog
+     * @see SearchDialogController
      */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {

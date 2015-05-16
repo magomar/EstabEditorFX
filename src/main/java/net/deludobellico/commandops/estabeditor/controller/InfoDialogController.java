@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.estabeditor.view;
+package net.deludobellico.commandops.estabeditor.controller;
 
 /**
  * Created by Heine on 11/3/2014.
@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 //TODO: make prettier the view
-public class InfoDialog implements Initializable {
+public class InfoDialogController implements Initializable {
 
     @FXML
     private ImageView image;
@@ -47,17 +48,17 @@ public class InfoDialog implements Initializable {
 
     private DialogAction selectedAction;
 
-    public static InfoDialog init() {
-        FXMLLoader fxmlLoader = new FXMLLoader(InfoDialog.class.getResource(FileIO.INFO_DIALOG_VIEW));
-        InfoDialog infoDialog = null;
+    public static InfoDialogController init() {
+        FXMLLoader fxmlLoader = new FXMLLoader(InfoDialogController.class.getResource(FileIO.INFO_DIALOG_VIEW));
+        InfoDialogController infoDialogController = null;
         try {
             Parent parent = fxmlLoader.load();
-            infoDialog = fxmlLoader.getController();
-            infoDialog.setParent(parent);
+            infoDialogController = fxmlLoader.getController();
+            infoDialogController.setParent(parent);
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
-        return infoDialog;
+        return infoDialogController;
     }
 
     @Override
@@ -67,16 +68,16 @@ public class InfoDialog implements Initializable {
         dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
         buttonBox.getChildren().stream().forEach(b -> ((Button) b).setOnAction(event -> dialog.close()));
-        image.setImage(new Image(InfoDialog.class.getResourceAsStream(FileIO.INFO_ICON_RESOURCE)));
+        image.setImage(new Image(InfoDialogController.class.getResourceAsStream(FileIO.INFO_ICON_RESOURCE)));
 
     }
 
-    public InfoDialog setTitle(String title) {
+    public InfoDialogController setTitle(String title) {
         dialog.setTitle(title);
         return this;
     }
 
-    public InfoDialog setOwner(Stage parent) {
+    public InfoDialogController setOwner(Stage parent) {
         dialog.initOwner(parent);
         return this;
     }
@@ -86,17 +87,17 @@ public class InfoDialog implements Initializable {
     }
 
 
-    public InfoDialog setHeadText(String text) {
+    public InfoDialogController setHeadText(String text) {
         this.headText.setText(text);
         return this;
     }
 
-    public InfoDialog setBodyText(String text) {
+    public InfoDialogController setBodyText(String text) {
         this.bodyText.setText(text);
         return this;
     }
 
-    public InfoDialog setActions(DialogAction... actions) {
+    public InfoDialogController setActions(DialogAction... actions) {
         if (actions.length > 1) {
             buttonBox.getChildren().clear();
             for (DialogAction dialogAction : actions) {

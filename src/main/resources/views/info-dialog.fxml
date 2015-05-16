@@ -12,7 +12,7 @@
            maxWidth="-Infinity"
            minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0"
            prefWidth="300.0" xmlns="http://javafx.com/javafx/8"
-           fx:controller="net.deludobellico.commandops.estabeditor.view.InfoDialog">
+           fx:controller="net.deludobellico.commandops.estabeditor.controller.InfoDialogController">
     <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0">
         <children>
             <ImageView fx:id="image" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"

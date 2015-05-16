@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.util.Collection;
 import java.util.Iterator;

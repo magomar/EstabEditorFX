@@ -17,7 +17,7 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.io.File;
 import java.net.URL;
@@ -75,6 +75,8 @@ public class MainController implements Initializable {
     private MenuItem removeMenuItem;
     // New menu
     @FXML
+    private MenuItem createNewForceMenuItem;
+    @FXML
     private MenuItem createNewVehicleMenuItem;
     @FXML
     private MenuItem createNewWeaponMenuItem;
@@ -102,6 +104,8 @@ public class MainController implements Initializable {
     private Button removeElementButton;
     @FXML
     private Button saveDataButton;
+    @FXML
+    private Button createNewForceButton;
     @FXML
     private Button createNewVehicleButton;
     @FXML
@@ -211,6 +215,9 @@ public class MainController implements Initializable {
         targetSaveAsMenuItem.disableProperty().bind(targetIsClosed);
         targetCloseMenuItem.disableProperty().bind(targetIsClosed);
         targetPaneController.searchDisableProperty().bind(targetIsClosed);
+
+        createNewForceButton.disableProperty().bind(targetIsClosed);
+        createNewForceMenuItem.disableProperty().bind(targetIsClosed);
 
         createNewVehicleButton.disableProperty().bind(targetIsClosed);
         createNewVehicleMenuItem.disableProperty().bindBidirectional(targetIsClosed);
@@ -437,7 +444,7 @@ public class MainController implements Initializable {
         saveSourceAsAction();
     }
 
-    public File saveSourceAsAction() {
+    private File saveSourceAsAction() {
         File file = openFileChooser(true, true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + sourceActiveEstabFile.getName() + " as " + file.getName());
@@ -455,7 +462,7 @@ public class MainController implements Initializable {
         saveTargetAsAction();
     }
 
-    public File saveTargetAsAction() {
+    private File saveTargetAsAction() {
         File file = openFileChooser(true, true);
         if (file != null) {
             LOG.log(Level.INFO, "Saving target file " + targetActiveEstabFile.getName() + " as " + file.getName());
@@ -583,6 +590,11 @@ public class MainController implements Initializable {
         List<ElementModel> elementsToRemove = targetPaneController.getEstabModel().getRelatedElements(
                 targetPaneController.getActiveElement().get()).getAllElements();
         targetPaneController.removeRelatedElements(elementsToRemove);
+    }
+
+    @FXML
+    private void createNewForceAction() {
+        targetPaneController.createNewElement(new ForceModel());
     }
 
     @FXML

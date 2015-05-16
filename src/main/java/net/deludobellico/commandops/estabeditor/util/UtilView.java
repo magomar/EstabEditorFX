@@ -1,8 +1,11 @@
-package net.deludobellico.commandops.estabeditor.view;
+package net.deludobellico.commandops.estabeditor.util;
 
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.controller.CopyRemoveDialogController;
+import net.deludobellico.commandops.estabeditor.controller.InfoDialogController;
+import net.deludobellico.commandops.estabeditor.controller.SearchDialogController;
 
 import java.util.Collection;
 
@@ -22,7 +25,7 @@ public class UtilView {
     public static Stage ROOT_STAGE;
 
     public static Object showSearchDialog(String title, Collection<? extends ElementModel> items) {
-        return ElementSearchDialog.init()
+        return SearchDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle(title)
                 .setItems(items)
@@ -30,7 +33,7 @@ public class UtilView {
     }
 
     public static DialogAction showWarningRepeatedElements(Collection tableItems, Collection selectedItems) {
-        return CopyRemoveDialog.init()
+        return CopyRemoveDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Repeated elements found")
                 .setHeadText("The following elements already exist in the target file")
@@ -40,7 +43,7 @@ public class UtilView {
     }
 
     public static DialogAction showWarningRemoveElements(Collection tableItems, Collection selectedItems) {
-        return CopyRemoveDialog.init()
+        return CopyRemoveDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Deleting elements")
                 .setHeadText("Are you sure you want to remove the following items?")
@@ -50,7 +53,7 @@ public class UtilView {
     }
 
     public static DialogAction showInfoDialog(String title, String headText, String bodyText, DialogAction... actions) {
-        return InfoDialog.init()
+        return InfoDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle(title)
                 .setHeadText(headText)

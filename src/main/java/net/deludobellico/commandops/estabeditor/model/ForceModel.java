@@ -194,8 +194,9 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
 
     @Override
     public ForceModel createNewInMap(Map<Integer, ForceModel> map) {
-        // ElementModelFactory.create()
-        throw new UnsupportedOperationException("Method not implemented");
+        ForceModel newElement = ElementModelFactory.createForce();
+        map.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     @Override

@@ -13,8 +13,7 @@ import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
-import net.deludobellico.commandops.estabeditor.view.ElementSearchDialog;
-import net.deludobellico.commandops.estabeditor.view.UtilView;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -353,7 +352,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
      *
      * @param actionEvent is not used
      * @see AmmoModel
-     * @see ElementSearchDialog
+     * @see SearchDialogController
      */
     @FXML
     private void ammoSelectAction(ActionEvent actionEvent) {

@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.estabeditor.view;
+package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ import java.util.ResourceBundle;
  * Created by Heine on 11/3/2014.
  */
 @SuppressWarnings("unchecked")
-public class CopyRemoveDialog implements Initializable {
+public class CopyRemoveDialogController implements Initializable {
 
     private final Collection selectedItems = FXCollections.observableArrayList();
     @FXML
@@ -49,17 +50,17 @@ public class CopyRemoveDialog implements Initializable {
     private Parent parent;
     private DialogAction selectedDialogAction = DialogAction.CANCEL;
 
-    public static CopyRemoveDialog init() {
-        FXMLLoader fxmlLoader = new FXMLLoader(CopyRemoveDialog.class.getResource(FileIO.SELECTION_DIALOG_VIEW));
-        CopyRemoveDialog copyRemoveDialog = null;
+    public static CopyRemoveDialogController init() {
+        FXMLLoader fxmlLoader = new FXMLLoader(CopyRemoveDialogController.class.getResource(FileIO.SELECTION_DIALOG_VIEW));
+        CopyRemoveDialogController copyRemoveDialogController = null;
         try {
             Parent parent = fxmlLoader.load();
-            copyRemoveDialog = fxmlLoader.getController();
-            copyRemoveDialog.setParent(parent);
+            copyRemoveDialogController = fxmlLoader.getController();
+            copyRemoveDialogController.setParent(parent);
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
         }
-        return copyRemoveDialog;
+        return copyRemoveDialogController;
     }
 
     @Override
@@ -84,21 +85,21 @@ public class CopyRemoveDialog implements Initializable {
             selectedItems.addAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        image.setImage(new Image(CopyRemoveDialog.class.getResourceAsStream(FileIO.WARNING_ICON_RESOURCE)));
+        image.setImage(new Image(CopyRemoveDialogController.class.getResourceAsStream(FileIO.WARNING_ICON_RESOURCE)));
     }
 
-    public CopyRemoveDialog setTitle(String title) {
+    public CopyRemoveDialogController setTitle(String title) {
         dialog.setTitle(title);
         return this;
     }
 
-    public CopyRemoveDialog setItems(Collection items) {
+    public CopyRemoveDialogController setItems(Collection items) {
         tableView.getItems().clear();
         tableView.getItems().addAll(items);
         return this;
     }
 
-    public CopyRemoveDialog setOwner(Stage owner) {
+    public CopyRemoveDialogController setOwner(Stage owner) {
         dialog.initOwner(owner);
         return this;
     }
@@ -107,12 +108,12 @@ public class CopyRemoveDialog implements Initializable {
         this.parent = parent;
     }
 
-    public CopyRemoveDialog setHeadText(String text) {
+    public CopyRemoveDialogController setHeadText(String text) {
         this.headText.setText(text);
         return this;
     }
 
-    public CopyRemoveDialog setBodyText(String text) {
+    public CopyRemoveDialogController setBodyText(String text) {
         this.bodyText.setText(text);
         return this;
     }
@@ -127,7 +128,7 @@ public class CopyRemoveDialog implements Initializable {
         return selectedDialogAction;
     }
 
-    public CopyRemoveDialog setActions(DialogAction... dialogActions) {
+    public CopyRemoveDialogController setActions(DialogAction... dialogActions) {
         buttonBox.getChildren().clear();
         for (DialogAction dialogAction : dialogActions) {
             Button b = new Button(dialogAction.getAction());
