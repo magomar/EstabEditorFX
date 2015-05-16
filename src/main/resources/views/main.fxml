@@ -1,126 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.MainController">
-    <BorderPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                AnchorPane.rightAnchor="0.0">
-        <top>
-            <VBox>
-                <MenuBar BorderPane.alignment="CENTER">
-                    <Menu mnemonicParsing="false" text="ESTAB">
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.MainController">
+   <children>
+       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <top>
+               <VBox>
+                  <children>
+                      <MenuBar BorderPane.alignment="CENTER">
+                         <menus>
+                             <Menu mnemonicParsing="false" text="ESTAB">
                         <!--MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
                                               onAction="#exitApplication" text="Exit"/-->
                     </Menu>
-                    <Menu mnemonicParsing="true" text="_Source">
-                        <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="true"
-                                  onAction="#openFileAction" text="Open"/>
-                        <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="true"
-                              text="Open recent">
+                             <Menu mnemonicParsing="true" text="_Source">
+                                <items>
+                                    <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="Open" />
+                                    <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="true" text="Open recent">
 
                         </Menu>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="sourceSaveAsMenuItem" disable="true" mnemonicParsing="false"
-                                  onAction="#saveSourceAsAction" text="Save as ..."/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false"
-                                  onAction="#sourceCloseAction" text="Close"/>
-                    </Menu>
-                    <Menu mnemonicParsing="true" text="_Target">
-                        <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="true"
-                                  onAction="#openFileAction" text="New"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="true"
-                                  onAction="#openFileAction" text="Open"/>
-                        <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="true"
-                              text="Open recent">
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="sourceSaveAsMenuItem" disable="true" mnemonicParsing="false" onAction="#saveSourceAsAction" text="Save as ..." />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#sourceCloseAction" text="Close" />
+                                </items>
+                             </Menu>
+                             <Menu mnemonicParsing="true" text="_Target">
+                                <items>
+                                    <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="New" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="Open" />
+                                    <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="true" text="Open recent">
 
                         </Menu>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="targetSaveMenuItem" disable="true" mnemonicParsing="false"
-                                  onAction="#saveTargetAction" text="Save"/>
-                        <MenuItem fx:id="targetSaveAsMenuItem" disable="true" mnemonicParsing="false"
-                                  onAction="#saveTargetAsAction" text="Save as ..."/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false"
-                                  onAction="#targetCloseAction" text="Close"/>
-                    </Menu>
-                    <Menu mnemonicParsing="true" text="_Edit">
-                        <MenuItem fx:id="copyMenuItem" mnemonicParsing="true"
-                                  onAction="#copyAction" text="Copy (Source to target)"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem fx:id="duplicateMenuItem" mnemonicParsing="true"
-                                  disable="true" text="Duplicate (Target to target)"/>
-                        <MenuItem fx:id="removeMenuItem" mnemonicParsing="true"
-                                  onAction="#removeAction" text="Remove (Target)"/>
-
-                    </Menu>
-                    <Menu mnemonicParsing="true" text="_New">
-                        <MenuItem fx:id="createNewVehicleMenuItem" mnemonicParsing="true"
-                                  onAction="#createNewVehicleAction" text="Vehicle"/>
-                        <MenuItem fx:id="createNewWeaponMenuItem" mnemonicParsing="true"
-                                  onAction="#createNewWeaponAction" text="Weapon"/>
-                        <MenuItem fx:id="createNewAmmoMenuItem" mnemonicParsing="true"
-                                  onAction="#createNewAmmoAction" text="Ammo"/>
-
-                    </Menu>
-
-                    <Menu mnemonicParsing="false" text="Install Dataset">
-                        <MenuItem mnemonicParsing="false"
-                                  onAction="#installDataset" text="BFTB"/>
-                        <MenuItem mnemonicParsing="false"
-                                  onAction="#installDataset" text="COTA"/>
-                    </Menu>
-
-                    <Menu mnemonicParsing="false" text="_View">
-                        <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" selected="true"
-                                       onAction="#toggleToolBarVisibility" text="Toolbar"/>
-                        <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="true" selected="true"
-                                       onAction="#toggleSourcePaneVisibility" text="Source"/>
-                        <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="true" selected="true"
-                                       onAction="#toggleTargetPaneVisibility" text="Target"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <RadioMenuItem mnemonicParsing="true"
-                                       onAction="#togglePanesContainer" text="Switch Panels"/>
-                    </Menu>
-                    <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About"/>
-                    </Menu>
-                </MenuBar>
-                <ToolBar fx:id="toolBar">
-                    <Button fx:id="copyElementButton" disable="true" mnemonicParsing="false"
-                            onAction="#copyAction" text="Copy Source Element"
-                            maxHeight="Infinity"/>
-                    <Button fx:id="removeElementButton" disable="true" mnemonicParsing="false"
-                            onAction="#removeAction" text="Remove Target Element"
-                            maxHeight="Infinity"/>
-                    <Button fx:id="saveDataButton" disable="true" mnemonicParsing="false"
-                            onAction="#saveTargetAction" text="Save Target File" maxHeight="Infinity"/>
-                    <Button fx:id="createNewVehicleButton" disable="true" mnemonicParsing="true"
-                            onAction="#createNewVehicleAction" text="New Vehicle" maxHeight="Infinity"/>
-                    <Button fx:id="createNewWeaponButton" disable="true" mnemonicParsing="true"
-                            onAction="#createNewWeaponAction" text="New Weapon" maxHeight="Infinity"/>
-                    <Button fx:id="createNewAmmoButton" disable="true" mnemonicParsing="true"
-                            onAction="#createNewAmmoAction" text="New Ammo" maxHeight="Infinity"/>
-                    <Button fx:id="compareElementButton" disable="true" mnemonicParsing="true"
-                            onAction="#compareElementButtonAction" text="Compare elements"
-                            maxHeight="Infinity"/>
-
-                </ToolBar>
-            </VBox>
-        </top>
-        <center>
-            <ScrollPane fx:id="estabsContainer">
-                <FlowPane>
-                    <fx:include fx:id="sourcePane" source="estab-editor.fxml"/>
-                    <fx:include fx:id="targetPane" source="estab-editor.fxml"/>
-                </FlowPane>
-            </ScrollPane>
-        </center>
-
-    </BorderPane>
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="targetSaveMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAction" text="Save" />
+                                    <MenuItem fx:id="targetSaveAsMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAsAction" text="Save as ..." />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#targetCloseAction" text="Close" />
+                                </items>
+                             </Menu>
+                             <Menu mnemonicParsing="true" text="_Edit">
+                                <items>
+                                    <MenuItem fx:id="copyMenuItem" mnemonicParsing="true" onAction="#copyAction" text="Copy (Source to target)" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem fx:id="duplicateMenuItem" disable="true" mnemonicParsing="true" text="Duplicate (Target to target)" />
+                                    <MenuItem fx:id="removeMenuItem" mnemonicParsing="true" onAction="#removeAction" text="Remove (Target)" />
+                                </items>
+         
+                             </Menu>
+                             <Menu mnemonicParsing="true" text="_New">
+                                <items>
+                                    <MenuItem fx:id="createNewVehicleMenuItem" mnemonicParsing="true" onAction="#createNewVehicleAction" text="Vehicle" />
+                                    <MenuItem fx:id="createNewWeaponMenuItem" mnemonicParsing="true" onAction="#createNewWeaponAction" text="Weapon" />
+                                    <MenuItem fx:id="createNewAmmoMenuItem" mnemonicParsing="true" onAction="#createNewAmmoAction" text="Ammo" />
+                                </items>
+         
+                             </Menu>
+         
+                             <Menu mnemonicParsing="false" text="Install Dataset">
+            <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#installDataset" text="BFTB" />
+                                    <MenuItem mnemonicParsing="false" onAction="#installDataset" text="COTA" />
+            </items>
+                             </Menu>
+         
+                             <Menu mnemonicParsing="false" text="_View">
+            <items>
+                                    <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" onAction="#toggleToolBarVisibility" selected="true" text="Toolbar" />
+                                    <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="true" onAction="#toggleSourcePaneVisibility" selected="true" text="Source" />
+                                    <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="true" onAction="#toggleTargetPaneVisibility" selected="true" text="Target" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <RadioMenuItem mnemonicParsing="true" onAction="#togglePanesContainer" text="Switch Panels" />
+            </items>
+                             </Menu>
+                             <Menu mnemonicParsing="false" text="Help">
+                                <items>
+                                    <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+                                </items>
+                             </Menu>
+                         </menus>
+                      </MenuBar>
+                      <ToolBar fx:id="toolBar">
+                         <items>
+                             <Button fx:id="copyElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#copyAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/copy.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                             <Button fx:id="removeElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#removeAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/remove.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                             <Button fx:id="saveDataButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#saveTargetAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/save.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                             <Button fx:id="createNewVehicleButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewVehicleAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/new_vehicle.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                             <Button fx:id="createNewWeaponButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewWeaponAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/new_weapon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                             <Button fx:id="createNewAmmoButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewAmmoAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/new_ammo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                             <Button fx:id="compareElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#compareElementButtonAction">
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/compare.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                         </items>
+      
+                      </ToolBar>
+                  </children>
+               </VBox>
+           </top>
+           <center>
+               <ScrollPane fx:id="estabsContainer">
+                  <content>
+                      <FlowPane>
+                         <children>
+                             <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
+                             <fx:include fx:id="targetPane" source="estab-editor.fxml" />
+                         </children>
+                      </FlowPane>
+                  </content>
+               </ScrollPane>
+           </center>
+   
+       </BorderPane>
+   </children>
 </AnchorPane>
