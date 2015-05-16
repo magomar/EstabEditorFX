@@ -54,7 +54,7 @@ public class FileIO {
     private static final String IMAGES_FOLDER = "/images";
     public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
     public static final String INFO_ICON_RESOURCE = IMAGES_FOLDER + "/info.png";
-    public static final String APP_ICON = IMAGES_FOLDER + "/appicon.png";
+    public static final String APP_ICON = IMAGES_FOLDER + "/app-icon.png";
     /**
      * Saved JAXB contexts for POJO classes and the Settings file
      */

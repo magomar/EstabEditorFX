@@ -19,7 +19,7 @@
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/forceicon.png" />
+                                    <Image url="@../images/force.png" />
                                  </image></ImageView>
                                    </graphic>
                                </ToggleButton>
@@ -27,7 +27,7 @@
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/vehicleicon.png" />
+                                    <Image url="@../images/vehicle.png" />
                                  </image></ImageView>
                                    </graphic>
                                </ToggleButton>
@@ -35,7 +35,7 @@
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/weaponicon.png" />
+                                    <Image url="@../images/weapon.png" />
                                  </image></ImageView>
                                    </graphic>
                                </ToggleButton>
@@ -43,7 +43,7 @@
                                    <graphic>
                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/ammoicon.png" />
+                                    <Image url="@../images/ammo.png" />
                                  </image></ImageView>
                                    </graphic>
                                </ToggleButton>
@@ -72,7 +72,7 @@
                                    <graphic>
                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/removeicon.png" />
+                                    <Image url="@../images/remove.png" />
                                  </image></ImageView>
                                    </graphic>
                                    <GridPane.margin>
@@ -83,7 +83,7 @@
                                    <graphic>
                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/copyicon.png" />
+                                    <Image url="@../images/copy.png" />
                                  </image></ImageView>
                                    </graphic>
                                    <GridPane.margin>
