@@ -1,8 +1,8 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
-import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -118,6 +118,40 @@ public final class ElementModelFactory {
         forceModel.getFlags().add(Flag.NEW);
         IconModel iconModel = new IconModel();
         iconModel.setBackgroundColor(serviceModel.getBackgroundColor());
+        iconModel.setBackgroundDarkColor(serviceModel.getBackgroundDarkColor());
+        iconModel.setBackgroundLightColor(serviceModel.getBackgroundLightColor());
+        iconModel.setDesignationColor(serviceModel.getDesignationColor());
+        iconModel.setSymbolColor(serviceModel.getSymbolColor());
+        iconModel.setMilitarySymbol(22);
+        iconModel.setPictureSymbol(PictureSymbol.INFANTRY);
+        iconModel.setForceSizeIcon(ForceSize.COMPANY);
+        iconModel.setIsHq(false);
+        forceModel.setIcon(iconModel);
+        forceModel.setType(ForceType.INFANTRY);
+        forceModel.setSize(ForceSize.COMPANY);
+        forceModel.setCombatClass(CombatClass.LINE);
+        forceModel.setTargetClass(TargetClass.SOFT);
+        forceModel.setInfantryValue(100);
+        forceModel.setReconValue(10);
+        forceModel.setEngineeringValue(0);
+        forceModel.setMoveType(MoveType.FOOT);
+        forceModel.setPersQty(100);
+        forceModel.setStaffCapacity(4);
+        forceModel.setBasicsQty(448.0);
+        forceModel.setBasicsConsumptionRateModifier(1.0);
+        forceModel.setCommanderRank(3);
+        forceModel.setFuelQty(0.0);
+        forceModel.setFuelLoad(10.0);
+        forceModel.setMaxSpeed(6.5);
+        forceModel.setNormalSpeed(5.4);
+        forceModel.setDeployed(LocalTime.of(0,0,5));
+        forceModel.setDugIn(LocalTime.of(0,2,0));
+        forceModel.setEntrenched(LocalTime.of(2,0,0));
+        forceModel.setFortified(LocalTime.of(1,0,0));
+        forceModel.setReadyToFireDuration(LocalTime.of(0,0,0));
+        forceModel.setReadyToBombardDuration(LocalTime.of(0,0,0));
+        forceModel.setCanBombard(false);
+        forceModel.setSubType(ForceSubtype.LEG_INFANTRY);
         return forceModel;
     }
 
