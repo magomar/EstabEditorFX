@@ -16,7 +16,7 @@ import javafx.stage.FileChooser;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
-import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.util.DialogAction;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.io.File;

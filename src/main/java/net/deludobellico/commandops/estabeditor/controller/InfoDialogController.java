@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
-import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
+import net.deludobellico.commandops.estabeditor.util.DialogAction;
 
 import java.io.IOException;
 import java.net.URL;

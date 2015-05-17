@@ -1,4 +1,4 @@
-package net.deludobellico.commandops.estabeditor.util.view;
+package net.deludobellico.commandops.estabeditor.util;
 
 /**
  * Enum used for the Dialog buttons.

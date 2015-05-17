@@ -2,7 +2,6 @@ package net.deludobellico.commandops.estabeditor.util;
 
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
-import net.deludobellico.commandops.estabeditor.util.view.DialogAction;
 import net.deludobellico.commandops.estabeditor.controller.CopyRemoveDialogController;
 import net.deludobellico.commandops.estabeditor.controller.InfoDialogController;
 import net.deludobellico.commandops.estabeditor.controller.SearchDialogController;
