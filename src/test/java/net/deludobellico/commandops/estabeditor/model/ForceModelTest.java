@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.time.LocalTime;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -41,12 +42,12 @@ public class ForceModelTest {
     private final double fuelLoad = 100;
     private final double maxSpeed = 110;
     private final double normalSpeed = 100;
-    private final GregorianCalendar deployed = new GregorianCalendar();
-    private final GregorianCalendar dugIn = new GregorianCalendar();
-    private final GregorianCalendar entrenched = new GregorianCalendar();
-    private final GregorianCalendar fortified = new GregorianCalendar();
-    private final String readyToFireDuration = "00:00:00";
-    private final String readyToBombardDuration = "00:00:00";
+    private final LocalTime deployed = LocalTime.now();
+    private final LocalTime dugIn = LocalTime.now();
+    private final LocalTime entrenched = LocalTime.now();
+    private final LocalTime fortified = LocalTime.now();
+    private final LocalTime readyToFireDuration =LocalTime.now();
+    private final LocalTime readyToBombardDuration = LocalTime.now();
     private final List<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final List<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final boolean canBombard = false;

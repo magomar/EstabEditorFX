@@ -1,11 +1,12 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -40,12 +41,12 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
     private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
-    private final ObjectProperty<GregorianCalendar> deployed = new SimpleObjectProperty<>();
-    private final ObjectProperty<GregorianCalendar> dugIn = new SimpleObjectProperty<>();
-    private final ObjectProperty<GregorianCalendar> entrenched = new SimpleObjectProperty<>();
-    private final ObjectProperty<GregorianCalendar> fortified = new SimpleObjectProperty<>();
-    private final StringProperty readyToFireDuration = new SimpleStringProperty();
-    private final StringProperty readyToBombardDuration = new SimpleStringProperty();
+    private final ObjectProperty<LocalTime> deployed = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> dugIn = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> entrenched = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> fortified = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalTime> readyToFireDuration = new SimpleObjectProperty();
+    private final ObjectProperty<LocalTime> readyToBombardDuration = new SimpleObjectProperty();
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final BooleanProperty canBombard = new SimpleBooleanProperty();
@@ -103,13 +104,13 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         speedData.setNormal(normalSpeed.get());
         force.setSpeed(speedData);
         DeploymentDuration deploymentDuration = new DeploymentDuration();
-        deploymentDuration.setDeployed(new XMLGregorianCalendarImpl(deployed.get()));
-        deploymentDuration.setDugIn(new XMLGregorianCalendarImpl(dugIn.get()));
-        deploymentDuration.setEntrenched(new XMLGregorianCalendarImpl(entrenched.get()));
-        deploymentDuration.setFortified(new XMLGregorianCalendarImpl(fortified.get()));
+        deploymentDuration.setDeployed(DateTimeUtils.format(deployed.get()));
+        deploymentDuration.setDugIn(DateTimeUtils.format(dugIn.get()));
+        deploymentDuration.setEntrenched(DateTimeUtils.format(entrenched.get()));
+        deploymentDuration.setFortified(DateTimeUtils.format(fortified.get()));
         force.setDeploymentDuration(deploymentDuration);
-        force.setReadyToFireDuration(readyToFireDuration.get());
-        force.setReadyToBombardDuration(readyToBombardDuration.get());
+        force.setReadyToFireDuration(DateTimeUtils.format(readyToFireDuration.get()));
+        force.setReadyToBombardDuration(DateTimeUtils.format(readyToBombardDuration.get()));
         force.setEquipmentList(new EquipmentList());
         force.setAmmoList(new AmmoList());
         equipmentList.stream().map(EquipmentModel::getPojo).forEach(force.getEquipmentList().getEquipment()::add);
@@ -143,12 +144,12 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         fuelLoad.set(pojo.getFuelLoad());
         maxSpeed.set(pojo.getSpeed().getMax());
         normalSpeed.set(pojo.getSpeed().getNormal());
-        deployed.set(pojo.getDeploymentDuration().getDeployed().toGregorianCalendar());
-        dugIn.set(pojo.getDeploymentDuration().getDugIn().toGregorianCalendar());
-        entrenched.set(pojo.getDeploymentDuration().getEntrenched().toGregorianCalendar());
-        fortified.set(pojo.getDeploymentDuration().getFortified().toGregorianCalendar());
-        readyToBombardDuration.set(pojo.getReadyToBombardDuration());
-        readyToFireDuration.set(pojo.getReadyToFireDuration());
+        deployed.set(DateTimeUtils.parseTime(pojo.getDeploymentDuration().getDeployed()));
+        dugIn.set(DateTimeUtils.parseTime(pojo.getDeploymentDuration().getDugIn()));
+        entrenched.set(DateTimeUtils.parseTime(pojo.getDeploymentDuration().getEntrenched()));
+        fortified.set(DateTimeUtils.parseTime(pojo.getDeploymentDuration().getFortified()));
+        readyToBombardDuration.set(DateTimeUtils.parseTime(pojo.getReadyToBombardDuration()));
+        readyToFireDuration.set(DateTimeUtils.parseTime(pojo.getReadyToFireDuration()));
         pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentList::add);
         pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoList::add);
         flags.addAll(pojo.getFlags());
@@ -470,75 +471,75 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         return normalSpeed;
     }
 
-    public GregorianCalendar getDeployed() {
+    public LocalTime getDeployed() {
         return deployed.get();
     }
 
-    public void setDeployed(GregorianCalendar deployed) {
+    public void setDeployed(LocalTime deployed) {
         this.deployed.set(deployed);
     }
 
-    public ObjectProperty<GregorianCalendar> deployedProperty() {
+    public ObjectProperty<LocalTime> deployedProperty() {
         return deployed;
     }
 
-    public GregorianCalendar getDugIn() {
+    public LocalTime getDugIn() {
         return dugIn.get();
     }
 
-    public void setDugIn(GregorianCalendar dugIn) {
+    public void setDugIn(LocalTime dugIn) {
         this.dugIn.set(dugIn);
     }
 
-    public ObjectProperty<GregorianCalendar> dugInProperty() {
+    public ObjectProperty<LocalTime> dugInProperty() {
         return dugIn;
     }
 
-    public GregorianCalendar getEntrenched() {
+    public LocalTime getEntrenched() {
         return entrenched.get();
     }
 
-    public void setEntrenched(GregorianCalendar entrenched) {
+    public void setEntrenched(LocalTime entrenched) {
         this.entrenched.set(entrenched);
     }
 
-    public ObjectProperty<GregorianCalendar> entrenchedProperty() {
+    public ObjectProperty<LocalTime> entrenchedProperty() {
         return entrenched;
     }
 
-    public GregorianCalendar getFortified() {
+    public LocalTime getFortified() {
         return fortified.get();
     }
 
-    public void setFortified(GregorianCalendar fortified) {
+    public void setFortified(LocalTime fortified) {
         this.fortified.set(fortified);
     }
 
-    public ObjectProperty<GregorianCalendar> fortifiedProperty() {
+    public ObjectProperty<LocalTime> fortifiedProperty() {
         return fortified;
     }
 
-    public String getReadyToFireDuration() {
+    public LocalTime getReadyToFireDuration() {
         return readyToFireDuration.get();
     }
 
-    public void setReadyToFireDuration(String readyToFireDuration) {
+    public void setReadyToFireDuration(LocalTime readyToFireDuration) {
         this.readyToFireDuration.set(readyToFireDuration);
     }
 
-    public StringProperty readyToFireDurationProperty() {
+    public ObjectProperty<LocalTime> readyToFireDurationProperty() {
         return readyToFireDuration;
     }
 
-    public String getReadyToBombardDuration() {
+    public LocalTime getReadyToBombardDuration() {
         return readyToBombardDuration.get();
     }
 
-    public void setReadyToBombardDuration(String readyToBombardDuration) {
+    public void setReadyToBombardDuration(LocalTime readyToBombardDuration) {
         this.readyToBombardDuration.set(readyToBombardDuration);
     }
 
-    public StringProperty readyToBombardDurationProperty() {
+    public ObjectProperty<LocalTime> readyToBombardDurationProperty() {
         return readyToBombardDuration;
     }
 
