@@ -3,6 +3,7 @@ package net.deludobellico.commandops.estabeditor.model;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.paint.Color;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import java.util.Collection;
@@ -22,10 +23,10 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
-    private final transient ObjectProperty<RGBColorModel> backgroundColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<RGBColorModel> backgroundDarkColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<RGBColorModel> backgroundLightColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<RGBColorModel> designationColor = new SimpleObjectProperty<>();
+    private final transient ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
+    private final transient ObjectProperty<Color> backgroundDarkColor = new SimpleObjectProperty<>();
+    private final transient ObjectProperty<Color> backgroundLightColor = new SimpleObjectProperty<>();
+    private final transient ObjectProperty<Color> designationColor = new SimpleObjectProperty<>();
     private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
     private final List<Flag> flags = FXCollections.observableArrayList();
@@ -54,10 +55,10 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         service.setRankList(new RankList());
         rankList.stream().forEach((rankModel) -> service.getRankList().getRank().add(rankModel.getPojo()));
         DefaultIconColors iconColors = new DefaultIconColors();
-        iconColors.setBackgroundColor(backgroundColor.get().getPojo());
-        iconColors.setBackgroundDarkColor(backgroundDarkColor.get().getPojo());
-        iconColors.setBackgroundLightColor(backgroundLightColor.get().getPojo());
-        iconColors.setDesignationColor(designationColor.get().getPojo());
+        iconColors.setBackgroundColor(RGBColorModel.getRGBColor(backgroundColor.get()));
+        iconColors.setBackgroundDarkColor(RGBColorModel.getRGBColor(backgroundDarkColor.get()));
+        iconColors.setBackgroundLightColor(RGBColorModel.getRGBColor(backgroundLightColor.get()));
+        iconColors.setDesignationColor(RGBColorModel.getRGBColor(designationColor.get()));
         iconColors.setSymbolColor(symbolColor.get());
         service.setDefaultIconColors(iconColors);
         force.stream().forEach((forceModel) -> service.getForce().add(forceModel.getPojo()));
@@ -74,10 +75,10 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         smallInsignia.set(pojo.getSmallInsignia().getId());
         pojo.getRankList().getRank().stream().map(RankModel::new).forEach(rankList::add);
         DefaultIconColors iconColors = pojo.getDefaultIconColors();
-        backgroundColor.set(new RGBColorModel(iconColors.getBackgroundColor()));
-        backgroundDarkColor.set(new RGBColorModel(iconColors.getBackgroundDarkColor()));
-        backgroundLightColor.set(new RGBColorModel(iconColors.getBackgroundLightColor()));
-        designationColor.set(new RGBColorModel(iconColors.getDesignationColor()));
+        backgroundColor.set(RGBColorModel.getColor(iconColors.getBackgroundColor()));
+        backgroundDarkColor.set(RGBColorModel.getColor(iconColors.getBackgroundDarkColor()));
+        backgroundLightColor.set(RGBColorModel.getColor(iconColors.getBackgroundLightColor()));
+        designationColor.set(RGBColorModel.getColor(iconColors.getDesignationColor()));
         symbolColor.set(iconColors.getSymbolColor());
         pojo.getForce().stream()
                 .map(ForceModel::new)
@@ -198,51 +199,51 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         return rankList;
     }
 
-    public RGBColorModel getBackgroundColor() {
+    public Color getBackgroundColor() {
         return backgroundColor.get();
     }
 
-    public void setBackgroundColor(RGBColorModel backgroundColor) {
+    public void setBackgroundColor(Color backgroundColor) {
         this.backgroundColor.set(backgroundColor);
     }
 
-    public ObjectProperty<RGBColorModel> backgroundColorProperty() {
+    public ObjectProperty<Color> backgroundColorProperty() {
         return backgroundColor;
     }
 
-    public RGBColorModel getBackgroundDarkColor() {
+    public Color getBackgroundDarkColor() {
         return backgroundDarkColor.get();
     }
 
-    public void setBackgroundDarkColor(RGBColorModel backgroundDarkColor) {
+    public void setBackgroundDarkColor(Color backgroundDarkColor) {
         this.backgroundDarkColor.set(backgroundDarkColor);
     }
 
-    public ObjectProperty<RGBColorModel> backgroundDarkColorProperty() {
+    public ObjectProperty<Color> backgroundDarkColorProperty() {
         return backgroundDarkColor;
     }
 
-    public RGBColorModel getBackgroundLightColor() {
+    public Color getBackgroundLightColor() {
         return backgroundLightColor.get();
     }
 
-    public void setBackgroundLightColor(RGBColorModel backgroundLightColor) {
+    public void setBackgroundLightColor(Color backgroundLightColor) {
         this.backgroundLightColor.set(backgroundLightColor);
     }
 
-    public ObjectProperty<RGBColorModel> backgroundLightColorProperty() {
+    public ObjectProperty<Color> backgroundLightColorProperty() {
         return backgroundLightColor;
     }
 
-    public RGBColorModel getDesignationColor() {
+    public Color getDesignationColor() {
         return designationColor.get();
     }
 
-    public void setDesignationColor(RGBColorModel designationColor) {
+    public void setDesignationColor(Color designationColor) {
         this.designationColor.set(designationColor);
     }
 
-    public ObjectProperty<RGBColorModel> designationColorProperty() {
+    public ObjectProperty<Color> designationColorProperty() {
         return designationColor;
     }
 

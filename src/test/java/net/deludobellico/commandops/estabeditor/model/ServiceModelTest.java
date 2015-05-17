@@ -2,6 +2,7 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.paint.Color;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Flag;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 import net.deludobellico.commandops.estabeditor.model.ForceModel;
@@ -20,10 +21,10 @@ public class ServiceModelTest {
     private final Integer largeInsignia = 5;
     private final Integer smallInsignia = 3;
     private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
-    private final RGBColorModel backgroundColor = new RGBColorModel(255, 255, 255);
-    private final RGBColorModel backgroundDarkColor = new RGBColorModel(255, 255, 255);
-    private final RGBColorModel backgroundLightColor = new RGBColorModel(255, 255, 255);
-    private final RGBColorModel designationColor = new RGBColorModel(255, 255, 255);
+    private final Color backgroundColor = Color.color(255, 255, 255);
+    private final Color backgroundDarkColor = Color.color(255, 255, 255);
+    private final Color backgroundLightColor = Color.color(255, 255, 255);
+    private final Color designationColor = Color.color(255, 255, 255);
     private final SymbolColor symbolColor = SymbolColor.BLACK;
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
     private final Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};

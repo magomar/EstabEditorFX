@@ -195,7 +195,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
 
     @Override
     public ForceModel createNewInMap(Map<Integer, ForceModel> map) {
-        ForceModel newElement = ElementModelFactory.createForce();
+        ForceModel newElement = ElementModelFactory.createForce(service.get());
         map.put(newElement.getId(), newElement);
         return newElement;
     }
