@@ -1,8 +1,11 @@
 package net.deludobellico.commandops.estabeditor.model;
 
+import javafx.scene.paint.Color;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -139,21 +142,107 @@ public final class ElementModelFactory {
         forceModel.setStaffCapacity(4);
         forceModel.setBasicsQty(448.0);
         forceModel.setBasicsConsumptionRateModifier(1.0);
-        forceModel.setCommanderRank(3);
+        forceModel.setCommanderRank(2);
         forceModel.setFuelQty(0.0);
         forceModel.setFuelLoad(10.0);
         forceModel.setMaxSpeed(6.5);
         forceModel.setNormalSpeed(5.4);
-        forceModel.setDeployed(LocalTime.of(0,0,5));
-        forceModel.setDugIn(LocalTime.of(0,2,0));
-        forceModel.setEntrenched(LocalTime.of(2,0,0));
-        forceModel.setFortified(LocalTime.of(1,0,0));
-        forceModel.setReadyToFireDuration(LocalTime.of(0,0,0));
-        forceModel.setReadyToBombardDuration(LocalTime.of(0,0,0));
+        forceModel.setDeployed(LocalTime.of(0, 0, 5));
+        forceModel.setDugIn(LocalTime.of(0, 2, 0));
+        forceModel.setEntrenched(LocalTime.of(2, 0, 0));
+        forceModel.setFortified(LocalTime.of(1, 0, 0));
+        forceModel.setReadyToFireDuration(LocalTime.of(0, 0, 0));
+        forceModel.setReadyToBombardDuration(LocalTime.of(0, 0, 0));
         forceModel.setCanBombard(false);
         forceModel.setSubType(ForceSubtype.LEG_INFANTRY);
+        forceModel.setService(serviceModel);
         return forceModel;
     }
 
-    // TODO createForceModel()
+    public static ServiceModel createService(NationModel nationModel) {
+        ServiceModel serviceModel = new ServiceModel();
+        serviceModel.setId(++maxId);
+        serviceModel.setName(ElementModelFactory.formatName("New Service", serviceModel.getId()));
+        serviceModel.setDescription("");
+        serviceModel.getFlags().add(Flag.NEW);
+        serviceModel.setBackgroundColor(Color.rgb(156, 156, 156));
+        serviceModel.setBackgroundDarkColor(Color.rgb(107, 107, 107));
+        serviceModel.setBackgroundLightColor(Color.rgb(207, 207, 207));
+        serviceModel.setDesignationColor(Color.rgb(0, 0, 0));
+        serviceModel.setSymbolColor(SymbolColor.BLACK);
+        serviceModel.setNation(nationModel);
+        serviceModel.getRankList().addAll(SpanishRank.getRankModelList());
+        serviceModel.setLargeInsignia(nationModel.getLargeInsignia());
+        serviceModel.setSmallInsignia(nationModel.getSmallInsignia());
+        serviceModel.setNation(nationModel);
+        return serviceModel;
+    }
+
+    public static NationModel createNation(SideModel sideModel) {
+        NationModel nationModel = new NationModel();
+        nationModel.setId(++maxId);
+        nationModel.setName(ElementModelFactory.formatName("New Nation", nationModel.getId()));
+        nationModel.setDescription("");
+        nationModel.getFlags().add(Flag.NEW);
+        nationModel.setLargeInsignia(sideModel.getLargeInsignia());
+        nationModel.setSmallInsignia(sideModel.getSmallInsignia());
+        nationModel.setSide(sideModel);
+        return nationModel;
+    }
+
+    public static SideModel createSide() {
+        SideModel sideModel = new SideModel();
+        sideModel.setId(++maxId);
+        sideModel.setName(ElementModelFactory.formatName("New Side", sideModel.getId()));
+        sideModel.setDescription("");
+        sideModel.getFlags().add(Flag.NEW);
+//        sideModel.setLargeInsignia(0);
+//        sideModel.setSmallInsignia(0);
+        sideModel.setBasicsConsumptionRate(5.0);
+        sideModel.setDefaultEnemyAperFp(1);
+        sideModel.setDefaultEnemyAarmFp(1);
+        return sideModel;
+    }
+
+
+    enum SpanishRank {
+        ALF("Alf", "Alférrez"),
+        TEN("Ten", "Teniente"),
+        CAP("Cap", "Capitán"),
+        COM("Com", "Comandante"),
+        TCOR("Ten Cor", "Teniente Coronel"),
+        COR("Cor", "Coronel"),
+        GBRIG("Gen Brig", "General de Brigada"),
+        GDIV("Gen Div", "General de División"),
+        TGEN("Ten Gen", "Teniente General"),
+        GEJ("Gen Ej", "General de Ejército"),
+        CG("CG", "Capitán General");
+        final String name;
+        final String fullName;
+
+        SpanishRank(final String name, final String fullName) {
+            this.name = name;
+            this.fullName = fullName;
+        }
+
+        public String getFullName() {
+            return fullName;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public static List<RankModel> getRankModelList() {
+            List<RankModel> rankModels = new ArrayList<>(SpanishRank.values().length);
+            for (SpanishRank rank : SpanishRank.values()) {
+                RankModel rankModel  = new RankModel();
+                rankModel.setIndex(rank.ordinal());
+                rankModel.setShortName(rank.name);
+                rankModel.setFullName(rank.fullName);
+                rankModels.add(rankModel);
+            }
+            return rankModels;
+        }
+    }
 }

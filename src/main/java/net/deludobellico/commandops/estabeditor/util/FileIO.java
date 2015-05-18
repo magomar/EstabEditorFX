@@ -47,6 +47,10 @@ public class FileIO {
     public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor.fxml";
     public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor.fxml";
     public static final String AMMO_VIEW = VIEWS_FOLDER + "/ammo-editor.fxml";
+    public static final String SIDE_VIEW = VIEWS_FOLDER + "/side-editor.fxml";
+    public static final String NATION_VIEW = VIEWS_FOLDER + "/nation-editor.fxml";
+    public static final String SERVICE_VIEW = VIEWS_FOLDER + "/service-editor.fxml";
+
     public static final String SEARCH_DIALOG_VIEW = VIEWS_FOLDER + "/search-dialog.fxml";
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
@@ -55,6 +59,7 @@ public class FileIO {
     public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
     public static final String INFO_ICON_RESOURCE = IMAGES_FOLDER + "/info.png";
     public static final String APP_ICON = IMAGES_FOLDER + "/app-icon.png";
+
     /**
      * Saved JAXB contexts for POJO classes and the Settings file
      */

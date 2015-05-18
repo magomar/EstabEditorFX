@@ -164,19 +164,22 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
             EstabModel estabModel = estabEditorController.getEstabModel();
             if (!newValue.equals("")) {
+                boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
                         activeWeapon.setPictureId(im.getId());
                         activeWeapon.setPictureFilename(newValue);
-                        return;
+                        imageModelExists = true;
+                        break;
                     }
                 }
-                ImageModel newImageModel = new ImageModel();
-                ImageModel imageModel = newImageModel.createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(newImageModel.getClass()));
-                imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                imageModel.setFileId(newValue);
-                activeWeapon.setPictureId(imageModel.getId());
-                activeWeapon.setPictureFilename(newValue);
+                if (!imageModelExists) {
+                    ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
+                    imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
+                    imageModel.setFileId(newValue);
+                    activeWeapon.setPictureId(imageModel.getId());
+                    activeWeapon.setPictureFilename(newValue);
+                }
             }
         });
     }

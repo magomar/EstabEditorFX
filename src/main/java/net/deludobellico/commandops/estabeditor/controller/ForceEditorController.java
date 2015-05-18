@@ -11,9 +11,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.LocalTimeStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
+import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
@@ -21,6 +23,7 @@ import java.util.*;
 
 public class ForceEditorController implements Initializable, ElementEditorController<ForceModel> {
     private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
+    private static final LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
     /**
      * Root pane
      */
@@ -254,7 +257,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         commanderRank.setItems(commanderRanks.getServiceRankList(element.getService()));
         commanderRank.getSelectionModel().select(element.getCommanderRank());
         commanderRank.valueProperty().addListener((observable, oldValue, newValue) -> {
-            element.setCommanderRank(newValue.getIndex());
+            if (newValue != null)
+                element.setCommanderRank(newValue.getIndex());
         });
         personnel.textProperty().bindBidirectional(element.persQtyProperty(), NUMBER_STRING_CONVERTER);
         staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), NUMBER_STRING_CONVERTER);
@@ -264,11 +268,10 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         canBombard.selectedProperty().bindBidirectional(element.canBombardProperty());
         normalSpeed.textProperty().bindBidirectional(element.normalSpeedProperty(), NUMBER_STRING_CONVERTER);
         maxSpeed.textProperty().bindBidirectional(element.maxSpeedProperty(), NUMBER_STRING_CONVERTER);
-        // TODO: Choose between XMLCalendar or Date
-//        deployed.setEditable(isEditable);
-//        dugIn.setEditable(isEditable);
-//        entrenched.setEditable(isEditable);
-//        fortified.setEditable(isEditable);
+        deployed.textProperty().bindBidirectional(element.deployedProperty(), TIME_STRING_CONVERTER);
+        dugIn.textProperty().bindBidirectional(element.dugInProperty(), TIME_STRING_CONVERTER);
+        entrenched.textProperty().bindBidirectional(element.entrenchedProperty(), TIME_STRING_CONVERTER);
+        fortified.textProperty().bindBidirectional(element.fortifiedProperty(), TIME_STRING_CONVERTER);
         basicConsumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateModifierProperty(), NUMBER_STRING_CONVERTER);
         fuelLoad.textProperty().bindBidirectional(element.fuelLoadProperty(), NUMBER_STRING_CONVERTER);
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
@@ -353,7 +356,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     public void setActiveElement(ForceModel element) {
         if (activeForce != null) unbindProperties(activeForce);
         this.activeForce = element;
-        if (null==commanderRanks) commanderRanks=new CommanderRanks(estabEditorController.getEstabModel());
+        if (null == commanderRanks) commanderRanks = new CommanderRanks(estabEditorController.getEstabModel());
         bindProperties(element);
     }
 

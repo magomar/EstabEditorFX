@@ -60,7 +60,7 @@
                              </Menu>
                              <Menu mnemonicParsing="true" text="_New">
                                 <items>
-                              <MenuItem fx:id="createNewForceMenuItem" mnemonicParsing="true" onAction="#createNewVehicleAction" text="Force">
+                              <MenuItem fx:id="createNewForceMenuItem" mnemonicParsing="true" onAction="#createNewForceAction" text="Force">
                                  <accelerator>
                                     <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                                  </accelerator>
@@ -77,6 +77,9 @@
                                  <accelerator>
                                     <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                                  </accelerator></MenuItem>
+                              <MenuItem fx:id="createNewServiceMenuItem" mnemonicParsing="true" onAction="#createNewServiceAction" text="Service" />
+                              <MenuItem fx:id="createNewNationMenuItem" mnemonicParsing="true" onAction="#createNewNationAction" text="Nation" />
+                              <MenuItem fx:id="createNewSideMenuItem" mnemonicParsing="true" onAction="#createNewSideAction" text="Side" />
                                 </items>
          
                              </Menu>

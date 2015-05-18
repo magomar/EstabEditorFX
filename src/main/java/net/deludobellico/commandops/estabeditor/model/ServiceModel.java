@@ -23,11 +23,11 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
-    private final transient ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<Color> backgroundDarkColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<Color> backgroundLightColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<Color> designationColor = new SimpleObjectProperty<>();
-    private final transient ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
+    private final ObjectProperty<Color> backgroundColor = new SimpleObjectProperty<>();
+    private final ObjectProperty<Color> backgroundDarkColor = new SimpleObjectProperty<>();
+    private final ObjectProperty<Color> backgroundLightColor = new SimpleObjectProperty<>();
+    private final ObjectProperty<Color> designationColor = new SimpleObjectProperty<>();
+    private final ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
     private final List<Flag> flags = FXCollections.observableArrayList();
     private final ObjectProperty<NationModel> nation = new SimpleObjectProperty<>();
@@ -117,7 +117,9 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
 
     @Override
     public ServiceModel createNewInMap(Map<Integer, ServiceModel> map) {
-        throw new UnsupportedOperationException("Method not implemented");
+        ServiceModel newElement = ElementModelFactory.createService(nation.get());
+        map.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     @Override

@@ -154,20 +154,22 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
             EstabModel estabModel = estabEditorController.getEstabModel();
             if (!newValue.equals("")) {
+                boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
                         activeVehicle.setPictureId(im.getId());
                         activeVehicle.setPictureFilename(newValue);
-                        return;
+                        imageModelExists = true;
+                        break;
                     }
                 }
-                //(ElementModel) newElement.createNewInMap(estabModel.getAll().get(newElement.getClass()));
-                ImageModel newImageModel = new ImageModel();
-                ImageModel imageModel = newImageModel.createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(newImageModel.getClass()));
-                imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                imageModel.setFileId(newValue);
-                activeVehicle.setPictureId(imageModel.getId());
-                activeVehicle.setPictureFilename(newValue);
+                if (!imageModelExists) {
+                    ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
+                    imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
+                    imageModel.setFileId(newValue);
+                    activeVehicle.setPictureId(imageModel.getId());
+                    activeVehicle.setPictureFilename(newValue);
+                }
             }
         });
     }
@@ -290,6 +292,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         armamentRemoveButton.setDisable(!isEditable);
         armamentSelectButton.setDisable(!isEditable);
         armamentTableView.setEditable(isEditable);
+        imagePanelController.setEditable(isEditable);
     }
 
     @Override

@@ -15,12 +15,12 @@
            <children>
             <HBox>
                <children>
-                       <Label alignment="CENTER" text="Name">
+                       <Label alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Name">
                            <font>
                                <Font size="14.0" />
                            </font>
                        </Label>
-                       <TextField fx:id="name" prefWidth="250.0" />
+                       <TextField fx:id="name" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
                <TabPane minWidth="470.0" style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -29,10 +29,10 @@
                            <content>
                         <VBox>
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox>
                                  <children>
-                                               <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="150.0" text="Description" />
-                                               <TextArea fx:id="description" scaleShape="false" wrapText="true" />
+                                               <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="120.0" text="Description" />
+                                               <TextArea fx:id="description" prefHeight="200.0" scaleShape="false" wrapText="true" />
                                  </children>
                               </HBox>
                               <HBox>
@@ -76,7 +76,7 @@
                                                        <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                                        </children>
                                     </GridPane>
-                                    <fx:include  fx:id="imagePanel" source="element-image.fxml"/>
+                                    <fx:include fx:id="imagePanel" source="element-image.fxml" />
                                  </children>
                               </HBox>
                            </children>

@@ -1,7 +1,9 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,9 +16,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import net.deludobellico.commandops.estabeditor.model.*;
+import net.deludobellico.commandops.estabeditor.util.DialogAction;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
-import net.deludobellico.commandops.estabeditor.util.DialogAction;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.io.File;
@@ -40,6 +42,7 @@ public class MainController implements Initializable {
     private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
     private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
     private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
+    private final ObjectProperty<ServiceModel> serviceModel = new SimpleObjectProperty<>();
 
     /**
      * Top region: Menu bar
@@ -82,6 +85,12 @@ public class MainController implements Initializable {
     private MenuItem createNewWeaponMenuItem;
     @FXML
     private MenuItem createNewAmmoMenuItem;
+    @FXML
+    private MenuItem createNewServiceMenuItem;
+    @FXML
+    private MenuItem createNewNationMenuItem;
+    @FXML
+    private MenuItem createNewSideMenuItem;
     // View
     @FXML
     private RadioMenuItem toolbarRadioItem;
@@ -227,6 +236,12 @@ public class MainController implements Initializable {
 
         createNewAmmoButton.disableProperty().bind(targetIsClosed);
         createNewAmmoMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        createNewServiceMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        createNewNationMenuItem.disableProperty().bindBidirectional(targetIsClosed);
+
+        createNewSideMenuItem.disableProperty().bindBidirectional(targetIsClosed);
 
         saveDataButton.disableProperty().bind(targetIsClosed);
 
@@ -594,7 +609,55 @@ public class MainController implements Initializable {
 
     @FXML
     private void createNewForceAction() {
-        targetPaneController.createNewElement(new ForceModel());
+        ForceModel forceModel = new ForceModel();
+        ServiceModel serviceModel = (ServiceModel) UtilView.showSearchDialog("Selected service", targetPaneController.getEstabModel().getServices().values());
+        if (serviceModel != null) {
+            forceModel.setService(serviceModel);
+            targetPaneController.createNewElement(forceModel);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText("A Force should be created inside a Service");
+            alert.setContentText("Please select a Service to create a Force");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void createNewServiceAction() {
+        ServiceModel serviceModel = new ServiceModel();
+        NationModel nationModel = (NationModel) UtilView.showSearchDialog("Select nation", targetPaneController.getEstabModel().getNations().values());
+        if (nationModel != null) {
+            serviceModel.setNation(nationModel);
+            targetPaneController.createNewElement(serviceModel);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText("A Service should be created inside a Nation");
+            alert.setContentText("Please select a Nation to create a Service");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void createNewNationAction() {
+        NationModel nationModel = new NationModel();
+        SideModel sideModel = (SideModel) UtilView.showSearchDialog("Select side", targetPaneController.getEstabModel().getSides().values());
+        if (sideModel != null) {
+            nationModel.setSide(sideModel);
+            targetPaneController.createNewElement(nationModel);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText("A Nation should be created inside a Side");
+            alert.setContentText("Please select a Side to create a Nation");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void createNewSideAction() {
+        targetPaneController.createNewElement(new SideModel());
     }
 
     @FXML

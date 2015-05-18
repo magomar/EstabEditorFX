@@ -102,24 +102,6 @@
                                                     <Insets right="55.0"/>
                                                 </GridPane.margin>
                                             </TextField>
-                                            <Button maxWidth="50.0" minHeight="-Infinity" minWidth="-Infinity"
-                                                    mnemonicParsing="false" prefWidth="50.0" text="Open"
-                                                    GridPane.columnIndex="3" GridPane.halignment="RIGHT"
-                                                    GridPane.hgrow="NEVER" GridPane.rowIndex="2"
-                                                    GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-                                                <GridPane.margin>
-                                                    <Insets/>
-                                                </GridPane.margin>
-                                            </Button>
-                                            <CheckBox mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT"
-                                                      text="No Image" GridPane.columnIndex="3"
-                                                      GridPane.halignment="RIGHT" GridPane.rowIndex="2"
-                                                      GridPane.valignment="CENTER"/>
-                                            <ImageView fx:id="ammoImage" fitHeight="96.0" fitWidth="192.0"
-                                                       pickOnBounds="true" preserveRatio="true"
-                                                       GridPane.columnIndex="3" GridPane.halignment="LEFT"
-                                                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="3"
-                                                       GridPane.valignment="TOP" GridPane.vgrow="ALWAYS"/>
                                         </children>
                                     </GridPane>
                                 </children>

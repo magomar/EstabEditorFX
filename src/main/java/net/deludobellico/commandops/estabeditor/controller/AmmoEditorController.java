@@ -6,8 +6,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.model.AmmoModel;
+import net.deludobellico.commandops.estabeditor.model.EstabModel;
+import net.deludobellico.commandops.estabeditor.model.ImageModel;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**

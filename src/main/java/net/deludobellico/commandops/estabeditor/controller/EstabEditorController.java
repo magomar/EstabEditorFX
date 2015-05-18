@@ -46,6 +46,9 @@ public class EstabEditorController implements Initializable {
         put(VehicleModel.class, FileIO.VEHICLE_VIEW);
         put(WeaponModel.class, FileIO.WEAPON_VIEW);
         put(AmmoModel.class, FileIO.AMMO_VIEW);
+        put(SideModel.class, FileIO.SIDE_VIEW);
+        put(NationModel.class, FileIO.NATION_VIEW);
+        put(ServiceModel.class, FileIO.SERVICE_VIEW);
     }});
     // Active element = element currently displayed
     private final ObjectProperty<ElementModel> activeElement = new SimpleObjectProperty<>();

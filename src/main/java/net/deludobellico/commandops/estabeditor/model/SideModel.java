@@ -37,10 +37,6 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoAd
         initialize(side);
     }
 
-    public SideModel(Side side, Map<Integer, SideModel> sideModelMap) {
-
-    }
-
     @Override
     public Side getPojo() {
         Side side = new Side();
@@ -108,7 +104,9 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoAd
 
     @Override
     public SideModel createNewInMap(Map<Integer, SideModel> map) {
-        throw new UnsupportedOperationException("Method not implemented");
+        SideModel newElement = ElementModelFactory.createSide();
+        map.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     @Override

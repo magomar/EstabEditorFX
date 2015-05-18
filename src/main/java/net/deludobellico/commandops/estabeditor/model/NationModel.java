@@ -98,7 +98,9 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
 
     @Override
     public NationModel createNewInMap(Map<Integer, NationModel> map) {
-        throw new UnsupportedOperationException("Method not implemented");
+        NationModel newElement = ElementModelFactory.createNation(side.get());
+        map.put(newElement.getId(), newElement);
+        return newElement;
     }
 
     @Override
