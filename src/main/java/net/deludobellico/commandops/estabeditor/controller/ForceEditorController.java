@@ -275,8 +275,9 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         basicConsumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateModifierProperty(), NUMBER_STRING_CONVERTER);
         fuelLoad.textProperty().bindBidirectional(element.fuelLoadProperty(), NUMBER_STRING_CONVERTER);
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
-//        militarySymbol.setEditable(isEditable);
+        militarySymbol.valueProperty().bindBidirectional(element.getIcon().militarySymbolProperty().asObject());
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());
+        forceSize.valueProperty().bindBidirectional(element.getIcon().forceSizeIconProperty());
         backgroundColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundColorProperty());
         backgroundLightColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundLightColorProperty());
         backgroundDarkColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundDarkColorProperty());

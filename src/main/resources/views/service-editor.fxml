@@ -40,24 +40,34 @@
                                  <children>
                                     <Label prefWidth="80.0" text="Ranks" />
                                     <ListView fx:id="rankListView" prefHeight="400.0" prefWidth="200.0" />
-                                    <Button fx:id="addRankButton" mnemonicParsing="false" onAction="#addRankAction">
-                                       <graphic>
-                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/copy.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button fx:id="removeRankButton" mnemonicParsing="false" onAction="#removeRankAction">
-                                       <graphic>
-                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/remove.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <Button fx:id="addRankButton" mnemonicParsing="false" onAction="#addRankAction">
+                                                   <graphic>
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/copy.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="removeRankButton" mnemonicParsing="false" onAction="#removeRankAction">
+                                                   <graphic>
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/remove.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                          <TextField fx:id="shortName" />
+                                          <TextField fx:id="fullName" />
+                                       </children>
+                                    </VBox>
                                     <VBox>
                                        <children>
                                           <HBox>

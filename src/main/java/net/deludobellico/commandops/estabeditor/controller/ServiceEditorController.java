@@ -2,16 +2,16 @@ package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 import net.deludobellico.commandops.estabeditor.model.*;
+import net.deludobellico.commandops.estabeditor.util.DialogAction;
+import net.deludobellico.commandops.estabeditor.util.UtilView;
 
-import javax.swing.text.html.ListView;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -32,7 +32,7 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
     @FXML
     private TextArea description;
     @FXML
-    private ListView rankListView;
+    private ListView<RankModel> rankListView;
     @FXML
     private ColorPicker backgroundColorPicker;
     @FXML
@@ -43,6 +43,10 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
     private ColorPicker designationColorPicker;
     @FXML
     private ComboBox<SymbolColor> symbolColorComboBox;
+    @FXML
+    private TextField shortName;
+    @FXML
+    private TextField fullName;
     @FXML
     private ElementImageController largeInsigniaPanelController;
     @FXML
@@ -133,6 +137,8 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
         lightBackgColorPicker.valueProperty().bindBidirectional(element.backgroundLightColorProperty());
         designationColorPicker.valueProperty().bindBidirectional(element.designationColorProperty());
         symbolColorComboBox.valueProperty().bindBidirectional(element.symbolColorProperty());
+        rankModels.addAll(element.getRankList());
+        rankListView.setItems(rankModels);
     }
 
     /**
@@ -147,6 +153,7 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
         lightBackgColorPicker.valueProperty().unbindBidirectional(element.backgroundLightColorProperty());
         designationColorPicker.valueProperty().unbindBidirectional(element.designationColorProperty());
         symbolColorComboBox.valueProperty().unbindBidirectional(element.symbolColorProperty());
+        rankModels.clear();
     }
 
     @Override
@@ -154,6 +161,8 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
         name.setText("");
         description.setText("");
         unbindProperties(activeService);
+        shortName.setText("");
+        fullName.setText("");
     }
 
 
@@ -173,5 +182,41 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
         if (activeService != null) unbindProperties(activeService);
         this.activeService = element;
         bindProperties(activeService);
+    }
+
+    @FXML
+    private void addRankAction(ActionEvent actionEvent) {
+
+        if (shortName.getText().isEmpty() || fullName.getText().isEmpty()) {
+            // If one text field is empty, show dialog and abort
+            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
+        } else {
+            boolean repeatedRank = false;
+            for (RankModel rankModel : activeService.getRankList())
+                if (rankModel.getShortName().equals(shortName.getText())) {
+                    repeatedRank = true;
+                    break;
+                }
+            if (!repeatedRank) {
+                RankModel rankModel = new RankModel();
+                rankModel.setShortName(shortName.getText());
+                rankModel.setFullName(fullName.getText());
+                rankModel.setIndex(rankModels.size());
+//                activeService.getRankList().add(rankModel);
+                rankModels.add(rankModel);
+            } else {
+                UtilView.showInfoDialog("Repeated rank", "", "The entered rank is already included. Please, enter another one.");
+            }
+        }
+    }
+
+    @FXML
+    private void removeRankAction(ActionEvent actionEvent) {
+        if (!rankListView.getSelectionModel().getSelectedItems().isEmpty()) {
+            RankModel rankModel = rankListView.getSelectionModel().getSelectedItem();
+//            activeService.getRankList().remove(rankModel);
+//            rankListView.getItems().remove(rankModel);
+            rankModels.remove(rankModel);
+        }
     }
 }
