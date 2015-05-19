@@ -1,0 +1,22 @@
+.root {
+    display: block;
+    -fx-background-color: olivedrab;
+}
+
+.fontStyle{
+    -fx-font-size: 18; -fx-font-family: "Times New Roman";
+}
+
+.label{
+    -fx-text-fill: Black;
+    }
+
+.hbox, .vbox {
+    -fx-padding: 15;
+    -fx-spacing: 10; }
+
+.borders{
+    -fx-border-color: yellow;
+    -fx-border-style: solid;
+    -fx-border-width: 4; -fx-border-insets: -5;
+ }
