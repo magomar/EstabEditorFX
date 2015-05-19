@@ -4,7 +4,9 @@ package net.deludobellico.commandops.estabeditor.controller;
  * Created by Heine on 11/10/2014.
  */
 
+import com.sun.javafx.property.adapter.PropertyDescriptor;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -21,7 +23,7 @@ import net.deludobellico.commandops.estabeditor.util.UtilView;
 import java.net.URL;
 import java.util.*;
 
-public class ForceEditorController implements Initializable, ElementEditorController<ForceModel> {
+public class ForceEditorController extends AbstractElementEditorController<ForceModel> {
     private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
     private static final LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
     /**
@@ -134,8 +136,6 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     /**
      * Other
      */
-    private ForceModel activeForce;
-    private EstabEditorController estabEditorController;
     private CommanderRanks commanderRanks;
 
     /**
@@ -162,7 +162,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
             if (element == null) return;
             // Search for repeated equipment
             boolean repeatedEquipment = false;
-            for (EquipmentModel equipment : activeForce.getEquipmentList()) {
+            for (EquipmentModel equipment : getActiveElement().getEquipmentList()) {
                 if (equipment.getEquipmentObjectId() == element.getId()) {
                     repeatedEquipment = true;
                     break;
@@ -186,8 +186,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     @FXML
     @SuppressWarnings("unchecked")
     void equipmentSelectAction() {
-        List<ElementModel> vehiclesAndWeapons = new ArrayList(estabEditorController.getEstabModel().getWeapons().values());
-        vehiclesAndWeapons.addAll(estabEditorController.getEstabModel().getVehicles().values());
+        List<ElementModel> vehiclesAndWeapons = new ArrayList(getEstabEditorController().getEstabModel().getWeapons().values());
+        vehiclesAndWeapons.addAll(getEstabEditorController().getEstabModel().getVehicles().values());
         ElementModel element = (ElementModel) UtilView.showSearchDialog("Select element", vehiclesAndWeapons);
         if (element != null) {
             equipmentName.setUserData(element);
@@ -199,7 +199,7 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     @FXML
     void equipmentRemoveAction() {
         if (!equipmentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
-            activeForce.getEquipmentList().remove(equipmentTableView.getSelectionModel().getSelectedItem());
+            getActiveElement().getEquipmentList().remove(equipmentTableView.getSelectionModel().getSelectedItem());
             equipmentTableView.getItems().remove(equipmentTableView.getSelectionModel().getSelectedItem());
         }
     }
@@ -245,8 +245,14 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         designationColorChooser.setEditable(isEditable);
     }
 
+    private ChangeListener<RankModel> commanderRankListener = (observable, oldValue, newValue) -> {
+        if (newValue != null)
+            getActiveElement().setCommanderRank(newValue.getIndex());
+    };
+
     @Override
-    public void bindProperties(ForceModel element) {
+    public void bindProperties() {
+        ForceModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
         forceType.valueProperty().bindBidirectional(element.typeProperty());
         subForceType.valueProperty().bindBidirectional(element.subTypeProperty());
@@ -254,12 +260,10 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         targetClass.valueProperty().bindBidirectional(element.targetClassProperty());
         moveClass.valueProperty().bindBidirectional(element.moveTypeProperty());
         forceSize.valueProperty().bindBidirectional(element.sizeProperty());
+        if (null == commanderRanks) commanderRanks = new CommanderRanks(getEstabEditorController().getEstabModel());
         commanderRank.setItems(commanderRanks.getServiceRankList(element.getService()));
         commanderRank.getSelectionModel().select(element.getCommanderRank());
-        commanderRank.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null)
-                element.setCommanderRank(newValue.getIndex());
-        });
+        commanderRank.valueProperty().addListener(commanderRankListener);
         personnel.textProperty().bindBidirectional(element.persQtyProperty(), NUMBER_STRING_CONVERTER);
         staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), NUMBER_STRING_CONVERTER);
         infantryValue.textProperty().bindBidirectional(element.infantryValueProperty(), NUMBER_STRING_CONVERTER);
@@ -274,6 +278,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         fortified.textProperty().bindBidirectional(element.fortifiedProperty(), TIME_STRING_CONVERTER);
         basicConsumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateModifierProperty(), NUMBER_STRING_CONVERTER);
         fuelLoad.textProperty().bindBidirectional(element.fuelLoadProperty(), NUMBER_STRING_CONVERTER);
+
+        // ICON
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
         militarySymbol.valueProperty().bindBidirectional(element.getIcon().militarySymbolProperty().asObject());
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());
@@ -283,12 +289,13 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         backgroundDarkColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundDarkColorProperty());
         designationColorChooser.valueProperty().bindBidirectional(element.getIcon().designationColorProperty());
 
+        // EQUIPMENT & SUPPLY
         equipmentTableView.getColumns().clear();
         equipmentTypeColumn.setCellValueFactory(param -> {
             // This is so ugly
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
-                for (Map modelMap : estabEditorController.getEstabModel().getAll().values()) {
+                for (Map modelMap : getEstabEditorController().getEstabModel().getAll().values()) {
                     ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getEquipmentObjectId());
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
@@ -311,7 +318,8 @@ public class ForceEditorController implements Initializable, ElementEditorContro
     }
 
     @Override
-    public void unbindProperties(ForceModel element) {
+    public void unbindProperties() {
+        ForceModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
 
         forceType.valueProperty().unbindBidirectional(element.typeProperty());
@@ -320,24 +328,23 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         targetClass.valueProperty().unbindBidirectional(element.targetClassProperty());
         moveClass.valueProperty().unbindBidirectional(element.moveTypeProperty());
         forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
-        // TODO perhaps remove the listener from commanderRank
+        commanderRank.valueProperty().removeListener(commanderRankListener);
         personnel.textProperty().unbindBidirectional(element.persQtyProperty());
         staffCapacity.textProperty().unbindBidirectional(element.staffCapacityProperty());
         infantryValue.textProperty().unbindBidirectional(element.infantryValueProperty());
         reconValue.textProperty().unbindBidirectional(element.reconValueProperty());
         engineerValue.textProperty().unbindBidirectional(element.engineeringValueProperty());
         canBombard.selectedProperty().unbindBidirectional(element.canBombardProperty());
+
         normalSpeed.textProperty().unbindBidirectional(element.normalSpeedProperty());
         maxSpeed.textProperty().unbindBidirectional(element.maxSpeedProperty());
 
-//        deployed.setEditable(isEditable);
-//        dugIn.setEditable(isEditable);
-//        entrenched.setEditable(isEditable);
-//        fortified.setEditable(isEditable);
-        basicConsumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateModifierProperty());
-        fuelLoad.textProperty().unbindBidirectional(element.fuelLoadProperty());
-        symbolColor.valueProperty().unbindBidirectional(element.getIcon().symbolColorProperty());
-//        militarySymbol.setEditable(isEditable);
+        deployed.textProperty().unbindBidirectional(element.deployedProperty());
+        dugIn.textProperty().unbindBidirectional(element.dugInProperty());
+        entrenched.textProperty().unbindBidirectional(element.entrenchedProperty());
+        fortified.textProperty().unbindBidirectional(element.fortifiedProperty());
+
+        militarySymbol.valueProperty().unbindBidirectional(element.getIcon().militarySymbolProperty().asObject());
         pictureSymbol.valueProperty().unbindBidirectional(element.getIcon().pictureSymbolProperty());
         forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
         backgroundColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundColorProperty());
@@ -345,30 +352,11 @@ public class ForceEditorController implements Initializable, ElementEditorContro
         backgroundDarkColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundDarkColorProperty());
         designationColorChooser.valueProperty().unbindBidirectional(element.getIcon().designationColorProperty());
 
+        basicConsumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateModifierProperty());
+        fuelLoad.textProperty().unbindBidirectional(element.fuelLoadProperty());
+        symbolColor.valueProperty().unbindBidirectional(element.getIcon().symbolColorProperty());
         equipmentTableView.getItems().clear();
     }
 
-    @Override
-    public ForceModel getActiveElement() {
-        return activeForce;
-    }
-
-    @Override
-    public void setActiveElement(ForceModel element) {
-        if (activeForce != null) unbindProperties(activeForce);
-        this.activeForce = element;
-        if (null == commanderRanks) commanderRanks = new CommanderRanks(estabEditorController.getEstabModel());
-        bindProperties(element);
-    }
-
-    @Override
-    public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
-    }
-
-    @Override
-    public void clear() {
-
-    }
 }
 

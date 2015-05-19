@@ -48,24 +48,28 @@ interface ElementEditorController<T extends ElementModel> {
     void setEstabEditorController(EstabEditorController estabEditorController);
 
     /**
-     * Bind an {@code ElementModel} properties with the view properties
-     *
-     * @param element The {@link ElementModel} to bind
+     * Gets the parent controller for this element controller
+     * @return
      */
-    void bindProperties(T element);
+    EstabEditorController getEstabEditorController();
 
     /**
-     * Unbind an {@code ElementModel} properties from the view properties
+     * Binds the {@code activeElement} properties to the view properties
      *
-     * @param element The {@link ElementModel} to unbind
      */
-    void unbindProperties(T element);
+    void bindProperties();
 
     /**
-     * The controller calls {@code unbindProperties(activeElement)} and empties the view components
+     * Unbinds the {@code activeElement} properties from the view properties
+     *
+     */
+    void unbindProperties();
+
+    /**
+     * The controller calls {@code unbindProperties()} and empties the view components
      *
      * @see {@link #getActiveElement()}
-     * @see {@link #unbindProperties(ElementModel)}
+     * @see {@link #unbindProperties()}
      */
     void clear();
 }

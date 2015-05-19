@@ -25,7 +25,7 @@ import java.util.*;
  * @author Heine
  * @see EstabEditorController
  */
-public class VehicleEditorController implements Initializable, ElementEditorController<VehicleModel> {
+public class VehicleEditorController extends AbstractElementEditorController<VehicleModel> {
 
     private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
 
@@ -133,11 +133,6 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @FXML
     private TableColumn<ArmamentModel, Integer> armamentQuantityColumn;
 
-    /**
-     * Other
-     */
-    private VehicleModel activeVehicle;
-    private EstabEditorController estabEditorController;
     @FXML
     private ElementImageController imagePanelController;
 
@@ -152,13 +147,13 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         vehicleType.getItems().addAll(VehicleType.values());
         description.setWrapText(true);
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeVehicle.setPictureId(im.getId());
-                        activeVehicle.setPictureFilename(newValue);
+                        getActiveElement().setPictureId(im.getId());
+                        getActiveElement().setPictureFilename(newValue);
                         imageModelExists = true;
                         break;
                     }
@@ -167,8 +162,8 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeVehicle.setPictureId(imageModel.getId());
-                    activeVehicle.setPictureFilename(newValue);
+                    getActiveElement().setPictureId(imageModel.getId());
+                    getActiveElement().setPictureFilename(newValue);
                 }
             }
         });
@@ -178,7 +173,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      * Adds a new armament to the vehicle.
      * <p>This method should be called when the {@link #armamentAddButton} button is pressed.
      * It creates a new armament with the text fields values and adds it
-     * to the {@link #armamentTableView} item collection and the {@link #activeVehicle} armaments collection.</p>
+     * to the {@link #armamentTableView} item collection and the {@link #activeElement} armaments collection.</p>
      *
      * @param actionEvent is not used
      * @see ArmamentModel
@@ -195,7 +190,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
             if (weapon == null) return;
             // Search for repeated weapons
             boolean repeatedWeapon = false;
-            for (ArmamentModel am : activeVehicle.getArmaments())
+            for (ArmamentModel am : getActiveElement().getArmaments())
                 if (am.getEquipmentName().equals(weapon.getName())) {
                     repeatedWeapon = true;
                     break;
@@ -209,7 +204,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
                 ArmamentModel aModel = new ArmamentModel(newArmament);
                 armamentTableView.getItems().add(aModel);
-                activeVehicle.getArmaments().add(aModel);
+                getActiveElement().getArmaments().add(aModel);
             } else {
                 UtilView.showInfoDialog("Repeated weapon", "", "The selected weapon is already included. Please, select another one.");
             }
@@ -225,7 +220,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
      */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
-        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", estabEditorController.getEstabModel().getWeapons().values());
+        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabEditorController().getEstabModel().getWeapons().values());
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
@@ -235,7 +230,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     /**
      * Removes an armament from the vehicle.
      * <p>This method should be called when the {@link #armamentRemoveButton} button is pressed.
-     * It removes the selected range from the {@link #armamentTableView} and the {@link #activeVehicle} armaments collection.</p>
+     * It removes the selected range from the {@link #armamentTableView} and the {@link #activeElement} armaments collection.</p>
      *
      * @param actionEvent is not used
      * @see ArmamentModel
@@ -243,7 +238,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     @FXML
     private void armamentRemoveAction(ActionEvent actionEvent) {
         if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
-            activeVehicle.getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
+            getActiveElement().getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
             armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }
     }
@@ -296,7 +291,10 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void bindProperties(VehicleModel element) {
+    public void bindProperties() {
+        VehicleModel element = getActiveElement();
+        imagePanelController.setActiveElement(element);
+
         battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), NUMBER_STRING_CONVERTER);
         bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), NUMBER_STRING_CONVERTER);
         crew.textProperty().bindBidirectional(element.crewProperty(), NUMBER_STRING_CONVERTER);
@@ -344,7 +342,9 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void unbindProperties(VehicleModel element) {
+    public void unbindProperties() {
+        VehicleModel element = getActiveElement();
+
         battleWeight.textProperty().unbindBidirectional(element.battleWeightProperty());
         bulkFuelCapacity.textProperty().unbindBidirectional(element.bulkFuelCapacityProperty());
         crew.textProperty().unbindBidirectional(element.crewProperty());
@@ -386,7 +386,7 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
 
     @Override
     public void clear() {
-        unbindProperties(activeVehicle);
+        super.clear();
 
         battleWeight.setText("");
         bulkFuelCapacity.setText("");
@@ -423,26 +423,12 @@ public class VehicleEditorController implements Initializable, ElementEditorCont
         width.setText("");
         vehicleType.getSelectionModel().clearSelection();
 
-    }
-
-    @Override
-    public VehicleModel getActiveElement() {
-        return this.activeVehicle;
-    }
-
-    @Override
-    public void setActiveElement(VehicleModel element) {
-        if (activeVehicle != null) {
-            unbindProperties(activeVehicle);
-        }
-        this.activeVehicle = element;
-        imagePanelController.setActiveElement(element);
-        bindProperties(activeVehicle);
+        imagePanelController.clear();
     }
 
     @Override
     public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
+        super.setEstabEditorController(estabEditorController);
         imagePanelController.setEstabEditorController(estabEditorController);
     }
 }

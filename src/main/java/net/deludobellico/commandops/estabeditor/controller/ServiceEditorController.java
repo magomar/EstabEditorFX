@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 18/05/2015.
  */
-public class ServiceEditorController implements Initializable, ElementEditorController<ServiceModel> {
+public class ServiceEditorController extends AbstractElementEditorController<ServiceModel> {
 
     /**
      * Root node
@@ -52,12 +52,7 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
     @FXML
     private ElementImageController smallInsigniaPanelController;
 
-    /**
-     * Other
-     */
-    // Last bind service
-    private ServiceModel activeService;
-    private EstabEditorController estabEditorController;
+
     private ObservableList<RankModel> rankModels = FXCollections.observableArrayList();
 
     /**
@@ -70,12 +65,12 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
     public void initialize(URL location, ResourceBundle resources) {
         description.setWrapText(true);
         largeInsigniaPanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeService.setLargeInsignia(im.getId());
+                        getActiveElement().setLargeInsignia(im.getId());
                         imageModelExists = true;
                     }
                 }
@@ -83,17 +78,17 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeService.setLargeInsignia(imageModel.getId());
+                    getActiveElement().setLargeInsignia(imageModel.getId());
                 }
             }
         });
         smallInsigniaPanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeService.setSmallInsignia(im.getId());
+                        getActiveElement().setSmallInsignia(im.getId());
                         imageModelExists = true;
                         break;
                     }
@@ -102,7 +97,7 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeService.setSmallInsignia(imageModel.getId());
+                    getActiveElement().setSmallInsignia(imageModel.getId());
                 }
             }
         });
@@ -121,15 +116,8 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
     }
 
     @Override
-    public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
-    }
-
-    /**
-     * @param element The {@link ServiceModel} to bind
-     */
-    @Override
-    public void bindProperties(ServiceModel element) {
+    public void bindProperties() {
+        ServiceModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
         description.textProperty().bindBidirectional(element.descriptionProperty());
         backgroundColorPicker.valueProperty().bindBidirectional(element.backgroundColorProperty());
@@ -141,11 +129,9 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
         rankListView.setItems(rankModels);
     }
 
-    /**
-     * @param element The {@link ServiceModel} to unbind
-     */
     @Override
-    public void unbindProperties(ServiceModel element) {
+    public void unbindProperties() {
+        ServiceModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         backgroundColorPicker.valueProperty().unbindBidirectional(element.backgroundColorProperty());
@@ -158,30 +144,12 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
 
     @Override
     public void clear() {
+        super.clear();
+
         name.setText("");
         description.setText("");
-        unbindProperties(activeService);
         shortName.setText("");
         fullName.setText("");
-    }
-
-
-    /**
-     * @return the active {@link ServiceModel}
-     */
-    @Override
-    public ServiceModel getActiveElement() {
-        return activeService;
-    }
-
-    /**
-     * @param element The {@link SideModel} to be set as active
-     */
-    @Override
-    public void setActiveElement(ServiceModel element) {
-        if (activeService != null) unbindProperties(activeService);
-        this.activeService = element;
-        bindProperties(activeService);
     }
 
     @FXML
@@ -192,7 +160,7 @@ public class ServiceEditorController implements Initializable, ElementEditorCont
             UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
         } else {
             boolean repeatedRank = false;
-            for (RankModel rankModel : activeService.getRankList())
+            for (RankModel rankModel : getActiveElement().getRankList())
                 if (rankModel.getShortName().equals(shortName.getText())) {
                     repeatedRank = true;
                     break;

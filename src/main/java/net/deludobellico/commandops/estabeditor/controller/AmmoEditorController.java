@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * @author Heine
  * @see EstabEditorController
  */
-public class AmmoEditorController implements Initializable, ElementEditorController<AmmoModel> {
+public class AmmoEditorController extends AbstractElementEditorController<AmmoModel> {
 
     /**
      * Root node
@@ -37,13 +37,6 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
     @FXML
     private TextField weight;
 
-    /**
-     * Other
-     */
-    // Last bind ammo
-    private AmmoModel activeAmmo;
-    private EstabEditorController estabEditorController;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         description.setWrapText(true);
@@ -58,27 +51,19 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
         weight.setEditable(isEditable);
     }
 
-    @Override
-    public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
-    }
 
-    /**
-     * @param element The {@link AmmoModel} to bind
-     */
     @Override
-    public void bindProperties(AmmoModel element) {
+    public void bindProperties() {
+        AmmoModel element = getActiveElement();
         quantity.textProperty().bindBidirectional(element.minOrderQtyProperty(), new NumberStringConverter());
         weight.textProperty().bindBidirectional(element.minOrderWeightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(element.nameProperty());
         description.textProperty().bindBidirectional(element.descriptionProperty());
     }
 
-    /**
-     * @param element The {@link AmmoModel} to unbind
-     */
     @Override
-    public void unbindProperties(AmmoModel element) {
+    public void unbindProperties() {
+        AmmoModel element = getActiveElement();
         quantity.textProperty().unbindBidirectional(element.minOrderQtyProperty());
         weight.textProperty().unbindBidirectional(element.minOrderWeightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
@@ -87,31 +72,12 @@ public class AmmoEditorController implements Initializable, ElementEditorControl
 
     @Override
     public void clear() {
-        unbindProperties(activeAmmo);
+        super.clear();
 
         quantity.setText("");
         weight.setText("");
         name.setText("");
         description.setText("");
-    }
-
-
-    /**
-     * @return the active {@link AmmoModel}
-     */
-    @Override
-    public AmmoModel getActiveElement() {
-        return activeAmmo;
-    }
-
-    /**
-     * @param element The {@link AmmoModel} to be set as active
-     */
-    @Override
-    public void setActiveElement(AmmoModel element) {
-        if (activeAmmo != null) unbindProperties(activeAmmo);
-        this.activeAmmo = element;
-        bindProperties(activeAmmo);
     }
 
 

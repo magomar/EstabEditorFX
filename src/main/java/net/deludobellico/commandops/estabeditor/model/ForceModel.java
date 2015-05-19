@@ -21,35 +21,44 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
-    private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
+ // General
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<>();
-    private final ObjectProperty<ForceSize> size = new SimpleObjectProperty<>();
     private final ObjectProperty<CombatClass> combatClass = new SimpleObjectProperty<>();
     private final ObjectProperty<TargetClass> targetClass = new SimpleObjectProperty<>();
+    private final ObjectProperty<MoveType> moveType = new SimpleObjectProperty<>();
+    private final ObjectProperty<ForceSize> size = new SimpleObjectProperty<>();
+    private final IntegerProperty commanderRank = new SimpleIntegerProperty();
+
+    private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
+    private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
+
+    private final IntegerProperty persQty = new SimpleIntegerProperty();
+    private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
     private final IntegerProperty infantryValue = new SimpleIntegerProperty();
     private final IntegerProperty reconValue = new SimpleIntegerProperty();
     private final IntegerProperty engineeringValue = new SimpleIntegerProperty();
-    private final ObjectProperty<MoveType> moveType = new SimpleObjectProperty<>();
-    private final IntegerProperty persQty = new SimpleIntegerProperty();
-    private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
+    private final BooleanProperty canBombard = new SimpleBooleanProperty();
+
     private final DoubleProperty basicsQty = new SimpleDoubleProperty();
     private final DoubleProperty basicsConsumptionRateModifier = new SimpleDoubleProperty();
-    private final IntegerProperty commanderRank = new SimpleIntegerProperty();
-    private final DoubleProperty fuelQty = new SimpleDoubleProperty();
-    private final DoubleProperty fuelLoad = new SimpleDoubleProperty();
-    private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
-    private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
     private final ObjectProperty<LocalTime> deployed = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> dugIn = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> entrenched = new SimpleObjectProperty<>();
     private final ObjectProperty<LocalTime> fortified = new SimpleObjectProperty<>();
+
     private final ObjectProperty<LocalTime> readyToFireDuration = new SimpleObjectProperty();
     private final ObjectProperty<LocalTime> readyToBombardDuration = new SimpleObjectProperty();
+
+    private final DoubleProperty fuelQty = new SimpleDoubleProperty();
+    private final DoubleProperty fuelLoad = new SimpleDoubleProperty();
+
     private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
-    private final BooleanProperty canBombard = new SimpleBooleanProperty();
+
+    private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
+
     private final ObjectProperty<ServiceModel> service = new SimpleObjectProperty<>();
 
     private List<Flag> flags = FXCollections.observableArrayList();

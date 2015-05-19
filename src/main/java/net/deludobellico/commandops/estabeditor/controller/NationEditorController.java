@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 18/05/2015.
  */
-public class NationEditorController implements Initializable, ElementEditorController<NationModel> {
+public class NationEditorController extends AbstractElementEditorController<NationModel> {
 
     /**
      * Root node
@@ -32,11 +32,6 @@ public class NationEditorController implements Initializable, ElementEditorContr
     @FXML
     private TextField nationality;
 
-    /**
-     * Other
-     */
-    private NationModel activeNation;
-    private EstabEditorController estabEditorController;
     @FXML
     private ElementImageController largeInsigniaPanelController;
     @FXML
@@ -52,12 +47,12 @@ public class NationEditorController implements Initializable, ElementEditorContr
     public void initialize(URL location, ResourceBundle resources) {
         description.setWrapText(true);
         largeInsigniaPanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeNation.setLargeInsignia(im.getId());
+                        getActiveElement().setLargeInsignia(im.getId());
                         imageModelExists = true;
                     }
                 }
@@ -65,17 +60,17 @@ public class NationEditorController implements Initializable, ElementEditorContr
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeNation.setLargeInsignia(imageModel.getId());
+                    getActiveElement().setLargeInsignia(imageModel.getId());
                 }
             }
         });
         smallInsigniaPanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeNation.setSmallInsignia(im.getId());
+                        getActiveElement().setSmallInsignia(im.getId());
                         imageModelExists = true;
                         break;
                     }
@@ -84,7 +79,7 @@ public class NationEditorController implements Initializable, ElementEditorContr
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeNation.setSmallInsignia(imageModel.getId());
+                    getActiveElement().setSmallInsignia(imageModel.getId());
                 }
             }
         });
@@ -99,26 +94,17 @@ public class NationEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
-    }
-
-    /**
-     * @param element The {@link NationModel} to bind
-     */
-    @Override
-    public void bindProperties(NationModel element) {
+    public void bindProperties() {
+        NationModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
         description.textProperty().bindBidirectional(element.descriptionProperty());
         nationality.textProperty().bindBidirectional(element.nationalityProperty());
 
     }
 
-    /**
-     * @param element The {@link NationModel} to unbind
-     */
     @Override
-    public void unbindProperties(NationModel element) {
+    public void unbindProperties() {
+        NationModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         nationality.textProperty().unbindBidirectional(element.nationalityProperty());
@@ -126,28 +112,11 @@ public class NationEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void clear() {
+        super.clear();
+
         name.setText("");
         description.setText("");
-        unbindProperties(activeNation);
         nationality.setText("");
     }
 
-
-    /**
-     * @return the active {@link NationModel}
-     */
-    @Override
-    public NationModel getActiveElement() {
-        return activeNation;
-    }
-
-    /**
-     * @param element The {@link SideModel} to be set as active
-     */
-    @Override
-    public void setActiveElement(NationModel element) {
-        if (activeNation != null) unbindProperties(activeNation);
-        this.activeNation = element;
-        bindProperties(activeNation);
-    }
 }

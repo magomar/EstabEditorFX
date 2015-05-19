@@ -114,4 +114,8 @@ public class ElementImageController implements Initializable {
     public void setEstabEditorController(EstabEditorController estabEditorController) {
         this.estabEditorController = estabEditorController;
     }
+
+    public void clear() {
+        setNoImage();
+    }
 }

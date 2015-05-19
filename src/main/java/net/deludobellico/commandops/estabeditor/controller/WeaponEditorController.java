@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * @author Heine
  * @see EstabEditorController
  */
-public class WeaponEditorController implements Initializable, ElementEditorController<WeaponModel> {
+public class WeaponEditorController extends AbstractElementEditorController<WeaponModel> {
 
     private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
     /**
@@ -119,17 +119,11 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     private Button removeRangeButton;
 
-    /**
-     * Other
-     */
-    // Last bind weapon
-    private WeaponModel activeWeapon;
     // Last bind weapon performance
     private PerformanceModel activePerformance;
     // Weapon performance by fire type map
     private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
-    // Parent controller
-    private EstabEditorController estabEditorController;
+
     @FXML
     private ElementImageController imagePanelController;
 
@@ -162,13 +156,13 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
         description.setWrapText(true);
 
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
-            EstabModel estabModel = estabEditorController.getEstabModel();
+            EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
                     if (im.getFileId().equals(newValue)) {
-                        activeWeapon.setPictureId(im.getId());
-                        activeWeapon.setPictureFilename(newValue);
+                        getActiveElement().setPictureId(im.getId());
+                        getActiveElement().setPictureFilename(newValue);
                         imageModelExists = true;
                         break;
                     }
@@ -177,8 +171,8 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
                     imageModel.setFileId(newValue);
-                    activeWeapon.setPictureId(imageModel.getId());
-                    activeWeapon.setPictureFilename(newValue);
+                    getActiveElement().setPictureId(imageModel.getId());
+                    getActiveElement().setPictureFilename(newValue);
                 }
             }
         });
@@ -243,7 +237,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", estabEditorController.getEstabModel().getAmmo().values());
+            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabEditorController().getEstabModel().getAmmo().values());
             // If the user didn't select any ammo, abort
             if (selectedAmmo != null) {
                 // Create new AmmoLoad with the ammo name and id
@@ -276,7 +270,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
                 performanceFireTypeList.getItems().add(newFireType);
                 performanceFireTypeComboBox.getItems().remove(performanceFireTypeComboBox.getSelectionModel().getSelectedIndex());
                 // Finally, add the performance to the active weapon
-                activeWeapon.getPerformances().add(pModel);
+                getActiveElement().getPerformances().add(pModel);
             }
         }
     }
@@ -285,21 +279,21 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
      * Removes a performance from the weapon.
      * This method should be called when the {@link #performanceFireTypeRemoveButton} button is pressed.
      * It removes the performance associated with the selected fire type in the {@link #performanceFireTypeList} list
-     * from said list and the {@link #activeWeapon} performances collection.
+     * from said list and the {@link #activeElement} performances collection.
      *
      * @param actionEvent is not used
      */
     @FXML
     protected void performanceRemoveFireType(ActionEvent actionEvent) {
         if (!performanceFireTypeList.getSelectionModel().getSelectedItems().isEmpty()) {
-            activeWeapon.getPerformances().remove(activePerformance);
+            getActiveElement().getPerformances().remove(activePerformance);
             performanceFireTypeList.getItems().remove(performanceFireTypeList.getSelectionModel().getSelectedItem());
         }
     }
 
     /**
      * Unbinds a performance properties from the view properties.
-     * It's similar to {@link #unbindProperties(WeaponModel)}
+     * It's similar to {@link #unbindProperties()}
      *
      * @param p the {@link PerformanceModel} to unbind
      */
@@ -317,7 +311,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     /**
      * Binds a performance properties with the view properties.
-     * It's similar to {@link #bindProperties(WeaponModel)}
+     * It's similar to {@link #bindProperties()}
      * <p>Also, it prepares the {@link #rangeItemTableView} columns to be editable and filled with custom values</p>
      *
      * @param p the {@link PerformanceModel} to unbind
@@ -360,7 +354,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     @FXML
     private void ammoSelectAction(ActionEvent actionEvent) {
         AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo",
-                estabEditorController.getEstabModel().getAmmo().values());
+                getEstabEditorController().getEstabModel().getAmmo().values());
         if (ammo != null) {
             AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();
             ammoLoadModel.setId(ammo.getId());
@@ -399,7 +393,10 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
     }
 
     @Override
-    public void bindProperties(WeaponModel element) {
+    public void bindProperties() {
+        WeaponModel element = getActiveElement();
+        imagePanelController.setActiveElement(element);
+
         weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(element.nameProperty());
         description.textProperty().bindBidirectional(element.descriptionProperty());
@@ -413,10 +410,26 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         singleShot.selectedProperty().bindBidirectional(element.singleShotProperty());
         mustDeployToFire.selectedProperty().bindBidirectional(element.mustDeployToFireProperty());
+
+        performanceFireTypeList.getItems().clear();
+        performanceFireTypeComboBox.getItems().clear();
+        performanceFireTypeMap = WeaponModel.getFireTypeMap(getActiveElement());
+        for (Map.Entry<FireType, PerformanceModel> entry : performanceFireTypeMap.entrySet()) {
+            if (entry.getValue() != null) {
+                // Fill FireTypeList with this activePerformance fire types
+                performanceFireTypeList.getItems().add(entry.getKey());
+            } else {
+                // Fill combo box with the excluded fire types
+                performanceFireTypeComboBox.getItems().add(entry.getKey());
+            }
+        }
+        performanceFireTypeList.getSelectionModel().selectFirst();
     }
 
     @Override
-    public void unbindProperties(WeaponModel element) {
+    public void unbindProperties() {
+        WeaponModel element = getActiveElement();
+        
         if (activePerformance != null) unbindPerformanceProperties(activePerformance);
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
@@ -431,7 +444,7 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
     @Override
     public void clear() {
-        if (activeWeapon != null) unbindProperties(activeWeapon);
+        super.clear();
         if (activePerformance != null) unbindPerformanceProperties(activePerformance);
 
         weight.setText("");
@@ -458,40 +471,14 @@ public class WeaponEditorController implements Initializable, ElementEditorContr
 
         ammoNameLabel.setText("");
         rangeItemTableView.getItems().clear();
+
+        imagePanelController.clear();
     }
 
-    @Override
-    public WeaponModel getActiveElement() {
-        return activeWeapon;
-    }
-
-    @Override
-    public void setActiveElement(WeaponModel element) {
-        if (activeWeapon != null) {
-            unbindProperties(activeWeapon);
-        }
-        this.activeWeapon = element;
-        imagePanelController.setActiveElement(element);
-        bindProperties(activeWeapon);
-
-        performanceFireTypeList.getItems().clear();
-        performanceFireTypeComboBox.getItems().clear();
-        performanceFireTypeMap = WeaponModel.getFireTypeMap(this.activeWeapon);
-        for (Map.Entry<FireType, PerformanceModel> entry : performanceFireTypeMap.entrySet()) {
-            if (entry.getValue() != null) {
-                // Fill FireTypeList with this activePerformance fire types
-                performanceFireTypeList.getItems().add(entry.getKey());
-            } else {
-                // Fill combo box with the excluded fire types
-                performanceFireTypeComboBox.getItems().add(entry.getKey());
-            }
-        }
-        performanceFireTypeList.getSelectionModel().selectFirst();
-    }
 
     @Override
     public void setEstabEditorController(EstabEditorController estabEditorController) {
-        this.estabEditorController = estabEditorController;
+        super.setEstabEditorController(estabEditorController);
         imagePanelController.setEstabEditorController(estabEditorController);
     }
 }
