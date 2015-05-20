@@ -1,22 +1,45 @@
 .root {
-    display: block;
-    -fx-background-color: olivedrab;
+    -fx-font-size: 10pt;
+    -fx-spacing: 5;
+    -fx-padding: 5;
+    -fx-alignment: center;
 }
 
-.fontStyle{
-    -fx-font-size: 18; -fx-font-family: "Times New Roman";
+.element-editor {
+    -fx-pref-width: 600;
+    -fx-pref-height: 500;
 }
 
-.label{
-    -fx-text-fill: Black;
-    }
+.element-name {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
 
-.hbox, .vbox {
-    -fx-padding: 15;
-    -fx-spacing: 10; }
+.editor-tab {
+    -fx-background-color: lightgray;
+    -fx-spacing: 5;
+    -fx-padding: 5;
+}
 
-.borders{
-    -fx-border-color: yellow;
-    -fx-border-style: solid;
-    -fx-border-width: 4; -fx-border-insets: -5;
+
+.hbox {
+    -fx-spacing: 5;
+    -fx-padding: 5;
+    -fx-alignment: center;
  }
+
+.vbox {
+    -fx-spacing: 5;
+    -fx-padding: 5;
+    -fx-alignment: center;
+}
+
+.data-grid {
+    -fx-vgap: 2;
+    -fx-hgap: 4;
+}
+
+.icon-grid {
+    -fx-vgap: 5;
+    -fx-hgap: 4;
+}

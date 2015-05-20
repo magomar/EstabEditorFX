@@ -1,6 +1,12 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
+import javafx.util.StringConverter;
+import javafx.util.converter.LocalTimeStringConverter;
+import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
+import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
+
+import java.util.Locale;
 
 /**
  * Interface for the base element editor controllers.
@@ -11,6 +17,8 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
  * @see EstabEditorController
  */
 interface ElementEditorController<T extends ElementModel> {
+    StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
+    LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
 
     /**
      * Returns the active {@code ElementModel} set in the Controller
@@ -22,7 +30,7 @@ interface ElementEditorController<T extends ElementModel> {
     /**
      * Sets the active {@code ElementModel} in the Controller.
      * <p>
-     * The controller will call {@link #bindProperties(ElementModel)} to bind properties
+     * The controller will call {@link #bindProperties()} to bind properties
      * and set other attributes (such as images).
      * <p>
      * If the active element isn't null before binding, then it'll unbind it before proceeding with the new element.

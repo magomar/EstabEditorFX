@@ -29,8 +29,8 @@ public class EstabEditorApp extends Application {
         UtilView.ROOT_STAGE = primaryStage;
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setMinWidth(UtilView.MIN_WINDOW_WIDTH);
-        primaryStage.setMinHeight(UtilView.MIN_WINDOW_HEIGHT);
+        primaryStage.setMinWidth(UtilView.WINDOW_WIDTH);
+        primaryStage.setMinHeight(UtilView.WINDOW_HEIGHT);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         try {
             primaryStage.setHeight(Settings.getInstance().getWindowHeight());

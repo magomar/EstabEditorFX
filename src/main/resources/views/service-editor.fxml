@@ -10,118 +10,96 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="@../css/EstabEditorTheme.css"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.ServiceEditorController">
+<AnchorPane styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.ServiceEditorController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox>
+                <HBox alignment="CENTER_LEFT" styleClass="element-name">
                     <children>
-                        <Label alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-                               text="Name">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <TextField fx:id="name" HBox.hgrow="ALWAYS"/>
+                        <Label alignment="CENTER" text="Name" />
+                        <TextField fx:id="name" HBox.hgrow="ALWAYS" />
+                        <Label text="ID" />
+                        <TextField fx:id="id" disable="true" prefWidth="40.0" />
                     </children>
                 </HBox>
-                <TabPane minWidth="470.0"
-                         style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;"
-                         tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                <TabPane minWidth="470.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
                         <Tab text="General">
                             <content>
-                                <VBox>
+                                <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox>
+                                        <HBox alignment="CENTER" styleClass="hbox">
                                             <children>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0"
-                                                       text="Description"/>
-                                                <TextArea fx:id="description" prefHeight="200.0"/>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                                <TextArea fx:id="description" />
                                             </children>
                                         </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <HBox styleClass="hbox">
                                             <children>
-                                                <Label prefWidth="80.0" text="Ranks"/>
-                                                <ListView fx:id="rankListView" prefHeight="400.0" prefWidth="200.0"/>
+                                    <VBox>
+                                       <children>
+                                                      <Label text="Ranks" />
+                                                      <ListView fx:id="rankListView" prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
                                                 <VBox prefHeight="200.0" prefWidth="100.0">
                                                     <children>
-                                                        <HBox>
+                                                        <HBox styleClass="hbox">
                                                             <children>
-                                                                <Button fx:id="addRankButton" mnemonicParsing="false"
-                                                                        onAction="#addRankAction">
+                                                                <Button fx:id="addRankButton" mnemonicParsing="false" onAction="#addRankAction">
                                                                     <graphic>
-                                                                        <ImageView fitHeight="24.0" fitWidth="24.0"
-                                                                                   pickOnBounds="true"
-                                                                                   preserveRatio="true">
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
-                                                                                <Image url="@../images/copy.png"/>
+                                                                                <Image url="@../images/copy.png" />
                                                                             </image>
                                                                         </ImageView>
                                                                     </graphic>
                                                                 </Button>
-                                                                <Button fx:id="removeRankButton" mnemonicParsing="false"
-                                                                        onAction="#removeRankAction">
+                                                                <Button fx:id="removeRankButton" mnemonicParsing="false" onAction="#removeRankAction">
                                                                     <graphic>
-                                                                        <ImageView fitHeight="24.0" fitWidth="24.0"
-                                                                                   pickOnBounds="true"
-                                                                                   preserveRatio="true">
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>
-                                                                                <Image url="@../images/remove.png"/>
+                                                                                <Image url="@../images/remove.png" />
                                                                             </image>
                                                                         </ImageView>
                                                                     </graphic>
                                                                 </Button>
                                                             </children>
                                                         </HBox>
-                                                        <TextField fx:id="shortName"/>
-                                                        <TextField fx:id="fullName"/>
+                                                        <TextField fx:id="shortName" promptText="Short name" />
+                                                        <TextField fx:id="fullName" promptText="Full name" />
                                                     </children>
                                                 </VBox>
-                                                <VBox>
+                                                <VBox styleClass="vbox">
                                                     <children>
                                                         <HBox>
                                                             <children>
-                                                                <Label text="Icon Colors"/>
+                                                                <Label prefWidth="120.0" text="Background color" />
+                                                                <ColorPicker fx:id="backgroudColorPicker" prefWidth="100.0" promptText="Background color" />
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Background color"/>
-                                                                <ColorPicker fx:id="backgroudColorPicker"
-                                                                             promptText="Background color"/>
+                                                                <Label prefWidth="120.0" text="Dark Backg. color" />
+                                                                <ColorPicker fx:id="darkBackgColorPicker" prefWidth="100.0" promptText="Background color" />
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Dark Backg. color"/>
-                                                                <ColorPicker fx:id="darkBackgColorPicker"
-                                                                             promptText="Background color"/>
+                                                                <Label prefWidth="120.0" text="Light Backg. color" />
+                                                                <ColorPicker fx:id="lightBackgColorPicker" prefWidth="100.0" promptText="Background color" />
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Light Backg. color"/>
-                                                                <ColorPicker fx:id="lightBackgColorPicker"
-                                                                             promptText="Background color"/>
+                                                                <Label prefWidth="120.0" text="Designation color" />
+                                                                <ColorPicker fx:id="designationColorPicker" prefWidth="100.0" promptText="Background color" />
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Designation color"/>
-                                                                <ColorPicker fx:id="designationColorPicker"
-                                                                             promptText="Background color"/>
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox>
-                                                            <children>
-                                                                <Label prefWidth="120.0" text="Symbol color"/>
-                                                                <ComboBox fx:id="symbolColorComboBox"
-                                                                          prefWidth="150.0"/>
+                                                                <Label prefWidth="120.0" text="Symbol color" />
+                                                                <ComboBox fx:id="symbolColorComboBox" prefWidth="100.0" />
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -129,20 +107,18 @@
                                             </children>
                                         </HBox>
 
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <HBox styleClass="hbox">
                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox>
                                                     <children>
-                                                        <Label text="Large Insignia"/>
-                                                        <fx:include fx:id="largeInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Large Insignia" />
+                                                        <fx:include fx:id="largeInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox>
                                                     <children>
-                                                        <Label text="Small Insignia"/>
-                                                        <fx:include fx:id="smallInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Small Insignia" />
+                                                        <fx:include fx:id="smallInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
                                             </children>

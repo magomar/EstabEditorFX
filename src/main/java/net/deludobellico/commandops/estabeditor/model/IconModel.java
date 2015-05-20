@@ -196,4 +196,5 @@ public class IconModel implements PojoAdapter<Icon> {
         result = 31 * result + ((getIsHq()) ? 1 : 0);
         return result;
     }
+
 }

@@ -10,61 +10,57 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="@../css/EstabEditorTheme.css"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.NationEditorController">
+<AnchorPane styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.NationEditorController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="484.0" prefWidth="547.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox>
-                    <children>
-                        <Label alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-                               text="Name">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <TextField fx:id="name" HBox.hgrow="ALWAYS"/>
-                    </children>
-                </HBox>
-                <TabPane minWidth="470.0"
-                         style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;"
-                         tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" styleClass="element-name">
+               <children>
+                  <Label alignment="CENTER" text="Name" />
+                  <TextField fx:id="name" HBox.hgrow="ALWAYS" />
+                  <Label text="ID" />
+                  <TextField fx:id="id" disable="true" prefWidth="40.0" />
+               </children>
+            </HBox>
+                <TabPane style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
                         <Tab text="General">
                             <content>
-                                <VBox>
+                                <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox>
-                                            <children>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0"
-                                                       text="Description"/>
-                                                <TextArea fx:id="description" HBox.hgrow="ALWAYS"/>
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label prefWidth="80.0" text="Nationality"/>
-                                                <TextField fx:id="nationality" prefWidth="250.0"/>
-                                            </children>
-                                        </HBox>
+                              <GridPane styleClass="data-grid">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="80.0" prefWidth="80.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                                <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" />
+                                                <Label prefWidth="80.0" text="Nationality" GridPane.rowIndex="2" />
+                                                <TextField fx:id="nationality" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                                        <HBox alignment="CENTER" styleClass="hbox" />
+                                        <HBox alignment="CENTER" styleClass="hbox" />
 
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <HBox styleClass="hbox">
                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox styleClass="element-editor-tab">
                                                     <children>
-                                                        <Label text="Large Insignia"/>
-                                                        <fx:include fx:id="largeInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Large Insignia" />
+                                                        <fx:include fx:id="largeInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox styleClass="element-editor-tab">
                                                     <children>
-                                                        <Label text="Small Insignia"/>
-                                                        <fx:include fx:id="smallInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Small Insignia" />
+                                                        <fx:include fx:id="smallInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
                                             </children>

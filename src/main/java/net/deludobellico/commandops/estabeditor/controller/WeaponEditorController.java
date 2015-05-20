@@ -429,7 +429,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @Override
     public void unbindProperties() {
         WeaponModel element = getActiveElement();
-        
+
         if (activePerformance != null) unbindPerformanceProperties(activePerformance);
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());

@@ -15,8 +15,8 @@ import java.util.Collection;
 public class UtilView {
 
     //TODO: make fxml use these constants
-    public static final double MIN_WINDOW_WIDTH = 920.0;
-    public static final double MIN_WINDOW_HEIGHT = 640.0;
+    public static final double WINDOW_WIDTH = 900.0;
+    public static final double WINDOW_HEIGHT = 800.0;
     public static final String TEXT_STYLE_COPY = "-fx-text-fill: blue;";
     public static final String TEXT_STYLE_REMOVE = "-fx-text-fill: red;";
     public static final String TEXT_STYLE_NEW = "-fx-text-fill: green;";

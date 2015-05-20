@@ -24,8 +24,7 @@ import java.net.URL;
 import java.util.*;
 
 public class ForceEditorController extends AbstractElementEditorController<ForceModel> {
-    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
-    private static final LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
+
     /**
      * Root pane
      */
@@ -184,7 +183,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     }
 
     @FXML
-    @SuppressWarnings("unchecked")
     void equipmentSelectAction() {
         List<ElementModel> vehiclesAndWeapons = new ArrayList(getEstabEditorController().getEstabModel().getWeapons().values());
         vehiclesAndWeapons.addAll(getEstabEditorController().getEstabModel().getVehicles().values());

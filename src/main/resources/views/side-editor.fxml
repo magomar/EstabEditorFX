@@ -10,85 +10,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="@../css/EstabEditorTheme.css"
-            fx:controller="net.deludobellico.commandops.estabeditor.controller.SideEditorController">
+<AnchorPane styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.SideEditorController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox>
+                <HBox alignment="CENTER_LEFT" styleClass="element-name">
                     <children>
-                        <Label alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-                               text="Name">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </Label>
-                        <TextField fx:id="name" HBox.hgrow="ALWAYS"/>
+                        <Label alignment="CENTER" text="Name" />
+                        <TextField fx:id="name" HBox.hgrow="ALWAYS" />
+                        <Label text="ID" />
+                        <TextField fx:id="id" disable="true" prefWidth="40.0" />
                     </children>
                 </HBox>
-                <TabPane minWidth="470.0"
-                         style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;"
-                         tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                <TabPane minWidth="470.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
                         <Tab text="General">
                             <content>
-                                <VBox>
+                                <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox>
-                                            <children>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="150.0"
-                                                       text="Description"/>
-                                                <TextArea fx:id="description" prefHeight="250.0"/>
-                                            </children>
-                                        </HBox>
-                                        <GridPane hgap="5.0" VBox.vgrow="ALWAYS">
+                                        <GridPane styleClass="data-grid" VBox.vgrow="ALWAYS">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="80.0"/>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0"
-                                                                   prefWidth="125.0"/>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0"
-                                                                   prefWidth="30.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                                                <ColumnConstraints hgrow="ALWAYS" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="30.0"
-                                                                vgrow="SOMETIMES"/>
-                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0"
-                                                                vgrow="SOMETIMES"/>
-                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0"
-                                                                vgrow="SOMETIMES"/>
-                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="30.0"
-                                                                vgrow="SOMETIMES"/>
+                                    <RowConstraints minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Label text="Basic Consumption Rate" GridPane.rowIndex="1"/>
-                                                <Label text="Enemy Anti-Personnel FP" GridPane.rowIndex="2"/>
-                                                <Label GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                                                <TextField fx:id="consumptionRate" GridPane.columnIndex="1"
-                                                           GridPane.rowIndex="1"/>
-                                                <TextField fx:id="aper" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                                                <Label text="Default values:"/>
-                                                <Label text="Enemy Anti-Armor FP" GridPane.rowIndex="3"/>
-                                                <TextField fx:id="aarm" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                                <Label text="Basic Consumption Rate" GridPane.rowIndex="2" />
+                                                <Label text="Enemy Anti-Personnel FP" GridPane.rowIndex="3" />
+                                                <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <TextField fx:id="consumptionRate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="aper" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label text="Enemy Anti-Armor FP" GridPane.rowIndex="4" />
+                                                <TextField fx:id="aarm" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="150.0" text="Description" />
+                                                <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" />
                                             </children>
                                         </GridPane>
 
-                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <HBox styleClass="hbox">
                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox>
                                                     <children>
-                                                        <Label text="Large Insignia"/>
-                                                        <fx:include fx:id="largeInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Large Insignia" />
+                                                        <fx:include fx:id="largeInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox>
                                                     <children>
-                                                        <Label text="Small Insignia"/>
-                                                        <fx:include fx:id="smallInsigniaPanel"
-                                                                    source="element-image.fxml"/>
+                                                        <Label text="Small Insignia" />
+                                                        <fx:include fx:id="smallInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
                                             </children>
