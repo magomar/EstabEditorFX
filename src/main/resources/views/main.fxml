@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="800.0" prefWidth="800.0" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.MainController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.MainController">
     <top>
         <VBox>
             <children>
@@ -189,7 +189,7 @@
         </VBox>
     </top>
     <center>
-        <ScrollPane fx:id="estabsContainer">
+        <ScrollPane fx:id="estabsContainer" prefHeight="850.0" prefWidth="850.0">
             <content>
                 <FlowPane>
                     <children>

@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.WeaponEditorController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.WeaponEditorController">
     <children>
-        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER_LEFT" style="-fx-background-color: burlywood;" styleClass="element-name">
                     <children>
                         <Label alignment="CENTER" text="Name" />
                         <TextField fx:id="name" HBox.hgrow="ALWAYS" />
                         <Label text="ID" />
-                        <TextField fx:id="id" disable="true" prefWidth="40.0" />
+                        <TextField fx:id="id" disable="true" prefWidth="50.0" />
                     </children>
                 </HBox>
                 <TabPane minWidth="470.0" style="-fx-border-color: grey; -fx-background-color: e9e9e9; -fx-border-radius: 5;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -29,13 +29,13 @@
                             <content>
                                 <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox>
+                                        <HBox prefHeight="150.0" styleClass="description">
                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="100.0" text="Description" />
-                                                <TextArea fx:id="description" prefHeight="150.0" prefWidth="500.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                                <TextArea fx:id="description" HBox.hgrow="ALWAYS" />
                                             </children>
                                         </HBox>
-                                        <HBox>
+                                        <HBox prefHeight="150.0">
                                             <children>
                                                 <GridPane styleClass="data-grid">
                                                     <children>
@@ -47,7 +47,7 @@
                                                         <ComboBox fx:id="weaponPrimaryRole" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                     </children>
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="80.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" />
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="150.0" />
                                                     </columnConstraints>
                                                     <rowConstraints>
@@ -84,9 +84,9 @@
                               </HBox>
                               <HBox styleClass="hbox">
                                  <children>
-                                                  <FlowPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0">
+                                                  <FlowPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" vgap="5.0">
                                                       <children>
-                                                          <ListView fx:id="performanceFireTypeList" prefHeight="114.0" prefWidth="100.0" style="-fx-border-color: gray;" />
+                                                          <ListView fx:id="performanceFireTypeList" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: gray;" />
                                                           <Button fx:id="performanceFireTypeAddButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#performanceAddFireType" prefWidth="25.0" text="+" />
                                                           <ComboBox fx:id="performanceFireTypeComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
                                                           <Button fx:id="performanceFireTypeRemoveButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#performanceRemoveFireType" prefWidth="25.0" text="-" />

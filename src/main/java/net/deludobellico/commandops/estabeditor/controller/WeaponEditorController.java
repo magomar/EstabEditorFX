@@ -136,6 +136,8 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        description.setWrapText(true);
+
         // Bind selected performance and unbind the previous active performance
         performanceFireTypeList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -152,8 +154,6 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         // Populate the weaponPrimaryRole combobox with all the primary roles
         weaponPrimaryRole.setItems(FXCollections.observableArrayList(PrimaryRole.values()));
         // Set the activeWeapon primary role with the one selected in the combobox
-
-        description.setWrapText(true);
 
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
             EstabModel estabModel = getEstabEditorController().getEstabModel();

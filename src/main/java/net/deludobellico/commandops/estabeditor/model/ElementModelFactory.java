@@ -125,7 +125,7 @@ public final class ElementModelFactory {
         iconModel.setBackgroundLightColor(serviceModel.getBackgroundLightColor());
         iconModel.setDesignationColor(serviceModel.getDesignationColor());
         iconModel.setSymbolColor(serviceModel.getSymbolColor());
-        iconModel.setMilitarySymbol(22);
+        iconModel.setMilitarySymbol(IconModel.MilitarySymbol.values()[22]);
         iconModel.setPictureSymbol(PictureSymbol.INFANTRY);
         iconModel.setForceSizeIcon(ForceSize.COMPANY);
         iconModel.setIsHq(false);

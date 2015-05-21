@@ -116,7 +116,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private ComboBox<SymbolColor> symbolColor;
     @FXML
-    private ComboBox<Integer> militarySymbol;
+    private ComboBox<IconModel.MilitarySymbol> militarySymbol;
     @FXML
     private ComboBox<PictureSymbol> pictureSymbol;
     @FXML
@@ -149,6 +149,10 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         targetClass.getItems().addAll(TargetClass.values());
         moveClass.getItems().addAll(MoveType.values());
         forceSize.getItems().addAll(ForceSize.values());
+        symbolColor.getItems().addAll(SymbolColor.values());
+        pictureSymbol.getItems().addAll(PictureSymbol.values());
+        forceSizeIcon.getItems().addAll(ForceSize.values());
+        militarySymbol.getItems().addAll(IconModel.MilitarySymbol.values());
     }
 
     @FXML
@@ -279,9 +283,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 
         // ICON
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
-        militarySymbol.valueProperty().bindBidirectional(element.getIcon().militarySymbolProperty().asObject());
+        militarySymbol.valueProperty().bindBidirectional(element.getIcon().militarySymbolProperty());
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());
-        forceSize.valueProperty().bindBidirectional(element.getIcon().forceSizeIconProperty());
+        forceSizeIcon.valueProperty().bindBidirectional(element.getIcon().forceSizeIconProperty());
         backgroundColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundColorProperty());
         backgroundLightColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundLightColorProperty());
         backgroundDarkColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundDarkColorProperty());
@@ -342,7 +346,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         entrenched.textProperty().unbindBidirectional(element.entrenchedProperty());
         fortified.textProperty().unbindBidirectional(element.fortifiedProperty());
 
-        militarySymbol.valueProperty().unbindBidirectional(element.getIcon().militarySymbolProperty().asObject());
+        militarySymbol.valueProperty().unbindBidirectional(element.getIcon().militarySymbolProperty());
         pictureSymbol.valueProperty().unbindBidirectional(element.getIcon().pictureSymbolProperty());
         forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
         backgroundColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundColorProperty());

@@ -16,7 +16,7 @@
                        <Label alignment="CENTER" text="Name" />
                        <TextField fx:id="name" HBox.hgrow="ALWAYS" />
                        <Label text="ID" />
-                       <TextField fx:id="id" disable="true" prefWidth="40.0" />
+                       <TextField fx:id="id" disable="true" prefWidth="50.0" />
                    </children>
                </HBox>
                <TabPane minWidth="470.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -121,7 +121,7 @@
                        </Tab>
                        <Tab text="Equipment/Supply">
                            <content>
-                                 <VBox layoutX="122.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                                 <VBox layoutX="122.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="editor-tab" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                                      <children>
                                          <GridPane hgap="5.0" styleClass="data-grid">
                                              <columnConstraints>
@@ -202,10 +202,9 @@
                            <children>
                                        <GridPane hgap="5.0" layoutX="115.0" layoutY="125.0" styleClass="icon-grid" vgap="5.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                            <columnConstraints>
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+                                               <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+                                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                            </columnConstraints>
                                            <rowConstraints>
@@ -216,21 +215,21 @@
                                            </rowConstraints>
                                            <children>
                                                <Label text="Symbol Color" />
-                                               <Label text="Designation Color" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                               <Label text="Background Main Color" GridPane.columnIndex="3" />
+                                               <Label text="Designation Color" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                               <Label text="Background Main Color" GridPane.columnIndex="2" />
                                                <Label text="Force Size Icon" GridPane.rowIndex="3" />
                                                <Label text="Picture Symbol" GridPane.rowIndex="2" />
                                                <Label text="Military Symbol" GridPane.rowIndex="1" />
-                                               <Label text="Background Light Color" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                               <Label text="Background Dark Color" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                               <ComboBox fx:id="pictureSymbol" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                               <ComboBox fx:id="forceSizeIcon" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                               <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="4" />
-                                               <ComboBox fx:id="symbolColor" prefWidth="150.0" GridPane.columnIndex="1" />
-                                               <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                               <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                               <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                               <ComboBox fx:id="militarySymbol" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                               <Label text="Background Light Color" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                               <Label text="Background Dark Color" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                               <ComboBox fx:id="pictureSymbol" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                                               <ComboBox fx:id="forceSizeIcon" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                               <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="3" />
+                                               <ComboBox fx:id="symbolColor" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                                               <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                               <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                               <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                               <ComboBox fx:id="militarySymbol" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
                                            </children>
                                        </GridPane>
                            </children>

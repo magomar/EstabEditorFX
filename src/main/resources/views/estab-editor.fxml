@@ -7,11 +7,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="estabPane" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabEditorController">
+<TitledPane fx:id="estabPane" prefHeight="415.0" prefWidth="850.0" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.EstabEditorController">
     <content>
-      <HBox>
+      <HBox prefHeight="400.0" prefWidth="850.0">
          <children>
-            <VBox prefWidth="220.0" styleClass="vbox">
+            <VBox minWidth="200.0" prefWidth="250.0">
                <children>
                   <HBox alignment="CENTER" styleClass="hbox">
                      <children>
@@ -84,7 +84,7 @@
                                 </Button>
                      </children>
                   </HBox>
-                        <StackPane style="-fx-border-color: gray;" VBox.vgrow="ALWAYS">
+                        <StackPane styleClass="vbox" VBox.vgrow="ALWAYS">
                             <children>
                                 <ListView fx:id="searchResultsListView" />
                                 <TreeView fx:id="searchResultsTreeView" />
@@ -92,7 +92,7 @@
                         </StackPane>
                </children>
             </VBox>
-                <AnchorPane fx:id="editorPane" styleClass="element-editor" HBox.hgrow="ALWAYS" />
+                <AnchorPane fx:id="editorPane" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
     </content>

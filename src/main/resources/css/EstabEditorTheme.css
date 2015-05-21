@@ -1,13 +1,12 @@
 .root {
-    -fx-font-size: 10pt;
+    -fx-font-size: 9pt;
     -fx-spacing: 5;
     -fx-padding: 5;
-    -fx-alignment: center;
 }
 
 .element-editor {
     -fx-pref-width: 600;
-    -fx-pref-height: 500;
+    -fx-pref-height: 400;
 }
 
 .element-name {
@@ -21,25 +20,28 @@
     -fx-padding: 5;
 }
 
+.description {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-pref-height: 150;
+}
 
 .hbox {
     -fx-spacing: 5;
     -fx-padding: 5;
-    -fx-alignment: center;
  }
 
 .vbox {
     -fx-spacing: 5;
     -fx-padding: 5;
-    -fx-alignment: center;
 }
 
 .data-grid {
-    -fx-vgap: 2;
-    -fx-hgap: 4;
+    -fx-vgap: 4;
+    -fx-hgap: 8;
 }
 
 .icon-grid {
-    -fx-vgap: 5;
-    -fx-hgap: 4;
+    -fx-vgap: 8;
+    -fx-hgap: 16;
 }

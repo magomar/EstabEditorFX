@@ -21,7 +21,7 @@ public class IconModelTest {
     private final PictureSymbol pictureSymbol = PictureSymbol.AMMO;
     private final SymbolColor symbolColor = SymbolColor.BLACK;
     private final boolean hq = false;
-    private final int militarySymbol = 10;
+    private final IconModel.MilitarySymbol militarySymbol = IconModel.MilitarySymbol.values()[10];
 
     @Test
     public void testEquals() throws Exception {

@@ -18,7 +18,7 @@
                         <Label alignment="CENTER" text="Name" />
                         <TextField fx:id="name" HBox.hgrow="ALWAYS" />
                         <Label text="ID" />
-                        <TextField fx:id="id" disable="true" prefWidth="40.0" />
+                        <TextField fx:id="id" disable="true" prefWidth="50.0" />
                     </children>
                 </HBox>
                 <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -27,42 +27,28 @@
                             <content>
                         <VBox styleClass="editor-tab">
                            <children>
-                                        <GridPane layoutX="71.0" layoutY="80.0" styleClass="data-grid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.0" minWidth="72.99996948242188" prefWidth="236.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="508.0000305175781" minWidth="10.0" prefWidth="258.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="278.0" minHeight="73.0" prefHeight="73.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="278.0" minHeight="80.0" prefHeight="225.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="150.0" text="Description" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                <TextArea fx:id="description" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" />
-                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                    <children>
-                                                        <GridPane hgap="5.0">
-                                                            <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
-                                                            </columnConstraints>
-                                                            <rowConstraints>
-                                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                                                <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                                            </rowConstraints>
-                                                            <children>
-                                                                <Label text="Quantity" />
-                                                                <Label text="Weight (kg)" GridPane.rowIndex="1" />
-                                                                <TextField fx:id="quantity" GridPane.columnIndex="1" />
-                                                                <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                            </children>
-                                                        </GridPane>
-                                                    </children>
-                                                </VBox>
-                                            </children>
-                                        </GridPane>
+                              <HBox prefHeight="150.0" styleClass="description">
+                                 <children>
+                                    <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                    <TextArea fx:id="description" scaleShape="false" wrapText="true" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                                            <GridPane>
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="Quantity" />
+                                                    <Label text="Weight (kg)" GridPane.rowIndex="1" />
+                                                    <TextField fx:id="quantity" GridPane.columnIndex="1" />
+                                                    <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                </children>
+                                            </GridPane>
                            </children>
                         </VBox>
                             </content>

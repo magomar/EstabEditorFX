@@ -2,10 +2,7 @@ package net.deludobellico.commandops.estabeditor.model;
 
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
-import net.deludobellico.commandops.estabeditor.data.jaxb.ForceSize;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Icon;
-import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
-import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
+import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 
 /**
  * Model wrapper for the {@code Icon} class
@@ -19,7 +16,7 @@ public class IconModel implements PojoAdapter<Icon> {
     private final ObjectProperty<Color> backgroundLightColor = new SimpleObjectProperty<>();
     private final ObjectProperty<Color> designationColor = new SimpleObjectProperty<>();
     private final ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
-    private final IntegerProperty militarySymbol = new SimpleIntegerProperty();
+    private final ObjectProperty<MilitarySymbol> militarySymbol = new SimpleObjectProperty<>();
     private final ObjectProperty<PictureSymbol> pictureSymbol = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSize> forceSizeIcon = new SimpleObjectProperty<>();
     private final BooleanProperty isHq = new SimpleBooleanProperty();
@@ -38,6 +35,11 @@ public class IconModel implements PojoAdapter<Icon> {
         icon.setBackgroundColor(RGBColorModel.getRGBColor(backgroundColor.get()));
         icon.setBackgroundDarkColor(RGBColorModel.getRGBColor(backgroundDarkColor.get()));
         icon.setBackgroundLightColor(RGBColorModel.getRGBColor(backgroundLightColor.get()));
+        icon.setDesignationColor(RGBColorModel.getRGBColor(designationColor.get()));
+        icon.setMilitarySymbol(militarySymbol.get().ordinal());
+        icon.setPictureSymbol(pictureSymbol.get());
+        icon.setForceSizeIcon(forceSizeIcon.get());
+        icon.setIsHq(PojoAdapter.booleanToYesNo(isHq.get()));
         return icon;
     }
 
@@ -46,6 +48,12 @@ public class IconModel implements PojoAdapter<Icon> {
         backgroundColor.set(RGBColorModel.getColor(pojo.getBackgroundColor()));
         backgroundDarkColor.set(RGBColorModel.getColor(pojo.getBackgroundDarkColor()));
         backgroundLightColor.set(RGBColorModel.getColor(pojo.getBackgroundLightColor()));
+        backgroundLightColor.set(RGBColorModel.getColor(pojo.getBackgroundLightColor()));
+        designationColor.set(RGBColorModel.getColor(pojo.getDesignationColor()));
+        symbolColor.set(pojo.getSymbolColor());
+        militarySymbol.set(MilitarySymbol.values()[pojo.getMilitarySymbol()]);
+        forceSizeIcon.set(pojo.getForceSizeIcon());
+        isHq.set(PojoAdapter.yesNoToBoolean(pojo.getIsHq()));
     }
 
     public Color getBackgroundColor() {
@@ -108,16 +116,16 @@ public class IconModel implements PojoAdapter<Icon> {
         return symbolColor;
     }
 
-    public int getMilitarySymbol() {
+    public MilitarySymbol getMilitarySymbol() {
         return militarySymbol.get();
     }
 
-    public void setMilitarySymbol(int militarySymbol) {
-        this.militarySymbol.set(militarySymbol);
+    public ObjectProperty<MilitarySymbol> militarySymbolProperty() {
+        return militarySymbol;
     }
 
-    public IntegerProperty militarySymbolProperty() {
-        return militarySymbol;
+    public void setMilitarySymbol(MilitarySymbol militarySymbol) {
+        this.militarySymbol.set(militarySymbol);
     }
 
     public PictureSymbol getPictureSymbol() {
@@ -190,11 +198,63 @@ public class IconModel implements PojoAdapter<Icon> {
         result = 31 * result + (getBackgroundLightColor() != null ? getBackgroundLightColor().hashCode() : 0);
         result = 31 * result + (getDesignationColor() != null ? getDesignationColor().hashCode() : 0);
         result = 31 * result + (getSymbolColor() != null ? getSymbolColor().hashCode() : 0);
-        result = 31 * result + getMilitarySymbol();
+        result = 31 * result + (getMilitarySymbol() != null ? getMilitarySymbol().ordinal() : 0);
         result = 31 * result + (getPictureSymbol() != null ? getPictureSymbol().hashCode() : 0);
         result = 31 * result + (getForceSizeIcon() != null ? getForceSizeIcon().hashCode() : 0);
         result = 31 * result + ((getIsHq()) ? 1 : 0);
         return result;
     }
 
+    public enum MilitarySymbol {
+        ARMY_GROUP_HQ,
+        ARMY_HQ,
+        CORPS_HQ,
+        RECON,
+        ARMOR,
+        ARMORED_RECON,
+        ARMORED_CAR,
+        ASSAULT_GUN,
+        ARTILLERY,
+        MOTOR_ARTILLERY,
+        SP_ARTY,
+        PARACHUTED_ARTY,
+        AIRBORNE_ARTY,
+        ROCKET_LAUNCHER,
+        MOTORIZED_ROCKET_LAUNCHER,
+        SP_ROCKET_LAUNCHER,
+        ANTI_TANK,
+        MOTOR_ANTI_TANK,
+        SP_ANTI_TANK,
+        FLAK,
+        MOTORIZED_FLAK,
+        SP_FLAK,
+        INFANTRY,
+        MOTORIZED_INFANTRY,
+        MECHANIZED_INFANTRY,
+        MOUNTAIN_INFANTRY,
+        MOTORIZED_MOUNTAIN_INF,
+        PARACHUTED_INFANTRY,
+        MOTORIZED_PARACHUTED_INF,
+        AIRBORNE_INFANTRY,
+        MOTORIZED_AIRBORNE_INF,
+        SF_INFANTRY, // SUPPORT FIRE INFANTRY? LIKE MGS & LIGHT MORTARS?
+        MOTORIZED_SUF,
+        MG_INFANTRY,
+        MOTORIZED_MG_INFANTRY,
+        HEAVY_WEAPONS_INF,
+        MOTORIZED_HW_INF,
+        AIRBORNE_RECON,
+        MOTORIZED_ABN_RECON,
+        ENGINEERS,
+        MOTORIZED_ENGINEERS,
+        MECHANIZED_ENGINEERS,
+        BRIDGE_ENGINEERS,
+        MOTORIZED_BRIDGE_ENG,
+        SP_BRIDGE_ENGINEERS,
+        TRANSPORT,
+        SUPPLY,
+        INFANTRY_GUN,
+        MOTORIZED_INF_GUN,
+        SP_INFANTRY_GUN;
+    }
 }

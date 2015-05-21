@@ -21,10 +21,10 @@ public class ServiceModelTest {
     private final Integer largeInsignia = 5;
     private final Integer smallInsignia = 3;
     private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
-    private final Color backgroundColor = Color.color(255, 255, 255);
-    private final Color backgroundDarkColor = Color.color(255, 255, 255);
-    private final Color backgroundLightColor = Color.color(255, 255, 255);
-    private final Color designationColor = Color.color(255, 255, 255);
+    private final Color backgroundColor = Color.rgb(255, 255, 255);
+    private final Color backgroundDarkColor = Color.rgb(255, 255, 255);
+    private final Color backgroundLightColor = Color.rgb(255, 255, 255);
+    private final Color designationColor = Color.rgb(255, 255, 255);
     private final SymbolColor symbolColor = SymbolColor.BLACK;
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
     private final Flag[] flags = new Flag[]{Flag.COPY, Flag.NEW};
