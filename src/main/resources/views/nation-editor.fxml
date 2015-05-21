@@ -14,7 +14,7 @@
     <children>
         <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-            <HBox alignment="CENTER_LEFT" styleClass="element-name">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: moccasin;" styleClass="element-name">
                <children>
                   <Label alignment="CENTER" text="Name" />
                   <TextField fx:id="name" HBox.hgrow="ALWAYS" />

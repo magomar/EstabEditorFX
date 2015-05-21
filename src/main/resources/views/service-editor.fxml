@@ -12,9 +12,9 @@
 
 <AnchorPane styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.commandops.estabeditor.controller.ServiceEditorController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="686.0" prefWidth="658.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox alignment="CENTER_LEFT" styleClass="element-name">
+                <HBox alignment="CENTER_LEFT" style="-fx-background-color: lavender;" styleClass="element-name">
                     <children>
                         <Label alignment="CENTER" text="Name" />
                         <TextField fx:id="name" HBox.hgrow="ALWAYS" />
@@ -28,7 +28,7 @@
                             <content>
                                 <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox alignment="CENTER" styleClass="hbox">
+                                        <HBox alignment="CENTER" minHeight="100.0" styleClass="description">
                                             <children>
                                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
                                                 <TextArea fx:id="description" />
@@ -39,11 +39,12 @@
                                     <VBox>
                                        <children>
                                                       <Label text="Ranks" />
-                                                      <ListView fx:id="rankListView" prefWidth="150.0" />
+                                                      <ListView fx:id="rankListView" prefWidth="200.0" />
                                        </children>
                                     </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox>
                                                     <children>
+                                          <HBox prefHeight="15.0" />
                                                         <HBox styleClass="hbox">
                                                             <children>
                                                                 <Button fx:id="addRankButton" mnemonicParsing="false" onAction="#addRankAction">
@@ -70,12 +71,24 @@
                                                         <TextField fx:id="fullName" promptText="Full name" />
                                                     </children>
                                                 </VBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </Tab>
+                  <Tab text="Graphics">
+                    <content>
+                        <HBox styleClass="editor-tab">
+                           <children>
+                              <VBox>
+                                 <children>
                                                 <VBox styleClass="vbox">
                                                     <children>
                                                         <HBox>
                                                             <children>
                                                                 <Label prefWidth="120.0" text="Background color" />
-                                                                <ColorPicker fx:id="backgroudColorPicker" prefWidth="100.0" promptText="Background color" />
+                                                                <ColorPicker fx:id="backgroundColorPicker" prefWidth="100.0" promptText="Background color" />
                                                             </children>
                                                         </HBox>
                                                         <HBox>
@@ -104,11 +117,10 @@
                                                         </HBox>
                                                     </children>
                                                 </VBox>
-                                            </children>
-                                        </HBox>
-
-                                        <HBox styleClass="hbox">
-                                            <children>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
                                                 <VBox>
                                                     <children>
                                                         <Label text="Large Insignia" />
@@ -121,12 +133,12 @@
                                                         <fx:include fx:id="smallInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                </VBox>
-                            </content>
-                        </Tab>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                    </content>
+                  </Tab>
                     </tabs>
                 </TabPane>
             </children>

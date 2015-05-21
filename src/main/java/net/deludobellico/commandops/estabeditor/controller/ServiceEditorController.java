@@ -4,11 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
-import net.deludobellico.commandops.estabeditor.model.*;
+import net.deludobellico.commandops.estabeditor.model.EstabModel;
+import net.deludobellico.commandops.estabeditor.model.ImageModel;
+import net.deludobellico.commandops.estabeditor.model.RankModel;
+import net.deludobellico.commandops.estabeditor.model.ServiceModel;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
@@ -26,6 +27,8 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
     /**
      * General tab
      */
@@ -113,12 +116,14 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
         lightBackgColorPicker.setEditable(isEditable);
         designationColorPicker.setEditable(isEditable);
         symbolColorComboBox.setEditable(isEditable);
+        name.setEditable(isEditable);
     }
 
     @Override
     public void bindProperties() {
         ServiceModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
         backgroundColorPicker.valueProperty().bindBidirectional(element.backgroundColorProperty());
         darkBackgColorPicker.valueProperty().bindBidirectional(element.backgroundDarkColorProperty());
@@ -133,6 +138,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
     public void unbindProperties() {
         ServiceModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         backgroundColorPicker.valueProperty().unbindBidirectional(element.backgroundColorProperty());
         darkBackgColorPicker.valueProperty().unbindBidirectional(element.backgroundDarkColorProperty());
@@ -145,8 +151,8 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
     @Override
     public void clear() {
         super.clear();
-
         name.setText("");
+        id.setText("");
         description.setText("");
         shortName.setText("");
         fullName.setText("");
@@ -170,7 +176,6 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
                 rankModel.setShortName(shortName.getText());
                 rankModel.setFullName(fullName.getText());
                 rankModel.setIndex(rankModels.size());
-//                activeService.getRankList().add(rankModel);
                 rankModels.add(rankModel);
             } else {
                 UtilView.showInfoDialog("Repeated rank", "", "The entered rank is already included. Please, enter another one.");
@@ -182,8 +187,6 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
     private void removeRankAction(ActionEvent actionEvent) {
         if (!rankListView.getSelectionModel().getSelectedItems().isEmpty()) {
             RankModel rankModel = rankListView.getSelectionModel().getSelectedItem();
-//            activeService.getRankList().remove(rankModel);
-//            rankListView.getItems().remove(rankModel);
             rankModels.remove(rankModel);
         }
     }

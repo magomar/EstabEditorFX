@@ -23,6 +23,8 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
     /**
      * General tab
      */
@@ -96,12 +98,14 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
         consumptionRate.setEditable(isEditable);
         aper.setEditable(isEditable);
         aarm.setEditable(isEditable);
+        name.setEditable(isEditable);
     }
 
     @Override
     public void bindProperties() {
         SideModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
         consumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateProperty(), new NumberStringConverter());
         aper.textProperty().bindBidirectional(element.defaultEnemyAperFpProperty(), new NumberStringConverter());
@@ -113,6 +117,7 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
     public void unbindProperties() {
         SideModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         consumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateProperty());
         aper.textProperty().unbindBidirectional(element.defaultEnemyAperFpProperty());
@@ -122,11 +127,11 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
     @Override
     public void clear() {
         super.clear();
-
         consumptionRate.setText("");
         aper.setText("");
         aarm.setText("");
         name.setText("");
+        id.setText("");
         description.setText("");
     }
     

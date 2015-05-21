@@ -162,7 +162,7 @@ public class EstabEditorController implements Initializable {
         searchResultsTreeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<ElementListCell>>() {
             @Override
             public void changed(ObservableValue<? extends TreeItem<ElementListCell>> observable, TreeItem<ElementListCell> oldValue, TreeItem<ElementListCell> newValue) {
-                if(newValue != null && newValue.getValue().getElementModel().getClass() == ForceModel.class) setActiveElement(newValue.getValue().getElementModel());
+                if(newValue != null) setActiveElement(newValue.getValue().getElementModel());
             }
         });
 
@@ -780,7 +780,6 @@ public class EstabEditorController implements Initializable {
          */
         private CheckBox createCheckBox(Collection<ElementModel> selectedElements) {
             CheckBox c = new CheckBox();
-
             c.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue) selectedElements.add(elementModel);
                 else selectedElements.remove(elementModel);

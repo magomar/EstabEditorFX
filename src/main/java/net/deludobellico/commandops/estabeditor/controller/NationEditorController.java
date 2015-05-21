@@ -24,6 +24,8 @@ public class NationEditorController extends AbstractElementEditorController<Nati
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
     /**
      * General tab
      */
@@ -91,12 +93,15 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     @Override
     public void setEditable(boolean isEditable) {
         nationality.setEditable(isEditable);
+        name.setEditable(isEditable);
+        // NOTE: id must not be editable
     }
 
     @Override
     public void bindProperties() {
         NationModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
         nationality.textProperty().bindBidirectional(element.nationalityProperty());
 
@@ -106,6 +111,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     public void unbindProperties() {
         NationModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         nationality.textProperty().unbindBidirectional(element.nationalityProperty());
     }
@@ -113,8 +119,8 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     @Override
     public void clear() {
         super.clear();
-
         name.setText("");
+        id.setText("");
         description.setText("");
         nationality.setText("");
     }

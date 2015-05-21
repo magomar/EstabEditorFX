@@ -30,6 +30,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
 
     /**
      * General tab
@@ -209,6 +211,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @Override
     public void setEditable(boolean isEditable) {
         name.setEditable(isEditable);
+        id.setEditable(isEditable);
         forceType.setEditable(isEditable);
         subForceType.setEditable(isEditable);
         combatClass.setEditable(isEditable);
@@ -256,6 +259,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     public void bindProperties() {
         ForceModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         forceType.valueProperty().bindBidirectional(element.typeProperty());
         subForceType.valueProperty().bindBidirectional(element.subTypeProperty());
         combatClass.valueProperty().bindBidirectional(element.combatClassProperty());
@@ -323,6 +327,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     public void unbindProperties() {
         ForceModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
 
         forceType.valueProperty().unbindBidirectional(element.typeProperty());
         subForceType.valueProperty().unbindBidirectional(element.subTypeProperty());

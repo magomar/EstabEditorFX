@@ -36,6 +36,8 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
 
     /**
      * General tab
@@ -399,6 +401,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
 
         weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
         crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
         reliability.textProperty().bindBidirectional(element.reliabilityProperty(), new NumberStringConverter());
@@ -433,6 +436,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         if (activePerformance != null) unbindPerformanceProperties(activePerformance);
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         crew.textProperty().unbindBidirectional(element.crewProperty());
         reliability.textProperty().unbindBidirectional(element.reliabilityProperty());
@@ -449,6 +453,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
 
         weight.setText("");
         name.setText("");
+        id.setText("");
         description.setText("");
         crew.setText("");
         reliability.setText("");
