@@ -7,7 +7,7 @@
 .element-editor {
     -fx-pref-width: 600;
     -fx-pref-height: 400;
-
+    -fx-background-color: gainsboro;
 }
 
 .element-name {
@@ -16,9 +16,9 @@
 }
 
 .editor-tab {
-    -fx-background-color: gainsboro;
     -fx-spacing: 5;
     -fx-padding: 5;
+    -fx-background-color: gainsboro;
 }
 
 .description {

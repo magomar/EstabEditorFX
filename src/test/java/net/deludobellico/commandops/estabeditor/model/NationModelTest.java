@@ -14,7 +14,6 @@ public class NationModelTest {
 
     private String name;
     private String description;
-    private String nationality;
     private int id;
     private int largeInsignia;
     private int smallInsignia;
@@ -28,7 +27,6 @@ public class NationModelTest {
         ours.setName(name);
         ours.setId(id);
         ours.setDescription(description);
-        ours.setNationality(nationality);
         ours.setLargeInsignia(largeInsignia);
         ours.setSmallInsignia(smallInsignia);
         ours.setFlag(flags);
@@ -40,7 +38,6 @@ public class NationModelTest {
         other.setName(name);
         other.setId(id);
         other.setDescription(description);
-        other.setNationality(nationality);
         other.setLargeInsignia(largeInsignia);
         other.setSmallInsignia(smallInsignia);
         other.setFlag(flags);
@@ -56,7 +53,6 @@ public class NationModelTest {
         ours.setName(name);
         ours.setId(id);
         ours.setDescription(description);
-        ours.setNationality(nationality);
         ours.setLargeInsignia(largeInsignia);
         ours.setSmallInsignia(smallInsignia);
         ours.setFlag(flags);
@@ -68,7 +64,6 @@ public class NationModelTest {
         other.setName(name);
         other.setId(id + 2);
         other.setDescription(description);
-        other.setNationality(nationality);
         other.setLargeInsignia(largeInsignia);
         other.setSmallInsignia(smallInsignia);
         other.setFlag(flags);
@@ -84,7 +79,6 @@ public class NationModelTest {
         ours.setName(null);
         ours.setId(id);
         ours.setDescription(null);
-        ours.setNationality(null);
         ours.setLargeInsignia(largeInsignia);
         ours.setSmallInsignia(smallInsignia);
         ours.setFlag((Flag[]) null);
@@ -96,7 +90,6 @@ public class NationModelTest {
         other.setName(null);
         other.setId(id);
         other.setDescription(null);
-        other.setNationality(null);
         other.setLargeInsignia(largeInsignia);
         other.setSmallInsignia(smallInsignia);
         other.setFlag((Flag[]) null);

@@ -21,7 +21,6 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
-    private final StringProperty nationality = new SimpleStringProperty();
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<ServiceModel> service = FXCollections.observableArrayList();
@@ -42,7 +41,7 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
         nation.setId(id.get());
         nation.setName(name.get());
         nation.setDescription(description.get());
-        nation.setNationality(nationality.get());
+        //nation.setNationality("");
         Insignia largeIns = new Insignia();
         largeIns.setId(largeInsignia.get());
         nation.setLargeInsignia(largeIns);
@@ -58,7 +57,6 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
         id.set(pojo.getId());
         name.set(pojo.getName());
         description.set(pojo.getDescription());
-        nationality.set(pojo.getNationality());
         largeInsignia.set(pojo.getLargeInsignia().getId());
         smallInsignia.set(pojo.getSmallInsignia().getId());
         service.clear();
@@ -154,18 +152,6 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
         return description;
     }
 
-    public String getNationality() {
-        return nationality.get();
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality.set(nationality);
-    }
-
-    public StringProperty nationalityProperty() {
-        return nationality;
-    }
-
     public int getLargeInsignia() {
         return largeInsignia.get();
     }
@@ -213,8 +199,6 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
             return false;
         if (getLargeInsignia() != that.getLargeInsignia()) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (getNationality() != null ? !getNationality().equals(that.getNationality()) : that.getNationality() != null)
-            return false;
         if (getSmallInsignia() != that.getSmallInsignia()) return false;
         if (that.getService().size() != service.size() || !service.containsAll(that.getService()))
             return false;
