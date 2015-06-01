@@ -52,6 +52,7 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
      */
     @Override
     public void setEditable(boolean isEditable) {
+        description.setEditable(isEditable);
         quantity.setEditable(isEditable);
         weight.setEditable(isEditable);
     }

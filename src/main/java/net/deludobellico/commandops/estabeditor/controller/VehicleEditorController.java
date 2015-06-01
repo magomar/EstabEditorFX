@@ -34,6 +34,8 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
      */
     @FXML
     private TextField name;
+    @FXML
+    private TextField id;
 
     /**
      * General tab components
@@ -315,6 +317,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         maxGradient.textProperty().bindBidirectional(element.maxGradientProperty(), NUMBER_STRING_CONVERTER);
         maxTrenchWidth.textProperty().bindBidirectional(element.maxTrenchWidthProperty(), NUMBER_STRING_CONVERTER);
         name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         payloadCapacity.textProperty().bindBidirectional(element.payloadCapacityProperty(), NUMBER_STRING_CONVERTER);
         personnelCapacity.textProperty().bindBidirectional(element.personnelCapacityProperty(), NUMBER_STRING_CONVERTER);
         rearArmor.textProperty().bindBidirectional(element.rearArmorProperty(), NUMBER_STRING_CONVERTER);
@@ -365,6 +368,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         maxGradient.textProperty().unbindBidirectional(element.maxGradientProperty());
         maxTrenchWidth.textProperty().unbindBidirectional(element.maxTrenchWidthProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
+        id.textProperty().unbindBidirectional(element.idProperty());
         payloadCapacity.textProperty().unbindBidirectional(element.payloadCapacityProperty());
         personnelCapacity.textProperty().unbindBidirectional(element.personnelCapacityProperty());
         rearArmor.textProperty().unbindBidirectional(element.rearArmorProperty());
@@ -408,6 +412,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         maxGradient.setText("");
         maxTrenchWidth.setText("");
         name.setText("");
+        id.setText("");
         payloadCapacity.setText("");
         personnelCapacity.setText("");
         rearArmor.setText("");

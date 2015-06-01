@@ -91,7 +91,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     @Override
     public void setEditable(boolean isEditable) {
         name.setEditable(isEditable);
-        // NOTE: id must not be editable
+        description.setEditable(isEditable);
     }
 
     @Override
