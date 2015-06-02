@@ -29,13 +29,13 @@
                             <content>
                                 <VBox styleClass="editor-tab">
                                     <children>
-                                        <HBox prefHeight="150.0" styleClass="description">
+                                        <HBox styleClass="description">
                                             <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
                                                 <TextArea fx:id="description" HBox.hgrow="ALWAYS" />
                                             </children>
                                         </HBox>
-                                        <HBox prefHeight="150.0">
+                                        <HBox>
                                             <children>
                                                 <GridPane styleClass="data-grid">
                                                     <children>
@@ -84,17 +84,17 @@
                               </HBox>
                               <HBox styleClass="hbox">
                                  <children>
-                                                  <FlowPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" vgap="5.0">
+                                                  <FlowPane maxWidth="100.0" vgap="5.0">
                                                       <children>
                                                           <ListView fx:id="performanceFireTypeList" prefHeight="150.0" prefWidth="100.0" style="-fx-border-color: gray;" />
-                                                          <Button fx:id="performanceFireTypeAddButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#performanceAddFireType" prefWidth="25.0" text="+" />
+                                                          <Button fx:id="performanceFireTypeAddButton" mnemonicParsing="false" onAction="#performanceAddFireType" text="+" />
+                                                          <Button fx:id="performanceFireTypeRemoveButton" mnemonicParsing="false" onAction="#performanceRemoveFireType" text="-" />
                                                           <ComboBox fx:id="performanceFireTypeComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
-                                                          <Button fx:id="performanceFireTypeRemoveButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#performanceRemoveFireType" prefWidth="25.0" text="-" />
                                                       </children>
                                                   </FlowPane>
                                                   <GridPane alignment="TOP_RIGHT" styleClass="data-grid">
                                                       <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
+                                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
                                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
                                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
                                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
@@ -114,13 +114,13 @@
                                                       </rowConstraints>
                                                       <children>
                                                           <Label text="Ammo" />
-                                                          <Label fx:id="ammoNameLabel" minWidth="-Infinity" prefWidth="150.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-                                                          <Button fx:id="ammoSelectButton" mnemonicParsing="false" onAction="#ammoSelectAction" text="..." GridPane.columnIndex="3" />
+                                                          <Label fx:id="ammoNameLabel" prefWidth="220.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                                                          <Button fx:id="ammoSelectButton" mnemonicParsing="false" onAction="#ammoSelectAction" text="..." GridPane.columnIndex="4" />
                                                           <Label text="Min Range" GridPane.rowIndex="2" />
-                                                          <Label text="Rate of Fire:" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                                                          <Label text="Slow" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                                                          <Label text="Normal" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                                                          <Label text="Rapid" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                                                          <Label text="Rate of Fire:" GridPane.rowIndex="3" />
+                                                          <Label text="Slow" GridPane.rowIndex="4" />
+                                                          <Label text="Normal" GridPane.rowIndex="5" />
+                                                          <Label text="Rapid" GridPane.rowIndex="6" />
                                                           <Label text="Burst Radius" GridPane.rowIndex="7" />
                                                           <Label text="Shell Weight" GridPane.rowIndex="8" />
                                                           <TextField fx:id="minRange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -131,11 +131,11 @@
                                                           <TextField fx:id="shellWeight" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                                           <Label text="Load" GridPane.rowIndex="1" />
                                                           <TextField fx:id="load" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                          <Label text="Range" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                                          <Label text="Accuracy" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                                          <Label text="Armour Penetration" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                                          <Button fx:id="addRangeButton" mnemonicParsing="false" onAction="#addRangeToTable" prefWidth="60.0" text="Add" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                                          <Button fx:id="removeRangeButton" mnemonicParsing="false" onAction="#removeRangeFromTable" prefWidth="60.0" text="Remove" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                                          <Label text="Range" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                                                          <Label text="Accuracy" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                                                          <Label text="Armour Penetration" wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                                                          <Button fx:id="addRangeButton" mnemonicParsing="false" onAction="#addRangeToTable" text="+" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER" />
+                                                          <Button fx:id="removeRangeButton" mnemonicParsing="false" onAction="#removeRangeFromTable" text="-" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
                                                           <TextField fx:id="tableNewRangeValue" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                                           <TextField fx:id="tableNewAccuracyValue" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                           <TextField fx:id="tableNewArmorPenetrationValue" GridPane.columnIndex="4" GridPane.rowIndex="2" />

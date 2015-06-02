@@ -31,6 +31,7 @@ public class EstabEditorApp extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(UtilView.WINDOW_WIDTH);
         primaryStage.setMinHeight(UtilView.WINDOW_HEIGHT);
+        primaryStage.setMaxHeight(UtilView.WINDOW_HEIGHT);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         try {
             primaryStage.setHeight(Settings.getInstance().getWindowHeight());
