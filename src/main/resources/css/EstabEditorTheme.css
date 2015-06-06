@@ -48,3 +48,13 @@
     -fx-vgap: 8;
     -fx-hgap: 16;
 }
+
+.button {
+    -fx-font-size: 12
+}
+
+.element-image {
+    -fx-width: 96;
+    -fx-height: 61;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}

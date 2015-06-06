@@ -36,6 +36,7 @@ public class IconModel implements PojoAdapter<Icon> {
         icon.setBackgroundDarkColor(RGBColorModel.getRGBColor(backgroundDarkColor.get()));
         icon.setBackgroundLightColor(RGBColorModel.getRGBColor(backgroundLightColor.get()));
         icon.setDesignationColor(RGBColorModel.getRGBColor(designationColor.get()));
+        icon.setSymbolColor(symbolColor.get());
         icon.setMilitarySymbol(militarySymbol.get().ordinal());
         icon.setPictureSymbol(pictureSymbol.get());
         icon.setForceSizeIcon(forceSizeIcon.get());
@@ -52,6 +53,7 @@ public class IconModel implements PojoAdapter<Icon> {
         designationColor.set(RGBColorModel.getColor(pojo.getDesignationColor()));
         symbolColor.set(pojo.getSymbolColor());
         militarySymbol.set(MilitarySymbol.values()[pojo.getMilitarySymbol()]);
+        pictureSymbol.set(pojo.getPictureSymbol());
         forceSizeIcon.set(pojo.getForceSizeIcon());
         isHq.set(PojoAdapter.yesNoToBoolean(pojo.getIsHq()));
     }
