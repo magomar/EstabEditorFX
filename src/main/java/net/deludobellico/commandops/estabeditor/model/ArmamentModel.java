@@ -95,7 +95,7 @@ public class ArmamentModel implements PojoAdapter<Armament> {
 
         if (getEquipmentName() != null ? !getEquipmentName().equals(that.getEquipmentName()) : that.getEquipmentName() != null)
             return false;
-//        if (getEquipmentObjectId() != that.getEquipmentObjectId()) return false;
+//        if (getId() != that.getId()) return false;
         return getQty() == that.getQty();
 
     }
@@ -103,7 +103,7 @@ public class ArmamentModel implements PojoAdapter<Armament> {
     @Override
     public int hashCode() {
         int result = 1;
-//        result = 31 * getEquipmentObjectId();
+//        result = 31 * getId();
         result = 31 * result + (getEquipmentName() != null ? getEquipmentName().hashCode() : 0);
         result = 31 * result + getQty();
         return result;

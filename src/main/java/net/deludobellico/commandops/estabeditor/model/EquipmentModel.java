@@ -11,9 +11,10 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
  */
 public class EquipmentModel implements PojoAdapter<Equipment> {
 
-    private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
+    private final transient IntegerProperty id = new SimpleIntegerProperty();
     private final transient StringProperty name = new SimpleStringProperty();
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
+    //TODO check if equipmentClass is being used
     private final transient ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
 
     public EquipmentModel(Equipment pojo) {
@@ -27,7 +28,7 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
     @Override
     public Equipment getPojo() {
         Equipment armament = new Equipment();
-        armament.setEquipmentObjectId(equipmentObjectId.get());
+        armament.setEquipmentObjectId(id.get());
         armament.setName(name.get());
         armament.setQty(qty.get());
         return armament;
@@ -35,21 +36,21 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
 
     @Override
     public void initialize(Equipment pojo) {
-        equipmentObjectId.set(pojo.getEquipmentObjectId());
+        id.set(pojo.getEquipmentObjectId());
         name.set(pojo.getName());
         qty.set(pojo.getQty());
     }
 
-    public int getEquipmentObjectId() {
-        return equipmentObjectId.get();
+    public int getId() {
+        return id.get();
     }
 
-    public void setEquipmentObjectId(int equipmentObjectId) {
-        this.equipmentObjectId.set(equipmentObjectId);
+    public void setId(int id) {
+        this.id.set(id);
     }
 
-    public IntegerProperty equipmentObjectIdProperty() {
-        return equipmentObjectId;
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
@@ -95,7 +96,7 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
 
         EquipmentModel that = (EquipmentModel) o;
 
-//        if(getEquipmentObjectId() != that.getEquipmentObjectId()) return false;
+//        if(getId() != that.getId()) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getQty() != that.getQty()) return false;
 
@@ -105,7 +106,7 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
     @Override
     public int hashCode() {
         int result = 1;
-//        result = result + getEquipmentObjectId();
+//        result = result + getId();
         result = 62 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + getQty();
         return result;

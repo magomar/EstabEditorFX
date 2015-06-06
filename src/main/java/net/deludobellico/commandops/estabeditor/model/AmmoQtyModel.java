@@ -36,7 +36,9 @@ public class AmmoQtyModel implements PojoAdapter<AmmoQty> {
 
     @Override
     public void initialize(AmmoQty pojo) {
-
+        id.set(pojo.getAmmoObjectId());
+        name.set(pojo.getName());
+        qty.set(pojo.getQty());
     }
 
     public Integer getId() {
