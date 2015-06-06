@@ -4,20 +4,14 @@ package net.deludobellico.commandops.estabeditor.controller;
  * Created by Heine on 11/10/2014.
  */
 
-import com.sun.javafx.property.adapter.PropertyDescriptor;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.LocalTimeStringConverter;
-import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
-import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
@@ -168,7 +162,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             // Search for repeated equipment
             boolean repeatedEquipment = false;
             for (EquipmentModel equipment : getActiveElement().getEquipmentList()) {
-                if (equipment.getEquipmentObjectId() == element.getId()) {
+                if (equipment.getId() == element.getId()) {
                     repeatedEquipment = true;
                     break;
                 }
@@ -302,7 +296,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
                 for (Map modelMap : getEstabEditorController().getEstabModel().getAll().values()) {
-                    ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getEquipmentObjectId());
+                    ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getId());
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
                         type = param.getValue().getEquipmentClass().getSimpleName();

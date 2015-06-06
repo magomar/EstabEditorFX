@@ -150,6 +150,7 @@ Changes in version 1.0
             <xs:element name="equipment-list" type="EquipmentList"/>
             <xs:element name="ammo-list" type="AmmoList"/>
             <xs:element name="can-bombard" type="YesNo"/>
+            <xs:element name="force-composition" type="ForceComposition"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="flags" type="FlagList"/>
@@ -198,6 +199,18 @@ Changes in version 1.0
 
     <xs:complexType name="AmmoQty">
         <xs:attribute name="ammo-object-id" type="xs:int" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="qty" type="xs:int" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ForceComposition">
+        <xs:sequence>
+            <xs:element name="subforce" type="ForceQty" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ForceQty">
+        <xs:attribute name="force-object-id" type="xs:int" use="required"/>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="qty" type="xs:int" use="required"/>
     </xs:complexType>
