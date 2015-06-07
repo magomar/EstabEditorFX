@@ -584,6 +584,14 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         return service.get();
     }
 
+    public ObjectProperty<ServiceModel> serviceProperty() {
+        return service;
+    }
+
+    public ObservableList<ForceQtyModel> getForceComposition() {
+        return forceComposition;
+    }
+
     @Override
     public boolean compareTo(Object o) {
         if (this == o) return true;

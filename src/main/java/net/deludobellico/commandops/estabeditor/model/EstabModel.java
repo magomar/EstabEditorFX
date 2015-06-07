@@ -140,6 +140,10 @@ public class EstabModel {
         return (Map<Integer, ServiceModel>) allElements.get(ServiceModel.class);
     }
 
+    public Map<Integer, ForceModel> getForces() {
+        return (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
+    }
+
     public Map<Integer, VehicleModel> getVehicles() {
         return (Map<Integer, VehicleModel>) allElements.get(VehicleModel.class);
     }
