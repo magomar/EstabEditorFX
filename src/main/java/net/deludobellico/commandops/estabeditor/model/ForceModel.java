@@ -65,7 +65,6 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
 
     private final ObservableList<ForceQtyModel> forceComposition = FXCollections.observableArrayList();
 
-
     public ForceModel(Force force) {
         initialize(force);
     }
@@ -166,6 +165,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoList::add);
         flags.addAll(pojo.getFlags());
         canBombard.set(PojoAdapter.yesNoToBoolean(pojo.getCanBombard()));
+        if (null != pojo.getForceComposition())
         pojo.getForceComposition().getSubforce().stream().map(ForceQtyModel::new).forEach(forceComposition::add);
     }
 

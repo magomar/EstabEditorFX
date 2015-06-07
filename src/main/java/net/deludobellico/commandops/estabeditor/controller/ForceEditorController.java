@@ -15,7 +15,10 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class ForceEditorController extends AbstractElementEditorController<ForceModel> {
 
@@ -127,6 +130,22 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private ColorPicker backgroundDarkColorChooser;
     @FXML
     private ColorPicker designationColorChooser;
+
+    /**
+     * Compose tab
+     */
+    @FXML
+    private TextField subforceName;
+    @FXML
+    private TextField forcetQty;
+    // Table
+    @FXML
+    private TableView<ForceQtyModel> subforceTableView;
+    @FXML
+    private TableColumn<ForceQtyModel, String> forceNameColumn;
+    @FXML
+    private TableColumn<ForceQtyModel, Integer> forceQtyColumn;
+
 
     /**
      * Other
@@ -315,6 +334,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         equipmentTableView.getColumns().add(equipmentNameColumn);
         equipmentTableView.getColumns().add(equipmentQtyColumn);
         equipmentTableView.getItems().addAll(element.getEquipmentList());
+
+        // SUBFORCE COMPOSITION
+
     }
 
     @Override
