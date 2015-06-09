@@ -127,6 +127,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(force.getAmmoList().getAmmo()::add);
         force.setCanBombard(PojoAdapter.booleanToYesNo(canBombard.get()));
         force.getFlags().addAll(flags);
+        if (null==force.getForceComposition()) force.setForceComposition(new ForceComposition());
         forceComposition.stream().map(ForceQtyModel::getPojo).forEach(force.getForceComposition().getSubforce()::add);
         return force;
     }

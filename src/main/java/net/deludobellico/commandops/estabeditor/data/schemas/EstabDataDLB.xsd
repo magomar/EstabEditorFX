@@ -150,7 +150,7 @@ Changes in version 1.0
             <xs:element name="equipment-list" type="EquipmentList"/>
             <xs:element name="ammo-list" type="AmmoList"/>
             <xs:element name="can-bombard" type="YesNo"/>
-            <xs:element name="force-composition" type="ForceComposition"/>
+            <xs:element name="force-composition" type="ForceComposition" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="flags" type="FlagList"/>

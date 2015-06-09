@@ -60,7 +60,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private TextField reconValue;
     @FXML
     private TextField engineerValue;
-
     @FXML
     private CheckBox canBombard;
     // Bottom region
@@ -97,7 +96,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private Button equipmentRemoveButton;
     @FXML
     private Button equipmentAddButton;
-
     // Table
     @FXML
     private TableView<EquipmentModel> equipmentTableView;
@@ -137,6 +135,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private TextField subforceName;
     @FXML
+    private TextField subforceService;
+    @FXML
     private TextField subforceQty;
     // Table
     @FXML
@@ -144,8 +144,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private TableColumn<ForceQtyModel, String> subforceNameColumn;
     @FXML
+    private TableColumn<ForceQtyModel, String> subforceServiceColumn;
+    @FXML
     private TableColumn<ForceQtyModel, Integer> subforceQtyColumn;
-
 
     /**
      * Other
@@ -242,7 +243,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setQty(Integer.valueOf(subforceQty.getText()));
                 subforceTableView.getItems().add(model);
             } else {
-                UtilView.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
+                UtilView.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
             }
         }
     }
@@ -254,6 +255,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         if (element != null) {
             subforceName.setUserData(element);
             subforceName.setText(element.getName());
+            ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(element.getId());
+            subforceService.setText(forceModel.getService().getName());
+            subforceQty.setText("1");
         }
     }
 
@@ -383,10 +387,14 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         // SUBFORCE COMPOSITION
         subforceTableView.getColumns().clear();
         subforceNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        subforceServiceColumn.setCellValueFactory(param1 -> {
+                ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
+                return new SimpleStringProperty(forceModel.getName());});
         subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel,Integer>forTableColumn(new IntegerStringConverter()));
         subforceQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         subforceTableView.getItems().addAll(element.getForceComposition());
         subforceTableView.getColumns().add(subforceNameColumn);
+        subforceTableView.getColumns().add(subforceServiceColumn);
         subforceTableView.getColumns().add(subforceQtyColumn);
         subforceTableView.getItems().addAll(element.getForceComposition());
     }

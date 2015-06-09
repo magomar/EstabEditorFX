@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("unchecked")
 public class EstabModel {
     public static final Integer DEFAULT_VERSION = 4;
-    public static final String DLB_VERSION = "0.1.2";
+    public static final String DLB_VERSION = "0.1.3";
     // TODO: use set<element> (sort by id) instead of map<int, element>
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
 
@@ -327,7 +327,6 @@ public class EstabModel {
         for (ElementModel selectedItem : elements)
             selectedItem.cloneToMap(ElementModelFactory.incrementMaxId(), allElements.get(selectedItem.getClass()));
     }
-
     /**
      * Save the estab model to disk
      *
