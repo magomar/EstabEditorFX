@@ -3,6 +3,8 @@ package net.deludobellico.commandops.estabeditor.model;
 import javafx.beans.property.*;
 import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
 
+import java.util.Map;
+
 /**
  * Model wrapper for the {@code Equipment} class
  *

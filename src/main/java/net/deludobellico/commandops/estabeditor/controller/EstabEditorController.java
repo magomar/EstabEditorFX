@@ -457,10 +457,11 @@ public class EstabEditorController implements Initializable {
      * @param newElement instance of the element class to create
      */
     @SuppressWarnings("unchecked")
-    public void createNewElement(ElementModel newElement) {
+    public ElementModel createNewElement(ElementModel newElement) {
         newElement = (ElementModel) newElement.createNewInMap(estabModel.getAll().get(newElement.getClass()));
         setActiveElement(newElement);
         update();
+        return newElement;
     }
 
     /**

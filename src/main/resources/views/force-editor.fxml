@@ -139,7 +139,7 @@
                                                  <Label text="Type" GridPane.rowIndex="1" />
                                                  <Label text="Equipment Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                  <Label text="Quantity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                 <TextField fx:id="equipmentType" GridPane.rowIndex="2" />
+                                                 <TextField fx:id="equipmentType" editable="false" GridPane.rowIndex="2" />
                                                  <TextField fx:id="equipmentName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                      <GridPane.margin>
                                                          <Insets right="30.0" />
@@ -262,7 +262,7 @@
                                     </Button>
                                     <Button fx:id="forceSelectButton" mnemonicParsing="false" onAction="#forceSelectAction" text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                     <Label text="Service" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField fx:id="subforceService" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                                    <TextField fx:id="subforceService" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />

@@ -613,7 +613,7 @@ public class MainController implements Initializable {
         ServiceModel serviceModel = (ServiceModel) UtilView.showSearchDialog("Selected service", targetPaneController.getEstabModel().getServices().values());
         if (serviceModel != null) {
             forceModel.setService(serviceModel);
-            targetPaneController.createNewElement(forceModel);
+            serviceModel.getForce().add((ForceModel) targetPaneController.createNewElement(forceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -629,7 +629,7 @@ public class MainController implements Initializable {
         NationModel nationModel = (NationModel) UtilView.showSearchDialog("Select nation", targetPaneController.getEstabModel().getNations().values());
         if (nationModel != null) {
             serviceModel.setNation(nationModel);
-            targetPaneController.createNewElement(serviceModel);
+            nationModel.getService().add((ServiceModel) targetPaneController.createNewElement(serviceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -645,7 +645,7 @@ public class MainController implements Initializable {
         SideModel sideModel = (SideModel) UtilView.showSearchDialog("Select side", targetPaneController.getEstabModel().getSides().values());
         if (sideModel != null) {
             nationModel.setSide(sideModel);
-            targetPaneController.createNewElement(nationModel);
+            sideModel.getNation().add((NationModel) targetPaneController.createNewElement(nationModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");

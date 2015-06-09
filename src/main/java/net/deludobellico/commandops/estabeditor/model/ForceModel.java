@@ -8,9 +8,9 @@ import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 
 import java.time.LocalTime;
 import java.util.Collection;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Model wrapper for the {@code Force} class
  *
@@ -21,7 +21,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
- // General
+    // General
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<>();
     private final ObjectProperty<CombatClass> combatClass = new SimpleObjectProperty<>();
@@ -127,8 +127,10 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(force.getAmmoList().getAmmo()::add);
         force.setCanBombard(PojoAdapter.booleanToYesNo(canBombard.get()));
         force.getFlags().addAll(flags);
-        if (null==force.getForceComposition()) force.setForceComposition(new ForceComposition());
-        forceComposition.stream().map(ForceQtyModel::getPojo).forEach(force.getForceComposition().getSubforce()::add);
+        if (forceComposition.size() > 0) {
+            if (null == force.getForceComposition()) force.setForceComposition(new ForceComposition());
+            forceComposition.stream().map(ForceQtyModel::getPojo).forEach(force.getForceComposition().getSubforce()::add);
+        }
         return force;
     }
 
@@ -167,7 +169,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         flags.addAll(pojo.getFlags());
         canBombard.set(PojoAdapter.yesNoToBoolean(pojo.getCanBombard()));
         if (null != pojo.getForceComposition())
-        pojo.getForceComposition().getSubforce().stream().map(ForceQtyModel::new).forEach(forceComposition::add);
+            pojo.getForceComposition().getSubforce().stream().map(ForceQtyModel::new).forEach(forceComposition::add);
     }
 
     public int getId() {

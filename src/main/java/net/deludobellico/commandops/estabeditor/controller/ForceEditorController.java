@@ -192,8 +192,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setId(element.getId());
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(equipmentQty.getText()));
-                model.setEquipmentClass(element.getClass());
+                model.setEquipmentClass(element.getPojoClass());
                 equipmentTableView.getItems().add(model);
+                getActiveElement().getEquipmentList().add(model);
             } else {
                 UtilView.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
             }
@@ -209,6 +210,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             equipmentName.setUserData(element);
             equipmentName.setText(element.getName());
             equipmentType.setText(element.getPojoClass().getSimpleName());
+            equipmentQty.setText("1");
         }
     }
 
@@ -242,6 +244,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(subforceQty.getText()));
                 subforceTableView.getItems().add(model);
+                getActiveElement().getForceComposition().add(model);
             } else {
                 UtilView.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
             }
@@ -294,8 +297,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         fortified.setEditable(isEditable);
         basicConsumptionRate.setEditable(isEditable);
         fuelLoad.setEditable(isEditable);
-        equipmentType.setEditable(isEditable);
-        equipmentName.setEditable(isEditable);
+//        equipmentType.setEditable(isEditable);
+//        equipmentName.setEditable(isEditable);
         equipmentQty.setEditable(isEditable);
         equipmentSelectButton.setDisable(!isEditable);
         equipmentRemoveButton.setDisable(!isEditable);
@@ -309,7 +312,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         backgroundLightColorChooser.setEditable(isEditable);
         backgroundDarkColorChooser.setEditable(isEditable);
         designationColorChooser.setEditable(isEditable);
-        subforceName.setEditable(isEditable);
+//        subforceName.setEditable(isEditable);
+//        subforceService.setEditable(isEditable);
         subforceQty.setEditable(isEditable);
     }
 
@@ -361,13 +365,14 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         // EQUIPMENT & SUPPLY
         equipmentTableView.getColumns().clear();
         equipmentTypeColumn.setCellValueFactory(param -> {
-            String type = null;
+            String type = "";
             if (param.getValue().getEquipmentClass() == null) {
                 for (Map modelMap : getEstabEditorController().getEstabModel().getAll().values()) {
                     ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getId());
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
-                        type = param.getValue().getEquipmentClass().getSimpleName();
+                        type = element.getPojoClass().getSimpleName();
+                        //type.substring(0, type.indexOf("Model"))
                         break;
                     }
                 }
@@ -388,11 +393,11 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         subforceTableView.getColumns().clear();
         subforceNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         subforceServiceColumn.setCellValueFactory(param1 -> {
-                ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
-                return new SimpleStringProperty(forceModel.getName());});
-        subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel,Integer>forTableColumn(new IntegerStringConverter()));
+            ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
+            return new SimpleStringProperty(forceModel.getName());
+        });
+        subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
         subforceQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
-        subforceTableView.getItems().addAll(element.getForceComposition());
         subforceTableView.getColumns().add(subforceNameColumn);
         subforceTableView.getColumns().add(subforceServiceColumn);
         subforceTableView.getColumns().add(subforceQtyColumn);
