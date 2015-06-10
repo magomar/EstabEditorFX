@@ -6,6 +6,7 @@ package net.deludobellico.commandops.estabeditor.controller;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -193,7 +194,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(equipmentQty.getText()));
                 model.setEquipmentClass(element.getPojoClass());
-                equipmentTableView.getItems().add(model);
+//                equipmentTableView.getItems().add(model);
                 getActiveElement().getEquipmentList().add(model);
             } else {
                 UtilView.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
@@ -218,7 +219,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void equipmentRemoveAction() {
         if (!equipmentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getEquipmentList().remove(equipmentTableView.getSelectionModel().getSelectedItem());
-            equipmentTableView.getItems().remove(equipmentTableView.getSelectionModel().getSelectedItem());
+//            equipmentTableView.getItems().remove(equipmentTableView.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -243,7 +244,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setId(element.getId());
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(subforceQty.getText()));
-                subforceTableView.getItems().add(model);
+//                subforceTableView.getItems().add(model);
                 getActiveElement().getForceComposition().add(model);
             } else {
                 UtilView.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
@@ -268,7 +269,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void forceRemoveAction() {
         if (!subforceTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getForceComposition().remove(subforceTableView.getSelectionModel().getSelectedItem());
-            subforceTableView.getItems().remove(subforceTableView.getSelectionModel().getSelectedItem());
+//            subforceTableView.getItems().remove(subforceTableView.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -297,8 +298,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         fortified.setEditable(isEditable);
         basicConsumptionRate.setEditable(isEditable);
         fuelLoad.setEditable(isEditable);
-//        equipmentType.setEditable(isEditable);
-//        equipmentName.setEditable(isEditable);
         equipmentQty.setEditable(isEditable);
         equipmentSelectButton.setDisable(!isEditable);
         equipmentRemoveButton.setDisable(!isEditable);
@@ -312,8 +311,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         backgroundLightColorChooser.setEditable(isEditable);
         backgroundDarkColorChooser.setEditable(isEditable);
         designationColorChooser.setEditable(isEditable);
-//        subforceName.setEditable(isEditable);
-//        subforceService.setEditable(isEditable);
         subforceQty.setEditable(isEditable);
     }
 
@@ -363,7 +360,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         designationColorChooser.valueProperty().bindBidirectional(element.getIcon().designationColorProperty());
 
         // EQUIPMENT & SUPPLY
-        equipmentTableView.getColumns().clear();
+//        equipmentTableView.getColumns().clear();
         equipmentTypeColumn.setCellValueFactory(param -> {
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
@@ -372,7 +369,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
                         type = element.getPojoClass().getSimpleName();
-                        //type.substring(0, type.indexOf("Model"))
                         break;
                     }
                 }
@@ -384,13 +380,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentModel, Integer>forTableColumn(new IntegerStringConverter()));
         equipmentQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
-        equipmentTableView.getColumns().add(equipmentTypeColumn);
-        equipmentTableView.getColumns().add(equipmentNameColumn);
-        equipmentTableView.getColumns().add(equipmentQtyColumn);
-        equipmentTableView.getItems().addAll(element.getEquipmentList());
+        equipmentTableView.setItems(element.getEquipmentList());
 
         // SUBFORCE COMPOSITION
-        subforceTableView.getColumns().clear();
         subforceNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         subforceServiceColumn.setCellValueFactory(param1 -> {
             ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
@@ -398,10 +390,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         });
         subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
         subforceQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
-        subforceTableView.getColumns().add(subforceNameColumn);
-        subforceTableView.getColumns().add(subforceServiceColumn);
-        subforceTableView.getColumns().add(subforceQtyColumn);
-        subforceTableView.getItems().addAll(element.getForceComposition());
+        subforceTableView.setItems(element.getForceComposition());
     }
 
     @Override
@@ -444,9 +433,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         fuelLoad.textProperty().unbindBidirectional(element.fuelLoadProperty());
         symbolColor.valueProperty().unbindBidirectional(element.getIcon().symbolColorProperty());
 
-        equipmentTableView.getItems().clear();
+        equipmentTableView.setItems(null);
 
-        subforceTableView.getItems().clear();
+        subforceTableView.setItems(null);
     }
 
 }
