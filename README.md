@@ -15,3 +15,5 @@ The main features of the editor are:
 - Forces can be created from scratch, specifying all its parameters and equipment, but also **by composition**. When a force is
 specified as composed of other forces, some of its attributes (like personnel and staff capacity) are derived from the 
 constituent forces, and the same happens with its equipment.
+
+To download the binaries please visit the [project page](http://magomar.github.io/EstabEditor/).
