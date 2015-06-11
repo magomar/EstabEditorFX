@@ -560,26 +560,6 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Installs the selected dataset to disk.
-     *
-     * @param actionEvent used to extract the dataset name
-     * @see FileIO#installDataset(String, File)
-     */
-    @FXML
-    private void installDataset(ActionEvent actionEvent) {
-        String datasetName = ((MenuItem) actionEvent.getSource()).getText();
-        File folder = openDirectoryChooser();
-        if (folder != null) {
-            File installedDataset = FileIO.installDataset(datasetName, folder);
-            if (installedDataset != null) {
-                openSource(installedDataset);
-            } else {
-                UtilView.showInfoDialog("Dataset already exists", "", "Aborting installation");
-            }
-        }
-    }
-
-    /**
      * Copies all elements (and their related elements) to the target estab.
      *
      * @param elements collection with the elements to copy
