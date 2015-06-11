@@ -12,6 +12,7 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
 import javafx.util.converter.IntegerStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
@@ -133,6 +134,10 @@ public class ForceEditorController extends AbstractElementEditorController<Force
      * Compose tab
      */
     @FXML
+    private VBox compositionPane;
+    @FXML
+    private CheckBox enableComposition;
+    @FXML
     private TextField subforceName;
     @FXML
     private TextField subforceService;
@@ -207,6 +212,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 activeForce.getEquipmentList().clear();
                 activeForce.getEquipmentList().addAll(equipmentQties.values());
                 isComposed.set(!activeForce.getForceComposition().isEmpty());
+                enableComposition.setSelected(isComposed.get());
             }
         }
     };
@@ -266,6 +272,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         backgroundDarkColorChooser.editableProperty().bind(isEditable);
         designationColorChooser.editableProperty().bind(isEditable);
         subforceQty.editableProperty().bind(isEditable);
+
+        compositionPane.disableProperty().bind(enableComposition.selectedProperty().not());
     }
 
     @FXML
@@ -415,7 +423,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         designationColorChooser.valueProperty().bindBidirectional(element.getIcon().designationColorProperty());
 
         // EQUIPMENT & SUPPLY
-//        equipmentTableView.getColumns().clear();
         equipmentTypeColumn.setCellValueFactory(param -> {
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
@@ -449,6 +456,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 
         getActiveElement().getForceComposition().addListener(forceCompositionListener);
         isComposed.set(!getActiveElement().getForceComposition().isEmpty());
+        enableComposition.setSelected(isComposed.get());
     }
 
 
