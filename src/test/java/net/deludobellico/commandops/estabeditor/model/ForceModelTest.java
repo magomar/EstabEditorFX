@@ -39,7 +39,7 @@ public class ForceModelTest {
     private final LocalTime fortified = LocalTime.now();
     private final LocalTime readyToFireDuration =LocalTime.now();
     private final LocalTime readyToBombardDuration = LocalTime.now();
-    private final List<EquipmentModel> equipmentList = FXCollections.observableArrayList();
+    private final List<EquipmentQtyModel> equipmentList = FXCollections.observableArrayList();
     private final List<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final boolean canBombard = false;
 
@@ -78,7 +78,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -115,7 +115,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
@@ -156,7 +156,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -193,7 +193,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
@@ -234,7 +234,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(null);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -271,7 +271,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(null);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);

@@ -18,10 +18,7 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ForceEditorController extends AbstractElementEditorController<ForceModel> {
 
@@ -101,13 +98,13 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private Button equipmentAddButton;
     // Table
     @FXML
-    private TableView<EquipmentModel> equipmentTableView;
+    private TableView<EquipmentQtyModel> equipmentTableView;
     @FXML
-    private TableColumn<EquipmentModel, String> equipmentTypeColumn;
+    private TableColumn<EquipmentQtyModel, String> equipmentTypeColumn;
     @FXML
-    private TableColumn<EquipmentModel, String> equipmentNameColumn;
+    private TableColumn<EquipmentQtyModel, String> equipmentNameColumn;
     @FXML
-    private TableColumn<EquipmentModel, Integer> equipmentQtyColumn;
+    private TableColumn<EquipmentQtyModel, Integer> equipmentQtyColumn;
 
     /**
      * Icon tab
@@ -180,20 +177,35 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 int infantry = 0;
                 int recon = 0;
                 int engineer = 0;
+                Map<Integer, EquipmentQtyModel> equipmentQties = new HashMap<>();
                 for (ForceQtyModel forceQtyModel : activeForce.getForceComposition()) {
                     ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(forceQtyModel.getId());
                     int qty = forceQtyModel.getQty();
                     pers += forceModel.getPersonnel() * qty;
-                    staff += forceModel.getStaffCapacity() * qty;
+                    staff = Math.max(staff, forceModel.getStaffCapacity());
                     infantry += forceModel.getInfantryValue() * qty;
                     recon += forceModel.getReconValue() * qty;
                     engineer += forceModel.getEngineeringValue() * qty;
+                    for (EquipmentQtyModel equipmentQty : forceModel.getEquipmentList()) {
+                        if (equipmentQties.containsKey(equipmentQty.getId())) {
+                            EquipmentQtyModel target = equipmentQties.get(equipmentQty.getId());
+                            target.setQty(target.getQty() + equipmentQty.getQty()*qty);
+                        } else {
+                            EquipmentQtyModel target = new EquipmentQtyModel();
+                            target.setId(equipmentQty.getId());
+                            target.setName(equipmentQty.getName());
+                            target.setQty(equipmentQty.getQty() * qty);
+                            equipmentQties.put(target.getId(), target);
+                        }
+                    }
                 }
                 activeForce.setPersonnel(pers);
                 activeForce.setStaffCapacity(staff);
                 activeForce.setInfantryValue(infantry);
                 activeForce.setReconValue(recon);
                 activeForce.setEngineeringValue(engineer);
+                activeForce.getEquipmentList().clear();
+                activeForce.getEquipmentList().addAll(equipmentQties.values());
                 isComposed.set(!activeForce.getForceComposition().isEmpty());
             }
         }
@@ -240,11 +252,11 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         fortified.editableProperty().bind(isEditable);
         basicConsumptionRate.editableProperty().bind(isEditable);
         fuelLoad.editableProperty().bind(isEditable);
-        equipmentQty.editableProperty().bind(isEditable);
-        equipmentSelectButton.disableProperty().bind(isEditable.not());
-        equipmentRemoveButton.disableProperty().bind(isEditable.not());
-        equipmentAddButton.disableProperty().bind(isEditable.not());
-        equipmentTableView.editableProperty().bind(isEditable);
+        equipmentQty.editableProperty().bind(isEditable.and(isComposed.not()));
+        equipmentSelectButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentRemoveButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentAddButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentTableView.editableProperty().bind(isEditable.and(isComposed.not()));
         symbolColor.editableProperty().bind(isEditable);
         militarySymbol.editableProperty().bind(isEditable);
         pictureSymbol.editableProperty().bind(isEditable);
@@ -266,14 +278,14 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             if (element == null) return;
             // Search for repeated equipment
             boolean repeatedEquipment = false;
-            for (EquipmentModel equipment : getActiveElement().getEquipmentList()) {
+            for (EquipmentQtyModel equipment : getActiveElement().getEquipmentList()) {
                 if (equipment.getId() == element.getId()) {
                     repeatedEquipment = true;
                     break;
                 }
             }
             if (!repeatedEquipment) {
-                EquipmentModel model = new EquipmentModel();
+                EquipmentQtyModel model = new EquipmentQtyModel();
                 model.setId(element.getId());
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(equipmentQty.getText()));
@@ -421,7 +433,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             return new SimpleStringProperty(type);
         });
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentModel, Integer>forTableColumn(new IntegerStringConverter()));
+        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
         equipmentQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         equipmentTableView.setItems(element.getEquipmentList());
 
