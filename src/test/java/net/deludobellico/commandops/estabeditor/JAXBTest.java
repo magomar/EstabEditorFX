@@ -35,10 +35,10 @@ class JAXBTest {
         EstabData data = (EstabData) FileIO.loadEstab(sourcePath.toFile());
         sw.stop();
         System.out.println("Unmarshaling XML completed -->" + sw);
-        sw.start();
-        JAXBFactory.marshallJson(data, targetPathJSON.toFile());
-        sw.stop();
-        System.out.println("Marshalling JSON completed -->" + sw);
+//        sw.start();
+//        JAXBFactory.marshallJson(data, targetPathJSON.toFile());
+//        sw.stop();
+//        System.out.println("Marshalling JSON completed -->" + sw);
         sw.start();
         assert jaxb != null;
         jaxb.marshallXML(data, targetPathXML.toFile());
