@@ -139,7 +139,7 @@
                                                  <Label text="Type" GridPane.rowIndex="1" />
                                                  <Label text="Equipment Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                  <Label text="Quantity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                 <TextField fx:id="equipmentType" GridPane.rowIndex="2" />
+                                                 <TextField fx:id="equipmentType" editable="false" GridPane.rowIndex="2" />
                                                  <TextField fx:id="equipmentName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                      <GridPane.margin>
                                                          <Insets right="30.0" />
@@ -236,6 +236,72 @@
                         </VBox>
                            </content>
                        </Tab>
+                  <Tab text="Compose">
+                     <content>
+                        <VBox styleClass="editor-tab">
+                           <children>
+                              <HBox styleClass="hbox">
+                                 <children>
+                                    <CheckBox fx:id="enableComposition" mnemonicParsing="false" text="Build the force by composition" />
+                                 </children>
+                              </HBox>
+                              <VBox fx:id="compositionPane" styleClass="vbox">
+                                 <children>
+                                    <GridPane styleClass="icon-grid" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Subforce name" />
+                                          <Label text="Quantity" GridPane.columnIndex="3" />
+                                          <TextField fx:id="subforceName" editable="false" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="subforceQty" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <Button fx:id="forceAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceAddAction" text="+" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
+                                             </GridPane.margin>
+                                          </Button>
+                                          <Button fx:id="forceRemoveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceRemoveAction" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                             <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </Button>
+                                          <Button fx:id="forceSelectButton" mnemonicParsing="false" onAction="#forceSelectAction" text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                          <Label text="Service" GridPane.columnIndex="1" />
+                                          <TextField fx:id="subforceService" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="40.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                       </columnConstraints>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <TableView fx:id="subforceTableView">
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <columns>
+                                          <TableColumn fx:id="subforceNameColumn" maxWidth="1.7976931348623157E308" prefWidth="343.0" text="Name" />
+                                          <TableColumn fx:id="subforceServiceColumn" maxWidth="1.7976931348623157E308" minWidth="80.0" prefWidth="165.0" text="Service" />
+                                          <TableColumn fx:id="subforceQtyColumn" maxWidth="80.0" minWidth="80.0" text="Quantity" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
                    </tabs>
                </TabPane>
            </children>

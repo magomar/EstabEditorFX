@@ -138,7 +138,7 @@ public final class ElementModelFactory {
         forceModel.setReconValue(10);
         forceModel.setEngineeringValue(0);
         forceModel.setMoveType(MoveType.FOOT);
-        forceModel.setPersQty(100);
+        forceModel.setPersonnel(100);
         forceModel.setStaffCapacity(4);
         forceModel.setBasicsQty(448.0);
         forceModel.setBasicsConsumptionRateModifier(1.0);

@@ -4,20 +4,18 @@ package net.deludobellico.commandops.estabeditor.controller;
  * Created by Heine on 11/10/2014.
  */
 
-import com.sun.javafx.property.adapter.PropertyDescriptor;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
+import javafx.scene.layout.VBox;
 import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.LocalTimeStringConverter;
-import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
-import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 import net.deludobellico.commandops.estabeditor.util.UtilView;
 
 import java.net.URL;
@@ -63,7 +61,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private TextField reconValue;
     @FXML
     private TextField engineerValue;
-
     @FXML
     private CheckBox canBombard;
     // Bottom region
@@ -100,16 +97,15 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private Button equipmentRemoveButton;
     @FXML
     private Button equipmentAddButton;
-
     // Table
     @FXML
-    private TableView<EquipmentModel> equipmentTableView;
+    private TableView<EquipmentQtyModel> equipmentTableView;
     @FXML
-    private TableColumn<EquipmentModel, String> equipmentTypeColumn;
+    private TableColumn<EquipmentQtyModel, String> equipmentTypeColumn;
     @FXML
-    private TableColumn<EquipmentModel, String> equipmentNameColumn;
+    private TableColumn<EquipmentQtyModel, String> equipmentNameColumn;
     @FXML
-    private TableColumn<EquipmentModel, Integer> equipmentQtyColumn;
+    private TableColumn<EquipmentQtyModel, Integer> equipmentQtyColumn;
 
     /**
      * Icon tab
@@ -135,9 +131,91 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private ColorPicker designationColorChooser;
 
     /**
+     * Compose tab
+     */
+    @FXML
+    private VBox compositionPane;
+    @FXML
+    private CheckBox enableComposition;
+    @FXML
+    private TextField subforceName;
+    @FXML
+    private TextField subforceService;
+    @FXML
+    private TextField subforceQty;
+    // Table
+    @FXML
+    private TableView<ForceQtyModel> subforceTableView;
+    @FXML
+    private TableColumn<ForceQtyModel, String> subforceNameColumn;
+    @FXML
+    private TableColumn<ForceQtyModel, String> subforceServiceColumn;
+    @FXML
+    private TableColumn<ForceQtyModel, Integer> subforceQtyColumn;
+
+    /**
      * Other
      */
     private CommanderRanks commanderRanks;
+
+    private BooleanProperty isComposed = new SimpleBooleanProperty(false);
+
+    private BooleanProperty isEditable = new SimpleBooleanProperty(false);
+
+    private final ChangeListener<RankModel> commanderRankListener = (observable, oldValue, newValue) -> {
+        if (newValue != null)
+            getActiveElement().setCommanderRank(newValue.getIndex());
+    };
+
+    private final ListChangeListener forceCompositionListener = new ListChangeListener<ForceQtyModel>() {
+        @Override
+        public void onChanged(Change<? extends ForceQtyModel> c) {
+            ForceModel activeForce = getActiveElement();
+            boolean needsUpdate = false;
+            while (c.next()) if (c.wasAdded() || c.wasRemoved() || c.wasUpdated()) {
+                needsUpdate = true;
+                break;
+            }
+            if (needsUpdate) {
+                int pers = 0;
+                int staff = 0;
+                int infantry = 0;
+                int recon = 0;
+                int engineer = 0;
+                Map<Integer, EquipmentQtyModel> equipmentQties = new HashMap<>();
+                for (ForceQtyModel forceQtyModel : activeForce.getForceComposition()) {
+                    ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(forceQtyModel.getId());
+                    int qty = forceQtyModel.getQty();
+                    pers += forceModel.getPersonnel() * qty;
+                    staff = Math.max(staff, forceModel.getStaffCapacity());
+                    infantry += forceModel.getInfantryValue() * qty;
+                    recon += forceModel.getReconValue() * qty;
+                    engineer += forceModel.getEngineeringValue() * qty;
+                    for (EquipmentQtyModel equipmentQty : forceModel.getEquipmentList()) {
+                        if (equipmentQties.containsKey(equipmentQty.getId())) {
+                            EquipmentQtyModel target = equipmentQties.get(equipmentQty.getId());
+                            target.setQty(target.getQty() + equipmentQty.getQty()*qty);
+                        } else {
+                            EquipmentQtyModel target = new EquipmentQtyModel();
+                            target.setId(equipmentQty.getId());
+                            target.setName(equipmentQty.getName());
+                            target.setQty(equipmentQty.getQty() * qty);
+                            equipmentQties.put(target.getId(), target);
+                        }
+                    }
+                }
+                activeForce.setPersonnel(pers);
+                activeForce.setStaffCapacity(staff);
+                activeForce.setInfantryValue(infantry);
+                activeForce.setReconValue(recon);
+                activeForce.setEngineeringValue(engineer);
+                activeForce.getEquipmentList().clear();
+                activeForce.getEquipmentList().addAll(equipmentQties.values());
+                isComposed.set(!activeForce.getForceComposition().isEmpty());
+                enableComposition.setSelected(isComposed.get());
+            }
+        }
+    };
 
     /**
      * @param location
@@ -155,6 +233,47 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         pictureSymbol.getItems().addAll(PictureSymbol.values());
         forceSizeIcon.getItems().addAll(ForceSize.values());
         militarySymbol.getItems().addAll(IconModel.MilitarySymbol.values());
+
+        name.editableProperty().bind(isEditable);
+        id.editableProperty().bind(isEditable);
+        forceType.editableProperty().bind(isEditable);
+        subForceType.editableProperty().bind(isEditable);
+        combatClass.editableProperty().bind(isEditable);
+        targetClass.editableProperty().bind(isEditable);
+        moveClass.editableProperty().bind(isEditable);
+        forceSize.editableProperty().bind(isEditable);
+        commanderRank.editableProperty().bind(isEditable);
+
+        personnel.editableProperty().bind(isEditable.and(isComposed.not()));
+        infantryValue.editableProperty().bind(isEditable.and(isComposed.not()));
+        staffCapacity.editableProperty().bind(isEditable.and(isComposed.not()));
+        reconValue.editableProperty().bind(isEditable.and(isComposed.not()));
+        engineerValue.editableProperty().bind(isEditable.and(isComposed.not()));
+
+        normalSpeed.editableProperty().bind(isEditable);
+        maxSpeed.editableProperty().bind(isEditable);
+        deployed.editableProperty().bind(isEditable);
+        dugIn.editableProperty().bind(isEditable);
+        entrenched.editableProperty().bind(isEditable);
+        fortified.editableProperty().bind(isEditable);
+        basicConsumptionRate.editableProperty().bind(isEditable);
+        fuelLoad.editableProperty().bind(isEditable);
+        equipmentQty.editableProperty().bind(isEditable.and(isComposed.not()));
+        equipmentSelectButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentRemoveButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentAddButton.disableProperty().bind(isEditable.not().or(isComposed));
+        equipmentTableView.editableProperty().bind(isEditable.and(isComposed.not()));
+        symbolColor.editableProperty().bind(isEditable);
+        militarySymbol.editableProperty().bind(isEditable);
+        pictureSymbol.editableProperty().bind(isEditable);
+        forceSizeIcon.editableProperty().bind(isEditable);
+        backgroundColorChooser.editableProperty().bind(isEditable);
+        backgroundLightColorChooser.editableProperty().bind(isEditable);
+        backgroundDarkColorChooser.editableProperty().bind(isEditable);
+        designationColorChooser.editableProperty().bind(isEditable);
+        subforceQty.editableProperty().bind(isEditable);
+
+        compositionPane.disableProperty().bind(enableComposition.selectedProperty().not());
     }
 
     @FXML
@@ -167,21 +286,20 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             if (element == null) return;
             // Search for repeated equipment
             boolean repeatedEquipment = false;
-            for (EquipmentModel equipment : getActiveElement().getEquipmentList()) {
-                if (equipment.getEquipmentObjectId() == element.getId()) {
+            for (EquipmentQtyModel equipment : getActiveElement().getEquipmentList()) {
+                if (equipment.getId() == element.getId()) {
                     repeatedEquipment = true;
                     break;
                 }
             }
             if (!repeatedEquipment) {
-                Equipment equipment = new Equipment();
-                equipment.setEquipmentObjectId(element.getId());
-                equipment.setName(element.getName());
-                equipment.setQty(Integer.valueOf(equipmentQty.getText()));
-
-                EquipmentModel eModel = new EquipmentModel(equipment);
-                eModel.setEquipmentClass(element.getClass());
-                equipmentTableView.getItems().add(eModel);
+                EquipmentQtyModel model = new EquipmentQtyModel();
+                model.setId(element.getId());
+                model.setName(element.getName());
+                model.setQty(Integer.valueOf(equipmentQty.getText()));
+                model.setEquipmentClass(element.getPojoClass());
+//                equipmentTableView.getItems().add(model);
+                getActiveElement().getEquipmentList().add(model);
             } else {
                 UtilView.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
             }
@@ -197,6 +315,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             equipmentName.setUserData(element);
             equipmentName.setText(element.getName());
             equipmentType.setText(element.getPojoClass().getSimpleName());
+            equipmentQty.setText("1");
         }
     }
 
@@ -204,56 +323,64 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void equipmentRemoveAction() {
         if (!equipmentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getEquipmentList().remove(equipmentTableView.getSelectionModel().getSelectedItem());
-            equipmentTableView.getItems().remove(equipmentTableView.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    @FXML
+    void forceAddAction() {
+        if (subforceName.getText().isEmpty() || subforceQty.getText().isEmpty()) {
+            // If one text field is empty, show dialog and abort
+            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields");
+        } else {
+            ElementModel element = (ElementModel) subforceName.getUserData();
+            if (element == null) return;
+            // Search for repeated equipment
+            boolean repeatedForce = false;
+            for (ForceQtyModel subforce : getActiveElement().getForceComposition()) {
+                if (subforce.getId() == element.getId()) {
+                    repeatedForce = true;
+                    break;
+                }
+            }
+            if (!repeatedForce) {
+                ForceQtyModel model = new ForceQtyModel();
+                model.setId(element.getId());
+                model.setName(element.getName());
+                model.setQty(Integer.valueOf(subforceQty.getText()));
+                getActiveElement().getForceComposition().add(model);
+            } else {
+                UtilView.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
+            }
+        }
+    }
+
+    @FXML
+    void forceSelectAction() {
+        List<ElementModel> forces = new ArrayList(getEstabEditorController().getEstabModel().getForces().values());
+        ElementModel element = (ElementModel) UtilView.showSearchDialog("Select element", forces);
+        if (element != null) {
+            subforceName.setUserData(element);
+            subforceName.setText(element.getName());
+            ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(element.getId());
+            subforceService.setText(forceModel.getService().getName());
+            subforceQty.setText("1");
+        }
+    }
+
+    @FXML
+    void forceRemoveAction() {
+        if (!subforceTableView.getSelectionModel().getSelectedItems().isEmpty()) {
+            getActiveElement().getForceComposition().remove(subforceTableView.getSelectionModel().getSelectedItem());
         }
     }
 
     @Override
     public void setEditable(boolean isEditable) {
-        name.setEditable(isEditable);
-        id.setEditable(isEditable);
-        forceType.setEditable(isEditable);
-        subForceType.setEditable(isEditable);
-        combatClass.setEditable(isEditable);
-        targetClass.setEditable(isEditable);
-        moveClass.setEditable(isEditable);
-        forceSize.setEditable(isEditable);
-        commanderRank.setEditable(isEditable);
-        personnel.setEditable(isEditable);
-        staffCapacity.setEditable(isEditable);
-        infantryValue.setEditable(isEditable);
-        reconValue.setEditable(isEditable);
-        engineerValue.setEditable(isEditable);
-        canBombard.setDisable(!isEditable);
-        normalSpeed.setEditable(isEditable);
-        maxSpeed.setEditable(isEditable);
-        deployed.setEditable(isEditable);
-        dugIn.setEditable(isEditable);
-        entrenched.setEditable(isEditable);
-        fortified.setEditable(isEditable);
-        basicConsumptionRate.setEditable(isEditable);
-        fuelLoad.setEditable(isEditable);
-        equipmentType.setEditable(isEditable);
-        equipmentName.setEditable(isEditable);
-        equipmentQty.setEditable(isEditable);
-        equipmentSelectButton.setDisable(!isEditable);
-        equipmentRemoveButton.setDisable(!isEditable);
-        equipmentAddButton.setDisable(!isEditable);
-        equipmentTableView.setEditable(isEditable);
-        symbolColor.setEditable(isEditable);
-        militarySymbol.setEditable(isEditable);
-        pictureSymbol.setEditable(isEditable);
-        forceSizeIcon.setEditable(isEditable);
-        backgroundColorChooser.setEditable(isEditable);
-        backgroundLightColorChooser.setEditable(isEditable);
-        backgroundDarkColorChooser.setEditable(isEditable);
-        designationColorChooser.setEditable(isEditable);
-    }
 
-    private ChangeListener<RankModel> commanderRankListener = (observable, oldValue, newValue) -> {
-        if (newValue != null)
-            getActiveElement().setCommanderRank(newValue.getIndex());
-    };
+        this.isEditable.set(isEditable);
+
+
+    }
 
     @Override
     public void bindProperties() {
@@ -270,7 +397,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         commanderRank.setItems(commanderRanks.getServiceRankList(element.getService()));
         commanderRank.getSelectionModel().select(element.getCommanderRank());
         commanderRank.valueProperty().addListener(commanderRankListener);
-        personnel.textProperty().bindBidirectional(element.persQtyProperty(), NUMBER_STRING_CONVERTER);
+        personnel.textProperty().bindBidirectional(element.personnelProperty(), NUMBER_STRING_CONVERTER);
         staffCapacity.textProperty().bindBidirectional(element.staffCapacityProperty(), NUMBER_STRING_CONVERTER);
         infantryValue.textProperty().bindBidirectional(element.infantryValueProperty(), NUMBER_STRING_CONVERTER);
         reconValue.textProperty().bindBidirectional(element.reconValueProperty(), NUMBER_STRING_CONVERTER);
@@ -296,16 +423,14 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         designationColorChooser.valueProperty().bindBidirectional(element.getIcon().designationColorProperty());
 
         // EQUIPMENT & SUPPLY
-        equipmentTableView.getColumns().clear();
         equipmentTypeColumn.setCellValueFactory(param -> {
-            // This is so ugly
             String type = "";
             if (param.getValue().getEquipmentClass() == null) {
                 for (Map modelMap : getEstabEditorController().getEstabModel().getAll().values()) {
-                    ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getEquipmentObjectId());
+                    ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getId());
                     if (elementModel != null) {
                         param.getValue().setEquipmentClass(elementModel.getPojoClass());
-                        type = param.getValue().getEquipmentClass().getSimpleName();
+                        type = element.getPojoClass().getSimpleName();
                         break;
                     }
                 }
@@ -315,13 +440,25 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             return new SimpleStringProperty(type);
         });
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentModel, Integer>forTableColumn(new IntegerStringConverter()));
+        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
         equipmentQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
-        equipmentTableView.getColumns().add(equipmentTypeColumn);
-        equipmentTableView.getColumns().add(equipmentNameColumn);
-        equipmentTableView.getColumns().add(equipmentQtyColumn);
-        equipmentTableView.getItems().addAll(element.getEquipmentList());
+        equipmentTableView.setItems(element.getEquipmentList());
+
+        // SUBFORCE COMPOSITION
+        subforceNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        subforceServiceColumn.setCellValueFactory(param1 -> {
+            ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
+            return new SimpleStringProperty(forceModel.getName());
+        });
+        subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
+        subforceQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
+        subforceTableView.setItems(element.getForceComposition());
+
+        getActiveElement().getForceComposition().addListener(forceCompositionListener);
+        isComposed.set(!getActiveElement().getForceComposition().isEmpty());
+        enableComposition.setSelected(isComposed.get());
     }
+
 
     @Override
     public void unbindProperties() {
@@ -336,7 +473,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         moveClass.valueProperty().unbindBidirectional(element.moveTypeProperty());
         forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
         commanderRank.valueProperty().removeListener(commanderRankListener);
-        personnel.textProperty().unbindBidirectional(element.persQtyProperty());
+        personnel.textProperty().unbindBidirectional(element.personnelProperty());
         staffCapacity.textProperty().unbindBidirectional(element.staffCapacityProperty());
         infantryValue.textProperty().unbindBidirectional(element.infantryValueProperty());
         reconValue.textProperty().unbindBidirectional(element.reconValueProperty());
@@ -362,7 +499,12 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         basicConsumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateModifierProperty());
         fuelLoad.textProperty().unbindBidirectional(element.fuelLoadProperty());
         symbolColor.valueProperty().unbindBidirectional(element.getIcon().symbolColorProperty());
-        equipmentTableView.getItems().clear();
+
+        equipmentTableView.setItems(null);
+
+        subforceTableView.setItems(null);
+
+        getActiveElement().getForceComposition().removeListener(forceCompositionListener);
     }
 
 }

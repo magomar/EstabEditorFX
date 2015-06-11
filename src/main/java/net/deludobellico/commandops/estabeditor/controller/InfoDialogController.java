@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-//TODO: make prettier the view
+//TODO: make the view prettier
 public class InfoDialogController implements Initializable {
 
     @FXML

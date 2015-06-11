@@ -203,9 +203,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
                 newArmament.setEquipmentObjectId(weapon.getId());
                 newArmament.setEquipmentName(weapon.getName());
                 newArmament.setQty(Integer.valueOf(armamentQty.getText()));
-
                 ArmamentModel aModel = new ArmamentModel(newArmament);
-                armamentTableView.getItems().add(aModel);
                 getActiveElement().getArmaments().add(aModel);
             } else {
                 UtilView.showInfoDialog("Repeated weapon", "", "The selected weapon is already included. Please, select another one.");
@@ -226,6 +224,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());
+            armamentQty.setText("1");
         }
     }
 
@@ -241,7 +240,6 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
     private void armamentRemoveAction(ActionEvent actionEvent) {
         if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
-            armamentTableView.getItems().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -333,15 +331,11 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         width.textProperty().bindBidirectional(element.widthProperty(), NUMBER_STRING_CONVERTER);
         vehicleType.valueProperty().bindBidirectional(element.typeProperty());
 
-        armamentTableView.getColumns().clear();
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
         armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEquipmentName()));
         armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(new IntegerStringConverter()));
         armamentQuantityColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
-        armamentTableView.getColumns().add(armamentTypeColumn);
-        armamentTableView.getColumns().add(armamentNameColumn);
-        armamentTableView.getColumns().add(armamentQuantityColumn);
-        armamentTableView.getItems().addAll(element.getArmaments());
+        armamentTableView.setItems(element.getArmaments());
     }
 
     @Override
@@ -384,7 +378,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         width.textProperty().unbindBidirectional(element.widthProperty());
         vehicleType.valueProperty().unbindBidirectional(element.typeProperty());
 
-        armamentTableView.getItems().clear();
+        armamentTableView.setItems(null);
 
     }
 

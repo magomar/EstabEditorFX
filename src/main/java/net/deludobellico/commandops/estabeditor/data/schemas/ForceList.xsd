@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ForceList" type="ForceListType"/>
+  <xs:complexType name="unitType">
+    <xs:sequence>
+      <xs:element type="equipmentlistType" name="equipmentlist"/>
+      <xs:element type="ammoListType" name="ammoList"/>
+      <xs:element type="commanderType" name="commander"/>
+      <xs:element type="estabType" name="estab"/>
+      <xs:element type="unitType" name="unit" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+    <xs:attribute type="xs:string" name="objectVersion" use="optional"/>
+    <xs:attribute type="xs:string" name="HumanControlled" use="optional"/>
+    <xs:attribute type="xs:string" name="Designation" use="optional"/>
+    <xs:attribute type="xs:string" name="History" use="optional"/>
+    <xs:attribute type="xs:string" name="CommsRating" use="optional"/>
+    <xs:attribute type="xs:string" name="ExperiencePts" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitAFVCount" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitNonAFVCount" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitGunCount" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitSmallArmCount" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitBridgeCount" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitBasicsQty" use="optional"/>
+    <xs:attribute type="xs:string" name="ActualResupplyRate" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitSuppression" use="optional"/>
+    <xs:attribute type="xs:string" name="StaffQuality" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitPersQty" use="optional"/>
+    <xs:attribute type="xs:string" name="PersLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="CohesionLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="FatigueLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="MoraleLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="ExperienceLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="TrainingLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="FitnessLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="AggroLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="StubbornnessLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitAFVLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitNonAFVLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitGunLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitSmallArmLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitAmmoLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitFuelLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitBasicsLevel" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitFuelQty" use="optional"/>
+    <xs:attribute type="xs:string" name="UnitAmmoCount" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="sideType">
+    <xs:sequence>
+      <xs:element type="unitType" name="unit"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="ObjectId"/>
+    <xs:attribute type="xs:string" name="Name"/>
+  </xs:complexType>
+  <xs:complexType name="ammoType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="Name" use="optional"/>
+        <xs:attribute type="xs:string" name="ObjectID" use="optional"/>
+        <xs:attribute type="xs:string" name="Qty" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ammoListType">
+    <xs:sequence>
+      <xs:element type="ammoType" name="ammo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="equipmentlistType">
+    <xs:sequence>
+      <xs:element type="equipmentType" name="equipment" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ForceListType">
+    <xs:sequence>
+      <xs:element type="sideType" name="side"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="estabType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="EstabName" use="optional"/>
+        <xs:attribute type="xs:string" name="ObjectId" use="optional"/>
+        <xs:attribute type="xs:string" name="Name" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="equipmentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="Name" use="optional"/>
+        <xs:attribute type="xs:string" name="Id" use="optional"/>
+        <xs:attribute type="xs:string" name="Qty" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="commanderType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="ObjectID" use="optional"/>
+        <xs:attribute type="xs:string" name="ObjectVersion" use="optional"/>
+        <xs:attribute type="xs:string" name="Name" use="optional"/>
+        <xs:attribute type="xs:string" name="Aggro" use="optional"/>
+        <xs:attribute type="xs:string" name="Determination" use="optional"/>
+        <xs:attribute type="xs:string" name="Efficiency" use="optional"/>
+        <xs:attribute type="xs:string" name="Force" use="optional"/>
+        <xs:attribute type="xs:string" name="Judgement" use="optional"/>
+        <xs:attribute type="xs:string" name="Leadership" use="optional"/>
+        <xs:attribute type="xs:string" name="PersBio" use="optional"/>
+        <xs:attribute type="xs:string" name="RankIndex" use="optional"/>
+        <xs:attribute type="xs:string" name="Title" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

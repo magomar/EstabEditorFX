@@ -4,21 +4,21 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class EquipmentModelTest {
+public class EquipmentQtyModelTest {
 
     private final int id = 10;
-    private final String name = "EquipmentModel Test";
+    private final String name = "EquipmentQtyModel Test";
     private final int qty = 5;
 
 
     @Test
     public void testEquals() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(name);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id);
         other.setName(name);
         other.setQty(qty);
@@ -27,12 +27,12 @@ public class EquipmentModelTest {
 
     @Test
     public void testHashCode() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(name);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id);
         other.setName(name);
         other.setQty(qty);
@@ -41,12 +41,12 @@ public class EquipmentModelTest {
 
     @Test
     public void testEqualsDifferentIDs() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(name);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id + 1);
         other.setName(name);
         other.setQty(qty);
@@ -55,12 +55,12 @@ public class EquipmentModelTest {
 
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(name);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id + 1);
         other.setName(name);
         other.setQty(qty);
@@ -69,12 +69,12 @@ public class EquipmentModelTest {
 
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(null);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id);
         other.setName(null);
         other.setQty(qty);
@@ -83,12 +83,12 @@ public class EquipmentModelTest {
 
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
-        EquipmentModel ours = new EquipmentModel();
+        EquipmentQtyModel ours = new EquipmentQtyModel();
         ours.setId(id);
         ours.setName(null);
         ours.setQty(qty);
 
-        EquipmentModel other = new EquipmentModel();
+        EquipmentQtyModel other = new EquipmentQtyModel();
         other.setId(id);
         other.setName(null);
         other.setQty(qty);

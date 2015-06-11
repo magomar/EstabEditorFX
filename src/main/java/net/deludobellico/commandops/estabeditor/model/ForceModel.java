@@ -8,9 +8,9 @@ import net.deludobellico.commandops.estabeditor.util.DateTimeUtils;
 
 import java.time.LocalTime;
 import java.util.Collection;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Model wrapper for the {@code Force} class
  *
@@ -21,7 +21,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
- // General
+    // General
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<>();
     private final ObjectProperty<CombatClass> combatClass = new SimpleObjectProperty<>();
@@ -33,7 +33,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
     private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
-    private final IntegerProperty persQty = new SimpleIntegerProperty();
+    private final IntegerProperty personnel = new SimpleIntegerProperty();
     private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
     private final IntegerProperty infantryValue = new SimpleIntegerProperty();
     private final IntegerProperty reconValue = new SimpleIntegerProperty();
@@ -54,7 +54,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final DoubleProperty fuelQty = new SimpleDoubleProperty();
     private final DoubleProperty fuelLoad = new SimpleDoubleProperty();
 
-    private final ObservableList<EquipmentModel> equipmentList = FXCollections.observableArrayList();
+    private final ObservableList<EquipmentQtyModel> equipmentList = FXCollections.observableArrayList();
     private final ObservableList<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
 
     private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
@@ -63,6 +63,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
 
     private List<Flag> flags = FXCollections.observableArrayList();
 
+    private final ObservableList<ForceQtyModel> forceComposition = FXCollections.observableArrayList();
 
     public ForceModel(Force force) {
         initialize(force);
@@ -80,7 +81,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
      * Have a look, but I think we can use a single model for both elements, the AmmoLoadModel
      * However, a conversion would be needed in the pojo methods
      * <p>
-     * EquipmentModel and ArmamentModel look the same, they have the same attributes, but semantically there
+     * EquipmentQtyModel and ArmamentModel look the same, they have the same attributes, but semantically there
      * is a difference: Armament refers only to weapons, while equipment may refer to weapons as well as vehicles
      */
 
@@ -100,7 +101,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         force.setReconValue(reconValue.get());
         force.setEngineeringValue(engineeringValue.get());
         force.setMoveType(moveType.get());
-        force.setPersQty(persQty.get());
+        force.setPersQty(personnel.get());
         force.setMoveType(moveType.get());
         force.setStaffCapacity(staffCapacity.get());
         force.setBasicsQty(basicsQty.get());
@@ -108,10 +109,10 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         force.setCommanderRank(commanderRank.get());
         force.setFuelQty(fuelQty.get());
         force.setFuelLoad(fuelLoad.get());
-        SpeedData speedData = new SpeedData();
-        speedData.setMax(maxSpeed.get());
-        speedData.setNormal(normalSpeed.get());
-        force.setSpeed(speedData);
+        Speed speed = new Speed();
+        speed.setMax(maxSpeed.get());
+        speed.setNormal(normalSpeed.get());
+        force.setSpeed(speed);
         DeploymentDuration deploymentDuration = new DeploymentDuration();
         deploymentDuration.setDeployed(DateTimeUtils.format(deployed.get()));
         deploymentDuration.setDugIn(DateTimeUtils.format(dugIn.get()));
@@ -122,10 +123,14 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         force.setReadyToBombardDuration(DateTimeUtils.format(readyToBombardDuration.get()));
         force.setEquipmentList(new EquipmentList());
         force.setAmmoList(new AmmoList());
-        equipmentList.stream().map(EquipmentModel::getPojo).forEach(force.getEquipmentList().getEquipment()::add);
+        equipmentList.stream().map(EquipmentQtyModel::getPojo).forEach(force.getEquipmentList().getEquipment()::add);
         ammoList.stream().map(AmmoQtyModel::getPojo).forEach(force.getAmmoList().getAmmo()::add);
         force.setCanBombard(PojoAdapter.booleanToYesNo(canBombard.get()));
         force.getFlags().addAll(flags);
+        if (forceComposition.size() > 0) {
+            if (null == force.getForceComposition()) force.setForceComposition(new ForceComposition());
+            forceComposition.stream().map(ForceQtyModel::getPojo).forEach(force.getForceComposition().getSubforce()::add);
+        }
         return force;
     }
 
@@ -144,7 +149,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         reconValue.set(pojo.getReconValue());
         engineeringValue.set(pojo.getEngineeringValue());
         moveType.set(pojo.getMoveType());
-        persQty.set(pojo.getPersQty());
+        personnel.set(pojo.getPersQty());
         staffCapacity.set(pojo.getStaffCapacity());
         basicsQty.set(pojo.getBasicsQty());
         basicsConsumptionRateModifier.set(pojo.getBasicsConsumptionRateModifier());
@@ -159,10 +164,12 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         fortified.set(DateTimeUtils.parseTime(pojo.getDeploymentDuration().getFortified()));
         readyToBombardDuration.set(DateTimeUtils.parseTime(pojo.getReadyToBombardDuration()));
         readyToFireDuration.set(DateTimeUtils.parseTime(pojo.getReadyToFireDuration()));
-        pojo.getEquipmentList().getEquipment().stream().map(EquipmentModel::new).forEach(equipmentList::add);
+        pojo.getEquipmentList().getEquipment().stream().map(EquipmentQtyModel::new).forEach(equipmentList::add);
         pojo.getAmmoList().getAmmo().stream().map(AmmoQtyModel::new).forEach(ammoList::add);
         flags.addAll(pojo.getFlags());
         canBombard.set(PojoAdapter.yesNoToBoolean(pojo.getCanBombard()));
+        if (null != pojo.getForceComposition())
+            pojo.getForceComposition().getSubforce().stream().map(ForceQtyModel::new).forEach(forceComposition::add);
     }
 
     public int getId() {
@@ -372,16 +379,16 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         return moveType;
     }
 
-    public int getPersQty() {
-        return persQty.get();
+    public int getPersonnel() {
+        return personnel.get();
     }
 
-    public void setPersQty(int persQty) {
-        this.persQty.set(persQty);
+    public void setPersonnel(int personnel) {
+        this.personnel.set(personnel);
     }
 
-    public IntegerProperty persQtyProperty() {
-        return persQty;
+    public IntegerProperty personnelProperty() {
+        return personnel;
     }
 
     public int getStaffCapacity() {
@@ -552,7 +559,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         return readyToBombardDuration;
     }
 
-    public ObservableList<EquipmentModel> getEquipmentList() {
+    public ObservableList<EquipmentQtyModel> getEquipmentList() {
         return equipmentList;
     }
 
@@ -578,6 +585,14 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
 
     public ServiceModel getService() {
         return service.get();
+    }
+
+    public ObjectProperty<ServiceModel> serviceProperty() {
+        return service;
+    }
+
+    public ObservableList<ForceQtyModel> getForceComposition() {
+        return forceComposition;
     }
 
     @Override
@@ -619,7 +634,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
             return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getNormalSpeed() != (that.getNormalSpeed())) return false;
-        if (getPersQty() != (that.getPersQty())) return false;
+        if (getPersonnel() != (that.getPersonnel())) return false;
         if (getReadyToBombardDuration() != null ? !getReadyToBombardDuration().equals(that.getReadyToBombardDuration()) : that.getReadyToBombardDuration() != null)
             return false;
         if (getReadyToFireDuration() != null ? !getReadyToFireDuration().equals(that.getReadyToFireDuration()) : that.getReadyToFireDuration() != null)

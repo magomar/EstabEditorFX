@@ -1,19 +1,10 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.model.AmmoQtyModel;
-import net.deludobellico.commandops.estabeditor.model.EquipmentModel;
-import net.deludobellico.commandops.estabeditor.model.ForceModel;
-import net.deludobellico.commandops.estabeditor.model.IconModel;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalTime;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -48,7 +39,7 @@ public class ForceModelTest {
     private final LocalTime fortified = LocalTime.now();
     private final LocalTime readyToFireDuration =LocalTime.now();
     private final LocalTime readyToBombardDuration = LocalTime.now();
-    private final List<EquipmentModel> equipmentList = FXCollections.observableArrayList();
+    private final List<EquipmentQtyModel> equipmentList = FXCollections.observableArrayList();
     private final List<AmmoQtyModel> ammoList = FXCollections.observableArrayList();
     private final boolean canBombard = false;
 
@@ -69,7 +60,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(moveType);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -87,7 +78,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -106,7 +97,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(moveType);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -124,7 +115,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
@@ -147,7 +138,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(moveType);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -165,7 +156,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -184,7 +175,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(moveType);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -202,7 +193,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(readyToBombardDuration);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);
@@ -225,7 +216,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(null);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -243,7 +234,7 @@ public class ForceModelTest {
         ours.setReadyToBombardDuration(null);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         ours.getEquipmentList().addAll(equipmentList);
         ours.getAmmoList().addAll(ammoList);
@@ -262,7 +253,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(null);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -280,7 +271,7 @@ public class ForceModelTest {
         other.setReadyToBombardDuration(null);
         equipmentList.clear();
         ammoList.clear();
-        equipmentList.add(new EquipmentModel());
+        equipmentList.add(new EquipmentQtyModel());
         ammoList.add(new AmmoQtyModel());
         other.getEquipmentList().addAll(equipmentList);
         other.getAmmoList().addAll(ammoList);

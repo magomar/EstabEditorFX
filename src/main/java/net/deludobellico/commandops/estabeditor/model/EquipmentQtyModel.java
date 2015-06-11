@@ -9,19 +9,19 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Equipment;
  * @author Mario
  * @author Heine
  */
-public class EquipmentModel implements PojoAdapter<Equipment> {
+public class EquipmentQtyModel implements PojoAdapter<Equipment> {
 
     private final transient IntegerProperty id = new SimpleIntegerProperty();
     private final transient StringProperty name = new SimpleStringProperty();
     private final transient IntegerProperty qty = new SimpleIntegerProperty();
-    //TODO check if equipmentClass is being used
+    // TODO check if equipmentClass is really needed (where is it being used?)
     private final transient ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
 
-    public EquipmentModel(Equipment pojo) {
+    public EquipmentQtyModel(Equipment pojo) {
         initialize(pojo);
     }
 
-    public EquipmentModel() {
+    public EquipmentQtyModel() {
 
     }
 
@@ -92,11 +92,11 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EquipmentModel)) return false;
+        if (!(o instanceof EquipmentQtyModel)) return false;
 
-        EquipmentModel that = (EquipmentModel) o;
+        EquipmentQtyModel that = (EquipmentQtyModel) o;
 
-//        if(getId() != that.getId()) return false;
+        if (getId() != that.getId()) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getQty() != that.getQty()) return false;
 
@@ -106,7 +106,7 @@ public class EquipmentModel implements PojoAdapter<Equipment> {
     @Override
     public int hashCode() {
         int result = 1;
-//        result = result + getId();
+        result = result + getId();
         result = 62 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + getQty();
         return result;

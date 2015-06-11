@@ -143,13 +143,14 @@ Changes in version 1.0
             <xs:element name="commander-rank" type="xs:int"/>
             <xs:element name="fuel-qty" type="xs:double"/>
             <xs:element name="fuel-load" type="xs:double"/>
-            <xs:element name="speed" type="SpeedData"/>
+            <xs:element name="speed" type="Speed"/>
             <xs:element name="deployment-duration" type="DeploymentDuration"/>
             <xs:element name="ready-to-fire-duration" type="xs:string"/>
             <xs:element name="ready-to-bombard-duration" type="xs:string"/>
             <xs:element name="equipment-list" type="EquipmentList"/>
             <xs:element name="ammo-list" type="AmmoList"/>
             <xs:element name="can-bombard" type="YesNo"/>
+            <xs:element name="force-composition" type="ForceComposition" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="flags" type="FlagList"/>
@@ -166,6 +167,13 @@ Changes in version 1.0
             <xs:element name="picture-symbol" type="PictureSymbol"/>
             <xs:element name="force-size-icon" type="ForceSize"/>
             <xs:element name="is-hq" type="YesNo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Speed">
+        <xs:sequence>
+            <xs:element name="normal" type="xs:double"/>
+            <xs:element name="max" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -198,6 +206,18 @@ Changes in version 1.0
 
     <xs:complexType name="AmmoQty">
         <xs:attribute name="ammo-object-id" type="xs:int" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="qty" type="xs:int" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ForceComposition">
+        <xs:sequence>
+            <xs:element name="subforce" type="ForceQty" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ForceQty">
+        <xs:attribute name="force-object-id" type="xs:int" use="required"/>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="qty" type="xs:int" use="required"/>
     </xs:complexType>
