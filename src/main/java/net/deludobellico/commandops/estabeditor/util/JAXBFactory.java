@@ -1,9 +1,5 @@
 package net.deludobellico.commandops.estabeditor.util;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -39,44 +35,44 @@ public class JAXBFactory {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
     }
 
-    /**
-     * Unmarshalls Json element of type {@code c} from the {@code file}.
-     *
-     * @param c    the class of object to be unmarshalled
-     * @param file the Json file containing the marshalled object
-     * @return the object of type {@code T} from the {@code file}
-     */
-    public static <T> T unmarshallJson(File file, Class<T> c) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-        T object = null;
-        try {
-            object = mapper.readValue(file, c);
-        } catch (IOException ex) {
-            LOG.log(Level.SEVERE, "Exception unmarshalling Json", ex);
-        }
-        return object;
-    }
-
-    /**
-     * Marshalls Java object into a Json file
-     *
-     * @param object object to be marshalled
-     * @param file   file to save the marshalled object
-     * @return null
-     */
-    public static File marshallJson(Object object, File file) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-        ObjectWriter writer = mapper.writer().withDefaultPrettyPrinter();
-        try {
-            writer.writeValue(file, object);
-            return file;
-        } catch (IOException ex) {
-            LOG.log(Level.SEVERE, "Exception marshalling Json", ex);
-        }
-        return null;
-    }
+//    /**
+//     * Unmarshalls Json element of type {@code c} from the {@code file}.
+//     *
+//     * @param c    the class of object to be unmarshalled
+//     * @param file the Json file containing the marshalled object
+//     * @return the object of type {@code T} from the {@code file}
+//     */
+//    public static <T> T unmarshallJson(File file, Class<T> c) {
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+//        T object = null;
+//        try {
+//            object = mapper.readValue(file, c);
+//        } catch (IOException ex) {
+//            LOG.log(Level.SEVERE, "Exception unmarshalling Json", ex);
+//        }
+//        return object;
+//    }
+//
+//    /**
+//     * Marshalls Java object into a Json file
+//     *
+//     * @param object object to be marshalled
+//     * @param file   file to save the marshalled object
+//     * @return null
+//     */
+//    public static File marshallJson(Object object, File file) {
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+//        ObjectWriter writer = mapper.writer().withDefaultPrettyPrinter();
+//        try {
+//            writer.writeValue(file, object);
+//            return file;
+//        } catch (IOException ex) {
+//            LOG.log(Level.SEVERE, "Exception marshalling Json", ex);
+//        }
+//        return null;
+//    }
 
     /**
      * Unmarshalls XML element from file into java object
