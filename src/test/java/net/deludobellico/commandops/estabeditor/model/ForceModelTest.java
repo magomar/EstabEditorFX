@@ -1,19 +1,10 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import javafx.collections.FXCollections;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
-import net.deludobellico.commandops.estabeditor.model.AmmoQtyModel;
-import net.deludobellico.commandops.estabeditor.model.EquipmentModel;
-import net.deludobellico.commandops.estabeditor.model.ForceModel;
-import net.deludobellico.commandops.estabeditor.model.IconModel;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalTime;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -69,7 +60,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(moveType);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -106,7 +97,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(moveType);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -147,7 +138,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(moveType);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -184,7 +175,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(moveType);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -225,7 +216,7 @@ public class ForceModelTest {
         ours.setReconValue(reconValue);
         ours.setEngineeringValue(engineeringValue);
         ours.setMoveType(null);
-        ours.setPersQty(persQty);
+        ours.setPersonnel(persQty);
         ours.setStaffCapacity(staffCapacity);
         ours.setBasicsQty(basicsQty);
         ours.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);
@@ -262,7 +253,7 @@ public class ForceModelTest {
         other.setReconValue(reconValue);
         other.setEngineeringValue(engineeringValue);
         other.setMoveType(null);
-        other.setPersQty(persQty);
+        other.setPersonnel(persQty);
         other.setStaffCapacity(staffCapacity);
         other.setBasicsQty(basicsQty);
         other.setBasicsConsumptionRateModifier(basicsConsumptionRateModifier);

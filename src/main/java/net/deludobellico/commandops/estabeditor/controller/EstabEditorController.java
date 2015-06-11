@@ -50,8 +50,7 @@ public class EstabEditorController implements Initializable {
         put(NationModel.class, FileIO.NATION_VIEW);
         put(ServiceModel.class, FileIO.SERVICE_VIEW);
     }});
-    // Active element = element currently displayed
-    private final ObjectProperty<ElementModel> activeElement = new SimpleObjectProperty<>();
+
     @FXML
     private TitledPane estabPane;
     /**
@@ -98,6 +97,8 @@ public class EstabEditorController implements Initializable {
             put(elementModelClass, new SavedSearchList<>());
         }
     }};
+    // Active element = element currently displayed
+    private final ObjectProperty<ElementModel> activeElement = new SimpleObjectProperty<>();
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
     private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());

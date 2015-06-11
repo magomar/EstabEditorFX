@@ -33,7 +33,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final DoubleProperty maxSpeed = new SimpleDoubleProperty();
     private final DoubleProperty normalSpeed = new SimpleDoubleProperty();
 
-    private final IntegerProperty persQty = new SimpleIntegerProperty();
+    private final IntegerProperty personnel = new SimpleIntegerProperty();
     private final IntegerProperty staffCapacity = new SimpleIntegerProperty();
     private final IntegerProperty infantryValue = new SimpleIntegerProperty();
     private final IntegerProperty reconValue = new SimpleIntegerProperty();
@@ -101,7 +101,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         force.setReconValue(reconValue.get());
         force.setEngineeringValue(engineeringValue.get());
         force.setMoveType(moveType.get());
-        force.setPersQty(persQty.get());
+        force.setPersQty(personnel.get());
         force.setMoveType(moveType.get());
         force.setStaffCapacity(staffCapacity.get());
         force.setBasicsQty(basicsQty.get());
@@ -109,10 +109,10 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         force.setCommanderRank(commanderRank.get());
         force.setFuelQty(fuelQty.get());
         force.setFuelLoad(fuelLoad.get());
-        SpeedData speedData = new SpeedData();
-        speedData.setMax(maxSpeed.get());
-        speedData.setNormal(normalSpeed.get());
-        force.setSpeed(speedData);
+        Speed speed = new Speed();
+        speed.setMax(maxSpeed.get());
+        speed.setNormal(normalSpeed.get());
+        force.setSpeed(speed);
         DeploymentDuration deploymentDuration = new DeploymentDuration();
         deploymentDuration.setDeployed(DateTimeUtils.format(deployed.get()));
         deploymentDuration.setDugIn(DateTimeUtils.format(dugIn.get()));
@@ -149,7 +149,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         reconValue.set(pojo.getReconValue());
         engineeringValue.set(pojo.getEngineeringValue());
         moveType.set(pojo.getMoveType());
-        persQty.set(pojo.getPersQty());
+        personnel.set(pojo.getPersQty());
         staffCapacity.set(pojo.getStaffCapacity());
         basicsQty.set(pojo.getBasicsQty());
         basicsConsumptionRateModifier.set(pojo.getBasicsConsumptionRateModifier());
@@ -379,16 +379,16 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         return moveType;
     }
 
-    public int getPersQty() {
-        return persQty.get();
+    public int getPersonnel() {
+        return personnel.get();
     }
 
-    public void setPersQty(int persQty) {
-        this.persQty.set(persQty);
+    public void setPersonnel(int personnel) {
+        this.personnel.set(personnel);
     }
 
-    public IntegerProperty persQtyProperty() {
-        return persQty;
+    public IntegerProperty personnelProperty() {
+        return personnel;
     }
 
     public int getStaffCapacity() {
@@ -634,7 +634,7 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
             return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         if (getNormalSpeed() != (that.getNormalSpeed())) return false;
-        if (getPersQty() != (that.getPersQty())) return false;
+        if (getPersonnel() != (that.getPersonnel())) return false;
         if (getReadyToBombardDuration() != null ? !getReadyToBombardDuration().equals(that.getReadyToBombardDuration()) : that.getReadyToBombardDuration() != null)
             return false;
         if (getReadyToFireDuration() != null ? !getReadyToFireDuration().equals(that.getReadyToFireDuration()) : that.getReadyToFireDuration() != null)

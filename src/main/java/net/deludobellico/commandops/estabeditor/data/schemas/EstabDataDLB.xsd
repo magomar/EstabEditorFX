@@ -143,7 +143,7 @@ Changes in version 1.0
             <xs:element name="commander-rank" type="xs:int"/>
             <xs:element name="fuel-qty" type="xs:double"/>
             <xs:element name="fuel-load" type="xs:double"/>
-            <xs:element name="speed" type="SpeedData"/>
+            <xs:element name="speed" type="Speed"/>
             <xs:element name="deployment-duration" type="DeploymentDuration"/>
             <xs:element name="ready-to-fire-duration" type="xs:string"/>
             <xs:element name="ready-to-bombard-duration" type="xs:string"/>
@@ -167,6 +167,13 @@ Changes in version 1.0
             <xs:element name="picture-symbol" type="PictureSymbol"/>
             <xs:element name="force-size-icon" type="ForceSize"/>
             <xs:element name="is-hq" type="YesNo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Speed">
+        <xs:sequence>
+            <xs:element name="normal" type="xs:double"/>
+            <xs:element name="max" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
 
