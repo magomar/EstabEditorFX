@@ -31,7 +31,7 @@
     -fx-spacing: 5;
     -fx-padding: 5;
     -fx-background-color: gainsboro;
- }
+}
 
 .vbox {
     -fx-spacing: 5;
@@ -56,5 +56,33 @@
 .element-image {
     -fx-width: 96;
     -fx-height: 61;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.force-color {
+    -fx-background-color: olive;
+}
+
+.service-color {
+    -fx-background-color: yellowgreen;
+}
+
+.nation-color {
+    -fx-background-color: darkkhaki;
+}
+
+.side-color {
+    -fx-background-color: khaki;
+}
+
+.vehicle-color {
+    -fx-background-color: deepskyblue;
+}
+
+.weapon-color {
+    -fx-background-color: orangered;
+}
+
+.ammo-color {
+    -fx-background-color: gold;
 }

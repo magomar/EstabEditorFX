@@ -13,13 +13,17 @@
     <children>
         <VBox prefHeight="551.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <HBox alignment="CENTER_LEFT" style="-fx-background-color: deepskyblue;" styleClass="element-name">
+                <HBox alignment="CENTER_LEFT">
                     <children>
                         <Label alignment="CENTER" text="Name" />
                         <TextField fx:id="name" HBox.hgrow="ALWAYS" />
                         <Label text="ID" />
                         <TextField fx:id="id" disable="true" editable="false" prefWidth="50.0" />
                     </children>
+               <styleClass>
+                  <String fx:value="element-name" />
+                  <String fx:value="vehicle-color" />
+               </styleClass>
                 </HBox>
                 <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
