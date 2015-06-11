@@ -85,13 +85,6 @@
 
                         </Menu>
 
-                        <Menu mnemonicParsing="false" text="Install Dataset">
-                            <items>
-                                <MenuItem mnemonicParsing="false" onAction="#installDataset" text="BFTB" />
-                                <MenuItem mnemonicParsing="false" onAction="#installDataset" text="COTA" />
-                            </items>
-                        </Menu>
-
                         <Menu mnemonicParsing="false" text="_View">
                             <items>
                                 <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" onAction="#toggleToolBarVisibility" selected="true" text="Toolbar" />
