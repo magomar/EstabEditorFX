@@ -172,12 +172,24 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
             pojo.getForceComposition().getSubforce().stream().map(ForceQtyModel::new).forEach(forceComposition::add);
     }
 
-    public int getId() {
-        return id.get();
+    public void setColorsFromService() {
+        IconModel i = icon.get();
+        ServiceModel s = service.get();
+        i.setSymbolColor(s.getSymbolColor());
+        i.setBackgroundColor(s.getBackgroundColor());
+        i.setBackgroundDarkColor(s.getBackgroundDarkColor());
+        i.setBackgroundLightColor(s.getBackgroundLightColor());
+        i.setDesignationColor(s.getDesignationColor());
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public boolean usesServiceColors() {
+        IconModel i = icon.get();
+        ServiceModel s = service.get();
+        return i.getSymbolColor().equals(s.getSymbolColor())
+                && i.getBackgroundColor().equals(s.getBackgroundColor())
+                && i.getBackgroundDarkColor().equals(s.getBackgroundDarkColor())
+                && i.getBackgroundLightColor().equals(s.getBackgroundLightColor())
+                && i.getDesignationColor().equals(s.getDesignationColor());
     }
 
     @Override
@@ -233,6 +245,14 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     @Override
     public List<Flag> getFlags() {
         return flags;
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public String getName() {

@@ -446,41 +446,6 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     }
 
     @Override
-    public void clear() {
-        super.clear();
-        if (activePerformance != null) unbindPerformanceProperties(activePerformance);
-
-        weight.setText("");
-        name.setText("");
-        id.setText("");
-        description.setText("");
-        crew.setText("");
-        reliability.setText("");
-        calibre.setText("");
-        muzzleVelocity.setText("");
-
-        weaponType.getSelectionModel().clearSelection();
-        weaponPrimaryRole.getSelectionModel().clearSelection();
-
-        singleShot.setSelected(false);
-        mustDeployToFire.setSelected(false);
-
-        minRange.setText("");
-        fireRateSlow.setText("");
-        fireRateNormal.setText("");
-        fireRateRapid.setText("");
-        burstRadius.setText("");
-        shellWeight.setText("");
-        load.setText("");
-
-        ammoNameLabel.setText("");
-        rangeItemTableView.getItems().clear();
-
-        imagePanelController.clear();
-    }
-
-
-    @Override
     public void setEstabEditorController(EstabEditorController estabEditorController) {
         super.setEstabEditorController(estabEditorController);
         imagePanelController.setEstabEditorController(estabEditorController);

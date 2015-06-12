@@ -1,13 +1,11 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.model.EstabModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
-import net.deludobellico.estabeditorfx.model.SideModel;
 import net.deludobellico.estabeditorfx.model.SideModel;
 
 import java.net.URL;
@@ -17,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 18/05/2015.
  */
-public class SideEditorController extends  AbstractElementEditorController<SideModel> {
+public class SideEditorController extends AbstractElementEditorController<SideModel> {
 
     /**
      * Root node
@@ -37,7 +35,7 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
     private TextField aper;
     @FXML
     private TextField aarm;
-    
+
     @FXML
     private ElementImageController largeInsigniaPanelController;
     @FXML
@@ -125,15 +123,4 @@ public class SideEditorController extends  AbstractElementEditorController<SideM
         aarm.textProperty().unbindBidirectional(element.defaultEnemyAarmFpProperty());
     }
 
-    @Override
-    public void clear() {
-        super.clear();
-        consumptionRate.setText("");
-        aper.setText("");
-        aarm.setText("");
-        name.setText("");
-        id.setText("");
-        description.setText("");
-    }
-    
 }

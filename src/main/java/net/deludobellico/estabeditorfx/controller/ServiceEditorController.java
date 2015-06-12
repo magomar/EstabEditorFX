@@ -1,18 +1,14 @@
 package net.deludobellico.estabeditorfx.controller;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
-import net.deludobellico.estabeditorfx.model.EstabModel;
-import net.deludobellico.estabeditorfx.model.ImageModel;
-import net.deludobellico.estabeditorfx.model.RankModel;
-import net.deludobellico.estabeditorfx.model.ServiceModel;
-import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
-import net.deludobellico.estabeditorfx.model.RankModel;
+import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
@@ -49,6 +45,8 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
     private ColorPicker designationColorPicker;
     @FXML
     private ComboBox<SymbolColor> symbolColorComboBox;
+    @FXML
+    private Button applyServiceColors;
     @FXML
     private TextField shortName;
     @FXML
@@ -107,6 +105,24 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
                 }
             }
         });
+
+
+        ChangeListener<? super Color> colorChangeListener = (observable, oldValue, newValue) -> {
+            applyServiceColors.setDisable(!newValue.equals(oldValue));
+        };
+        backgroundColorPicker.valueProperty().addListener(colorChangeListener);
+        darkBackgColorPicker.valueProperty().addListener(colorChangeListener);
+        lightBackgColorPicker.valueProperty().addListener(colorChangeListener);
+        designationColorPicker.valueProperty().addListener(colorChangeListener);
+
+    }
+
+    @FXML
+    void applyColorToForces() {
+        for (ForceModel force : getActiveElement().getForce()) {
+            force.setColorsFromService();
+        }
+        applyServiceColors.setDisable(true);
     }
 
     /**
@@ -124,17 +140,25 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
 
     @Override
     public void bindProperties() {
-        ServiceModel element = getActiveElement();
-        name.textProperty().bindBidirectional(element.nameProperty());
-        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
-        description.textProperty().bindBidirectional(element.descriptionProperty());
-        backgroundColorPicker.valueProperty().bindBidirectional(element.backgroundColorProperty());
-        darkBackgColorPicker.valueProperty().bindBidirectional(element.backgroundDarkColorProperty());
-        lightBackgColorPicker.valueProperty().bindBidirectional(element.backgroundLightColorProperty());
-        designationColorPicker.valueProperty().bindBidirectional(element.designationColorProperty());
-        symbolColorComboBox.valueProperty().bindBidirectional(element.symbolColorProperty());
-        rankModels.addAll(element.getRankList());
+        ServiceModel service = getActiveElement();
+        name.textProperty().bindBidirectional(service.nameProperty());
+        id.textProperty().bindBidirectional(service.idProperty(), NUMBER_STRING_CONVERTER);
+        description.textProperty().bindBidirectional(service.descriptionProperty());
+        backgroundColorPicker.valueProperty().bindBidirectional(service.backgroundColorProperty());
+        darkBackgColorPicker.valueProperty().bindBidirectional(service.backgroundDarkColorProperty());
+        lightBackgColorPicker.valueProperty().bindBidirectional(service.backgroundLightColorProperty());
+        designationColorPicker.valueProperty().bindBidirectional(service.designationColorProperty());
+        symbolColorComboBox.valueProperty().bindBidirectional(service.symbolColorProperty());
+        rankModels.addAll(service.getRankList());
         rankListView.setItems(rankModels);
+        boolean allForcesUseServiceColors = true;
+        for (ForceModel force : service.getForce()) {
+            if (!force.usesServiceColors()) {
+                allForcesUseServiceColors = false;
+                break;
+            }
+        }
+        applyServiceColors.setDisable(allForcesUseServiceColors);
     }
 
     @Override
@@ -149,16 +173,6 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
         designationColorPicker.valueProperty().unbindBidirectional(element.designationColorProperty());
         symbolColorComboBox.valueProperty().unbindBidirectional(element.symbolColorProperty());
         rankModels.clear();
-    }
-
-    @Override
-    public void clear() {
-        super.clear();
-        name.setText("");
-        id.setText("");
-        description.setText("");
-        shortName.setText("");
-        fullName.setText("");
     }
 
     @FXML

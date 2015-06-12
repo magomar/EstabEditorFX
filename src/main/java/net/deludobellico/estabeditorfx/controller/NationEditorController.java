@@ -112,12 +112,4 @@ public class NationEditorController extends AbstractElementEditorController<Nati
         description.textProperty().unbindBidirectional(element.descriptionProperty());
     }
 
-    @Override
-    public void clear() {
-        super.clear();
-        name.setText("");
-        id.setText("");
-        description.setText("");
-    }
-
 }

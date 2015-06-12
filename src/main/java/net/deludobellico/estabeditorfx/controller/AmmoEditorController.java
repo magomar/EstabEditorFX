@@ -1,18 +1,11 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.model.AmmoModel;
-import net.deludobellico.estabeditorfx.model.EstabModel;
-import net.deludobellico.estabeditorfx.model.ImageModel;
 
 import java.net.URL;
-import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -77,16 +70,5 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
         quantity.textProperty().unbindBidirectional(element.minOrderQtyProperty());
         weight.textProperty().unbindBidirectional(element.minOrderWeightProperty());
     }
-
-    @Override
-    public void clear() {
-        super.clear();
-        name.setText("");
-        id.setText("");
-        description.setText("");
-        quantity.setText("");
-        weight.setText("");
-    }
-
 
 }

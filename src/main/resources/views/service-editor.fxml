@@ -85,7 +85,7 @@
                     <content>
                         <HBox styleClass="editor-tab">
                            <children>
-                              <VBox>
+                              <VBox HBox.hgrow="SOMETIMES">
                                  <children>
                                                 <VBox styleClass="vbox">
                                                     <children>
@@ -119,6 +119,7 @@
                                                                 <ComboBox fx:id="symbolColorComboBox" prefWidth="100.0" />
                                                             </children>
                                                         </HBox>
+                                          <Button fx:id="applyServiceColors" mnemonicParsing="false" onAction="#applyColorToForces" text="Apply Color to Forces" />
                                                     </children>
                                                 </VBox>
                                  </children>

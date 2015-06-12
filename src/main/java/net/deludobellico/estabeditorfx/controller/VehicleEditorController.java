@@ -10,16 +10,14 @@ import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.data.jaxb.Armament;
 import net.deludobellico.estabeditorfx.data.jaxb.VehicleType;
-import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
-import net.deludobellico.estabeditorfx.data.jaxb.Armament;
-import net.deludobellico.estabeditorfx.data.jaxb.VehicleType;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
-import java.util.*;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  * This controller manages the weapon editor view and model.
@@ -383,49 +381,6 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
 
         armamentTableView.setItems(null);
 
-    }
-
-    @Override
-    public void clear() {
-        super.clear();
-
-        battleWeight.setText("");
-        bulkFuelCapacity.setText("");
-        crew.setText("");
-        crossCountryMaxSpeed.setText("");
-        crossCountryNormalSpeed.setText("");
-        description.setText("");
-        frontArmor.setText("");
-        fuelCapacity.setText("");
-        fuelConsumptionMaxSpeed.setText("");
-        fuelConsumptionNormalSpeed.setText("");
-
-        hasOpenTop.setSelected(false);
-        hasTurret.setSelected(false);
-
-        height.setText("");
-        length.setText("");
-        maxFordingDepth.setText("");
-        maxGradient.setText("");
-        maxTrenchWidth.setText("");
-        name.setText("");
-        id.setText("");
-        payloadCapacity.setText("");
-        personnelCapacity.setText("");
-        rearArmor.setText("");
-        reliability.setText("");
-        roadMaxSpeed.setText("");
-        roadNormalSpeed.setText("");
-        ronsonability.setText("");
-        sideArmor.setText("");
-        takeCoverMod.setText("");
-        topArmor.setText("");
-        towingCapacity.setText("");
-        weight.setText("");
-        width.setText("");
-        vehicleType.getSelectionModel().clearSelection();
-
-        imagePanelController.clear();
     }
 
     @Override
