@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -89,7 +89,7 @@ public class SearchDialogController implements Initializable {
             }
         };
         dialog.initModality(Modality.WINDOW_MODAL);
-        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
+        dialog.getIcons().addAll(ViewUtil.ROOT_STAGE.getIcons());
         searchName.textProperty().addListener(event -> searchAction());
         searchType.textProperty().addListener(event -> searchAction());
 

@@ -23,7 +23,7 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.SavedSearchList;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -483,7 +483,7 @@ public class EstabEditorController implements Initializable {
             // If there are repeated elements, ask the user for what to do
             // In case the user only wants to select some items, pass this empty collection to save them
             Collection selectedItems = new ArrayList<>();
-            DialogAction answer = UtilView.showWarningRepeatedElements(relatedElementsLists.getRepeatedElements(), selectedItems);
+            DialogAction answer = ViewUtil.showWarningRepeatedElements(relatedElementsLists.getRepeatedElements(), selectedItems);
             switch (answer) {
                 case OVERWRITE:
                     estabModel.paste(relatedElementsLists.getAllElements());
@@ -517,7 +517,7 @@ public class EstabEditorController implements Initializable {
         // In case the user only wants to select some items, pass this empty collection to save them
         Collection<ElementModel> selectedItems = new ArrayList<>();
         // Prompt the user for an action
-        DialogAction answer = UtilView.showWarningRemoveElements(elementsToRemove, selectedItems);
+        DialogAction answer = ViewUtil.showWarningRemoveElements(elementsToRemove, selectedItems);
 
         switch (answer) {
             case OK:
@@ -573,7 +573,7 @@ public class EstabEditorController implements Initializable {
      */
     public void saveModel(File file) {
         if (!file.exists()) {
-            UtilView.showInfoDialog("File not found", "", file.getName() + " doesn't exist");
+            ViewUtil.showInfoDialog("File not found", "", file.getName() + " doesn't exist");
             LOG.log(Level.WARNING, "Abort save. File not found " + file.getName());
         } else estabModel.saveToFile(file);
     }
@@ -807,15 +807,15 @@ public class EstabEditorController implements Initializable {
                 flag = flagIt.next();
                 switch (flag) {
                     case NEW:
-                        l.setStyle(UtilView.TEXT_STYLE_NEW);
+                        l.setStyle(ViewUtil.TEXT_STYLE_NEW);
                         styleIsSet = true;
                         break;
                     case COPY:
-                        l.setStyle(UtilView.TEXT_STYLE_COPY);
+                        l.setStyle(ViewUtil.TEXT_STYLE_COPY);
                         styleIsSet = true;
                         break;
                     case REMOVE:
-                        l.setStyle(UtilView.TEXT_STYLE_REMOVE);
+                        l.setStyle(ViewUtil.TEXT_STYLE_REMOVE);
                         styleIsSet = true;
                         break;
                 }
@@ -836,25 +836,25 @@ public class EstabEditorController implements Initializable {
                         flag = Flag.REMOVE;
                         elementModel.unsetFlag(Flag.COPY);
                         elementModel.setFlag(Flag.REMOVE);
-                        label.setStyle(UtilView.TEXT_STYLE_REMOVE);
+                        label.setStyle(ViewUtil.TEXT_STYLE_REMOVE);
 
                     } else if (flag == Flag.REMOVE) {
                         // Change flag from remove to none
                         flag = null;
                         elementModel.unsetFlag(Flag.REMOVE);
-                        label.setStyle(UtilView.TEXT_STYLE_DEFAULT);
+                        label.setStyle(ViewUtil.TEXT_STYLE_DEFAULT);
 
                     } else if (flag == Flag.NEW) {
                         // Change flag from new to none
                         flag = null;
                         elementModel.unsetFlag(Flag.NEW);
-                        label.setStyle(UtilView.TEXT_STYLE_DEFAULT);
+                        label.setStyle(ViewUtil.TEXT_STYLE_DEFAULT);
 
                     } else if (flag == null) {
                         // Change flag from none to copy
                         flag = Flag.COPY;
                         elementModel.setFlag(Flag.COPY);
-                        label.setStyle(UtilView.TEXT_STYLE_COPY);
+                        label.setStyle(ViewUtil.TEXT_STYLE_COPY);
                     }
                 }
             };

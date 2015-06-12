@@ -20,7 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
 
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class InfoDialogController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         dialog = new Stage(StageStyle.DECORATED);
-        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
+        dialog.getIcons().addAll(ViewUtil.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
         buttonBox.getChildren().stream().forEach(b -> ((Button) b).setOnAction(event -> dialog.close()));
         image.setImage(new Image(InfoDialogController.class.getResourceAsStream(FileIO.INFO_ICON_RESOURCE)));

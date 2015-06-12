@@ -11,7 +11,7 @@ import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.model.RankModel;
 import net.deludobellico.commandops.estabeditor.model.ServiceModel;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.net.URL;
 import java.util.Map;
@@ -163,7 +163,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
 
         if (shortName.getText().isEmpty() || fullName.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
+            ViewUtil.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
         } else {
             boolean repeatedRank = false;
             for (RankModel rankModel : getActiveElement().getRankList())
@@ -178,7 +178,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
                 rankModel.setIndex(rankModels.size());
                 rankModels.add(rankModel);
             } else {
-                UtilView.showInfoDialog("Repeated rank", "", "The entered rank is already included. Please, enter another one.");
+                ViewUtil.showInfoDialog("Repeated rank", "", "The entered rank is already included. Please, enter another one.");
             }
         }
     }

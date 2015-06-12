@@ -17,7 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
 
 import java.io.IOException;
@@ -68,7 +68,7 @@ public class CopyRemoveDialogController implements Initializable {
 
         dialog = new Stage();
         dialog.initModality(Modality.WINDOW_MODAL);
-        dialog.getIcons().addAll(UtilView.ROOT_STAGE.getIcons());
+        dialog.getIcons().addAll(ViewUtil.ROOT_STAGE.getIcons());
         dialog.setMinHeight(400);
         dialog.setMinWidth(600);
 

@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.converter.IntegerStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.net.URL;
 import java.util.*;
@@ -280,7 +280,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void equipmentAddAction() {
         if (equipmentName.getText().isEmpty() || equipmentQty.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields");
+            ViewUtil.showInfoDialog("Empty fields", "", "Please, fill the empty fields");
         } else {
             ElementModel element = (ElementModel) equipmentName.getUserData();
             if (element == null) return;
@@ -301,7 +301,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 //                equipmentTableView.getItems().add(model);
                 getActiveElement().getEquipmentList().add(model);
             } else {
-                UtilView.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
+                ViewUtil.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
             }
         }
     }
@@ -310,7 +310,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void equipmentSelectAction() {
         List<ElementModel> vehiclesAndWeapons = new ArrayList(getEstabEditorController().getEstabModel().getWeapons().values());
         vehiclesAndWeapons.addAll(getEstabEditorController().getEstabModel().getVehicles().values());
-        ElementModel element = (ElementModel) UtilView.showSearchDialog("Select element", vehiclesAndWeapons);
+        ElementModel element = (ElementModel) ViewUtil.showSearchDialog("Select element", vehiclesAndWeapons);
         if (element != null) {
             equipmentName.setUserData(element);
             equipmentName.setText(element.getName());
@@ -330,7 +330,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     void forceAddAction() {
         if (subforceName.getText().isEmpty() || subforceQty.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields");
+            ViewUtil.showInfoDialog("Empty fields", "", "Please, fill the empty fields");
         } else {
             ElementModel element = (ElementModel) subforceName.getUserData();
             if (element == null) return;
@@ -349,7 +349,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setQty(Integer.valueOf(subforceQty.getText()));
                 getActiveElement().getForceComposition().add(model);
             } else {
-                UtilView.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
+                ViewUtil.showInfoDialog("Repeated force", "", "The selected force is already included. Please, select another one.");
             }
         }
     }
@@ -357,7 +357,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     void forceSelectAction() {
         List<ElementModel> forces = new ArrayList(getEstabEditorController().getEstabModel().getForces().values());
-        ElementModel element = (ElementModel) UtilView.showSearchDialog("Select element", forces);
+        ElementModel element = (ElementModel) ViewUtil.showSearchDialog("Select element", forces);
         if (element != null) {
             subforceName.setUserData(element);
             subforceName.setText(element.getName());
