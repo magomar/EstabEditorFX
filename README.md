@@ -1,5 +1,5 @@
-EstabEditor
-===========
+EstabEditorFX
+=============
 
 This project aims at providing an alternative Estab editor for the Command Ops Battles from the Bulge game series, from Panther Games.
 The emphasis of this editor (compared with the original editor) is on the reuse and adaptation of existing data. 
@@ -16,4 +16,4 @@ The main features of the editor are:
 specified as composed of other forces, some of its attributes (like personnel and staff capacity) are derived from the 
 constituent forces, and the same happens with its equipment.
 
-To download the binaries please visit the [project page](http://magomar.github.io/EstabEditor/).
+To download the binaries please visit the [project page](http://magomar.github.io/EstabEditorFX/).

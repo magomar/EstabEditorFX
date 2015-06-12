@@ -11,7 +11,7 @@
 }
 
 .element-name {
-    -fx-padding: 10;
+    -fx-padding: 5;
     -fx-spacing: 10;
 }
 
@@ -23,7 +23,7 @@
 
 .description {
     -fx-spacing: 10;
-    -fx-padding: 10;
+    -fx-padding: 5;
     -fx-pref-height: 150;
 }
 
@@ -40,13 +40,13 @@
 }
 
 .data-grid {
-    -fx-vgap: 4;
-    -fx-hgap: 8;
+    -fx-vgap: 3;
+    -fx-hgap: 5;
 }
 
 .icon-grid {
-    -fx-vgap: 8;
-    -fx-hgap: 16;
+    -fx-vgap: 6;
+    -fx-hgap: 10;
 }
 
 .button {
