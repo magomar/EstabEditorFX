@@ -3,7 +3,6 @@ package net.deludobellico.commandops.estabeditor.controller;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
@@ -13,7 +12,7 @@ import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -193,7 +192,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     protected void addRangeToTable(ActionEvent actionEvent) {
         if (tableNewRangeValue.getText().isEmpty() || tableNewAccuracyValue.getText().isEmpty() || tableNewArmorPenetrationValue.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "Please, fill the empty fields", "", DialogAction.OK);
+            ViewUtil.showInfoDialog("Empty fields", "Please, fill the empty fields", "", DialogAction.OK);
         } else {
             // Prepare the new RangeItemModel
             RangeItemModel rangeItem = new RangeItemModel();
@@ -218,7 +217,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @FXML
     protected void removeRangeFromTable(ActionEvent actionEvent) {
         if (!rangeItemTableView.getSelectionModel().getSelectedItems().isEmpty()) {
-            DialogAction response = UtilView.showInfoDialog("Removing Range", "", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
+            DialogAction response = ViewUtil.showInfoDialog("Removing Range", "", "Are you sure you want to delete this range?", DialogAction.CANCEL, DialogAction.OK);
             if (response == DialogAction.OK) {
                 // Remove range from table and performance if the user said OK
                 RangeItemModel r = rangeItemTableView.getItems().remove(rangeItemTableView.getSelectionModel().getSelectedIndex());
@@ -239,7 +238,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel selectedAmmo = (AmmoModel) UtilView.showSearchDialog("Select ammo", getEstabEditorController().getEstabModel().getAmmo().values());
+            AmmoModel selectedAmmo = (AmmoModel) ViewUtil.showSearchDialog("Select ammo", getEstabEditorController().getEstabModel().getAmmo().values());
             // If the user didn't select any ammo, abort
             if (selectedAmmo != null) {
                 // Create new AmmoLoad with the ammo name and id
@@ -355,7 +354,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      */
     @FXML
     private void ammoSelectAction(ActionEvent actionEvent) {
-        AmmoModel ammo = (AmmoModel) UtilView.showSearchDialog("Select ammo",
+        AmmoModel ammo = (AmmoModel) ViewUtil.showSearchDialog("Select ammo",
                 getEstabEditorController().getEstabModel().getAmmo().values());
         if (ammo != null) {
             AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();

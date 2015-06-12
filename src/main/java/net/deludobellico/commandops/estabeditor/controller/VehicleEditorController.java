@@ -3,7 +3,6 @@ package net.deludobellico.commandops.estabeditor.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
@@ -13,7 +12,7 @@ import net.deludobellico.commandops.estabeditor.data.jaxb.Armament;
 import net.deludobellico.commandops.estabeditor.data.jaxb.VehicleType;
 import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.net.URL;
 import java.util.*;
@@ -185,7 +184,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
 
         if (armamentName.getText().isEmpty() || armamentQty.getText().isEmpty()) {
             // If one text field is empty, show dialog and abort
-            UtilView.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
+            ViewUtil.showInfoDialog("Empty fields", "", "Please, fill the empty fields", DialogAction.OK);
         } else {
             // Extract the WeaponModel we set when we selected the armament
             WeaponModel weapon = (WeaponModel) armamentName.getUserData();
@@ -206,7 +205,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
                 ArmamentModel aModel = new ArmamentModel(newArmament);
                 getActiveElement().getArmaments().add(aModel);
             } else {
-                UtilView.showInfoDialog("Repeated weapon", "", "The selected weapon is already included. Please, select another one.");
+                ViewUtil.showInfoDialog("Repeated weapon", "", "The selected weapon is already included. Please, select another one.");
             }
         }
     }
@@ -220,7 +219,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
      */
     @FXML
     private void armamentSelectAction(ActionEvent actionEvent) {
-        WeaponModel weapon = (WeaponModel) UtilView.showSearchDialog("Select weapon", getEstabEditorController().getEstabModel().getWeapons().values());
+        WeaponModel weapon = (WeaponModel) ViewUtil.showSearchDialog("Select weapon", getEstabEditorController().getEstabModel().getWeapons().values());
         if (weapon != null) {
             armamentName.setUserData(weapon);
             armamentName.setText(weapon.getName());

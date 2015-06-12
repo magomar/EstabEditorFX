@@ -14,7 +14,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 import net.deludobellico.commandops.estabeditor.model.GraphicalElementModel;
 import net.deludobellico.commandops.estabeditor.model.ImageModel;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.io.File;
 import java.net.URL;
@@ -70,7 +70,7 @@ public class ElementImageController implements Initializable {
 
         File initialDirectory = FileIO.getDatasetImageFolder(estabEditorController.getActiveFile());
         fileChooser.setInitialDirectory(initialDirectory);
-        File imageFile = fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
+        File imageFile = fileChooser.showOpenDialog(ViewUtil.ROOT_STAGE);
         if (null != imageFile) {
             imageFilename.setText(imageFile.getName());
             Image image = new Image(imageFile.toURI().toString());

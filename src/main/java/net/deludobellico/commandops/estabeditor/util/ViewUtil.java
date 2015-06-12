@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * Created by Heine on 10/24/2014.
  */
-public class UtilView {
+public class ViewUtil {
 
     public static final double WINDOW_WIDTH = 880;
     public static final double WINDOW_HEIGHT = 960;

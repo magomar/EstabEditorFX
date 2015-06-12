@@ -19,7 +19,7 @@ import net.deludobellico.commandops.estabeditor.model.*;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 import java.io.File;
 import java.net.URL;
@@ -328,7 +328,7 @@ public class MainController implements Initializable {
 
 
         fileChooser.getExtensionFilters().addAll(FileIO.EXTENSION_FILTERS);
-        File selectedFile = isSaving ? fileChooser.showSaveDialog(UtilView.ROOT_STAGE) : fileChooser.showOpenDialog(UtilView.ROOT_STAGE);
+        File selectedFile = isSaving ? fileChooser.showSaveDialog(ViewUtil.ROOT_STAGE) : fileChooser.showOpenDialog(ViewUtil.ROOT_STAGE);
         if (selectedFile != null)
             Settings.getInstance().setLastOpenedFolder(selectedFile.getParentFile().getAbsolutePath());
         return selectedFile;
@@ -350,7 +350,7 @@ public class MainController implements Initializable {
         if (initialDirectory == null || !initialDirectory.exists())
             initialDirectory = new File(System.getProperty("user.dir"));
         directoryChooser.setInitialDirectory(initialDirectory);
-        return directoryChooser.showDialog(UtilView.ROOT_STAGE);
+        return directoryChooser.showDialog(ViewUtil.ROOT_STAGE);
     }
 
     /**
@@ -364,7 +364,7 @@ public class MainController implements Initializable {
     private void openSource(File file) {
         LOG.log(Level.INFO, "Opening source file: " + file.getName());
         if (targetActiveEstabFile != null && targetActiveEstabFile.getPath().equals(file.getPath()))
-            UtilView.showInfoDialog("Warning", "This file is open for edition", file.getName() + " is being edited, inconsistencies may happen.");
+            ViewUtil.showInfoDialog("Warning", "This file is open for edition", file.getName() + " is being edited, inconsistencies may happen.");
         sourceActiveEstabFile = file;
         sourceIsClosed.set(false);
         sourcePaneController.setEstabModel(sourceActiveEstabFile);
@@ -389,7 +389,7 @@ public class MainController implements Initializable {
         LOG.log(Level.INFO, "Opening target file: " + file.getName());
         targetActiveEstabFile = file;
         if (sourceActiveEstabFile != null && sourceActiveEstabFile.getPath().equals(file.getPath()))
-            UtilView.showInfoDialog("Warning", "File is already open", "Changes in " + file.getName() + " might be lost.");
+            ViewUtil.showInfoDialog("Warning", "File is already open", "Changes in " + file.getName() + " might be lost.");
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetActiveEstabFile);
 
@@ -415,7 +415,7 @@ public class MainController implements Initializable {
         if (isNew) {
             DialogAction answer = DialogAction.OK;
             if (Settings.getNewFileCreated())
-                answer = UtilView.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
+                answer = ViewUtil.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
                 File f = FileIO.getOrCreateNewEstabFile();
                 if (f != null) {
@@ -590,7 +590,7 @@ public class MainController implements Initializable {
     @FXML
     private void createNewForceAction() {
         ForceModel forceModel = new ForceModel();
-        ServiceModel serviceModel = (ServiceModel) UtilView.showSearchDialog("Selected service", targetPaneController.getEstabModel().getServices().values());
+        ServiceModel serviceModel = (ServiceModel) ViewUtil.showSearchDialog("Selected service", targetPaneController.getEstabModel().getServices().values());
         if (serviceModel != null) {
             forceModel.setService(serviceModel);
             serviceModel.getForce().add((ForceModel) targetPaneController.createNewElement(forceModel));
@@ -606,7 +606,7 @@ public class MainController implements Initializable {
     @FXML
     private void createNewServiceAction() {
         ServiceModel serviceModel = new ServiceModel();
-        NationModel nationModel = (NationModel) UtilView.showSearchDialog("Select nation", targetPaneController.getEstabModel().getNations().values());
+        NationModel nationModel = (NationModel) ViewUtil.showSearchDialog("Select nation", targetPaneController.getEstabModel().getNations().values());
         if (nationModel != null) {
             serviceModel.setNation(nationModel);
             nationModel.getService().add((ServiceModel) targetPaneController.createNewElement(serviceModel));
@@ -622,7 +622,7 @@ public class MainController implements Initializable {
     @FXML
     private void createNewNationAction() {
         NationModel nationModel = new NationModel();
-        SideModel sideModel = (SideModel) UtilView.showSearchDialog("Select side", targetPaneController.getEstabModel().getSides().values());
+        SideModel sideModel = (SideModel) ViewUtil.showSearchDialog("Select side", targetPaneController.getEstabModel().getSides().values());
         if (sideModel != null) {
             nationModel.setSide(sideModel);
             sideModel.getNation().add((NationModel) targetPaneController.createNewElement(nationModel));
@@ -658,7 +658,7 @@ public class MainController implements Initializable {
     @FXML
     private void compareElementButtonAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
-            UtilView.showInfoDialog("Element comparison", "",
+            ViewUtil.showInfoDialog("Element comparison", "",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
                             sourcePaneController.getActiveElement().get().getId(),
                             targetPaneController.getActiveElement().get().getId(),

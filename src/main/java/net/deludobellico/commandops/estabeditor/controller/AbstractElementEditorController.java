@@ -1,5 +1,7 @@
 package net.deludobellico.commandops.estabeditor.controller;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
 import net.deludobellico.commandops.estabeditor.model.CommanderRanks;
 import net.deludobellico.commandops.estabeditor.model.ElementModel;
@@ -10,6 +12,7 @@ import net.deludobellico.commandops.estabeditor.model.ElementModel;
 public abstract class AbstractElementEditorController<T extends ElementModel> implements ElementEditorController<T>, Initializable {
     private EstabEditorController estabEditorController;
     private T activeElement;
+    private BooleanProperty isEditable = new SimpleBooleanProperty(false);
 
     @Override
     public T getActiveElement() {
@@ -32,9 +35,21 @@ public abstract class AbstractElementEditorController<T extends ElementModel> im
         return estabEditorController;
     }
 
+    @Override
+    public void setEditable(boolean isEditable) {
+        this.isEditable.set(isEditable);
+    }
 
     @Override
     public void clear() {
         if (null != activeElement) unbindProperties();
+    }
+
+    public boolean getIsEditable() {
+        return isEditable.get();
+    }
+
+    public BooleanProperty isEditableProperty() {
+        return isEditable;
     }
 }

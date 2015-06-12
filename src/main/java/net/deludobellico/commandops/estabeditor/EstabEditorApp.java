@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import net.deludobellico.commandops.estabeditor.util.FileIO;
 import net.deludobellico.commandops.estabeditor.util.Settings;
 import net.deludobellico.commandops.estabeditor.util.DialogAction;
-import net.deludobellico.commandops.estabeditor.util.UtilView;
+import net.deludobellico.commandops.estabeditor.util.ViewUtil;
 
 public class EstabEditorApp extends Application {
 
@@ -26,12 +26,12 @@ public class EstabEditorApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource(FileIO.ESTAB_EDITOR_VIEW));
 
         this.primaryStage = primaryStage;
-        UtilView.ROOT_STAGE = primaryStage;
+        ViewUtil.ROOT_STAGE = primaryStage;
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setMinWidth(UtilView.WINDOW_WIDTH);
-        primaryStage.setMinHeight(UtilView.WINDOW_HEIGHT);
-        primaryStage.setMaxHeight(UtilView.WINDOW_HEIGHT);
+        primaryStage.setMinWidth(ViewUtil.WINDOW_WIDTH);
+        primaryStage.setMinHeight(ViewUtil.WINDOW_HEIGHT);
+        primaryStage.setMaxHeight(ViewUtil.WINDOW_HEIGHT);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         try {
             primaryStage.setHeight(Settings.getInstance().getWindowHeight());
@@ -41,7 +41,7 @@ public class EstabEditorApp extends Application {
         }
         primaryStage.setOnCloseRequest(event -> {
             if (Settings.isNewFileCreated() && !Settings.isNewFileSaved()) {
-                DialogAction answer = UtilView.showInfoDialog("Unsaved new file detected", "", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
+                DialogAction answer = ViewUtil.showInfoDialog("Unsaved new file detected", "", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
                 if (answer != DialogAction.OK) {
                     event.consume();
                 }
