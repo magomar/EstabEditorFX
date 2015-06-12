@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -208,8 +209,9 @@
                                            <columnConstraints>
                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
                                                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+                                               <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="100.0" />
                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                            </columnConstraints>
                                            <rowConstraints>
                                                <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -219,21 +221,24 @@
                                            </rowConstraints>
                                            <children>
                                                <Label text="Symbol Color" />
-                                               <Label text="Designation Color" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                               <Label text="Background Main Color" GridPane.columnIndex="2" />
+                                               <Label text="Designation Color" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                               <Label text="Background Main Color" GridPane.columnIndex="3" />
                                                <Label text="Force Size Icon" GridPane.rowIndex="3" />
                                                <Label text="Picture Symbol" GridPane.rowIndex="2" />
                                                <Label text="Military Symbol" GridPane.rowIndex="1" />
-                                               <Label text="Background Light Color" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                               <Label text="Background Dark Color" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                               <Label text="Background Light Color" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                               <Label text="Background Dark Color" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                <ComboBox fx:id="pictureSymbol" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-                                               <ComboBox fx:id="forceSizeIcon" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                               <ComboBox fx:id="forceSizeSymbol" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
                                                <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="3" />
                                                <ComboBox fx:id="symbolColor" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
                                                <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                                <ComboBox fx:id="militarySymbol" prefWidth="190.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                    <ImageView fx:id="militarySymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <ImageView fx:id="pictureSymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <ImageView fx:id="forceSizeSymbolView" fitHeight="7.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                            </children>
                                        </GridPane>
                            </children>

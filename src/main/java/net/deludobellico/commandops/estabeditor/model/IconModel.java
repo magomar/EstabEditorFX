@@ -1,8 +1,16 @@
 package net.deludobellico.commandops.estabeditor.model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
-import net.deludobellico.commandops.estabeditor.data.jaxb.*;
+import net.deludobellico.commandops.estabeditor.data.jaxb.ForceSize;
+import net.deludobellico.commandops.estabeditor.data.jaxb.Icon;
+import net.deludobellico.commandops.estabeditor.data.jaxb.PictureSymbol;
+import net.deludobellico.commandops.estabeditor.data.jaxb.SymbolColor;
 
 /**
  * Model wrapper for the {@code Icon} class
@@ -20,6 +28,20 @@ public class IconModel implements PojoAdapter<Icon> {
     private final ObjectProperty<PictureSymbol> pictureSymbol = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSize> forceSizeIcon = new SimpleObjectProperty<>();
     private final BooleanProperty isHq = new SimpleBooleanProperty();
+    private static final int symbolWidth = 16;
+    private static final int symbolHeight = 10;
+    private static final int sizeSymbolWidth = 18;
+    private static final int sizeSymbolHeight = 7;
+    private static final int columns = 5;
+    private static Image militarySymbols;
+    private static Image pictureSymbols;
+    private static Image forceSizeSymbols;
+
+    static {
+        militarySymbols = new Image(MilitarySymbol.class.getClassLoader().getResourceAsStream("images/military-symbols.png"));
+        pictureSymbols = new Image(MilitarySymbol.class.getClassLoader().getResourceAsStream("images/picture-symbols.png"));
+        forceSizeSymbols = new Image(MilitarySymbol.class.getClassLoader().getResourceAsStream("images/force-size-symbols.png"));
+    }
 
     public IconModel(Icon pojo) {
         initialize(pojo);
@@ -258,5 +280,35 @@ public class IconModel implements PojoAdapter<Icon> {
         INFANTRY_GUN,
         MOTORIZED_INF_GUN,
         SP_INFANTRY_GUN;
+        private Image symbolImage;
+
+        public javafx.scene.image.Image getMilitarySymbol() {
+            if (null != symbolImage) return symbolImage;
+            else {
+                int i = ordinal() / columns;
+                int j = ordinal() % columns;
+                int x = j * (symbolWidth + 1);
+                int y = i * (symbolHeight + 1);
+                symbolImage = new WritableImage(militarySymbols.getPixelReader(), x, y, symbolWidth, symbolHeight);
+                return symbolImage;
+            }
+        }
     }
+
+    public static javafx.scene.image.Image getPictureSymbol(PictureSymbol pictureSymbol) {
+        int i = pictureSymbol.ordinal() / columns;
+        int j = pictureSymbol.ordinal() % columns;
+        int x = j * (symbolWidth + 1);
+        int y = i * (symbolHeight + 2);
+        return new WritableImage(pictureSymbols.getPixelReader(), x, y, symbolWidth, symbolHeight);
+    }
+
+    public static javafx.scene.image.Image getForceSizeSymbol(ForceSize forceSize) {
+        int i = (ForceSize.values().length - 1 - forceSize.ordinal()) / columns;
+        int j = (ForceSize.values().length - 1 - forceSize.ordinal()) % columns;
+        int x = j * (sizeSymbolWidth + 1);
+        int y = i * (sizeSymbolHeight + 1);
+        return new WritableImage(forceSizeSymbols.getPixelReader(), x, y, sizeSymbolWidth, sizeSymbolHeight);
+    }
+
 }

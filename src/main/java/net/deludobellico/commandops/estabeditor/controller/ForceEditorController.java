@@ -12,6 +12,7 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.IntegerStringConverter;
 import net.deludobellico.commandops.estabeditor.data.jaxb.*;
@@ -118,7 +119,13 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private ComboBox<PictureSymbol> pictureSymbol;
     @FXML
-    private ComboBox<ForceSize> forceSizeIcon;
+    private ComboBox<ForceSize> forceSizeSymbol;
+    @FXML
+    private ImageView militarySymbolView;
+    @FXML
+    private ImageView pictureSymbolView;
+    @FXML
+    private ImageView forceSizeSymbolView;
 
     //Right column
     @FXML
@@ -160,8 +167,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 
     private BooleanProperty isComposed = new SimpleBooleanProperty(false);
 
-    private BooleanProperty isEditable = new SimpleBooleanProperty(false);
-
     private final ChangeListener<RankModel> commanderRankListener = (observable, oldValue, newValue) -> {
         if (newValue != null)
             getActiveElement().setCommanderRank(newValue.getIndex());
@@ -194,7 +199,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                     for (EquipmentQtyModel equipmentQty : forceModel.getEquipmentList()) {
                         if (equipmentQties.containsKey(equipmentQty.getId())) {
                             EquipmentQtyModel target = equipmentQties.get(equipmentQty.getId());
-                            target.setQty(target.getQty() + equipmentQty.getQty()*qty);
+                            target.setQty(target.getQty() + equipmentQty.getQty() * qty);
                         } else {
                             EquipmentQtyModel target = new EquipmentQtyModel();
                             target.setId(equipmentQty.getId());
@@ -231,9 +236,10 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         forceSize.getItems().addAll(ForceSize.values());
         symbolColor.getItems().addAll(SymbolColor.values());
         pictureSymbol.getItems().addAll(PictureSymbol.values());
-        forceSizeIcon.getItems().addAll(ForceSize.values());
+        forceSizeSymbol.getItems().addAll(ForceSize.values());
         militarySymbol.getItems().addAll(IconModel.MilitarySymbol.values());
 
+        BooleanProperty isEditable = isEditableProperty();
         name.editableProperty().bind(isEditable);
         id.editableProperty().bind(isEditable);
         forceType.editableProperty().bind(isEditable);
@@ -266,7 +272,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         symbolColor.editableProperty().bind(isEditable);
         militarySymbol.editableProperty().bind(isEditable);
         pictureSymbol.editableProperty().bind(isEditable);
-        forceSizeIcon.editableProperty().bind(isEditable);
+        forceSizeSymbol.editableProperty().bind(isEditable);
         backgroundColorChooser.editableProperty().bind(isEditable);
         backgroundLightColorChooser.editableProperty().bind(isEditable);
         backgroundDarkColorChooser.editableProperty().bind(isEditable);
@@ -274,6 +280,16 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         subforceQty.editableProperty().bind(isEditable);
 
         compositionPane.disableProperty().bind(enableComposition.selectedProperty().not());
+
+        militarySymbol.valueProperty().addListener((observable, oldValue, newValue) -> {
+            militarySymbolView.setImage(newValue.getMilitarySymbol());
+        });
+        pictureSymbol.valueProperty().addListener((observable, oldValue, newValue) -> {
+            pictureSymbolView.setImage(IconModel.getPictureSymbol(newValue));
+        });
+        forceSizeSymbol.valueProperty().addListener((observable, oldValue, newValue) -> {
+            forceSizeSymbolView.setImage(IconModel.getForceSizeSymbol(newValue));
+        });
     }
 
     @FXML
@@ -375,14 +391,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     }
 
     @Override
-    public void setEditable(boolean isEditable) {
-
-        this.isEditable.set(isEditable);
-
-
-    }
-
-    @Override
     public void bindProperties() {
         ForceModel element = getActiveElement();
         name.textProperty().bindBidirectional(element.nameProperty());
@@ -416,7 +424,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         symbolColor.valueProperty().bindBidirectional(element.getIcon().symbolColorProperty());
         militarySymbol.valueProperty().bindBidirectional(element.getIcon().militarySymbolProperty());
         pictureSymbol.valueProperty().bindBidirectional(element.getIcon().pictureSymbolProperty());
-        forceSizeIcon.valueProperty().bindBidirectional(element.getIcon().forceSizeIconProperty());
+        forceSizeSymbol.valueProperty().bindBidirectional(element.getIcon().forceSizeIconProperty());
         backgroundColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundColorProperty());
         backgroundLightColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundLightColorProperty());
         backgroundDarkColorChooser.valueProperty().bindBidirectional(element.getIcon().backgroundDarkColorProperty());
