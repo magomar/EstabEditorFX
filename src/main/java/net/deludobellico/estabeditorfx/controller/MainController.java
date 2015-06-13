@@ -130,7 +130,7 @@ public class MainController implements Initializable {
      * Center region
      */
     @FXML
-    private ScrollPane estabsContainer;
+    private SplitPane estabsContainer;
     @FXML
     private TitledPane sourcePane;
     @FXML
@@ -156,7 +156,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         // The scroll pane will fit all the rootPane
-        estabsContainer.setFitToWidth(true);
+//        estabsContainer.setFitToWidth(true);
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);
@@ -210,7 +210,7 @@ public class MainController implements Initializable {
         targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
         sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
         targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
-        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
+//        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
     }
 
     private void bindProperties() {
@@ -252,7 +252,6 @@ public class MainController implements Initializable {
         toolBar.managedProperty().bind(toolBar.visibleProperty());
         sourcePane.managedProperty().bind(sourcePane.visibleProperty());
         targetPane.managedProperty().bind(targetPane.visibleProperty());
-
     }
 
     public void setAccelerators() {
@@ -550,16 +549,16 @@ public class MainController implements Initializable {
      * Swaps the estab panes orientation from Horizontal (left-to-right) to Vertical (top-to-bottom)
      */
     public void togglePanesContainer() {
-        if (estabsContainer.getContent() instanceof FlowPane) {
-            FlowPane flowPane = (FlowPane) estabsContainer.getContent();
-            if (flowPane.getOrientation() == Orientation.HORIZONTAL) {
-                flowPane.setOrientation(Orientation.VERTICAL);
-                Settings.getInstance().setVerticalPanes(true);
-            } else {
-                flowPane.setOrientation(Orientation.HORIZONTAL);
-                Settings.getInstance().setVerticalPanes(false);
-            }
-        }
+//        if (estabsContainer.getContent() instanceof FlowPane) {
+//            FlowPane flowPane = (FlowPane) estabsContainer.getContent();
+//            if (flowPane.getOrientation() == Orientation.HORIZONTAL) {
+//                flowPane.setOrientation(Orientation.VERTICAL);
+//                Settings.getInstance().setVerticalPanes(true);
+//            } else {
+//                flowPane.setOrientation(Orientation.HORIZONTAL);
+//                Settings.getInstance().setVerticalPanes(false);
+//            }
+//        }
     }
 
     /**

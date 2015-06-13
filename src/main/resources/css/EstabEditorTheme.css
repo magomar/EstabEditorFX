@@ -4,9 +4,20 @@
     -fx-padding: 5;
 }
 
+.estab-editor {
+
+}
+
+.search-box {
+    -fx-pref-width: 200;
+    -fx-pref-height: 600;
+}
+
 .element-editor {
+    -fx-min-width: 600;
+    -fx-min-height: 400;
     -fx-pref-width: 600;
-    -fx-pref-height: 400;
+    -fx-pref-height: 600;
     -fx-background-color: gainsboro;
 }
 

@@ -111,6 +111,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="Copy selected elements" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="removeElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#removeAction">
                             <graphic>
@@ -120,6 +123,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="Remove selected elements" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="saveDataButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#saveTargetAction">
                             <graphic>
@@ -129,6 +135,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="Save target" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="createNewForceButton" disable="true" layoutX="162.0" layoutY="10.0" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewForceAction">
                             <graphic>
@@ -138,6 +147,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="New force" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="createNewVehicleButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewVehicleAction">
                             <graphic>
@@ -147,6 +159,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="New vehicle" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="createNewWeaponButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewWeaponAction">
                             <graphic>
@@ -156,6 +171,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="New weapon" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="createNewAmmoButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewAmmoAction">
                             <graphic>
@@ -165,6 +183,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="New ammunition" />
+                     </tooltip>
                         </Button>
                         <Button fx:id="compareElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#compareElementButtonAction">
                             <graphic>
@@ -174,23 +195,55 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <tooltip>
+                        <Tooltip text="Compare source &amp; target" />
+                     </tooltip>
                         </Button>
+                  <Button maxHeight="Infinity" mnemonicParsing="false" onAction="#setTwoEstabsMode">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/two-estabs.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Show source &amp; target" />
+                     </tooltip>
+                  </Button>
+                  <Button maxHeight="Infinity" mnemonicParsing="false" onAction="#setTwoEstabs">
+                     <graphic>
+                        <ImageView onDragDetected="#setOneEstabMode" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/one-estab.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Only shows target" />
+                     </tooltip>
+                  </Button>
                     </items>
 
                 </ToolBar>
             </children>
         </VBox>
     </top>
-    <center>
-        <ScrollPane fx:id="estabsContainer" prefHeight="850.0" prefWidth="850.0">
-            <content>
-                <FlowPane>
-                    <children>
-                        <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
-                        <fx:include fx:id="targetPane" source="estab-editor.fxml" />
-                    </children>
-                </FlowPane>
-            </content>
-        </ScrollPane>
-    </center>
+   <right>
+   </right>
+   <center>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+          <AnchorPane>
+             <children>
+                  <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
+             </children> </AnchorPane>
+          <AnchorPane>
+             <children>
+                  <fx:include fx:id="targetPane" source="estab-editor.fxml" />
+             </children>
+            </AnchorPane>
+         </children>
+      </FlowPane>
+   </center>
 </BorderPane>

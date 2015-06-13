@@ -33,8 +33,8 @@ public class EstabEditorFXApp extends Application {
         primaryStage.setTitle("ESTAB Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(ViewUtil.WINDOW_WIDTH);
-        primaryStage.setMinHeight(ViewUtil.WINDOW_HEIGHT);
-        primaryStage.setMaxHeight(ViewUtil.WINDOW_HEIGHT);
+        primaryStage.setMinHeight(ViewUtil.WINDOW_HEIGHT-400);
+//        primaryStage.setMaxHeight(ViewUtil.WINDOW_HEIGHT);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         try {
             primaryStage.setHeight(Settings.getInstance().getWindowHeight());
