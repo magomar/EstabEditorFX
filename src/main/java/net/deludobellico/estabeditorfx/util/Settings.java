@@ -1,5 +1,8 @@
 package net.deludobellico.estabeditorfx.util;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
@@ -15,16 +18,11 @@ public class Settings {
     private static final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private static final Settings settings = new Settings();
     private static String lastOpenedFolder;
-    private static Double windowWidth = 1280.0;
-    private static Double windowHeight = 800.0;
-    private static Boolean visibleToolbar = true;
-    private static Boolean visibleSourcePanel = true;
-    private static Boolean visibleTargetPanel = true;
-    private static Boolean verticalPanes = true;
-    private static Boolean expandedSourcePane = true;
-    private static Boolean expandedTargetPane = true;
-    private static Boolean newFileCreated = false;
-    private static Boolean newFileSaved = false;
+    private static BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
+    private static BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
+    private static BooleanProperty visibleTargetPanel = new SimpleBooleanProperty(true);
+    private static BooleanProperty newFileCreated = new SimpleBooleanProperty(false);
+    private static BooleanProperty newFileSaved = new SimpleBooleanProperty(false);
 
     private Settings() {
     }
@@ -41,26 +39,6 @@ public class Settings {
         FileIO.loadSettings();
     }
 
-    public static boolean isNewFileSaved() {
-        return newFileSaved;
-    }
-
-    public static void setNewFileSaved(boolean newFileSaved) {
-        Settings.newFileSaved = newFileSaved;
-    }
-
-    public static boolean isNewFileCreated() {
-        return newFileCreated;
-    }
-
-    public static boolean getNewFileCreated() {
-        return newFileCreated;
-    }
-
-    public static void setNewFileCreated(boolean newFileCreated) {
-        Settings.newFileCreated = newFileCreated;
-    }
-
     @XmlElement(name = "source-recent-files")
     public List<String> getSourceRecentFiles() {
         return sourceRecentFiles;
@@ -71,76 +49,43 @@ public class Settings {
         return targetRecentFiles;
     }
 
-    @XmlElement(name = "window-width", required = true)
-    public Double getWindowWidth() {
-        return windowWidth;
-    }
-
-    public void setWindowWidth(Double windowWidth) {
-        Settings.windowWidth = windowWidth;
-    }
-
-    @XmlElement(name = "window-height", required = true)
-    public Double getWindowHeight() {
-        return windowHeight;
-    }
-
-    public void setWindowHeight(Double windowHeight) {
-        Settings.windowHeight = windowHeight;
-    }
-
     @XmlElement(name = "visible-toolbar")
     public Boolean getVisibleToolbar() {
+        return visibleToolbar.get();
+    }
+
+    public static BooleanProperty visibleToolbarProperty() {
         return visibleToolbar;
     }
 
     public void setVisibleToolbar(Boolean visibleToolbar) {
-        Settings.visibleToolbar = visibleToolbar;
+        Settings.visibleToolbar.set(visibleToolbar);
     }
 
     @XmlElement(name = "visible-source-panel")
     public Boolean getVisibleSourcePanel() {
+        return visibleSourcePanel.get();
+    }
+
+    public static BooleanProperty visibleSourcePanelProperty() {
         return visibleSourcePanel;
     }
 
     public void setVisibleSourcePanel(Boolean visibleSourcePanel) {
-        Settings.visibleSourcePanel = visibleSourcePanel;
+        Settings.visibleSourcePanel.set(visibleSourcePanel);
     }
 
     @XmlElement(name = "visible-target-panel")
     public Boolean getVisibleTargetPanel() {
+        return visibleTargetPanel.get();
+    }
+
+    public static BooleanProperty visibleTargetPanelProperty() {
         return visibleTargetPanel;
     }
 
     public void setVisibleTargetPanel(Boolean visibleTargetPanel) {
-        Settings.visibleTargetPanel = visibleTargetPanel;
-    }
-
-    @XmlElement(name = "vertical-panes")
-    public Boolean getVerticalPanes() {
-        return verticalPanes;
-    }
-
-    public void setVerticalPanes(Boolean verticalPanes) {
-        Settings.verticalPanes = verticalPanes;
-    }
-
-    @XmlElement(name = "expanded-source-pane")
-    public Boolean getExpandedSourcePane() {
-        return expandedSourcePane;
-    }
-
-    public void setExpandedSourcePane(Boolean expandedSourcePane) {
-        Settings.expandedSourcePane = expandedSourcePane;
-    }
-
-    @XmlElement(name = "expanded-target-pane")
-    public Boolean getExpandedTargetPane() {
-        return expandedTargetPane;
-    }
-
-    public void setExpandedTargetPane(Boolean expandedTargetPane) {
-        Settings.expandedTargetPane = expandedTargetPane;
+        Settings.visibleTargetPanel.set(visibleTargetPanel);
     }
 
     @XmlElement(name = "last-opened-folder")
@@ -150,5 +95,29 @@ public class Settings {
 
     public void setLastOpenedFolder(String lastOpenedFolder) {
         Settings.lastOpenedFolder = lastOpenedFolder;
+    }
+
+    public static boolean getNewFileCreated() {
+        return newFileCreated.get();
+    }
+
+    public static BooleanProperty newFileCreatedProperty() {
+        return newFileCreated;
+    }
+
+    public static void setNewFileCreated(boolean newFileCreated) {
+        Settings.newFileCreated.set(newFileCreated);
+    }
+
+    public static boolean getNewFileSaved() {
+        return newFileSaved.get();
+    }
+
+    public static BooleanProperty newFileSavedProperty() {
+        return newFileSaved;
+    }
+
+    public static void setNewFileSaved(boolean newFileSaved) {
+        Settings.newFileSaved.set(newFileSaved);
     }
 }

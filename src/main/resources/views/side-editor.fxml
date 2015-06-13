@@ -58,7 +58,7 @@
                                             </children>
                                         </GridPane>
 
-                                        <HBox styleClass="hbox">
+                                        <HBox>
                                             <children>
                                                 <VBox>
                                                     <children>

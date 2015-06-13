@@ -1,23 +1,32 @@
 .root {
     -fx-font-size: 9pt;
-    -fx-spacing: 5;
-    -fx-padding: 5;
 }
 
 .estab-editor {
-
+    /*-fx-min-width: 400;*/
+    /*-fx-min-height: 300;*/
+    /*-fx-pref-width: 820;*/
+    /*-fx-pref-height: 430;*/
+    -fx-background-color: gainsboro;
 }
 
 .search-box {
-    -fx-pref-width: 200;
-    -fx-pref-height: 600;
+    /*-fx-min-width: 150;*/
+    /*-fx-min-height: 200;*/
+    /*-fx-pref-width: 200;*/
+    /*-fx-pref-height: 400;*/
+    -fx-padding: 5,5,5,5;
+    -fx-spacing: 10;
+    -fx-background-color: gainsboro;
 }
 
 .element-editor {
-    -fx-min-width: 600;
-    -fx-min-height: 400;
-    -fx-pref-width: 600;
-    -fx-pref-height: 600;
+    /*-fx-min-width: 600;*/
+    /*-fx-min-height: 400;*/
+    /*-fx-pref-width: 600;*/
+    /*-fx-pref-height: 400;*/
+    -fx-padding: 5,5,5,5;
+    -fx-spacing: 0;
     -fx-background-color: gainsboro;
 }
 
@@ -26,8 +35,12 @@
     -fx-spacing: 10;
 }
 
+.estab-info {
+    -fx-padding: 10;
+    -fx-background-color: gainsboro;
+}
+
 .editor-tab {
-    -fx-spacing: 5;
     -fx-padding: 5;
     -fx-background-color: gainsboro;
 }
@@ -36,18 +49,6 @@
     -fx-spacing: 10;
     -fx-padding: 5;
     -fx-pref-height: 150;
-}
-
-.hbox {
-    -fx-spacing: 5;
-    -fx-padding: 5;
-    -fx-background-color: gainsboro;
-}
-
-.vbox {
-    -fx-spacing: 5;
-    -fx-padding: 5;
-    -fx-background-color: gainsboro;
 }
 
 .data-grid {

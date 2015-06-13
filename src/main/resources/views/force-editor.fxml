@@ -254,12 +254,12 @@
                      <content>
                         <VBox styleClass="editor-tab">
                            <children>
-                              <HBox styleClass="hbox">
+                              <HBox>
                                  <children>
                                     <CheckBox fx:id="enableComposition" mnemonicParsing="false" text="Build the force by composition" />
                                  </children>
                               </HBox>
-                              <VBox fx:id="compositionPane" styleClass="vbox">
+                              <VBox fx:id="compositionPane">
                                  <children>
                                     <GridPane styleClass="icon-grid" VBox.vgrow="ALWAYS">
                                        <children>

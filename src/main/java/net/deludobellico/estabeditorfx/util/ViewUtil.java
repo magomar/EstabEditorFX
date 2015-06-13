@@ -1,11 +1,10 @@
 package net.deludobellico.estabeditorfx.util;
 
 import javafx.stage.Stage;
-import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.controller.CopyRemoveDialogController;
 import net.deludobellico.estabeditorfx.controller.InfoDialogController;
 import net.deludobellico.estabeditorfx.controller.SearchDialogController;
-import net.deludobellico.estabeditorfx.controller.SearchDialogController;
+import net.deludobellico.estabeditorfx.model.ElementModel;
 
 import java.util.Collection;
 
@@ -15,8 +14,9 @@ import java.util.Collection;
  */
 public class ViewUtil {
 
-    public static final double WINDOW_WIDTH = 880;
-    public static final double WINDOW_HEIGHT = 960;
+    public static final double WINDOW_WIDTH = 834;
+    public static final double WINDOW_HEIGHT = 948;
+    public static final double WINDOW_MIN_HEIGHT = 531;
     public static final String TEXT_STYLE_COPY = "-fx-text-fill: blue;";
     public static final String TEXT_STYLE_REMOVE = "-fx-text-fill: red;";
     public static final String TEXT_STYLE_NEW = "-fx-text-fill: green;";

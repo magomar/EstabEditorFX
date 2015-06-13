@@ -7,93 +7,109 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane fx:id="estabPane" animated="false" collapsible="false" styleClass="estab-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.EstabEditorController">
-    <content>
-      <HBox styleClass="hbox">
+
+<AnchorPane stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.EstabEditorController">
+   <children>
+      <VBox prefHeight="417.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox styleClass="search-box">
+            <HBox fx:id="e" styleClass="estab-info">
                <children>
-                  <HBox alignment="CENTER" styleClass="hbox">
-                     <children>
-                                <ToggleButton fx:id="forceButton" disable="true" mnemonicParsing="false" onAction="#searchForce">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/force.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </ToggleButton>
-                                <ToggleButton fx:id="vehicleButton" disable="true" mnemonicParsing="false" onAction="#searchVehicle">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/vehicle.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </ToggleButton>
-                                <ToggleButton fx:id="weaponButton" disable="true" mnemonicParsing="false" onAction="#searchWeapon">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/weapon.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </ToggleButton>
-                                <ToggleButton fx:id="ammoButton" disable="true" mnemonicParsing="false" onAction="#searchAmmo">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/ammo.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </ToggleButton>
-                     </children>
-                  </HBox>
-                        <HBox alignment="CENTER" fillHeight="false" styleClass="hbox">
-                            <children>
-                                <TextField fx:id="searchTextField" promptText="Search" HBox.hgrow="ALWAYS" />
-                            </children>
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                        </HBox>
-                  <HBox alignment="CENTER" styleClass="hbox">
-                     <children>
-                                <CheckBox fx:id="selectAllListCheckBox" mnemonicParsing="false" prefWidth="150.0" text="Select all" HBox.hgrow="ALWAYS" />
-                                <Button fx:id="removeSelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeSelectedItems" prefWidth="30.0">
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/remove.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements" prefWidth="28.0">
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/copy.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                     </children>
-                  </HBox>
-                        <StackPane styleClass="vbox" VBox.vgrow="ALWAYS">
-                            <children>
-                                <ListView fx:id="searchResultsListView" />
-                                <TreeView fx:id="searchResultsTreeView" />
-                            </children>
-                        </StackPane>
+                  <Label fx:id="estabInfo" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" text="Estab info" HBox.hgrow="ALWAYS" />
                </children>
-            </VBox>
-                <AnchorPane fx:id="editorPane" styleClass="element-editor" HBox.hgrow="ALWAYS" />
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox>
+               <children>
+                  <VBox styleClass="search-box" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                                      <ToggleButton fx:id="forceButton" disable="true" mnemonicParsing="false" onAction="#searchForce">
+                                          <graphic>
+                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/force.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </ToggleButton>
+                                      <ToggleButton fx:id="vehicleButton" disable="true" mnemonicParsing="false" onAction="#searchVehicle">
+                                          <graphic>
+                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/vehicle.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </ToggleButton>
+                                      <ToggleButton fx:id="weaponButton" disable="true" mnemonicParsing="false" onAction="#searchWeapon">
+                                          <graphic>
+                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/weapon.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </ToggleButton>
+                                      <ToggleButton fx:id="ammoButton" disable="true" mnemonicParsing="false" onAction="#searchAmmo">
+                                          <graphic>
+                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/ammo.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </ToggleButton>
+                           </children>
+                        </HBox>
+                              <HBox alignment="CENTER" fillHeight="false">
+                                  <children>
+                                      <TextField fx:id="searchTextField" promptText="Search" HBox.hgrow="ALWAYS" />
+                                  </children>
+                                  <VBox.margin>
+                                      <Insets />
+                                  </VBox.margin>
+                              </HBox>
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                                      <CheckBox fx:id="selectAllListCheckBox" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Select all" HBox.hgrow="ALWAYS" />
+                                      <Button fx:id="removeSelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeSelectedItems" prefWidth="30.0">
+                                          <graphic>
+                                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/remove.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </Button>
+                                      <Button fx:id="copySelectedButton" disable="true" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copySelectedElements" prefWidth="28.0">
+                                          <graphic>
+                                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/copy.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </Button>
+                           </children>
+                        </HBox>
+                              <StackPane>
+                                  <children>
+                                      <ListView fx:id="searchResultsListView" />
+                                      <TreeView fx:id="searchResultsTreeView" />
+                                  </children>
+                              </StackPane>
+                     </children>
+                  </VBox>
+                      <AnchorPane fx:id="editorPane" styleClass="element-editor" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
-    </content>
-</TitledPane>
+      </VBox>
+   </children>
+</AnchorPane>

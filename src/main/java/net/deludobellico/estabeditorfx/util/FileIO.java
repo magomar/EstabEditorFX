@@ -42,7 +42,7 @@ public class FileIO {
     private static final String DATASET_IMAGE_FOLDER_INDEX = "index";
     //Views
     private static final String VIEWS_FOLDER = "/views";
-    public static final String ESTAB_EDITOR_VIEW = VIEWS_FOLDER + "/main.fxml";
+    public static final String MAIN_VIEW = VIEWS_FOLDER + "/main.fxml";
     public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor.fxml";
     public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor.fxml";
     public static final String WEAPON_VIEW = VIEWS_FOLDER + "/weapon-editor.fxml";

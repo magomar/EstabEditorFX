@@ -7,21 +7,18 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.FileIO;
-import net.deludobellico.estabeditorfx.util.Settings;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
+import javafx.stage.Stage;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
+import net.deludobellico.estabeditorfx.util.Settings;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.File;
@@ -45,8 +42,7 @@ public class MainController implements Initializable {
     private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
     private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
     private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
-    private final ObjectProperty<ServiceModel> serviceModel = new SimpleObjectProperty<>();
-
+    private final BooleanProperty horizontalLayout = new SimpleBooleanProperty(false);
     /**
      * Top region: Menu bar
      */
@@ -130,22 +126,22 @@ public class MainController implements Initializable {
      * Center region
      */
     @FXML
-    private SplitPane estabsContainer;
+    private Node sourcePane;
     @FXML
-    private TitledPane sourcePane;
-    @FXML
-    private TitledPane targetPane;
+    private Node targetPane;
     @FXML
     private EstabEditorController sourcePaneController;
     @FXML
     private EstabEditorController targetPaneController;
+
     /**
      * Other
      */
     // Opened files by estab editors
     private File sourceActiveEstabFile;
     private File targetActiveEstabFile;
-
+    // primary stage
+    private Stage primaryStage;
     /**
      * Sets listeners, binds properties and loads user settings
      *
@@ -155,15 +151,13 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // The scroll pane will fit all the rootPane
-//        estabsContainer.setFitToWidth(true);
+        primaryStage = ViewUtil.ROOT_STAGE;
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);
         sourcePaneController.init("Source Estab", false, this);
 
         addListeners();
-        loadSettings();
         bindProperties();
         setAccelerators();
         // Populate recent opened files
@@ -193,27 +187,19 @@ public class MainController implements Initializable {
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
         // Save the panes status in the settings
-        sourcePane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedSourcePane(sourcePane.isExpanded()));
-        targetPane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedTargetPane(targetPane.isExpanded()));
 
 
-    }
 
-    private void loadSettings() {
-        // If settings were loaded, set them
-        toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
-        sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
-        targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
-
-        toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
-        sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
-        targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
-        sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
-        targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
-//        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
     }
 
     private void bindProperties() {
+        toolbarRadioItem.selectedProperty().bindBidirectional(Settings.visibleToolbarProperty());
+        sourceRadioItem.selectedProperty().bindBidirectional(Settings.visibleSourcePanelProperty());
+        targetRadioItem.selectedProperty().bindBidirectional(Settings.visibleTargetPanelProperty());
+        toolBar.visibleProperty().bindBidirectional(Settings.visibleToolbarProperty());
+        sourcePane.visibleProperty().bindBidirectional(Settings.visibleSourcePanelProperty());
+        targetPane.visibleProperty().bindBidirectional(Settings.visibleTargetPanelProperty());
+
 
         copyElementButton.disableProperty().bindBidirectional(disableCopy);
         copyMenuItem.disableProperty().bindBidirectional(disableCopy);
@@ -376,7 +362,7 @@ public class MainController implements Initializable {
             disableCopy.set(false);
         else disableCopy.set(true);
 
-        sourcePane.expandedProperty().set(true);
+        sourcePane.setVisible(true);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
     }
@@ -398,7 +384,7 @@ public class MainController implements Initializable {
         if (sourcePaneController.getActiveElement().get() != null) disableCopy.set(false);
         else disableCopy.set(true);
 
-        targetPane.expandedProperty().set(true);
+        targetPane.setVisible(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentTargetMenu();
     }
@@ -503,7 +489,7 @@ public class MainController implements Initializable {
 
         disableCopy.set(true);
         sourceIsClosed.set(true);
-        sourcePane.expandedProperty().set(false);
+        sourcePane.setVisible(false);
     }
 
     /**
@@ -517,48 +503,10 @@ public class MainController implements Initializable {
         targetPaneController.clear();
         targetActiveEstabFile = null;
 
-
         disableCopy.set(true);
         targetIsClosed.set(true);
-        targetPane.expandedProperty().set(false);
+        targetPane.setVisible(false);
         removeElementButton.setDisable(true);
-    }
-
-    @FXML
-    public void toggleToolBarVisibility() {
-        boolean isVisible = !toolBar.isVisible();
-        toolBar.setVisible(isVisible);
-        Settings.getInstance().setVisibleToolbar(isVisible);
-    }
-
-    @FXML
-    public void toggleSourcePaneVisibility() {
-        boolean isVisible = !sourcePane.isVisible();
-        sourcePane.setVisible(isVisible);
-        Settings.getInstance().setVisibleSourcePanel(isVisible);
-    }
-
-    @FXML
-    public void toggleTargetPaneVisibility() {
-        boolean isVisible = !targetPane.isVisible();
-        targetPane.setVisible(isVisible);
-        Settings.getInstance().setVisibleTargetPanel(isVisible);
-    }
-
-    /**
-     * Swaps the estab panes orientation from Horizontal (left-to-right) to Vertical (top-to-bottom)
-     */
-    public void togglePanesContainer() {
-//        if (estabsContainer.getContent() instanceof FlowPane) {
-//            FlowPane flowPane = (FlowPane) estabsContainer.getContent();
-//            if (flowPane.getOrientation() == Orientation.HORIZONTAL) {
-//                flowPane.setOrientation(Orientation.VERTICAL);
-//                Settings.getInstance().setVerticalPanes(true);
-//            } else {
-//                flowPane.setOrientation(Orientation.HORIZONTAL);
-//                Settings.getInstance().setVerticalPanes(false);
-//            }
-//        }
     }
 
     /**
@@ -655,6 +603,18 @@ public class MainController implements Initializable {
     @FXML
     private void createNewAmmoAction() {
         targetPaneController.createNewElement(new AmmoModel());
+    }
+
+    @FXML
+    private void setTwoEstabsModeAction() {
+        sourcePane.setVisible(true);
+        targetPane.setVisible(true);
+    }
+
+    @FXML
+    private void setOneEstabModeAction() {
+        sourcePane.setVisible(false);
+        targetPane.setVisible(true);
     }
 
     @FXML

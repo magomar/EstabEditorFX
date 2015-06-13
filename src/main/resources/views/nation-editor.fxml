@@ -39,7 +39,7 @@
                                  </children>
                               </HBox>
 
-                                        <HBox styleClass="hbox">
+                                        <HBox>
                                             <children>
                                                 <VBox styleClass="element-editor-tab">
                                                     <children>

@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -53,7 +54,8 @@ public class EstabEditorController implements Initializable {
     }});
 
     @FXML
-    private TitledPane estabPane;
+    private Label estabInfo;
+
     /**
      * Where the element editors are loaded
      */
@@ -602,7 +604,7 @@ public class EstabEditorController implements Initializable {
             String filename = activeFile == null ? "" : activeFile.getName();
             title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
         }
-        estabPane.setText(title);
+        estabInfo.setText(title);
     }
 
     /**
