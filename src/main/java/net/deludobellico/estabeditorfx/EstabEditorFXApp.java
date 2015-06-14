@@ -6,13 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import net.deludobellico.estabeditorfx.controller.MainController;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.Settings;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
-
-import java.awt.*;
 
 public class EstabEditorFXApp extends Application {
 
@@ -26,7 +23,7 @@ public class EstabEditorFXApp extends Application {
     public void start(Stage primaryStage) throws Exception {
 //        this.primaryStage = primaryStage;
         ViewUtil.ROOT_STAGE = primaryStage;
-        Settings.load();
+        Settings.getInstance().load();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource(FileIO.MAIN_VIEW));
         primaryStage.setTitle("Estab Editor FX");
@@ -34,7 +31,7 @@ public class EstabEditorFXApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         primaryStage.setOnCloseRequest(event -> {
-            if (Settings.getNewFileCreated() && !Settings.getNewFileSaved()) {
+            if (Settings.getInstance().getNewFileCreated() && !Settings.getInstance().getNewFileSaved()) {
                 DialogAction answer = ViewUtil.showInfoDialog("Unsaved new file detected", "", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);
                 if (answer != DialogAction.OK) {
                     event.consume();
@@ -43,7 +40,7 @@ public class EstabEditorFXApp extends Application {
         });
         primaryStage.show();
         System.out.println("Window width: " + primaryStage.getWidth());
-        System.out.println("Window height: "+ primaryStage.getHeight());
+        System.out.println("Window height: " + primaryStage.getHeight());
 
     }
 
@@ -53,6 +50,6 @@ public class EstabEditorFXApp extends Application {
         // If a new file was created, delete it.
         //noinspection ResultOfMethodCallIgnored
         FileIO.getNewEstabPath().toFile().delete();
-        Settings.save();
+        Settings.getInstance().save();
     }
 }

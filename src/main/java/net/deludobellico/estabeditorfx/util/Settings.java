@@ -3,8 +3,10 @@ package net.deludobellico.estabeditorfx.util;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -14,15 +16,24 @@ import java.util.List;
 public class Settings {
 
     private static final Integer MAX_RECENT_FILES = 4;
-    private static final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static final Settings settings = new Settings();
-    private static String lastOpenedFolder;
-    private static BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
-    private static BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
-    private static BooleanProperty visibleTargetPanel = new SimpleBooleanProperty(true);
-    private static BooleanProperty newFileCreated = new SimpleBooleanProperty(false);
-    private static BooleanProperty newFileSaved = new SimpleBooleanProperty(false);
+    private final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private final static Settings settings = new Settings();
+    private String lastOpenedFolder;
+    private BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
+    private BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
+    private BooleanProperty visibleTargetPanel = new SimpleBooleanProperty(true);
+    private BooleanProperty newFileCreated = new SimpleBooleanProperty(false);
+    private BooleanProperty newFileSaved = new SimpleBooleanProperty(false);
+    private static JAXBFactory JAXB_SETTINGS;
+
+    static {
+        try {
+            JAXB_SETTINGS = new JAXBFactory(Settings.class);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
 
     private Settings() {
     }
@@ -31,12 +42,20 @@ public class Settings {
         return settings;
     }
 
-    public static void save() {
-        FileIO.saveSettings();
+    /**
+     * Loads settings from file. Creates a new one if it doesn't exist.
+     */
+    public void load() {
+        File file = new File(FileIO.getClientSettingsPath().toAbsolutePath().toString());
+        if (!file.exists()) return; // Loading default settings
+        JAXB_SETTINGS.unmarshallXML(file);
     }
 
-    public static void load() {
-        FileIO.loadSettings();
+    /**
+     * Saves settings to disk. Creates a new settings file if it doesn't exist.
+     */
+    public void save() {
+        JAXB_SETTINGS.marshallXML(this, FileIO.getFileOrCreateNew(FileIO.getClientSettingsPath().toAbsolutePath().toString()));
     }
 
     @XmlElement(name = "source-recent-files")
@@ -54,12 +73,12 @@ public class Settings {
         return visibleToolbar.get();
     }
 
-    public static BooleanProperty visibleToolbarProperty() {
+    public BooleanProperty visibleToolbarProperty() {
         return visibleToolbar;
     }
 
     public void setVisibleToolbar(Boolean visibleToolbar) {
-        Settings.visibleToolbar.set(visibleToolbar);
+        this.visibleToolbar.set(visibleToolbar);
     }
 
     @XmlElement(name = "visible-source-panel")
@@ -67,12 +86,12 @@ public class Settings {
         return visibleSourcePanel.get();
     }
 
-    public static BooleanProperty visibleSourcePanelProperty() {
+    public BooleanProperty visibleSourcePanelProperty() {
         return visibleSourcePanel;
     }
 
     public void setVisibleSourcePanel(Boolean visibleSourcePanel) {
-        Settings.visibleSourcePanel.set(visibleSourcePanel);
+        this.visibleSourcePanel.set(visibleSourcePanel);
     }
 
     @XmlElement(name = "visible-target-panel")
@@ -80,12 +99,12 @@ public class Settings {
         return visibleTargetPanel.get();
     }
 
-    public static BooleanProperty visibleTargetPanelProperty() {
+    public BooleanProperty visibleTargetPanelProperty() {
         return visibleTargetPanel;
     }
 
     public void setVisibleTargetPanel(Boolean visibleTargetPanel) {
-        Settings.visibleTargetPanel.set(visibleTargetPanel);
+        this.visibleTargetPanel.set(visibleTargetPanel);
     }
 
     @XmlElement(name = "last-opened-folder")
@@ -94,30 +113,30 @@ public class Settings {
     }
 
     public void setLastOpenedFolder(String lastOpenedFolder) {
-        Settings.lastOpenedFolder = lastOpenedFolder;
+        this.lastOpenedFolder = lastOpenedFolder;
     }
 
-    public static boolean getNewFileCreated() {
+    public boolean getNewFileCreated() {
         return newFileCreated.get();
     }
 
-    public static BooleanProperty newFileCreatedProperty() {
+    public BooleanProperty newFileCreatedProperty() {
         return newFileCreated;
     }
 
-    public static void setNewFileCreated(boolean newFileCreated) {
-        Settings.newFileCreated.set(newFileCreated);
+    public void setNewFileCreated(boolean newFileCreated) {
+        this.newFileCreated.set(newFileCreated);
     }
 
-    public static boolean getNewFileSaved() {
+    public boolean getNewFileSaved() {
         return newFileSaved.get();
     }
 
-    public static BooleanProperty newFileSavedProperty() {
+    public BooleanProperty newFileSavedProperty() {
         return newFileSaved;
     }
 
-    public static void setNewFileSaved(boolean newFileSaved) {
-        Settings.newFileSaved.set(newFileSaved);
+    public void setNewFileSaved(boolean newFileSaved) {
+        this.newFileSaved.set(newFileSaved);
     }
 }

@@ -64,12 +64,10 @@ public class FileIO {
      * Saved JAXB contexts for POJO classes and the Settings file
      */
     private static JAXBFactory JAXB_POJO;
-    private static JAXBFactory JAXB_SETTINGS;
 
     static {
         try {
             JAXB_POJO = new JAXBFactory("net.deludobellico.estabeditorfx.data.jaxb");
-            JAXB_SETTINGS = new JAXBFactory(Settings.class);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -284,19 +282,4 @@ public class FileIO {
         return FileSystems.getDefault().getPath(System.getProperty("user.home"), CLIENT_SETTINGS_FILE_PATH);
     }
 
-    /**
-     * Loads the settings file. Creates a new one if it doesn't exist.
-     */
-    public static void loadSettings() {
-        File file = new File(FileIO.getClientSettingsPath().toString());
-        if (!file.exists()) return; // Loading default settings
-        JAXB_SETTINGS.unmarshallXML(file);
-    }
-
-    /**
-     * Saves settings to disk. Creates a new settings file if it doesn't exist.
-     */
-    public static void saveSettings() {
-        JAXB_SETTINGS.marshallXML(Settings.getInstance(), getFileOrCreateNew(getClientSettingsPath().toAbsolutePath().toString()));
-    }
 }

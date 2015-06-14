@@ -1,9 +1,7 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +40,6 @@ public class MainController implements Initializable {
     private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
     private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
     private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
-    private final BooleanProperty horizontalLayout = new SimpleBooleanProperty(false);
     /**
      * Top region: Menu bar
      */
@@ -142,6 +139,7 @@ public class MainController implements Initializable {
     private File targetActiveEstabFile;
     // primary stage
     private Stage primaryStage;
+
     /**
      * Sets listeners, binds properties and loads user settings
      *
@@ -186,19 +184,18 @@ public class MainController implements Initializable {
         sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
-        // Save the panes status in the settings
-
-
 
     }
 
     private void bindProperties() {
-        toolbarRadioItem.selectedProperty().bindBidirectional(Settings.visibleToolbarProperty());
-        sourceRadioItem.selectedProperty().bindBidirectional(Settings.visibleSourcePanelProperty());
-        targetRadioItem.selectedProperty().bindBidirectional(Settings.visibleTargetPanelProperty());
-        toolBar.visibleProperty().bindBidirectional(Settings.visibleToolbarProperty());
-        sourcePane.visibleProperty().bindBidirectional(Settings.visibleSourcePanelProperty());
-        targetPane.visibleProperty().bindBidirectional(Settings.visibleTargetPanelProperty());
+        Settings settings = Settings.getInstance();
+
+        toolbarRadioItem.selectedProperty().bindBidirectional(settings.visibleToolbarProperty());
+        sourceRadioItem.selectedProperty().bindBidirectional(settings.visibleSourcePanelProperty());
+        targetRadioItem.selectedProperty().bindBidirectional(settings.visibleTargetPanelProperty());
+        toolBar.visibleProperty().bindBidirectional(settings.visibleToolbarProperty());
+        sourcePane.visibleProperty().bindBidirectional(settings.visibleSourcePanelProperty());
+        targetPane.visibleProperty().bindBidirectional(settings.visibleTargetPanelProperty());
 
 
         copyElementButton.disableProperty().bindBidirectional(disableCopy);
@@ -401,15 +398,16 @@ public class MainController implements Initializable {
         boolean isSource = ((MenuItem) actionEvent.getSource()).getParentMenu().getText().toLowerCase().contains("source");
         boolean isNew = ((MenuItem) actionEvent.getSource()).getText().toLowerCase().contains("new");
         if (isNew) {
+            Settings settings = Settings.getInstance();
             DialogAction answer = DialogAction.OK;
-            if (Settings.getNewFileCreated())
+            if (settings.getNewFileCreated())
                 answer = ViewUtil.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
                 File f = FileIO.getOrCreateNewEstabFile();
                 if (f != null) {
                     openTarget(f);
-                    Settings.setNewFileCreated(true);
-                    Settings.setNewFileSaved(false);
+                    settings.setNewFileCreated(true);
+                    settings.setNewFileSaved(false);
                 }
             }
         } else {
@@ -429,8 +427,8 @@ public class MainController implements Initializable {
     public void saveTargetAction() {
         if (targetActiveEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
             if (saveTargetAsAction() != null) {
-                Settings.setNewFileSaved(true);
-                Settings.setNewFileCreated(false);
+                Settings.getInstance().setNewFileSaved(true);
+                Settings.getInstance().setNewFileCreated(false);
             }
 
         } else {
