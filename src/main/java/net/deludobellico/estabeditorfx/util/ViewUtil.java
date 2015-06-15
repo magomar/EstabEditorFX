@@ -14,9 +14,9 @@ import java.util.Collection;
  */
 public class ViewUtil {
 
-    public static final double WINDOW_WIDTH = 834;
-    public static final double WINDOW_HEIGHT = 948;
-    public static final double WINDOW_MIN_HEIGHT = 531;
+    public static final double MAIN_VIEW_WIDTH = 834;
+    public static final double MAIN_VIEW_HEIGHT = 948;
+    public static final double ESTAB_EDITOR_VIEW_HEIGHT = 531;
     public static final String TEXT_STYLE_COPY = "-fx-text-fill: blue;";
     public static final String TEXT_STYLE_REMOVE = "-fx-text-fill: red;";
     public static final String TEXT_STYLE_NEW = "-fx-text-fill: green;";

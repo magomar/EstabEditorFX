@@ -2,6 +2,7 @@ package net.deludobellico.estabeditorfx.util;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.ObservableList;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,7 +19,7 @@ public class Settings {
     private static final Integer MAX_RECENT_FILES = 4;
     private final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private final static Settings settings = new Settings();
+    private static Settings SETTINGS = new Settings();
     private String lastOpenedFolder;
     private BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
     private BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
@@ -39,20 +40,20 @@ public class Settings {
     }
 
     public static Settings getInstance() {
-        return settings;
+        return SETTINGS;
     }
 
     /**
-     * Loads settings from file. Creates a new one if it doesn't exist.
+     * Loads SETTINGS from file. Creates a new one if it doesn't exist.
      */
     public void load() {
         File file = new File(FileIO.getClientSettingsPath().toAbsolutePath().toString());
-        if (!file.exists()) return; // Loading default settings
-        JAXB_SETTINGS.unmarshallXML(file);
+        if (!file.exists()) return; // Loading default SETTINGS
+        SETTINGS = (Settings) JAXB_SETTINGS.unmarshallXML(file);
     }
 
     /**
-     * Saves settings to disk. Creates a new settings file if it doesn't exist.
+     * Saves SETTINGS to disk. Creates a new SETTINGS file if it doesn't exist.
      */
     public void save() {
         JAXB_SETTINGS.marshallXML(this, FileIO.getFileOrCreateNew(FileIO.getClientSettingsPath().toAbsolutePath().toString()));

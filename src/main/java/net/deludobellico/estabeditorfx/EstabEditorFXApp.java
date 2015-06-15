@@ -29,6 +29,7 @@ public class EstabEditorFXApp extends Application {
         primaryStage.setTitle("Estab Editor FX");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         primaryStage.setOnCloseRequest(event -> {
             if (Settings.getInstance().getNewFileCreated() && !Settings.getInstance().getNewFileSaved()) {
@@ -39,8 +40,8 @@ public class EstabEditorFXApp extends Application {
             }
         });
         primaryStage.show();
-        System.out.println("Window width: " + primaryStage.getWidth());
-        System.out.println("Window height: " + primaryStage.getHeight());
+        System.out.println("Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+        System.out.println("Scene dimension: " + scene.getWidth() + " x " + scene.getHeight());
 
     }
 

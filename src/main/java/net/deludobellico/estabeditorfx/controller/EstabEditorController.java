@@ -732,6 +732,10 @@ public class EstabEditorController implements Initializable {
         return searchDisable;
     }
 
+    public AnchorPane getEditorPane() {
+        return editorPane;
+    }
+
     public class ElementListCell extends HBox {
 
         private ElementModel elementModel;

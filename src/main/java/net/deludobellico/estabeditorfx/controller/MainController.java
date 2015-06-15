@@ -35,11 +35,6 @@ import java.util.logging.Logger;
  * @author Heine
  */
 public class MainController implements Initializable {
-    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
-    // Buttons and other components are enabled/disabled based on these properties
-    private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
-    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
-    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
     /**
      * Top region: Menu bar
      */
@@ -104,10 +99,6 @@ public class MainController implements Initializable {
     @FXML
     private ToolBar toolBar;
     @FXML
-    private Button copyElementButton;
-    @FXML
-    private Button removeElementButton;
-    @FXML
     private Button saveDataButton;
     @FXML
     private Button createNewForceButton;
@@ -134,11 +125,18 @@ public class MainController implements Initializable {
     /**
      * Other
      */
+    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
+    // Buttons and other components are enabled/disabled based on these properties
+    private final BooleanProperty copyIsDisabled = new SimpleBooleanProperty(true);
+    private final BooleanProperty removeIsDisabled = new SimpleBooleanProperty(true);
+    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
+    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
     // Opened files by estab editors
     private File sourceActiveEstabFile;
     private File targetActiveEstabFile;
     // primary stage
     private Stage primaryStage;
+    private double estabEditorHeight;
 
     /**
      * Sets listeners, binds properties and loads user settings
@@ -150,13 +148,14 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         primaryStage = ViewUtil.ROOT_STAGE;
+        estabEditorHeight = sourcePaneController.getEditorPane().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);
         sourcePaneController.init("Source Estab", false, this);
 
-        addListeners();
         bindProperties();
+        addListeners();
         setAccelerators();
         // Populate recent opened files
         populateOpenRecentSourceMenu();
@@ -168,14 +167,15 @@ public class MainController implements Initializable {
         // Enable copy if there's a target file and a selected element on the source search list
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
-                    if (!targetIsClosed.get() && newValue != null) disableCopy.set(false);
-                    else disableCopy.set(true);
+                    if (!targetIsClosed.get() && newValue != null) copyIsDisabled.set(false);
+                    else copyIsDisabled.set(true);
                 });
         // Enable removal if there's an item selected in the the target search list
         targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (targetPaneController.getEstabModel() != null && newValue != null)
-                        removeElementButton.setDisable(false);
+                        removeIsDisabled.set(false);
+                    else removeIsDisabled.set(true);
                 });
 
         // Enable element comparison when both panes have active elements
@@ -184,7 +184,26 @@ public class MainController implements Initializable {
         sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
-
+        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true && oldValue == false) {
+                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+            }
+        });
+        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true && oldValue == false) {
+                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+            }
+        });
+        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == false && oldValue == true) {
+                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+            }
+        });
+        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == false && oldValue == true) {
+                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+            }
+        });
     }
 
     private void bindProperties() {
@@ -198,9 +217,8 @@ public class MainController implements Initializable {
         targetPane.visibleProperty().bindBidirectional(settings.visibleTargetPanelProperty());
 
 
-        copyElementButton.disableProperty().bindBidirectional(disableCopy);
-        copyMenuItem.disableProperty().bindBidirectional(disableCopy);
-        removeMenuItem.disableProperty().bindBidirectional(removeElementButton.disableProperty());
+        copyMenuItem.disableProperty().bindBidirectional(copyIsDisabled);
+        removeMenuItem.disableProperty().bindBidirectional(removeIsDisabled);
 
         sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
         sourceCloseMenuItem.disableProperty().bind(sourceIsClosed);
@@ -356,8 +374,8 @@ public class MainController implements Initializable {
 
         if (targetPaneController.getActiveElement().get() != null
                 && !sourcePaneController.getSearchResultsListView().getSelectionModel().getSelectedItems().isEmpty())
-            disableCopy.set(false);
-        else disableCopy.set(true);
+            copyIsDisabled.set(false);
+        else copyIsDisabled.set(true);
 
         sourcePane.setVisible(true);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
@@ -378,8 +396,8 @@ public class MainController implements Initializable {
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetActiveEstabFile);
 
-        if (sourcePaneController.getActiveElement().get() != null) disableCopy.set(false);
-        else disableCopy.set(true);
+        if (sourcePaneController.getActiveElement().get() != null) copyIsDisabled.set(false);
+        else copyIsDisabled.set(true);
 
         targetPane.setVisible(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
@@ -485,7 +503,7 @@ public class MainController implements Initializable {
         sourcePaneController.clear();
         sourceActiveEstabFile = null;
 
-        disableCopy.set(true);
+        copyIsDisabled.set(true);
         sourceIsClosed.set(true);
         sourcePane.setVisible(false);
     }
@@ -501,10 +519,10 @@ public class MainController implements Initializable {
         targetPaneController.clear();
         targetActiveEstabFile = null;
 
-        disableCopy.set(true);
+        copyIsDisabled.set(true);
+        removeIsDisabled.set(true);
         targetIsClosed.set(true);
         targetPane.setVisible(false);
-        removeElementButton.setDisable(true);
     }
 
     /**
