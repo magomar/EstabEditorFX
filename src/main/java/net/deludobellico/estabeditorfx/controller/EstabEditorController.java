@@ -210,7 +210,7 @@ public class EstabEditorController implements Initializable {
     /**
      * Updates the estab by refreshing the title and forcing searches.
      */
-    void update() {
+    public void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         setTitle();
         if (estabModel != null) searchElement();
@@ -547,7 +547,8 @@ public class EstabEditorController implements Initializable {
     /**
      * Removes elements with selected check boxes
      */
-    public void removeSelectedItems() {
+    @FXML
+    private void removeSelectedItems() {
         removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
         selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
@@ -556,14 +557,15 @@ public class EstabEditorController implements Initializable {
     /**
      * Copy elements with selected check boxes, or duplicates them if this is the target estab
      */
-    public void copySelectedElements() {
+    @FXML
+    private void copySelectedElements() {
         if (isEditable) {
             // Target -> duplicate
             estabModel.duplicate(selectedElements);
             update();
         } else {
             // Source -> copy
-            mainController.copyElementsToTarget(selectedElements);
+            mainController.copyElementsToTarget(estabModel, selectedElements);
         }
         selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));

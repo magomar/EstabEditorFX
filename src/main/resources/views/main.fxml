@@ -48,7 +48,7 @@
                             <items>
                                 <MenuItem fx:id="copyMenuItem" mnemonicParsing="true" onAction="#copyAction" text="Copy (Source to target)" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="duplicateMenuItem" disable="true" mnemonicParsing="true" text="Duplicate (Target to target)" />
+                                <MenuItem fx:id="duplicateMenuItem" disable="true" mnemonicParsing="true" onAction="#duplicateAction" text="Duplicate (Target to target)" />
                                 <MenuItem fx:id="removeMenuItem" mnemonicParsing="true" onAction="#removeAction" text="Remove (Target)" />
                             </items>
 

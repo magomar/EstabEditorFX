@@ -217,8 +217,9 @@ public class MainController implements Initializable {
         targetPane.visibleProperty().bindBidirectional(settings.visibleTargetPanelProperty());
 
 
-        copyMenuItem.disableProperty().bindBidirectional(copyIsDisabled);
-        removeMenuItem.disableProperty().bindBidirectional(removeIsDisabled);
+        copyMenuItem.disableProperty().bind(copyIsDisabled);
+        duplicateMenuItem.disableProperty().bind(removeIsDisabled);
+        removeMenuItem.disableProperty().bind(removeIsDisabled);
 
         sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
         sourceCloseMenuItem.disableProperty().bind(sourceIsClosed);
@@ -262,11 +263,12 @@ public class MainController implements Initializable {
 
         targetOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         targetSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-        targetSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        targetSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
         targetCloseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
         targetOpenNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
 
         copyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN));
+        duplicateMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
         removeMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE, KeyCombination.CONTROL_DOWN));
 
     }
@@ -530,20 +532,23 @@ public class MainController implements Initializable {
      *
      * @param elements collection with the elements to copy
      */
-    public void copyElementsToTarget(Collection<ElementModel> elements) {
-        RelatedElementsLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements);
+    public void copyElementsToTarget(EstabModel sourceModel, Collection<ElementModel> elements) {
+        RelatedElementsLists relatedElements = sourceModel.getRelatedElements(elements);
         relatedElements.findRepeatedElementsInTargetModel(targetPaneController.getEstabModel());
         if (!targetPaneController.copyRelatedElements(relatedElements))
             LOG.log(Level.WARNING, "Could not copy all elements");
     }
 
-    void copyElementsToTarget(ElementModel element) {
-        copyElementsToTarget(Arrays.asList(element));
+    @FXML
+    private void copyAction() {
+        copyElementsToTarget(sourcePaneController.getEstabModel(),Arrays.asList(sourcePaneController.getActiveElement().get()));
+
     }
 
     @FXML
-    private void copyAction() {
-        copyElementsToTarget(sourcePaneController.getActiveElement().get());
+    private void duplicateAction() {
+        targetPaneController.getEstabModel().duplicate(Arrays.asList(targetPaneController.getActiveElement().get()));
+        targetPaneController.update();
     }
 
     @FXML
