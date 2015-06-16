@@ -110,6 +110,7 @@
                                 <Tooltip text="Save target" />
                             </tooltip>
                         </Button>
+                  <Separator orientation="VERTICAL" />
                         <Button fx:id="createNewForceButton" disable="true" layoutX="162.0" layoutY="10.0" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewForceAction">
                             <graphic>
                                 <ImageView pickOnBounds="true" preserveRatio="true">
@@ -170,6 +171,7 @@
                                 <Tooltip text="Compare source &amp; target" />
                             </tooltip>
                         </Button>
+                  <Separator orientation="VERTICAL" />
                         <Button maxHeight="Infinity" mnemonicParsing="false" onAction="#setTwoEstabsModeAction">
                             <graphic>
                                 <ImageView pickOnBounds="true" preserveRatio="true">

@@ -1,6 +1,5 @@
 package net.deludobellico.estabeditorfx.util;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -10,9 +9,7 @@ import net.deludobellico.estabeditorfx.controller.InfoDialogController;
 import net.deludobellico.estabeditorfx.controller.SearchDialogController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -23,6 +20,15 @@ public class ViewUtil {
     public static final double MAIN_VIEW_WIDTH = 834;
     public static final double MAIN_VIEW_HEIGHT = 948;
     public static final double ESTAB_EDITOR_VIEW_HEIGHT = 531;
+
+    public static final Set<Class> editableControls = new HashSet<>();
+    public static final Set<Class> nonEditableControls = new HashSet<>();
+
+    static {
+        editableControls.addAll(Arrays.asList(TextField.class, TextArea.class));
+        nonEditableControls.addAll(Arrays.asList(ComboBox.class, Button.class, CheckBox.class, ColorPicker.class));
+    }
+
     public static final String TEXT_STYLE_COPY = "-fx-text-fill: blue;";
     public static final String TEXT_STYLE_REMOVE = "-fx-text-fill: red;";
     public static final String TEXT_STYLE_NEW = "-fx-text-fill: green;";
@@ -71,24 +77,24 @@ public class ViewUtil {
         List<Node> nodes = new ArrayList<Node>();
         addAllDescendents(root, nodes);
         for (Node node : nodes) {
-            if (node instanceof TextInputControl) {
+            if (editableControls.contains(node.getClass())) {
                 ((TextInputControl) node).setEditable(isEditable);
-            } else if (node instanceof ComboBox
-                    || node instanceof CheckBox
-                    || node instanceof ButtonBase
-                    || node instanceof ColorPicker) {
+            } else if (nonEditableControls.contains(node.getClass())) {
                 node.setDisable(!isEditable);
+                node.setOpacity(1);
             }
-            //        if (node instanceof Control) {
-//            if (node instanceof TextInputControl) {
-//                ((TextInputControl) node).setEditable(isEditable);
-//            } else {
-//                node.setDisable(!isEditable);
+//            if (node instanceof Control) {
+//                if (node instanceof TextField || node instanceof TextArea) {
+//                    ((TextInputControl) node).setEditable(isEditable);
+//                } else {
+//                    node.setDisable(!isEditable);
+//                    node.setOpacity(1);
+//                }
 //            }
-//        }
 
         }
     }
+
     private static void addAllDescendents(Parent parent, List<Node> nodes) {
         for (Node node : parent.getChildrenUnmodifiable()) {
             nodes.add(node);
