@@ -83,9 +83,9 @@ public class EstabEditorController implements Initializable {
     private Button copySelectedButton;
     @FXML
     private TreeView<ElementListCell> searchResultsTreeView;
-
     @FXML
     private ListView<ElementListCell> searchResultsListView;
+
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
     private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
     // Controls when search is enabled

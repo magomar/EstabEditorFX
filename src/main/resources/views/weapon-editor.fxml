@@ -112,7 +112,7 @@
                                                     </rowConstraints>
                                                     <children>
                                                         <Label text="Ammo" />
-                                                        <Label fx:id="ammoNameLabel" prefWidth="220.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                                                        <Label fx:id="ammoNameLabel" prefWidth="220.0" styleClass="bordered-label" GridPane.columnIndex="1" GridPane.columnSpan="3" />
                                                         <Button fx:id="ammoSelectButton" mnemonicParsing="false" onAction="#ammoSelectAction" text="..." GridPane.columnIndex="4" />
                                                         <Label text="Min Range" GridPane.rowIndex="2" />
                                                         <Label text="Rate of Fire:" GridPane.rowIndex="3" />

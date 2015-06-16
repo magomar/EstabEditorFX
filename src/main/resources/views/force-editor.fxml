@@ -32,12 +32,11 @@
                                      <children>
                                          <GridPane styleClass="data-grid">
                                              <columnConstraints>
-                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
-                                                 <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
-                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="4.0" prefWidth="78.0" />
-                                                 <ColumnConstraints hgrow="NEVER" maxWidth="235.0" minWidth="10.0" prefWidth="130.0" />
-                                                 <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
-                                                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                 <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="-Infinity" />
+                                                 <ColumnConstraints hgrow="NEVER" prefWidth="100.0" />
+                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="40.0" />
+                                                 <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="-Infinity" />
+                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -67,7 +66,7 @@
                                                  <TextField fx:id="reconValue" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                                  <TextField fx:id="engineerValue" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                                                  <Label text="Commander Rank" GridPane.rowIndex="6" />
-                                                 <CheckBox fx:id="canBombard" mnemonicParsing="false" text="Can Bombard / On-Call Support" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
+                                                 <CheckBox fx:id="canBombard" mnemonicParsing="false" text="Can Bombard / On-Call Support" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
                                                  <ComboBox fx:id="forceType" prefWidth="150.0" GridPane.columnIndex="1" />
                                                  <ComboBox fx:id="subForceType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                  <ComboBox fx:id="combatClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -128,60 +127,40 @@
                            <content>
                                  <VBox layoutX="122.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="editor-tab" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                                      <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                                   <Label ellipsisString="-" minWidth="-Infinity" text="Basic Consumption Rate" textOverrun="CLIP" />
+                                                   <TextField fx:id="basicConsumptionRate" prefWidth="60.0" />
+                                    <Pane maxWidth="-Infinity" prefWidth="40.0" HBox.hgrow="ALWAYS" />
+                                                   <Label alignment="CENTER" ellipsisString="-" minWidth="-Infinity" text="Fuel Load" textOverrun="CLIP" />
+                                                   <TextField fx:id="fuelLoad" alignment="CENTER" prefWidth="60.0" />
+                                    <Pane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
                                          <GridPane hgap="5.0" styleClass="data-grid">
                                              <columnConstraints>
                                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
-                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                                 <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="30.0" />
+                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="60.0" />
+                                                 <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" prefWidth="30.0" />
                                              </columnConstraints>
                                              <rowConstraints>
-                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                 <RowConstraints vgrow="SOMETIMES" />
+                                                 <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
+                                                 <RowConstraints vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                  <Label text="Type" GridPane.rowIndex="1" />
-                                                 <Label text="Equipment Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                 <Label text="Quantity" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                 <TextField fx:id="equipmentType" editable="false" GridPane.rowIndex="2" />
-                                                 <TextField fx:id="equipmentName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                     <GridPane.margin>
-                                                         <Insets right="30.0" />
-                                                     </GridPane.margin>
-                                                 </TextField>
-                                                 <TextField fx:id="equipmentQty" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                                 <Button fx:id="equipmentAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentAddAction" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                                     <GridPane.margin>
-                                                         <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
-                                                     </GridPane.margin>
-                                                 </Button>
-                                                 <Button fx:id="equipmentRemoveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentRemoveAction" text="-" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                                     <GridPane.margin>
-                                                         <Insets left="2.0" right="2.0" top="2.0" />
-                                                     </GridPane.margin>
-                                                 </Button>
-                                                 <Button fx:id="equipmentSelectButton" maxWidth="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#equipmentSelectAction" prefWidth="25.0" text="..." GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                                                 <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                     <children>
-                                                         <Label ellipsisString="-" minWidth="-Infinity" text="Basic Consumption Rate" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
-                                                         <TextField fx:id="basicConsumptionRate" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" HBox.hgrow="NEVER">
-                                                             <HBox.margin>
-                                                                 <Insets left="5.0" />
-                                                             </HBox.margin>
-                                                         </TextField>
-                                                         <Label alignment="CENTER" ellipsisString="-" minWidth="-Infinity" text="Fuel Load" textOverrun="CLIP" HBox.hgrow="ALWAYS">
-                                                             <HBox.margin>
-                                                                 <Insets left="20.0" />
-                                                             </HBox.margin>
-                                                         </Label>
-                                                         <TextField fx:id="fuelLoad" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" HBox.hgrow="NEVER">
-                                                             <HBox.margin>
-                                                                 <Insets left="5.0" />
-                                                             </HBox.margin>
-                                                         </TextField>
-                                                     </children>
-                                                 </HBox>
+                                                 <Label maxWidth="1.7976931348623157E308" text="Equipment Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                 <Label text="Quantity" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                 <Label fx:id="equipmentType" maxWidth="1.7976931348623157E308" styleClass="bordered-label" GridPane.rowIndex="2" />
+                                                 <Label fx:id="equipmentName" maxWidth="1.7976931348623157E308" styleClass="bordered-label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                                 <TextField fx:id="equipmentQty" text="0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                 <Button fx:id="equipmentAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentAddAction" text="+" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                                 <Button fx:id="equipmentRemoveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentRemoveAction" text="-" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                                 <Button fx:id="equipmentSelectButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#equipmentSelectAction" text="..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                              </children>
                                              <opaqueInsets>
                                                  <Insets />
@@ -252,51 +231,40 @@
                        </Tab>
                   <Tab text="Compose">
                      <content>
-                        <VBox styleClass="editor-tab">
+                        <VBox spacing="5.0" styleClass="editor-tab">
                            <children>
                               <HBox>
                                  <children>
                                     <CheckBox fx:id="enableComposition" mnemonicParsing="false" text="Build the force by composition" />
                                  </children>
                               </HBox>
-                              <VBox fx:id="compositionPane">
+                              <VBox fx:id="compositionPane" spacing="5.0">
                                  <children>
                                     <GridPane styleClass="icon-grid" VBox.vgrow="ALWAYS">
                                        <children>
                                           <Label text="Subforce name" />
                                           <Label text="Quantity" GridPane.columnIndex="3" />
-                                          <TextField fx:id="subforceName" editable="false" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                          </TextField>
+                                          <Label fx:id="subforceName" maxWidth="1.7976931348623157E308" styleClass="bordered-label" GridPane.rowIndex="1">
+                                          </Label>
                                           <TextField fx:id="subforceQty" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <Button fx:id="forceAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceAddAction" text="+" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                             <GridPane.margin>
-                                                <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
-                                             </GridPane.margin>
-                                          </Button>
-                                          <Button fx:id="forceRemoveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceRemoveAction" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
-                                             <GridPane.margin>
-                                                <Insets left="2.0" right="2.0" top="2.0" />
-                                             </GridPane.margin>
-                                          </Button>
-                                          <Button fx:id="forceSelectButton" mnemonicParsing="false" onAction="#forceSelectAction" text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                          <Button fx:id="forceAddButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceAddAction" text="+" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                          <Button fx:id="forceRemoveButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceRemoveAction" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                          <Button fx:id="forceSelectButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forceSelectAction" text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                           <Label text="Service" GridPane.columnIndex="1" />
-                                          <TextField fx:id="subforceService" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                                          <Label fx:id="subforceService" maxWidth="1.7976931348623157E308" styleClass="bordered-label" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                                        </children>
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-                                          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-                                          <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="40.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                          <ColumnConstraints hgrow="SOMETIMES" prefWidth="30.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" prefWidth="60.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="30.0" />
                                        </columnConstraints>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <rowConstraints>
-                                          <RowConstraints vgrow="SOMETIMES" />
+                                          <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
                                           <RowConstraints vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>

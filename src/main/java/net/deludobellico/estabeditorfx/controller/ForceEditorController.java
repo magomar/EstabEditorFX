@@ -87,9 +87,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private TextField fuelLoad;
     @FXML
-    private TextField equipmentType;
+    private Label equipmentType;
     @FXML
-    private TextField equipmentName;
+    private Label equipmentName;
     @FXML
     private TextField equipmentQty;
     @FXML
@@ -147,9 +147,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private CheckBox enableComposition;
     @FXML
-    private TextField subforceName;
+    private Label subforceName;
     @FXML
-    private TextField subforceService;
+    private Label subforceService;
     @FXML
     private TextField subforceQty;
     // Table

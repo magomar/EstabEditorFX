@@ -29,8 +29,8 @@
     -fx-background-color: transparent;
 }
 
-.combo-box {
-    -fx-opacity: 1;
+.bordered-label {
+    -fx-border-color: darkgray;
 }
 
 .estab-info {

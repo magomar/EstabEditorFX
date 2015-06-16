@@ -118,7 +118,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
      * Armaments tab
      */
     @FXML
-    private TextField armamentName;
+    private Label armamentName;
     @FXML
     private TextField armamentQty;
     @FXML
