@@ -10,6 +10,7 @@ import net.deludobellico.estabeditorfx.model.ImageModel;
 import net.deludobellico.estabeditorfx.model.NationModel;
 import net.deludobellico.estabeditorfx.model.SideModel;
 import net.deludobellico.estabeditorfx.model.NationModel;
+import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
 import java.util.Map;
@@ -87,12 +88,13 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     }
 
     /**
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
+     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface as non editable
      */
     @Override
     public void setEditable(boolean isEditable) {
-        name.setEditable(isEditable);
-        description.setEditable(isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
+        smallInsigniaPanelController.setEditable(isEditable);
+        largeInsigniaPanelController.setEditable(isEditable);
     }
 
     @Override

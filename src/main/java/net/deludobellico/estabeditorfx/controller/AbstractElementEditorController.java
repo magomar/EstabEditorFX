@@ -2,10 +2,14 @@ package net.deludobellico.estabeditorfx.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import net.deludobellico.estabeditorfx.model.CommanderRanks;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.model.ElementModel;
+import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 /**
  * Created by Mario on 19/05/2015.
@@ -13,7 +17,8 @@ import net.deludobellico.estabeditorfx.model.ElementModel;
 public abstract class AbstractElementEditorController<T extends ElementModel> implements ElementEditorController<T>, Initializable {
     private EstabEditorController estabEditorController;
     private T activeElement;
-    private BooleanProperty isEditable = new SimpleBooleanProperty(false);
+    @FXML
+    protected Parent editorPane;
 
     @Override
     public T getActiveElement() {
@@ -37,20 +42,8 @@ public abstract class AbstractElementEditorController<T extends ElementModel> im
     }
 
     @Override
-    public void setEditable(boolean isEditable) {
-        this.isEditable.set(isEditable);
-    }
-
-    @Override
     public void clear() {
         if (null != activeElement) unbindProperties();
     }
 
-    public boolean getIsEditable() {
-        return isEditable.get();
-    }
-
-    public BooleanProperty isEditableProperty() {
-        return isEditable;
-    }
 }

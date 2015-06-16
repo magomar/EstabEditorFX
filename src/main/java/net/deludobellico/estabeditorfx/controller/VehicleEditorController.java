@@ -3,8 +3,11 @@ package net.deludobellico.estabeditorfx.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -15,9 +18,7 @@ import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * This controller manages the weapon editor view and model.
@@ -117,7 +118,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
      * Armaments tab
      */
     @FXML
-    private TextField armamentName;
+    private Label armamentName;
     @FXML
     private TextField armamentQty;
     @FXML
@@ -147,8 +148,9 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         vehicleType.getItems().addAll(VehicleType.values());
-        description.setWrapText(true);
+
         imagePanelController.imageFilenameProperty().addListener((observable, oldValue, newValue) -> {
             EstabModel estabModel = getEstabEditorController().getEstabModel();
             if (!newValue.equals("")) {
@@ -170,6 +172,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
                 }
             }
         });
+
     }
 
     /**
@@ -242,53 +245,6 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         if (!armamentTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getArmaments().remove(armamentTableView.getSelectionModel().getSelectedItem());
         }
-    }
-
-
-    @Override
-    public void setEditable(boolean isEditable) {
-        battleWeight.setEditable(isEditable);
-        bulkFuelCapacity.setEditable(isEditable);
-        crew.setEditable(isEditable);
-        crossCountryMaxSpeed.setEditable(isEditable);
-        crossCountryNormalSpeed.setEditable(isEditable);
-        description.setEditable(isEditable);
-        frontArmor.setEditable(isEditable);
-        fuelCapacity.setEditable(isEditable);
-        fuelConsumptionMaxSpeed.setEditable(isEditable);
-        fuelConsumptionNormalSpeed.setEditable(isEditable);
-        height.setEditable(isEditable);
-        hasOpenTop.setDisable(!isEditable);
-        hasOpenTop.setStyle("-fx-opacity: 1");
-        hasTurret.setDisable(!isEditable);
-        hasTurret.setStyle("-fx-opacity: 1");
-        height.setEditable(isEditable);
-        length.setEditable(isEditable);
-        maxFordingDepth.setEditable(isEditable);
-        maxGradient.setEditable(isEditable);
-        maxTrenchWidth.setEditable(isEditable);
-        name.setEditable(isEditable);
-        payloadCapacity.setEditable(isEditable);
-        personnelCapacity.setEditable(isEditable);
-        rearArmor.setEditable(isEditable);
-        reliability.setEditable(isEditable);
-        roadMaxSpeed.setEditable(isEditable);
-        roadNormalSpeed.setEditable(isEditable);
-        ronsonability.setEditable(isEditable);
-        sideArmor.setEditable(isEditable);
-        takeCoverMod.setEditable(isEditable);
-        topArmor.setEditable(isEditable);
-        towingCapacity.setEditable(isEditable);
-        vehicleType.setDisable(!isEditable);
-        vehicleType.setStyle("-fx-opacity: 1");
-        weight.setEditable(isEditable);
-        width.setEditable(isEditable);
-        armamentQty.setEditable(isEditable);
-        armamentAddButton.setDisable(!isEditable);
-        armamentRemoveButton.setDisable(!isEditable);
-        armamentSelectButton.setDisable(!isEditable);
-        armamentTableView.setEditable(isEditable);
-        imagePanelController.setEditable(isEditable);
     }
 
     @Override
@@ -381,6 +337,12 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
 
         armamentTableView.setItems(null);
 
+    }
+
+    @Override
+    public void setEditable(boolean isEditable) {
+        ViewUtil.setEditable(editorPane, isEditable);
+        imagePanelController.setEditable(isEditable);
     }
 
     @Override

@@ -1,7 +1,13 @@
 package net.deludobellico.estabeditorfx.util;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.ObservableList;
+
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -11,54 +17,46 @@ import java.util.List;
 public class Settings {
 
     private static final Integer MAX_RECENT_FILES = 4;
-    private static final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
-    private static final Settings settings = new Settings();
-    private static String lastOpenedFolder;
-    private static Double windowWidth = 1280.0;
-    private static Double windowHeight = 800.0;
-    private static Boolean visibleToolbar = true;
-    private static Boolean visibleSourcePanel = true;
-    private static Boolean visibleTargetPanel = true;
-    private static Boolean verticalPanes = true;
-    private static Boolean expandedSourcePane = true;
-    private static Boolean expandedTargetPane = true;
-    private static Boolean newFileCreated = false;
-    private static Boolean newFileSaved = false;
+    private final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
+    private static Settings SETTINGS = new Settings();
+    private String lastOpenedFolder;
+    private BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
+    private BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
+    private BooleanProperty visibleTargetPanel = new SimpleBooleanProperty(true);
+    private BooleanProperty newFileCreated = new SimpleBooleanProperty(false);
+    private BooleanProperty newFileSaved = new SimpleBooleanProperty(false);
+    private static JAXBFactory JAXB_SETTINGS;
+
+    static {
+        try {
+            JAXB_SETTINGS = new JAXBFactory(Settings.class);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
 
     private Settings() {
     }
 
     public static Settings getInstance() {
-        return settings;
+        return SETTINGS;
     }
 
-    public static void save() {
-        FileIO.saveSettings();
+    /**
+     * Loads SETTINGS from file. Creates a new one if it doesn't exist.
+     */
+    public void load() {
+        File file = new File(FileIO.getClientSettingsPath().toAbsolutePath().toString());
+        if (!file.exists()) return; // Loading default SETTINGS
+        SETTINGS = (Settings) JAXB_SETTINGS.unmarshallXML(file);
     }
 
-    public static void load() {
-        FileIO.loadSettings();
-    }
-
-    public static boolean isNewFileSaved() {
-        return newFileSaved;
-    }
-
-    public static void setNewFileSaved(boolean newFileSaved) {
-        Settings.newFileSaved = newFileSaved;
-    }
-
-    public static boolean isNewFileCreated() {
-        return newFileCreated;
-    }
-
-    public static boolean getNewFileCreated() {
-        return newFileCreated;
-    }
-
-    public static void setNewFileCreated(boolean newFileCreated) {
-        Settings.newFileCreated = newFileCreated;
+    /**
+     * Saves SETTINGS to disk. Creates a new SETTINGS file if it doesn't exist.
+     */
+    public void save() {
+        JAXB_SETTINGS.marshallXML(this, FileIO.getFileOrCreateNew(FileIO.getClientSettingsPath().toAbsolutePath().toString()));
     }
 
     @XmlElement(name = "source-recent-files")
@@ -71,76 +69,43 @@ public class Settings {
         return targetRecentFiles;
     }
 
-    @XmlElement(name = "window-width", required = true)
-    public Double getWindowWidth() {
-        return windowWidth;
-    }
-
-    public void setWindowWidth(Double windowWidth) {
-        Settings.windowWidth = windowWidth;
-    }
-
-    @XmlElement(name = "window-height", required = true)
-    public Double getWindowHeight() {
-        return windowHeight;
-    }
-
-    public void setWindowHeight(Double windowHeight) {
-        Settings.windowHeight = windowHeight;
-    }
-
     @XmlElement(name = "visible-toolbar")
     public Boolean getVisibleToolbar() {
+        return visibleToolbar.get();
+    }
+
+    public BooleanProperty visibleToolbarProperty() {
         return visibleToolbar;
     }
 
     public void setVisibleToolbar(Boolean visibleToolbar) {
-        Settings.visibleToolbar = visibleToolbar;
+        this.visibleToolbar.set(visibleToolbar);
     }
 
     @XmlElement(name = "visible-source-panel")
     public Boolean getVisibleSourcePanel() {
+        return visibleSourcePanel.get();
+    }
+
+    public BooleanProperty visibleSourcePanelProperty() {
         return visibleSourcePanel;
     }
 
     public void setVisibleSourcePanel(Boolean visibleSourcePanel) {
-        Settings.visibleSourcePanel = visibleSourcePanel;
+        this.visibleSourcePanel.set(visibleSourcePanel);
     }
 
     @XmlElement(name = "visible-target-panel")
     public Boolean getVisibleTargetPanel() {
+        return visibleTargetPanel.get();
+    }
+
+    public BooleanProperty visibleTargetPanelProperty() {
         return visibleTargetPanel;
     }
 
     public void setVisibleTargetPanel(Boolean visibleTargetPanel) {
-        Settings.visibleTargetPanel = visibleTargetPanel;
-    }
-
-    @XmlElement(name = "vertical-panes")
-    public Boolean getVerticalPanes() {
-        return verticalPanes;
-    }
-
-    public void setVerticalPanes(Boolean verticalPanes) {
-        Settings.verticalPanes = verticalPanes;
-    }
-
-    @XmlElement(name = "expanded-source-pane")
-    public Boolean getExpandedSourcePane() {
-        return expandedSourcePane;
-    }
-
-    public void setExpandedSourcePane(Boolean expandedSourcePane) {
-        Settings.expandedSourcePane = expandedSourcePane;
-    }
-
-    @XmlElement(name = "expanded-target-pane")
-    public Boolean getExpandedTargetPane() {
-        return expandedTargetPane;
-    }
-
-    public void setExpandedTargetPane(Boolean expandedTargetPane) {
-        Settings.expandedTargetPane = expandedTargetPane;
+        this.visibleTargetPanel.set(visibleTargetPanel);
     }
 
     @XmlElement(name = "last-opened-folder")
@@ -149,6 +114,30 @@ public class Settings {
     }
 
     public void setLastOpenedFolder(String lastOpenedFolder) {
-        Settings.lastOpenedFolder = lastOpenedFolder;
+        this.lastOpenedFolder = lastOpenedFolder;
+    }
+
+    public boolean getNewFileCreated() {
+        return newFileCreated.get();
+    }
+
+    public BooleanProperty newFileCreatedProperty() {
+        return newFileCreated;
+    }
+
+    public void setNewFileCreated(boolean newFileCreated) {
+        this.newFileCreated.set(newFileCreated);
+    }
+
+    public boolean getNewFileSaved() {
+        return newFileSaved.get();
+    }
+
+    public BooleanProperty newFileSavedProperty() {
+        return newFileSaved;
+    }
+
+    public void setNewFileSaved(boolean newFileSaved) {
+        this.newFileSaved.set(newFileSaved);
     }
 }

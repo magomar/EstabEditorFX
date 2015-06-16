@@ -4,6 +4,7 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -44,6 +45,7 @@ public class ElementImageController implements Initializable {
 
     @FXML
     private CheckBox noImageCheckbox;
+
 
     private EstabEditorController estabEditorController;
     private ElementModel activeElement;
@@ -99,7 +101,11 @@ public class ElementImageController implements Initializable {
     }
 
     public void setEditable(boolean isEditable) {
+        imageFilename.setEditable(false);
         openImageButton.setDisable(!isEditable);
+        openImageButton.setOpacity(1);
+        noImageCheckbox.setDisable(!isEditable);
+        noImageCheckbox.setOpacity(1);
     }
 
     public void setActiveElement(GraphicalElementModel element) {

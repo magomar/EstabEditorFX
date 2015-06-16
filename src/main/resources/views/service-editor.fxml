@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
 
-<AnchorPane styleClass="element-editor" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ServiceEditorController">
+<AnchorPane stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ServiceEditorController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="editorPane" prefHeight="400.0" prefWidth="600.0" styleClass="element-editor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER_LEFT">
                     <children>
@@ -21,10 +19,10 @@
                         <Label text="ID" />
                         <TextField fx:id="id" disable="true" editable="false" prefWidth="50.0" />
                     </children>
-               <styleClass>
-                  <String fx:value="element-name" />
-                  <String fx:value="service-color" />
-               </styleClass>
+                    <styleClass>
+                        <String fx:value="element-name" />
+                        <String fx:value="service-color" />
+                    </styleClass>
                 </HBox>
                 <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                     <tabs>
@@ -38,18 +36,18 @@
                                                 <TextArea fx:id="description" />
                                             </children>
                                         </HBox>
-                                        <HBox styleClass="hbox">
+                                        <HBox>
                                             <children>
-                                    <VBox>
-                                       <children>
-                                                      <Label text="Ranks" />
-                                                      <ListView fx:id="rankListView" prefWidth="200.0" />
-                                       </children>
-                                    </VBox>
                                                 <VBox>
                                                     <children>
-                                          <HBox prefHeight="15.0" />
-                                                        <HBox styleClass="hbox">
+                                                        <Label text="Ranks" />
+                                                        <ListView fx:id="rankListView" prefWidth="200.0" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox>
+                                                    <children>
+                                                        <HBox prefHeight="15.0" />
+                                                        <HBox>
                                                             <children>
                                                                 <Button fx:id="addRankButton" mnemonicParsing="false" onAction="#addRankAction">
                                                                     <graphic>
@@ -81,13 +79,13 @@
                                 </VBox>
                             </content>
                         </Tab>
-                  <Tab text="Graphics">
-                    <content>
-                        <HBox styleClass="editor-tab">
-                           <children>
-                              <VBox HBox.hgrow="SOMETIMES">
-                                 <children>
-                                                <VBox styleClass="vbox">
+                        <Tab text="Graphics">
+                            <content>
+                                <HBox styleClass="editor-tab">
+                                    <children>
+                                        <VBox HBox.hgrow="SOMETIMES">
+                                            <children>
+                                                <VBox>
                                                     <children>
                                                         <HBox>
                                                             <children>
@@ -119,14 +117,14 @@
                                                                 <ComboBox fx:id="symbolColorComboBox" prefWidth="100.0" />
                                                             </children>
                                                         </HBox>
-                                          <Button fx:id="applyServiceColors" mnemonicParsing="false" onAction="#applyColorToForces" text="Apply Color to Forces" />
+                                                        <Button fx:id="applyServiceColors" mnemonicParsing="false" onAction="#applyColorToForces" text="Apply Color to Forces" />
                                                     </children>
                                                 </VBox>
-                                 </children>
-                              </VBox>
-                              <Separator orientation="VERTICAL" />
-                              <VBox>
-                                 <children>
+                                            </children>
+                                        </VBox>
+                                        <Separator orientation="VERTICAL" />
+                                        <VBox>
+                                            <children>
                                                 <VBox>
                                                     <children>
                                                         <Label text="Large Insignia" />
@@ -139,12 +137,12 @@
                                                         <fx:include fx:id="smallInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                    </content>
-                  </Tab>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
                     </tabs>
                 </TabPane>
             </children>

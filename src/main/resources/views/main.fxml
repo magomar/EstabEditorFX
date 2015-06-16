@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.input.*?>
 <?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
+<BorderPane stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
     <top>
         <VBox>
             <children>
                 <MenuBar BorderPane.alignment="CENTER">
                     <menus>
                         <!--<Menu mnemonicParsing="false" text="ESTAB">-->
-                            <!--MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
-                                                  onAction="#exitApplication" text="Exit"/-->
+                        <!--MenuItem fx:id="exitMenuItem" mnemonicParsing="false"
+                                              onAction="#exitApplication" text="Exit"/-->
                         <!--</Menu>-->
                         <Menu mnemonicParsing="true" text="_Source">
                             <items>
@@ -51,7 +48,7 @@
                             <items>
                                 <MenuItem fx:id="copyMenuItem" mnemonicParsing="true" onAction="#copyAction" text="Copy (Source to target)" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="duplicateMenuItem" disable="true" mnemonicParsing="true" text="Duplicate (Target to target)" />
+                                <MenuItem fx:id="duplicateMenuItem" disable="true" mnemonicParsing="true" onAction="#duplicateAction" text="Duplicate (Target to target)" />
                                 <MenuItem fx:id="removeMenuItem" mnemonicParsing="true" onAction="#removeAction" text="Remove (Target)" />
                             </items>
 
@@ -87,11 +84,9 @@
 
                         <Menu mnemonicParsing="false" text="_View">
                             <items>
-                                <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" onAction="#toggleToolBarVisibility" selected="true" text="Toolbar" />
-                                <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="true" onAction="#toggleSourcePaneVisibility" selected="true" text="Source" />
-                                <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="true" onAction="#toggleTargetPaneVisibility" selected="true" text="Target" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <RadioMenuItem mnemonicParsing="true" onAction="#togglePanesContainer" text="Switch Panels" />
+                                <RadioMenuItem fx:id="toolbarRadioItem" mnemonicParsing="true" selected="true" text="Toolbar" />
+                                <RadioMenuItem fx:id="sourceRadioItem" mnemonicParsing="true" selected="true" text="Source" />
+                                <RadioMenuItem fx:id="targetRadioItem" mnemonicParsing="true" selected="true" text="Target" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
@@ -103,24 +98,6 @@
                 </MenuBar>
                 <ToolBar fx:id="toolBar">
                     <items>
-                        <Button fx:id="copyElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#copyAction">
-                            <graphic>
-                                <ImageView pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/copy.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="removeElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#removeAction">
-                            <graphic>
-                                <ImageView pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/remove.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
                         <Button fx:id="saveDataButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#saveTargetAction">
                             <graphic>
                                 <ImageView pickOnBounds="true" preserveRatio="true">
@@ -129,7 +106,11 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="Save target" />
+                            </tooltip>
                         </Button>
+                  <Separator orientation="VERTICAL" />
                         <Button fx:id="createNewForceButton" disable="true" layoutX="162.0" layoutY="10.0" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewForceAction">
                             <graphic>
                                 <ImageView pickOnBounds="true" preserveRatio="true">
@@ -138,6 +119,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="New force" />
+                            </tooltip>
                         </Button>
                         <Button fx:id="createNewVehicleButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewVehicleAction">
                             <graphic>
@@ -147,6 +131,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="New vehicle" />
+                            </tooltip>
                         </Button>
                         <Button fx:id="createNewWeaponButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewWeaponAction">
                             <graphic>
@@ -156,6 +143,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="New weapon" />
+                            </tooltip>
                         </Button>
                         <Button fx:id="createNewAmmoButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#createNewAmmoAction">
                             <graphic>
@@ -165,6 +155,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="New ammunition" />
+                            </tooltip>
                         </Button>
                         <Button fx:id="compareElementButton" disable="true" maxHeight="Infinity" mnemonicParsing="true" onAction="#compareElementButtonAction">
                             <graphic>
@@ -174,23 +167,56 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="Compare source &amp; target" />
+                            </tooltip>
+                        </Button>
+                  <Separator orientation="VERTICAL" />
+                        <Button maxHeight="Infinity" mnemonicParsing="false" onAction="#setTwoEstabsModeAction">
+                            <graphic>
+                                <ImageView pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/two-estabs.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <tooltip>
+                                <Tooltip text="Show source &amp; target" />
+                            </tooltip>
+                        </Button>
+                        <Button maxHeight="Infinity" mnemonicParsing="false" onAction="#setOneEstabModeAction">
+                            <graphic>
+                                <ImageView pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/one-estab.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <tooltip>
+                                <Tooltip text="Only shows target" />
+                            </tooltip>
                         </Button>
                     </items>
-
                 </ToolBar>
             </children>
         </VBox>
     </top>
+    <right>
+    </right>
     <center>
-        <ScrollPane fx:id="estabsContainer" prefHeight="850.0" prefWidth="850.0">
-            <content>
-                <FlowPane>
+        <FlowPane BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane id="estab">
                     <children>
                         <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane>
+                    <children>
                         <fx:include fx:id="targetPane" source="estab-editor.fxml" />
                     </children>
-                </FlowPane>
-            </content>
-        </ScrollPane>
+                </AnchorPane>
+            </children>
+        </FlowPane>
     </center>
 </BorderPane>

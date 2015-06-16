@@ -24,7 +24,6 @@ import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.SavedSearchList;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
-import net.deludobellico.estabeditorfx.util.FileIO;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,12 +52,13 @@ public class EstabEditorController implements Initializable {
     }});
 
     @FXML
-    private TitledPane estabPane;
+    private Label estabInfo;
+
     /**
      * Where the element editors are loaded
      */
     @FXML
-    private AnchorPane editorPane;
+    private AnchorPane editorPaneHook;
     /**
      * Buttons filter searches by element
      */
@@ -83,9 +83,9 @@ public class EstabEditorController implements Initializable {
     private Button copySelectedButton;
     @FXML
     private TreeView<ElementListCell> searchResultsTreeView;
-
     @FXML
     private ListView<ElementListCell> searchResultsListView;
+
     private ObservableList<ElementListCell> elementListCells = FXCollections.observableArrayList();
     private ObservableList<ElementModel> selectedElements = FXCollections.observableArrayList();
     // Controls when search is enabled
@@ -103,9 +103,11 @@ public class EstabEditorController implements Initializable {
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
     private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
-    // EstabEditorFXApp controller, current element editor (either vehicle, weapon or ammo) and estab model (source or target)
+    // Main controller
     private MainController mainController = null;
+    // current element editor (either vehicle, weapon or ammo)
     private ElementEditorController<ElementModel> elementEditorController = null;
+    // estab model (source or target)
     private EstabModel estabModel;
     // Source estab data isn't editable, target estab data is editable
     private boolean isEditable = false;
@@ -208,7 +210,7 @@ public class EstabEditorController implements Initializable {
     /**
      * Updates the estab by refreshing the title and forcing searches.
      */
-    void update() {
+    public void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
         setTitle();
         if (estabModel != null) searchElement();
@@ -545,7 +547,8 @@ public class EstabEditorController implements Initializable {
     /**
      * Removes elements with selected check boxes
      */
-    public void removeSelectedItems() {
+    @FXML
+    private void removeSelectedItems() {
         removeRelatedElements(estabModel.getRelatedElements(selectedElements).getAllElements());
         selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
@@ -554,14 +557,15 @@ public class EstabEditorController implements Initializable {
     /**
      * Copy elements with selected check boxes, or duplicates them if this is the target estab
      */
-    public void copySelectedElements() {
+    @FXML
+    private void copySelectedElements() {
         if (isEditable) {
             // Target -> duplicate
             estabModel.duplicate(selectedElements);
             update();
         } else {
             // Source -> copy
-            mainController.copyElementsToTarget(selectedElements);
+            mainController.copyElementsToTarget(estabModel, selectedElements);
         }
         selectedElements.clear();
         searchResultsListView.getItems().stream().forEach(cell -> cell.setSelected(false));
@@ -602,7 +606,7 @@ public class EstabEditorController implements Initializable {
             String filename = activeFile == null ? "" : activeFile.getName();
             title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
         }
-        estabPane.setText(title);
+        estabInfo.setText(title);
     }
 
     /**
@@ -672,10 +676,10 @@ public class EstabEditorController implements Initializable {
      * Hides the active editor, if it isn't null
      */
     private void hideActiveEditor() {
-        if (!editorPane.getChildren().isEmpty() && activeElement.get() != null) {
+        if (!editorPaneHook.getChildren().isEmpty() && activeElement.get() != null) {
             int editorIndex = editorPaneChildrenIndex.get(activeElement.get().getClass());
             assert editorIndex >= 0;
-            editorPane.getChildren().get(editorIndex).setVisible(false);
+            editorPaneHook.getChildren().get(editorIndex).setVisible(false);
         }
     }
 
@@ -687,7 +691,7 @@ public class EstabEditorController implements Initializable {
     private void showEditor(Class elementClass) {
         int editorIndex = editorPaneChildrenIndex.get(elementClass);
         assert editorIndex >= 0;
-        editorPane.getChildren().get(editorIndex).setVisible(true);
+        editorPaneHook.getChildren().get(editorIndex).setVisible(true);
     }
 
     /**
@@ -701,8 +705,8 @@ public class EstabEditorController implements Initializable {
             // Load the editor pane from the fxml and copy the contents
             AnchorPane editorNode = fxmlLoader.load();
             // Save the index of the editor pane children list
-            editorPaneChildrenIndex.put(elementClass, editorPane.getChildren().size());
-            editorPane.getChildren().addAll(editorNode.getChildren());
+            editorPaneChildrenIndex.put(elementClass, editorPaneHook.getChildren().size());
+            editorPaneHook.getChildren().addAll(editorNode.getChildren());
             // Load and save the controller
             elementEditorController = fxmlLoader.getController();
             elementEditorController.setEditable(isEditable);
@@ -728,6 +732,10 @@ public class EstabEditorController implements Initializable {
 
     public BooleanProperty searchDisableProperty() {
         return searchDisable;
+    }
+
+    public AnchorPane getEditorPaneHook() {
+        return editorPaneHook;
     }
 
     public class ElementListCell extends HBox {

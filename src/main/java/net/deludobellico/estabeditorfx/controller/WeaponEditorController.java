@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -318,6 +319,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      * @param p the {@link PerformanceModel} to unbind
      */
     private void bindPerformanceProperties(PerformanceModel p) {
+        ammoNameLabel.textProperty().bindBidirectional(p.getAmmoLoad().nameProperty());
         minRange.textProperty().bindBidirectional(p.minRangeProperty(), NUMBER_STRING_CONVERTER);
         fireRateSlow.textProperty().bindBidirectional(p.slowROFProperty(), NUMBER_STRING_CONVERTER);
         fireRateNormal.textProperty().bindBidirectional(p.normalROFProperty(), NUMBER_STRING_CONVERTER);
@@ -325,8 +327,6 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), NUMBER_STRING_CONVERTER);
         shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), NUMBER_STRING_CONVERTER);
         load.textProperty().bindBidirectional(p.getAmmoLoad().loadProperty(), NUMBER_STRING_CONVERTER);
-
-        ammoNameLabel.setText(p.getAmmoLoad().getName());
 
         // Make cells editable
         rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(new IntegerStringConverter()));
@@ -367,30 +367,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
 
     @Override
     public void setEditable(boolean isEditable) {
-        weight.setEditable(isEditable);
-        name.setEditable(isEditable);
-        description.setEditable(isEditable);
-        crew.setEditable(isEditable);
-        reliability.setEditable(isEditable);
-        weaponPrimaryRole.setDisable(!isEditable);
-        weaponType.setDisable(!isEditable);
-        singleShot.setDisable(!isEditable);
-        mustDeployToFire.setDisable(!isEditable);
-        calibre.setEditable(isEditable);
-        muzzleVelocity.setEditable(isEditable);
-        minRange.setEditable(isEditable);
-        fireRateSlow.setEditable(isEditable);
-        fireRateNormal.setEditable(isEditable);
-        fireRateRapid.setEditable(isEditable);
-        burstRadius.setEditable(isEditable);
-        shellWeight.setEditable(isEditable);
-        load.setEditable(isEditable);
-        rangeItemTableView.setEditable(isEditable);
-        tableNewRangeValue.setEditable(isEditable);
-        tableNewAccuracyValue.setEditable(isEditable);
-        tableNewArmorPenetrationValue.setEditable(isEditable);
-        addRangeButton.setDisable(!isEditable);
-        removeRangeButton.setDisable(!isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
     }
 
     @Override

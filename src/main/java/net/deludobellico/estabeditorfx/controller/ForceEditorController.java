@@ -87,9 +87,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private TextField fuelLoad;
     @FXML
-    private TextField equipmentType;
+    private Label equipmentType;
     @FXML
-    private TextField equipmentName;
+    private Label equipmentName;
     @FXML
     private TextField equipmentQty;
     @FXML
@@ -147,9 +147,9 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private CheckBox enableComposition;
     @FXML
-    private TextField subforceName;
+    private Label subforceName;
     @FXML
-    private TextField subforceService;
+    private Label subforceService;
     @FXML
     private TextField subforceQty;
     // Table
@@ -168,6 +168,8 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     private CommanderRanks commanderRanks;
 
     private BooleanProperty isComposed = new SimpleBooleanProperty(false);
+
+    private BooleanProperty isEditable = new SimpleBooleanProperty(false);
 
     private final ChangeListener<RankModel> commanderRankListener = (observable, oldValue, newValue) -> {
         if (newValue != null)
@@ -224,6 +226,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         }
     };
 
+
     /**
      * @param location
      * @param resources
@@ -241,16 +244,15 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         forceSizeSymbol.getItems().addAll(ForceSize.values());
         militarySymbol.getItems().addAll(IconModel.MilitarySymbol.values());
 
-        BooleanProperty isEditable = isEditableProperty();
         name.editableProperty().bind(isEditable);
         id.editableProperty().bind(isEditable);
-        forceType.editableProperty().bind(isEditable);
-        subForceType.editableProperty().bind(isEditable);
-        combatClass.editableProperty().bind(isEditable);
-        targetClass.editableProperty().bind(isEditable);
-        moveClass.editableProperty().bind(isEditable);
-        forceSize.editableProperty().bind(isEditable);
-        commanderRank.editableProperty().bind(isEditable);
+        forceType.disableProperty().bind(isEditable.not());
+        subForceType.disableProperty().bind(isEditable.not());
+        combatClass.disableProperty().bind(isEditable.not());
+        targetClass.disableProperty().bind(isEditable.not());
+        moveClass.disableProperty().bind(isEditable.not());
+        forceSize.disableProperty().bind(isEditable.not());
+        commanderRank.disableProperty().bind(isEditable.not());
 
         personnel.editableProperty().bind(isEditable.and(isComposed.not()));
         infantryValue.editableProperty().bind(isEditable.and(isComposed.not()));
@@ -271,17 +273,18 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         equipmentRemoveButton.disableProperty().bind(isEditable.not().or(isComposed));
         equipmentAddButton.disableProperty().bind(isEditable.not().or(isComposed));
         equipmentTableView.editableProperty().bind(isEditable.and(isComposed.not()));
-        symbolColor.editableProperty().bind(isEditable.and(usesServiceColors.selectedProperty().not()));
-        militarySymbol.editableProperty().bind(isEditable);
-        pictureSymbol.editableProperty().bind(isEditable);
-        forceSizeSymbol.editableProperty().bind(isEditable);
-        backgroundColorChooser.editableProperty().bind(isEditable.and(usesServiceColors.selectedProperty()));
-        backgroundLightColorChooser.editableProperty().bind(isEditable.and(usesServiceColors.selectedProperty()));
-        backgroundDarkColorChooser.editableProperty().bind(isEditable.and(usesServiceColors.selectedProperty()));
-        designationColorChooser.editableProperty().bind(isEditable.and(usesServiceColors.selectedProperty()));
+        symbolColor.disableProperty().bind(isEditable.not().or(usesServiceColors.selectedProperty()));
+        militarySymbol.disableProperty().bind(isEditable.not());
+        pictureSymbol.disableProperty().bind(isEditable.not());
+        forceSizeSymbol.disableProperty().bind(isEditable.not());
+        backgroundColorChooser.disableProperty().bind(isEditable.not().or(usesServiceColors.selectedProperty()));
+        backgroundLightColorChooser.disableProperty().bind(isEditable.not().or(usesServiceColors.selectedProperty()));
+        backgroundDarkColorChooser.disableProperty().bind(isEditable.not().or(usesServiceColors.selectedProperty()));
+        designationColorChooser.disableProperty().bind(isEditable.not().or(usesServiceColors.selectedProperty()));
+
         subforceQty.editableProperty().bind(isEditable);
 
-        compositionPane.disableProperty().bind(enableComposition.selectedProperty().not());
+        compositionPane.disableProperty().bind(isEditable.not().or(enableComposition.selectedProperty().not()));
 
         militarySymbol.valueProperty().addListener((observable, oldValue, newValue) -> {
             militarySymbolView.setImage(newValue.getMilitarySymbol());
@@ -396,6 +399,11 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         if (!subforceTableView.getSelectionModel().getSelectedItems().isEmpty()) {
             getActiveElement().getForceComposition().remove(subforceTableView.getSelectionModel().getSelectedItem());
         }
+    }
+
+    @Override
+    public void setEditable(boolean isEditable) {
+        this.isEditable.set(isEditable);
     }
 
     @Override

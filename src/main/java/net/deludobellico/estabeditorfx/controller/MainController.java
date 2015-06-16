@@ -1,27 +1,22 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.FileIO;
-import net.deludobellico.estabeditorfx.util.Settings;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
+import javafx.stage.Stage;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
+import net.deludobellico.estabeditorfx.util.Settings;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.File;
@@ -40,13 +35,6 @@ import java.util.logging.Logger;
  * @author Heine
  */
 public class MainController implements Initializable {
-    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
-    // Buttons and other components are enabled/disabled based on these properties
-    private final BooleanProperty disableCopy = new SimpleBooleanProperty(true);
-    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
-    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
-    private final ObjectProperty<ServiceModel> serviceModel = new SimpleObjectProperty<>();
-
     /**
      * Top region: Menu bar
      */
@@ -111,10 +99,6 @@ public class MainController implements Initializable {
     @FXML
     private ToolBar toolBar;
     @FXML
-    private Button copyElementButton;
-    @FXML
-    private Button removeElementButton;
-    @FXML
     private Button saveDataButton;
     @FXML
     private Button createNewForceButton;
@@ -130,21 +114,29 @@ public class MainController implements Initializable {
      * Center region
      */
     @FXML
-    private ScrollPane estabsContainer;
+    private Node sourcePane;
     @FXML
-    private TitledPane sourcePane;
-    @FXML
-    private TitledPane targetPane;
+    private Node targetPane;
     @FXML
     private EstabEditorController sourcePaneController;
     @FXML
     private EstabEditorController targetPaneController;
+
     /**
      * Other
      */
+    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
+    // Buttons and other components are enabled/disabled based on these properties
+    private final BooleanProperty copyIsDisabled = new SimpleBooleanProperty(true);
+    private final BooleanProperty removeIsDisabled = new SimpleBooleanProperty(true);
+    private final BooleanProperty sourceIsClosed = new SimpleBooleanProperty(true);
+    private final BooleanProperty targetIsClosed = new SimpleBooleanProperty(true);
     // Opened files by estab editors
     private File sourceActiveEstabFile;
     private File targetActiveEstabFile;
+    // primary stage
+    private Stage primaryStage;
+    private double estabEditorHeight;
 
     /**
      * Sets listeners, binds properties and loads user settings
@@ -155,16 +147,15 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // The scroll pane will fit all the rootPane
-        estabsContainer.setFitToWidth(true);
+        primaryStage = ViewUtil.ROOT_STAGE;
+        estabEditorHeight = sourcePaneController.getEditorPaneHook().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);
         sourcePaneController.init("Source Estab", false, this);
 
-        addListeners();
-        loadSettings();
         bindProperties();
+        addListeners();
         setAccelerators();
         // Populate recent opened files
         populateOpenRecentSourceMenu();
@@ -176,14 +167,15 @@ public class MainController implements Initializable {
         // Enable copy if there's a target file and a selected element on the source search list
         sourcePaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
-                    if (!targetIsClosed.get() && newValue != null) disableCopy.set(false);
-                    else disableCopy.set(true);
+                    if (!targetIsClosed.get() && newValue != null) copyIsDisabled.set(false);
+                    else copyIsDisabled.set(true);
                 });
         // Enable removal if there's an item selected in the the target search list
         targetPaneController.getSearchResultsListView().getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (targetPaneController.getEstabModel() != null && newValue != null)
-                        removeElementButton.setDisable(false);
+                        removeIsDisabled.set(false);
+                    else removeIsDisabled.set(true);
                 });
 
         // Enable element comparison when both panes have active elements
@@ -192,32 +184,42 @@ public class MainController implements Initializable {
         sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
-        // Save the panes status in the settings
-        sourcePane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedSourcePane(sourcePane.isExpanded()));
-        targetPane.expandedProperty().addListener(e -> Settings.getInstance().setExpandedTargetPane(targetPane.isExpanded()));
-
-
-    }
-
-    private void loadSettings() {
-        // If settings were loaded, set them
-        toolBar.setVisible(Settings.getInstance().getVisibleToolbar());
-        sourcePane.setVisible(Settings.getInstance().getVisibleSourcePanel());
-        targetPane.setVisible(Settings.getInstance().getVisibleTargetPanel());
-
-        toolbarRadioItem.setSelected(Settings.getInstance().getVisibleToolbar());
-        sourceRadioItem.setSelected(Settings.getInstance().getVisibleSourcePanel());
-        targetRadioItem.setSelected(Settings.getInstance().getVisibleTargetPanel());
-        sourcePane.expandedProperty().set(Settings.getInstance().getExpandedSourcePane());
-        targetPane.expandedProperty().set(Settings.getInstance().getExpandedTargetPane());
-        if (!Settings.getInstance().getVerticalPanes()) togglePanesContainer();
+        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true && oldValue == false) {
+                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+            }
+        });
+        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true && oldValue == false) {
+                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+            }
+        });
+        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == false && oldValue == true) {
+                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+            }
+        });
+        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == false && oldValue == true) {
+                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+            }
+        });
     }
 
     private void bindProperties() {
+        Settings settings = Settings.getInstance();
 
-        copyElementButton.disableProperty().bindBidirectional(disableCopy);
-        copyMenuItem.disableProperty().bindBidirectional(disableCopy);
-        removeMenuItem.disableProperty().bindBidirectional(removeElementButton.disableProperty());
+        toolbarRadioItem.selectedProperty().bindBidirectional(settings.visibleToolbarProperty());
+        sourceRadioItem.selectedProperty().bindBidirectional(settings.visibleSourcePanelProperty());
+        targetRadioItem.selectedProperty().bindBidirectional(settings.visibleTargetPanelProperty());
+        toolBar.visibleProperty().bindBidirectional(settings.visibleToolbarProperty());
+        sourcePane.visibleProperty().bindBidirectional(settings.visibleSourcePanelProperty());
+        targetPane.visibleProperty().bindBidirectional(settings.visibleTargetPanelProperty());
+
+
+        copyMenuItem.disableProperty().bind(copyIsDisabled);
+        duplicateMenuItem.disableProperty().bind(removeIsDisabled);
+        removeMenuItem.disableProperty().bind(removeIsDisabled);
 
         sourceSaveAsMenuItem.disableProperty().bind(sourceIsClosed);
         sourceCloseMenuItem.disableProperty().bind(sourceIsClosed);
@@ -252,7 +254,6 @@ public class MainController implements Initializable {
         toolBar.managedProperty().bind(toolBar.visibleProperty());
         sourcePane.managedProperty().bind(sourcePane.visibleProperty());
         targetPane.managedProperty().bind(targetPane.visibleProperty());
-
     }
 
     public void setAccelerators() {
@@ -262,11 +263,12 @@ public class MainController implements Initializable {
 
         targetOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         targetSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-        targetSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        targetSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
         targetCloseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
         targetOpenNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
 
         copyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN));
+        duplicateMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
         removeMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE, KeyCombination.CONTROL_DOWN));
 
     }
@@ -374,10 +376,10 @@ public class MainController implements Initializable {
 
         if (targetPaneController.getActiveElement().get() != null
                 && !sourcePaneController.getSearchResultsListView().getSelectionModel().getSelectedItems().isEmpty())
-            disableCopy.set(false);
-        else disableCopy.set(true);
+            copyIsDisabled.set(false);
+        else copyIsDisabled.set(true);
 
-        sourcePane.expandedProperty().set(true);
+        sourcePane.setVisible(true);
         Settings.getInstance().getSourceRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentSourceMenu();
     }
@@ -396,10 +398,10 @@ public class MainController implements Initializable {
         targetIsClosed.set(false);
         targetPaneController.setEstabModel(targetActiveEstabFile);
 
-        if (sourcePaneController.getActiveElement().get() != null) disableCopy.set(false);
-        else disableCopy.set(true);
+        if (sourcePaneController.getActiveElement().get() != null) copyIsDisabled.set(false);
+        else copyIsDisabled.set(true);
 
-        targetPane.expandedProperty().set(true);
+        targetPane.setVisible(true);
         Settings.getInstance().getTargetRecentFiles().add(file.getAbsolutePath());
         populateOpenRecentTargetMenu();
     }
@@ -416,15 +418,16 @@ public class MainController implements Initializable {
         boolean isSource = ((MenuItem) actionEvent.getSource()).getParentMenu().getText().toLowerCase().contains("source");
         boolean isNew = ((MenuItem) actionEvent.getSource()).getText().toLowerCase().contains("new");
         if (isNew) {
+            Settings settings = Settings.getInstance();
             DialogAction answer = DialogAction.OK;
-            if (Settings.getNewFileCreated())
+            if (settings.getNewFileCreated())
                 answer = ViewUtil.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
             if (answer == DialogAction.OK) {
                 File f = FileIO.getOrCreateNewEstabFile();
                 if (f != null) {
                     openTarget(f);
-                    Settings.setNewFileCreated(true);
-                    Settings.setNewFileSaved(false);
+                    settings.setNewFileCreated(true);
+                    settings.setNewFileSaved(false);
                 }
             }
         } else {
@@ -444,8 +447,8 @@ public class MainController implements Initializable {
     public void saveTargetAction() {
         if (targetActiveEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
             if (saveTargetAsAction() != null) {
-                Settings.setNewFileSaved(true);
-                Settings.setNewFileCreated(false);
+                Settings.getInstance().setNewFileSaved(true);
+                Settings.getInstance().setNewFileCreated(false);
             }
 
         } else {
@@ -502,9 +505,9 @@ public class MainController implements Initializable {
         sourcePaneController.clear();
         sourceActiveEstabFile = null;
 
-        disableCopy.set(true);
+        copyIsDisabled.set(true);
         sourceIsClosed.set(true);
-        sourcePane.expandedProperty().set(false);
+        sourcePane.setVisible(false);
     }
 
     /**
@@ -518,48 +521,10 @@ public class MainController implements Initializable {
         targetPaneController.clear();
         targetActiveEstabFile = null;
 
-
-        disableCopy.set(true);
+        copyIsDisabled.set(true);
+        removeIsDisabled.set(true);
         targetIsClosed.set(true);
-        targetPane.expandedProperty().set(false);
-        removeElementButton.setDisable(true);
-    }
-
-    @FXML
-    public void toggleToolBarVisibility() {
-        boolean isVisible = !toolBar.isVisible();
-        toolBar.setVisible(isVisible);
-        Settings.getInstance().setVisibleToolbar(isVisible);
-    }
-
-    @FXML
-    public void toggleSourcePaneVisibility() {
-        boolean isVisible = !sourcePane.isVisible();
-        sourcePane.setVisible(isVisible);
-        Settings.getInstance().setVisibleSourcePanel(isVisible);
-    }
-
-    @FXML
-    public void toggleTargetPaneVisibility() {
-        boolean isVisible = !targetPane.isVisible();
-        targetPane.setVisible(isVisible);
-        Settings.getInstance().setVisibleTargetPanel(isVisible);
-    }
-
-    /**
-     * Swaps the estab panes orientation from Horizontal (left-to-right) to Vertical (top-to-bottom)
-     */
-    public void togglePanesContainer() {
-        if (estabsContainer.getContent() instanceof FlowPane) {
-            FlowPane flowPane = (FlowPane) estabsContainer.getContent();
-            if (flowPane.getOrientation() == Orientation.HORIZONTAL) {
-                flowPane.setOrientation(Orientation.VERTICAL);
-                Settings.getInstance().setVerticalPanes(true);
-            } else {
-                flowPane.setOrientation(Orientation.HORIZONTAL);
-                Settings.getInstance().setVerticalPanes(false);
-            }
-        }
+        targetPane.setVisible(false);
     }
 
     /**
@@ -567,20 +532,23 @@ public class MainController implements Initializable {
      *
      * @param elements collection with the elements to copy
      */
-    public void copyElementsToTarget(Collection<ElementModel> elements) {
-        RelatedElementsLists relatedElements = sourcePaneController.getEstabModel().getRelatedElements(elements);
+    public void copyElementsToTarget(EstabModel sourceModel, Collection<ElementModel> elements) {
+        RelatedElementsLists relatedElements = sourceModel.getRelatedElements(elements);
         relatedElements.findRepeatedElementsInTargetModel(targetPaneController.getEstabModel());
         if (!targetPaneController.copyRelatedElements(relatedElements))
             LOG.log(Level.WARNING, "Could not copy all elements");
     }
 
-    void copyElementsToTarget(ElementModel element) {
-        copyElementsToTarget(Arrays.asList(element));
+    @FXML
+    private void copyAction() {
+        copyElementsToTarget(sourcePaneController.getEstabModel(),Arrays.asList(sourcePaneController.getActiveElement().get()));
+
     }
 
     @FXML
-    private void copyAction() {
-        copyElementsToTarget(sourcePaneController.getActiveElement().get());
+    private void duplicateAction() {
+        targetPaneController.getEstabModel().duplicate(Arrays.asList(targetPaneController.getActiveElement().get()));
+        targetPaneController.update();
     }
 
     @FXML
@@ -656,6 +624,18 @@ public class MainController implements Initializable {
     @FXML
     private void createNewAmmoAction() {
         targetPaneController.createNewElement(new AmmoModel());
+    }
+
+    @FXML
+    private void setTwoEstabsModeAction() {
+        sourcePane.setVisible(true);
+        targetPane.setVisible(true);
+    }
+
+    @FXML
+    private void setOneEstabModeAction() {
+        sourcePane.setVisible(false);
+        targetPane.setVisible(true);
     }
 
     @FXML
