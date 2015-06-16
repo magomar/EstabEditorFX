@@ -23,9 +23,9 @@ import net.deludobellico.estabeditorfx.data.jaxb.Armament;
  */
 public class ArmamentModel implements PojoAdapter<Armament> {
 
-    private final transient IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
-    private final transient StringProperty equipmentName = new SimpleStringProperty();
-    private final transient IntegerProperty qty = new SimpleIntegerProperty();
+    private final IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
+    private final StringProperty equipmentName = new SimpleStringProperty();
+    private final IntegerProperty qty = new SimpleIntegerProperty();
 
     public ArmamentModel(Armament armament) {
         initialize(armament);

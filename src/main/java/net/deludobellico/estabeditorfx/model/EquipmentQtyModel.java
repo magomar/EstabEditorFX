@@ -12,11 +12,10 @@ import net.deludobellico.estabeditorfx.data.jaxb.Equipment;
  */
 public class EquipmentQtyModel implements PojoAdapter<Equipment> {
 
-    private final transient IntegerProperty id = new SimpleIntegerProperty();
-    private final transient StringProperty name = new SimpleStringProperty();
-    private final transient IntegerProperty qty = new SimpleIntegerProperty();
-    // TODO check if equipmentClass is really needed (where is it being used?)
-    private final transient ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty name = new SimpleStringProperty();
+    private final IntegerProperty qty = new SimpleIntegerProperty();
+    private final ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
 
     public EquipmentQtyModel(Equipment pojo) {
         initialize(pojo);
