@@ -49,16 +49,7 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    private static void addAllDescendents(Parent parent, List<Node> nodes) {
-        for (Node node : parent.getChildrenUnmodifiable()) {
-            nodes.add(node);
-            if (node instanceof TabPane) {
-                ((TabPane) node).getTabs().stream().forEach(tab -> addAllDescendents((Parent) tab.getContent(), nodes));
-            } else if (node instanceof Parent) {
-                addAllDescendents((Parent) node, nodes);
-            }
-        }
-    }
+
 
     @Override
     public void setEditable(boolean isEditable) {
