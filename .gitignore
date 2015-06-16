@@ -40,5 +40,7 @@ $RECYCLE.BIN/
 
 newestab.xml
 artifacts/
-src/main/java/net/deludobellico/estabeditorfx/data/jaxb
-TestingEstab.xml
+#src/main/java/net/deludobellico/estabeditorfx/data/jaxb
+
+# Log files
+*.log
