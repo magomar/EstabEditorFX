@@ -148,7 +148,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         primaryStage = ViewUtil.ROOT_STAGE;
-        estabEditorHeight = sourcePaneController.getEditorPane().getHeight();
+        estabEditorHeight = sourcePaneController.getEditorPaneHook().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab", true, this);

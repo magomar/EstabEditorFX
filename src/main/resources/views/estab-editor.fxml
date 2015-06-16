@@ -105,7 +105,7 @@
                               </StackPane>
                      </children>
                   </VBox>
-                      <AnchorPane fx:id="editorPane" styleClass="element-editor" HBox.hgrow="ALWAYS" />
+                      <AnchorPane fx:id="editorPaneHook" styleClass="element-editor" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

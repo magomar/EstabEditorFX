@@ -1,12 +1,18 @@
 package net.deludobellico.estabeditorfx.util;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import net.deludobellico.estabeditorfx.controller.CopyRemoveDialogController;
 import net.deludobellico.estabeditorfx.controller.InfoDialogController;
 import net.deludobellico.estabeditorfx.controller.SearchDialogController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -59,5 +65,38 @@ public class ViewUtil {
                 .setBodyText(bodyText)
                 .setActions(actions)
                 .show();
+    }
+
+    public static void setEditable(Parent root, boolean isEditable) {
+        List<Node> nodes = new ArrayList<Node>();
+        addAllDescendents(root, nodes);
+        for (Node node : nodes) {
+            if (node instanceof TextInputControl) {
+                ((TextInputControl) node).setEditable(isEditable);
+            } else if (node instanceof ComboBox
+                    || node instanceof CheckBox
+                    || node instanceof ButtonBase
+                    || node instanceof ColorPicker) {
+                node.setDisable(!isEditable);
+            }
+            //        if (node instanceof Control) {
+//            if (node instanceof TextInputControl) {
+//                ((TextInputControl) node).setEditable(isEditable);
+//            } else {
+//                node.setDisable(!isEditable);
+//            }
+//        }
+
+        }
+    }
+    private static void addAllDescendents(Parent parent, List<Node> nodes) {
+        for (Node node : parent.getChildrenUnmodifiable()) {
+            nodes.add(node);
+            if (node instanceof TabPane) {
+                ((TabPane) node).getTabs().stream().forEach(tab -> addAllDescendents((Parent) tab.getContent(), nodes));
+            } else if (node instanceof Parent) {
+                addAllDescendents((Parent) node, nodes);
+            }
+        }
     }
 }

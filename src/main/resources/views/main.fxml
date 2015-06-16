@@ -204,7 +204,7 @@
     <center>
         <FlowPane BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane>
+                <AnchorPane id="estab">
                     <children>
                         <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
                     </children>

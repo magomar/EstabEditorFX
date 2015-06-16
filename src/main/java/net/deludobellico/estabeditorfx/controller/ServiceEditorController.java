@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
@@ -130,12 +131,10 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
      */
     @Override
     public void setEditable(boolean isEditable) {
-        backgroundColorPicker.setEditable(isEditable);
-        darkBackgColorPicker.setEditable(isEditable);
-        lightBackgColorPicker.setEditable(isEditable);
-        designationColorPicker.setEditable(isEditable);
-        symbolColorComboBox.setEditable(isEditable);
-        name.setEditable(isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
+        smallInsigniaPanelController.setEditable(isEditable);
+        largeInsigniaPanelController.setEditable(isEditable);
+
     }
 
     @Override

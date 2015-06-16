@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -367,30 +368,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
 
     @Override
     public void setEditable(boolean isEditable) {
-        weight.setEditable(isEditable);
-        name.setEditable(isEditable);
-        description.setEditable(isEditable);
-        crew.setEditable(isEditable);
-        reliability.setEditable(isEditable);
-        weaponPrimaryRole.setDisable(!isEditable);
-        weaponType.setDisable(!isEditable);
-        singleShot.setDisable(!isEditable);
-        mustDeployToFire.setDisable(!isEditable);
-        calibre.setEditable(isEditable);
-        muzzleVelocity.setEditable(isEditable);
-        minRange.setEditable(isEditable);
-        fireRateSlow.setEditable(isEditable);
-        fireRateNormal.setEditable(isEditable);
-        fireRateRapid.setEditable(isEditable);
-        burstRadius.setEditable(isEditable);
-        shellWeight.setEditable(isEditable);
-        load.setEditable(isEditable);
-        rangeItemTableView.setEditable(isEditable);
-        tableNewRangeValue.setEditable(isEditable);
-        tableNewAccuracyValue.setEditable(isEditable);
-        tableNewArmorPenetrationValue.setEditable(isEditable);
-        addRangeButton.setDisable(!isEditable);
-        removeRangeButton.setDisable(!isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
     }
 
     @Override

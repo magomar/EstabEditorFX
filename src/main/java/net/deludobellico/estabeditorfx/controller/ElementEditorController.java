@@ -1,5 +1,6 @@
 package net.deludobellico.estabeditorfx.controller;
 
+import javafx.scene.Parent;
 import javafx.util.StringConverter;
 import javafx.util.converter.LocalTimeStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -23,14 +24,14 @@ interface ElementEditorController<T extends ElementModel> {
     LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
 
     /**
-     * Returns the active {@code ElementModel} set in the Controller
+     * Returns the active {@code ElementModel} set in this Controller
      *
-     * @return active {@link ElementModel} set in the Controller
+     * @return active {@link ElementModel} set in this Controller
      */
     T getActiveElement();
 
     /**
-     * Sets the active {@code ElementModel} in the Controller.
+     * Sets the active {@code ElementModel} in this Controller.
      * <p>
      * The controller will call {@link #bindProperties()} to bind properties
      * and set other attributes (such as images).
@@ -42,10 +43,9 @@ interface ElementEditorController<T extends ElementModel> {
     void setActiveElement(T element);
 
     /**
-     * The controller sets the interface components as not editable when the editor is on read only mode.
-     * {@code isEditable} is equivalent to "Source Estab" if true and "Target Estab" if false
+     *  Switches the editor between read-only and writable modes.
      *
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
+     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface as non editable
      * @see EstabEditorController#isEditable
      */
     void setEditable(boolean isEditable);

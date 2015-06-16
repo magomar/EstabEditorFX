@@ -1,11 +1,19 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import net.deludobellico.estabeditorfx.model.AmmoModel;
+import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -20,6 +28,8 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
     /**
      * Root node
      */
+
+
     @FXML
     private TextField name;
     @FXML
@@ -37,19 +47,23 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        description.setWrapText(true);
+
+    }
+    private static void addAllDescendents(Parent parent, List<Node> nodes) {
+        for (Node node : parent.getChildrenUnmodifiable()) {
+            nodes.add(node);
+            if (node instanceof TabPane) {
+                ((TabPane) node).getTabs().stream().forEach(tab -> addAllDescendents((Parent) tab.getContent(), nodes));
+            } else if (node instanceof Parent) {
+                addAllDescendents((Parent) node, nodes);
+            }
+        }
     }
 
-    /**
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
-     */
     @Override
     public void setEditable(boolean isEditable) {
-        description.setEditable(isEditable);
-        quantity.setEditable(isEditable);
-        weight.setEditable(isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
     }
-
 
     @Override
     public void bindProperties() {

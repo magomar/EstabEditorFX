@@ -3,10 +3,12 @@ package net.deludobellico.estabeditorfx.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.model.EstabModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
 import net.deludobellico.estabeditorfx.model.SideModel;
+import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
 import java.util.Map;
@@ -94,10 +96,9 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
      */
     @Override
     public void setEditable(boolean isEditable) {
-        consumptionRate.setEditable(isEditable);
-        aper.setEditable(isEditable);
-        aarm.setEditable(isEditable);
-        name.setEditable(isEditable);
+        ViewUtil.setEditable(editorPane, isEditable);
+        smallInsigniaPanelController.setEditable(isEditable);
+        largeInsigniaPanelController.setEditable(isEditable);
     }
 
     @Override
