@@ -2,7 +2,8 @@ package net.deludobellico.estabeditorfx.model;
 
 import javafx.beans.property.*;
 import net.deludobellico.estabeditorfx.data.jaxb.Equipment;
-import net.deludobellico.estabeditorfx.data.jaxb.Equipment;
+
+import java.util.Map;
 
 /**
  * Model wrapper for the {@code Equipment} class
@@ -15,7 +16,7 @@ public class EquipmentQtyModel implements PojoAdapter<Equipment> {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty qty = new SimpleIntegerProperty();
-    private final ObjectProperty<Class> equipmentClass = new SimpleObjectProperty<>();
+    private final ObjectProperty<EquipmentType> equipmentType = new SimpleObjectProperty<>();
 
     public EquipmentQtyModel(Equipment pojo) {
         initialize(pojo);
@@ -77,17 +78,18 @@ public class EquipmentQtyModel implements PojoAdapter<Equipment> {
         return qty;
     }
 
-    public Class getEquipmentClass() {
-        return equipmentClass.get();
+    public EquipmentType getEquipmentType() {
+        return equipmentType.get();
     }
 
-    public void setEquipmentClass(Class equipmentClass) {
-        this.equipmentClass.set(equipmentClass);
+    public void setEquipmentType(EquipmentType equipmentType) {
+        this.equipmentType.set(equipmentType);
     }
 
-    public ObjectProperty<Class> equipmentClassProperty() {
-        return equipmentClass;
+    public ObjectProperty<EquipmentType> equipmentTypeProperty() {
+        return equipmentType;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -111,5 +113,20 @@ public class EquipmentQtyModel implements PojoAdapter<Equipment> {
         result = 31 * result + getQty();
         return result;
     }
+
+    public enum EquipmentType {
+        WEAPON("Weapon"),
+        VEHICLE("Vehicle");
+        private final String type;
+
+        EquipmentType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
+
 
 }

@@ -31,6 +31,7 @@ public class EstabModel {
     private Boolean edited;
     private GregorianCalendar lastEdit;
 
+
     /**
      * Empty model instance
      */
@@ -356,6 +357,12 @@ public class EstabModel {
         formationEffects.values().stream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
 
         FileIO.saveEstab(data, file);
+    }
+
+    public  EquipmentQtyModel.EquipmentType findEquipmentType(EquipmentQtyModel equipmentQtyModel) {
+        if (getVehicles().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.VEHICLE;
+        if (getWeapons().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.WEAPON;
+        return null;
     }
 
 }

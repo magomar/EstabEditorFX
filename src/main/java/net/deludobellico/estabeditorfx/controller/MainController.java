@@ -13,6 +13,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import net.deludobellico.estabeditorfx.data.jaxb.Vehicle;
+import net.deludobellico.estabeditorfx.data.jaxb.Weapon;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
@@ -21,10 +23,7 @@ import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,14 +81,16 @@ public class MainController implements Initializable {
     private MenuItem createNewNationMenuItem;
     @FXML
     private MenuItem createNewSideMenuItem;
-    // View
+    // View menu
     @FXML
     private RadioMenuItem toolbarRadioItem;
     @FXML
     private RadioMenuItem sourceRadioItem;
     @FXML
     private RadioMenuItem targetRadioItem;
-    // About
+    // Tools menu
+    private MenuItem fixReferencesMenuItem;
+    // Help menu
     // TODO: Create about info
     @FXML
     private MenuItem aboutMenuItem;
@@ -541,7 +542,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void copyAction() {
-        copyElementsToTarget(sourcePaneController.getEstabModel(),Arrays.asList(sourcePaneController.getActiveElement().get()));
+        copyElementsToTarget(sourcePaneController.getEstabModel(), Arrays.asList(sourcePaneController.getActiveElement().get()));
 
     }
 
@@ -639,7 +640,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void compareElementButtonAction() {
+    private void compareElementsAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
             ViewUtil.showInfoDialog("Element comparison", "",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
@@ -647,6 +648,64 @@ public class MainController implements Initializable {
                             targetPaneController.getActiveElement().get().getId(),
                             sourcePaneController.getActiveElement().get().compareTo(targetPaneController.getActiveElement().get()) ? "" : "NOT "));
 
+        }
+    }
+
+    @FXML
+    private void fixReferencesAction() {
+        EstabModel estabModel = targetPaneController.getEstabModel();
+        int fixes = 0;
+        for (WeaponModel weapon : estabModel.getWeapons().values()) {
+            for (PerformanceModel performance : weapon.getPerformances()) {
+                int id = performance.getAmmoLoad().getId();
+                String name = performance.getAmmoLoad().getName();
+                AmmoModel ammoModel = estabModel.getAmmo().get(id);
+                if (!name.equals(ammoModel.getName())) {
+                    fixes++;
+                    performance.getAmmoLoad().setName(ammoModel.getName());
+                }
+            }
+        }
+        for (VehicleModel vehicle : estabModel.getVehicles().values()) {
+            for (ArmamentModel armament : vehicle.getArmaments()) {
+                int id = armament.getEquipmentObjectId();
+                String name = armament.getEquipmentName();
+                WeaponModel weaponModel = estabModel.getWeapons().get(id);
+                if (!name.equals(weaponModel.getName())) {
+                    fixes++;
+                    armament.setEquipmentName(weaponModel.getName());
+                }
+            }
+        }
+        for (ForceModel force : estabModel.getForces().values()) {
+            for (EquipmentQtyModel equipmentQtyModel : force.getEquipmentList()) {
+                int id = equipmentQtyModel.getId();
+                String name = equipmentQtyModel.getName();
+                EquipmentQtyModel.EquipmentType equipmentType = estabModel.findEquipmentType(equipmentQtyModel);
+                if (equipmentType.equals(EquipmentQtyModel.EquipmentType.WEAPON)) {
+                    WeaponModel weaponModel = estabModel.getWeapons().get(id);
+                    if (!name.equals(weaponModel.getName())) {
+                        fixes++;
+                        equipmentQtyModel.setName(weaponModel.getName());
+                    }
+                } else if (equipmentType.equals(Vehicle.class)) {
+                    VehicleModel vehicleModel = estabModel.getVehicles().get(id);
+                    if (!name.equals(vehicleModel.getName())) {
+                        fixes++;
+                        vehicleModel.setName(vehicleModel.getName());
+                    }
+                }
+            }
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reference problems found");
+        alert.setHeaderText(fixes + " reference problems have been found !");
+        alert.setContentText("¿Would you like to fix them?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+        } else {
+            // ... user chose CANCEL or closed the dialog
         }
     }
 
