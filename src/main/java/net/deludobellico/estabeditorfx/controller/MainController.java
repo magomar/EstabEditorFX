@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import net.deludobellico.estabeditorfx.data.jaxb.AmmoLoad;
 import net.deludobellico.estabeditorfx.data.jaxb.Vehicle;
 import net.deludobellico.estabeditorfx.data.jaxb.Weapon;
 import net.deludobellico.estabeditorfx.model.*;
@@ -654,65 +655,44 @@ public class MainController implements Initializable {
     @FXML
     private void fixReferencesAction() {
         EstabModel estab = targetPaneController.getEstabModel();
-        int fixes = 0;
+        List<ReferenceModel> referencesToFix = new ArrayList<>();
         for (WeaponModel weapon : estab.getWeapons().values()) {
             for (PerformanceModel performance : weapon.getPerformances()) {
-                int id = performance.getAmmoLoad().getId();
-                String name = performance.getAmmoLoad().getName();
-                AmmoModel ammo = estab.getAmmos().get(id);
-                if (!name.equals(ammo.getName())) {
-                    fixes++;
-                    performance.getAmmoLoad().setName(ammo.getName());
+                AmmoLoadModel ammoLoad = performance.getAmmoLoad();
+                if (!ammoLoad.referenceIsOk(estab)) {
+                    referencesToFix.add(ammoLoad);
                 }
             }
         }
         for (VehicleModel vehicle : estab.getVehicles().values()) {
             for (ArmamentModel armament : vehicle.getArmaments()) {
-                int id = armament.getId();
-                String name = armament.getName();
-                WeaponModel weapon = estab.getWeapons().get(id);
-                if (!name.equals(weapon.getName())) {
-                    fixes++;
-                    armament.setName(weapon.getName());
+                if (!armament.referenceIsOk(estab)) {
+                    referencesToFix.add(armament);
                 }
             }
         }
         for (ForceModel force : estab.getForces().values()) {
             for (EquipmentQtyModel equipmentQty : force.getEquipmentList()) {
-                int id = equipmentQty.getId();
-                String name = equipmentQty.getName();
-                EquipmentQtyModel.EquipmentType equipmentType = estab.findEquipmentType(equipmentQty);
-                if (equipmentType.equals(EquipmentQtyModel.EquipmentType.WEAPON)) {
-                    WeaponModel weapon = estab.getWeapons().get(id);
-                    if (!name.equals(weapon.getName())) {
-                        fixes++;
-                        equipmentQty.setName(weapon.getName());
-                    }
-                } else if (equipmentType.equals(Vehicle.class)) {
-                    VehicleModel vehicle = estab.getVehicles().get(id);
-                    if (!name.equals(vehicle.getName())) {
-                        fixes++;
-                        vehicle.setName(vehicle.getName());
-                    }
+                if (!equipmentQty.referenceIsOk(estab)) {
+                    referencesToFix.add(equipmentQty);
                 }
             }
             for (ForceQtyModel forceQty : force.getForceComposition()) {
-                int id = forceQty.getId();
-                String name = forceQty.getName();
-                ForceModel f = estab.getForces().get(id);
-                if (!name.equals(f.getName())) {
-                    fixes++;
-                    forceQty.setName(f.getName());
+                if (!forceQty.referenceIsOk(estab)) {
+                    referencesToFix.add(forceQty);
                 }
             }
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Reference problems found");
-        alert.setHeaderText(fixes + " reference problems have been found !");
+        alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");
         alert.setContentText("¿Would you like to fix them?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             // ... user chose OK
+            for (ReferenceModel reference : referencesToFix) {
+                reference.fixReference(estab);
+            }
         } else {
             // ... user chose CANCEL or closed the dialog
         }

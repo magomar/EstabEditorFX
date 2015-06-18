@@ -8,27 +8,31 @@ import javafx.beans.property.StringProperty;
  */
 public interface ReferenceModel<T extends ElementModel> {
 
+    boolean fixReference(EstabModel estab);
+
     int getId();
+
+    IntegerProperty idProperty();
 
     void setId(int i);
 
     String getName();
 
-    void setName(String name);
-
     StringProperty nameProperty();
 
-    IntegerProperty idProperty();
-
-    T getReferencedElement(EstabModel estab);
-
-    ReferenceStatus getReferenceStatus(EstabModel estab);
+    void setName(String name);
 
     int getQty();
 
     IntegerProperty qtyProperty();
 
     void setQty(int qty);
+
+    T getReferencedElement(EstabModel estab);
+
+    ReferenceStatus getReferenceStatus(EstabModel estab);
+
+    boolean referenceIsOk(EstabModel estab);
 
     enum ReferenceStatus {
         REF_OK,

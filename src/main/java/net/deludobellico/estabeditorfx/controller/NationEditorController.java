@@ -1,14 +1,10 @@
 package net.deludobellico.estabeditorfx.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.model.EstabModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
-import net.deludobellico.estabeditorfx.model.NationModel;
-import net.deludobellico.estabeditorfx.model.SideModel;
 import net.deludobellico.estabeditorfx.model.NationModel;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
@@ -53,7 +49,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setLargeInsignia(im.getId());
                         imageModelExists = true;
                     }
@@ -61,7 +57,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setLargeInsignia(imageModel.getId());
                 }
             }
@@ -71,7 +67,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setSmallInsignia(im.getId());
                         imageModelExists = true;
                         break;
@@ -80,7 +76,7 @@ public class NationEditorController extends AbstractElementEditorController<Nati
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setSmallInsignia(imageModel.getId());
                 }
             }

@@ -1,18 +1,11 @@
 package net.deludobellico.estabeditorfx.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import net.deludobellico.estabeditorfx.data.jaxb.Flag;
-import net.deludobellico.estabeditorfx.data.jaxb.Image;
-import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import net.deludobellico.estabeditorfx.data.jaxb.Image;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +15,7 @@ import java.util.Map;
  * @author Heine
  */
 public class ImageModel extends AbstractElementModel<ImageModel> implements PojoAdapter<Image> {
-    private final StringProperty fileId = new SimpleStringProperty();
+    private final StringProperty fileName = new SimpleStringProperty();
 
     public ImageModel(Image image) {
         initialize(image);
@@ -36,7 +29,7 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     public Image getPojo() {
         Image image = new Image();
         image.setId(id.get());
-        image.setFileId(fileId.get());
+        image.setFileId(fileName.get());
         return image;
     }
 
@@ -44,7 +37,7 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     public void initialize(Image pojo) {
         id.set(pojo.getId());
         String imageFilename = pojo.getFileId();
-        fileId.set(imageFilename);
+        fileName.set(imageFilename);
         name.set(imageFilename.substring(0, imageFilename.lastIndexOf('.')));
     }
 
@@ -89,16 +82,17 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
         return Image.class;
     }
 
-    public String getFileId() {
-        return fileId.get();
+
+    public String getFileName() {
+        return fileName.get();
     }
 
-    public void setFileId(String fileId) {
-        this.fileId.set(fileId);
+    public void setFileName(String fileName) {
+        this.fileName.set(fileName);
     }
 
-    public StringProperty fileIdProperty() {
-        return fileId;
+    public StringProperty fileNameProperty() {
+        return fileName;
     }
 
 
@@ -108,7 +102,7 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
         if (!(o instanceof ImageModel)) return false;
 
         ImageModel that = (ImageModel) o;
-        if (getFileId() != null ? !getFileId().equals(that.getFileId()) : that.getFileId() != null) return false;
+        if (getFileName() != null ? !getFileName().equals(that.getFileName()) : that.getFileName() != null) return false;
         if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
         return true;
     }

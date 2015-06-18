@@ -23,6 +23,22 @@ public abstract class AbstractReferenceModel<T extends ElementModel> implements 
     }
 
     @Override
+    public boolean referenceIsOk(EstabModel estab) {
+        return getReferenceStatus(estab) == ReferenceStatus.REF_OK;
+    }
+
+    @Override
+    public boolean fixReference(EstabModel estab) {
+        T reference = getReferencedElement(estab);
+        ReferenceStatus status = getReferenceStatus(estab);
+        if (status == ReferenceStatus.WRONG_ID) return false;
+        if (status == ReferenceStatus.NAME_MISSMATCH) {
+            name.set(reference.getName());
+        }
+        return true;
+    }
+
+    @Override
     public int getId() {
         return id.get();
     }
