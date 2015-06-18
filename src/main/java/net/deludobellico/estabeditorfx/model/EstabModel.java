@@ -155,7 +155,7 @@ public class EstabModel {
         return (Map<Integer, WeaponModel>) allElements.get(WeaponModel.class);
     }
 
-    public Map<Integer, AmmoModel> getAmmo() {
+    public Map<Integer, AmmoModel> getAmmos() {
         return (Map<Integer, AmmoModel>) allElements.get(AmmoModel.class);
     }
 
@@ -186,7 +186,7 @@ public class EstabModel {
         // Weapons are stored in vehicle armaments
         List<WeaponModel> weaponList = new ArrayList<>(vehicle.getArmaments().size());
         for (ArmamentModel armament : vehicle.getArmaments()) {
-            WeaponModel weapon = getWeapons().get(armament.getEquipmentObjectId());
+            WeaponModel weapon = getWeapons().get(armament.getId());
             if (weapon != null) weaponList.add(weapon);
         }
         return weaponList;
@@ -203,7 +203,7 @@ public class EstabModel {
 
         List<AmmoModel> ammoList = new ArrayList<>(weapon.getPerformances().size());
         for (PerformanceModel performance : weapon.getPerformances()) {
-            AmmoModel ammo = getAmmo().get(performance.getAmmoLoad().getId());
+            AmmoModel ammo = getAmmos().get(performance.getAmmoLoad().getId());
             if (ammo != null) ammoList.add(ammo);
         }
         return ammoList;

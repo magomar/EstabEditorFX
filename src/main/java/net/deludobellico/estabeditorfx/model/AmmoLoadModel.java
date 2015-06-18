@@ -13,10 +13,7 @@ import net.deludobellico.estabeditorfx.data.jaxb.AmmoLoad;
  * @author Mario
  * @author Heine
  */
-public class AmmoLoadModel implements PojoAdapter<AmmoLoad> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final IntegerProperty load = new SimpleIntegerProperty();
+public class AmmoLoadModel extends AbstractReferenceModel<AmmoModel> implements PojoAdapter<AmmoLoad>  {
 
     public AmmoLoadModel() {
     }
@@ -30,7 +27,7 @@ public class AmmoLoadModel implements PojoAdapter<AmmoLoad> {
         AmmoLoad ammoLoad = new AmmoLoad();
         ammoLoad.setObjectId(id.get());
         ammoLoad.setName(name.get() != null ? name.get() : "");
-        ammoLoad.setLoad(load.get());
+        ammoLoad.setLoad(qty.get());
         return ammoLoad;
     }
 
@@ -38,63 +35,13 @@ public class AmmoLoadModel implements PojoAdapter<AmmoLoad> {
     public void initialize(AmmoLoad pojo) {
         id.set(pojo.getObjectId());
         name.set(pojo.getName());
-        load.set(pojo.getLoad());
+        qty.set(pojo.getLoad());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public int getLoad() {
-        return load.get();
-    }
-
-    public void setLoad(int load) {
-        this.load.set(load);
-    }
-
-    public IntegerProperty loadProperty() {
-        return load;
-    }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AmmoLoadModel)) return false;
-
-        AmmoLoadModel that = (AmmoLoadModel) o;
-
-        //if (getId() != that.getId()) return false;
-        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        return getLoad() == that.getLoad();
-
+    public AmmoModel getReferencedElement(EstabModel estab) {
+        return estab.getAmmos().get(id);
     }
 
-    @Override
-    public int hashCode() {
-        //int result = getId();
-        int result = 31 + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + getLoad();
-        return result;
-    }
 }

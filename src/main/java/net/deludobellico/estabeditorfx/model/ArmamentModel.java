@@ -8,11 +8,6 @@
 
 package net.deludobellico.estabeditorfx.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import net.deludobellico.estabeditorfx.data.jaxb.Armament;
 import net.deludobellico.estabeditorfx.data.jaxb.Armament;
 
 /**
@@ -21,11 +16,7 @@ import net.deludobellico.estabeditorfx.data.jaxb.Armament;
  * @author Mario
  * @author Heine
  */
-public class ArmamentModel implements PojoAdapter<Armament> {
-
-    private final IntegerProperty equipmentObjectId = new SimpleIntegerProperty();
-    private final StringProperty equipmentName = new SimpleStringProperty();
-    private final IntegerProperty qty = new SimpleIntegerProperty();
+public class ArmamentModel extends AbstractReferenceModel<WeaponModel> implements PojoAdapter<Armament> {
 
     public ArmamentModel(Armament armament) {
         initialize(armament);
@@ -38,75 +29,22 @@ public class ArmamentModel implements PojoAdapter<Armament> {
     @Override
     public Armament getPojo() {
         Armament armament = new Armament();
-        armament.setEquipmentObjectId(equipmentObjectId.get());
-        armament.setEquipmentName(equipmentName.get());
+        armament.setEquipmentObjectId(id.get());
+        armament.setEquipmentName(name.get());
         armament.setQty(qty.get());
         return armament;
     }
 
     @Override
     public void initialize(Armament pojo) {
-        equipmentObjectId.set(pojo.getEquipmentObjectId());
-        equipmentName.set(pojo.getEquipmentName());
+        id.set(pojo.getEquipmentObjectId());
+        name.set(pojo.getEquipmentName());
         qty.set(pojo.getQty());
     }
 
-    public int getEquipmentObjectId() {
-        return equipmentObjectId.get();
-    }
-
-    public void setEquipmentObjectId(int equipmentObjectId) {
-        this.equipmentObjectId.set(equipmentObjectId);
-    }
-
-    public IntegerProperty equipmentObjectIdProperty() {
-        return equipmentObjectId;
-    }
-
-    public String getEquipmentName() {
-        return equipmentName.get();
-    }
-
-    public void setEquipmentName(String equipmentName) {
-        this.equipmentName.set(equipmentName);
-    }
-
-    public StringProperty equipmentNameProperty() {
-        return equipmentName;
-    }
-
-    public int getQty() {
-        return qty.get();
-    }
-
-    public void setQty(int qty) {
-        this.qty.set(qty);
-    }
-
-    public IntegerProperty qtyProperty() {
-        return qty;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ArmamentModel)) return false;
-
-        ArmamentModel that = (ArmamentModel) o;
-
-        if (getEquipmentName() != null ? !getEquipmentName().equals(that.getEquipmentName()) : that.getEquipmentName() != null)
-            return false;
-//        if (getId() != that.getId()) return false;
-        return getQty() == that.getQty();
-
+    public WeaponModel getReferencedElement(EstabModel estab) {
+        return estab.getWeapons().get(id.get());
     }
 
-    @Override
-    public int hashCode() {
-        int result = 1;
-//        result = 31 * getId();
-        result = 31 * result + (getEquipmentName() != null ? getEquipmentName().hashCode() : 0);
-        result = 31 * result + getQty();
-        return result;
-    }
 }

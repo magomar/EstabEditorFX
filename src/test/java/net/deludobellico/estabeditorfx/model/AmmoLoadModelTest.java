@@ -16,12 +16,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(name);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
         other.setName(name);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(true, ours.equals(other));
     }
 
@@ -30,12 +30,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(name);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
         other.setName(name);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 
@@ -44,12 +44,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(name);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id + 1);
         other.setName(name);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(true, ours.equals(other));
     }
 
@@ -58,12 +58,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(name);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id + 1);
         other.setName(name);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 
@@ -72,12 +72,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
         other.setName(null);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(true, ours.equals(other));
     }
 
@@ -86,12 +86,12 @@ public class AmmoLoadModelTest {
         AmmoLoadModel ours = new AmmoLoadModel();
         ours.setId(id);
         ours.setName(null);
-        ours.setLoad(load);
+        ours.setQty(load);
 
         AmmoLoadModel other = new AmmoLoadModel();
         other.setId(id);
         other.setName(null);
-        other.setLoad(load);
+        other.setQty(load);
         assertEquals(ours.hashCode(), other.hashCode());
     }
 }

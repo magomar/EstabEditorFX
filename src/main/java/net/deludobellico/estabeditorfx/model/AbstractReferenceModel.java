@@ -4,19 +4,23 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import net.deludobellico.estabeditorfx.data.jaxb.Flag;
-
-import java.util.List;
 
 /**
- * Created by Heine on 12/1/2014.
+ * Created by Mario on 17/06/2015.
  */
-public abstract class AbstractElementModel<T> implements ElementModel<T>{
+public abstract class AbstractReferenceModel<T extends ElementModel> implements ReferenceModel<T>{
     protected final IntegerProperty id = new SimpleIntegerProperty();
     protected final StringProperty name = new SimpleStringProperty();
-    protected final StringProperty description = new SimpleStringProperty();
-    protected final List<Flag> flags = FXCollections.observableArrayList();
+    protected final IntegerProperty qty = new SimpleIntegerProperty();
+
+
+    @Override
+    public ReferenceStatus getReferenceStatus(EstabModel estab) {
+        T model = getReferencedElement(estab);
+        if (null == model) return ReferenceStatus.WRONG_ID;
+        if (!name.get().equals(model.getName())) return ReferenceStatus.NAME_MISSMATCH;
+        return ReferenceStatus.REF_OK;
+    }
 
     @Override
     public int getId() {
@@ -49,25 +53,18 @@ public abstract class AbstractElementModel<T> implements ElementModel<T>{
     }
 
     @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
+    public int getQty() {
+        return qty.get();
     }
 
     @Override
-    public String toString() {
-        return getName();
+    public IntegerProperty qtyProperty() {
+        return qty;
+    }
+
+    @Override
+    public void setQty(int qty) {
+        this.qty.set(qty);
     }
 
     @Override
@@ -75,12 +72,14 @@ public abstract class AbstractElementModel<T> implements ElementModel<T>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ElementModel that = (ElementModel) o;
-        return that.getId() == getId();
+        AbstractReferenceModel<?> that = (AbstractReferenceModel<?>) o;
+
+        return id.equals(that.id);
+
     }
 
     @Override
     public int hashCode() {
-        return getId();
+        return id.hashCode();
     }
 }

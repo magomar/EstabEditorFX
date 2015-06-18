@@ -16,9 +16,6 @@ import java.util.Map;
  * @author Heine
  */
 public class VehicleModel extends AbstractGraphicalElementModel<VehicleModel> implements PojoAdapter<Vehicle> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
     private final StringProperty pictureFilename = new SimpleStringProperty();
     /* */
@@ -55,7 +52,6 @@ public class VehicleModel extends AbstractGraphicalElementModel<VehicleModel> im
     private final DoubleProperty sideArmor = new SimpleDoubleProperty();
     private final DoubleProperty rearArmor = new SimpleDoubleProperty();
     private final DoubleProperty topArmor = new SimpleDoubleProperty();
-    private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public VehicleModel(Vehicle vehicle) {
         initialize(vehicle);
@@ -200,45 +196,9 @@ public class VehicleModel extends AbstractGraphicalElementModel<VehicleModel> im
         map.remove(getId());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     @Override
     public Class getPojoClass() {
         return Vehicle.class;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
     }
 
     public int getPictureId() {

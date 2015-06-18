@@ -197,7 +197,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
             // Search for repeated weapons
             boolean repeatedWeapon = false;
             for (ArmamentModel am : getActiveElement().getArmaments())
-                if (am.getEquipmentName().equals(weapon.getName())) {
+                if (am.getName().equals(weapon.getName())) {
                     repeatedWeapon = true;
                     break;
                 }
@@ -289,7 +289,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         vehicleType.valueProperty().bindBidirectional(element.typeProperty());
 
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
-        armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEquipmentName()));
+        armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(new IntegerStringConverter()));
         armamentQuantityColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         armamentTableView.setItems(element.getArmaments());

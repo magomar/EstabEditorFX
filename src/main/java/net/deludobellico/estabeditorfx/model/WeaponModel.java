@@ -17,9 +17,6 @@ import java.util.Map;
  * @author Heine
  */
 public class WeaponModel extends AbstractGraphicalElementModel<WeaponModel> implements PojoAdapter<Weapon> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
     private final StringProperty pictureFilename = new SimpleStringProperty();
     private final DoubleProperty weight = new SimpleDoubleProperty();
@@ -32,7 +29,6 @@ public class WeaponModel extends AbstractGraphicalElementModel<WeaponModel> impl
     private final IntegerProperty muzzleVelocity = new SimpleIntegerProperty();
     private final BooleanProperty mustDeployToFire = new SimpleBooleanProperty();
     private final ObservableList<PerformanceModel> performances = FXCollections.observableArrayList();
-    private final ObservableList<Flag> flags = FXCollections.observableArrayList();
 
     public WeaponModel(Weapon weapon) {
         initialize(weapon);
@@ -142,50 +138,9 @@ public class WeaponModel extends AbstractGraphicalElementModel<WeaponModel> impl
         map.remove(getId());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     @Override
     public Class getPojoClass() {
         return Weapon.class;
-    }
-
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
     }
 
     public int getPictureId() {

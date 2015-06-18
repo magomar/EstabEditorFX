@@ -11,11 +11,8 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class EquipmentQtyModel implements PojoAdapter<Equipment> {
+public class EquipmentQtyModel extends AbstractReferenceModel<ElementModel> implements PojoAdapter<Equipment> {
 
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final IntegerProperty qty = new SimpleIntegerProperty();
     private final ObjectProperty<EquipmentType> equipmentType = new SimpleObjectProperty<>();
 
     public EquipmentQtyModel(Equipment pojo) {
@@ -42,42 +39,6 @@ public class EquipmentQtyModel implements PojoAdapter<Equipment> {
         qty.set(pojo.getQty());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public int getQty() {
-        return qty.get();
-    }
-
-    public void setQty(int qty) {
-        this.qty.set(qty);
-    }
-
-    public IntegerProperty qtyProperty() {
-        return qty;
-    }
-
     public EquipmentType getEquipmentType() {
         return equipmentType.get();
     }
@@ -90,29 +51,15 @@ public class EquipmentQtyModel implements PojoAdapter<Equipment> {
         return equipmentType;
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof EquipmentQtyModel)) return false;
-
-        EquipmentQtyModel that = (EquipmentQtyModel) o;
-
-        if (getId() != that.getId()) return false;
-        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (getQty() != that.getQty()) return false;
-
-        return true;
+    public ElementModel getReferencedElement(EstabModel estab) {
+        if (equipmentType.equals(EquipmentQtyModel.EquipmentType.WEAPON)) {
+            return estab.getWeapons().get(id.get());
+        } else {
+            return estab.getVehicles().get(id.get());
+        }
     }
 
-    @Override
-    public int hashCode() {
-        int result = 1;
-        result = result + getId();
-        result = 62 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + getQty();
-        return result;
-    }
 
     public enum EquipmentType {
         WEAPON("Weapon"),

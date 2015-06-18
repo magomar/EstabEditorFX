@@ -22,10 +22,7 @@ import java.util.Map;
  * @author Heine
  */
 public class ImageModel extends AbstractElementModel<ImageModel> implements PojoAdapter<Image> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty fileId = new SimpleStringProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private List<Flag> flags = FXCollections.observableArrayList();
 
     public ImageModel(Image image) {
         initialize(image);
@@ -88,28 +85,8 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
     }
 
     @Override
-    public int getId() {
-        return id.get();
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    @Override
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    @Override
     public Class getPojoClass() {
         return Image.class;
-    }
-
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
     }
 
     public String getFileId() {
@@ -124,20 +101,6 @@ public class ImageModel extends AbstractElementModel<ImageModel> implements Pojo
         return fileId;
     }
 
-    @Override
-    public String getName() {
-        return name.get();
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    @Override
-    public StringProperty nameProperty() {
-        return name;
-    }
 
     @Override
     public boolean compareTo(Object o) {

@@ -602,7 +602,7 @@ public class EstabEditorController implements Initializable {
             int images = estabModel.getImages().size();
             int vehicles = estabModel.getVehicles().size();
             int weapons = estabModel.getWeapons().size();
-            int ammo = estabModel.getAmmo().size();
+            int ammo = estabModel.getAmmos().size();
             String filename = activeFile == null ? "" : activeFile.getName();
             title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
         }

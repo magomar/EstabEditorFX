@@ -653,47 +653,56 @@ public class MainController implements Initializable {
 
     @FXML
     private void fixReferencesAction() {
-        EstabModel estabModel = targetPaneController.getEstabModel();
+        EstabModel estab = targetPaneController.getEstabModel();
         int fixes = 0;
-        for (WeaponModel weapon : estabModel.getWeapons().values()) {
+        for (WeaponModel weapon : estab.getWeapons().values()) {
             for (PerformanceModel performance : weapon.getPerformances()) {
                 int id = performance.getAmmoLoad().getId();
                 String name = performance.getAmmoLoad().getName();
-                AmmoModel ammoModel = estabModel.getAmmo().get(id);
-                if (!name.equals(ammoModel.getName())) {
+                AmmoModel ammo = estab.getAmmos().get(id);
+                if (!name.equals(ammo.getName())) {
                     fixes++;
-                    performance.getAmmoLoad().setName(ammoModel.getName());
+                    performance.getAmmoLoad().setName(ammo.getName());
                 }
             }
         }
-        for (VehicleModel vehicle : estabModel.getVehicles().values()) {
+        for (VehicleModel vehicle : estab.getVehicles().values()) {
             for (ArmamentModel armament : vehicle.getArmaments()) {
-                int id = armament.getEquipmentObjectId();
-                String name = armament.getEquipmentName();
-                WeaponModel weaponModel = estabModel.getWeapons().get(id);
-                if (!name.equals(weaponModel.getName())) {
+                int id = armament.getId();
+                String name = armament.getName();
+                WeaponModel weapon = estab.getWeapons().get(id);
+                if (!name.equals(weapon.getName())) {
                     fixes++;
-                    armament.setEquipmentName(weaponModel.getName());
+                    armament.setName(weapon.getName());
                 }
             }
         }
-        for (ForceModel force : estabModel.getForces().values()) {
-            for (EquipmentQtyModel equipmentQtyModel : force.getEquipmentList()) {
-                int id = equipmentQtyModel.getId();
-                String name = equipmentQtyModel.getName();
-                EquipmentQtyModel.EquipmentType equipmentType = estabModel.findEquipmentType(equipmentQtyModel);
+        for (ForceModel force : estab.getForces().values()) {
+            for (EquipmentQtyModel equipmentQty : force.getEquipmentList()) {
+                int id = equipmentQty.getId();
+                String name = equipmentQty.getName();
+                EquipmentQtyModel.EquipmentType equipmentType = estab.findEquipmentType(equipmentQty);
                 if (equipmentType.equals(EquipmentQtyModel.EquipmentType.WEAPON)) {
-                    WeaponModel weaponModel = estabModel.getWeapons().get(id);
-                    if (!name.equals(weaponModel.getName())) {
+                    WeaponModel weapon = estab.getWeapons().get(id);
+                    if (!name.equals(weapon.getName())) {
                         fixes++;
-                        equipmentQtyModel.setName(weaponModel.getName());
+                        equipmentQty.setName(weapon.getName());
                     }
                 } else if (equipmentType.equals(Vehicle.class)) {
-                    VehicleModel vehicleModel = estabModel.getVehicles().get(id);
-                    if (!name.equals(vehicleModel.getName())) {
+                    VehicleModel vehicle = estab.getVehicles().get(id);
+                    if (!name.equals(vehicle.getName())) {
                         fixes++;
-                        vehicleModel.setName(vehicleModel.getName());
+                        vehicle.setName(vehicle.getName());
                     }
+                }
+            }
+            for (ForceQtyModel forceQty : force.getForceComposition()) {
+                int id = forceQty.getId();
+                String name = forceQty.getName();
+                ForceModel f = estab.getForces().get(id);
+                if (!name.equals(f.getName())) {
+                    fixes++;
+                    forceQty.setName(f.getName());
                 }
             }
         }
