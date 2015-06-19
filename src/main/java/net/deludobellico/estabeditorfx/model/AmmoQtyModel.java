@@ -1,9 +1,5 @@
 package net.deludobellico.estabeditorfx.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import net.deludobellico.estabeditorfx.data.jaxb.AmmoQty;
 
 /**
@@ -14,31 +10,35 @@ import net.deludobellico.estabeditorfx.data.jaxb.AmmoQty;
  */
 public class AmmoQtyModel extends AbstractReferenceModel<AmmoModel> implements PojoAdapter<AmmoQty> {
 
-    public AmmoQtyModel(AmmoQty pojo) {
-        initialize(pojo);
-    }
 
     public AmmoQtyModel() {
+        super(AmmoModel.class);
+    }
+
+
+    public AmmoQtyModel(AmmoQty pojo) {
+        super(AmmoModel.class);
+        initialize(pojo);
     }
 
     @Override
     public AmmoQty getPojo() {
         AmmoQty pojo = new AmmoQty();
-        pojo.setAmmoObjectId(id.get());
-        pojo.setName(name.get());
-        pojo.setQty(qty.get());
+        pojo.setAmmoObjectId(getId());
+        pojo.setName(getName());
+        pojo.setQty(getQty());
         return pojo;
     }
 
     @Override
     public void initialize(AmmoQty pojo) {
-        id.set(pojo.getAmmoObjectId());
-        name.set(pojo.getName());
-        qty.set(pojo.getQty());
+        setId(pojo.getAmmoObjectId());
+        setName(pojo.getName());
+        setQty(pojo.getQty());
     }
 
     @Override
-    public AmmoModel getReferencedElement(EstabModel estab) {
-        return estab.getAmmos().get(id.get());
+    public AmmoModel getReferenceById(EstabModel estab) {
+        return estab.getAmmos().get(getId());
     }
 }

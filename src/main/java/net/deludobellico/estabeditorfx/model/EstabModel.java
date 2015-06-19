@@ -164,15 +164,28 @@ public class EstabModel {
     }
 
     /**
-     * Loops through all map values looking for names that match our query.
+     * Loops through all map values of the given class looking for names that match the query passed as argument.
      *
      * @param query             text to search
-     * @param elementModelClass used to load the corresponding map
+     * @param elementClass used to load the corresponding map
      * @return collection with all matching elements
      */
-    public List<ElementModel> searchElement(String query, Class elementModelClass) {
-        return allElements.get(elementModelClass).values().parallelStream()
+    public List<ElementModel> searchElement(String query, Class elementClass) {
+        return allElements.get(elementClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
+    }
+
+    /**
+     * Loops through all map values looking for names that match exactly our query.
+     *
+     * @param query             text to search
+     * @param elementClass used to load the corresponding map
+     * @return collection with all matching elements
+     */
+    public List<ElementModel> searchExactElement(String query, Class elementClass) {
+        return allElements.get(elementClass).values().parallelStream()
+                .filter(element -> element.getName().toLowerCase().equals(query.toLowerCase()))
                 .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
     }
 

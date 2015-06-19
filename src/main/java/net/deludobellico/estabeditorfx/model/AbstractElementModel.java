@@ -67,7 +67,7 @@ public abstract class AbstractElementModel<T> implements ElementModel<T>{
 
     @Override
     public String toString() {
-        return getName();
+        return name.get() + "(" + id.get() + ")";
     }
 
     @Override

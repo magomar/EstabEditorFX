@@ -18,33 +18,36 @@ import net.deludobellico.estabeditorfx.data.jaxb.Armament;
  */
 public class ArmamentModel extends AbstractReferenceModel<WeaponModel> implements PojoAdapter<Armament> {
 
-    public ArmamentModel(Armament armament) {
-        initialize(armament);
+    public ArmamentModel() {
+        super(WeaponModel.class);
     }
 
-    public ArmamentModel() {
-
+    public ArmamentModel(Armament armament) {
+        super(WeaponModel.class);
+        initialize(armament);
     }
 
     @Override
     public Armament getPojo() {
         Armament armament = new Armament();
-        armament.setEquipmentObjectId(id.get());
-        armament.setEquipmentName(name.get());
-        armament.setQty(qty.get());
+        armament.setEquipmentObjectId(getId());
+        armament.setEquipmentName(getName());
+        armament.setQty(getQty());
         return armament;
     }
 
     @Override
     public void initialize(Armament pojo) {
-        id.set(pojo.getEquipmentObjectId());
-        name.set(pojo.getEquipmentName());
-        qty.set(pojo.getQty());
+        setId(pojo.getEquipmentObjectId());
+        setName(pojo.getEquipmentName());
+        setQty(pojo.getQty());
     }
 
     @Override
-    public WeaponModel getReferencedElement(EstabModel estab) {
-        return estab.getWeapons().get(id.get());
+    public WeaponModel getReferenceById(EstabModel estab) {
+        return estab.getWeapons().get(getId());
     }
+
+
 
 }

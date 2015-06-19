@@ -28,7 +28,9 @@ public interface ReferenceModel<T extends ElementModel> {
 
     void setQty(int qty);
 
-    T getReferencedElement(EstabModel estab);
+    T getReferenceById(EstabModel estab);
+
+    T getReferenceByName(EstabModel estab);
 
     ReferenceStatus getReferenceStatus(EstabModel estab);
 

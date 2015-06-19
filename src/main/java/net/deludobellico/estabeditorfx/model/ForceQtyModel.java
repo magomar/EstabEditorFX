@@ -7,31 +7,33 @@ import net.deludobellico.estabeditorfx.data.jaxb.ForceQty;
  */
 public class ForceQtyModel extends AbstractReferenceModel<ForceModel> implements PojoAdapter<ForceQty> {
 
-    public ForceQtyModel(ForceQty pojo) {
-        initialize(pojo);
+    public ForceQtyModel() {
+        super(ForceModel.class);
     }
 
-    public ForceQtyModel() {
+    public ForceQtyModel(ForceQty pojo) {
+        super(ForceModel.class);
+        initialize(pojo);
     }
 
     @Override
     public ForceQty getPojo() {
         ForceQty pojo = new ForceQty();
-        pojo.setForceObjectId(id.get());
-        pojo.setName(name.get());
-        pojo.setQty(qty.get());
+        pojo.setForceObjectId(getId());
+        pojo.setName(getName());
+        pojo.setQty(getQty());
         return pojo;
     }
 
     @Override
     public void initialize(ForceQty pojo) {
-        id.set(pojo.getForceObjectId());
-        name.set(pojo.getName());
-        qty.set(pojo.getQty());
+        setId(pojo.getForceObjectId());
+        setName(pojo.getName());
+        setQty(pojo.getQty());
     }
 
     @Override
-    public ForceModel getReferencedElement(EstabModel estab) {
-        return estab.getForces().get(id.get());
+    public ForceModel getReferenceById(EstabModel estab) {
+        return estab.getForces().get(getId());
     }
 }

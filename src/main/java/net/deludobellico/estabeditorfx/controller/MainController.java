@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * EstabEditorFXApp application controller. Manages both source and target Estabs, and components such as the menu bar and tool bar.
@@ -153,8 +154,8 @@ public class MainController implements Initializable {
         estabEditorHeight = sourcePaneController.getEditorPaneHook().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
-        targetPaneController.init("Target Estab", true, this);
-        sourcePaneController.init("Source Estab", false, this);
+        targetPaneController.init("Target Estab: ", true, this);
+        sourcePaneController.init("Source Estab: ", false, this);
 
         bindProperties();
         addListeners();
@@ -569,7 +570,7 @@ public class MainController implements Initializable {
             serviceModel.getForce().add((ForceModel) targetPaneController.createNewElement(forceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Force should be created inside a Service");
             alert.setContentText("Please select a Service to create a Force");
             alert.showAndWait();
@@ -585,7 +586,7 @@ public class MainController implements Initializable {
             nationModel.getService().add((ServiceModel) targetPaneController.createNewElement(serviceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Service should be created inside a Nation");
             alert.setContentText("Please select a Nation to create a Service");
             alert.showAndWait();
@@ -601,7 +602,7 @@ public class MainController implements Initializable {
             sideModel.getNation().add((NationModel) targetPaneController.createNewElement(nationModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Nation should be created inside a Side");
             alert.setContentText("Please select a Side to create a Nation");
             alert.showAndWait();
@@ -656,6 +657,7 @@ public class MainController implements Initializable {
     private void fixReferencesAction() {
         EstabModel estab = targetPaneController.getEstabModel();
         List<ReferenceModel> referencesToFix = new ArrayList<>();
+        List<ReferenceModel> brokenReferences = new ArrayList<>();
         for (WeaponModel weapon : estab.getWeapons().values()) {
             for (PerformanceModel performance : weapon.getPerformances()) {
                 AmmoLoadModel ammoLoad = performance.getAmmoLoad();
@@ -665,18 +667,10 @@ public class MainController implements Initializable {
             }
         }
         for (VehicleModel vehicle : estab.getVehicles().values()) {
-            for (ArmamentModel armament : vehicle.getArmaments()) {
-                if (!armament.referenceIsOk(estab)) {
-                    referencesToFix.add(armament);
-                }
-            }
+            referencesToFix.addAll(vehicle.getArmaments().stream().filter(armament -> !armament.referenceIsOk(estab)).collect(Collectors.toList()));
         }
         for (ForceModel force : estab.getForces().values()) {
-            for (EquipmentQtyModel equipmentQty : force.getEquipmentList()) {
-                if (!equipmentQty.referenceIsOk(estab)) {
-                    referencesToFix.add(equipmentQty);
-                }
-            }
+            referencesToFix.addAll(force.getEquipmentList().stream().filter(equipmentQty -> !equipmentQty.referenceIsOk(estab)).collect(Collectors.toList()));
             for (ForceQtyModel forceQty : force.getForceComposition()) {
                 if (!forceQty.referenceIsOk(estab)) {
                     referencesToFix.add(forceQty);
@@ -684,17 +678,23 @@ public class MainController implements Initializable {
             }
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Reference problems found");
+        alert.setTitle("User action required");
         alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");
         alert.setContentText("¿Would you like to fix them?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             // ... user chose OK
-            for (ReferenceModel reference : referencesToFix) {
-                reference.fixReference(estab);
-            }
+            brokenReferences.addAll(referencesToFix.stream().filter(reference -> !reference.fixReference(estab)).collect(Collectors.toList()));
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning !");
+            alert.setHeaderText("Broken references");
+            alert.setContentText(brokenReferences.size() + " broken references have been found.");
         } else {
             // ... user chose CANCEL or closed the dialog
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning !");
+            alert.setHeaderText("References need to be fixed");
+            alert.setContentText("Please remember to fix reference problems");
         }
     }
 
