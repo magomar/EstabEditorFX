@@ -25,7 +25,7 @@ public abstract class AbstractElementModel<T> implements ElementModel<T>{
 
     @Override
     public void setId(int id) {
-        this.setId(id);
+        this.id.set(id);
     }
 
     @Override

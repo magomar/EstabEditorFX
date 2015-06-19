@@ -325,7 +325,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setId(element.getId());
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(equipmentQty.getText()));
-                model.setEquipmentType(getEstabEditorController().getEstabModel().findEquipmentType(model));
+                model.link(getEstabEditorController().getEstabModel());
                 getActiveElement().getEquipmentList().add(model);
             } else {
                 ViewUtil.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
@@ -447,16 +447,17 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         designationColorChooser.valueProperty().bindBidirectional(force.getIcon().designationColorProperty());
 
         // EQUIPMENT & SUPPLY
-        equipmentTypeColumn.setCellValueFactory(param -> {
-            EquipmentQtyModel.EquipmentType type;
-            if (param.getValue().getEquipmentType() == null) {
-                type = getEstabEditorController().getEstabModel().findEquipmentType(param.getValue());
-                param.getValue().setEquipmentType(type);
-            } else {
-                type = param.getValue().getEquipmentType();
-            }
-            return new SimpleObjectProperty<>(type);
-        });
+//        equipmentTypeColumn.setCellValueFactory(param -> {
+//            EquipmentQtyModel.EquipmentType type;
+//            if (param.getValue().getEquipmentType() == null) {
+//                type = getEstabEditorController().getEstabModel().findEquipmentType(param.getValue());
+//                param.getValue().setEquipmentType(type);
+//            } else {
+//                type = param.getValue().getEquipmentType();
+//            }
+//            return new SimpleObjectProperty<>(type);
+//        });
+        equipmentTypeColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getEquipmentType()));
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
         equipmentQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());

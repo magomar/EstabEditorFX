@@ -28,13 +28,11 @@ public interface ReferenceModel<T extends ElementModel> {
 
     void setQty(int qty);
 
-    T getReferenceById(EstabModel estab);
+    T getReference();
 
-    T getReferenceByName(EstabModel estab);
+    ReferenceStatus getReferenceStatus();
 
-    ReferenceStatus getReferenceStatus(EstabModel estab);
-
-    boolean referenceIsOk(EstabModel estab);
+    boolean referenceIsOk();
 
     enum ReferenceStatus {
         REF_OK,

@@ -1,10 +1,8 @@
 package net.deludobellico.estabeditorfx.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
-import net.deludobellico.estabeditorfx.model.provider.ModelProvider;
-import net.deludobellico.estabeditorfx.model.provider.ModelProviderFactory;
-import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
+import net.deludobellico.estabeditorfx.model.provider.ModelProvider;
 import net.deludobellico.estabeditorfx.model.provider.ModelProviderFactory;
 import net.deludobellico.estabeditorfx.util.FileIO;
 
@@ -97,34 +95,42 @@ public class EstabModel {
         // Wrap all the elements to their element model and saves them to their corresponding map
         final int[] maxId = {0};
         for (List<? extends ModelProvider> elements : estabLists)
-            elements.stream().map(ModelProvider::getModel).forEach(e -> {
-                if (e.getId() > maxId[0]) maxId[0] = e.getId();
-                e.shallowCopyToMap(allElements.get(e.getClass()));
+            elements.stream().map(ModelProvider::getModel).forEach(element -> {
+                if (element.getId() > maxId[0]) maxId[0] = element.getId();
+                element.shallowCopyToMap(allElements.get(element.getClass()));
             });
 
-        Map<Integer, SideModel> sideModelMap = (Map<Integer, SideModel>) allElements.get(SideModel.class);
-        Map<Integer, NationModel> nationModelMap = (Map<Integer, NationModel>) allElements.get(NationModel.class);
-        Map<Integer, ServiceModel> serviceModelMap = (Map<Integer, ServiceModel>) allElements.get(ServiceModel.class);
-        Map<Integer, ForceModel> forceModelMap = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
+        Map<Integer, SideModel> sides = (Map<Integer, SideModel>) allElements.get(SideModel.class);
+        Map<Integer, NationModel> nations = (Map<Integer, NationModel>) allElements.get(NationModel.class);
+        Map<Integer, ServiceModel> services = (Map<Integer, ServiceModel>) allElements.get(ServiceModel.class);
+        Map<Integer, ForceModel> forces = (Map<Integer, ForceModel>) allElements.get(ForceModel.class);
 
-        for (SideModel side : sideModelMap.values()) {
+        for (SideModel side : sides.values()) {
             // sides are already included
             for (NationModel nation : side.getNation()) {
-                nationModelMap.put(nation.getId(), nation);
+                nations.put(nation.getId(), nation);
                 if (nation.getId() > maxId[0]) maxId[0] = nation.getId();
 
                 for (ServiceModel service : nation.getService()) {
-                    serviceModelMap.put(service.getId(), service);
+                    services.put(service.getId(), service);
                     if (service.getId() > maxId[0]) maxId[0] = service.getId();
 
                     for (ForceModel force : service.getForce()) {
                         if (force.getId() > maxId[0]) maxId[0] = force.getId();
-                        forceModelMap.put(force.getId(), force);
+                        forces.put(force.getId(), force);
                     }
                 }
             }
         }
         ElementModelFactory.setMaxId(maxId[0]);
+
+        // Link all references to its elements
+        getWeapons().values().stream().forEach(weapon -> weapon.getPerformances().stream().forEach(performance -> performance.getAmmoLoad().link(this)));
+        getVehicles().values().stream().forEach(vehicle -> vehicle.getArmaments().forEach(armament -> armament.link(this)));
+        getForces().values().stream().forEach(force -> {
+            force.getEquipmentList().forEach(equipmentQty -> equipmentQty.link(this));
+            force.getForceComposition().forEach(forceQty -> forceQty.link(this));
+        });
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -164,29 +170,30 @@ public class EstabModel {
     }
 
     /**
-     * Loops through all map values of the given class looking for names that match the query passed as argument.
+     * Return a list of elements of the given class (@{code elementClass}) whose name contains the query
      *
-     * @param query             text to search
+     * @param query        text to search
      * @param elementClass used to load the corresponding map
      * @return collection with all matching elements
      */
-    public List<ElementModel> searchElement(String query, Class elementClass) {
+    public List<ElementModel> searchElement(String query, Class<? extends ElementModel> elementClass) {
         return allElements.get(elementClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().contains(query.toLowerCase()))
-                .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
+
     /**
-     * Loops through all map values looking for names that match exactly our query.
+     * Return a list of elements of the given class ({@code elementClass}) whose name matches exactly the provided {@code query}.
      *
-     * @param query             text to search
+     * @param query        text to search
      * @param elementClass used to load the corresponding map
      * @return collection with all matching elements
      */
-    public List<ElementModel> searchExactElement(String query, Class elementClass) {
+    public List<ElementModel> searchExactElement(String query, Class<? extends ElementModel> elementClass) {
         return allElements.get(elementClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().equals(query.toLowerCase()))
-                .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
@@ -237,7 +244,9 @@ public class EstabModel {
 
         RelatedElementsLists relatedElementsLists = new RelatedElementsLists();
         for (ElementModel elementModel : elements)
-            if (elementModel.getClass() != SideModel.class && elementModel.getClass() != NationModel.class && elementModel.getClass() != ServiceModel.class)
+            if (elementModel.getClass() != SideModel.class
+                    && elementModel.getClass() != NationModel.class
+                    && elementModel.getClass() != ServiceModel.class)
                 elementModel.insertInToCollection(relatedElementsLists.getAll(elementModel.getClass()));
 
         for (ElementModel v : relatedElementsLists.getAll(VehicleModel.class)) {
@@ -265,7 +274,7 @@ public class EstabModel {
      */
     public void remove(Collection<ElementModel> elements) {
         for (ElementModel element : elements) {
-            if(element.getClass() == ServiceModel.class) {
+            if (element.getClass() == ServiceModel.class) {
                 ((ServiceModel) element).getNation().getService().remove(element);
             } else if (element.getClass() == NationModel.class) {
                 ((NationModel) element).getSide().getNation().remove(element);
@@ -343,6 +352,7 @@ public class EstabModel {
         for (ElementModel selectedItem : elements)
             selectedItem.cloneToMap(ElementModelFactory.incrementMaxId(), allElements.get(selectedItem.getClass()));
     }
+
     /**
      * Save the estab model to disk
      *
@@ -370,12 +380,6 @@ public class EstabModel {
         formationEffects.values().stream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
 
         FileIO.saveEstab(data, file);
-    }
-
-    public  EquipmentQtyModel.EquipmentType findEquipmentType(EquipmentQtyModel equipmentQtyModel) {
-        if (getVehicles().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.VEHICLE;
-        if (getWeapons().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.WEAPON;
-        return null;
     }
 
 }
