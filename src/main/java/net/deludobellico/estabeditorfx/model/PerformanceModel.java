@@ -172,31 +172,47 @@ public class PerformanceModel implements PojoAdapter<Performance> {
 
         PerformanceModel that = (PerformanceModel) o;
 
-        if (getAmmoLoad() != (that.getAmmoLoad())) return false;
-        if (getBurstRadius() != (that.getBurstRadius())) return false;
-        if ((getFireType() != null ? !getFireType().equals(that.getFireType()) : that.getFireType() != null))
-            return false;
-        if (getMinRange() != (that.getMinRange())) return false;
-        if (getNormalROF() != (that.getNormalROF())) return false;
-        if (getRapidROF() != (that.getRapidROF())) return false;
-        if (getShellWeight() != (that.getShellWeight())) return false;
-        if (getSlowROF() != (that.getSlowROF())) return false;
-        if (that.getRanges().size() != ranges.size() || !ranges.containsAll(that.getRanges()))
-            return false;
-        return true;
+        return ammoLoad.equals(that.ammoLoad);
+
     }
 
     @Override
     public int hashCode() {
-        int result = getAmmoLoad() != null ? getAmmoLoad().hashCode() : 0;
-        result = 31 * result + getMinRange();
-        result = (int) (31 * result + getSlowROF());
-        result = (int) (31 * result + getNormalROF());
-        result = (int) (31 * result + getRapidROF());
-        result = 31 * result + getBurstRadius();
-        result = (int) (31 * result + getShellWeight());
-        result = 31 * result + ranges.stream().mapToInt(RangeItemModel::hashCode).sum();
-        result = 31 * result + (getFireType() != null ? getFireType().hashCode() : 0);
-        return result;
+        return ammoLoad.hashCode();
     }
+
+    //    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        PerformanceModel that = (PerformanceModel) o;
+//
+//        if (getAmmoLoad() != (that.getAmmoLoad())) return false;
+//        if (getBurstRadius() != (that.getBurstRadius())) return false;
+//        if ((getFireType() != null ? !getFireType().equals(that.getFireType()) : that.getFireType() != null))
+//            return false;
+//        if (getMinRange() != (that.getMinRange())) return false;
+//        if (getNormalROF() != (that.getNormalROF())) return false;
+//        if (getRapidROF() != (that.getRapidROF())) return false;
+//        if (getShellWeight() != (that.getShellWeight())) return false;
+//        if (getSlowROF() != (that.getSlowROF())) return false;
+//        if (that.getRanges().size() != ranges.size() || !ranges.containsAll(that.getRanges()))
+//            return false;
+//        return true;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = getAmmoLoad() != null ? getAmmoLoad().hashCode() : 0;
+//        result = 31 * result + getMinRange();
+//        result = (int) (31 * result + getSlowROF());
+//        result = (int) (31 * result + getNormalROF());
+//        result = (int) (31 * result + getRapidROF());
+//        result = 31 * result + getBurstRadius();
+//        result = (int) (31 * result + getShellWeight());
+//        result = 31 * result + ranges.stream().mapToInt(RangeItemModel::hashCode).sum();
+//        result = 31 * result + (getFireType() != null ? getFireType().hashCode() : 0);
+//        return result;
+//    }
 }

@@ -584,10 +584,10 @@ public class EstabEditorController implements Initializable {
     }
 
     /**
-     * Sets the title depending if this is a source or target estab
+     * Sets the title depending whether this editor will contain the source or the target
      */
     void setTitle() {
-        setTitle(isEditable ? "Target Estab" : "Source Estab");
+        setTitle(isEditable ? "Target Estab:" : "Source Estab:");
     }
 
     /**
@@ -602,20 +602,11 @@ public class EstabEditorController implements Initializable {
             int images = estabModel.getImages().size();
             int vehicles = estabModel.getVehicles().size();
             int weapons = estabModel.getWeapons().size();
-            int ammo = estabModel.getAmmo().size();
+            int ammo = estabModel.getAmmos().size();
             String filename = activeFile == null ? "" : activeFile.getName();
             title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
         }
         estabInfo.setText(title);
-    }
-
-    /**
-     * Sets the estab file.
-     *
-     * @param file estab file
-     */
-    void setFile(File file) {
-        this.activeFile = file;
     }
 
     public File getActiveFile() {
@@ -637,7 +628,7 @@ public class EstabEditorController implements Initializable {
      */
     public void setEstabModel(File file) {
         // File has to be set first in order to display the correct title
-        setFile(file);
+        this.activeFile = file;
         setEstabModel(new EstabModel(file));
     }
 

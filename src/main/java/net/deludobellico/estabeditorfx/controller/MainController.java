@@ -13,6 +13,9 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import net.deludobellico.estabeditorfx.data.jaxb.AmmoLoad;
+import net.deludobellico.estabeditorfx.data.jaxb.Vehicle;
+import net.deludobellico.estabeditorfx.data.jaxb.Weapon;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
@@ -21,12 +24,10 @@ import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * EstabEditorFXApp application controller. Manages both source and target Estabs, and components such as the menu bar and tool bar.
@@ -82,14 +83,16 @@ public class MainController implements Initializable {
     private MenuItem createNewNationMenuItem;
     @FXML
     private MenuItem createNewSideMenuItem;
-    // View
+    // View menu
     @FXML
     private RadioMenuItem toolbarRadioItem;
     @FXML
     private RadioMenuItem sourceRadioItem;
     @FXML
     private RadioMenuItem targetRadioItem;
-    // About
+    // Tools menu
+    private MenuItem fixReferencesMenuItem;
+    // Help menu
     // TODO: Create about info
     @FXML
     private MenuItem aboutMenuItem;
@@ -151,8 +154,8 @@ public class MainController implements Initializable {
         estabEditorHeight = sourcePaneController.getEditorPaneHook().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
-        targetPaneController.init("Target Estab", true, this);
-        sourcePaneController.init("Source Estab", false, this);
+        targetPaneController.init("Target Estab: ", true, this);
+        sourcePaneController.init("Source Estab: ", false, this);
 
         bindProperties();
         addListeners();
@@ -541,7 +544,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void copyAction() {
-        copyElementsToTarget(sourcePaneController.getEstabModel(),Arrays.asList(sourcePaneController.getActiveElement().get()));
+        copyElementsToTarget(sourcePaneController.getEstabModel(), Arrays.asList(sourcePaneController.getActiveElement().get()));
 
     }
 
@@ -567,7 +570,7 @@ public class MainController implements Initializable {
             serviceModel.getForce().add((ForceModel) targetPaneController.createNewElement(forceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Force should be created inside a Service");
             alert.setContentText("Please select a Service to create a Force");
             alert.showAndWait();
@@ -583,7 +586,7 @@ public class MainController implements Initializable {
             nationModel.getService().add((ServiceModel) targetPaneController.createNewElement(serviceModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Service should be created inside a Nation");
             alert.setContentText("Please select a Nation to create a Service");
             alert.showAndWait();
@@ -599,7 +602,7 @@ public class MainController implements Initializable {
             sideModel.getNation().add((NationModel) targetPaneController.createNewElement(nationModel));
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
+            alert.setTitle("Information");
             alert.setHeaderText("A Nation should be created inside a Side");
             alert.setContentText("Please select a Side to create a Nation");
             alert.showAndWait();
@@ -639,7 +642,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void compareElementButtonAction() {
+    private void compareElementsAction() {
         if (targetPaneController.getActiveElement().get() != null && sourcePaneController.getActiveElement().get() != null) {
             ViewUtil.showInfoDialog("Element comparison", "",
                     String.format("Source (ID %d) : Target (ID %d)\n%sEQUAL",
@@ -647,6 +650,51 @@ public class MainController implements Initializable {
                             targetPaneController.getActiveElement().get().getId(),
                             sourcePaneController.getActiveElement().get().compareTo(targetPaneController.getActiveElement().get()) ? "" : "NOT "));
 
+        }
+    }
+
+    @FXML
+    private void fixReferencesAction() {
+        EstabModel estab = targetPaneController.getEstabModel();
+        List<ReferenceModel> referencesToFix = new ArrayList<>();
+        List<ReferenceModel> brokenReferences = new ArrayList<>();
+        for (WeaponModel weapon : estab.getWeapons().values()) {
+            for (PerformanceModel performance : weapon.getPerformances()) {
+                AmmoLoadModel ammoLoad = performance.getAmmoLoad();
+                if (!ammoLoad.referenceIsOk(estab)) {
+                    referencesToFix.add(ammoLoad);
+                }
+            }
+        }
+        for (VehicleModel vehicle : estab.getVehicles().values()) {
+            referencesToFix.addAll(vehicle.getArmaments().stream().filter(armament -> !armament.referenceIsOk(estab)).collect(Collectors.toList()));
+        }
+        for (ForceModel force : estab.getForces().values()) {
+            referencesToFix.addAll(force.getEquipmentList().stream().filter(equipmentQty -> !equipmentQty.referenceIsOk(estab)).collect(Collectors.toList()));
+            for (ForceQtyModel forceQty : force.getForceComposition()) {
+                if (!forceQty.referenceIsOk(estab)) {
+                    referencesToFix.add(forceQty);
+                }
+            }
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("User action required");
+        alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");
+        alert.setContentText("¿Would you like to fix them?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+            brokenReferences.addAll(referencesToFix.stream().filter(reference -> !reference.fixReference(estab)).collect(Collectors.toList()));
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning !");
+            alert.setHeaderText("Broken references");
+            alert.setContentText(brokenReferences.size() + " broken references have been found.");
+        } else {
+            // ... user chose CANCEL or closed the dialog
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning !");
+            alert.setHeaderText("References need to be fixed");
+            alert.setContentText("Please remember to fix reference problems");
         }
     }
 

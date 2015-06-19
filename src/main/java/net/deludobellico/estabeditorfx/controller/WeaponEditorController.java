@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -162,7 +161,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setPictureId(im.getId());
                         getActiveElement().setPictureFilename(newValue);
                         imageModelExists = true;
@@ -172,7 +171,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setPictureId(imageModel.getId());
                     getActiveElement().setPictureFilename(newValue);
                 }
@@ -239,7 +238,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @FXML
     protected void performanceAddFireType(ActionEvent actionEvent) {
         if (performanceFireTypeComboBox.getSelectionModel().getSelectedItem() != null) {
-            AmmoModel selectedAmmo = (AmmoModel) ViewUtil.showSearchDialog("Select ammo", getEstabEditorController().getEstabModel().getAmmo().values());
+            AmmoModel selectedAmmo = (AmmoModel) ViewUtil.showSearchDialog("Select ammo", getEstabEditorController().getEstabModel().getAmmos().values());
             // If the user didn't select any ammo, abort
             if (selectedAmmo != null) {
                 // Create new AmmoLoad with the ammo name and id
@@ -326,7 +325,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         fireRateRapid.textProperty().bindBidirectional(p.rapidROFProperty(), NUMBER_STRING_CONVERTER);
         burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), NUMBER_STRING_CONVERTER);
         shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), NUMBER_STRING_CONVERTER);
-        load.textProperty().bindBidirectional(p.getAmmoLoad().loadProperty(), NUMBER_STRING_CONVERTER);
+        load.textProperty().bindBidirectional(p.getAmmoLoad().qtyProperty(), NUMBER_STRING_CONVERTER);
 
         // Make cells editable
         rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(new IntegerStringConverter()));
@@ -355,7 +354,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @FXML
     private void ammoSelectAction(ActionEvent actionEvent) {
         AmmoModel ammo = (AmmoModel) ViewUtil.showSearchDialog("Select ammo",
-                getEstabEditorController().getEstabModel().getAmmo().values());
+                getEstabEditorController().getEstabModel().getAmmos().values());
         if (ammo != null) {
             AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();
             ammoLoadModel.setId(ammo.getId());

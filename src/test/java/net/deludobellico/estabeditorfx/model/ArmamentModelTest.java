@@ -14,13 +14,13 @@ public class ArmamentModelTest {
     @Test
     public void testEquals() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(name);
+        ours.setId(id);
+        ours.setName(name);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id);
-        other.setEquipmentName(name);
+        other.setId(id);
+        other.setName(name);
         other.setQty(qty);
         assertEquals(true, ours.equals(other));
     }
@@ -28,13 +28,13 @@ public class ArmamentModelTest {
     @Test
     public void testHashCode() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(name);
+        ours.setId(id);
+        ours.setName(name);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id);
-        other.setEquipmentName(name);
+        other.setId(id);
+        other.setName(name);
         other.setQty(qty);
         assertEquals(ours.hashCode(), other.hashCode());
     }
@@ -42,13 +42,13 @@ public class ArmamentModelTest {
     @Test
     public void testEqualsDifferentIDs() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(name);
+        ours.setId(id);
+        ours.setName(name);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id + 1);
-        other.setEquipmentName(name);
+        other.setId(id + 1);
+        other.setName(name);
         other.setQty(qty);
         assertEquals(true, other.equals(ours));
     }
@@ -56,13 +56,13 @@ public class ArmamentModelTest {
     @Test
     public void testHashCodeDifferentIDs() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(name);
+        ours.setId(id);
+        ours.setName(name);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id + 1);
-        other.setEquipmentName(name);
+        other.setId(id + 1);
+        other.setName(name);
         other.setQty(qty);
         assertEquals(other.hashCode(), ours.hashCode());
     }
@@ -70,13 +70,13 @@ public class ArmamentModelTest {
     @Test
     public void testEqualsNullableFieldsAreNull() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(null);
+        ours.setId(id);
+        ours.setName(null);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id);
-        other.setEquipmentName(null);
+        other.setId(id);
+        other.setName(null);
         other.setQty(qty);
         assertEquals(true, ours.equals(other));
     }
@@ -84,13 +84,13 @@ public class ArmamentModelTest {
     @Test
     public void testHashCodeNullableFieldsAreNull() throws Exception {
         ArmamentModel ours = new ArmamentModel();
-        ours.setEquipmentObjectId(id);
-        ours.setEquipmentName(null);
+        ours.setId(id);
+        ours.setName(null);
         ours.setQty(qty);
 
         ArmamentModel other = new ArmamentModel();
-        other.setEquipmentObjectId(id);
-        other.setEquipmentName(null);
+        other.setId(id);
+        other.setName(null);
         other.setQty(qty);
         assertEquals(ours.hashCode(), other.hashCode());
     }

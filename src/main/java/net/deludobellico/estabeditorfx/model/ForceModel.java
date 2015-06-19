@@ -18,9 +18,7 @@ import java.util.Map;
  * @author Heine
  */
 public class ForceModel extends AbstractElementModel<ForceModel> implements PojoAdapter<Force> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
+
     // General
     private final ObjectProperty<ForceType> type = new SimpleObjectProperty<>();
     private final ObjectProperty<ForceSubtype> subType = new SimpleObjectProperty<>();
@@ -60,8 +58,6 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
     private final ObjectProperty<IconModel> icon = new SimpleObjectProperty<>();
 
     private final ObjectProperty<ServiceModel> service = new SimpleObjectProperty<>();
-
-    private List<Flag> flags = FXCollections.observableArrayList();
 
     private final ObservableList<ForceQtyModel> forceComposition = FXCollections.observableArrayList();
 
@@ -233,50 +229,10 @@ public class ForceModel extends AbstractElementModel<ForceModel> implements Pojo
         map.remove(getId());
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
 
     @Override
     public Class getPojoClass() {
         return Force.class;
-    }
-
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
     }
 
     public IconModel getIcon() {

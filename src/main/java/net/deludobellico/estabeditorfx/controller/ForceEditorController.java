@@ -6,6 +6,7 @@ package net.deludobellico.estabeditorfx.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
@@ -102,7 +103,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @FXML
     private TableView<EquipmentQtyModel> equipmentTableView;
     @FXML
-    private TableColumn<EquipmentQtyModel, String> equipmentTypeColumn;
+    private TableColumn<EquipmentQtyModel, EquipmentQtyModel.EquipmentType> equipmentTypeColumn;
     @FXML
     private TableColumn<EquipmentQtyModel, String> equipmentNameColumn;
     @FXML
@@ -324,8 +325,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
                 model.setId(element.getId());
                 model.setName(element.getName());
                 model.setQty(Integer.valueOf(equipmentQty.getText()));
-                model.setEquipmentClass(element.getPojoClass());
-//                equipmentTableView.getItems().add(model);
+                model.setEquipmentType(getEstabEditorController().getEstabModel().findEquipmentType(model));
                 getActiveElement().getEquipmentList().add(model);
             } else {
                 ViewUtil.showInfoDialog("Repeated equipment", "", "The selected equipment is already included. Please, select another one.");
@@ -448,20 +448,14 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 
         // EQUIPMENT & SUPPLY
         equipmentTypeColumn.setCellValueFactory(param -> {
-            String type = "";
-            if (param.getValue().getEquipmentClass() == null) {
-                for (Map modelMap : getEstabEditorController().getEstabModel().getAll().values()) {
-                    ElementModel elementModel = (ElementModel) modelMap.get(param.getValue().getId());
-                    if (elementModel != null) {
-                        param.getValue().setEquipmentClass(elementModel.getPojoClass());
-                        type = force.getPojoClass().getSimpleName();
-                        break;
-                    }
-                }
+            EquipmentQtyModel.EquipmentType type;
+            if (param.getValue().getEquipmentType() == null) {
+                type = getEstabEditorController().getEstabModel().findEquipmentType(param.getValue());
+                param.getValue().setEquipmentType(type);
             } else {
-                type = param.getValue().getEquipmentClass().getSimpleName();
+                type = param.getValue().getEquipmentType();
             }
-            return new SimpleStringProperty(type);
+            return new SimpleObjectProperty<>(type);
         });
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(new IntegerStringConverter()));

@@ -1,7 +1,6 @@
 package net.deludobellico.estabeditorfx.model;
 
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
-import net.deludobellico.estabeditorfx.model.ImageModel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,12 +16,12 @@ public class ImageModelTest {
     public void testCompareTo() throws Exception {
         ImageModel ours = new ImageModel();
         ours.setName(name);
-        ours.setFileId(fileId);
+        ours.setFileName(fileId);
         ours.setFlag(flags);
 
         ImageModel other = new ImageModel();
         other.setName(name);
-        other.setFileId(fileId);
+        other.setFileName(fileId);
         other.setFlag(flags);
         assertEquals(true, ours.compareTo(other));
     }
@@ -32,12 +31,12 @@ public class ImageModelTest {
 
         ImageModel ours = new ImageModel();
         ours.setName(null);
-        ours.setFileId(null);
+        ours.setFileName(null);
         ours.setFlag((Flag[]) null);
 
         ImageModel other = new ImageModel();
         other.setName(null);
-        other.setFileId(null);
+        other.setFileName(null);
         other.setFlag((Flag[]) null);
         assertEquals(true, ours.compareTo(other));
     }

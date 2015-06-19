@@ -4,18 +4,12 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import net.deludobellico.estabeditorfx.model.ElementModel;
-import net.deludobellico.estabeditorfx.model.GraphicalElementModel;
-import net.deludobellico.estabeditorfx.model.ImageModel;
-import net.deludobellico.estabeditorfx.util.FileIO;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.model.GraphicalElementModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
@@ -115,8 +109,8 @@ public class ElementImageController implements Initializable {
         this.activeElement = element;
         ImageModel imageModel = estabEditorController.getEstabModel().getImages().get(element.getPictureId());
         if (imageModel != null ) {
-            imageView.setImage(FileIO.getDatasetImage(estabEditorController.getActiveFile(), imageModel.getFileId()));
-            noImageCheckbox.setSelected(imageModel.getFileId().equals(NO_IMAGE_FILENAME) ? true : false);
+            imageView.setImage(FileIO.getDatasetImage(estabEditorController.getActiveFile(), imageModel.getFileName()));
+            noImageCheckbox.setSelected(imageModel.getFileName().equals(NO_IMAGE_FILENAME) ? true : false);
         } else {
             setNoImage();
         }

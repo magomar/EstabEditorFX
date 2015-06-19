@@ -31,6 +31,7 @@ public class EstabModel {
     private Boolean edited;
     private GregorianCalendar lastEdit;
 
+
     /**
      * Empty model instance
      */
@@ -154,7 +155,7 @@ public class EstabModel {
         return (Map<Integer, WeaponModel>) allElements.get(WeaponModel.class);
     }
 
-    public Map<Integer, AmmoModel> getAmmo() {
+    public Map<Integer, AmmoModel> getAmmos() {
         return (Map<Integer, AmmoModel>) allElements.get(AmmoModel.class);
     }
 
@@ -163,15 +164,28 @@ public class EstabModel {
     }
 
     /**
-     * Loops through all map values looking for names that match our query.
+     * Loops through all map values of the given class looking for names that match the query passed as argument.
      *
      * @param query             text to search
-     * @param elementModelClass used to load the corresponding map
+     * @param elementClass used to load the corresponding map
      * @return collection with all matching elements
      */
-    public List<ElementModel> searchElement(String query, Class elementModelClass) {
-        return allElements.get(elementModelClass).values().parallelStream()
+    public List<ElementModel> searchElement(String query, Class elementClass) {
+        return allElements.get(elementClass).values().parallelStream()
                 .filter(element -> element.getName().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
+    }
+
+    /**
+     * Loops through all map values looking for names that match exactly our query.
+     *
+     * @param query             text to search
+     * @param elementClass used to load the corresponding map
+     * @return collection with all matching elements
+     */
+    public List<ElementModel> searchExactElement(String query, Class elementClass) {
+        return allElements.get(elementClass).values().parallelStream()
+                .filter(element -> element.getName().toLowerCase().equals(query.toLowerCase()))
                 .collect(Collectors.toCollection(ArrayList<ElementModel>::new));
     }
 
@@ -185,7 +199,7 @@ public class EstabModel {
         // Weapons are stored in vehicle armaments
         List<WeaponModel> weaponList = new ArrayList<>(vehicle.getArmaments().size());
         for (ArmamentModel armament : vehicle.getArmaments()) {
-            WeaponModel weapon = getWeapons().get(armament.getEquipmentObjectId());
+            WeaponModel weapon = getWeapons().get(armament.getId());
             if (weapon != null) weaponList.add(weapon);
         }
         return weaponList;
@@ -202,7 +216,7 @@ public class EstabModel {
 
         List<AmmoModel> ammoList = new ArrayList<>(weapon.getPerformances().size());
         for (PerformanceModel performance : weapon.getPerformances()) {
-            AmmoModel ammo = getAmmo().get(performance.getAmmoLoad().getId());
+            AmmoModel ammo = getAmmos().get(performance.getAmmoLoad().getId());
             if (ammo != null) ammoList.add(ammo);
         }
         return ammoList;
@@ -356,6 +370,12 @@ public class EstabModel {
         formationEffects.values().stream().map(FormationEffectsModel::getPojo).forEach(data.getFormationEffects()::add);
 
         FileIO.saveEstab(data, file);
+    }
+
+    public  EquipmentQtyModel.EquipmentType findEquipmentType(EquipmentQtyModel equipmentQtyModel) {
+        if (getVehicles().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.VEHICLE;
+        if (getWeapons().containsKey(equipmentQtyModel.getId())) return EquipmentQtyModel.EquipmentType.WEAPON;
+        return null;
     }
 
 }

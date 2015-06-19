@@ -4,7 +4,9 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Wrapper for all JAXB important POJOs (Forces, Nations, Vehicles, Weapons, Ammo, etc.)
@@ -20,7 +22,6 @@ public interface ElementModel<T> {
      * Array with classes that have editors.
      */
     public static final Class[] ELEMENT_EDITOR_CLASSES = {VehicleModel.class, WeaponModel.class, AmmoModel.class, ForceModel.class};
-
 
     int getId();
 

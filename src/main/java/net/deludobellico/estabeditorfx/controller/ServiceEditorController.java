@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
@@ -74,7 +73,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setLargeInsignia(im.getId());
                         imageModelExists = true;
                     }
@@ -82,7 +81,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setLargeInsignia(imageModel.getId());
                 }
             }
@@ -92,7 +91,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setSmallInsignia(im.getId());
                         imageModelExists = true;
                         break;
@@ -101,7 +100,7 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setSmallInsignia(imageModel.getId());
                 }
             }

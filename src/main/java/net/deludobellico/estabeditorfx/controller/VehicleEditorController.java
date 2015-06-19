@@ -3,11 +3,8 @@ package net.deludobellico.estabeditorfx.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -156,7 +153,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
             if (!newValue.equals("")) {
                 boolean imageModelExists = false;
                 for (ImageModel im : estabModel.getImages().values()) {
-                    if (im.getFileId().equals(newValue)) {
+                    if (im.getFileName().equals(newValue)) {
                         getActiveElement().setPictureId(im.getId());
                         getActiveElement().setPictureFilename(newValue);
                         imageModelExists = true;
@@ -166,7 +163,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
                 if (!imageModelExists) {
                     ImageModel imageModel = (new ImageModel()).createNewInMap((Map<Integer, ImageModel>) estabModel.getAll().get(ImageModel.class));
                     imageModel.setName(newValue.substring(0, newValue.lastIndexOf(".")));
-                    imageModel.setFileId(newValue);
+                    imageModel.setFileName(newValue);
                     getActiveElement().setPictureId(imageModel.getId());
                     getActiveElement().setPictureFilename(newValue);
                 }
@@ -197,7 +194,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
             // Search for repeated weapons
             boolean repeatedWeapon = false;
             for (ArmamentModel am : getActiveElement().getArmaments())
-                if (am.getEquipmentName().equals(weapon.getName())) {
+                if (am.getName().equals(weapon.getName())) {
                     repeatedWeapon = true;
                     break;
                 }
@@ -289,7 +286,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         vehicleType.valueProperty().bindBidirectional(element.typeProperty());
 
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
-        armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEquipmentName()));
+        armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(new IntegerStringConverter()));
         armamentQuantityColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         armamentTableView.setItems(element.getArmaments());

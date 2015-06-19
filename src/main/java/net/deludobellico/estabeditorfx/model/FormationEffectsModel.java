@@ -23,9 +23,6 @@ import java.util.Map;
  * @author Heine
  */
 public class FormationEffectsModel extends AbstractElementModel<FormationEffectsModel> implements PojoAdapter<FormationEffects> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private List<Flag> flags = FXCollections.observableArrayList();
 
     public FormationEffectsModel(FormationEffects formationEffects) {
         initialize(formationEffects);
@@ -85,45 +82,12 @@ public class FormationEffectsModel extends AbstractElementModel<FormationEffects
         map.remove(getId());
     }
 
-    @Override
-    public int getId() {
-        return id.get();
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    @Override
-    public IntegerProperty idProperty() {
-        return id;
-    }
 
     @Override
     public Class getPojoClass() {
         return FormationEffects.class;
     }
 
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    @Override
-    public String getName() {
-        return name.get();
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    @Override
-    public StringProperty nameProperty() {
-        return name;
-    }
 
     @Override
     public boolean compareTo(Object o) {

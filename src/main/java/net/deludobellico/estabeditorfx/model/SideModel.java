@@ -20,16 +20,12 @@ import java.util.Map;
  * @author Heine
  */
 public class SideModel extends AbstractElementModel<SideModel> implements PojoAdapter<Side> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final DoubleProperty basicsConsumptionRate = new SimpleDoubleProperty();
     private final IntegerProperty defaultEnemyAperFp = new SimpleIntegerProperty();
     private final IntegerProperty defaultEnemyAarmFp = new SimpleIntegerProperty();
     private final ObservableList<NationModel> nation = FXCollections.observableArrayList();
-    private final List<Flag> flags = FXCollections.observableArrayList();
 
     public SideModel() {
 
@@ -116,50 +112,9 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoAd
         map.remove(getId());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     @Override
     public Class getPojoClass() {
         return Side.class;
-    }
-
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
     }
 
     public int getLargeInsignia() {

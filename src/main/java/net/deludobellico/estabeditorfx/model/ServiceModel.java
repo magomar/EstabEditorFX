@@ -17,9 +17,6 @@ import java.util.Map;
  * @author Heine
  */
 public class ServiceModel extends AbstractElementModel<ServiceModel> implements PojoAdapter<Service> {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
     private final IntegerProperty largeInsignia = new SimpleIntegerProperty();
     private final IntegerProperty smallInsignia = new SimpleIntegerProperty();
     private final ObservableList<RankModel> rankList = FXCollections.observableArrayList();
@@ -29,7 +26,6 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
     private final ObjectProperty<Color> designationColor = new SimpleObjectProperty<>();
     private final ObjectProperty<SymbolColor> symbolColor = new SimpleObjectProperty<>();
     private final ObservableList<ForceModel> force = FXCollections.observableArrayList();
-    private final List<Flag> flags = FXCollections.observableArrayList();
     private final ObjectProperty<NationModel> nation = new SimpleObjectProperty<>();
 
     public ServiceModel(Service service) {
@@ -127,50 +123,9 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         map.remove(getId());
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     @Override
     public Class getPojoClass() {
         return Service.class;
-    }
-
-    @Override
-    public List<Flag> getFlags() {
-        return flags;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
     }
 
     public int getLargeInsignia() {
