@@ -13,9 +13,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import net.deludobellico.estabeditorfx.data.jaxb.AmmoLoad;
-import net.deludobellico.estabeditorfx.data.jaxb.Vehicle;
-import net.deludobellico.estabeditorfx.data.jaxb.Weapon;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
@@ -436,8 +433,12 @@ public class MainController implements Initializable {
         } else {
             File f = openFileChooser(false, isSource);
             if (f != null) {
-                if (isSource) openSource(f);
-                else openTarget(f);
+                if (isSource) {
+                    openSource(f);
+                } else {
+                    openTarget(f);
+                    fixReferencesAction();
+                }
             }
         }
     }
@@ -658,21 +659,22 @@ public class MainController implements Initializable {
         EstabModel estab = targetPaneController.getEstabModel();
         List<ReferenceModel> referencesToFix = new ArrayList<>();
         List<ReferenceModel> brokenReferences = new ArrayList<>();
+
         for (WeaponModel weapon : estab.getWeapons().values()) {
             for (PerformanceModel performance : weapon.getPerformances()) {
                 AmmoLoadModel ammoLoad = performance.getAmmoLoad();
-                if (!ammoLoad.referenceIsOk(estab)) {
+                if (!ammoLoad.referenceIsOk()) {
                     referencesToFix.add(ammoLoad);
                 }
             }
         }
         for (VehicleModel vehicle : estab.getVehicles().values()) {
-            referencesToFix.addAll(vehicle.getArmaments().stream().filter(armament -> !armament.referenceIsOk(estab)).collect(Collectors.toList()));
+            referencesToFix.addAll(vehicle.getArmaments().stream().filter(armament -> !armament.referenceIsOk()).collect(Collectors.toList()));
         }
         for (ForceModel force : estab.getForces().values()) {
-            referencesToFix.addAll(force.getEquipmentList().stream().filter(equipmentQty -> !equipmentQty.referenceIsOk(estab)).collect(Collectors.toList()));
+            referencesToFix.addAll(force.getEquipmentList().stream().filter(equipmentQty -> !equipmentQty.referenceIsOk()).collect(Collectors.toList()));
             for (ForceQtyModel forceQty : force.getForceComposition()) {
-                if (!forceQty.referenceIsOk(estab)) {
+                if (!forceQty.referenceIsOk()) {
                     referencesToFix.add(forceQty);
                 }
             }
@@ -682,19 +684,23 @@ public class MainController implements Initializable {
         alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");
         alert.setContentText("¿Would you like to fix them?");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             // ... user chose OK
             brokenReferences.addAll(referencesToFix.stream().filter(reference -> !reference.fixReference(estab)).collect(Collectors.toList()));
-            alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning !");
-            alert.setHeaderText("Broken references");
-            alert.setContentText(brokenReferences.size() + " broken references have been found.");
+            if (!brokenReferences.isEmpty()) {
+                alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !");
+                alert.setHeaderText("Broken references");
+                alert.setContentText(brokenReferences.size() + " broken references have been found.");
+                alert.showAndWait();
+            }
         } else {
             // ... user chose CANCEL or closed the dialog
             alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning !");
             alert.setHeaderText("References need to be fixed");
             alert.setContentText("Please remember to fix reference problems");
+            alert.showAndWait();
         }
     }
 

@@ -15,40 +15,57 @@ public abstract class AbstractReferenceModel<T extends ElementModel> implements 
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty qty = new SimpleIntegerProperty();
     private Class<T> referenceClass;
+    private ReferenceStatus referenceStatus;
+    private T reference;
 
     protected AbstractReferenceModel(Class<T> referenceClass) {
         this.referenceClass = referenceClass;
     }
 
+    public boolean link(EstabModel estab) {
+        reference = getReferenceById(estab);
 
-    @Override
-    public ReferenceStatus getReferenceStatus(EstabModel estab) {
-        T model = getReferenceById(estab);
-        if (null == model) {
-            return ReferenceStatus.WRONG_ID;
+        if (null == reference) {
+            referenceStatus = ReferenceStatus.WRONG_ID;
+            return false;
         }
-        if (!name.get().equals(model.getName())) {
-            return ReferenceStatus.NAME_MISSMATCH;
+        if (name.get().equals(reference.getName())) {
+            referenceStatus = ReferenceStatus.REF_OK;
+            return true;
+        } else {
+            referenceStatus = ReferenceStatus.NAME_MISSMATCH;
+            return false;
         }
-        return ReferenceStatus.REF_OK;
     }
 
-    @Override
-    public boolean referenceIsOk(EstabModel estab) {
-        return getReferenceStatus(estab) == ReferenceStatus.REF_OK;
+
+        @Override
+    public T getReference() {
+        return reference;
+    }
+
+    public T getReferenceById(EstabModel estab) {
+        return (T) estab.getAll().get(referenceClass).get(id);
+    }
+
+
+    public T getReferenceByName(EstabModel estab) {
+        List<ElementModel> models = estab.searchElement(name.get(), referenceClass);
+        if (models.isEmpty()) return null;
+        // TODO if size > 0 let the user select one (or none at all, but let the user decide)
+        return (T) models.get(0);
     }
 
     @Override
     public boolean fixReference(EstabModel estab) {
         T reference;
-        ReferenceStatus status = getReferenceStatus(estab);
-        if (status == ReferenceStatus.WRONG_ID) {
+        if (referenceStatus == ReferenceStatus.WRONG_ID) {
             // tries to find an element having the name of this reference
             reference = getReferenceByName(estab);
             if (null != reference) id.set(reference.getId());
             else return false;
         }
-        if (status == ReferenceStatus.NAME_MISSMATCH) {
+        if (referenceStatus == ReferenceStatus.NAME_MISSMATCH) {
             // fixes name using the name of the object with the id of this reference
             reference = getReferenceById(estab);
             name.set(reference.getName());
@@ -56,18 +73,17 @@ public abstract class AbstractReferenceModel<T extends ElementModel> implements 
         return true;
     }
 
-    @Override
-    public T getReferenceById(EstabModel estab) {
-        return (T) estab.getAll().get(referenceClass).get(id);
-    }
-
 
     @Override
-    public T getReferenceByName(EstabModel estab) {
-        List<ElementModel> models = estab.searchElement(name.get(), referenceClass);
-        if (models.isEmpty()) return null;
-        return (T) models.get(0);
+    public ReferenceStatus getReferenceStatus() {
+        return referenceStatus;
     }
+
+    @Override
+    public boolean referenceIsOk() {
+        return referenceStatus == ReferenceStatus.REF_OK;
+    }
+
 
     @Override
     public int getId() {
@@ -114,12 +130,20 @@ public abstract class AbstractReferenceModel<T extends ElementModel> implements 
         this.qty.set(qty);
     }
 
-    public Class<T> getReferenceClass() {
+    protected Class<T> getReferenceClass() {
         return referenceClass;
     }
 
-    public void setReferenceClass(Class<T> referenceClass) {
+    protected void setReferenceClass(Class<T> referenceClass) {
         this.referenceClass = referenceClass;
+    }
+
+    protected void setReferenceStatus(ReferenceStatus referenceStatus) {
+        this.referenceStatus = referenceStatus;
+    }
+
+    protected void setReference(T reference) {
+        this.reference = reference;
     }
 
     @Override

@@ -31,7 +31,11 @@ public class AmmoLoadModel extends AbstractReferenceModel<AmmoModel> implements 
     @Override
     public void initialize(AmmoLoad pojo) {
         setId(pojo.getObjectId());
-        setName(pojo.getName());
+        if (null != pojo.getName()) {
+            setName(pojo.getName());
+        } else {
+            setName("");
+        }
         setQty(pojo.getLoad());
     }
 
