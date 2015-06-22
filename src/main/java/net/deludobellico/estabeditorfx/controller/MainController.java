@@ -433,8 +433,12 @@ public class MainController implements Initializable {
         } else {
             File f = openFileChooser(false, isSource);
             if (f != null) {
-                if (isSource) openSource(f);
-                else openTarget(f);
+                if (isSource) {
+                    openSource(f);
+                } else {
+                    openTarget(f);
+                    fixReferencesAction();
+                }
             }
         }
     }

@@ -124,7 +124,7 @@ public class EstabModel {
         }
         ElementModelFactory.setMaxId(maxId[0]);
 
-        // Link all references to its elements
+        // Link all references to its referred elements
         getWeapons().values().stream().forEach(weapon -> weapon.getPerformances().stream().forEach(performance -> performance.getAmmoLoad().link(this)));
         getVehicles().values().stream().forEach(vehicle -> vehicle.getArmaments().forEach(armament -> armament.link(this)));
         getForces().values().stream().forEach(force -> {

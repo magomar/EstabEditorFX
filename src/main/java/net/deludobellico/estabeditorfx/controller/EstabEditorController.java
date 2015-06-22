@@ -103,7 +103,7 @@ public class EstabEditorController implements Initializable {
     // Save loaded views, controllers and panes (editor panes have to be AnchorPanes)
     private Map<Class, ElementEditorController<ElementModel>> elementEditorControllers = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
     private Map<Class, Integer> editorPaneChildrenIndex = new HashMap<>(ELEMENT_EDITOR_VIEWS.size());
-    // Main controller
+    // FxExperienceSplash controller
     private MainController mainController = null;
     // current element editor (either vehicle, weapon or ammo)
     private ElementEditorController<ElementModel> elementEditorController = null;

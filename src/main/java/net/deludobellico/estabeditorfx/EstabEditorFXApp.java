@@ -11,9 +11,11 @@ import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.Settings;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
-public class EstabEditorFXApp extends Application {
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-//    private Stage primaryStage;
+public class EstabEditorFXApp extends Application {
+    private static final Logger LOG = Logger.getLogger(EstabEditorFXApp.class.getName());
 
     public static void main(String[] args) {
         launch(args);
@@ -26,9 +28,9 @@ public class EstabEditorFXApp extends Application {
         Settings.getInstance().load();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource(FileIO.MAIN_VIEW));
-        primaryStage.setTitle("Estab Editor FX");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Estab Editor FX");
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         primaryStage.setOnCloseRequest(event -> {
@@ -40,8 +42,8 @@ public class EstabEditorFXApp extends Application {
             }
         });
         primaryStage.show();
-        System.out.println("Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-        System.out.println("Scene dimension: " + scene.getWidth() + " x " + scene.getHeight());
+        LOG.log(Level.INFO, "Windows dimension: %d x %d", new double[]{primaryStage.getWidth(), primaryStage.getHeight()});
+        LOG.log(Level.INFO, "Scene dimension: %.0f x %.0f", new double[]{scene.getWidth(), scene.getHeight()});
 
     }
 
