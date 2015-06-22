@@ -31,6 +31,7 @@ public class EstabEditorFXApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Estab Editor FX");
+        primaryStage.setMinHeight(96);
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         primaryStage.setOnCloseRequest(event -> {

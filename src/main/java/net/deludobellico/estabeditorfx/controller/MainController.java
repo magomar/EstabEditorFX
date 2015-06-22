@@ -136,7 +136,6 @@ public class MainController implements Initializable {
     private File targetActiveEstabFile;
     // primary stage
     private Stage primaryStage;
-    private double estabEditorHeight;
 
     /**
      * Sets listeners, binds properties and loads user settings
@@ -148,7 +147,6 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         primaryStage = ViewUtil.ROOT_STAGE;
-        estabEditorHeight = sourcePaneController.getEditorPaneHook().getHeight();
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
         targetPaneController.init("Target Estab: ", true, this);
@@ -186,22 +184,26 @@ public class MainController implements Initializable {
 
         sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == true && oldValue == false) {
-                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
             }
         });
         targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == true && oldValue == false) {
-                primaryStage.setHeight(primaryStage.getHeight() + estabEditorHeight);
+                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
             }
         });
         sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == false && oldValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
             }
         });
         targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == false && oldValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() - estabEditorHeight);
+                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
             }
         });
     }

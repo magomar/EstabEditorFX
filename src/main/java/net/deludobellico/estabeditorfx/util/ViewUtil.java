@@ -19,7 +19,7 @@ public class ViewUtil {
 
     public static final double MAIN_VIEW_WIDTH = 834;
     public static final double MAIN_VIEW_HEIGHT = 948;
-    public static final double ESTAB_EDITOR_VIEW_HEIGHT = 531;
+    public static final double ESTAB_EDITOR_VIEW_HEIGHT = 431;
 
     public static final Set<Class> editableControls = new HashSet<>();
     public static final Set<Class> nonEditableControls = new HashSet<>();
