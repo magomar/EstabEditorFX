@@ -36,11 +36,17 @@
 
 <p>This project aims at providing an alternative Estab editor for the <strong>Command Ops Battles from the Bulge</strong> game series (CO:BFTB), from <a href="http://www.panthergames.com/">Panther Games</a>. This editor is cross-platform desktop application implemented in Java and JavaFX.</p>
 
-<p>The emphasis of this editor (compared with the original editor) is on the reuse and adaptation of existing data. The main features of the new editor are:</p>
+<p>The emphasis of this editor (compared with the original editor) is on the reuse and adaptation of existing data, which is achieved by accessing two estabs simultaneously. The main features of the new editor are:</p>
 
 <ul>
-<li>Supports working with two estab files simultaneously: one estab that is opened in read-only mode (referred to as the source estab); and a second estab that is opened for edition (this is referred to as the <strong>target</strong> estab).</li>
-<li>Elements in the source estab can be individually copied into the target estab (the original editor supports importing an entire estab, but not single elements)</li>
+<li>Supports <strong>working with two estab files simultaneously</strong>: one estab that is opened in read-only mode (referred to as the <strong>source *<em>estab); and a second estab that is opened for edition (this is referred to as the *</em>target</strong> estab).</li>
+<li>Elements in the source estab can be individually copied into the target estab.
+
+<ul>
+<li>Copy operations recursively detectes referred elements and brings the user the option to also copy referred elements (all or just a selection of elements). For example, if we copy a vehicle equipped with machineguns, it will offer the option to copy not just the vehicle but also the machineguns it is equipped with.</li>
+<li>Copy operations detect and avoid duplicates.</li>
+</ul>
+</li>
 <li>Supports standar CRUD operations (create, read, update, delete), but only in the target estab. </li>
 <li>Three methods to add elements to a estab:
 
@@ -50,8 +56,6 @@
 <li>Create new element from scratch.</li>
 </ul>
 </li>
-<li>Supports <em>chained copy</em>: if an element refers to other elements, the copy/clone operation offers the option to copy all the related elements recursively </li>
-<li>Copy operations detect and avoid duplicates</li>
 <li>Forces can be created from scratch, specifying all its parameters and equipment, but also <strong>by composition</strong>. When a force is specified as composed of other forces, some of its attributes (like personnel and staff capacity) are derived from the constituent forces, and the same happens with its equipment.</li>
 <li>Able to check for the correctness of element references and fix some errors automatically. </li>
 </ul>
