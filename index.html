@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Estabeditorfx : Alternative Estab Editor for PC game Command Ops Battles from the Bulgue">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Estabeditorfx</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/magomar/EstabEditorFX">View on GitHub</a>
+
+          <h1 id="project_title">Estabeditorfx</h1>
+          <h2 id="project_tagline">Alternative Estab Editor for PC game Command Ops Battles from the Bulgue</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/magomar/EstabEditorFX/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/magomar/EstabEditorFX/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="estabeditorfx" class="anchor" href="#estabeditorfx" aria-hidden="true"><span class="octicon octicon-link"></span></a>EstabEditorFX</h3>
+
+<p>This project aims at providing an alternative Estab editor for the <strong>Command Ops Battles from the Bulge</strong> game series (CO:BFTB), from Panther Games. This editor is cross-platform desktop application implemented in Java and JavaFX.</p>
+
+<p>The emphasis of this editor, compared with the original editor, is on the reuse and adaptation of existing data. The main features of the new editor are:</p>
+
+<ul>
+<li>Supports working with two estab files simultaneously: one estab that is opened in read-only mode (referred to as the source estab); and a second estab that is opened for edition (this is referred to as the <strong>target</strong> estab).</li>
+<li>Elements in the source estab can be individually copied into the target estab (the original editor supports importing an entire estab, but not single elements)</li>
+<li>Supports standar CRUD operations (create, read, update, delete), but only in the target estab. </li>
+<li>Three methods to add elements to a estab:
+
+<ul>
+<li>Clone elements from source estab into target estab.  The new element keeps the same id as the cloned element.</li>
+<li>Copy element from target estab into a new element in the source estab. The new element gets a new id.</li>
+<li>Create new element from scratch.</li>
+</ul>
+</li>
+<li>Supports <em>chained copy</em>: if an element refers to other elements, the copy/clone operation offers the option to copy all the related elements recursively </li>
+<li>Copy operations detect and avoid duplicates</li>
+<li>Forces can be created from scratch, specifying all its parameters and equipment, but also <strong>by composition</strong>. When a force is specified as composed of other forces, some of its attributes (like personnel and staff capacity) are derived from the constituent forces, and the same happens with its equipment.</li>
+<li>Provides tool to check element references and fix errors automatically. </li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Executable binaries are released as zip and tar files in the <a href="https://github.com/magomar/EstabEditorFX/releases">release section</a> of the project.
+The EstabEditorFX application can be run by simply uncompressing a binary release, entering into the bin folder and running the appropriate script, depending on the platform (<em>.sh</em> for windows / <em>.bat</em> for windows).</p>
+
+<p>The sources can be downloaded directly from the links found at the top of this page or from the <a href="https://github.com/magomar/EstabEditorFX">project page</a>.</p>
+
+<h3>
+<a id="authors" class="anchor" href="#authors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors</h3>
+
+<p>This application has been created by <a href="https://github.com/magomar" class="user-mention">@magomar</a> and <a href="https://github.com/heinetron" class="user-mention">@heinetron</a></p>
+
+<h3>
+<a id="support" class="anchor" href="#support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support</h3>
+
+<p>Having trouble with the Editor? Check out the <a href="https://github.com/magomar/EstabEditorFX/wiki">wiki</a> or contact <a href="mailto:magomar@gmail.com">magomar@gmail.com</a> and we’ll help you sort it out.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Estabeditorfx maintained by <a href="https://github.com/magomar">magomar</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
