@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -121,6 +122,8 @@ public class MainController implements Initializable {
     private EstabEditorController sourcePaneController;
     @FXML
     private EstabEditorController targetPaneController;
+    @FXML
+    private BorderPane mainPane;
 
     /**
      * Other
@@ -137,6 +140,7 @@ public class MainController implements Initializable {
     // primary stage
     private Stage primaryStage;
 
+
     /**
      * Sets listeners, binds properties and loads user settings
      *
@@ -145,7 +149,6 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         primaryStage = ViewUtil.ROOT_STAGE;
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
@@ -183,28 +186,29 @@ public class MainController implements Initializable {
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
         sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == true && oldValue == false) {
+            if (newValue == true) {
                 primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+            } else {
+                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
             }
+            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
         });
         targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == true && oldValue == false) {
+            if (newValue == true) {
                 primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-            }
-        });
-        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == false && oldValue == true) {
+            } else {
                 primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
             }
+            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
         });
-        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == false && oldValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-                LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+
+        toolBar.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true) {
+                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.MAIN_TOOLBAR_HEIGHT);
+            } else {
+                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.MAIN_TOOLBAR_HEIGHT);
             }
+            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
         });
     }
 

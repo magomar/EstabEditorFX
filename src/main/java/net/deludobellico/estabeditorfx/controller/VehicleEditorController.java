@@ -26,8 +26,6 @@ import java.util.*;
  */
 public class VehicleEditorController extends AbstractElementEditorController<VehicleModel> {
 
-    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
-
     /**
      * Root node components
      */

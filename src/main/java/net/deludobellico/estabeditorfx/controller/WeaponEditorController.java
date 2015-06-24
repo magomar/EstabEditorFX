@@ -29,7 +29,6 @@ import java.util.ResourceBundle;
  */
 public class WeaponEditorController extends AbstractElementEditorController<WeaponModel> {
 
-    private static final StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
     /**
      * Root node
      */
@@ -374,14 +373,14 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         WeaponModel element = getActiveElement();
         imagePanelController.setActiveElement(element);
 
-        weight.textProperty().bindBidirectional(element.weightProperty(), new NumberStringConverter());
+        weight.textProperty().bindBidirectional(element.weightProperty(), NUMBER_STRING_CONVERTER);
         name.textProperty().bindBidirectional(element.nameProperty());
         id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
-        crew.textProperty().bindBidirectional(element.crewProperty(), new NumberStringConverter());
-        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), new NumberStringConverter());
-        calibre.textProperty().bindBidirectional(element.calibreProperty(), new NumberStringConverter());
-        muzzleVelocity.textProperty().bindBidirectional(element.muzzleVelocityProperty(), new NumberStringConverter());
+        crew.textProperty().bindBidirectional(element.crewProperty(), NUMBER_STRING_CONVERTER);
+        reliability.textProperty().bindBidirectional(element.reliabilityProperty(), NUMBER_STRING_CONVERTER);
+        calibre.textProperty().bindBidirectional(element.calibreProperty(), NUMBER_STRING_CONVERTER);
+        muzzleVelocity.textProperty().bindBidirectional(element.muzzleVelocityProperty(), NUMBER_STRING_CONVERTER);
 
         weaponType.valueProperty().bindBidirectional(element.typeProperty());
         weaponPrimaryRole.valueProperty().bindBidirectional(element.primaryRoleProperty());

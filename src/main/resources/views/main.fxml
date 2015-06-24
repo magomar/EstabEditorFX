@@ -7,7 +7,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
+<BorderPane fx:id="mainPane" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
     <top>
         <VBox>
             <children>

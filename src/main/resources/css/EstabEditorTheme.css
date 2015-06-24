@@ -68,7 +68,7 @@
 }
 
 .icon-grid {
-    -fx-vgap: 6;
+    -fx-vgap: 5;
     -fx-hgap: 10;
 }
 
@@ -77,8 +77,8 @@
 }
 
 .element-image {
-    -fx-width: 96;
-    -fx-height: 61;
+    /*-fx-width: 96;*/
+    /*-fx-height: 61;*/
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
 

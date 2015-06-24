@@ -106,9 +106,9 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
         name.textProperty().bindBidirectional(element.nameProperty());
         id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
-        consumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateProperty(), new NumberStringConverter());
-        aper.textProperty().bindBidirectional(element.defaultEnemyAperFpProperty(), new NumberStringConverter());
-        aarm.textProperty().bindBidirectional(element.defaultEnemyAarmFpProperty(), new NumberStringConverter());
+        consumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateProperty(), NUMBER_STRING_CONVERTER);
+        aper.textProperty().bindBidirectional(element.defaultEnemyAperFpProperty(), NUMBER_STRING_CONVERTER);
+        aarm.textProperty().bindBidirectional(element.defaultEnemyAarmFpProperty(), NUMBER_STRING_CONVERTER);
 
     }
 

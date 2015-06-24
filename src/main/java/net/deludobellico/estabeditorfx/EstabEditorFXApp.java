@@ -2,10 +2,13 @@ package net.deludobellico.estabeditorfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.deludobellico.estabeditorfx.controller.MainController;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.Settings;
@@ -23,7 +26,6 @@ public class EstabEditorFXApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        this.primaryStage = primaryStage;
         ViewUtil.ROOT_STAGE = primaryStage;
         Settings.getInstance().load();
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -31,7 +33,7 @@ public class EstabEditorFXApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Estab Editor FX");
-        primaryStage.setMinHeight(96);
+        primaryStage.setMinWidth(ViewUtil.MAIN_VIEW_WIDTH);
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
         primaryStage.setOnCloseRequest(event -> {
@@ -45,7 +47,6 @@ public class EstabEditorFXApp extends Application {
         primaryStage.show();
         LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
         LOG.log(Level.INFO, "Scene dimension: " + scene.getWidth() + " x " +  scene.getHeight());
-
     }
 
 
