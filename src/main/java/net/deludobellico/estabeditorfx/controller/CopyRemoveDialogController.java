@@ -19,8 +19,6 @@ import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.FileIO;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -87,7 +85,7 @@ public class CopyRemoveDialogController implements Initializable {
             selectedItems.addAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        image.setImage(new Image(CopyRemoveDialogController.class.getResourceAsStream(FileIO.WARNING_ICON_RESOURCE)));
+        image.setImage(new Image(CopyRemoveDialogController.class.getResourceAsStream(FileIO.WARNING_ICON)));
     }
 
     public CopyRemoveDialogController setTitle(String title) {

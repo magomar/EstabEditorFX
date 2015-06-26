@@ -29,19 +29,14 @@ public class FileIO {
             new FileChooser.ExtensionFilter("All (*.*)", "*.*")
     };
     private static final Logger LOG = Logger.getLogger(FileIO.class.getName());
-    /**
-     * Resources paths
-     */
-    //Settings
-    private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml";
-    //Datasets
-    private static final String DATASETS_FOLDER = "/datasets";
-    private static final String NEW_ESTAB_PATH = "newestab.xml";
-    private static final String DATASET_FILE_SUFFIX = "Estab.xml";
-    private static final String DATASET_IMAGE_FOLDER_SUFFIX = "Estab_Images";
-    private static final String DATASET_IMAGE_FOLDER_INDEX = "index";
-    //Views
+    /** Resources paths **/
+
+    //Main resource folders
+    private static final String TEMPLATES_FOLDER = "/datasets";
     private static final String VIEWS_FOLDER = "/views";
+    private static final String IMAGES_FOLDER = "/images";
+
+    //Views (fxml)
     public static final String MAIN_VIEW = VIEWS_FOLDER + "/main.fxml";
     public static final String FORCE_VIEW = VIEWS_FOLDER + "/force-editor.fxml";
     public static final String VEHICLE_VIEW = VIEWS_FOLDER + "/vehicle-editor.fxml";
@@ -50,15 +45,20 @@ public class FileIO {
     public static final String SIDE_VIEW = VIEWS_FOLDER + "/side-editor.fxml";
     public static final String NATION_VIEW = VIEWS_FOLDER + "/nation-editor.fxml";
     public static final String SERVICE_VIEW = VIEWS_FOLDER + "/service-editor.fxml";
-
     public static final String SEARCH_DIALOG_VIEW = VIEWS_FOLDER + "/search-dialog.fxml";
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
+
     // Images
-    private static final String IMAGES_FOLDER = "/images";
-    public static final String WARNING_ICON_RESOURCE = IMAGES_FOLDER + "/warning.png";
-    public static final String INFO_ICON_RESOURCE = IMAGES_FOLDER + "/info.png";
+    public static final String WARNING_ICON = IMAGES_FOLDER + "/warning.png";
+    public static final String INFO_ICON = IMAGES_FOLDER + "/info.png";
     public static final String APP_ICON = IMAGES_FOLDER + "/app-icon.png";
+
+    /** Settings and utility strings **/
+    private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml";
+    private static final String NEW_ESTAB_PATH = "newestab.xml";
+    private static final String ESTAB_TEMPLATE = "DefaultEstab.xml";
+    private static final String ESTAB_IMAGE_FOLDER_SUFFIX = "_Images";
 
     /**
      * Saved JAXB contexts for POJO classes and the Settings file
@@ -133,104 +133,79 @@ public class FileIO {
     }
 
     /**
-     * Installs a Estab dataset from the jar to disk.
-     *
-     * @param datasetName  dataset name
-     * @param targetFolder target folder
-     * @return dataset file with the Estab contents
-     */
-    public static File installDataset(String datasetName, File targetFolder) {
-
-        LOG.log(Level.INFO, String.format("Installing %s dataset in folder: %s ", datasetName, targetFolder.getName()));
-        File targetFile = new File(targetFolder.getPath(), datasetName + DATASET_FILE_SUFFIX);
-
-        if (targetFile.exists()) {
-            LOG.log(Level.SEVERE, String.format("Aborting installation. %s dataset already exists in folder: %s", datasetName, targetFolder.getName()));
-            targetFile = null;
-        } else {
-            // Installing dataset from resources to file
-            installDatasetFile(targetFile.getName(), targetFile.getAbsoluteFile().toPath());
-
-            // Installing all dataset images included in the index
-            installDatasetImages(datasetName, targetFolder);
-        }
-        return targetFile;
-    }
-
-    /**
      * Installs the dataset file from the jar to disk
      *
      * @param datasetFile    dataset location
      * @param targetFilePath target folder
      * @return true if the file was copied, false otherwise
      */
-    private static boolean installDatasetFile(String datasetFile, Path targetFilePath) {
-        return 0 < FileIO.copy(FileIO.class.getResourceAsStream(FileIO.DATASETS_FOLDER + "/" + datasetFile), targetFilePath);
+    private static boolean installEstabFile(String datasetFile, Path targetFilePath) {
+        return 0 < FileIO.copy(FileIO.class.getResourceAsStream(FileIO.TEMPLATES_FOLDER + "/" + datasetFile), targetFilePath);
     }
 
+//    /**
+//     * Installs the dataset images folder from the jar to disk
+//     *
+//     * @param datasetName  dataset name ("BFTB", "COTA", etc.)
+//     * @param targetFolder target folder
+//     */
+//    private static void installDatasetImages(String datasetName, File targetFolder) {
+//
+//        // Preparing the image folder on disk
+//        File targetImageFolder = new File(targetFolder, datasetName + ESTAB_IMAGE_FOLDER_SUFFIX);
+//        try {
+//            if (!targetImageFolder.mkdirs())
+//                throw new IOException("Could not create folder: " + targetImageFolder.getName());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // I love all this boiler plate
+//        String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
+//        String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + "index";
+//
+//        try (InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
+//             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+//            String imageFileName;
+//            while ((imageFileName = reader.readLine()) != null) {
+//                InputStream imageResource = FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName);
+//                FileIO.copy(imageResource, new File(targetImageFolder, imageFileName).toPath());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+
     /**
-     * Installs the dataset images folder from the jar to disk
-     *
-     * @param datasetName  dataset name ("BFTB", "COTA", etc.)
-     * @param targetFolder target folder
-     */
-    private static void installDatasetImages(String datasetName, File targetFolder) {
-
-        // Preparing the image folder on disk
-        File targetImageFolder = new File(targetFolder, datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
-        try {
-            if (!targetImageFolder.mkdirs())
-                throw new IOException("Could not create folder: " + targetImageFolder.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // I love all this boiler plate
-        String datasetResourceImageFolder = FileIO.DATASETS_FOLDER + "/" + targetImageFolder.getName();
-        String datasetResourceImageIndex = datasetResourceImageFolder + "/" + datasetName + DATASET_IMAGE_FOLDER_INDEX;
-
-        try (InputStream is = FileIO.class.getResourceAsStream(datasetResourceImageIndex);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            String imageFileName;
-            while ((imageFileName = reader.readLine()) != null) {
-                InputStream imageResource = FileIO.class.getResourceAsStream(datasetResourceImageFolder + "/" + imageFileName);
-                FileIO.copy(imageResource, new File(targetImageFolder, imageFileName).toPath());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * Gets an image from the dataset image folder
+     * Gets an image from the estab image folder
      * Names are strict and have to match the following pattern:
      * <p>
      * Dataset name: COTA
      * Dataset file: COTAEstab.xml
      * Dataset image folder: COTAEstab_Images
      *
-     * @param datasetFile   where the dataset is stored on disk
+     * @param estabFile   where the dataset is stored on disk
      * @param imageFileName file name of the image the method will load
      * @return the image if it was correctly loaded, null otherwise
      */
-    public static Image getDatasetImage(File datasetFile, String imageFileName) {
-        String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
-        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
-        File datasetPicture = new File(datasetImageFolder, imageFileName);
+    public static Image getEstabImage(File estabFile, String imageFileName) {
+        String estabName = getFilenameWithoutExtension(estabFile);
+        File estabImageFolder = new File(estabFile.getParent(), estabName + ESTAB_IMAGE_FOLDER_SUFFIX);
+        File estabPicture = new File(estabImageFolder, imageFileName);
         Image picture = null;
         try {
-            picture = new Image(datasetPicture.toURI().toURL().toString());
+            picture = new Image(estabPicture.toURI().toURL().toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         return picture;
     }
 
-    public static File getDatasetImageFolder(File datasetFile) {
-        String datasetName = datasetFile.getName().split(DATASET_FILE_SUFFIX)[0];
-        File datasetImageFolder = new File(datasetFile.getParent(), datasetName + DATASET_IMAGE_FOLDER_SUFFIX);
-        return datasetImageFolder;
+    public static File getEstabImageFolder(File estabFile) {
+        String estabName = getFilenameWithoutExtension(estabFile);
+        File estabImageFolder = new File(estabFile.getParent(), estabName + ESTAB_IMAGE_FOLDER_SUFFIX);
+        return estabImageFolder;
     }
 
     /**
@@ -249,7 +224,7 @@ public class FileIO {
      */
     public static File getOrCreateNewEstabFile() {
         File f = getFileOrCreateNew(getNewEstabPath().toString());
-        if(!installDatasetFile("Default" + DATASET_FILE_SUFFIX, getNewEstabPath())) f = null;
+        if(!installEstabFile(ESTAB_TEMPLATE, getNewEstabPath())) f = null;
         return f;
     }
 
@@ -282,4 +257,7 @@ public class FileIO {
         return FileSystems.getDefault().getPath(System.getProperty("user.home"), CLIENT_SETTINGS_FILE_PATH);
     }
 
+    public static String getFilenameWithoutExtension(File file) {
+        return file.getName().replaceAll(".*[\\\\/]|\\.[^\\.]*$", "");
+    }
 }

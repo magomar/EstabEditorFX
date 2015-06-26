@@ -66,6 +66,7 @@
                                                         <fx:include fx:id="largeInsigniaPanel" source="element-image.fxml" />
                                                     </children>
                                                 </VBox>
+                                    <Pane HBox.hgrow="ALWAYS" />
                                                 <VBox>
                                                     <children>
                                                         <Label text="Small Insignia" />

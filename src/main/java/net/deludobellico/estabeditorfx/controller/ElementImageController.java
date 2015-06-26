@@ -69,7 +69,7 @@ public class ElementImageController implements Initializable {
                 "Image files", "*.bmp");
         fileChooser.getExtensionFilters().add(imageFilter);
 
-        File initialDirectory = FileIO.getDatasetImageFolder(estabEditorController.getActiveFile());
+        File initialDirectory = FileIO.getEstabImageFolder(estabEditorController.getActiveFile());
         fileChooser.setInitialDirectory(initialDirectory);
         File imageFile = fileChooser.showOpenDialog(ViewUtil.ROOT_STAGE);
         if (null != imageFile) {
@@ -87,7 +87,7 @@ public class ElementImageController implements Initializable {
     }
 
     private void setNoImage() {
-        Image image = FileIO.getDatasetImage(estabEditorController.getActiveFile(), NO_IMAGE_FILENAME);
+        Image image = FileIO.getEstabImage(estabEditorController.getActiveFile(), NO_IMAGE_FILENAME);
         imageView.setImage(image);
         imageFilename.setText("");
         imageFilename.setText(NO_IMAGE_FILENAME);
@@ -109,7 +109,7 @@ public class ElementImageController implements Initializable {
         this.activeElement = element;
         ImageModel imageModel = estabEditorController.getEstabModel().getImages().get(element.getPictureId());
         if (imageModel != null ) {
-            imageView.setImage(FileIO.getDatasetImage(estabEditorController.getActiveFile(), imageModel.getFileName()));
+            imageView.setImage(FileIO.getEstabImage(estabEditorController.getActiveFile(), imageModel.getFileName()));
             noImageCheckbox.setSelected(imageModel.getFileName().equals(NO_IMAGE_FILENAME) ? true : false);
         } else {
             setNoImage();
