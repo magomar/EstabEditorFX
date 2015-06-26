@@ -371,7 +371,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @Override
     public void bindProperties() {
         WeaponModel element = getActiveElement();
-        imagePanelController.setActiveElement(element);
+        imagePanelController.setActiveElement(element, element.getPictureId());
 
         weight.textProperty().bindBidirectional(element.weightProperty(), NUMBER_STRING_CONVERTER);
         name.textProperty().bindBidirectional(element.nameProperty());
@@ -418,6 +418,8 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
         weaponType.valueProperty().unbindBidirectional(element.typeProperty());
         weaponPrimaryRole.valueProperty().unbindBidirectional(element.primaryRoleProperty());
+
+//        imagePanelController.clear();
     }
 
     @Override

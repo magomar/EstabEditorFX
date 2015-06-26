@@ -7,7 +7,6 @@ import net.deludobellico.estabeditorfx.data.jaxb.*;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Map;
  * @author Mario
  * @author Heine
  */
-public class WeaponModel extends AbstractGraphicalElementModel<WeaponModel> implements PojoAdapter<Weapon> {
+public class WeaponModel extends AbstractElementModel<WeaponModel> implements PojoAdapter<Weapon> {
     private final IntegerProperty pictureId = new SimpleIntegerProperty();
     private final StringProperty pictureFilename = new SimpleStringProperty();
     private final DoubleProperty weight = new SimpleDoubleProperty();

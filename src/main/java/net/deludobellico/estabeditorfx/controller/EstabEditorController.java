@@ -163,11 +163,8 @@ public class EstabEditorController implements Initializable {
 
         // Hide the root tree node
         searchResultsTreeView.setShowRoot(false);
-        searchResultsTreeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<ElementListCell>>() {
-            @Override
-            public void changed(ObservableValue<? extends TreeItem<ElementListCell>> observable, TreeItem<ElementListCell> oldValue, TreeItem<ElementListCell> newValue) {
-                if(newValue != null) setActiveElement(newValue.getValue().getElementModel());
-            }
+        searchResultsTreeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null) setActiveElement(newValue.getValue().getElementModel());
         });
 
         //Since Force is the default class, hide the ListVIew and display the TreeView

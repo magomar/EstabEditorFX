@@ -103,6 +103,8 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
     @Override
     public void bindProperties() {
         SideModel element = getActiveElement();
+        largeInsigniaPanelController.setActiveElement(element, element.getLargeInsignia());
+        smallInsigniaPanelController.setActiveElement(element, element.getSmallInsignia());
         name.textProperty().bindBidirectional(element.nameProperty());
         id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
@@ -121,6 +123,13 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
         consumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateProperty());
         aper.textProperty().unbindBidirectional(element.defaultEnemyAperFpProperty());
         aarm.textProperty().unbindBidirectional(element.defaultEnemyAarmFpProperty());
+    }
+
+    @Override
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        super.setEstabEditorController(estabEditorController);
+        largeInsigniaPanelController.setEstabEditorController(estabEditorController);
+        smallInsigniaPanelController.setEstabEditorController(estabEditorController);
     }
 
 }
