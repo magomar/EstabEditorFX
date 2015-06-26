@@ -100,7 +100,13 @@ public class MainController implements Initializable {
     @FXML
     private ToolBar toolBar;
     @FXML
-    private Button saveDataButton;
+    private Button newEstabButton;
+    @FXML
+    private Button openSourceEstabButton;
+    @FXML
+    private Button openTargetEstabButton;
+    @FXML
+    private Button saveEstabButton;
     @FXML
     private Button createNewForceButton;
     @FXML
@@ -254,7 +260,7 @@ public class MainController implements Initializable {
 
         createNewSideMenuItem.disableProperty().bindBidirectional(targetIsClosed);
 
-        saveDataButton.disableProperty().bind(targetIsClosed);
+        saveEstabButton.disableProperty().bind(targetIsClosed);
 
         // Hide components if they are set invisible
         toolBar.managedProperty().bind(toolBar.visibleProperty());
@@ -321,14 +327,14 @@ public class MainController implements Initializable {
      * Files are filtered with {@link FileIO#EXTENSION_FILTERS}
      *
      * @param isSaving true if the file chooser is open for saving, false if it's for opening
-     * @param isSource
+     * @param mode the mode in which the estab should be opened (SOURCE vs TARGET)
      * @return the selected file, otherwise null
      * @see System#getProperty(String)
      */
 
-    private File openFileChooser(boolean isSaving, boolean isSource) {
+    private File openFileChooser(boolean isSaving, EstabMode mode) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(String.format("Select %s ESTAB", isSource ? "Source" : "Target"));
+        fileChooser.setTitle("Select " + mode.name().toLowerCase() + " estab");
 
         File initialDirectory = null;
         if (Settings.getInstance().getLastOpenedFolder() != null)
@@ -412,41 +418,43 @@ public class MainController implements Initializable {
         populateOpenRecentTargetMenu();
     }
 
+    @FXML
+    private void openSourceAction() {
+        File f = openFileChooser(false, EstabMode.SOURCE);
+        if (f != null) {
+            openSource(f);
+        }
+    }
+
+    @FXML
+    private void openTargetAction() {
+        File f = openFileChooser(false, EstabMode.TARGET);
+        if (f != null) {
+            openTarget(f);
+            fixReferencesAction();
+        }
+    }
+
     /**
-     * Handles menu items for opening files. Displays the file chooser and opens the selected file,
-     * unless it's a new file, which will be opened without asking.
+     * Creates and opens and new estab  file
      *
-     * @param actionEvent used to extract the parent Menu name (Source or Target)
      * @see FileIO#getNewEstabPath()
      */
     @FXML
-    public void openFileAction(ActionEvent actionEvent) {
-        boolean isSource = ((MenuItem) actionEvent.getSource()).getParentMenu().getText().toLowerCase().contains("source");
-        boolean isNew = ((MenuItem) actionEvent.getSource()).getText().toLowerCase().contains("new");
-        if (isNew) {
-            Settings settings = Settings.getInstance();
-            DialogAction answer = DialogAction.OK;
-            if (settings.getNewFileCreated())
-                answer = ViewUtil.showInfoDialog("New file exists", "Another new file has been found. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
-            if (answer == DialogAction.OK) {
-                File f = FileIO.getOrCreateNewEstabFile();
-                if (f != null) {
-                    openTarget(f);
-                    settings.setNewFileCreated(true);
-                    settings.setNewFileSaved(false);
-                }
-            }
-        } else {
-            File f = openFileChooser(false, isSource);
+    private void newEstabAction() {
+        Settings settings = Settings.getInstance();
+        DialogAction answer = DialogAction.OK;
+        if (settings.getNewFileCreated())
+            answer = ViewUtil.showInfoDialog("New file exists", "File already exists. Overwrite?", "", DialogAction.CANCEL, DialogAction.OK);
+        if (answer == DialogAction.OK) {
+            File f = FileIO.getOrCreateNewEstabFile();
             if (f != null) {
-                if (isSource) {
-                    openSource(f);
-                } else {
-                    openTarget(f);
-                    fixReferencesAction();
-                }
+                openTarget(f);
+                settings.setNewFileCreated(true);
+                settings.setNewFileSaved(false);
             }
         }
+
     }
 
     /**
@@ -454,7 +462,7 @@ public class MainController implements Initializable {
      * it calls {@link #saveTargetAsAction()} to change the path.
      */
     @FXML
-    public void saveTargetAction() {
+    private void saveTargetAction() {
         if (targetActiveEstabFile.toPath().equals(FileIO.getNewEstabPath())) {
             if (saveTargetAsAction() != null) {
                 Settings.getInstance().setNewFileSaved(true);
@@ -476,7 +484,7 @@ public class MainController implements Initializable {
     }
 
     private File saveSourceAsAction() {
-        File file = openFileChooser(true, true);
+        File file = openFileChooser(true, EstabMode.SOURCE);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + sourceActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(sourceActiveEstabFile, file);
@@ -489,12 +497,12 @@ public class MainController implements Initializable {
      * Displays a file chooser and copies the current target file to the new destination.
      */
     @FXML
-    public void saveTargetAsAction(ActionEvent actionEvent) {
+    private void saveTargetAsAction(ActionEvent actionEvent) {
         saveTargetAsAction();
     }
 
     private File saveTargetAsAction() {
-        File file = openFileChooser(true, true);
+        File file = openFileChooser(true, EstabMode.TARGET);
         if (file != null) {
             LOG.log(Level.INFO, "Saving target file " + targetActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(targetActiveEstabFile, file);
@@ -507,7 +515,7 @@ public class MainController implements Initializable {
      * Closes the source estab.
      */
     @FXML
-    public void sourceCloseAction() {
+    public void closeSourceAction() {
         LOG.log(Level.INFO, "Closing source file " + sourceActiveEstabFile.getName());
 
         sourcePaneController.setEstabModel((EstabModel) null);
@@ -524,7 +532,7 @@ public class MainController implements Initializable {
      * Closes the target estab.
      */
     @FXML
-    public void targetCloseAction() {
+    public void closeTargetCloseAction() {
         LOG.log(Level.INFO, "Closing target file " + targetActiveEstabFile.getName());
         targetPaneController.setEstabModel((EstabModel) null);
         targetPaneController.getActiveElement().set(null);
@@ -712,6 +720,11 @@ public class MainController implements Initializable {
 
     public BooleanProperty targetIsClosedProperty() {
         return targetIsClosed;
+    }
+
+    enum EstabMode {
+        SOURCE,
+        TARGET;
     }
 
 }

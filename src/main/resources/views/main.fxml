@@ -19,21 +19,21 @@
                         <!--</Menu>-->
                         <Menu mnemonicParsing="true" text="_Source">
                             <items>
-                                <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="Open" />
+                                <MenuItem fx:id="sourceOpenMenuItem" mnemonicParsing="true" onAction="#openSourceAction" text="Open" />
                                 <Menu fx:id="sourceOpenRecentMenuList" mnemonicParsing="true" text="Open recent">
 
                                 </Menu>
                                 <SeparatorMenuItem mnemonicParsing="false" />
                                 <MenuItem fx:id="sourceSaveAsMenuItem" disable="true" mnemonicParsing="false" onAction="#saveSourceAsAction" text="Save as ..." />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#sourceCloseAction" text="Close" />
+                                <MenuItem fx:id="sourceCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#closeSourceAction" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="true" text="_Target">
                             <items>
-                                <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="New" />
+                                <MenuItem fx:id="targetOpenNewMenuItem" mnemonicParsing="true" onAction="#newEstabAction" text="New" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="true" onAction="#openFileAction" text="Open" />
+                                <MenuItem fx:id="targetOpenMenuItem" mnemonicParsing="true" onAction="#openTargetAction" text="Open" />
                                 <Menu fx:id="targetOpenRecentMenuList" mnemonicParsing="true" text="Open recent">
 
                                 </Menu>
@@ -41,7 +41,7 @@
                                 <MenuItem fx:id="targetSaveMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAction" text="Save" />
                                 <MenuItem fx:id="targetSaveAsMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAsAction" text="Save as ..." />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#targetCloseAction" text="Close" />
+                                <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#closeTargetCloseAction" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="true" text="_Edit">
@@ -104,7 +104,43 @@
                 </MenuBar>
                 <ToolBar fx:id="toolBar">
                     <items>
-                        <Button fx:id="saveDataButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#saveTargetAction">
+                  <Button fx:id="newEstabButton" maxHeight="Infinity" mnemonicParsing="false" onAction="#newEstabAction">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/new-estab.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="New estab" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="openSourceEstabButton" maxHeight="Infinity" mnemonicParsing="false" onAction="#openSourceAction">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/open-estab-read-only.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Open source estab" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="openTargetEstabButton" maxHeight="Infinity" mnemonicParsing="false" onAction="#openTargetAction">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/open-estab-edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Open target estab" />
+                     </tooltip>
+                  </Button>
+                        <Button fx:id="saveEstabButton" disable="true" maxHeight="Infinity" mnemonicParsing="false" onAction="#saveTargetAction">
                             <graphic>
                                 <ImageView pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -199,7 +235,7 @@
                                 </ImageView>
                             </graphic>
                             <tooltip>
-                                <Tooltip text="Only shows target" />
+                                <Tooltip text="Show target only" />
                             </tooltip>
                         </Button>
                     </items>
