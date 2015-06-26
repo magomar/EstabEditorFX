@@ -138,19 +138,21 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
 
     @Override
     public void bindProperties() {
-        ServiceModel service = getActiveElement();
-        name.textProperty().bindBidirectional(service.nameProperty());
-        id.textProperty().bindBidirectional(service.idProperty(), NUMBER_STRING_CONVERTER);
-        description.textProperty().bindBidirectional(service.descriptionProperty());
-        backgroundColorPicker.valueProperty().bindBidirectional(service.backgroundColorProperty());
-        darkBackgColorPicker.valueProperty().bindBidirectional(service.backgroundDarkColorProperty());
-        lightBackgColorPicker.valueProperty().bindBidirectional(service.backgroundLightColorProperty());
-        designationColorPicker.valueProperty().bindBidirectional(service.designationColorProperty());
-        symbolColorComboBox.valueProperty().bindBidirectional(service.symbolColorProperty());
-        rankModels.addAll(service.getRankList());
+        ServiceModel element = getActiveElement();
+        largeInsigniaPanelController.setActiveElement(element, element.getLargeInsignia());
+        smallInsigniaPanelController.setActiveElement(element, element.getSmallInsignia());
+        name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
+        description.textProperty().bindBidirectional(element.descriptionProperty());
+        backgroundColorPicker.valueProperty().bindBidirectional(element.backgroundColorProperty());
+        darkBackgColorPicker.valueProperty().bindBidirectional(element.backgroundDarkColorProperty());
+        lightBackgColorPicker.valueProperty().bindBidirectional(element.backgroundLightColorProperty());
+        designationColorPicker.valueProperty().bindBidirectional(element.designationColorProperty());
+        symbolColorComboBox.valueProperty().bindBidirectional(element.symbolColorProperty());
+        rankModels.addAll(element.getRankList());
         rankListView.setItems(rankModels);
         boolean allForcesUseServiceColors = true;
-        for (ForceModel force : service.getForce()) {
+        for (ForceModel force : element.getForce()) {
             if (!force.usesServiceColors()) {
                 allForcesUseServiceColors = false;
                 break;
@@ -204,5 +206,12 @@ public class ServiceEditorController extends AbstractElementEditorController<Ser
             RankModel rankModel = rankListView.getSelectionModel().getSelectedItem();
             rankModels.remove(rankModel);
         }
+    }
+
+    @Override
+    public void setEstabEditorController(EstabEditorController estabEditorController) {
+        super.setEstabEditorController(estabEditorController);
+        largeInsigniaPanelController.setEstabEditorController(estabEditorController);
+        smallInsigniaPanelController.setEstabEditorController(estabEditorController);
     }
 }

@@ -12,7 +12,7 @@
 
 <AnchorPane stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ElementImageController">
     <children>
-        <GridPane prefHeight="206.0" prefWidth="204.0" styleClass="icon-grid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <GridPane prefHeight="206.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <TextField fx:id="imageFilename" editable="false" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER">
                     <GridPane.margin>
@@ -36,6 +36,10 @@
                 <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
             </rowConstraints>
+         <styleClass>
+            <String fx:value="icon-grid" />
+            <String fx:value="estab-image-editor" />
+         </styleClass>
         </GridPane>
     </children>
 </AnchorPane>

@@ -245,7 +245,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
     @Override
     public void bindProperties() {
         VehicleModel element = getActiveElement();
-        imagePanelController.setActiveElement(element);
+        imagePanelController.setActiveElement(element, element.getPictureId());
 
         battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), NUMBER_STRING_CONVERTER);
         bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), NUMBER_STRING_CONVERTER);
@@ -331,6 +331,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         vehicleType.valueProperty().unbindBidirectional(element.typeProperty());
 
         armamentTableView.setItems(null);
+        imagePanelController.clear();
 
     }
 

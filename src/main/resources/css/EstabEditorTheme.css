@@ -56,10 +56,16 @@
     -fx-background-color: transparent;
 }
 
+.editor-tab .text-field {
+    -fx-pref-width: 80;
+}
+
+
 .description {
     -fx-spacing: 10;
     -fx-padding: 5;
-    -fx-pref-height: 150;
+    -fx-min-height: 80;
+    -fx-pref-height: 160;
 }
 
 .data-grid {
@@ -74,6 +80,12 @@
 
 .button {
     -fx-font-size: 12
+}
+
+.estab-image-editor {
+    -fx-padding: 5;
+    -fx-border-color: #999999;
+    -fx-border-width: 1;
 }
 
 .element-image {

@@ -90,11 +90,11 @@
                                     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                  <RowConstraints vgrow="SOMETIMES" />
-                                  <RowConstraints vgrow="SOMETIMES" />
-                                  <RowConstraints vgrow="SOMETIMES" />
-                                    <RowConstraints vgrow="SOMETIMES" />
-                                    <RowConstraints vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
                                                     <Label text="Background color" />
