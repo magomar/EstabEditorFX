@@ -158,8 +158,8 @@ public class MainController implements Initializable {
         primaryStage = ViewUtil.ROOT_STAGE;
 
         // Configure the controllers, set name, if it's editable, and pass this main controller for future reference
-        targetPaneController.init("Target Estab: ", true, this);
-        sourcePaneController.init("Source Estab: ", false, this);
+        targetPaneController.init(true, this);
+        sourcePaneController.init(false, this);
 
         bindProperties();
         addListeners();
@@ -332,7 +332,7 @@ public class MainController implements Initializable {
      * @see System#getProperty(String)
      */
 
-    private File openFileChooser(boolean isSaving, EstabMode mode) {
+    private File openFileChooser(boolean isSaving, EstabEditorController.EstabMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select " + mode.name().toLowerCase() + " estab");
 
@@ -420,7 +420,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void openSourceAction() {
-        File f = openFileChooser(false, EstabMode.SOURCE);
+        File f = openFileChooser(false, EstabEditorController.EstabMode.SOURCE);
         if (f != null) {
             openSource(f);
         }
@@ -428,7 +428,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void openTargetAction() {
-        File f = openFileChooser(false, EstabMode.TARGET);
+        File f = openFileChooser(false, EstabEditorController.EstabMode.TARGET);
         if (f != null) {
             openTarget(f);
             fixReferencesAction();
@@ -484,7 +484,7 @@ public class MainController implements Initializable {
     }
 
     private File saveSourceAsAction() {
-        File file = openFileChooser(true, EstabMode.SOURCE);
+        File file = openFileChooser(true, EstabEditorController.EstabMode.SOURCE);
         if (file != null) {
             LOG.log(Level.INFO, "Saving source file " + sourceActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(sourceActiveEstabFile, file);
@@ -502,7 +502,7 @@ public class MainController implements Initializable {
     }
 
     private File saveTargetAsAction() {
-        File file = openFileChooser(true, EstabMode.TARGET);
+        File file = openFileChooser(true, EstabEditorController.EstabMode.TARGET);
         if (file != null) {
             LOG.log(Level.INFO, "Saving target file " + targetActiveEstabFile.getName() + " as " + file.getName());
             FileIO.copy(targetActiveEstabFile, file);
@@ -722,9 +722,6 @@ public class MainController implements Initializable {
         return targetIsClosed;
     }
 
-    enum EstabMode {
-        SOURCE,
-        TARGET;
-    }
+
 
 }

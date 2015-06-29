@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
@@ -11,16 +12,35 @@
    <children>
       <VBox prefHeight="417.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox fx:id="e" styleClass="estab-info">
+            <HBox alignment="CENTER_LEFT" styleClass="estab-info" stylesheets="@../css/EstabEditorTheme.css">
                <children>
-                  <Label fx:id="estabInfo" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" text="Estab info" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="editorMode" text="Mode" />
+                  <Label fx:id="estabName" prefWidth="120.0" />
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/force-small.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="numForces" editable="false" />
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/vehicle-small.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="numVehicles" editable="false" />
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/weapon-small.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="numWeapons" editable="false" />
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/ammo-small.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="numAmmos" editable="false" />
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
             </HBox>
             <HBox>
                <children>

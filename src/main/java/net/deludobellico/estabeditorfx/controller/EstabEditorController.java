@@ -4,8 +4,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -18,11 +16,12 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.TextFlow;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import net.deludobellico.estabeditorfx.model.*;
+import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.SavedSearchList;
-import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.io.File;
@@ -52,7 +51,17 @@ public class EstabEditorController implements Initializable {
     }});
 
     @FXML
-    private Label estabInfo;
+    private Label editorMode;
+    @FXML
+    private Label estabName;
+    @FXML
+    private TextField numForces;
+    @FXML
+    private TextField numVehicles;
+    @FXML
+    private TextField numWeapons;
+    @FXML
+    private TextField numAmmos;
 
     /**
      * Where the element editors are loaded
@@ -164,7 +173,7 @@ public class EstabEditorController implements Initializable {
         // Hide the root tree node
         searchResultsTreeView.setShowRoot(false);
         searchResultsTreeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null) setActiveElement(newValue.getValue().getElementModel());
+            if (newValue != null) setActiveElement(newValue.getValue().getElementModel());
         });
 
         //Since Force is the default class, hide the ListVIew and display the TreeView
@@ -191,17 +200,15 @@ public class EstabEditorController implements Initializable {
     /**
      * Easy way to set a few initial parameters
      *
-     * @param title      title of the estab pane
      * @param isEditable true if the estab is editable, false otherwise
      * @param controller the parent controller
      */
-    public void init(String title, boolean isEditable, MainController controller) {
-        setTitle(title);
+    public void init(boolean isEditable, MainController controller) {
         setEditable(isEditable);
         setMainController(controller);
-        if (!isEditable) {
-            removeSelectedButton.setVisible(false);
-        }
+        if (isEditable) editorMode.setText("Target Estab: ");
+        else editorMode.setText("Source Estab: ");
+        removeSelectedButton.setVisible(isEditable);
     }
 
     /**
@@ -209,8 +216,14 @@ public class EstabEditorController implements Initializable {
      */
     public void update() {
         searchLists.values().stream().forEach(s -> s.setForceSearch(true));
-        setTitle();
-        if (estabModel != null) searchElement();
+        if (estabModel != null) {
+            searchElement();
+            estabName.setText(activeFile.getName());
+            numForces.textProperty().bindBidirectional(estabModel.numForcesProperty(), ElementEditorController.NUMBER_STRING_CONVERTER);
+            numVehicles.textProperty().bindBidirectional(estabModel.numVehiclesProperty(), ElementEditorController.NUMBER_STRING_CONVERTER);
+            numWeapons.textProperty().bindBidirectional(estabModel.numWeaponsProperty(), ElementEditorController.NUMBER_STRING_CONVERTER);
+            numAmmos.textProperty().bindBidirectional(estabModel.numAmmosProperty(), ElementEditorController.NUMBER_STRING_CONVERTER);
+        } else clear();
     }
 
     /**
@@ -220,7 +233,10 @@ public class EstabEditorController implements Initializable {
         selectedElements.clear();
         searchResultsListView.getItems().clear();
         searchResultsTreeView.getRoot().getChildren().clear();
-        setTitle();
+        numForces.setText("");
+        numVehicles.setText("");
+        numWeapons.setText("");
+        numAmmos.setText("");
         if (elementEditorController != null) elementEditorController.clear();
     }
 
@@ -364,7 +380,7 @@ public class EstabEditorController implements Initializable {
      *
      * @param treeItem where we'll add the listener
      */
-    private void cascadeBind(TreeItem<ElementListCell> treeItem){
+    private void cascadeBind(TreeItem<ElementListCell> treeItem) {
         treeItem.getValue().selectedProperty().addListener((observable, oldValue, newValue) -> {
             for (TreeItem<ElementListCell> child : treeItem.getChildren()) {
                 child.getValue().selectedProperty().setValue(treeItem.getValue().selectedProperty().getValue());
@@ -403,7 +419,7 @@ public class EstabEditorController implements Initializable {
      * @param sidesMap
      * @param rootNode
      */
-    private void updateNationsMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> sidesMap, TreeItem<ElementListCell> rootNode){
+    private void updateNationsMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> sidesMap, TreeItem<ElementListCell> rootNode) {
         if (!nationsMap.containsKey(force.getService().getNation().getId())) {
             // make sure this nation's side exist
             updateSidesMap(force, sidesMap, rootNode);
@@ -433,7 +449,7 @@ public class EstabEditorController implements Initializable {
      * @param servicesMap
      * @param rootNode
      */
-    private void updateServicesMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> sidesMap, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> servicesMap, TreeItem<ElementListCell> rootNode){
+    private void updateServicesMap(ForceModel force, Map<Integer, TreeItem<ElementListCell>> sidesMap, Map<Integer, TreeItem<ElementListCell>> nationsMap, Map<Integer, TreeItem<ElementListCell>> servicesMap, TreeItem<ElementListCell> rootNode) {
         if (!servicesMap.containsKey(force.getService().getId())) {
             // if it doesn't, check its nation
             updateNationsMap(force, nationsMap, sidesMap, rootNode);
@@ -452,6 +468,7 @@ public class EstabEditorController implements Initializable {
             cascadeBind(serviceTreeItem);
         }
     }
+
     /**
      * Creates a new elements and displays it in the editor
      *
@@ -580,32 +597,6 @@ public class EstabEditorController implements Initializable {
         } else estabModel.saveToFile(file);
     }
 
-    /**
-     * Sets the title depending whether this editor will contain the source or the target
-     */
-    void setTitle() {
-        setTitle(isEditable ? "Target Estab:" : "Source Estab:");
-    }
-
-    /**
-     * Sets the title with the estab file name and the elements it contains.
-     *
-     * @param title initial string which will have the info appended
-     */
-    void setTitle(String title) {
-        if (estabModel != null) {
-            title = title.split("\\|")[0];
-            int sides = estabModel.getSides().size();
-            int images = estabModel.getImages().size();
-            int vehicles = estabModel.getVehicles().size();
-            int weapons = estabModel.getWeapons().size();
-            int ammo = estabModel.getAmmos().size();
-            String filename = activeFile == null ? "" : activeFile.getName();
-            title = String.format(title + " %s | %d Sides | %d Images | %d Vehicles | %d Weapons | %d Ammo", filename, sides, images, vehicles, weapons, ammo);
-        }
-        estabInfo.setText(title);
-    }
-
     public File getActiveFile() {
         return activeFile;
     }
@@ -628,6 +619,7 @@ public class EstabEditorController implements Initializable {
         this.activeFile = file;
         setEstabModel(new EstabModel(file));
     }
+
 
     void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -759,9 +751,10 @@ public class EstabEditorController implements Initializable {
          *
          * @return the checkbox selected property
          */
-        public BooleanProperty selectedProperty(){
+        public BooleanProperty selectedProperty() {
             return checkBox.selectedProperty();
         }
+
         /**
          * Returns the associated element model
          *
@@ -858,6 +851,11 @@ public class EstabEditorController implements Initializable {
         }
     }
 
+
+    public enum EstabMode {
+        SOURCE,
+        TARGET;
+    }
 }
 
 
