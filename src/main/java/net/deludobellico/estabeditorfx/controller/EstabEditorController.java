@@ -12,11 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.TextFlow;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
@@ -51,7 +52,9 @@ public class EstabEditorController implements Initializable {
     }});
 
     @FXML
-    private Label editorMode;
+    private ImageView sourceMode;
+    @FXML
+    private ImageView targetMode;
     @FXML
     private Label estabName;
     @FXML
@@ -206,8 +209,10 @@ public class EstabEditorController implements Initializable {
     public void init(boolean isEditable, MainController controller) {
         setEditable(isEditable);
         setMainController(controller);
-        if (isEditable) editorMode.setText("Target Estab: ");
-        else editorMode.setText("Source Estab: ");
+        targetMode.setVisible(isEditable);
+        targetMode.setManaged(isEditable);
+        sourceMode.setVisible(!isEditable);
+        sourceMode.setManaged(!isEditable);
         removeSelectedButton.setVisible(isEditable);
     }
 

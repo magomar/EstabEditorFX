@@ -68,7 +68,7 @@ public class InfoDialogController implements Initializable {
         dialog.getIcons().addAll(ViewUtil.ROOT_STAGE.getIcons());
         dialog.initModality(Modality.WINDOW_MODAL);
         buttonBox.getChildren().stream().forEach(b -> ((Button) b).setOnAction(event -> dialog.close()));
-        image.setImage(new Image(InfoDialogController.class.getResourceAsStream(FileIO.INFO_ICON)));
+        image.setImage(FileIO.getImageFromFile("info.png"));
 
     }
 

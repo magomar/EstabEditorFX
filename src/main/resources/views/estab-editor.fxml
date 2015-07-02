@@ -14,8 +14,17 @@
          <children>
             <HBox alignment="CENTER_LEFT" styleClass="estab-info" stylesheets="@../css/EstabEditorTheme.css">
                <children>
-                  <Label fx:id="editorMode" text="Mode" />
-                  <Label fx:id="estabName" prefWidth="120.0" />
+                  <ImageView fx:id="sourceMode" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/read-only.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="targetMode" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/editable.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="estabName" styleClass="estab-name" />
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/force-small.png" />

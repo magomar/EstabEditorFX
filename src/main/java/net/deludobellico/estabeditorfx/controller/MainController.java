@@ -371,9 +371,6 @@ public class MainController implements Initializable {
     }
 
     /**
-     *
-     */
-    /**
      * Opens a file as a source estab.
      *
      * @param file source file to open
@@ -693,6 +690,7 @@ public class MainController implements Initializable {
                 }
             }
         }
+        if (referencesToFix.isEmpty()) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("User action required");
         alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");

@@ -85,7 +85,7 @@ public class CopyRemoveDialogController implements Initializable {
             selectedItems.addAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        image.setImage(new Image(CopyRemoveDialogController.class.getResourceAsStream(FileIO.WARNING_ICON)));
+        image.setImage(FileIO.getImageFromFile("warning.png"));
     }
 
     public CopyRemoveDialogController setTitle(String title) {
