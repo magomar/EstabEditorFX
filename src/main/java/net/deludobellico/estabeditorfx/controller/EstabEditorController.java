@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +20,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
@@ -70,7 +73,7 @@ public class EstabEditorController implements Initializable {
      * Where the element editors are loaded
      */
     @FXML
-    private AnchorPane editorPaneHook;
+    private Pane editorPaneHook;
     /**
      * Buttons filter searches by element
      */
@@ -688,10 +691,10 @@ public class EstabEditorController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ELEMENT_EDITOR_VIEWS.get(elementClass)));
         try {
             // Load the editor pane from the fxml and copy the contents
-            AnchorPane editorNode = fxmlLoader.load();
+            Node editorNode = fxmlLoader.load();
             // Save the index of the editor pane children list
             editorPaneChildrenIndex.put(elementClass, editorPaneHook.getChildren().size());
-            editorPaneHook.getChildren().addAll(editorNode.getChildren());
+            editorPaneHook.getChildren().add(editorNode);
             // Load and save the controller
             elementEditorController = fxmlLoader.getController();
             elementEditorController.setEditable(isEditable);
@@ -717,10 +720,6 @@ public class EstabEditorController implements Initializable {
 
     public BooleanProperty searchDisableProperty() {
         return searchDisable;
-    }
-
-    public AnchorPane getEditorPaneHook() {
-        return editorPaneHook;
     }
 
     public class ElementListCell extends HBox {

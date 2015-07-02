@@ -7,7 +7,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainPane" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
+<BorderPane fx:id="mainPane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.MainController">
     <top>
         <VBox>
             <children>
@@ -248,16 +248,8 @@
     <center>
         <FlowPane BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane id="estab">
-                    <children>
-                        <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
-                    </children>
-                </AnchorPane>
-                <AnchorPane>
-                    <children>
-                        <fx:include fx:id="targetPane" source="estab-editor.fxml" />
-                    </children>
-                </AnchorPane>
+                  <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
+                  <fx:include fx:id="targetPane" source="estab-editor.fxml" />
             </children>
         </FlowPane>
     </center>

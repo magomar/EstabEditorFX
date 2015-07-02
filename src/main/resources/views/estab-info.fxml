@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER_LEFT" styleClass="estab-info" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_LEFT" styleClass="estab-info" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="editorMode" text="Title" />
       <TextFlow fx:id="estabName" prefWidth="120.0" />

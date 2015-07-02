@@ -9,57 +9,54 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="editorPane" stylesheets="@../css/EstabEditorTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.AmmoEditorController">
-    <children>
-        <VBox fx:id="editorPane" prefHeight="400.0" prefWidth="600.0" styleClass="element-editor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <HBox alignment="CENTER_LEFT">
-                    <children>
-                        <Label alignment="CENTER" text="Name" />
-                        <TextField fx:id="name" HBox.hgrow="ALWAYS" />
-                        <Label text="ID" />
-                        <TextField fx:id="id" disable="true" editable="false" prefWidth="50.0" />
-                    </children>
-               <styleClass>
-                  <String fx:value="element-name" />
-                  <String fx:value="ammo-color" />
-               </styleClass>
-                </HBox>
-                <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
-                    <tabs>
-                        <Tab text="General">
-                            <content>
-                        <VBox styleClass="editor-tab">
+
+  <VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.AmmoEditorController">
+      <children>
+          <HBox alignment="CENTER_LEFT">
+              <children>
+                  <Label alignment="CENTER" text="Name" />
+                  <TextField fx:id="name" HBox.hgrow="ALWAYS" />
+                  <Label text="ID" />
+                  <TextField fx:id="id" disable="true" editable="false" prefWidth="50.0" />
+              </children>
+         <styleClass>
+            <String fx:value="element-editor-header" />
+            <String fx:value="ammo-color" />
+         </styleClass>
+          </HBox>
+          <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+              <tabs>
+                  <Tab text="General">
+                      <content>
+                  <VBox styleClass="editor-tab">
+                     <children>
+                        <HBox prefHeight="150.0" styleClass="description">
                            <children>
-                              <HBox prefHeight="150.0" styleClass="description">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
-                                    <TextArea fx:id="description" scaleShape="false" wrapText="true" HBox.hgrow="ALWAYS" />
-                                 </children>
-                              </HBox>
-                                            <GridPane>
-                                                <columnConstraints>
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
-                                                </columnConstraints>
-                                                <rowConstraints>
-                                                    <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                                </rowConstraints>
-                                                <children>
-                                                    <Label text="Quantity" />
-                                                    <Label text="Weight (kg)" GridPane.rowIndex="1" />
-                                                    <TextField fx:id="quantity" GridPane.columnIndex="1" />
-                                                    <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                </children>
-                                            </GridPane>
+                              <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                              <TextArea fx:id="description" scaleShape="false" wrapText="true" HBox.hgrow="ALWAYS" />
                            </children>
-                        </VBox>
-                            </content>
-                        </Tab>
-                    </tabs>
-                </TabPane>
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+                        </HBox>
+                                      <GridPane>
+                                          <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                              <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                          </rowConstraints>
+                                          <children>
+                                              <Label text="Quantity" />
+                                              <Label text="Weight (kg)" GridPane.rowIndex="1" />
+                                              <TextField fx:id="quantity" GridPane.columnIndex="1" />
+                                              <TextField fx:id="weight" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          </children>
+                                      </GridPane>
+                     </children>
+                  </VBox>
+                      </content>
+                  </Tab>
+              </tabs>
+          </TabPane>
+      </children>
+  </VBox>

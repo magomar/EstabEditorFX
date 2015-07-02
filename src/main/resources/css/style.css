@@ -7,12 +7,15 @@
     -fx-border-radius: 10 10 0 0;
     -fx-background-radius: 10 10 0 0;
     -fx-background-color: transparent;
+    -fx-pref-width: 650;
+    -fx-pref-height: 400;
 }
 
 .search-box {
     -fx-padding: 5, 5, 5, 5;
     -fx-spacing: 10;
     -fx-background-color: transparent;
+    -fx-pref-width: 100;
 }
 
 .element-editor {
@@ -20,7 +23,7 @@
     -fx-background-color: transparent;
 }
 
-.element-name {
+.element-editor-header {
     -fx-padding: 5;
     -fx-spacing: 10;
 }
@@ -56,7 +59,7 @@
 
 
 .estab-info .text-field {
-    -fx-pref-width: 50;
+    -fx-pref-width: 40;
 }
 
 .estab-name {
@@ -72,15 +75,15 @@
 }
 
 .editor-tab .text-field {
-    -fx-pref-width: 80;
+    -fx-pref-width: 60;
 }
 
 
 .description {
     -fx-spacing: 10;
     -fx-padding: 5;
-    -fx-min-height: 80;
-    -fx-pref-height: 160;
+    -fx-min-height: 60;
+    /*-fx-pref-height: 160;*/
 }
 
 .data-grid {
@@ -104,8 +107,8 @@
 }
 
 .element-image {
-    /*-fx-width: 96;*/
-    /*-fx-height: 61;*/
+    -fx-max-width: 96;
+    -fx-max-height: 61;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
 
