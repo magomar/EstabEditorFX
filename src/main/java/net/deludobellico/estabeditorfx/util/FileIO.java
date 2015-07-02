@@ -7,6 +7,7 @@ import net.deludobellico.estabeditorfx.data.jaxb.EstabData;
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,7 +33,7 @@ public class FileIO {
     /** Resources paths **/
 
     //Main resource folders
-    private static final String TEMPLATES_FOLDER = "/datasets";
+    private static final String TEMPLATES_FOLDER = "/templates";
     private static final String VIEWS_FOLDER = "/views";
     private static final String IMAGES_FOLDER = "/images";
 
@@ -48,11 +49,6 @@ public class FileIO {
     public static final String SEARCH_DIALOG_VIEW = VIEWS_FOLDER + "/search-dialog.fxml";
     public static final String SELECTION_DIALOG_VIEW = VIEWS_FOLDER + "/selection-list-dialog.fxml";
     public static final String INFO_DIALOG_VIEW = VIEWS_FOLDER + "/info-dialog.fxml";
-
-    // Images
-    public static final String WARNING_ICON = IMAGES_FOLDER + "/warning.png";
-    public static final String INFO_ICON = IMAGES_FOLDER + "/info.png";
-    public static final String APP_ICON = IMAGES_FOLDER + "/app-icon.png";
 
     /** Settings and utility strings **/
     private static final String CLIENT_SETTINGS_FILE_PATH = "estab-settings.xml";
@@ -123,13 +119,25 @@ public class FileIO {
      * @param path   path where the stream is saved
      * @return the number of bytes read or written
      */
-    public static long copy(InputStream stream, Path path) {
+    public static boolean copy(InputStream stream, Path path) {
         try {
-            return Files.copy(stream, path, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(stream, path, StandardCopyOption.REPLACE_EXISTING);
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
-            return -1;
+            return false;
         }
+    }
+
+    /**
+     * Returns an image loaded from a file with the given filename. Files are searched inside the default images folder.
+     * @param filename
+     * @return
+     */
+    public static Image getImageFromFile(String filename) {
+        InputStream inputStream = FileIO.class.getResourceAsStream(FileIO.IMAGES_FOLDER + "/" + filename);
+        Image image = new Image(inputStream);
+        return image;
     }
 
     /**
@@ -140,7 +148,8 @@ public class FileIO {
      * @return true if the file was copied, false otherwise
      */
     private static boolean installEstabFile(String datasetFile, Path targetFilePath) {
-        return 0 < FileIO.copy(FileIO.class.getResourceAsStream(FileIO.TEMPLATES_FOLDER + "/" + datasetFile), targetFilePath);
+        InputStream inputStream = FileIO.class.getResourceAsStream(FileIO.TEMPLATES_FOLDER + "/" + datasetFile);
+        return FileIO.copy(inputStream, targetFilePath);
     }
 
 //    /**

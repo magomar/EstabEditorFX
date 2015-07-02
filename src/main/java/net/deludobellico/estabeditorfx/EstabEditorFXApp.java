@@ -35,7 +35,7 @@ public class EstabEditorFXApp extends Application {
         primaryStage.setTitle("Estab Editor FX");
         primaryStage.setMinWidth(ViewUtil.MAIN_VIEW_WIDTH);
         primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image(FileIO.APP_ICON));
+        primaryStage.getIcons().add(FileIO.getImageFromFile("app-icon.png"));
         primaryStage.setOnCloseRequest(event -> {
             if (Settings.getInstance().getNewFileCreated() && !Settings.getInstance().getNewFileSaved()) {
                 DialogAction answer = ViewUtil.showInfoDialog("Unsaved new file detected", "", "If you close you will lose the changes. Continue?", DialogAction.CANCEL, DialogAction.OK);

@@ -1,6 +1,8 @@
 package net.deludobellico.estabeditorfx.model;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
 import net.deludobellico.estabeditorfx.model.provider.ModelProvider;
 import net.deludobellico.estabeditorfx.model.provider.ModelProviderFactory;
@@ -20,10 +22,13 @@ import java.util.stream.Collectors;
 @SuppressWarnings("unchecked")
 public class EstabModel {
     public static final Integer DEFAULT_VERSION = 4;
-    public static final String DLB_VERSION = "0.1.3";
+    public static final String DLB_VERSION = "1.2.0";
     // TODO: use set<element> (sort by id) instead of map<int, element>
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
-
+    private IntegerProperty numForces = new SimpleIntegerProperty(0);
+    private IntegerProperty numVehicles = new SimpleIntegerProperty(0);
+    private IntegerProperty numWeapons = new SimpleIntegerProperty(0);
+    private IntegerProperty numAmmos = new SimpleIntegerProperty(0);
     private Integer version;
     private String dlbVersion;
     private Boolean edited;
@@ -91,8 +96,7 @@ public class EstabModel {
         allElements.put(AmmoModel.class, new HashMap<>(estabData.getAmmo().size()));
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
-
-        // Wrap all the elements to their element model and saves them to their corresponding map
+        // Wrap all the elements to their models and save them to their corresponding map
         final int[] maxId = {0};
         for (List<? extends ModelProvider> elements : estabLists)
             elements.stream().map(ModelProvider::getModel).forEach(element -> {
@@ -131,6 +135,12 @@ public class EstabModel {
             force.getEquipmentList().forEach(equipmentQty -> equipmentQty.link(this));
             force.getForceComposition().forEach(forceQty -> forceQty.link(this));
         });
+
+        // save number of elements of each class in a property
+        numForces.set(getForces().size());
+        numVehicles.set(getVehicles().size());
+        numWeapons.set(getWeapons().size());
+        numAmmos.set(getAmmos().size());
     }
 
     public Map<Integer, ImageModel> getImages() {
@@ -382,4 +392,35 @@ public class EstabModel {
         FileIO.saveEstab(data, file);
     }
 
+    public int getNumForces() {
+        return numForces.get();
+    }
+
+    public IntegerProperty numForcesProperty() {
+        return numForces;
+    }
+
+    public int getNumVehicles() {
+        return numVehicles.get();
+    }
+
+    public IntegerProperty numVehiclesProperty() {
+        return numVehicles;
+    }
+
+    public int getNumWeapons() {
+        return numWeapons.get();
+    }
+
+    public IntegerProperty numWeaponsProperty() {
+        return numWeapons;
+    }
+
+    public int getNumAmmos() {
+        return numAmmos.get();
+    }
+
+    public IntegerProperty numAmmosProperty() {
+        return numAmmos;
+    }
 }

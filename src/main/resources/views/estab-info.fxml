@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER_LEFT" styleClass="estab-info" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="editorMode" text="Title" />
+      <TextFlow fx:id="estabName" prefWidth="120.0" />
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/force-small.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="numForces" disable="true" editable="false" />
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/vehicle-small.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="numVehicles" disable="true" editable="false" />
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/weapon-small.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="numWeapons" disable="true" editable="false" />
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/ammo-small.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="numAmmos" disable="true" editable="false" />
+   </children>
+</HBox>
