@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 
-
-  <VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ServiceEditorController">
+<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ServiceEditorController">
       <children>
           <HBox alignment="CENTER_LEFT">
               <children>
@@ -31,7 +30,7 @@
                               <children>
                                   <HBox alignment="CENTER" styleClass="description">
                                       <children>
-                                          <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                          <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="140.0" text="Description" />
                                           <TextArea fx:id="description" />
                                       </children>
                                   </HBox>

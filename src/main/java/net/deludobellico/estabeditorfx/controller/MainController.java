@@ -191,31 +191,31 @@ public class MainController implements Initializable {
         sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
                 compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
-        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-            } else {
-                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-            }
-            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-        });
-        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-            } else {
-                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
-            }
-            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-        });
-
-        toolBar.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == true) {
-                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.MAIN_TOOLBAR_HEIGHT);
-            } else {
-                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.MAIN_TOOLBAR_HEIGHT);
-            }
-            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-        });
+//        sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue == true) {
+//                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+//            } else {
+//                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+//            }
+//            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+//        });
+//        targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue == true) {
+//                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+//            } else {
+//                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_VIEW_HEIGHT);
+//            }
+//            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+//        });
+//
+//        toolBar.visibleProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue == true) {
+//                primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.MAIN_TOOLBAR_HEIGHT);
+//            } else {
+//                primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.MAIN_TOOLBAR_HEIGHT);
+//            }
+//            LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
+//        });
     }
 
     private void bindProperties() {

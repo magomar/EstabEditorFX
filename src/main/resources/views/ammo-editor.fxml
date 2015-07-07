@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-
-  <VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.AmmoEditorController">
+<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.AmmoEditorController">
       <children>
           <HBox alignment="CENTER_LEFT">
               <children>
@@ -32,14 +31,14 @@
                      <children>
                         <HBox prefHeight="150.0" styleClass="description">
                            <children>
-                              <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                              <Label alignment="TOP_LEFT" contentDisplay="CENTER" minWidth="75.0" text="Description" />
                               <TextArea fx:id="description" scaleShape="false" wrapText="true" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                                       <GridPane>
                                           <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                                              <ColumnConstraints minWidth="-Infinity" prefWidth="90.0" />
+                                              <ColumnConstraints minWidth="-Infinity" prefWidth="90.0" />
                                           </columnConstraints>
                                           <rowConstraints>
                                               <RowConstraints maxHeight="10.0" minHeight="30.0" prefHeight="10.0" vgrow="SOMETIMES" />

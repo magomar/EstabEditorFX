@@ -22,7 +22,10 @@
                   <Image url="@../images/editable.png" />
                </image>
             </ImageView>
-            <Label fx:id="estabName" styleClass="estab-name" />
+            <Label fx:id="estabName" maxWidth="1.7976931348623157E308" styleClass="estab-name" HBox.hgrow="SOMETIMES">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin></Label>
             <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/force-small.png" />
@@ -47,6 +50,7 @@
                </image>
             </ImageView>
             <TextField fx:id="numAmmos" editable="false" />
+            <Pane HBox.hgrow="SOMETIMES" />
          </children>
       </HBox>
       <HBox>
@@ -132,7 +136,7 @@
                         </StackPane>
                </children>
             </VBox>
-            <Pane fx:id="editorPaneHook" />
+            <Pane fx:id="editorPaneHook" styleClass="element-editor" />
          </children>
       </HBox>
    </children>

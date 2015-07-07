@@ -31,7 +31,7 @@
                      <children>
                                   <HBox layoutX="15.0" layoutY="15.0" styleClass="description">
                                       <children>
-                                          <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefWidth="80.0" text="Description" />
+                                          <Label alignment="TOP_LEFT" contentDisplay="CENTER" minWidth="75.0" text="Description" />
                                           <TextArea fx:id="description" scaleShape="false" wrapText="true" HBox.hgrow="ALWAYS" />
                                       </children>
                                   </HBox>
@@ -40,7 +40,7 @@
                                           <GridPane styleClass="data-grid">
                                               <columnConstraints>
                                                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
-                                                  <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
+                                                  <ColumnConstraints halignment="LEFT" minWidth="10.0" prefWidth="150.0" />
                                                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="25.0" prefWidth="100.0" />
                                               </columnConstraints>
                                               <rowConstraints>
@@ -185,7 +185,7 @@
                                             <ColumnConstraints />
                               <ColumnConstraints />
                                             <ColumnConstraints />
-                                            <ColumnConstraints hgrow="NEVER" />
+                                            <ColumnConstraints halignment="LEFT" />
                                         </columnConstraints>
                                         <rowConstraints>
                                             <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
@@ -200,14 +200,14 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                                            <Label fx:id="armamentName" maxWidth="1.7976931348623157E308" styleClass="bordered-label" text="Select a weapon..." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <Label fx:id="armamentName" maxWidth="1.7976931348623157E308" styleClass="bordered-label" text="Select a weapon..." GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                                                 <GridPane.margin>
                                                     <Insets />
                                                 </GridPane.margin>
                                             </Label>
                                             <TextField fx:id="armamentQty" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                            <Button fx:id="armamentAddButton" mnemonicParsing="false" onAction="#armamentAddAction" text="+" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
-                                            <Button fx:id="armamentRemoveButton" mnemonicParsing="false" onAction="#armamentRemoveAction" style="-fx-font-size: 14;" text="-" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                            <Button fx:id="armamentAddButton" mnemonicParsing="false" onAction="#armamentAddAction" text="+" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                                            <Button fx:id="armamentRemoveButton" mnemonicParsing="false" onAction="#armamentRemoveAction" style="-fx-font-size: 14;" text="-" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
                                             <Button fx:id="armamentSelectButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#armamentSelectAction" text="..." GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                         </children>
                                     </GridPane>

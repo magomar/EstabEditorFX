@@ -16,11 +16,15 @@ import java.util.*;
  * Created by Heine on 10/24/2014.
  */
 public class ViewUtil {
-
-    public static final double MAIN_VIEW_WIDTH = 834;
-    public static final double MAIN_VIEW_HEIGHT = 948;
-    public static final double ESTAB_EDITOR_VIEW_HEIGHT = 417;
-    public static final double MAIN_TOOLBAR_HEIGHT = 50;
+    public static final double MAX_WIDTH = 1366;
+    public static final double MAX_HEIGHT = 768;
+    public static final double HORIZ_WIDTH = 691;
+    public static final double HORIZ_HEIGHT = 980;
+    public static final double VERT_WIDTH = 1366;
+    public static final double VERT_HEIGHT = 508;
+    public static final double ESTAB_EDITOR_WIDTH = 675;
+    public static final double ESTAB_EDITOR_HEIGHT = 433;
+    public static final double TOOLBAR_HEIGHT = 50;
 
     public static final Set<Class> editableControls = new HashSet<>();
     public static final Set<Class> nonEditableControls = new HashSet<>();

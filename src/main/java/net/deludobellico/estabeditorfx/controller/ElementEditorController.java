@@ -20,7 +20,7 @@ import java.util.Locale;
  * @see EstabEditorController
  */
 interface ElementEditorController<T extends ElementModel> {
-    StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter(Locale.ENGLISH);
+    StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter("####.##");
     LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
 
     /**

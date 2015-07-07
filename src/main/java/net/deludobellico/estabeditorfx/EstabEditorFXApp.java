@@ -8,12 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import net.deludobellico.estabeditorfx.controller.MainController;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.Settings;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
+import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +35,16 @@ public class EstabEditorFXApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Estab Editor FX");
-        primaryStage.setMinWidth(ViewUtil.MAIN_VIEW_WIDTH);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //size of the screen
+        Dimension screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
+        LOG.log(Level.INFO, "Screen size: " + screenSize.getWidth() + " x " + screenSize.getHeight());
+        if (screenSize.getHeight() >= ViewUtil.MAX_HEIGHT) {
+            // Vertical layout (preferred)
+              primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
+        } else {
+            primaryStage.setMinWidth(ViewUtil.VERT_WIDTH);
+        }
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(FileIO.getImageFromFile("app-icon.png"));
         primaryStage.setOnCloseRequest(event -> {
