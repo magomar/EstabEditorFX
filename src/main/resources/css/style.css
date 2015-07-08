@@ -1,6 +1,6 @@
 .root {
     -fx-font-size: 9pt;
-    -fx-background-color: linear-gradient(gainsboro, lightgray);
+    /*-fx-background-color: #CCFF99;*/
 }
 
 .tool-bar {
@@ -8,8 +8,6 @@
 }
 
 .estab-editor {
-    -fx-border-radius: 10 10 0 0;
-    -fx-background-radius: 10 10 0 0;
     -fx-background-color: transparent;
 }
 
@@ -17,8 +15,8 @@
     -fx-padding: 4, 4, 4, 4;
     -fx-spacing: 8;
     -fx-background-color: transparent;
-    -fx-pref-width: 150;
-    -fx-pref-height: 400;
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
 }
 
 .element-editor {
@@ -35,15 +33,16 @@
 
 .element-editor .text-field {
     -fx-pref-width: 45;
-    /*-fx-background-color: bisque;*/
 }
 
 .estab-info {
     -fx-spacing: 4;
     -fx-padding: 4;
-    -fx-background-color: rgba(0, 0, 0, 0.75),
-    rgba(255, 255, 255, 0.75),
-    linear-gradient(to bottom, #aaaaaa 0%,  #cccccc 100%);
+    -fx-pref-width: 100%;
+    -fx-border-color: darkgray;
+    /*-fx-background-color: rgba(0, 0, 0, 0.75),*/
+    /*rgba(255, 255, 255, 0.75),*/
+    /*linear-gradient(to bottom, khaki 0%,  #CCFF99 100%);*/
 }
 
 .estab-info .text-field {
@@ -78,7 +77,7 @@
 
 .estab-image-editor {
     -fx-padding: 4;
-    -fx-border-color: #999999;
+    -fx-border-color: darkgray;
     -fx-border-width: 1;
 }
 

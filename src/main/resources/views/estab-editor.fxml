@@ -53,9 +53,9 @@
             <Pane HBox.hgrow="SOMETIMES" />
          </children>
       </HBox>
-      <HBox>
+      <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox styleClass="search-box">
+            <VBox styleClass="search-box" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" spacing="5.0">
                      <children>
@@ -136,7 +136,7 @@
                         </StackPane>
                </children>
             </VBox>
-            <Pane fx:id="editorPaneHook" styleClass="element-editor" />
+            <Pane fx:id="editorPaneHook" styleClass="element-editor" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </children>

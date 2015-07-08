@@ -16,12 +16,12 @@ import java.util.*;
  * Created by Heine on 10/24/2014.
  */
 public class ViewUtil {
-    public static final double MAX_WIDTH = 1366;
-    public static final double MAX_HEIGHT = 768;
-    public static final double HORIZ_WIDTH = 691;
-    public static final double HORIZ_HEIGHT = 980;
-    public static final double VERT_WIDTH = 1366;
-    public static final double VERT_HEIGHT = 508;
+//    public static final double MAX_WIDTH = 1366;
+//    public static final double MAX_HEIGHT = 768;
+    public static final double VERT_WIDTH = 691;
+    public static final double VERT_HEIGHT = 980;
+    public static final double HORIZ_WIDTH = 1366;
+    public static final double HORIZ_HEIGHT = 508;
     public static final double ESTAB_EDITOR_WIDTH = 675;
     public static final double ESTAB_EDITOR_HEIGHT = 433;
     public static final double TOOLBAR_HEIGHT = 50;
@@ -39,6 +39,7 @@ public class ViewUtil {
     public static final String TEXT_STYLE_NEW = "-fx-text-fill: green;";
     public static final String TEXT_STYLE_DEFAULT = "-fx-text-fill: black;";
     public static Stage ROOT_STAGE;
+    public static boolean USES_HORIZONTAL_LAYOUT = false;
 
     public static Object showSearchDialog(String title, Collection<? extends ElementModel> items) {
         return SearchDialogController.init()

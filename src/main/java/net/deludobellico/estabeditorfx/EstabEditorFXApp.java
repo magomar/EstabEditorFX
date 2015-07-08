@@ -2,14 +2,9 @@ package net.deludobellico.estabeditorfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import net.deludobellico.estabeditorfx.controller.MainController;
 import net.deludobellico.estabeditorfx.util.DialogAction;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.Settings;
@@ -39,11 +34,13 @@ public class EstabEditorFXApp extends Application {
         //size of the screen
         Dimension screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         LOG.log(Level.INFO, "Screen size: " + screenSize.getWidth() + " x " + screenSize.getHeight());
-        if (screenSize.getHeight() >= ViewUtil.MAX_HEIGHT) {
+        if (screenSize.getHeight() >= ViewUtil.VERT_HEIGHT) {
             // Vertical layout (preferred)
-              primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
-        } else {
             primaryStage.setMinWidth(ViewUtil.VERT_WIDTH);
+            ViewUtil.USES_HORIZONTAL_LAYOUT = false;
+        } else {
+            primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
+            ViewUtil.USES_HORIZONTAL_LAYOUT = true;
         }
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(FileIO.getImageFromFile("app-icon.png"));
@@ -57,7 +54,7 @@ public class EstabEditorFXApp extends Application {
         });
         primaryStage.show();
         LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
-        LOG.log(Level.INFO, "Scene dimension: " + scene.getWidth() + " x " +  scene.getHeight());
+        LOG.log(Level.INFO, "Scene dimension: " + scene.getWidth() + " x " + scene.getHeight());
     }
 
 
