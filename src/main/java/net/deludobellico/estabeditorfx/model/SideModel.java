@@ -46,7 +46,7 @@ public class SideModel extends AbstractElementModel<SideModel> implements PojoAd
         side.setLargeInsignia(largeIns);
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
-        side.setSmallInsignia(largeIns);
+        side.setSmallInsignia(smallIns);
         side.setBasicsConsumptionRate(basicsConsumptionRate.get());
         side.setDefaultEnemyAperFp(defaultEnemyAperFp.get());
         side.setDefaultEnemyAarmFp(defaultEnemyAarmFp.get());

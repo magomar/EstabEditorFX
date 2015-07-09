@@ -97,20 +97,20 @@ public class ElementImageController implements Initializable {
     public void setEditable(boolean isEditable) {
         imageFilename.setEditable(false);
         openImageButton.setDisable(!isEditable);
-        openImageButton.setOpacity(1);
         noImageCheckbox.setDisable(!isEditable);
-        noImageCheckbox.setOpacity(1);
     }
 
     public void setActiveElement(ElementModel element, int pictureId) {
         if (activeElement != null) {
             imageView.setImage(null);
+            imageFilename.clear();
         }
         this.activeElement = element;
         ImageModel imageModel = estabEditorController.getEstabModel().getImages().get(pictureId);
         if (imageModel != null ) {
             imageView.setImage(FileIO.getEstabImage(estabEditorController.getActiveFile(), imageModel.getFileName()));
             noImageCheckbox.setSelected(imageModel.getFileName().equals(NO_IMAGE_FILENAME) ? true : false);
+            imageFilename.setText(imageModel.getFileName());
         } else {
             setNoImage();
         }

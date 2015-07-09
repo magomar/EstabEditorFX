@@ -47,7 +47,7 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         service.setLargeInsignia(largeIns);
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
-        service.setSmallInsignia(largeIns);
+        service.setSmallInsignia(smallIns);
         service.setRankList(new RankList());
         rankList.stream().forEach((rankModel) -> service.getRankList().getRank().add(rankModel.getPojo()));
         DefaultIconColors iconColors = new DefaultIconColors();
