@@ -1,12 +1,12 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.converter.NumberStringConverter;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.model.EstabModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
-import net.deludobellico.estabeditorfx.model.SideModel;
+import net.deludobellico.estabeditorfx.model.NationModel;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Mario on 18/05/2015.
  */
-public class SideEditorController extends AbstractElementEditorController<SideModel> {
+public class NationEditorController extends AbstractElementEditorController<NationModel> {
 
     /**
      * Root node
@@ -30,12 +30,6 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
      */
     @FXML
     private TextArea description;
-    @FXML
-    private TextField consumptionRate;
-    @FXML
-    private TextField aper;
-    @FXML
-    private TextField aarm;
 
     @FXML
     private ElementImageController largeInsigniaPanelController;
@@ -91,7 +85,7 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
     }
 
     /**
-     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface not editable
+     * @param isEditable if true the controller sets the interface as editable, if false it sets the interface as non editable
      */
     @Override
     public void setEditable(boolean isEditable) {
@@ -102,27 +96,21 @@ public class SideEditorController extends AbstractElementEditorController<SideMo
 
     @Override
     public void bindProperties() {
-        SideModel element = getActiveElement();
+        NationModel element = getActiveElement();
         largeInsigniaPanelController.setActiveElement(element, element.getLargeInsignia());
         smallInsigniaPanelController.setActiveElement(element, element.getSmallInsignia());
         name.textProperty().bindBidirectional(element.nameProperty());
         id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
-        consumptionRate.textProperty().bindBidirectional(element.basicsConsumptionRateProperty(), NUMBER_STRING_CONVERTER);
-        aper.textProperty().bindBidirectional(element.defaultEnemyAperFpProperty(), NUMBER_STRING_CONVERTER);
-        aarm.textProperty().bindBidirectional(element.defaultEnemyAarmFpProperty(), NUMBER_STRING_CONVERTER);
 
     }
 
     @Override
     public void unbindProperties() {
-        SideModel element = getActiveElement();
+        NationModel element = getActiveElement();
         name.textProperty().unbindBidirectional(element.nameProperty());
         id.textProperty().unbindBidirectional(element.idProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
-        consumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateProperty());
-        aper.textProperty().unbindBidirectional(element.defaultEnemyAperFpProperty());
-        aarm.textProperty().unbindBidirectional(element.defaultEnemyAarmFpProperty());
     }
 
     @Override

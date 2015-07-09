@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 
-<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.ServiceEditorController">
+<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.editors.ServiceEditorController">
       <children>
           <HBox alignment="CENTER_LEFT">
               <children>

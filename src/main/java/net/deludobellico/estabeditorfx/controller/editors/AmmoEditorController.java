@@ -1,19 +1,13 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.model.AmmoModel;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**

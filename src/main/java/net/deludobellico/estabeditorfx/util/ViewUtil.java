@@ -4,9 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import net.deludobellico.estabeditorfx.controller.CopyRemoveDialogController;
-import net.deludobellico.estabeditorfx.controller.InfoDialogController;
-import net.deludobellico.estabeditorfx.controller.SearchDialogController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.CopyRemoveDialogController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.InfoDialogController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.SearchDialogController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 
 import java.util.*;

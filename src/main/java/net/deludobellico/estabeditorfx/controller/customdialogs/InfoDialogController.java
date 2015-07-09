@@ -1,4 +1,4 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.customdialogs;
 
 /**
  * Created by Heine on 11/3/2014.
@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;

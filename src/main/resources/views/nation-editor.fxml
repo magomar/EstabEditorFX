@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.NationEditorController">
+<VBox fx:id="editorPane" styleClass="element-editor" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.deludobellico.estabeditorfx.controller.editors.NationEditorController">
       <children>
       <HBox alignment="CENTER_LEFT">
          <children>

@@ -1,14 +1,14 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.NumberStringConverter;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.SearchDialogController;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;
@@ -16,7 +16,6 @@ import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 

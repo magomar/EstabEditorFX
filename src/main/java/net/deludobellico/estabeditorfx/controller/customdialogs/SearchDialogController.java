@@ -1,4 +1,4 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.customdialogs;
 
 /**
  * Created by Heine on 11/3/2014.
@@ -20,7 +20,6 @@ import javafx.stage.StageStyle;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
-import net.deludobellico.estabeditorfx.util.FileIO;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,15 +1,10 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
-import net.deludobellico.estabeditorfx.model.CommanderRanks;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
-import net.deludobellico.estabeditorfx.model.ElementModel;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
 
 /**
  * Created by Mario on 19/05/2015.

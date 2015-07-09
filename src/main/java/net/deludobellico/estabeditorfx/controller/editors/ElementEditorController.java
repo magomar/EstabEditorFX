@@ -1,15 +1,11 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
-import javafx.scene.Parent;
 import javafx.util.StringConverter;
 import javafx.util.converter.LocalTimeStringConverter;
 import javafx.util.converter.NumberStringConverter;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.util.DateTimeUtils;
-import net.deludobellico.estabeditorfx.model.ElementModel;
-import net.deludobellico.estabeditorfx.util.DateTimeUtils;
-
-import java.util.Locale;
 
 /**
  * Interface for the base element editor controllers.
@@ -19,7 +15,7 @@ import java.util.Locale;
  * @author Heine
  * @see EstabEditorController
  */
-interface ElementEditorController<T extends ElementModel> {
+public interface ElementEditorController<T extends ElementModel> {
     StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter("####.##");
     LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
 

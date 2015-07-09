@@ -1,4 +1,4 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
 import net.deludobellico.estabeditorfx.model.ImageModel;
 import net.deludobellico.estabeditorfx.util.FileIO;

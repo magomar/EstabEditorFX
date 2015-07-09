@@ -1,4 +1,4 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 /**
  * Created by Heine on 11/10/2014.

@@ -1,4 +1,4 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
 import net.deludobellico.estabeditorfx.model.*;
 import net.deludobellico.estabeditorfx.util.DialogAction;

@@ -4,7 +4,8 @@
 }
 
 .tool-bar {
-    -fx-background-color: transparent;
+    -fx-background-color: #e2e2e2,
+    linear-gradient(#e2e2e2 0%, #cbcbcb 39%, #eeeeee 100%);
 }
 
 .estab-editor {
@@ -39,10 +40,9 @@
     -fx-spacing: 4;
     -fx-padding: 4;
     -fx-pref-width: 100%;
-    -fx-border-color: darkgray;
-    -fx-background-color:  #c3c4c4,
-    linear-gradient(#c6c6c6 50%, lightgray 100%);
-    /*radial-gradient(center 50% -40%, radius 200%, #d6d6d6 45%, rgba(130,130,130,0) 50%);*/
+    /*-fx-border-color: darkgray;*/
+    -fx-background-color: #9e9e9e,
+    linear-gradient(#9e9e9e 0%, #cbcbcb 50%, #e0e0e0 100%);
 }
 
 .estab-info .text-field {
@@ -60,6 +60,7 @@
     -fx-padding: 4;
     -fx-background-color: transparent;
 }
+
 .description {
     -fx-spacing: 10;
     -fx-padding: 4;
@@ -87,11 +88,9 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
 
-
 .bordered-label {
     -fx-border-color: darkgray;
 }
-
 
 .force-color {
     -fx-background-color: olive;

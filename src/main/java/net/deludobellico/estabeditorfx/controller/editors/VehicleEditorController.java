@@ -1,13 +1,13 @@
-package net.deludobellico.estabeditorfx.controller;
+package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.NumberStringConverter;
+import net.deludobellico.estabeditorfx.controller.EstabEditorController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.SearchDialogController;
 import net.deludobellico.estabeditorfx.data.jaxb.Armament;
 import net.deludobellico.estabeditorfx.data.jaxb.VehicleType;
 import net.deludobellico.estabeditorfx.model.*;

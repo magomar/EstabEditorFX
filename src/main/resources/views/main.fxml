@@ -102,7 +102,7 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <ToolBar fx:id="toolBar">
+                <ToolBar fx:id="toolBar" maxWidth="1.7976931348623157E308">
                     <items>
                   <Button fx:id="newEstabButton" maxHeight="Infinity" mnemonicParsing="false" onAction="#newEstabAction">
                      <graphic>
@@ -246,7 +246,7 @@
     <right>
     </right>
     <center>
-        <FlowPane BorderPane.alignment="CENTER">
+        <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
             <children>
                   <fx:include fx:id="sourcePane" source="estab-editor.fxml" />
                   <fx:include fx:id="targetPane" source="estab-editor.fxml" />
