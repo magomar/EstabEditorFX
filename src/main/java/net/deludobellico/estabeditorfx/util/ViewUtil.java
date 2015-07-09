@@ -21,7 +21,7 @@ public class ViewUtil {
     public static final double VERT_WIDTH = 691;
     public static final double VERT_HEIGHT = 980;
     public static final double HORIZ_WIDTH = 1366;
-    public static final double HORIZ_HEIGHT = 508;
+    public static final double HORIZ_HEIGHT = 540;
     public static final double ESTAB_EDITOR_WIDTH = 675;
     public static final double ESTAB_EDITOR_HEIGHT = 433;
     public static final double TOOLBAR_HEIGHT = 50;

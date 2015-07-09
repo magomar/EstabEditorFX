@@ -34,15 +34,18 @@ public class EstabEditorFXApp extends Application {
         //size of the screen
         Dimension screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
         LOG.log(Level.INFO, "Screen size: " + screenSize.getWidth() + " x " + screenSize.getHeight());
-        if (screenSize.getHeight() >= ViewUtil.VERT_HEIGHT) {
-            // Vertical layout (preferred)
-            primaryStage.setMinWidth(ViewUtil.VERT_WIDTH);
-            ViewUtil.USES_HORIZONTAL_LAYOUT = false;
-        } else {
-            primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
-            primaryStage.setMaxHeight(ViewUtil.HORIZ_HEIGHT);
-            ViewUtil.USES_HORIZONTAL_LAYOUT = true;
-        }
+//        if (screenSize.getHeight() >= ViewUtil.VERT_HEIGHT) {
+//            // Vertical layout (preferred)
+//            primaryStage.setMinWidth(ViewUtil.VERT_WIDTH);
+//            ViewUtil.USES_HORIZONTAL_LAYOUT = false;
+//        } else {
+//            primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
+//            primaryStage.setMaxHeight(ViewUtil.HORIZ_HEIGHT);
+//            ViewUtil.USES_HORIZONTAL_LAYOUT = true;
+//        }
+        primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
+        primaryStage.setMaxHeight(ViewUtil.HORIZ_HEIGHT);
+        ViewUtil.USES_HORIZONTAL_LAYOUT = true;
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(FileIO.getImageFromFile("app-icon.png"));
         primaryStage.setOnCloseRequest(event -> {
