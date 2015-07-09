@@ -14,10 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.converter.IntegerStringConverter;
+import net.deludobellico.estabeditorfx.controller.editors.ElementEditorController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
+import net.deludobellico.estabeditorfx.model.EquipmentQtyModel;
 import net.deludobellico.estabeditorfx.util.FileIO;
 import net.deludobellico.estabeditorfx.util.ViewUtil;
 
@@ -44,6 +48,8 @@ public class SearchDialogController implements Initializable {
      */
     @FXML
     private TableView<ElementModel> searchTableView;
+    @FXML
+    private TableColumn<ElementModel, Integer> idColumn;
     @FXML
     private TableColumn<ElementModel, String> typeColumn;
     @FXML
@@ -93,6 +99,8 @@ public class SearchDialogController implements Initializable {
         searchName.textProperty().addListener(event -> searchAction());
         searchType.textProperty().addListener(event -> searchAction());
 
+        idColumn.setCellFactory(TextFieldTableCell.<ElementModel, Integer>forTableColumn(ElementEditorController.INTEGER_STRING_CONVERTER));
+        idColumn.setCellValueFactory(param -> param.getValue().idProperty().asObject());
         typeColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPojoClass().getSimpleName()));
         nameColumn.setCellValueFactory(param -> param.getValue().nameProperty());
         searchTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

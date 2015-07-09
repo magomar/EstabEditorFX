@@ -1,6 +1,8 @@
 package net.deludobellico.estabeditorfx.controller.editors;
 
 import javafx.util.StringConverter;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalTimeStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import net.deludobellico.estabeditorfx.controller.EstabEditorController;
@@ -17,6 +19,8 @@ import net.deludobellico.estabeditorfx.util.DateTimeUtils;
  */
 public interface ElementEditorController<T extends ElementModel> {
     StringConverter<Number> NUMBER_STRING_CONVERTER = new NumberStringConverter("####.##");
+    IntegerStringConverter INTEGER_STRING_CONVERTER = new IntegerStringConverter();
+    DoubleStringConverter DOUBLE_STRING_CONVERTER = new DoubleStringConverter();
     LocalTimeStringConverter TIME_STRING_CONVERTER = new LocalTimeStringConverter(DateTimeUtils.TIME_FORMATTER, DateTimeUtils.TIME_FORMATTER);
 
     /**

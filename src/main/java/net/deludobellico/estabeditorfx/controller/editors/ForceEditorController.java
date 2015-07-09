@@ -459,7 +459,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 //        });
         equipmentTypeColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getEquipmentType()));
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
+        equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
         equipmentQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         equipmentTableView.setItems(force.getEquipmentList());
 
@@ -469,7 +469,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
             ForceModel forceModel = getEstabEditorController().getEstabModel().getForces().get(param1.getValue().getId());
             return new SimpleStringProperty(forceModel.getName());
         });
-        subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel, Integer>forTableColumn(new IntegerStringConverter()));
+        subforceQtyColumn.setCellFactory(TextFieldTableCell.<ForceQtyModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
         subforceQtyColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         subforceTableView.setItems(force.getForceComposition());
 

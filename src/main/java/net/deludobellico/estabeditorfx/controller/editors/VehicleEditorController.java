@@ -285,7 +285,7 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
 
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
         armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
-        armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(new IntegerStringConverter()));
+        armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
         armamentQuantityColumn.setCellValueFactory(param -> param.getValue().qtyProperty().asObject());
         armamentTableView.setItems(element.getArmaments());
     }

@@ -89,7 +89,10 @@ public class MainController implements Initializable {
     @FXML
     private RadioMenuItem targetRadioItem;
     // Tools menu
+    @FXML
     private MenuItem fixReferencesMenuItem;
+    @FXML
+    private MenuItem listElementsMenuItem;
     // Help menu
     // TODO: Create about info
     @FXML
@@ -186,27 +189,31 @@ public class MainController implements Initializable {
                 });
 
         // Enable element comparison when both panes have active elements
-        targetPaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
-                compareElementButton.setDisable(newValue == null || sourcePaneController.getActiveElement().get() == null));
-        sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
-                compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
+//        targetPaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
+//                compareElementButton.setDisable(newValue == null || sourcePaneController.getActiveElement().get() == null));
+//        sourcePaneController.getActiveElement().addListener((observable, oldValue, newValue) ->
+//                compareElementButton.setDisable(newValue == null || targetPaneController.getActiveElement().get() == null));
 
         sourcePane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == true) {
-                if (ViewUtil.USES_HORIZONTAL_LAYOUT) primaryStage.setWidth(primaryStage.getWidth() + ViewUtil.ESTAB_EDITOR_WIDTH);
+                if (ViewUtil.USES_HORIZONTAL_LAYOUT)
+                    primaryStage.setWidth(primaryStage.getWidth() + ViewUtil.ESTAB_EDITOR_WIDTH);
                 else primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_HEIGHT);
             } else {
-                if (ViewUtil.USES_HORIZONTAL_LAYOUT) primaryStage.setWidth(primaryStage.getWidth() - ViewUtil.ESTAB_EDITOR_WIDTH);
+                if (ViewUtil.USES_HORIZONTAL_LAYOUT)
+                    primaryStage.setWidth(primaryStage.getWidth() - ViewUtil.ESTAB_EDITOR_WIDTH);
                 else primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_HEIGHT);
             }
             LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
         });
         targetPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == true) {
-                if (ViewUtil.USES_HORIZONTAL_LAYOUT) primaryStage.setWidth(primaryStage.getWidth() + ViewUtil.ESTAB_EDITOR_WIDTH);
+                if (ViewUtil.USES_HORIZONTAL_LAYOUT)
+                    primaryStage.setWidth(primaryStage.getWidth() + ViewUtil.ESTAB_EDITOR_WIDTH);
                 else primaryStage.setHeight(primaryStage.getHeight() + ViewUtil.ESTAB_EDITOR_HEIGHT);
             } else {
-                if (ViewUtil.USES_HORIZONTAL_LAYOUT) primaryStage.setWidth(primaryStage.getWidth() - ViewUtil.ESTAB_EDITOR_WIDTH);
+                if (ViewUtil.USES_HORIZONTAL_LAYOUT)
+                    primaryStage.setWidth(primaryStage.getWidth() - ViewUtil.ESTAB_EDITOR_WIDTH);
                 else primaryStage.setHeight(primaryStage.getHeight() - ViewUtil.ESTAB_EDITOR_HEIGHT);
             }
             LOG.log(Level.INFO, "Windows dimension: " + primaryStage.getWidth() + " x " + primaryStage.getHeight());
@@ -331,7 +338,7 @@ public class MainController implements Initializable {
      * Files are filtered with {@link FileIO#EXTENSION_FILTERS}
      *
      * @param isSaving true if the file chooser is open for saving, false if it's for opening
-     * @param mode the mode in which the estab should be opened (SOURCE vs TARGET)
+     * @param mode     the mode in which the estab should be opened (SOURCE vs TARGET)
      * @return the selected file, otherwise null
      * @see System#getProperty(String)
      */
@@ -670,6 +677,40 @@ public class MainController implements Initializable {
     }
 
     @FXML
+    private void listElementsAction() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("User action required");
+        alert.setHeaderText("Choose between source and target estabs");
+        alert.setContentText("Please select an estab to list its elements");
+
+        ButtonType buttonTypeSource = new ButtonType("Source");
+        ButtonType buttonTypeTarget = new ButtonType("Target");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeSource, buttonTypeTarget, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        List<ElementModel> allElements;
+        if (result.get() == buttonTypeSource) {
+            allElements = getAllElements(sourcePaneController.getEstabModel());
+        } else if (result.get() == buttonTypeTarget) {
+            allElements = getAllElements(targetPaneController.getEstabModel());
+        } else return;
+        ViewUtil.showSearchDialog("List of elements", allElements);
+    }
+
+
+    private List<ElementModel> getAllElements(EstabModel estabModel) {
+        List<ElementModel> elements = new ArrayList<>();
+        for (Map<Integer, ? extends ElementModel> integerMap : estabModel.getAll().values()) {
+            elements.addAll(integerMap.values());
+        }
+//        elements.addAll(estabModel.getAll().values().parallelStream().map(integerMap -> integerMap.values()).collect(Collectors.toList()))
+        Collections.sort(elements, (o1, o2) -> o1.getId() - o2.getId());
+        return elements;
+    }
+
+    @FXML
     private void fixReferencesAction() {
         EstabModel estab = targetPaneController.getEstabModel();
         List<ReferenceModel> referencesToFix = new ArrayList<>();
@@ -709,6 +750,7 @@ public class MainController implements Initializable {
                 alert.setHeaderText("Broken references");
                 alert.setContentText(brokenReferences.size() + " broken references have been found.");
                 alert.showAndWait();
+                LOG.log(Level.WARNING, "Broken references: " + brokenReferences);
             }
         } else {
             // ... user chose CANCEL or closed the dialog
@@ -723,7 +765,6 @@ public class MainController implements Initializable {
     public BooleanProperty targetIsClosedProperty() {
         return targetIsClosed;
     }
-
 
 
 }
