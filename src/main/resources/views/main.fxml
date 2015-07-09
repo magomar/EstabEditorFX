@@ -41,7 +41,7 @@
                                 <MenuItem fx:id="targetSaveMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAction" text="Save" />
                                 <MenuItem fx:id="targetSaveAsMenuItem" disable="true" mnemonicParsing="false" onAction="#saveTargetAsAction" text="Save as ..." />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#closeTargetCloseAction" text="Close" />
+                                <MenuItem fx:id="targetCloseMenuItem" disable="true" mnemonicParsing="false" onAction="#closeTargetAction" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="true" text="_Edit">

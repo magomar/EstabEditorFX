@@ -52,6 +52,9 @@
             <TextField fx:id="numAmmos" editable="false" />
             <Pane HBox.hgrow="SOMETIMES" />
          </children>
+         <VBox.margin>
+            <Insets left="4.0" />
+         </VBox.margin>
       </HBox>
       <HBox VBox.vgrow="ALWAYS">
          <children>

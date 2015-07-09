@@ -1,6 +1,6 @@
 .root {
     -fx-font-size: 9pt;
-    /*-fx-background-color: #CCFF99;*/
+    /*-fx-background-color: lightgray;*/
 }
 
 .tool-bar {
@@ -40,9 +40,9 @@
     -fx-padding: 4;
     -fx-pref-width: 100%;
     -fx-border-color: darkgray;
-    /*-fx-background-color: rgba(0, 0, 0, 0.75),*/
-    /*rgba(255, 255, 255, 0.75),*/
-    /*linear-gradient(to bottom, khaki 0%,  #CCFF99 100%);*/
+    -fx-background-color:  #c3c4c4,
+    linear-gradient(#c6c6c6 50%, lightgray 100%);
+    /*radial-gradient(center 50% -40%, radius 200%, #d6d6d6 45%, rgba(130,130,130,0) 50%);*/
 }
 
 .estab-info .text-field {

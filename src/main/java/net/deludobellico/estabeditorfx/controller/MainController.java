@@ -533,7 +533,7 @@ public class MainController implements Initializable {
      * Closes the target estab.
      */
     @FXML
-    public void closeTargetCloseAction() {
+    public void closeTargetAction() {
         LOG.log(Level.INFO, "Closing target file " + targetActiveEstabFile.getName());
         targetPaneController.setEstabModel((EstabModel) null);
         targetPaneController.getActiveElement().set(null);
