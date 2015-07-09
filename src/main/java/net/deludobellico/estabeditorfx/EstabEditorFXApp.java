@@ -40,6 +40,7 @@ public class EstabEditorFXApp extends Application {
             ViewUtil.USES_HORIZONTAL_LAYOUT = false;
         } else {
             primaryStage.setMinWidth(ViewUtil.HORIZ_WIDTH);
+            primaryStage.setMaxHeight(ViewUtil.HORIZ_HEIGHT);
             ViewUtil.USES_HORIZONTAL_LAYOUT = true;
         }
         primaryStage.setResizable(false);
