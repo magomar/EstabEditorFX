@@ -1,11 +1,11 @@
 .root {
     -fx-font-size: 9pt;
-    /*-fx-background-color: lightgray;*/
+    -fx-background-color: #eeeeee;
 }
 
 .tool-bar {
     -fx-background-color: #e2e2e2,
-    linear-gradient(#e2e2e2 0%, #cbcbcb 39%, #eeeeee 100%);
+    linear-gradient(#e2e2e2 0%, #cbcbcb 39%, #dddddd 100%);
 }
 
 .estab-editor {
