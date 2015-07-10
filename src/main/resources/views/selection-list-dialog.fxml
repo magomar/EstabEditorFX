@@ -10,7 +10,7 @@
            minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="350.0"
            prefWidth="550.0" xmlns="http://javafx.com/javafx/8"
            stylesheets="@../css/style.css"
-           fx:controller="net.deludobellico.estabeditorfx.controller.customdialogs.CopyRemoveDialogController">
+           fx:controller="net.deludobellico.estabeditorfx.controller.customdialogs.SelectionListDialogController">
     <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0">
         <children>
             <ImageView fx:id="image" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true"
@@ -34,9 +34,9 @@
                 <children>
                     <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                         <columns>
-                            <TableColumn fx:id="tableViewTypeColumn" maxWidth="100.0" minWidth="100.0"
+                            <TableColumn fx:id="typeColumn" maxWidth="100.0" minWidth="100.0"
                                          prefWidth="100.0" text="Type"/>
-                            <TableColumn fx:id="tableViewNameColumn" maxWidth="1.7976931348623157E308"
+                            <TableColumn fx:id="nameColumn" maxWidth="1.7976931348623157E308"
                                          prefWidth="75.0" text="Name"/>
                         </columns>
                         <columnResizePolicy>

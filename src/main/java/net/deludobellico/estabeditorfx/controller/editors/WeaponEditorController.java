@@ -326,9 +326,9 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         load.textProperty().bindBidirectional(p.getAmmoLoad().qtyProperty(), NUMBER_STRING_CONVERTER);
 
         // Make cells editable
-        rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(new IntegerStringConverter()));
-        rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
-        rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(new DoubleStringConverter()));
+        rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
+        rangeTableAccuracyColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(DOUBLE_STRING_CONVERTER));
+        rangeTableArmorColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Double>forTableColumn(DOUBLE_STRING_CONVERTER));
 
         // Tell the columns where to extract the values from. Here param.getValue() returns a RangeItemModel
         rangeTableRangeColumn.setCellValueFactory(param -> param.getValue().rangeProperty().asObject());

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("unchecked")
 public class EstabModel {
     public static final Integer DEFAULT_VERSION = 4;
-    public static final String DLB_VERSION = "1.2.0";
+    public static final String DLB_VERSION = "1.2";
     // TODO: use set<element> (sort by id) instead of map<int, element>
     private final Map<Class, Map<Integer, ? extends ElementModel>> allElements;
     private IntegerProperty numForces = new SimpleIntegerProperty(0);
@@ -33,6 +33,7 @@ public class EstabModel {
     private String dlbVersion;
     private Boolean edited;
     private GregorianCalendar lastEdit;
+
 
 
     /**
@@ -100,7 +101,8 @@ public class EstabModel {
         final int[] maxId = {0};
         for (List<? extends ModelProvider> elements : estabLists)
             elements.stream().map(ModelProvider::getModel).forEach(element -> {
-                if (element.getId() > maxId[0]) maxId[0] = element.getId();
+                int id = element.getId();
+                if (id > maxId[0]) maxId[0] = id;
                 element.shallowCopyToMap(allElements.get(element.getClass()));
             });
 

@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import net.deludobellico.estabeditorfx.controller.customdialogs.CopyRemoveDialogController;
+import net.deludobellico.estabeditorfx.controller.customdialogs.SelectionListDialogController;
 import net.deludobellico.estabeditorfx.controller.customdialogs.InfoDialogController;
 import net.deludobellico.estabeditorfx.controller.customdialogs.SearchDialogController;
 import net.deludobellico.estabeditorfx.model.ElementModel;
@@ -50,7 +50,7 @@ public class ViewUtil {
     }
 
     public static DialogAction showWarningRepeatedElements(Collection tableItems, Collection selectedItems) {
-        return CopyRemoveDialogController.init()
+        return SelectionListDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Repeated elements found")
                 .setHeadText("The following elements already exist in the target file")
@@ -60,7 +60,7 @@ public class ViewUtil {
     }
 
     public static DialogAction showWarningRemoveElements(Collection tableItems, Collection selectedItems) {
-        return CopyRemoveDialogController.init()
+        return SelectionListDialogController.init()
                 .setOwner(ROOT_STAGE)
                 .setTitle("Warning - Deleting elements")
                 .setHeadText("Are you sure you want to remove the following items?")

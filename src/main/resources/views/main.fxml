@@ -92,7 +92,8 @@
                   <Menu mnemonicParsing="false" text="_Tools">
                     <items>
                       <MenuItem fx:id="fixReferencesMenuItem" mnemonicParsing="false" onAction="#fixReferencesAction" text="Fix references" />
-                        <MenuItem mnemonicParsing="false" text="Compare elements" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Compare elements" />
+                        <MenuItem fx:id="listElementsMenuItem" mnemonicParsing="false" onAction="#listElementsAction" text="List elements" />
                     </items>
                   </Menu>
                         <Menu mnemonicParsing="false" text="_Help">
