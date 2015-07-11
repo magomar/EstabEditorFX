@@ -63,8 +63,8 @@ public class AmmoEditorController extends AbstractElementEditorController<AmmoMo
     @Override
     public void unbindProperties() {
         AmmoModel element = getActiveElement();
+        id.textProperty().unbindBidirectional(element.idProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
-        id.textProperty().unbindBidirectional(element.nameProperty());
         description.textProperty().unbindBidirectional(element.descriptionProperty());
         quantity.textProperty().unbindBidirectional(element.minOrderQtyProperty());
         weight.textProperty().unbindBidirectional(element.minOrderWeightProperty());
