@@ -297,6 +297,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      * @param p the {@link PerformanceModel} to unbind
      */
     private void unbindPerformanceProperties(PerformanceModel p) {
+        ammoNameLabel.textProperty().unbindBidirectional(p.getAmmoLoad().nameProperty());
         minRange.textProperty().unbindBidirectional(p.minRangeProperty());
         fireRateSlow.textProperty().unbindBidirectional(p.slowROFProperty());
         fireRateNormal.textProperty().unbindBidirectional(p.normalROFProperty());

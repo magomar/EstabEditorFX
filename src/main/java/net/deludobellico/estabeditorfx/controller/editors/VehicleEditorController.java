@@ -247,6 +247,15 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         VehicleModel element = getActiveElement();
         imagePanelController.setActiveElement(element, element.getPictureId());
 
+        name.textProperty().bindBidirectional(element.nameProperty());
+        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
+        hasTurret.selectedProperty().bindBidirectional(element.hasTurretProperty());
+        hasOpenTop.selectedProperty().bindBidirectional(element.hasOpenTopProperty());
+
+        vehicleType.valueProperty().bindBidirectional(element.typeProperty());
+        width.textProperty().bindBidirectional(element.widthProperty(), NUMBER_STRING_CONVERTER);
+        height.textProperty().bindBidirectional(element.heightProperty(), NUMBER_STRING_CONVERTER);
+
         battleWeight.textProperty().bindBidirectional(element.battleWeightProperty(), NUMBER_STRING_CONVERTER);
         bulkFuelCapacity.textProperty().bindBidirectional(element.bulkFuelCapacityProperty(), NUMBER_STRING_CONVERTER);
         crew.textProperty().bindBidirectional(element.crewProperty(), NUMBER_STRING_CONVERTER);
@@ -258,16 +267,12 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         fuelConsumptionMaxSpeed.textProperty().bindBidirectional(element.maxFuelConsumptionProperty(), NUMBER_STRING_CONVERTER);
         fuelConsumptionNormalSpeed.textProperty().bindBidirectional(element.normalFuelConsumptionProperty(), NUMBER_STRING_CONVERTER);
 
-        hasOpenTop.selectedProperty().bindBidirectional(element.hasOpenTopProperty());
-        hasTurret.selectedProperty().bindBidirectional(element.hasTurretProperty());
 
-        height.textProperty().bindBidirectional(element.heightProperty(), NUMBER_STRING_CONVERTER);
         length.textProperty().bindBidirectional(element.lengthProperty(), NUMBER_STRING_CONVERTER);
         maxFordingDepth.textProperty().bindBidirectional(element.maxFordingDepthProperty(), NUMBER_STRING_CONVERTER);
         maxGradient.textProperty().bindBidirectional(element.maxGradientProperty(), NUMBER_STRING_CONVERTER);
         maxTrenchWidth.textProperty().bindBidirectional(element.maxTrenchWidthProperty(), NUMBER_STRING_CONVERTER);
-        name.textProperty().bindBidirectional(element.nameProperty());
-        id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
+
         payloadCapacity.textProperty().bindBidirectional(element.payloadCapacityProperty(), NUMBER_STRING_CONVERTER);
         personnelCapacity.textProperty().bindBidirectional(element.personnelCapacityProperty(), NUMBER_STRING_CONVERTER);
         rearArmor.textProperty().bindBidirectional(element.rearArmorProperty(), NUMBER_STRING_CONVERTER);
@@ -280,8 +285,8 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         topArmor.textProperty().bindBidirectional(element.topArmorProperty(), NUMBER_STRING_CONVERTER);
         towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), NUMBER_STRING_CONVERTER);
         weight.textProperty().bindBidirectional(element.weightProperty(), NUMBER_STRING_CONVERTER);
-        width.textProperty().bindBidirectional(element.widthProperty(), NUMBER_STRING_CONVERTER);
-        vehicleType.valueProperty().bindBidirectional(element.typeProperty());
+
+
 
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
         armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));

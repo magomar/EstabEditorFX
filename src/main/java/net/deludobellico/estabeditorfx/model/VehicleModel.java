@@ -128,10 +128,9 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
         height.set(pojo.getSize().getHeight());
         length.set(pojo.getSize().getLength());
         weight.set(pojo.getSize().getWeight());
-        width.set(pojo.getSize().getWeight());
+        width.set(pojo.getSize().getWidth());
         crew.set(pojo.getCrew());
         reliability.set(pojo.getReliability());
-        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(armaments::add);
         type.set(pojo.getType());
         fuelCapacity.set(pojo.getFuelCapacity());
         maxCrossCountrySpeed.set(pojo.getSpeed().getCrossCountry().getMax());
@@ -156,6 +155,7 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
         rearArmor.set(pojo.getArmour().getRear());
         topArmor.set(pojo.getArmour().getTop());
         flags.addAll(pojo.getFlags());
+        pojo.getArmaments().getArmament().stream().map(ArmamentModel::new).forEach(armaments::add);
     }
 
     @Override
