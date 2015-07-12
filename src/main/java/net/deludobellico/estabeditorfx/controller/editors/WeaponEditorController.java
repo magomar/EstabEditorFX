@@ -118,13 +118,13 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     @FXML
     private Button removeRangeButton;
 
-    // Last bind weapon performance
-    private PerformanceModel activePerformance;
-    // Weapon performance by fire type map
-    private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
-
     @FXML
     private ElementImageController imagePanelController;
+
+    // Active fire type performance model
+    private PerformanceModel activePerformance;
+    // Map of weapon performance by fire type
+    private Map<FireType, PerformanceModel> performanceFireTypeMap = new HashMap<>();
 
     /**
      * Adds listeners to components and sets the initial item collections.
@@ -408,6 +408,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         WeaponModel element = getActiveElement();
 
         if (activePerformance != null) unbindPerformanceProperties(activePerformance);
+
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());
         id.textProperty().unbindBidirectional(element.idProperty());
@@ -418,6 +419,9 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         muzzleVelocity.textProperty().unbindBidirectional(element.muzzleVelocityProperty());
         weaponType.valueProperty().unbindBidirectional(element.typeProperty());
         weaponPrimaryRole.valueProperty().unbindBidirectional(element.primaryRoleProperty());
+
+        singleShot.selectedProperty().unbindBidirectional(element.singleShotProperty());
+        mustDeployToFire.selectedProperty().unbindBidirectional(element.mustDeployToFireProperty());
 
 //        imagePanelController.clear();
     }
