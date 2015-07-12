@@ -730,7 +730,7 @@ Changes in version 1.0
     <xs:simpleType name="PrimaryRole">
         <xs:restriction base="xs:string">
             <xs:enumeration value="anti-personnel"/>
-            <xs:enumeration value="anti-armor"/>
+            <xs:enumeration value="anti-armour"/>
             <xs:enumeration value="anti-air"/>
         </xs:restriction>
     </xs:simpleType>

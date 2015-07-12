@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;simpleType name="PrimaryRole">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="anti-personnel"/>
- *     &lt;enumeration value="anti-armor"/>
+ *     &lt;enumeration value="anti-armour"/>
  *     &lt;enumeration value="anti-air"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
@@ -28,8 +28,8 @@ public enum PrimaryRole {
 
     @XmlEnumValue("anti-personnel")
     ANTI_PERSONNEL("anti-personnel"),
-    @XmlEnumValue("anti-armor")
-    ANTI_ARMOR("anti-armor"),
+    @XmlEnumValue("anti-armour")
+    ANTI_ARMOUR("anti-armour"),
     @XmlEnumValue("anti-air")
     ANTI_AIR("anti-air");
     private final String value;
