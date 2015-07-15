@@ -286,8 +286,6 @@ public class VehicleEditorController extends AbstractElementEditorController<Veh
         towingCapacity.textProperty().bindBidirectional(element.towingCapacityProperty(), NUMBER_STRING_CONVERTER);
         weight.textProperty().bindBidirectional(element.weightProperty(), NUMBER_STRING_CONVERTER);
 
-
-
         armamentTypeColumn.setCellValueFactory(param -> new SimpleStringProperty("Weapon"));
         armamentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         armamentQuantityColumn.setCellFactory(TextFieldTableCell.<ArmamentModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));

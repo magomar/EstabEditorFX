@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import net.deludobellico.estabeditorfx.controller.EstabEditorController;
 import net.deludobellico.estabeditorfx.controller.customdialogs.SearchDialogController;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
@@ -78,9 +76,9 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
 
     // Center region
     @FXML
-    private Label ammoNameLabel;
+    private Label ammoName;
     @FXML
-    private TextField load;
+    private TextField ammoLoad;
     @FXML
     private TextField minRange;
     @FXML
@@ -141,7 +139,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
         performanceFireTypeList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 if (activePerformance != null) unbindPerformanceProperties(activePerformance);
-                this.activePerformance = performanceFireTypeMap.get(newValue);
+                activePerformance = performanceFireTypeMap.get(newValue);
                 bindPerformanceProperties(activePerformance);
             }
         });
@@ -297,14 +295,14 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      * @param p the {@link PerformanceModel} to unbind
      */
     private void unbindPerformanceProperties(PerformanceModel p) {
-        ammoNameLabel.textProperty().unbindBidirectional(p.getAmmoLoad().nameProperty());
+        ammoName.textProperty().unbindBidirectional(p.getAmmoLoad().nameProperty());
+        ammoLoad.textProperty().unbindBidirectional(p.getAmmoLoad().qtyProperty());
         minRange.textProperty().unbindBidirectional(p.minRangeProperty());
         fireRateSlow.textProperty().unbindBidirectional(p.slowROFProperty());
         fireRateNormal.textProperty().unbindBidirectional(p.normalROFProperty());
         fireRateRapid.textProperty().unbindBidirectional(p.rapidROFProperty());
         burstRadius.textProperty().unbindBidirectional(p.burstRadiusProperty());
         shellWeight.textProperty().unbindBidirectional(p.shellWeightProperty());
-        load.textProperty().unbindBidirectional(p.ammoLoadProperty());
         rangeItemTableView.getItems().clear();
 
     }
@@ -317,14 +315,14 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
      * @param p the {@link PerformanceModel} to unbind
      */
     private void bindPerformanceProperties(PerformanceModel p) {
-        ammoNameLabel.textProperty().bindBidirectional(p.getAmmoLoad().nameProperty());
+        ammoName.textProperty().bindBidirectional(p.getAmmoLoad().nameProperty());
+        ammoLoad.textProperty().bindBidirectional(p.getAmmoLoad().qtyProperty(), NUMBER_STRING_CONVERTER);
         minRange.textProperty().bindBidirectional(p.minRangeProperty(), NUMBER_STRING_CONVERTER);
         fireRateSlow.textProperty().bindBidirectional(p.slowROFProperty(), NUMBER_STRING_CONVERTER);
         fireRateNormal.textProperty().bindBidirectional(p.normalROFProperty(), NUMBER_STRING_CONVERTER);
         fireRateRapid.textProperty().bindBidirectional(p.rapidROFProperty(), NUMBER_STRING_CONVERTER);
         burstRadius.textProperty().bindBidirectional(p.burstRadiusProperty(), NUMBER_STRING_CONVERTER);
         shellWeight.textProperty().bindBidirectional(p.shellWeightProperty(), NUMBER_STRING_CONVERTER);
-        load.textProperty().bindBidirectional(p.getAmmoLoad().qtyProperty(), NUMBER_STRING_CONVERTER);
 
         // Make cells editable
         rangeTableRangeColumn.setCellFactory(TextFieldTableCell.<RangeItemModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
@@ -358,7 +356,7 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
             AmmoLoadModel ammoLoadModel = activePerformance.getAmmoLoad();
             ammoLoadModel.setId(ammo.getId());
             ammoLoadModel.setName(ammo.getName());
-            ammoNameLabel.setText(ammo.getName());
+            ammoName.setText(ammo.getName());
         }
     }
 
@@ -407,7 +405,9 @@ public class WeaponEditorController extends AbstractElementEditorController<Weap
     public void unbindProperties() {
         WeaponModel element = getActiveElement();
 
-        if (activePerformance != null) unbindPerformanceProperties(activePerformance);
+        if (activePerformance != null) {
+            unbindPerformanceProperties(activePerformance);
+        }
 
         weight.textProperty().unbindBidirectional(element.weightProperty());
         name.textProperty().unbindBidirectional(element.nameProperty());

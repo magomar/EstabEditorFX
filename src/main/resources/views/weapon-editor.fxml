@@ -119,7 +119,7 @@
                                               </rowConstraints>
                                               <children>
                                                   <Label text="Ammo" />
-                                                  <Label fx:id="ammoNameLabel" prefWidth="220.0" styleClass="bordered-label" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                                                  <Label fx:id="ammoName" prefWidth="220.0" styleClass="bordered-label" GridPane.columnIndex="1" GridPane.columnSpan="3" />
                                                   <Button fx:id="ammoSelectButton" mnemonicParsing="false" onAction="#ammoSelectAction" text="..." GridPane.columnIndex="4" />
                                                   <Label text="Min Range" GridPane.rowIndex="2" />
                                                   <Label text="Rate of Fire:" GridPane.columnSpan="2" GridPane.rowIndex="3" />
@@ -135,7 +135,7 @@
                                                   <TextField fx:id="burstRadius" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                   <TextField fx:id="shellWeight" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                                   <Label text="Load" GridPane.rowIndex="1" />
-                                                  <TextField fx:id="load" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                  <TextField fx:id="ammoLoad" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                   <Label text="Range" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                                                   <Label text="Accuracy" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                                                   <Label text="Armour Penetration" wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
