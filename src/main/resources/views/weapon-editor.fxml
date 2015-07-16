@@ -116,6 +116,7 @@
                                                   <RowConstraints prefHeight="25.0" valignment="CENTER" />
                                                   <RowConstraints prefHeight="25.0" valignment="CENTER" />
                                                   <RowConstraints prefHeight="25.0" valignment="CENTER" />
+                                    <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="25.0" valignment="CENTER" vgrow="ALWAYS" />
                                               </rowConstraints>
                                               <children>
                                                   <Label text="Ammo" />
@@ -148,7 +149,7 @@
                                                   <TextField fx:id="tableNewRangeValue" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                                   <TextField fx:id="tableNewAccuracyValue" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                   <TextField fx:id="tableNewArmorPenetrationValue" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                                  <TableView fx:id="rangeItemTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.rowSpan="6" GridPane.vgrow="ALWAYS">
+                                                  <TableView fx:id="rangeItemTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.rowSpan="7" GridPane.vgrow="ALWAYS">
                                                       <columns>
                                                           <TableColumn fx:id="rangeTableRangeColumn" maxWidth="1.7976931348623157E308" minWidth="-1.0" resizable="false" text="Range" />
                                                           <TableColumn fx:id="rangeTableAccuracyColumn" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="100.0" resizable="false" text="Accuracy" />
