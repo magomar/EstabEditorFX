@@ -409,8 +409,10 @@ public class ForceEditorController extends AbstractElementEditorController<Force
     @Override
     public void bindProperties() {
         ForceModel force = getActiveElement();
+
         name.textProperty().bindBidirectional(force.nameProperty());
         id.textProperty().bindBidirectional(force.idProperty(), NUMBER_STRING_CONVERTER);
+
         forceType.valueProperty().bindBidirectional(force.typeProperty());
         subForceType.valueProperty().bindBidirectional(force.subTypeProperty());
         combatClass.valueProperty().bindBidirectional(force.combatClassProperty());
@@ -447,16 +449,6 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         designationColorChooser.valueProperty().bindBidirectional(force.getIcon().designationColorProperty());
 
         // EQUIPMENT & SUPPLY
-//        equipmentTypeColumn.setCellValueFactory(param -> {
-//            EquipmentQtyModel.EquipmentType type;
-//            if (param.getValue().getEquipmentType() == null) {
-//                type = getEstabEditorController().getEstabModel().findEquipmentType(param.getValue());
-//                param.getValue().setEquipmentType(type);
-//            } else {
-//                type = param.getValue().getEquipmentType();
-//            }
-//            return new SimpleObjectProperty<>(type);
-//        });
         equipmentTypeColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getEquipmentType()));
         equipmentNameColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         equipmentQtyColumn.setCellFactory(TextFieldTableCell.<EquipmentQtyModel, Integer>forTableColumn(INTEGER_STRING_CONVERTER));
@@ -481,43 +473,44 @@ public class ForceEditorController extends AbstractElementEditorController<Force
 
     @Override
     public void unbindProperties() {
-        ForceModel element = getActiveElement();
-        name.textProperty().unbindBidirectional(element.nameProperty());
-        id.textProperty().unbindBidirectional(element.idProperty());
+        ForceModel force = getActiveElement();
+        name.textProperty().unbindBidirectional(force.nameProperty());
+        id.textProperty().unbindBidirectional(force.idProperty());
 
-        forceType.valueProperty().unbindBidirectional(element.typeProperty());
-        subForceType.valueProperty().unbindBidirectional(element.subTypeProperty());
-        combatClass.valueProperty().unbindBidirectional(element.combatClassProperty());
-        targetClass.valueProperty().unbindBidirectional(element.targetClassProperty());
-        moveClass.valueProperty().unbindBidirectional(element.moveTypeProperty());
-        forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
+        forceType.valueProperty().unbindBidirectional(force.typeProperty());
+        subForceType.valueProperty().unbindBidirectional(force.subTypeProperty());
+        combatClass.valueProperty().unbindBidirectional(force.combatClassProperty());
+        targetClass.valueProperty().unbindBidirectional(force.targetClassProperty());
+        moveClass.valueProperty().unbindBidirectional(force.moveTypeProperty());
+        forceSize.valueProperty().unbindBidirectional(force.sizeProperty());
         commanderRank.valueProperty().removeListener(commanderRankListener);
-        personnel.textProperty().unbindBidirectional(element.personnelProperty());
-        staffCapacity.textProperty().unbindBidirectional(element.staffCapacityProperty());
-        infantryValue.textProperty().unbindBidirectional(element.infantryValueProperty());
-        reconValue.textProperty().unbindBidirectional(element.reconValueProperty());
-        engineerValue.textProperty().unbindBidirectional(element.engineeringValueProperty());
-        canBombard.selectedProperty().unbindBidirectional(element.canBombardProperty());
+        personnel.textProperty().unbindBidirectional(force.personnelProperty());
+        staffCapacity.textProperty().unbindBidirectional(force.staffCapacityProperty());
+        infantryValue.textProperty().unbindBidirectional(force.infantryValueProperty());
+        reconValue.textProperty().unbindBidirectional(force.reconValueProperty());
+        engineerValue.textProperty().unbindBidirectional(force.engineeringValueProperty());
+        canBombard.selectedProperty().unbindBidirectional(force.canBombardProperty());
 
-        normalSpeed.textProperty().unbindBidirectional(element.normalSpeedProperty());
-        maxSpeed.textProperty().unbindBidirectional(element.maxSpeedProperty());
+        normalSpeed.textProperty().unbindBidirectional(force.normalSpeedProperty());
+        maxSpeed.textProperty().unbindBidirectional(force.maxSpeedProperty());
 
-        deployed.textProperty().unbindBidirectional(element.deployedProperty());
-        dugIn.textProperty().unbindBidirectional(element.dugInProperty());
-        entrenched.textProperty().unbindBidirectional(element.entrenchedProperty());
-        fortified.textProperty().unbindBidirectional(element.fortifiedProperty());
+        deployed.textProperty().unbindBidirectional(force.deployedProperty());
+        dugIn.textProperty().unbindBidirectional(force.dugInProperty());
+        entrenched.textProperty().unbindBidirectional(force.entrenchedProperty());
+        fortified.textProperty().unbindBidirectional(force.fortifiedProperty());
 
-        militarySymbol.valueProperty().unbindBidirectional(element.getIcon().militarySymbolProperty());
-        pictureSymbol.valueProperty().unbindBidirectional(element.getIcon().pictureSymbolProperty());
-        forceSize.valueProperty().unbindBidirectional(element.sizeProperty());
-        backgroundColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundColorProperty());
-        backgroundLightColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundLightColorProperty());
-        backgroundDarkColorChooser.valueProperty().unbindBidirectional(element.getIcon().backgroundDarkColorProperty());
-        designationColorChooser.valueProperty().unbindBidirectional(element.getIcon().designationColorProperty());
+        symbolColor.valueProperty().unbindBidirectional(force.getIcon().symbolColorProperty());
+        militarySymbol.valueProperty().unbindBidirectional(force.getIcon().militarySymbolProperty());
+        pictureSymbol.valueProperty().unbindBidirectional(force.getIcon().pictureSymbolProperty());
+        forceSizeSymbol.valueProperty().unbindBidirectional(force.getIcon().forceSizeIconProperty());
+        backgroundColorChooser.valueProperty().unbindBidirectional(force.getIcon().backgroundColorProperty());
+        backgroundLightColorChooser.valueProperty().unbindBidirectional(force.getIcon().backgroundLightColorProperty());
+        backgroundDarkColorChooser.valueProperty().unbindBidirectional(force.getIcon().backgroundDarkColorProperty());
+        designationColorChooser.valueProperty().unbindBidirectional(force.getIcon().designationColorProperty());
 
-        basicConsumptionRate.textProperty().unbindBidirectional(element.basicsConsumptionRateModifierProperty());
-        fuelLoad.textProperty().unbindBidirectional(element.fuelLoadProperty());
-        symbolColor.valueProperty().unbindBidirectional(element.getIcon().symbolColorProperty());
+        basicConsumptionRate.textProperty().unbindBidirectional(force.basicsConsumptionRateModifierProperty());
+        fuelLoad.textProperty().unbindBidirectional(force.fuelLoadProperty());
+        symbolColor.valueProperty().unbindBidirectional(force.getIcon().symbolColorProperty());
 
         equipmentTableView.setItems(null);
 
