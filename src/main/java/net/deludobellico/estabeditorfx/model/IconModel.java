@@ -29,7 +29,8 @@ public class IconModel implements PojoAdapter<Icon> {
     private final ObjectProperty<ForceSize> forceSizeIcon = new SimpleObjectProperty<>();
     private final BooleanProperty isHq = new SimpleBooleanProperty();
     private static final int symbolWidth = 16;
-    private static final int symbolHeight = 10;
+    private static final int militarySymbolHeight = 10;
+    private static final int pictureSymbolHeight = 11;
     private static final int sizeSymbolWidth = 18;
     private static final int sizeSymbolHeight = 7;
     private static final int columns = 5;
@@ -288,8 +289,8 @@ public class IconModel implements PojoAdapter<Icon> {
                 int i = ordinal() / columns;
                 int j = ordinal() % columns;
                 int x = j * (symbolWidth + 1);
-                int y = i * (symbolHeight + 1);
-                symbolImage = new WritableImage(militarySymbols.getPixelReader(), x, y, symbolWidth, symbolHeight);
+                int y = i * (militarySymbolHeight + 1);
+                symbolImage = new WritableImage(militarySymbols.getPixelReader(), x, y, symbolWidth, militarySymbolHeight);
                 return symbolImage;
             }
         }
@@ -299,8 +300,8 @@ public class IconModel implements PojoAdapter<Icon> {
         int i = pictureSymbol.ordinal() / columns;
         int j = pictureSymbol.ordinal() % columns;
         int x = j * (symbolWidth + 1);
-        int y = i * (symbolHeight + 2);
-        return new WritableImage(pictureSymbols.getPixelReader(), x, y, symbolWidth, symbolHeight);
+        int y = i * (pictureSymbolHeight + 2);
+        return new WritableImage(pictureSymbols.getPixelReader(), x, y, symbolWidth, pictureSymbolHeight);
     }
 
     public static javafx.scene.image.Image getForceSizeSymbol(ForceSize forceSize) {
