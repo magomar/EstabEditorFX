@@ -5,9 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
+import net.deludobellico.estabeditorfx.util.ColorUtil;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,10 +51,10 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         service.setRankList(new RankList());
         rankList.stream().forEach((rankModel) -> service.getRankList().getRank().add(rankModel.getPojo()));
         DefaultIconColors iconColors = new DefaultIconColors();
-        iconColors.setBackgroundColor(RGBColorModel.getRGBColor(backgroundColor.get()));
-        iconColors.setBackgroundDarkColor(RGBColorModel.getRGBColor(backgroundDarkColor.get()));
-        iconColors.setBackgroundLightColor(RGBColorModel.getRGBColor(backgroundLightColor.get()));
-        iconColors.setDesignationColor(RGBColorModel.getRGBColor(designationColor.get()));
+        iconColors.setBackgroundColor(ColorUtil.getRGBColor(backgroundColor.get()));
+        iconColors.setBackgroundDarkColor(ColorUtil.getRGBColor(backgroundDarkColor.get()));
+        iconColors.setBackgroundLightColor(ColorUtil.getRGBColor(backgroundLightColor.get()));
+        iconColors.setDesignationColor(ColorUtil.getRGBColor(designationColor.get()));
         iconColors.setSymbolColor(symbolColor.get());
         service.setDefaultIconColors(iconColors);
         force.stream().forEach((forceModel) -> service.getForce().add(forceModel.getPojo()));
@@ -71,10 +71,10 @@ public class ServiceModel extends AbstractElementModel<ServiceModel> implements 
         smallInsignia.set(pojo.getSmallInsignia().getId());
         pojo.getRankList().getRank().stream().map(RankModel::new).forEach(rankList::add);
         DefaultIconColors iconColors = pojo.getDefaultIconColors();
-        backgroundColor.set(RGBColorModel.getColor(iconColors.getBackgroundColor()));
-        backgroundDarkColor.set(RGBColorModel.getColor(iconColors.getBackgroundDarkColor()));
-        backgroundLightColor.set(RGBColorModel.getColor(iconColors.getBackgroundLightColor()));
-        designationColor.set(RGBColorModel.getColor(iconColors.getDesignationColor()));
+        backgroundColor.set(ColorUtil.getColor(iconColors.getBackgroundColor()));
+        backgroundDarkColor.set(ColorUtil.getColor(iconColors.getBackgroundDarkColor()));
+        backgroundLightColor.set(ColorUtil.getColor(iconColors.getBackgroundLightColor()));
+        designationColor.set(ColorUtil.getColor(iconColors.getDesignationColor()));
         symbolColor.set(iconColors.getSymbolColor());
         pojo.getForce().stream()
                 .map(ForceModel::new)

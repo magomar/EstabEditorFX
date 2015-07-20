@@ -4,9 +4,7 @@ import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.ForceSize;
 import net.deludobellico.estabeditorfx.data.jaxb.PictureSymbol;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
-import net.deludobellico.estabeditorfx.model.IconModel;
-import net.deludobellico.estabeditorfx.model.RGBColorModel;
-import net.deludobellico.estabeditorfx.data.jaxb.ForceSize;
+import net.deludobellico.estabeditorfx.util.ColorUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,10 +12,10 @@ import static org.junit.Assert.assertEquals;
 public class IconModelTest {
 
 
-    private final Color backgroundColor = RGBColorModel.getColor(255, 255, 255);
-    private final Color backgroundDarkColor = RGBColorModel.getColor(255, 255, 255);
-    private final Color backgroundLightColor = RGBColorModel.getColor(255, 255, 255);
-    private final Color designationColor = RGBColorModel.getColor(0, 0, 0);
+    private final Color backgroundColor = ColorUtil.getColor(255, 255, 255);
+    private final Color backgroundDarkColor = ColorUtil.getColor(255, 255, 255);
+    private final Color backgroundLightColor = ColorUtil.getColor(255, 255, 255);
+    private final Color designationColor = ColorUtil.getColor(0, 0, 0);
     private final ForceSize forceSize = ForceSize.ARMY;
     private final PictureSymbol pictureSymbol = PictureSymbol.AMMO;
     private final SymbolColor symbolColor = SymbolColor.BLACK;

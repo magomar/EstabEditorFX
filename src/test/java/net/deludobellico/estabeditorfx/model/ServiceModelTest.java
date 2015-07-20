@@ -5,11 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
-import net.deludobellico.estabeditorfx.model.ForceModel;
-import net.deludobellico.estabeditorfx.model.RGBColorModel;
-import net.deludobellico.estabeditorfx.model.RankModel;
-import net.deludobellico.estabeditorfx.model.ServiceModel;
-import net.deludobellico.estabeditorfx.data.jaxb.Flag;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

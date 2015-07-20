@@ -11,6 +11,7 @@ import net.deludobellico.estabeditorfx.data.jaxb.ForceSize;
 import net.deludobellico.estabeditorfx.data.jaxb.Icon;
 import net.deludobellico.estabeditorfx.data.jaxb.PictureSymbol;
 import net.deludobellico.estabeditorfx.data.jaxb.SymbolColor;
+import net.deludobellico.estabeditorfx.util.ColorUtil;
 
 /**
  * Model wrapper for the {@code Icon} class
@@ -55,10 +56,10 @@ public class IconModel implements PojoAdapter<Icon> {
     @Override
     public Icon getPojo() {
         Icon icon = new Icon();
-        icon.setBackgroundColor(RGBColorModel.getRGBColor(backgroundColor.get()));
-        icon.setBackgroundDarkColor(RGBColorModel.getRGBColor(backgroundDarkColor.get()));
-        icon.setBackgroundLightColor(RGBColorModel.getRGBColor(backgroundLightColor.get()));
-        icon.setDesignationColor(RGBColorModel.getRGBColor(designationColor.get()));
+        icon.setBackgroundColor(ColorUtil.getRGBColor(backgroundColor.get()));
+        icon.setBackgroundDarkColor(ColorUtil.getRGBColor(backgroundDarkColor.get()));
+        icon.setBackgroundLightColor(ColorUtil.getRGBColor(backgroundLightColor.get()));
+        icon.setDesignationColor(ColorUtil.getRGBColor(designationColor.get()));
         icon.setSymbolColor(symbolColor.get());
         icon.setMilitarySymbol(militarySymbol.get().ordinal());
         icon.setPictureSymbol(pictureSymbol.get());
@@ -69,11 +70,11 @@ public class IconModel implements PojoAdapter<Icon> {
 
     @Override
     public void initialize(Icon pojo) {
-        backgroundColor.set(RGBColorModel.getColor(pojo.getBackgroundColor()));
-        backgroundDarkColor.set(RGBColorModel.getColor(pojo.getBackgroundDarkColor()));
-        backgroundLightColor.set(RGBColorModel.getColor(pojo.getBackgroundLightColor()));
-        backgroundLightColor.set(RGBColorModel.getColor(pojo.getBackgroundLightColor()));
-        designationColor.set(RGBColorModel.getColor(pojo.getDesignationColor()));
+        backgroundColor.set(ColorUtil.getColor(pojo.getBackgroundColor()));
+        backgroundDarkColor.set(ColorUtil.getColor(pojo.getBackgroundDarkColor()));
+        backgroundLightColor.set(ColorUtil.getColor(pojo.getBackgroundLightColor()));
+        backgroundLightColor.set(ColorUtil.getColor(pojo.getBackgroundLightColor()));
+        designationColor.set(ColorUtil.getColor(pojo.getDesignationColor()));
         symbolColor.set(pojo.getSymbolColor());
         militarySymbol.set(MilitarySymbol.values()[pojo.getMilitarySymbol()]);
         pictureSymbol.set(pojo.getPictureSymbol());
