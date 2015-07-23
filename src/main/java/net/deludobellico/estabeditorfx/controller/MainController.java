@@ -2,11 +2,14 @@ package net.deludobellico.estabeditorfx.controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -15,11 +18,9 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.deludobellico.estabeditorfx.model.*;
-import net.deludobellico.estabeditorfx.util.DialogAction;
-import net.deludobellico.estabeditorfx.util.FileIO;
-import net.deludobellico.estabeditorfx.util.Settings;
-import net.deludobellico.estabeditorfx.util.ViewUtil;
+import net.deludobellico.estabeditorfx.util.*;
 
+import javax.swing.text.html.*;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
@@ -426,6 +427,12 @@ public class MainController implements Initializable {
         populateOpenRecentTargetMenu();
     }
 
+
+    public BooleanProperty targetIsClosedProperty() {
+        return targetIsClosed;
+    }
+
+
     @FXML
     private void openSourceAction() {
         File f = openFileChooser(false, EstabEditorController.EstabMode.SOURCE);
@@ -692,53 +699,26 @@ public class MainController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         List<ElementModel> allElements;
         if (result.get() == buttonTypeSource) {
-            allElements = getAllElements(sourcePaneController.getEstabModel());
+            allElements = Tools.getAllElements(sourcePaneController.getEstabModel());
         } else if (result.get() == buttonTypeTarget) {
-            allElements = getAllElements(targetPaneController.getEstabModel());
+            allElements = Tools.getAllElements(targetPaneController.getEstabModel());
         } else return;
         ViewUtil.showSearchDialog("List of elements", allElements);
-    }
-
-
-    private List<ElementModel> getAllElements(EstabModel estabModel) {
-        List<ElementModel> elements = new ArrayList<>();
-        for (Map<Integer, ? extends ElementModel> integerMap : estabModel.getAll().values()) {
-            elements.addAll(integerMap.values());
-        }
-//        elements.addAll(estabModel.getAll().values().parallelStream().map(integerMap -> integerMap.values()).collect(Collectors.toList()))
-        Collections.sort(elements, (o1, o2) -> o1.getId() - o2.getId());
-        return elements;
     }
 
     @FXML
     private void fixReferencesAction() {
         EstabModel estab = targetPaneController.getEstabModel();
-        List<ReferenceModel> referencesToFix = new ArrayList<>();
+        List<ReferenceModel> referencesToFix = Tools.getReferencesToFix(estab);
         List<ReferenceModel> brokenReferences = new ArrayList<>();
-
-        for (WeaponModel weapon : estab.getWeapons().values()) {
-            for (PerformanceModel performance : weapon.getPerformances()) {
-                AmmoLoadModel ammoLoad = performance.getAmmoLoad();
-                if (!ammoLoad.referenceIsOk()) {
-                    referencesToFix.add(ammoLoad);
-                }
-            }
-        }
-        for (VehicleModel vehicle : estab.getVehicles().values()) {
-            referencesToFix.addAll(vehicle.getArmaments().stream().filter(armament -> !armament.referenceIsOk()).collect(Collectors.toList()));
-        }
-        for (ForceModel force : estab.getForces().values()) {
-            referencesToFix.addAll(force.getEquipmentList().stream().filter(equipmentQty -> !equipmentQty.referenceIsOk()).collect(Collectors.toList()));
-            for (ForceQtyModel forceQty : force.getForceComposition()) {
-                if (!forceQty.referenceIsOk()) {
-                    referencesToFix.add(forceQty);
-                }
-            }
-        }
         if (referencesToFix.isEmpty()) return;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("User action required");
+        alert.setTitle("Warning !");
         alert.setHeaderText(referencesToFix.size() + " reference problems have been found !");
+        // TODO show list of problems in dialog
+//        ListView<ReferenceModel> referencesListView = new ListView<>();
+//        referencesListView.setItems(FXCollections.observableList(referencesToFix));
+//        alert.getDialogPane().getChildren().add(referencesListView);
         alert.setContentText("¿Would you like to fix them?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -762,8 +742,9 @@ public class MainController implements Initializable {
         }
     }
 
-    public BooleanProperty targetIsClosedProperty() {
-        return targetIsClosed;
+    @FXML
+    private void  compactIdsAction() {
+        Tools.compactIds(targetPaneController.getEstabModel());
     }
 
 

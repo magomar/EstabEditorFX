@@ -1,7 +1,9 @@
 package net.deludobellico.estabeditorfx.util;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 
 import javax.xml.bind.JAXBException;
@@ -20,13 +22,14 @@ public class Settings {
     private final List<String> sourceRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private final List<String> targetRecentFiles = new LimitedList<>(MAX_RECENT_FILES);
     private static Settings SETTINGS = new Settings();
+    private static JAXBFactory JAXB_SETTINGS;
     private String lastOpenedFolder;
     private BooleanProperty visibleToolbar = new SimpleBooleanProperty(true);
     private BooleanProperty visibleSourcePanel = new SimpleBooleanProperty(true);
     private BooleanProperty visibleTargetPanel = new SimpleBooleanProperty(true);
     private BooleanProperty newFileCreated = new SimpleBooleanProperty(false);
     private BooleanProperty newFileSaved = new SimpleBooleanProperty(false);
-    private static JAXBFactory JAXB_SETTINGS;
+
 
     static {
         try {

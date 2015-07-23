@@ -34,8 +34,6 @@ public class EstabModel {
     private Boolean edited;
     private GregorianCalendar lastEdit;
 
-
-
     /**
      * Empty model instance
      */
@@ -97,12 +95,12 @@ public class EstabModel {
         allElements.put(AmmoModel.class, new HashMap<>(estabData.getAmmo().size()));
         allElements.put(FormationEffectsModel.class, new HashMap<>(estabData.getFormationEffects().size()));
 
-        // Wrap all the elements to their models and save them to their corresponding map
+
+        // Wrap all the elements to their element model and saves them to their corresponding map
         final int[] maxId = {0};
         for (List<? extends ModelProvider> elements : estabLists)
             elements.stream().map(ModelProvider::getModel).forEach(element -> {
-                int id = element.getId();
-                if (id > maxId[0]) maxId[0] = id;
+                if (element.getId() > maxId[0]) maxId[0] = element.getId();
                 element.shallowCopyToMap(allElements.get(element.getClass()));
             });
 

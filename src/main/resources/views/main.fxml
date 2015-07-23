@@ -91,9 +91,10 @@
                         </Menu>
                   <Menu mnemonicParsing="false" text="_Tools">
                     <items>
-                      <MenuItem fx:id="fixReferencesMenuItem" mnemonicParsing="false" onAction="#fixReferencesAction" text="Fix references" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Compare elements" />
                         <MenuItem fx:id="listElementsMenuItem" mnemonicParsing="false" onAction="#listElementsAction" text="List elements" />
+                      <MenuItem fx:id="fixReferencesMenuItem" mnemonicParsing="false" onAction="#fixReferencesAction" text="Fix references" />
+                        <MenuItem fx:id="listElementsMenuItem1" mnemonicParsing="false" onAction="#compactIdsAction" text="Compact IDs" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Compare elements" />
                     </items>
                   </Menu>
                         <Menu mnemonicParsing="false" text="_Help">
