@@ -63,26 +63,26 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
 
     @Override
     public Vehicle getPojo() {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setId(id.get());
-        vehicle.setName(name.get());
-        vehicle.setDescription(description.get());
+        Vehicle pojo = new Vehicle();
+        pojo.setId(id.get());
+        pojo.setName(name.get());
+        pojo.setDescription(description.get());
         Picture p = new Picture();
         p.setId(pictureId.get());
-        vehicle.setPicture(p);
-        vehicle.setPictureFilename(pictureFilename.get());
+        pojo.setPicture(p);
+        pojo.setPictureFilename(pictureFilename.get() != null ? pictureFilename.get() : "");
         VehicleSize vs = new VehicleSize();
         vs.setHeight(height.get());
         vs.setLength(length.get());
         vs.setWeight(weight.get());
         vs.setWidth(width.get());
-        vehicle.setSize(vs);
-        vehicle.setCrew(crew.get());
-        vehicle.setReliability(reliability.get());
-        vehicle.setArmaments(new ArmamentList());
-        armaments.stream().map(ArmamentModel::getPojo).forEach(vehicle.getArmaments().getArmament()::add);
-        vehicle.setType(type.get());
-        vehicle.setFuelCapacity(fuelCapacity.get());
+        pojo.setSize(vs);
+        pojo.setCrew(crew.get());
+        pojo.setReliability(reliability.get());
+        pojo.setArmaments(new ArmamentList());
+        armaments.stream().map(ArmamentModel::getPojo).forEach(pojo.getArmaments().getArmament()::add);
+        pojo.setType(type.get());
+        pojo.setFuelCapacity(fuelCapacity.get());
         SpeedData rs = new SpeedData();
         SpeedData cs = new SpeedData();
         rs.setMax(maxRoadSpeed.get());
@@ -92,31 +92,31 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
         VehicleSpeeds vss = new VehicleSpeeds();
         vss.setRoad(rs);
         vss.setCrossCountry(cs);
-        vehicle.setSpeed(vss);
+        pojo.setSpeed(vss);
         FuelConsumption fc = new FuelConsumption();
         fc.setMax(maxFuelConsumption.get());
         fc.setNormal(normalFuelConsumption.get());
-        vehicle.setFuelConsumption(fc);
-        vehicle.setRonsonability(ronsonability.get());
-        vehicle.setMaxGradient(maxGradient.get());
-        vehicle.setMaxFordingDepth(maxFordingDepth.get());
-        vehicle.setMaxTrenchWidth(maxTrenchWidth.get());
-        vehicle.setTowingCapacity(towingCapacity.get());
-        vehicle.setPersonnelCapacity(personnelCapacity.get());
-        vehicle.setBulkFuelCapacity(bulkFuelCapacity.get());
-        vehicle.setPayloadCapacity(payloadCapacity.get());
-        vehicle.setTakeCoverMod(takeCoverMod.get());
-        vehicle.setHasOpenTop(PojoAdapter.booleanToYesNo(hasOpenTop.get()).value());
-        vehicle.setHasTurret(PojoAdapter.booleanToYesNo(hasTurret.get()).value());
-        vehicle.setBattleWeight(battleWeight.get());
+        pojo.setFuelConsumption(fc);
+        pojo.setRonsonability(ronsonability.get());
+        pojo.setMaxGradient(maxGradient.get());
+        pojo.setMaxFordingDepth(maxFordingDepth.get());
+        pojo.setMaxTrenchWidth(maxTrenchWidth.get());
+        pojo.setTowingCapacity(towingCapacity.get());
+        pojo.setPersonnelCapacity(personnelCapacity.get());
+        pojo.setBulkFuelCapacity(bulkFuelCapacity.get());
+        pojo.setPayloadCapacity(payloadCapacity.get());
+        pojo.setTakeCoverMod(takeCoverMod.get());
+        pojo.setHasOpenTop(PojoAdapter.booleanToYesNo(hasOpenTop.get()).value());
+        pojo.setHasTurret(PojoAdapter.booleanToYesNo(hasTurret.get()).value());
+        pojo.setBattleWeight(battleWeight.get());
         Armor a = new Armor();
         a.setFront(frontArmor.get());
         a.setSide(sideArmor.get());
         a.setRear(rearArmor.get());
         a.setTop(topArmor.get());
-        vehicle.setArmour(a);
-        vehicle.getFlags().addAll(flags);
-        return vehicle;
+        pojo.setArmour(a);
+        pojo.getFlags().addAll(flags);
+        return pojo;
     }
 
     @Override
@@ -125,6 +125,7 @@ public class VehicleModel extends AbstractElementModel<VehicleModel> implements 
         name.set(pojo.getName());
         description.set(pojo.getDescription());
         pictureId.set(pojo.getPicture().getId());
+        pictureFilename.set(pojo.getPictureFilename());
         height.set(pojo.getSize().getHeight());
         length.set(pojo.getSize().getLength());
         weight.set(pojo.getSize().getWeight());

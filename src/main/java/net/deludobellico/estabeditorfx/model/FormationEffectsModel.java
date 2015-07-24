@@ -23,6 +23,7 @@ import java.util.Map;
  * @author Heine
  */
 public class FormationEffectsModel extends AbstractElementModel<FormationEffectsModel> implements PojoAdapter<FormationEffects> {
+    FormationEffects formationEffects;
 
     public FormationEffectsModel(FormationEffects formationEffects) {
         initialize(formationEffects);
@@ -34,9 +35,9 @@ public class FormationEffectsModel extends AbstractElementModel<FormationEffects
 
     @Override
     public FormationEffects getPojo() {
-        FormationEffects formationEffects = new FormationEffects();
-        formationEffects.setId(id.get());
-        formationEffects.setType(FormationType.fromValue(name.get()));
+//        FormationEffects formationEffects = new FormationEffects();
+//        formationEffects.setId(id.get());
+//        formationEffects.setType(FormationType.fromValue(name.get()));
         return formationEffects;
     }
 
@@ -44,6 +45,7 @@ public class FormationEffectsModel extends AbstractElementModel<FormationEffects
     public void initialize(FormationEffects pojo) {
         id.set(pojo.getId());
         name.set(pojo.getType().value());
+        formationEffects = pojo;
     }
 
     @Override

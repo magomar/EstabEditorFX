@@ -45,6 +45,7 @@ public class NationModel extends AbstractElementModel<NationModel> implements Po
         Insignia smallIns = new Insignia();
         smallIns.setId(smallInsignia.get());
         nation.setSmallInsignia(smallIns);
+        nation.setNationality("");
         service.stream().forEach((serviceModel) -> nation.getService().add(serviceModel.getPojo()));
         return nation;
     }
