@@ -111,6 +111,7 @@ public class ElementImageController implements Initializable {
             imageView.setImage(FileIO.getEstabImage(estabEditorController.getActiveFile(), imageModel.getFileName()));
             noImageCheckbox.setSelected(imageModel.getFileName().equals(NO_IMAGE_FILENAME) ? true : false);
             imageFilename.setText(imageModel.getFileName());
+//            noImageCheckbox.setSelected(false);
         } else {
             setNoImage();
         }
