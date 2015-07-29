@@ -26,6 +26,9 @@ public class JAXBFactory {
         unmarshaller = jaxbContext.createUnmarshaller();
         marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        // we need to modify the header to avoid the original editor failing when compiling the estab
+        marshaller.setProperty("com.sun.xml.internal.bind.xmlDeclaration", Boolean.FALSE);
+        marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", "<?xml version=\"1.0\"?>");
     }
 
     public JAXBFactory(String contextPath) throws JAXBException {
@@ -33,6 +36,9 @@ public class JAXBFactory {
         unmarshaller = jaxbContext.createUnmarshaller();
         marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        // we need to modify the header to avoid the original editor failing when compiling the estab
+        marshaller.setProperty("com.sun.xml.internal.bind.xmlDeclaration", Boolean.FALSE);
+        marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", "<?xml version=\"1.0\"?>");
     }
 
 //    /**
