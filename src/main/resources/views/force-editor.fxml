@@ -187,8 +187,8 @@
                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="150.0" />
-                                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="-Infinity" prefWidth="150.0" />
+                                         <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
                                      </columnConstraints>
                                      <rowConstraints>
                                          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
@@ -205,14 +205,14 @@
                                          <Label text="Military Symbol" GridPane.rowIndex="1" />
                                          <Label text="Backg. Light Color" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                          <Label text="Backg. Dark Color" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                         <ComboBox fx:id="pictureSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-                                         <ComboBox fx:id="forceSizeSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                         <ComboBox fx:id="pictureSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                         <ComboBox fx:id="forceSizeSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                          <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="4" />
-                                         <ComboBox fx:id="symbolColor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                                         <ComboBox fx:id="symbolColor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
                                          <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                          <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                                          <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                         <ComboBox fx:id="militarySymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                         <ComboBox fx:id="militarySymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                          <ImageView fx:id="militarySymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered-label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                          <ImageView fx:id="pictureSymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered-label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                          <ImageView fx:id="forceSizeSymbolView" fitHeight="7.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />

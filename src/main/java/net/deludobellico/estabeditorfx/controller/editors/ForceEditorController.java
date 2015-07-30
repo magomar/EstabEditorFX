@@ -286,6 +286,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         subforceQty.editableProperty().bind(isEditable);
 
         compositionPane.disableProperty().bind(isEditable.not().or(enableComposition.selectedProperty().not()));
+        usesServiceColors.disableProperty().bind(isEditable.not());
 
         militarySymbol.valueProperty().addListener((observable, oldValue, newValue) -> {
             militarySymbolView.setImage(newValue.getMilitarySymbol());
