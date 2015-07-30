@@ -119,3 +119,11 @@
 .ammo-color {
     -fx-background-color: gold;
 }
+
+.combo-box:disabled,
+.color-picker:disabled,
+.check-box:disabled,
+.button:disabled {
+    -fx-opacity: 1.0;
+}
+
