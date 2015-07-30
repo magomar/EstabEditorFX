@@ -260,7 +260,7 @@ public class ForceEditorController extends AbstractElementEditorController<Force
         staffCapacity.editableProperty().bind(isEditable.and(isComposed.not()));
         reconValue.editableProperty().bind(isEditable.and(isComposed.not()));
         engineerValue.editableProperty().bind(isEditable.and(isComposed.not()));
-
+        canBombard.disableProperty().bind(isEditable.not());
         normalSpeed.editableProperty().bind(isEditable);
         maxSpeed.editableProperty().bind(isEditable);
         deployed.editableProperty().bind(isEditable);
