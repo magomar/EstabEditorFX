@@ -184,42 +184,45 @@
                      <children>
                                  <GridPane layoutX="115.0" layoutY="125.0" styleClass="data-grid" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                                      <columnConstraints>
-                                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
-                                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
-                              <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="-Infinity" prefWidth="150.0" />
-                                         <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                         <ColumnConstraints halignment="RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" />
+                                         <ColumnConstraints maxWidth="1.7976931348623157E308" prefWidth="240.0" />
+                              <ColumnConstraints halignment="LEFT" prefWidth="60.0" />
                                      </columnConstraints>
                                      <rowConstraints>
                                          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
                                          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
                                          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
                                          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
                                      </rowConstraints>
                                      <children>
                                          <Label text="Symbol Color" />
-                                         <Label text="Designation Color" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                         <Label text="Backg. Main Color" GridPane.columnIndex="3" />
+                                         <Label text="Designation Color" GridPane.rowIndex="7" />
+                                         <Label text="Backg. Main Color" GridPane.rowIndex="4" />
                                          <Label text="Force Size Icon" GridPane.rowIndex="3" />
                                          <Label text="Picture Symbol" GridPane.rowIndex="2" />
                                          <Label text="Military Symbol" GridPane.rowIndex="1" />
-                                         <Label text="Backg. Light Color" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                         <Label text="Backg. Dark Color" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                         <Label text="Backg. Light Color" GridPane.rowIndex="6" />
+                                         <Label text="Backg. Dark Color" GridPane.rowIndex="5" />
                                          <ComboBox fx:id="pictureSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                          <ComboBox fx:id="forceSizeSymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                         <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="4" />
+                                         <ColorPicker fx:id="backgroundColorChooser" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                          <ComboBox fx:id="symbolColor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
-                                         <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                         <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                         <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                         <ColorPicker fx:id="backgroundDarkColorChooser" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                         <ColorPicker fx:id="backgroundLightColorChooser" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                         <ColorPicker fx:id="designationColorChooser" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                          <ComboBox fx:id="militarySymbol" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                          <ImageView fx:id="militarySymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered-label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                          <ImageView fx:id="pictureSymbolView" fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered-label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                          <ImageView fx:id="forceSizeSymbolView" fitHeight="7.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                      </children>
                                  </GridPane>
-                        <HBox alignment="CENTER_RIGHT">
+                        <HBox alignment="CENTER_LEFT">
                            <children>
+                              <Pane prefWidth="145.0" />
                               <CheckBox fx:id="usesServiceColors" mnemonicParsing="false" text="Use default service colors">
                                  <HBox.margin>
                                     <Insets top="10.0" />

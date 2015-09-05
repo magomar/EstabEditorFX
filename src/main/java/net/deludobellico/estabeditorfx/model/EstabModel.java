@@ -75,13 +75,13 @@ public class EstabModel {
         this.lastEdit = (estabData.getLastEdit() != null ? estabData.getLastEdit().toGregorianCalendar() : null);
 
         // Collect the Estab element lists
-        Collection<List<? extends ModelProvider>> estabLists = new ArrayList<>();
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getImage(), Image.class));
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getSide(), Side.class));
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getVehicle(), Vehicle.class));
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getWeapon(), Weapon.class));
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getAmmo(), Ammo.class));
-        estabLists.add(ModelProviderFactory.getProviders(estabData.getFormationEffects(), FormationEffects.class));
+        Collection<List<? extends ElementModel>> estabLists = new ArrayList<>();
+        estabLists.add(ElementModel.getModels(estabData.getImage(), Image.class));
+        estabLists.add(ElementModel.getModels(estabData.getSide(), Side.class));
+        estabLists.add(ElementModel.getModels(estabData.getVehicle(), Vehicle.class));
+        estabLists.add(ElementModel.getModels(estabData.getWeapon(), Weapon.class));
+        estabLists.add(ElementModel.getModels(estabData.getAmmo(), Ammo.class));
+        estabLists.add(ElementModel.getModels(estabData.getFormationEffects(), FormationEffects.class));
 
         // Create all the element maps
         allElements = new HashMap<>();
@@ -98,8 +98,8 @@ public class EstabModel {
 
         // Wrap all the elements to their element model and saves them to their corresponding map
         final int[] maxId = {0};
-        for (List<? extends ModelProvider> elements : estabLists)
-            elements.stream().map(ModelProvider::getModel).forEach(element -> {
+        for (List<? extends ElementModel> elements : estabLists)
+            elements.stream().forEach(element -> {
                 if (element.getId() > maxId[0]) maxId[0] = element.getId();
                 element.shallowCopyToMap(allElements.get(element.getClass()));
             });

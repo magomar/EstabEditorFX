@@ -2,11 +2,12 @@ package net.deludobellico.estabeditorfx.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
-import net.deludobellico.estabeditorfx.data.jaxb.Flag;
+import net.deludobellico.estabeditorfx.data.jaxb.*;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Wrapper for all JAXB important POJOs (Forces, Nations, Vehicles, Weapons, Ammo, etc.)
@@ -128,5 +129,26 @@ public interface ElementModel<T> {
         return String.format(" %s | ID: %d | Name: %s",
                 getPojoClass().getSimpleName(),
                 getId(), getName());
+    }
+
+
+    public static <E> List<? extends ElementModel> getModels(List<E> elements, Class<E> elementClass) {
+        switch (elementClass.getSimpleName()) {
+            case "Image":
+                return elements.stream().map(e -> new ImageModel((Image) e)).collect(Collectors.toList());
+            case "Side":
+                return elements.stream().map(e -> new SideModel((Side) e)).collect(Collectors.toList());
+            case "Vehicle":
+                return elements.stream().map(e -> new VehicleModel((Vehicle) e)).collect(Collectors.toList());
+            case "Weapon":
+                return elements.stream().map(e -> new WeaponModel((Weapon) e)).collect(Collectors.toList());
+            case "Ammo":
+                return elements.stream().map(e -> new AmmoModel((Ammo) e)).collect(Collectors.toList());
+            case "FormationEffects":
+                return elements.stream().map(e -> new FormationEffectsModel((FormationEffects) e)).collect(Collectors.toList());
+            default:
+                return null;
+        }
+
     }
 }

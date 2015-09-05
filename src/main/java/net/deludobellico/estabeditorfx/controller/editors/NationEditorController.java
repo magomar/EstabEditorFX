@@ -97,11 +97,11 @@ public class NationEditorController extends AbstractElementEditorController<Nati
     @Override
     public void bindProperties() {
         NationModel element = getActiveElement();
-        largeInsigniaPanelController.setActiveElement(element, element.getLargeInsignia());
-        smallInsigniaPanelController.setActiveElement(element, element.getSmallInsignia());
         name.textProperty().bindBidirectional(element.nameProperty());
         id.textProperty().bindBidirectional(element.idProperty(), NUMBER_STRING_CONVERTER);
         description.textProperty().bindBidirectional(element.descriptionProperty());
+        largeInsigniaPanelController.setActiveElement(element, element.getLargeInsignia());
+        smallInsigniaPanelController.setActiveElement(element, element.getSmallInsignia());
 
     }
 
