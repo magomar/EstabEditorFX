@@ -132,23 +132,4 @@ public interface ElementModel<T> {
     }
 
 
-    public static <E> List<? extends ElementModel> getModels(List<E> elements, Class<E> elementClass) {
-        switch (elementClass.getSimpleName()) {
-            case "Image":
-                return elements.stream().map(e -> new ImageModel((Image) e)).collect(Collectors.toList());
-            case "Side":
-                return elements.stream().map(e -> new SideModel((Side) e)).collect(Collectors.toList());
-            case "Vehicle":
-                return elements.stream().map(e -> new VehicleModel((Vehicle) e)).collect(Collectors.toList());
-            case "Weapon":
-                return elements.stream().map(e -> new WeaponModel((Weapon) e)).collect(Collectors.toList());
-            case "Ammo":
-                return elements.stream().map(e -> new AmmoModel((Ammo) e)).collect(Collectors.toList());
-            case "FormationEffects":
-                return elements.stream().map(e -> new FormationEffectsModel((FormationEffects) e)).collect(Collectors.toList());
-            default:
-                return null;
-        }
-
-    }
 }

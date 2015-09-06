@@ -4,8 +4,6 @@ import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import net.deludobellico.estabeditorfx.data.jaxb.*;
-import net.deludobellico.estabeditorfx.model.provider.ModelProvider;
-import net.deludobellico.estabeditorfx.model.provider.ModelProviderFactory;
 import net.deludobellico.estabeditorfx.util.FileIO;
 
 import java.io.File;
@@ -76,12 +74,12 @@ public class EstabModel {
 
         // Collect the Estab element lists
         Collection<List<? extends ElementModel>> estabLists = new ArrayList<>();
-        estabLists.add(ElementModel.getModels(estabData.getImage(), Image.class));
-        estabLists.add(ElementModel.getModels(estabData.getSide(), Side.class));
-        estabLists.add(ElementModel.getModels(estabData.getVehicle(), Vehicle.class));
-        estabLists.add(ElementModel.getModels(estabData.getWeapon(), Weapon.class));
-        estabLists.add(ElementModel.getModels(estabData.getAmmo(), Ammo.class));
-        estabLists.add(ElementModel.getModels(estabData.getFormationEffects(), FormationEffects.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getImage(), Image.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getSide(), Side.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getVehicle(), Vehicle.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getWeapon(), Weapon.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getAmmo(), Ammo.class));
+        estabLists.add(ElementModelFactory.getModels(estabData.getFormationEffects(), FormationEffects.class));
 
         // Create all the element maps
         allElements = new HashMap<>();
